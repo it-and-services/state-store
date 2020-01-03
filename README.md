@@ -1,5 +1,5 @@
 # StateStore
-Sample application for the ngx-state-store module usage demonstartion.
+Sample application for the ngx-state-store module usage demonstration.
 
 ngx-state-store simple state management module for the angular applications.
 
