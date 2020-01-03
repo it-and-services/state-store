@@ -1,41 +1,10 @@
 export class StateHelper {
 
-  // In progress. Helps check double refs.
-  public static deepFreeze2<T>(object: T): T {
-
-    if (object == null) {
-      console.error('freeze null is not possible.');
-      return object;
-    }
-
-    if (StateHelper.isObject(object) === false) {
-      console.error('freeze not a object not possible. ' + object);
-      return object;
-    }
-
-    // Retrieve the property names defined on object
-    // Freeze properties before freezing self
-    Object.getOwnPropertyNames(object).forEach((name) => {
-      const value = object[name];
-
-      if (value && StateHelper.isObject(value)) {
-        object[name] = StateHelper.deepFreeze(value);
-      }
-
-    });
-
-    if (Object.isFrozen(object)) {
-      console.log('double ref: ' + object);
-      return object;
-    }
-    return Object.freeze(object);
-  }
-
   /**
    * Makes a shadow freeze
    * @param o object to freeze
    */
-  public static deepFreeze(o) {
+  public static deepFreeze(o): any {
     Object.freeze(o);
 
     const oIsFunction = typeof o === 'function';
@@ -56,46 +25,48 @@ export class StateHelper {
     return o;
   }
 
-  public static isObject(o: any): boolean {
-    return typeof o === 'object';
-  }
-
   /**
-   * Set a deeply nested value. Example:
+   * The method unfreeze the object
    *
-   *   setValue({ foo: { bar: { eat: false } } },
-   *      'foo.bar.eat', true) //=> { foo: { bar: { eat: true } } }
-   *
-   * While it traverses it also creates new objects from top down.
-   *
-   * @ignore
+   * @param o object to unfreeze
    */
-  public static setValue(obj: any, prop: string, val: any) {
-    obj = {...obj};
-
-    const split = prop.split('.');
-    const last = split[split.length - 1];
-
-    return split.reduce((acc, part) => {
-      if (part === last) {
-        acc[part] = val;
+  public static unfreeze(o): any {
+    let target;
+    if (o) {
+      if (typeof o === 'object') {
+        if (Array.isArray(o)) {
+          (o as any[]).forEach((prop, index) => {
+            (o as any[])[index] = StateHelper.unfreeze(prop);
+          });
+        } else {
+          target = Object.assign({}, o);
+          Object.getOwnPropertyNames(target).forEach((prop) => {
+              target[prop] = StateHelper.unfreeze(target[prop]);
+            }
+          );
+        }
       } else {
-        acc[part] = {...acc[part]};
+        target = o;
       }
-
-      return acc && acc[part];
-    }, obj);
+    } else {
+      target = o;
+    }
+    return target;
   }
 
-  /**
-   * Get a deeply nested value. Example:
-   *
-   * getValue({ foo: bar: [] }, 'foo.bar') //=> []
-   *
-   * @ignore
-   */
-  public static getValue(obj: any, prop: string) {
-    return prop.split('.').reduce((acc: any, part: string) => acc && acc[part], obj);
+  private static limitedAssign<S, T>(source: S, target: T): void {
+    if (source && target) {
+      Object.getOwnPropertyNames(target).forEach((prop) => {
+          if (source[prop] && Object.prototype.hasOwnProperty.call(target, prop)) {
+            if (typeof source[prop] === 'object' && !Array.isArray(source[prop])) {
+              StateHelper.limitedAssign(source[prop], target[prop]);
+            } else {
+              target[prop] = source[prop];
+            }
+          }
+        }
+      );
+    }
   }
 
   public static getEmptyObject(): any {
