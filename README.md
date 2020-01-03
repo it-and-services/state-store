@@ -28,3 +28,19 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Publish ngx-state-store module
+
+Execute the following:
+
+         $ make your changes   
+         $ increase state-store/projects/ngx-state-store/package.json version
+         $ describe the release in the ChangeLog file
+         $ npm install 
+         $ ng test ngx-state-store
+         $ npm run build:release
+         $ git add/commit
+         $ git tag v0.1.0       # adjust version here
+         $ git push origin state-store
+         $ git push --tags
+         $ npm publish dist/ngx-state-store
