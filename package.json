@@ -1,15 +1,14 @@
 {
   "name": "state-store",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:release": "ng build ngx-state-store",
+    "build:release": "ng build ngx-state-store && cd projects/ngx-state-store && gulp && cd ../..",
     "test": "ng test",
     "test:release": "ng test ngx-state-store",
-    "test-coverage": "npm run test -- --watch=false --code-coverage",
-    "test-coverage:release": "npm run test:release -- --watch=false --code-coverage",
+    "test:coverage": "npm run test -- --watch=false --code-coverage",
     "lint": "ng lint",
     "lint-sonar": "ng lint --format=json",
     "e2e": "ng e2e"
@@ -40,6 +39,8 @@
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "gulp": "~4.0.2",
+    "gulp-replace": "~1.0.0",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
