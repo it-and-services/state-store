@@ -5,8 +5,49 @@ ngx-state-store simple state management module for the angular applications.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
-## Usage description
-TODO: description
+## Usage description of the ngx-state-store module
+
+###### Create state object, for example: app-state.ts
+
+        
+        export class AppState {
+          ShowLoadingIndicator: string[];
+          Counter: number;
+        }
+        
+###### Create initial state object, for example: initial-state.ts
+        
+        import { AppState } from './app-state';
+        
+        export const AppInitialState: AppState = {
+          ShowLoadingIndicator: [],
+          Counter: 0
+        };
+        
+###### Edit app.module.ts
+
+
+        @NgModule({
+          declarations: [
+            ...
+          ],
+          imports: [
+            ...
+            NgxStateStoreModule.forRoot({
+              appName: 'NgxStateStoreDemo',
+              log: true,
+              timekeeping: true,
+              initialState: AppInitialState
+            }),
+            ...
+          ],
+          ...
+        })
+        export class AppModule {
+            ...
+        }
+
+TODO: continue
 
 ## Publish ngx-state-store module
 
