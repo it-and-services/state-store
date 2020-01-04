@@ -6,7 +6,7 @@ ngx-state-store simple state management module for the angular applications.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
 ## Usage description
-TODO:
+TODO: description
 
 ## Publish ngx-state-store module
 
