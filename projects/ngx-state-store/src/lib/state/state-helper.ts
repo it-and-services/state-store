@@ -13,11 +13,10 @@ export class StateHelper {
     Object.getOwnPropertyNames(o).forEach((prop) => {
       if (
         hasOwnProp.call(o, prop) &&
-        (oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true) &&
-        o[prop] !== null &&
-        (typeof o[prop] === 'object' || typeof o[prop] === 'function') &&
-        !Object.isFrozen(o[prop])
-      ) {
+        (oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true)
+        && o[prop] !== null
+        && (typeof o[prop] === 'object' || typeof o[prop] === 'function')
+        && !Object.isFrozen(o[prop])) {
         StateHelper.deepFreeze(o[prop]);
       }
     });
@@ -26,25 +25,43 @@ export class StateHelper {
   }
 
   /**
-   * The method unfreeze the object
+   * The method returns the clone of the object. Useful to clone frozen object.
    *
-   * @param o object to unfreeze
+   * @param o object to clone
    */
-  public static unfreeze(o): any {
+  public static cloneObject(o): any {
     let target;
     if (o) {
       if (typeof o === 'object') {
+
         if (Array.isArray(o)) {
-          (o as any[]).forEach((prop, index) => {
-            (o as any[])[index] = StateHelper.unfreeze(prop);
+
+          target = (o as any[]).slice();
+          (o as any[]).forEach((element, index) => {
+            (target as any[])[index] = StateHelper.cloneObject(element);
           });
+
         } else {
+
           target = Object.assign({}, o);
           Object.getOwnPropertyNames(target).forEach((prop) => {
-              target[prop] = StateHelper.unfreeze(target[prop]);
+              target[prop] = StateHelper.cloneObject(target[prop]);
             }
           );
         }
+
+      } else if (typeof o === 'function') {
+
+        target = o.bind({});
+        Object.getOwnPropertyNames(o).forEach((prop) => {
+            if (prop === 'caller' || prop === 'callee' || prop === 'arguments') {
+              target[prop] = o[prop];
+            } else if (prop !== 'length' && prop !== 'name') {
+              target[prop] = StateHelper.cloneObject(target[prop]);
+            }
+          }
+        );
+
       } else {
         target = o;
       }
@@ -52,21 +69,6 @@ export class StateHelper {
       target = o;
     }
     return target;
-  }
-
-  private static limitedAssign<S, T>(source: S, target: T): void {
-    if (source && target) {
-      Object.getOwnPropertyNames(target).forEach((prop) => {
-          if (source[prop] && Object.prototype.hasOwnProperty.call(target, prop)) {
-            if (typeof source[prop] === 'object' && !Array.isArray(source[prop])) {
-              StateHelper.limitedAssign(source[prop], target[prop]);
-            } else {
-              target[prop] = source[prop];
-            }
-          }
-        }
-      );
-    }
   }
 
   public static getEmptyObject(): any {
