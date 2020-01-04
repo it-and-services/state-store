@@ -3,12 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { NgxStateStoreModule } from 'ngx-state-store/lib/ngx-state-store.module';
 import { AppInitialState } from './services/state-store/initial-state';
+import { NgxStateStoreModule } from '../../projects/ngx-state-store/src/lib/ngx-state-store.module';
+import { TopAreaContainerComponent } from './components/top-area.component/top-area.component';
+import { BottomAreaContainerComponent } from './components/bottom-area.component/bottom-area.component';
+import { ActionFactory } from './services/state-store/action-factory';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopAreaContainerComponent,
+    BottomAreaContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +24,7 @@ import { AppInitialState } from './services/state-store/initial-state';
       initialState: AppInitialState
     }),
   ],
-  providers: [],
+  providers: [ActionFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule {

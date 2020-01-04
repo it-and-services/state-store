@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HideLoadingIndicatorAction, IncrementCounterAction, ShowLoadingIndicatorAction } from './actions';
-import { Action } from 'ngx-state-store/lib/ngx-state-store.module';
+import { Action } from '../../../../projects/ngx-state-store/src/lib/state/action';
 
 export enum LoadIndicator {
   TRANSPARENT = 'TRANSPARENT',

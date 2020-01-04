@@ -14,7 +14,7 @@ export abstract class Action {
   abstract handleState(stateContext: StateContext<any>): Observable<void> | void;
 
   protected clone<T>(o: T): T {
-    return JSON.parse(JSON.stringify(o));
+    return StateHelper.cloneObject(o);
   }
 
   protected getEmptyState(): any {

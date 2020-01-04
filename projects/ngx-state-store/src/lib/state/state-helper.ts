@@ -4,7 +4,7 @@ export class StateHelper {
    * Makes a shadow freeze
    * @param o object to freeze
    */
-  public static deepFreeze(o): any {
+  public static deepFreeze<T>(o: T): T {
     Object.freeze(o);
 
     const oIsFunction = typeof o === 'function';
@@ -29,7 +29,7 @@ export class StateHelper {
    *
    * @param o object to clone
    */
-  public static cloneObject(o): any {
+  public static cloneObject<T>(o: T): T {
     let target;
     if (o) {
       if (typeof o === 'object') {

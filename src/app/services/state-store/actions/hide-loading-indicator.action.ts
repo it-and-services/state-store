@@ -1,6 +1,7 @@
-import { Action, StateContext } from 'ngx-state-store/lib/ngx-state-store.module';
 import { ActionIds } from '../action-ids';
 import { AppState } from '../app-state';
+import { StateContext } from '../../../../../projects/ngx-state-store/src/lib/state/state-context';
+import { Action } from '../../../../../projects/ngx-state-store/src/lib/state/action';
 
 /**
  * Hide loading indicator which block the page.
