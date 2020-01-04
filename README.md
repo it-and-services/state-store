@@ -23,3 +23,6 @@ Execute the following:
          $ git push origin state-store
          $ git push --tags
          $ npm publish dist/ngx-state-store
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
