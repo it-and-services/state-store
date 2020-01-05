@@ -110,6 +110,10 @@ Example: src/app/components/counter.component/counter.component.ts
 ## More complex use case with the back-end call
 For the more complex use case with the back-end call refer to the source code:
 
+* src/app/components/inventories-button.component/inventories-button.component.ts
+* src/app/components/inventories.component/inventories.component.ts
+* src/app/services/state-store/actions/load-inventories.action.ts
+* src/app/services/connectors/inventory.connector.ts
 
 ## Build
 
