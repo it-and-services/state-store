@@ -1,5 +1,13 @@
 export interface StateConfig {
-  appName: string;
+
+  /**
+   * Name of the store. the content can be find by the property window['ngx-state-store'][storeName]
+   */
+  storeName: string;
+
+  /**
+   * Logs the state of the store after every action.
+   */
   log?: boolean;
 
   /**
@@ -7,5 +15,8 @@ export interface StateConfig {
    */
   timekeeping?: boolean;
 
+  /**
+   * Initial state of the store.
+   */
   initialState?: any;
 }

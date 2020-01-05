@@ -1,23 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '../../../../projects/ngx-state-store/src/lib/state/store.service';
 import { AppState } from '../../services/state-store/app-state';
 import { ActionFactory } from '../../services/state-store/action-factory';
 
 @Component({
-  selector: 'app-top-area-component',
-  templateUrl: './top-area.component.html',
-  styleUrls: ['./top-area.component.scss']
+  selector: 'app-counter-button',
+  templateUrl: './counter-button.component.html',
+  styleUrls: ['./counter-button.component.scss']
 })
-export class TopAreaContainerComponent implements OnInit, OnDestroy {
+export class CounterButtonComponent {
 
   constructor(private store: Store<AppState>,
               private factory: ActionFactory) {
-  }
-
-  ngOnDestroy(): void {
-  }
-
-  ngOnInit(): void {
   }
 
   incrementCounter() {

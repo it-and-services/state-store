@@ -25,9 +25,9 @@ export class StatePerformancePlugin extends StorePlugin {
     return this.state.performance.timekeeping;
   }
 
-  constructor(appName: string, log: boolean = false) {
+  constructor(storeName: string, log: boolean = false) {
 
-    super(appName);
+    super(storeName);
 
     this.settings = {
       timekeeping: log,

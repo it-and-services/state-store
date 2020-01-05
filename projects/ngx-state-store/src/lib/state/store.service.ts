@@ -17,8 +17,8 @@ export class Store<S> {
 
   constructor(@Inject(STATE_CONFIG) private config: StateConfig) {
 
-    const logPlugin = new StoreLogPlugin(this.config.appName, this.config.log);
-    const performancePlugin = new StatePerformancePlugin(this.config.appName, this.config.timekeeping);
+    const logPlugin = new StoreLogPlugin(this.config.storeName, this.config.log);
+    const performancePlugin = new StatePerformancePlugin(this.config.storeName, this.config.timekeeping);
 
     this.plugins.push(logPlugin);
     this.plugins.push(performancePlugin);

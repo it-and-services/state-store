@@ -22,18 +22,18 @@ export abstract class StorePlugin {
    *
    * @param appName e.g. tm
    */
-  private prepareWindowObject(appName: string): void {
+  private prepareWindowObject(storeName: string): void {
 
     if (!window[this.namespace]) {
       window[this.namespace] = StateHelper.getEmptyObject();
     }
 
-    if (!window[this.namespace][appName]) {
-      window[this.namespace][appName] = StateHelper.getEmptyObject();
+    if (!window[this.namespace][storeName]) {
+      window[this.namespace][storeName] = StateHelper.getEmptyObject();
     }
 
-    if (!window[this.namespace][appName].state) {
-      window[this.namespace][appName].state = StateHelper.getEmptyObject();
+    if (!window[this.namespace][storeName].state) {
+      window[this.namespace][storeName].state = StateHelper.getEmptyObject();
     }
   }
 }

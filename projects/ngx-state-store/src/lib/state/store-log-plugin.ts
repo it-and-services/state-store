@@ -24,9 +24,9 @@ export class StoreLogPlugin extends StorePlugin {
     return !this.state.log.log;
   }
 
-  constructor(appName: string, log: boolean = false) {
+  constructor(storeName: string, log: boolean = false) {
 
-    super(appName);
+    super(storeName);
 
     this.stateLog = StateHelper.getEmptyObject();
 

@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HideLoadingIndicatorAction, IncrementCounterAction, ShowLoadingIndicatorAction } from './actions';
+import { HideLoadingIndicatorAction, IncrementCounterAction, LoadInventoriesAction, ShowLoadingIndicatorAction } from './actions';
 import { Action } from '../../../../projects/ngx-state-store/src/lib/state/action';
+import { InventoryConnector } from '../connectors/inventory.connector';
 
 export enum LoadIndicator {
-  TRANSPARENT = 'TRANSPARENT',
-  DEFAULT = 'DEFAULT'
+  DEFAULT = 'DEFAULT',
+  LOAD_INVENTORIES = 'LOAD_INVENTORIES'
 }
 
 @Injectable()
 export class ActionFactory {
 
-  constructor() {
+  constructor(private inventoryConnector: InventoryConnector) {
   }
 
   incrementCounter(): Action {
@@ -25,4 +26,7 @@ export class ActionFactory {
     return new HideLoadingIndicatorAction(identifier);
   }
 
+  loadInventories(): Action {
+    return new LoadInventoriesAction(this.inventoryConnector);
+  }
 }

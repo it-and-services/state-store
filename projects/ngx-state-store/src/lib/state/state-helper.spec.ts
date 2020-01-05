@@ -38,7 +38,7 @@ describe('StateHelper', () => {
     expect(o.call(o)).toBe(77);
     o = StateHelper.cloneObject(o);
     expect(o.x = 2).toBe(2);
-    expect(o.call()).toBe(77);
+    expect(o.call(o)).toBe(77);
     console.log(o.name + ' ' + o.length);
   }));
 });

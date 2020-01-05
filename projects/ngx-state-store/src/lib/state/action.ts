@@ -8,7 +8,7 @@ export abstract class Action {
     return this.actionId;
   }
 
-  constructor(private actionId: string) {
+  protected constructor(private actionId: string) {
   }
 
   abstract handleState(stateContext: StateContext<any>): Observable<void> | void;
