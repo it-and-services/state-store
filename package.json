@@ -1,6 +1,6 @@
 {
   "name": "state-store",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -52,6 +52,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "karma-junit-reporter": "2.0.1",
     "ng-packagr": "^5.4.0",
+    "ngx-state-store": "^1.0.0",
     "protractor": "~5.4.0",
     "scss-bundle": "^3.0.2",
     "ts-node": "~7.0.0",
