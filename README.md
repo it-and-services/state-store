@@ -115,6 +115,9 @@ For the more complex use case with the back-end call refer to the source code:
 * src/app/services/state-store/actions/load-inventories.action.ts
 * src/app/services/connectors/inventory.connector.ts
 
+The objects returned from the `store.select(...)` are frozen (read only) by the `StateHelper.deepFreeze(any)`. Use `StateHelper.cloneObject(any)`
+to get a clone of the frozen object.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
