@@ -1,4 +1,7 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.0
+  - first release; supported applications with angular version >= 7.2.0
+
 v0.0.1
   - first beta release
