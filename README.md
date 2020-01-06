@@ -3,20 +3,20 @@ ngx-state-store is the state management module for the angular applications star
 
 ## state-store
 Sample application for the ngx-state-store module usage demonstration.  
-Sourcecode is available at [https://github.com/it-and-services/state-store](https://github.com/it-and-services/state-store).
+Sourcecode examples are available at [https://github.com/it-and-services/state-store](https://github.com/it-and-services/state-store).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
 #### Usage description of the ngx-state-store module
 
-###### 1. Create state object.
+###### 1. Create a state object.
 Example: src/app/services/state-store/app-state.ts
         
         export class AppState {
           Counter: number;
         }
 
-###### 2. Create initial state object.
+###### 2. Create an initial state object.
 Example: src/app/services/state-store/app-initial-state.ts
         
         import { AppState } from './app-state';
@@ -25,7 +25,7 @@ Example: src/app/services/state-store/app-initial-state.ts
           Counter: 0
         };
         
-###### 3. Register NgxStateStoreModule in src/app/app.module.ts
+###### 3. Register the NgxStateStoreModule in src/app/app.module.ts
 
         @NgModule({
           declarations: [
@@ -50,7 +50,7 @@ Example: src/app/services/state-store/app-initial-state.ts
 At run time you can access the store in the debug console by the path `window['ngx-state-store']['store-demo']`
 
 ###### 4. Create an action.
-Example: src/app/services/state-store/actions/increment-counter.action.ts and action-ids.ts  
+Example: src/app/services/state-store/actions/increment-counter.action.ts  
 Example: src/app/services/state-store/action-ids.ts
 
         export class IncrementCounterAction extends Action {
@@ -110,6 +110,8 @@ Example: src/app/components/counter.component/counter.component.ts
           }
         }
 
+The `select(...)` method returns an Observable.
+
 #### More complex use case with the back-end call
 For the more complex use case with the back-end call refer to the source code:
 
@@ -118,7 +120,7 @@ For the more complex use case with the back-end call refer to the source code:
 * src/app/services/state-store/actions/load-inventories.action.ts
 * src/app/services/connectors/inventory.connector.ts
 
-###### 1. Extend state object.
+###### 1. Extend the state object.
 Example: src/app/services/state-store/app-state.ts  
 Example: src/app/models/inventory.ts
 
@@ -134,7 +136,7 @@ Example: src/app/models/inventory.ts
           name: string;
         }
 
-###### 2. Extend initial state object.
+###### 2. Extend the initial state object.
 Example: src/app/services/state-store/app-initial-state.ts
 
         export const AppInitialState: AppState = {
@@ -207,8 +209,9 @@ Example: src/app/services/state-store/actions/load-inventories.action.ts
           }
         }
 
-###### 4. Extend the action factory.
-Example: src/app/services/state-store/action-factory.ts
+###### 4. Extend the action factory and create the connector.
+Example: src/app/services/state-store/action-factory.ts  
+Example: src/app/services/connectors/inventory.connector.ts
 
         export enum LoadIndicator {
           DEFAULT = 'DEFAULT',
@@ -238,9 +241,19 @@ Example: src/app/services/state-store/action-factory.ts
           }
         }
 
+        export class InventoryConnector {
+        
+          constructor(private http: HttpClient) {
+          }
+        
+          loadInventory(): Observable<Inventory[]> {
+            // delay(2000) to imitate the network throttling
+            return this.http.get<Inventory[]>('assets/mock-data/inventories.json').pipe(delay(2000));
+          }
+        }
+
 ###### 5. To load the data from back-end and update the states call the `store.dispatch(...)`.
 Example: src/app/components/inventories-button.component/inventories-button.component.ts  
-Example: src/app/services/connectors/inventory.connector.ts
 
         export class InventoriesButtonComponent {
         
@@ -258,17 +271,6 @@ Example: src/app/services/connectors/inventory.connector.ts
             ).subscribe(() =>
               this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
             );
-          }
-        }
-
-        export class InventoryConnector {
-        
-          constructor(private http: HttpClient) {
-          }
-        
-          loadInventory(): Observable<Inventory[]> {
-            // delay(2000) to imitate the network throttling
-            return this.http.get<Inventory[]>('assets/mock-data/inventories.json').pipe(delay(2000));
           }
         }
 
