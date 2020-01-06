@@ -2,6 +2,8 @@
   "name": "state-store",
   "version": "1.0.1",
   "license": "MIT",
+  "description": "Sample application for the ngx-state-store module usage demonstration starting from the angular version >= 7.2.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,7 +16,6 @@
     "lint-sonar": "ng lint --format=json",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
