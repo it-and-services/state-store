@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "license": "MIT",
   "description": "Simple state management module for the angular applications starting from the angular version >= 7.2.0",
-  "private": true,
   "peerDependencies": {
     "@angular/common": ">=7.2.0",
     "@angular/core": ">=7.2.0",
