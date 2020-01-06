@@ -17,13 +17,14 @@ export class Store<S> {
 
   constructor(@Inject(STATE_CONFIG) private config: StateConfig) {
 
-    const logPlugin = new StoreLogPlugin(this.config.storeName, this.config.log);
-    const performancePlugin = new StatePerformancePlugin(this.config.storeName, this.config.timekeeping);
+    if (this.config.log) {
+      this.plugins.push(new StoreLogPlugin(this.config.storeName, this.config.log));
+    }
+    if (this.config.timekeeping) {
+      this.plugins.push(new StatePerformancePlugin(this.config.storeName, this.config.timekeeping));
+    }
 
-    this.plugins.push(logPlugin);
-    this.plugins.push(performancePlugin);
-
-    this.currentState = config.initialState;
+    this.currentState = config.initialState || {};
     this.stateStream = new BehaviorSubject<S>(this.currentState);
 
   }
