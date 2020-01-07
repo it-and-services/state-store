@@ -19,8 +19,6 @@ Example: src/app/services/state-store/app-state.ts
 ###### 2. Create an initial state object.
 Example: src/app/services/state-store/app-initial-state.ts
         
-        import { AppState } from './app-state';
-        
         export const AppInitialState: AppState = {
           Counter: 0
         };
@@ -306,22 +304,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running the application
 
 Run `ng serve` to start the app. The app is available at [http://localhost:4200/](http://localhost:4200/).
-
-## Build and publish ngx-state-store module
-
-Execute the following:
-
-         $ make your changes   
-         $ increase state-store/projects/ngx-state-store/package.json version
-         $ describe the release in the ChangeLog file
-         $ npm install 
-         $ ng test ngx-state-store
-         $ npm run build:release
-         $ git add/commit
-         $ git tag v0.1.0       # adjust version here
-         $ git push origin state-store
-         $ git push --tags
-         $ npm publish dist/ngx-state-store
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
