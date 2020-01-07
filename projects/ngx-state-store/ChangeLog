@@ -1,5 +1,9 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.2
+  - improve documentation
+  - plugins are always included
+
 v1.0.1
   - improve documentation
   - increase test coverage

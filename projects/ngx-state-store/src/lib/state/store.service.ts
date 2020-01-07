@@ -17,12 +17,8 @@ export class Store<S> {
 
   constructor(@Inject(STATE_CONFIG) private config: StateConfig) {
 
-    if (this.config.log) {
-      this.plugins.push(new StoreLogPlugin(this.config.storeName, this.config.log));
-    }
-    if (this.config.timekeeping) {
-      this.plugins.push(new StatePerformancePlugin(this.config.storeName, this.config.timekeeping));
-    }
+    this.plugins.push(new StoreLogPlugin(this.config.storeName, this.config.log));
+    this.plugins.push(new StatePerformancePlugin(this.config.storeName, this.config.timekeeping));
 
     this.currentState = config.initialState || {};
     this.stateStream = new BehaviorSubject<S>(this.currentState);

@@ -1,6 +1,6 @@
 {
   "name": "state-store",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "description": "Sample application for the ngx-state-store module usage demonstration starting from the angular version >= 7.2.0",
   "private": true,
@@ -26,6 +26,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "ngx-state-store": "^1.0.0",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
@@ -54,7 +55,6 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "karma-junit-reporter": "2.0.1",
     "ng-packagr": "^5.4.0",
-    "ngx-state-store": "^1.0.0",
     "protractor": "~5.4.0",
     "scss-bundle": "^3.0.2",
     "ts-node": "~7.0.0",
