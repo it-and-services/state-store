@@ -1,6 +1,17 @@
 {
   "name": "state-store",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "keywords": [
+    "ngx-state-store",
+    "state",
+    "store",
+    "state-store",
+    "state-management",
+    "redux",
+    "rxjs",
+    "angular",
+    "angular2"
+  ],
   "license": "MIT",
   "description": "Sample application for the ngx-state-store module usage demonstration starting from the angular version >= 7.2.0",
   "private": true,
