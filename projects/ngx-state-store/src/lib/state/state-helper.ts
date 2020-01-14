@@ -41,10 +41,14 @@ export class StateHelper {
             (target as any[])[index] = StateHelper.cloneObject(element);
           });
 
+        } else if (StateHelper.isValidDate(o)) {
+
+          target = new Date(((o as any) as Date).toISOString());
+
         } else {
 
           target = Object.assign({}, o);
-          Object.getOwnPropertyNames(target).forEach((prop) => {
+          Object.getOwnPropertyNames(o).forEach((prop) => {
               target[prop] = StateHelper.cloneObject(target[prop]);
             }
           );
@@ -77,6 +81,10 @@ export class StateHelper {
 
   public static combine<S>(state: S, newValue: Partial<S>): S {
     return Object.assign(StateHelper.getEmptyObject(), state, newValue);
+  }
+
+  private static isValidDate(date) {
+    return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date as any);
   }
 }
 

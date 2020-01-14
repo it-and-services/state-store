@@ -14,40 +14,56 @@ describe('StateHelper', () => {
       providers: []
     });
   });
-  it('should be frozen', inject([], () => {
+  it('simple object should be frozen', inject([], () => {
     const o = StateHelper.deepFreeze(simpleObject);
+    expect(o === simpleObject).toBeTruthy();
     expect(() => o.prop = 2).toThrowError();
   }));
   it('function should be frozen', inject([], () => {
     const o = StateHelper.deepFreeze(funk);
+    expect(o === funk).toBeTruthy();
     expect(() => o.x = 2).toThrowError();
     expect(o.call(o)).toBe(77);
   }));
-  it('should be unfrozen', inject([], () => {
+  it('complex object should be unfrozen and cloned', inject([], () => {
     let o = StateHelper.deepFreeze(complexObject);
+    expect(o === complexObject).toBeTruthy();
     expect(o.prop[0].one[0].oneOne).toBe(4);
     o = StateHelper.cloneObject(o);
     expect(o.prop[0].one[0].oneOne = 2).toBe(2);
   }));
-  it('should be unfrozen 2', inject([], () => {
+  it('complex object should be unfrozen and cloned 2', inject([], () => {
     let o = StateHelper.deepFreeze(complexObject);
+    expect(o === complexObject).toBeTruthy();
     expect(o.prop[1].two[0]).toBe('5');
     o = StateHelper.cloneObject(o);
     expect((o.prop[1].two = ['6'])[0]).toBe('6');
   }));
-  it('function should be unfrozen', inject([], () => {
+  it('function should be unfrozen and cloned', inject([], () => {
     let o = StateHelper.deepFreeze(funk);
+    expect(o === funk).toBeTruthy();
     expect(funk.x).toBe(7);
     expect(o.call(o)).toBe(77);
     o = StateHelper.cloneObject(o);
     expect(o.x = 2).toBe(2);
     expect(o.call(o)).toBe(77);
-    console.log(o.name + ' ' + o.length);
+  }));
+  it('Date should be unfrozen and cloned', inject([], () => {
+    const dateObject = {date: new Date()};
+    const timeMillis = dateObject.date.getTime();
+    let o = StateHelper.deepFreeze(dateObject);
+    expect(o === dateObject).toBeTruthy();
+    expect(timeMillis).toBe((o.date as Date).getTime());
+    o = StateHelper.cloneObject(o);
+    expect(o === dateObject).not.toBeTruthy();
+    expect(o.date.getTime).toBeTruthy();
+    expect(o.date.getTime()).toBe(timeMillis);
+    expect(JSON.stringify(dateObject)).toBe(JSON.stringify(o));
   }));
   it('JSON.stringify() of the objects must be identical', inject([], () => {
     const origin = JSON.stringify(complexObject);
     const frozen = JSON.stringify(StateHelper.deepFreeze(complexObject));
-    expect(origin).toBe(frozen);
+    expect(origin === frozen).toBeTruthy();
     const unfrozen = JSON.stringify(StateHelper.cloneObject(StateHelper.deepFreeze(complexObject)));
     expect(frozen).toBe(unfrozen);
   }));
