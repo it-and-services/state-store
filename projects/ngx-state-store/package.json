@@ -1,8 +1,10 @@
 {
   "name": "ngx-state-store",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "keywords": [
     "ngx-state-store",
+    "ngx-state",
+    "ngx-store",
     "state",
     "store",
     "state-store",
