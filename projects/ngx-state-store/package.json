@@ -1,6 +1,19 @@
 {
   "name": "ngx-state-store",
-  "version": "1.0.2",
+  "version": "1.0.4",
+  "keywords": [
+    "ngx-state-store",
+    "ngx-state",
+    "ngx-store",
+    "state",
+    "store",
+    "state-store",
+    "state-management",
+    "redux",
+    "rxjs",
+    "angular",
+    "angular2"
+  ],
   "license": "MIT",
   "description": "Simple state management module for the angular applications starting from the angular version >= 7.2.0",
   "peerDependencies": {
