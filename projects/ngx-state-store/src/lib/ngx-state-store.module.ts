@@ -28,4 +28,4 @@ export { Action } from './state/action';
 export { StateConfig } from './state/state-config';
 export { StateContext } from './state/state-context';
 export { StateHelper } from './state/state-helper';
-export { Store } from './state/store.service';
+export { Store, ObjectComparator } from './state/store.service';

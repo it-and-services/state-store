@@ -1,37 +1,190 @@
 import { fakeAsync, flushMicrotasks, inject, TestBed, tick } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+import { defer, Observable, of } from 'rxjs';
 import { Action } from './action';
 import { STATE_CONFIG } from './state-config.token';
 import { StateContext } from './state-context';
-import { StateHelper } from './state-helper';
-import { Store } from './store.service';
+import { ObjectComparator, Store } from './store.service';
+import { catchError } from 'rxjs/operators';
+import { StateConfig } from './state-config';
 
 describe('Store', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [Store, {provide: STATE_CONFIG, useValue: {storeName: 'test', log: true, timekeeping: true, initialState: {count: 0}}}]
+  describe('with initial state', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [Store, {provide: STATE_CONFIG, useValue: {storeName: 'test', log: true, timekeeping: true, initialState: {count: 0}}}]
+      });
     });
+
+    it('initial state',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let count = -1;
+        store.selectOnce('count').subscribe(c => count = c);
+        flushMicrotasks();
+        expect(count).toBe(0);
+      })));
+
+    it('initial state with ObjectComparator',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let count = -1;
+        const objectComparator: ObjectComparator = (a, b) => a === b;
+        store.select('count', objectComparator).subscribe(c => count = c);
+        flushMicrotasks();
+        expect(count).toBe(0);
+      })));
+
+    it('dispatch action',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState({count: 1});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        store.select('count').subscribe(c => count = c);
+        flushMicrotasks();
+        expect(count).toBe(1);
+      })));
+
+    it('dispatch action with observable',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<any> {
+            stateContext.patchState({count: 1});
+            return of(null);
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        store.select('count').subscribe(c => count = c);
+        flushMicrotasks();
+        expect(count).toBe(1);
+      })));
+
+    it('throw by the dispatch action with observable',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let error;
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            return defer(() => {
+              throw new Error('some error');
+            });
+          }
+        } as Action).pipe(
+          catchError(err => {
+            error = err;
+            return of(err);
+          })
+        ).subscribe();
+        flushMicrotasks();
+        tick(1);
+        flushMicrotasks();
+        expect(error).toBeTruthy();
+        expect(error.message).toBe('some error');
+      })));
+
+    it('update state',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let initialState;
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            initialState = stateContext.getState();
+            stateContext.setState({count2: 2});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        let count2 = -1;
+        expect(initialState).toEqual({count: 0});
+        store.select('count').subscribe(c => count = c);
+        store.select('count2').subscribe(c => count2 = c);
+        flushMicrotasks();
+        expect(count).toBeUndefined();
+        expect(count2).toBe(2);
+      })));
+
+    it('throw by the dispatch',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let error;
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            throw new Error('some error');
+          }
+        } as Action).pipe(
+          catchError(err => {
+            error = err;
+            return of(err);
+          })
+        ).subscribe();
+        flushMicrotasks();
+        expect(error).toBeTruthy();
+        expect(error.message).toBe('some error');
+      })));
+
+    it('throw by patch with an array',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let error;
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState([]);
+          }
+        } as Action).pipe(
+          catchError(err => {
+            error = err;
+            return of(err);
+          })
+        ).subscribe();
+        flushMicrotasks();
+        expect(error).toBeTruthy();
+        expect(error.message).toBe('Patching arrays is not supported.');
+      })));
+
+    it('throw by patch with some primitive',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let error;
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState(1 as any);
+          }
+        } as Action).pipe(
+          catchError(err => {
+            error = err;
+            return of(err);
+          })
+        ).subscribe();
+        flushMicrotasks();
+        expect(error).toBeTruthy();
+        expect(error.message).toBe('Patching primitives is not supported.');
+      })));
   });
-  it('initial state',
-    fakeAsync(inject([Store], (store: Store<any>) => {
-      let count = -1;
-      store.selectOnce('count').subscribe(c => count = c);
-      flushMicrotasks();
-      expect(count).toBe(0);
-    })));
-  it('dispatch action',
-    fakeAsync(inject([Store], (store: Store<any>) => {
-      store.dispatch({
-        handleState(stateContext: StateContext<any>): Observable<void> | void {
-          stateContext.patchState({count: 1});
-        }
-      } as Action).subscribe();
-      flushMicrotasks();
-      tick(1);
-      let count = -1;
-      store.select('count').subscribe(c => count = c);
-      flushMicrotasks();
-      expect(count).toBe(1);
-    })));
+  describe('without initial state', () => {
+    beforeEach(() => {
+      const storeConfig: StateConfig = {storeName: 'test'} as StateConfig;
+      TestBed.configureTestingModule({
+        providers: [Store, {provide: STATE_CONFIG, useValue: {storeName: 'test'}}]
+      });
+    });
+
+    it('empty state',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let initialState;
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            initialState = stateContext.getState();
+            stateContext.patchState({count: 1});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        store.select('count').subscribe(c => count = c);
+        flushMicrotasks();
+        expect(initialState).toEqual({});
+        expect(count).toBe(1);
+      })));
+  });
 });
 

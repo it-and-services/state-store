@@ -4,10 +4,8 @@ import { StorePlugin } from './store-plugin';
  * Measure time of action execution.
  */
 interface PerformanceSettings {
-
   // Measure action duration
   timekeeping: boolean;
-
   performanceLog: ActionTime[];
 }
 
@@ -16,9 +14,9 @@ interface ActionTime {
   time: number;
 }
 
-export class StatePerformancePlugin extends StorePlugin {
+export class StorePerformancePlugin extends StorePlugin {
 
-  private settings: PerformanceSettings;
+  private readonly settings: PerformanceSettings;
   private performanceLog: ActionTime[] = [];
 
   private get timekeeping(): boolean {
@@ -26,24 +24,18 @@ export class StatePerformancePlugin extends StorePlugin {
   }
 
   constructor(storeName: string, log: boolean = false) {
-
     super(storeName);
-
     this.settings = {
       timekeeping: log,
       performanceLog: this.performanceLog
     };
-
     this.state.performance = this.settings;
-
   }
 
   dispatchBefore(actionId: string, state: any, order: number) {
-
     if (!this.timekeeping) {
       return;
     }
-
     this.performanceLog[order] = {
       id: actionId,
       time: performance.now()
@@ -54,12 +46,9 @@ export class StatePerformancePlugin extends StorePlugin {
   }
 
   dispatchAfter(actionId: string, state: any, order: number) {
-
     if (!this.timekeeping) {
       return;
     }
-
     this.performanceLog[order].time = performance.now() - this.performanceLog[order].time;
-
   }
 }

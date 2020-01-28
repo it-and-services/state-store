@@ -14,17 +14,20 @@ describe('StateHelper', () => {
       providers: []
     });
   });
+
   it('simple object should be frozen', inject([], () => {
     const o = StateHelper.deepFreeze(simpleObject);
     expect(o === simpleObject).toBeTruthy();
     expect(() => o.prop = 2).toThrowError();
   }));
+
   it('function should be frozen', inject([], () => {
     const o = StateHelper.deepFreeze(funk);
     expect(o === funk).toBeTruthy();
     expect(() => o.x = 2).toThrowError();
     expect(o.call(o)).toBe(77);
   }));
+
   it('complex object should be unfrozen and cloned', inject([], () => {
     let o = StateHelper.deepFreeze(complexObject);
     expect(o === complexObject).toBeTruthy();
@@ -32,6 +35,7 @@ describe('StateHelper', () => {
     o = StateHelper.cloneObject(o);
     expect(o.prop[0].one[0].oneOne = 2).toBe(2);
   }));
+
   it('complex object should be unfrozen and cloned 2', inject([], () => {
     let o = StateHelper.deepFreeze(complexObject);
     expect(o === complexObject).toBeTruthy();
@@ -39,6 +43,7 @@ describe('StateHelper', () => {
     o = StateHelper.cloneObject(o);
     expect((o.prop[1].two = ['6'])[0]).toBe('6');
   }));
+
   it('function should be unfrozen and cloned', inject([], () => {
     let o = StateHelper.deepFreeze(funk);
     expect(o === funk).toBeTruthy();
@@ -48,6 +53,7 @@ describe('StateHelper', () => {
     expect(o.x = 2).toBe(2);
     expect(o.call(o)).toBe(77);
   }));
+
   it('Date should be unfrozen and cloned', inject([], () => {
     const dateObject = {date: new Date()};
     const timeMillis = dateObject.date.getTime();
@@ -60,6 +66,7 @@ describe('StateHelper', () => {
     expect(o.date.getTime()).toBe(timeMillis);
     expect(JSON.stringify(dateObject)).toBe(JSON.stringify(o));
   }));
+
   it('JSON.stringify() of the objects must be identical', inject([], () => {
     const origin = JSON.stringify(complexObject);
     const frozen = JSON.stringify(StateHelper.deepFreeze(complexObject));
@@ -67,6 +74,7 @@ describe('StateHelper', () => {
     const unfrozen = JSON.stringify(StateHelper.cloneObject(StateHelper.deepFreeze(complexObject)));
     expect(frozen).toBe(unfrozen);
   }));
+
   it('JSON.stringify() of the functions must be identical', inject([], () => {
     const origin = JSON.stringify(funk);
     const frozen = JSON.stringify(StateHelper.deepFreeze(funk));

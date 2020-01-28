@@ -1,5 +1,9 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.5
+  - improve documentation
+  - increase test coverage
+
 v1.0.4
   - add clone Date into the StateHelper.cloneObject()
 

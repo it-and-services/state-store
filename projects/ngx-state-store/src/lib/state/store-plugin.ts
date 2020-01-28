@@ -20,7 +20,7 @@ export abstract class StorePlugin {
 
   /**
    *
-   * @param appName e.g. tm
+   * @param storeName e.g. 'store-demo'
    */
   private prepareWindowObject(storeName: string): void {
 
