@@ -7,29 +7,25 @@ import { StoreLogPlugin } from './store-log-plugin';
 import { StorePlugin } from './store-plugin';
 import { StateConfig } from './state-config';
 import { STATE_CONFIG } from './state-config.token';
-import { StatePerformancePlugin } from './state-performance-plugin';
+import { StorePerformancePlugin } from './store-performance-plugin';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 
-type ObjectComparator = (oldObject: any, newObject: any) => boolean;
+export type ObjectComparator = (oldObject: any, newObject: any) => boolean;
 
 @Injectable()
 export class Store<S> {
 
-  constructor(@Inject(STATE_CONFIG) private config: StateConfig) {
-
-    this.plugins.push(new StoreLogPlugin(this.config.storeName, this.config.log));
-    this.plugins.push(new StatePerformancePlugin(this.config.storeName, this.config.timekeeping));
-
-    this.currentState = config.initialState || {};
-    this.stateStream = new BehaviorSubject<S>(this.currentState);
-
-  }
-
   private actionCounter = 0;
   private plugins: StorePlugin[] = [];
-
   private currentState: S;
   private stateStream: BehaviorSubject<S>;
+
+  constructor(@Inject(STATE_CONFIG) private config: StateConfig) {
+    this.plugins.push(new StoreLogPlugin(this.config.storeName, this.config.log));
+    this.plugins.push(new StorePerformancePlugin(this.config.storeName, this.config.timekeeping));
+    this.currentState = config.initialState || {};
+    this.stateStream = new BehaviorSubject<S>(this.currentState);
+  }
 
   private static getErrorState(action: Action, error: Error | any): any {
     const state = StateHelper.getEmptyObject();
@@ -39,12 +35,10 @@ export class Store<S> {
   }
 
   dispatch(action: Action): Observable<any> {
-
     const currentCounter = ++this.actionCounter;
     this.dispatchBefore(action, this.currentState, currentCounter);
 
     let actionResult$;
-
     try {
       actionResult$ = action.handleState(this.getStateContext());
     } catch (error) {
@@ -60,15 +54,11 @@ export class Store<S> {
     // And the result observable is
     // complete before return statement.
     setTimeout(() => {
-
       if (actionResult$ == null) {
-
         this.dispatchAfter(action, this.currentState, currentCounter);
         result.next(this.currentState);
         result.complete();
-
       } else {
-
         (actionResult$ as Observable<void>)
           .pipe(take(1)).subscribe(
           () => {
@@ -82,12 +72,9 @@ export class Store<S> {
             result.error(error);
           });
       }
-
     });
-
     return result.asObservable();
   }
-
 
   select<keyString extends keyof S>(prop: keyString, objectComparator?: ObjectComparator): Observable<S[keyString]> {
     if (objectComparator) {
@@ -136,8 +123,6 @@ export class Store<S> {
     }, 0);
   }
 
-  // #region Plugin notify
-
   private dispatchBefore(action: Action, state: any, order: number) {
     this.plugins.forEach((plugin) => {
       plugin.dispatchBefore(action.Type, state, order);
@@ -155,6 +140,4 @@ export class Store<S> {
       plugin.newState(state);
     });
   }
-
-  // #endregion Plugin notify
 }

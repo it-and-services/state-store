@@ -297,9 +297,7 @@ The observables returned from the `store.select(...)` return frozen (read only)
 state objects that were frozen by the `StateHelper.deepFreeze(any)`.
 Use `StateHelper.cloneObject(any)` to get a clone of the frozen object if it is needed.
 
-Keep in mind that all objects past to the state store will be frozen. If you have any
-reference to that kind of objects you will not be able to change it any more.
-The method `StateHelper.cloneObject(any)` can help in these cases.
+Keep in mind that all objects passed to the state store will be frozen.
 
 ## Build the application
 
