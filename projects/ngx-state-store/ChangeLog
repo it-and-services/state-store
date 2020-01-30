@@ -1,5 +1,8 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.6
+  - hide second parameter in the StateHelper.cloneObject(any)
+
 v1.0.5
   - improve documentation
   - increase test coverage
