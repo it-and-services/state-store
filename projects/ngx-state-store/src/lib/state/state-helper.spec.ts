@@ -58,17 +58,17 @@ describe('StateHelper', () => {
     const of = {
       prop: 88,
       // tslint:disable-next-line:object-literal-shorthand
-      funk: function() {
-        return this.prop;
+      funk: function(add: number) {
+        return this.prop + add;
       }
     };
     let o = StateHelper.deepFreeze(of);
     expect(o === of).toBeTruthy();
-    expect(o.funk()).toBe(88);
-    expect(o.funk.call(o)).toBe(88);
+    expect(o.funk(1)).toBe(89);
+    expect(o.funk.call(o, 1)).toBe(89);
     o = StateHelper.cloneObject(o);
-    expect(o.funk()).toBe(88);
-    expect(o.funk.call(o)).toBe(88);
+    expect(o.funk(1)).toBe(89);
+    expect(o.funk.call(o, 1)).toBe(89);
   }));
 
   it('Date should be unfrozen and cloned', inject([], () => {

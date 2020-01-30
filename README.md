@@ -111,6 +111,7 @@ Example: src/app/components/counter.component/counter.component.ts
 The `select(...)` method returns an Observable.
 
 #### More complex use case with the back-end call
+
 For the more complex use case with the back-end call refer to the source code:
 
 * src/app/components/inventories-button.component/inventories-button.component.ts
@@ -294,7 +295,31 @@ The observables returned from the `store.select(...)` return frozen (read only)
 state objects that were frozen by the `StateHelper.deepFreeze(any)`.
 Use `StateHelper.cloneObject(any)` to get a clone of the frozen object if it is needed.
 
-Keep in mind that all objects passed to the state store will be frozen.
+Keep in mind that all objects passed to the state store will be frozen.  
+
+#### API overview
+
+###### 1. Store
+
+- `select(string, ObjectComparator?): Observable<any>` - select some state of the state store
+- `selectOnce(string, ObjectComparator?): Observable<any>` - the same as `select` but the Observable is complete after forward one value
+- `dispatch(action: Action): Observable<any>` - dispatch the Action that changes some state
+
+###### 2. StateHelper
+
+- `static deepFreeze<T>(o: T): T` - freezes the object, the object is read only after the call
+- `static cloneObject<T>(o: T): T` - creates a clone of the object, it is useful if the object was frozen by the `deepFreeze`
+
+###### 3. StateContext
+
+- `getState(): S` - returns the whole current state
+- `patchState(val: Partial<S>)` - patch the existing state with the provided value
+- `setState(state: S)` - reset the whole state to a new value
+
+###### 4. Action
+
+- `abstract handleState(stateContext: StateContext<any>): Observable<void> | void` - it must be implemented by the user
+- `clone<T>(o: T): T` - clone the object, the same as `StateHelper.cloneObject(o)`
 
 ## Build the application
 
