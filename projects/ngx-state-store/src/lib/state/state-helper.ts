@@ -2,6 +2,7 @@ export class StateHelper {
 
   /**
    * Makes a shadow freeze
+   *
    * @param o object to freeze
    */
   public static deepFreeze<T>(o: T): T {
@@ -27,9 +28,18 @@ export class StateHelper {
    * The method returns the clone of the object. Useful to clone frozen object.
    *
    * @param o object to clone
-   * @param parent owner object of the object to clone
    */
-  public static cloneObject<T>(o: T, parent?): T {
+  public static cloneObject<T>(o: T): T {
+    return StateHelper.cloneObjectIntern(o);
+  }
+
+  /**
+   * The method returns the clone of the object. Useful to clone frozen object.
+   *
+   * @param o object to clone
+   * @param parent owner object of the object to clone, it is used for the functions cloning
+   */
+  private static cloneObjectIntern<T>(o: T, parent?): T {
     let target;
     if (o) {
       if (typeof o === 'object') {
@@ -37,14 +47,14 @@ export class StateHelper {
         if (Array.isArray(o)) {
           target = (o as any[]).slice();
           (o as any[]).forEach((element, index) => {
-            (target as any[])[index] = StateHelper.cloneObject(element, o);
+            (target as any[])[index] = StateHelper.cloneObjectIntern(element, o);
           });
         } else if (StateHelper.isValidDate(o)) {
           target = new Date(((o as any) as Date).toISOString());
         } else {
           target = Object.assign({}, o);
           Object.getOwnPropertyNames(o).forEach((prop) => {
-              target[prop] = StateHelper.cloneObject(target[prop], target);
+              target[prop] = StateHelper.cloneObjectIntern(target[prop], target);
             }
           );
         }
@@ -54,7 +64,7 @@ export class StateHelper {
         target = o.bind(parent || {});
         Object.getOwnPropertyNames(o).forEach((prop) => {
             if (prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' && prop !== 'length' && prop !== 'name') {
-              target[prop] = StateHelper.cloneObject(target[prop], target);
+              target[prop] = StateHelper.cloneObjectIntern(target[prop], target);
             }
           }
         );
