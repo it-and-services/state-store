@@ -54,6 +54,23 @@ describe('StateHelper', () => {
     expect(o.call(o)).toBe(77);
   }));
 
+  it('this reference in the function remains the same', inject([], () => {
+    const of = {
+      prop: 88,
+      // tslint:disable-next-line:object-literal-shorthand
+      funk: function() {
+        return this.prop;
+      }
+    };
+    let o = StateHelper.deepFreeze(of);
+    expect(o === of).toBeTruthy();
+    expect(o.funk()).toBe(88);
+    expect(o.funk.call(o)).toBe(88);
+    o = StateHelper.cloneObject(o);
+    expect(o.funk()).toBe(88);
+    expect(o.funk.call(o)).toBe(88);
+  }));
+
   it('Date should be unfrozen and cloned', inject([], () => {
     const dateObject = {date: new Date()};
     const timeMillis = dateObject.date.getTime();

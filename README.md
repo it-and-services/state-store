@@ -155,7 +155,6 @@ Example: src/app/services/state-store/actions/load-inventories.action.ts
       }
     
       handleState(stateContext: StateContext<AppState>): void {
-    
         const newState = this.getEmptyState();
         newState.ShowLoadingIndicator = stateContext.getState().ShowLoadingIndicator.slice();
         newState.ShowLoadingIndicator.push(this.identifier);
@@ -170,13 +169,11 @@ Example: src/app/services/state-store/actions/load-inventories.action.ts
       }
     
       handleState(stateContext: StateContext<AppState>): void {
-    
         if (stateContext.getState().ShowLoadingIndicator == null) {
           return;
         }
     
         const index = stateContext.getState().ShowLoadingIndicator.indexOf(this.identifier);
-    
         if (index < 0) {
           return;
         }
