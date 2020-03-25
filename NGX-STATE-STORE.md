@@ -12,4 +12,4 @@ Execute the following:
          $ git tag v0.1.0       # adjust version here
          $ git push origin state-store
          $ git push --tags
-         $ npm publish dist/ngx-state-store
+         $ npm publish dist/ngx-state-store --otp=<code>
