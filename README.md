@@ -223,7 +223,8 @@ export class ShowLoadingIndicatorAction extends Action {
 
   handleState(stateContext: StateContext<AppState>): void {
     const newState = this.getEmptyState();
-    newState.ShowLoadingIndicator = stateContext.getState().ShowLoadingIndicator.slice();
+    newState.ShowLoadingIndicator
+        = stateContext.getState().ShowLoadingIndicator.slice();
     newState.ShowLoadingIndicator.push(this.identifier);
     stateContext.patchState(newState);
   }
@@ -245,13 +246,15 @@ export class HideLoadingIndicatorAction extends Action {
       return;
     }
 
-    const index = stateContext.getState().ShowLoadingIndicator.indexOf(this.identifier);
+    const index = stateContext.getState()
+                    .ShowLoadingIndicator.indexOf(this.identifier);
     if (index < 0) {
       return;
     }
 
     const newState: AppState = this.getEmptyState();
-    newState.ShowLoadingIndicator = stateContext.getState().ShowLoadingIndicator.slice();
+    newState.ShowLoadingIndicator
+        = stateContext.getState().ShowLoadingIndicator.slice();
     newState.ShowLoadingIndicator.splice(index, 1);
     stateContext.patchState(newState);
   }
@@ -341,7 +344,8 @@ export class InventoryConnector {
 
   loadInventory(): Observable<Inventory[]> {
     // delay(2000) to imitate the network throttling
-    return this.http.get<Inventory[]>('assets/mock-data/inventories.json').pipe(delay(2000));
+    return this.http.get<Inventory[]>('assets/mock-data/inventories.json')
+                    .pipe(delay(2000));
   }
 }
 ```
@@ -369,15 +373,18 @@ export class InventoriesButtonComponent {
   }
 
   loadInventory() {
-    this.store.dispatch(this.factory.showLoadIndicator(LoadIndicator.LOAD_INVENTORIES)).pipe(
-      flatMap(() => this.store.dispatch(this.factory.loadInventories())),
-      catchError(error => {
-        console.log(error);
-        return of(error);
-      })
-    ).subscribe(() =>
-      this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
-    );
+    this.store.dispatch(
+        this.factory.showLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
+        .pipe(
+            flatMap(() => this.store.dispatch(this.factory.loadInventories())),
+            catchError(error => {
+                console.log(error);
+                return of(error);
+            })
+        ).subscribe(() =>
+            this.store.dispatch(
+                this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
+        );
   }
 }
 ```
@@ -409,7 +416,8 @@ export class InventoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading$ = this.store.select('ShowLoadingIndicator').pipe(
-      flatMap(indicators => of(indicators.filter(i => i === LoadIndicator.LOAD_INVENTORIES).length > 0))
+      flatMap(indicators =>
+        of(indicators.filter(i => i === LoadIndicator.LOAD_INVENTORIES).length > 0))
     );
     this.store.select('Inventories').subscribe(inventories => {
       this.inventories = inventories;
