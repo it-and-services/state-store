@@ -169,12 +169,15 @@ Example: src/app/services/state-store/app-state.ts
 Example: src/app/models/inventory.ts
 
 ```typescript
+import { Inventory } from 'src/app/models/inventory';
+
 export class AppState {
   ShowLoadingIndicator: string[];
   Counter: number;
   Inventories: Inventory[];
 }
-
+```
+```typescript
 export class Inventory {
   id: number;
   version: string;
@@ -286,10 +289,7 @@ import { ShowLoadingIndicatorAction } from 'src/app/services/state-store/actions
 import { IncrementCounterAction } from 'src/app/services/state-store/actions/increment-counter.action';
 import { HideLoadingIndicatorAction } from 'src/app/services/state-store/actions/hide-loading-indicator.action';
 import { LoadInventoriesAction } from 'src/app/services/state-store/actions/load-inventories.action';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Inventory } from 'src/app/models/inventory';
-import { delay } from 'rxjs/operators';
+import { InventoryConnector } from 'src/app/services/connectors/inventory.connector';
 
 export enum LoadIndicator {
   DEFAULT = 'DEFAULT',
@@ -318,6 +318,12 @@ export class ActionFactory {
     return new LoadInventoriesAction(this.inventoryConnector);
   }
 }
+```
+```typescript
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Inventory } from 'src/app/models/inventory';
+import { delay } from 'rxjs/operators';
 
 export class InventoryConnector {
 
