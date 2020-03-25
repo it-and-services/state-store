@@ -22,7 +22,7 @@ export class AppState {
 Example: src/app/services/state-store/app-initial-state.ts
 
 ```typescript
-import { AppState } from 'src/app/services/state-store/app-state';
+import { AppState } from './app-state';
 
 export const AppInitialState: AppState = {
   Counter: 0
@@ -34,7 +34,7 @@ export const AppInitialState: AppState = {
 ```typescript
 // ...
 import { NgModule } from '@angular/core';
-import { AppInitialState } from 'src/app/services/state-store/app-initial-state';
+import { AppInitialState } from './services/state-store/app-initial-state';
 import { NgxStateStoreModule } from 'ngx-state-store';
 // ...
 
@@ -68,8 +68,8 @@ Example: src/app/services/state-store/action-ids.ts
 
 ```typescript
 import { Action, StateContext } from 'ngx-state-store';
-import { AppState } from 'src/app/services/state-store/app-state';
-import { ActionIds } from 'src/app/services/state-store/action-ids';
+import { ActionIds } from '../action-ids';
+import { AppState } from '../app-state';
 
 export class IncrementCounterAction extends Action {
 
@@ -83,7 +83,8 @@ export class IncrementCounterAction extends Action {
     stateContext.patchState(newValue);
   }
 }
-
+```
+```typescript
 export enum ActionIds {
     UpdateCounter = '[Common] update counter'
 }
@@ -95,7 +96,7 @@ Example: src/app/services/state-store/action-factory.ts
 ```typescript
 import { Injectable } from '@angular/core';
 import { Action } from 'ngx-state-store';
-import { IncrementCounterAction } from 'src/app/services/state-store/actions/increment-counter.action';
+import { IncrementCounterAction } from './actions/increment-counter.action';
 
 @Injectable()
 export class ActionFactory {
@@ -110,10 +111,16 @@ export class ActionFactory {
 Example: src/app/components/counter-button.component/counter-button.component.ts
 
 ```typescript
+import { Component } from '@angular/core';
+import { AppState } from '../../services/state-store/app-state';
+import { ActionFactory } from '../../services/state-store/action-factory';
 import { Store } from 'ngx-state-store';
-import { AppState } from 'src/app/services/state-store/app-state';
-import { ActionFactory } from 'src/app/services/state-store/action-factory';
 
+@Component({
+  selector: 'app-counter-button',
+  templateUrl: './counter-button.component.html',
+  styleUrls: ['./counter-button.component.scss']
+})
 export class CounterButtonComponent {
 
   constructor(private store: Store<AppState>,
@@ -131,9 +138,9 @@ Example: src/app/components/counter.component/counter.component.ts
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
-import { AppState } from 'src/app/services/state-store/app-state';
-import { Observable } from 'rxjs';
 import { Store } from 'ngx-state-store';
+import { AppState } from '../../services/state-store/app-state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-counter',
@@ -169,7 +176,7 @@ Example: src/app/services/state-store/app-state.ts
 Example: src/app/models/inventory.ts
 
 ```typescript
-import { Inventory } from 'src/app/models/inventory';
+import { Inventory } from '../../models/inventory';
 
 export class AppState {
   ShowLoadingIndicator: string[];
@@ -189,7 +196,7 @@ export class Inventory {
 Example: src/app/services/state-store/app-initial-state.ts
 
 ```typescript
-import { AppState } from 'src/app/services/state-store/app-state';
+import { AppState } from './app-state';
 
 export const AppInitialState: AppState = {
   ShowLoadingIndicator: [],
@@ -205,8 +212,8 @@ Example: src/app/services/state-store/actions/load-inventories.action.ts
 
 ```typescript
 import { Action, StateContext } from 'ngx-state-store';
-import { ActionIds } from 'src/app/services/state-store/action-ids';
-import { AppState } from 'src/app/services/state-store/app-state';
+import { ActionIds } from '../action-ids';
+import { AppState } from '../app-state';
 
 export class ShowLoadingIndicatorAction extends Action {
 
@@ -224,8 +231,8 @@ export class ShowLoadingIndicatorAction extends Action {
 ```
 ```typescript
 import { Action, StateContext } from 'ngx-state-store';
-import { ActionIds } from 'src/app/services/state-store/action-ids';
-import { AppState } from 'src/app/services/state-store/app-state';
+import { ActionIds } from '../action-ids';
+import { AppState } from '../app-state';
 
 export class HideLoadingIndicatorAction extends Action {
 
@@ -252,9 +259,9 @@ export class HideLoadingIndicatorAction extends Action {
 ```
 ```typescript
 import { Action, StateContext } from 'ngx-state-store';
-import { ActionIds } from 'src/app/services/state-store/action-ids';
-import { AppState } from 'src/app/services/state-store/app-state';
-import { InventoryConnector } from 'src/app/services/connectors/inventory.connector';
+import { ActionIds } from '../action-ids';
+import { AppState } from '../app-state';
+import { InventoryConnector } from '../../connectors/inventory.connector';
 import { Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
@@ -285,11 +292,11 @@ Example: src/app/services/connectors/inventory.connector.ts
 ```typescript
 import { Injectable } from '@angular/core';
 import { Action } from 'ngx-state-store';
-import { ShowLoadingIndicatorAction } from 'src/app/services/state-store/actions/show-loading-indicator.action';
-import { IncrementCounterAction } from 'src/app/services/state-store/actions/increment-counter.action';
-import { HideLoadingIndicatorAction } from 'src/app/services/state-store/actions/hide-loading-indicator.action';
-import { LoadInventoriesAction } from 'src/app/services/state-store/actions/load-inventories.action';
-import { InventoryConnector } from 'src/app/services/connectors/inventory.connector';
+import { ShowLoadingIndicatorAction } from './actions/show-loading-indicator.action';
+import { IncrementCounterAction } from './actions/increment-counter.action';
+import { HideLoadingIndicatorAction } from './actions/hide-loading-indicator.action';
+import { LoadInventoriesAction } from './actions/load-inventories.action';
+import { InventoryConnector } from '../connectors/inventory.connector';
 
 export enum LoadIndicator {
   DEFAULT = 'DEFAULT',
@@ -320,11 +327,13 @@ export class ActionFactory {
 }
 ```
 ```typescript
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Inventory } from 'src/app/models/inventory';
+import { HttpClient } from '@angular/common/http';
+import { Inventory } from '../../models/inventory';
 import { delay } from 'rxjs/operators';
 
+@Injectable()
 export class InventoryConnector {
 
   constructor(private http: HttpClient) {
@@ -341,12 +350,18 @@ export class InventoryConnector {
 Example: src/app/components/inventories-button.component/inventories-button.component.ts  
 
 ```typescript
-import { AppState } from 'src/app/services/state-store/app-state';
-import { ActionFactory, LoadIndicator } from 'src/app/services/state-store/action-factory';
+import { Component } from '@angular/core';
 import { Store } from 'ngx-state-store';
-import {catchError, flatMap } from 'rxjs/operators';
+import { AppState } from '../../services/state-store/app-state';
+import { ActionFactory, LoadIndicator } from '../../services/state-store/action-factory';
+import { catchError, flatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+@Component({
+  selector: 'app-inventories-button',
+  templateUrl: './inventories-button.component.html',
+  styleUrls: ['./inventories-button.component.scss']
+})
 export class InventoriesButtonComponent {
 
   constructor(private store: Store<AppState>,
@@ -371,13 +386,19 @@ export class InventoriesButtonComponent {
 Example: src/app/components/inventories.component/inventories.component.ts
 
 ```typescript
+import { Component, OnInit } from '@angular/core';
 import { Store } from 'ngx-state-store';
-import { AppState } from 'src/app/services/state-store/app-state';
-import { OnInit } from '@angular/core';
-import { Inventory } from 'src/app/models/inventory';
-import { Observable,of } from 'rxjs'; import { flatMap } from 'rxjs/operators';
-import { LoadIndicator } from 'src/app/services/state-store/action-factory';
+import { AppState } from '../../services/state-store/app-state';
+import { Inventory } from '../../models/inventory';
+import { Observable, of } from 'rxjs';
+import { flatMap } from 'rxjs/operators';
+import { LoadIndicator } from '../../services/state-store/action-factory';
 
+@Component({
+  selector: 'app-inventories',
+  templateUrl: './inventories.component.html',
+  styleUrls: ['./inventories.component.scss']
+})
 export class InventoriesComponent implements OnInit {
 
   inventories: Inventory[];
