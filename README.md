@@ -5,7 +5,7 @@ ngx-state-store is the state management module for the angular applications star
 Sample application for the ngx-state-store module usage demonstration.  
 Sourcecode examples are available at [https://github.com/it-and-services/state-store](https://github.com/it-and-services/state-store).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 #### Usage description of the ngx-state-store module
 
@@ -460,7 +460,7 @@ Keep in mind that all objects passed to the state store will be frozen.
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running the application
+## Running the development server
 
 Run `ng serve` to start the app. The app is available at [http://localhost:4200/](http://localhost:4200/).
 
