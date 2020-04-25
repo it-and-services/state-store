@@ -12,6 +12,8 @@ import { of } from 'rxjs';
 })
 export class InventoriesButtonComponent {
 
+  lastDownloadAt: string;
+
   constructor(private store: Store<AppState>,
               private factory: ActionFactory) {
   }
@@ -23,8 +25,10 @@ export class InventoriesButtonComponent {
         console.log(error);
         return of(error);
       })
-    ).subscribe(() =>
-      this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
+    ).subscribe((state: AppState) => {
+        this.lastDownloadAt = state.LastDownloadAt;
+        this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES));
+      }
     );
   }
 }

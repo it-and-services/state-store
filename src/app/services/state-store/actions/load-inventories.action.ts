@@ -17,6 +17,7 @@ export class LoadInventoriesAction extends Action {
         flatMap(inventories => {
           const newState: AppState = this.getEmptyState();
           newState.Inventories = inventories;
+          newState.LastDownloadAt = (new Date()).toISOString();
           stateContext.patchState(newState);
           return of(inventories);
         })
