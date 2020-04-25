@@ -182,6 +182,8 @@ export class AppState {
   ShowLoadingIndicator: string[];
   Counter: number;
   Inventories: Inventory[];
+  // iso Date string
+  LastDownloadAt: string;
 }
 ```
 ```typescript
@@ -201,7 +203,8 @@ import { AppState } from './app-state';
 export const AppInitialState: AppState = {
   ShowLoadingIndicator: [],
   Counter: 0,
-  Inventories: null
+  Inventories: null,
+  LastDownloadAt: ''
 };
 ```
 
@@ -280,6 +283,7 @@ export class LoadInventoriesAction extends Action {
         flatMap(inventories => {
           const newState: AppState = this.getEmptyState();
           newState.Inventories = inventories;
+          newState.LastDownloadAt = (new Date()).toISOString();
           stateContext.patchState(newState);
           return of(inventories);
         })
@@ -368,6 +372,8 @@ import { of } from 'rxjs';
 })
 export class InventoriesButtonComponent {
 
+  lastDownloadAt: string;
+
   constructor(private store: Store<AppState>,
               private factory: ActionFactory) {
   }
@@ -381,9 +387,10 @@ export class InventoriesButtonComponent {
                 console.log(error);
                 return of(error);
             })
-        ).subscribe(() =>
-            this.store.dispatch(
-                this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
+        ).subscribe((state: AppState) => {
+                 this.lastDownloadAt = state.LastDownloadAt;
+                 this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES));
+          }
         );
   }
 }
@@ -438,7 +445,28 @@ Keep in mind that all objects passed to the state store will be frozen.
 
 - `select(string, ObjectComparator?): Observable<any>` - select some state of the state store
 - `selectOnce(string, ObjectComparator?): Observable<any>` - the same as `select` but the Observable is complete after forward one value
-- `dispatch(action: Action): Observable<any>` - dispatch the Action that changes some state
+- `dispatch(action: Action): Observable<state: S>` - dispatch the Action that changes some state, the dispatch function always returns an Observable of your state
+
+**Tip**: you could join many dispatch calls in a pipe  
+         and have an access to the last state change from the previous calls,  
+         but your actions must do your changes of the state by returning an Observable  
+         see also: `inventories-button.component.ts` and `load-inventories.action.ts` 
+
+```typescript
+this.store.dispatch([some action])
+  .pipe(
+    flatMap((state: S) => {
+      // read data from State
+      return this.store.dispatch([another action])
+    }),
+    flatMap((state: S) => {
+      // read data from State
+      return this.store.dispatch([another action2])
+    })
+  ).subscribe((state: S) => {
+    // do something
+  });
+```
 
 ###### 2. StateHelper
 
