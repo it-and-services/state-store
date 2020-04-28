@@ -7,9 +7,9 @@ Sourcecode examples are available at [https://github.com/it-and-services/state-s
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
-#### Usage description of the ngx-state-store module
+### 1. Usage description of the ngx-state-store module
 
-###### 1. Create a state object.
+##### 1.1 Create a state object.
 Example: src/app/services/state-store/app-state.ts
 
 ```typescript
@@ -18,7 +18,7 @@ export class AppState {
 }
 ```
 
-###### 2. Create an initial state object.
+##### 1.2 Create an initial state object.
 Example: src/app/services/state-store/app-initial-state.ts
 
 ```typescript
@@ -29,7 +29,7 @@ export const AppInitialState: AppState = {
 };
 ```
 
-###### 3. Register the NgxStateStoreModule in src/app/app.module.ts
+##### 1.3 Register the NgxStateStoreModule in src/app/app.module.ts
 
 ```typescript
 // ...
@@ -62,7 +62,7 @@ export class AppModule {
 
 At run time you can access the store in the debug console by the path `window['ngx-state-store']['store-demo']`
 
-###### 4. Create an action.
+##### 1.4 Create an action.
 Example: src/app/services/state-store/actions/increment-counter.action.ts  
 Example: src/app/services/state-store/action-ids.ts
 
@@ -90,7 +90,9 @@ export enum ActionIds {
 }
 ```
 
-###### 5. Create an action factory.
+The ids, like one above - `[Common] update counter`, will be displayed in the console log output
+
+##### 1.5 Create an action factory.
 Example: src/app/services/state-store/action-factory.ts
 
 ```typescript
@@ -107,7 +109,7 @@ export class ActionFactory {
 }
 ```
 
-###### 6. To update a state call the `store.dispatch(...)`.
+##### 1.6 To update the state call the `store.dispatch(...)`.
 Example: src/app/components/counter-button.component/counter-button.component.ts
 
 ```typescript
@@ -133,7 +135,7 @@ export class CounterButtonComponent {
 }
 ```
 
-###### 7. To subscribe to the some state use `store.select(...)`.
+##### 1.7 To subscribe to some state use `store.select(...)`.
 Example: src/app/components/counter.component/counter.component.ts
 
 ```typescript
@@ -162,7 +164,7 @@ export class CounterComponent implements OnInit {
 
 The `select(...)` method returns an Observable.
 
-#### More complex use case with the back-end call
+### 2. More complex use case with the back-end call
 
 For the more complex use case with the back-end call refer to the source code:
 
@@ -171,7 +173,7 @@ For the more complex use case with the back-end call refer to the source code:
 * src/app/services/state-store/actions/load-inventories.action.ts
 * src/app/services/connectors/inventory.connector.ts
 
-###### 1. Extend the state object.
+##### 2.1 Extend the state object.
 Example: src/app/services/state-store/app-state.ts  
 Example: src/app/models/inventory.ts
 
@@ -194,7 +196,7 @@ export class Inventory {
 }
 ```
 
-###### 2. Extend the initial state object.
+##### 2.2 Extend the initial state object.
 Example: src/app/services/state-store/app-initial-state.ts
 
 ```typescript
@@ -208,7 +210,7 @@ export const AppInitialState: AppState = {
 };
 ```
 
-###### 3. Create new actions.
+##### 2.3 Create new actions.
 Example: src/app/services/state-store/actions/show-loading-indicator.action.ts  
 Example: src/app/services/state-store/actions/hide-loading-indicator.action.ts  
 Example: src/app/services/state-store/actions/load-inventories.action.ts
@@ -285,17 +287,37 @@ export class LoadInventoriesAction extends Action {
           newState.Inventories = inventories;
           newState.LastDownloadAt = (new Date()).toISOString();
           stateContext.patchState(newState);
-          return of(inventories);
+          return of(null);
         })
       );
   }
 }
 ```
 
-###### 4. Extend the action factory and create the connector.
+##### 2.4 Extend the action factory and create the connector.
 Example: src/app/services/state-store/action-factory.ts  
 Example: src/app/services/connectors/inventory.connector.ts
 
+```typescript
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Inventory } from '../../models/inventory';
+import { delay } from 'rxjs/operators';
+
+@Injectable()
+export class InventoryConnector {
+
+  constructor(private http: HttpClient) {
+  }
+
+  loadInventory(): Observable<Inventory[]> {
+    // delay(2000) to imitate the network throttling
+    return this.http.get<Inventory[]>('assets/mock-data/inventories.json')
+                    .pipe(delay(2000));
+  }
+}
+```
 ```typescript
 import { Injectable } from '@angular/core';
 import { Action } from 'ngx-state-store';
@@ -333,28 +355,8 @@ export class ActionFactory {
   }
 }
 ```
-```typescript
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Inventory } from '../../models/inventory';
-import { delay } from 'rxjs/operators';
 
-@Injectable()
-export class InventoryConnector {
-
-  constructor(private http: HttpClient) {
-  }
-
-  loadInventory(): Observable<Inventory[]> {
-    // delay(2000) to imitate the network throttling
-    return this.http.get<Inventory[]>('assets/mock-data/inventories.json')
-                    .pipe(delay(2000));
-  }
-}
-```
-
-###### 5. To load the data from back-end and update the states call the `store.dispatch(...)`.
+##### 2.5 To load the data from back-end and update the states call the `store.dispatch(...)`.
 Example: src/app/components/inventories-button.component/inventories-button.component.ts  
 
 ```typescript
@@ -396,7 +398,7 @@ export class InventoriesButtonComponent {
 }
 ```
 
-###### 6. To subscribe to the new states use `store.select(...)`.
+##### 2.6 To subscribe to the new states use `store.select(...)`.
 Example: src/app/components/inventories.component/inventories.component.ts
 
 ```typescript
@@ -433,55 +435,57 @@ export class InventoriesComponent implements OnInit {
 }
 ```
 
-The observables returned from the `store.select(...)` return frozen (read only)
+The observables returned from the `store.select(...)` return a frozen (read only)
 state objects that were frozen by the `StateHelper.deepFreeze(any)`.
 Use `StateHelper.cloneObject(any)` to get a clone of the frozen object if it is needed.
 
 Keep in mind that all objects passed to the state store will be frozen.  
 
-#### API overview
+### 3. API overview
 
-###### 1. Store
+##### 3.1 Store
 
-- `select(string, ObjectComparator?): Observable<any>` - select some state of the state store
+- `select(string, ObjectComparator?): Observable<any>` - select some state of the state store, `ObjectComparator` is optional, in 99,99% of cases you do not need it, just omit it
 - `selectOnce(string, ObjectComparator?): Observable<any>` - the same as `select` but the Observable is complete after forward one value
 - `dispatch(action: Action): Observable<state: S>` - dispatch the Action that changes some state, the dispatch function always returns an Observable of your state
 
-**Tip**: you could join many dispatch calls in a pipe  
-         and have an access to the last state change from the previous calls,  
-         but your actions must do your changes of the state by returning an Observable  
-         see also: `inventories-button.component.ts` and `load-inventories.action.ts` 
+**Tip**: you could join many dispatch calls in a pipe and have access to the last state change from the previous call,
+         in this case your actions must do your changes of the state by returning an Observable,
+         the return value of the Observable does not have any meaning, just use `return of(null);` from rxjs, or operator function `tap((x: T) => void)`  
+         see example: `inventories-button.component.ts` and `load-inventories.action.ts`  
+         in the example `load-inventories.action.ts` the access to the `<state: S>` is in the subscription.
 
+*Pseudo code example:*
 ```typescript
-this.store.dispatch([some action])
+this.store.dispatch(<some action>)
   .pipe(
     flatMap((state: S) => {
-      // read data from State
-      return this.store.dispatch([another action])
+      // ... read and use data from the state
+      return this.store.dispatch(<another action>);
     }),
     flatMap((state: S) => {
-      // read data from State
-      return this.store.dispatch([another action2])
+      // ... read and use data from the state
+      return this.store.dispatch(<another action 2>);
     })
   ).subscribe((state: S) => {
-    // do something
+    // ... read and use data from the state
   });
 ```
 
-###### 2. StateHelper
+##### 3.2 StateHelper
 
 - `static deepFreeze<T>(o: T): T` - freezes the object, the object is read only after the call
 - `static cloneObject<T>(o: T): T` - creates a clone of the object, it is useful if the object was frozen by the `deepFreeze`
 
-###### 3. StateContext
+##### 3.3 StateContext
 
 - `getState(): S` - returns the whole current state
 - `patchState(val: Partial<S>)` - patch the existing state with the provided value
 - `setState(state: S)` - reset the whole state to a new value
 
-###### 4. Action
+##### 3.4 Action
 
-- `abstract handleState(stateContext: StateContext<any>): Observable<void> | void` - it must be implemented by the user
+- `abstract handleState(stateContext: StateContext<any>): Observable<any> | void` - it must be implemented by the user
 - `clone<T>(o: T): T` - clone the object, the same as `StateHelper.cloneObject(o)`
 
 ## Build the application
