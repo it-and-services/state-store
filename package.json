@@ -1,6 +1,6 @@
 {
   "name": "state-store",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "keywords": [
     "ngx-state-store",
     "ngx-state",
@@ -21,7 +21,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:release": "ng build ngx-state-store && cd projects/ngx-state-store && gulp && cd ../..",
+    "build:release": "ng build ngx-state-store --prod && cd projects/ngx-state-store && gulp && cd ../..",
     "test": "ng test",
     "test:release": "ng test ngx-state-store",
     "test:coverage": "npm run test -- --watch=false --code-coverage",

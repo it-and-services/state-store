@@ -133,6 +133,11 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-state-store/tsconfig.lib.prod.json"
+            }
+          },
           "options": {
             "tsConfig": "projects/ngx-state-store/tsconfig.lib.json",
             "project": "projects/ngx-state-store/ng-package.json"
