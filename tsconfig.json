@@ -24,6 +24,10 @@
       ],
       "ngx-state-store/*": [
         "dist/ngx-state-store/*"
+      ],
+      "my-lib": [
+        "dist/my-lib/my-lib",
+        "dist/my-lib"
       ]
     }
   },
