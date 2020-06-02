@@ -34,7 +34,7 @@ export class Store<S> {
     return state;
   }
 
-  dispatch(action: Action): Observable<any> {
+  dispatch(action: Action): Observable<S> {
     const currentCounter = ++this.actionCounter;
     this.dispatchBefore(action, this.currentState, currentCounter);
 
