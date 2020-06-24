@@ -54,6 +54,15 @@ describe('StateHelper', () => {
     expect(o.call(o)).toBe(77);
   }));
 
+  it('function should not cloned', inject([], () => {
+    let o = StateHelper.deepFreeze(funk);
+    expect(o === funk).toBeTruthy();
+    expect(funk.x).toBe(7);
+    expect(o.call(o)).toBe(77);
+    o = StateHelper.cloneObject(o, false);
+    expect(o).toBeFalsy();
+  }));
+
   it('this reference in the function remains the same', inject([], () => {
     const of = {
       prop: 88,
@@ -69,6 +78,24 @@ describe('StateHelper', () => {
     o = StateHelper.cloneObject(o);
     expect(o.funk(1)).toBe(89);
     expect(o.funk.call(o, 1)).toBe(89);
+  }));
+
+  it('the function of an object should not be cloned', inject([], () => {
+    const of = {
+      prop: 88,
+      // tslint:disable-next-line:object-literal-shorthand
+      funk: function(add: number) {
+        return this.prop + add;
+      }
+    };
+    let o = StateHelper.deepFreeze(of);
+    expect(o === of).toBeTruthy();
+    expect(o.funk(1)).toBe(89);
+    expect(o.funk.call(o, 1)).toBe(89);
+    o = StateHelper.cloneObject(o, false);
+    expect(o.prop).toBe(88);
+    expect(o.funk).toBeFalsy();
+    expect(o as any).toEqual({prop: 88});
   }));
 
   it('Date should be unfrozen and cloned', inject([], () => {
