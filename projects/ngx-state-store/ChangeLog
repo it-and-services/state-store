@@ -1,5 +1,10 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.10
+  - updated to angular 10
+  - functions cloning is optional, default is 'true', StateHelper.cloneObject(any, cloneFunctions = true)
+  - documentation improvement in the README.md
+
 v1.0.9
   - documentation improvement in the README.md
 
