@@ -13,8 +13,8 @@ export abstract class Action {
 
   abstract handleState(stateContext: StateContext<any>): Observable<void> | void;
 
-  protected clone<T>(o: T): T {
-    return StateHelper.cloneObject(o);
+  protected clone<T>(o: T, cloneFunctions = true): T {
+    return StateHelper.cloneObject(o, cloneFunctions);
   }
 
   protected getEmptyState(): any {

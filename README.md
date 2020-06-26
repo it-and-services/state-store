@@ -5,7 +5,7 @@ ngx-state-store is the state management module for the angular applications star
 Sample application for the ngx-state-store module usage demonstration.  
 Sourcecode examples are available at [https://github.com/it-and-services/state-store](https://github.com/it-and-services/state-store).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
 ##### Content:
 [1. Usage description of the ngx-state-store module.](#1-usage-description-of-the-ngx-state-store-module)  
@@ -442,7 +442,7 @@ export class InventoriesComponent implements OnInit {
 
 The observables returned from the `store.select(...)` return a frozen (read only)
 state objects that were frozen by the `StateHelper.deepFreeze(any)`.
-Use `StateHelper.cloneObject(any)` to get a clone of the frozen object if it is needed.
+Use `StateHelper.cloneObject(any, cloneFunctions = true)` to get a clone of the frozen object including functions (default) if it is needed.
 
 Keep in mind that all objects passed to the state store will be frozen.  
 
@@ -480,7 +480,7 @@ this.store.dispatch(<some action>)
 ##### 3.2. StateHelper.
 
 - `static deepFreeze<T>(o: T): T` - freezes the object, the object is read only after the call
-- `static cloneObject<T>(o: T): T` - creates a clone of the object, it is useful if the object was frozen by the `deepFreeze`
+- `static cloneObject<T>(o: T, cloneFunctions = true): T` - creates a clone of the object including functions (default), it is useful if the object was frozen by the `deepFreeze`
 
 ##### 3.3. StateContext.
 
@@ -491,7 +491,7 @@ this.store.dispatch(<some action>)
 ##### 3.4. Action.
 
 - `abstract handleState(stateContext: StateContext<any>): Observable<any> | void` - it must be implemented by the user
-- `clone<T>(o: T): T` - clone the object, the same as `StateHelper.cloneObject(o)`
+- `clone<T>(o: T, cloneFunctions = true): T` - clone the object including functions (default), the same as `StateHelper.cloneObject(o, cloneFunctions = true)`
 
 ## Build the application
 

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class NgxStateStoreModule {
 
-  static forRoot(config: StateConfig): ModuleWithProviders {
+  static forRoot(config: StateConfig): ModuleWithProviders<NgxStateStoreModule> {
     return {
       ngModule: NgxStateStoreModule,
       providers: [
