@@ -28,16 +28,19 @@ export class InventoriesButtonComponent implements OnInit {
   ngOnInit(): void {
     this.store.select('Inventories',
       (oldInventories: Inventory[], newInventories: Inventory[]) => {
-        if (oldInventories === newInventories || oldInventories && newInventories
-          && !this.calcDiff(oldInventories, newInventories) && !this.calcDiff(newInventories, oldInventories)) {
+        if (oldInventories === newInventories
+          || oldInventories && newInventories
+          && !this.calcDiff(oldInventories, newInventories).length
+          && !this.calcDiff(newInventories, oldInventories).length) {
           return true;
         }
         this.changes.addedEntries = this.calcDiff(oldInventories, newInventories);
         this.changes.removedEntries = this.calcDiff(newInventories, oldInventories);
-        console.log('->', oldInventories, newInventories);
         return false;
       }).pipe(skip(1))
-      .subscribe();
+      .subscribe(() => {
+        console.log('the log is present only if there are some changes');
+      });
   }
 
   private calcDiff(source: Inventory[], target: Inventory[]): Inventory[] {

@@ -15,7 +15,7 @@ export class InventoryConnector {
     return this.http.get<Inventory[]>('assets/mock-data/inventories.json').pipe(
       delay(2000),
       mergeMap(inventories => {
-        inventories.splice(this.getRandomInt(inventories.length), 1);
+        inventories.splice(this.getRandomInt(inventories.length), this.getRandomInt(2));
         return of(inventories);
       })
     );
