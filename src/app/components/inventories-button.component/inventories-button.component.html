@@ -1,2 +1,8 @@
 <button (click)="loadInventory()" class="btn-primary">Load Inventory</button>
 <p>Last download at: {{lastDownloadAt}}</p>
+<p *ngIf="changes.addedEntries.length">
+  {{changes.addedEntries.length}} new {{changes.addedEntries.length > 1 ? 'entries' : 'entry'}}:
+  {{inventoriesToString(changes.addedEntries)}}</p>
+<p *ngIf="changes.removedEntries.length">
+  {{changes.removedEntries.length}} {{changes.removedEntries.length > 1 ? 'entries' : 'entry'}} removed:
+  {{inventoriesToString(changes.removedEntries)}}</p>

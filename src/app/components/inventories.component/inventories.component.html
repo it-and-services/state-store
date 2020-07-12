@@ -1,6 +1,6 @@
 <div class="inventories">
-  <div class="load-indicator-background" *ngIf="loading$ | async"></div>
-  <div class="load-indicator" *ngIf="loading$ | async">
+  <div *ngIf="loading$ | async" class="load-indicator-background"></div>
+  <div *ngIf="loading$ | async" class="load-indicator">
     <div>Loading ...</div>
   </div>
 
@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let inventory of inventories; let i=index">
-        <th scope="row">{{i + 1}}</th>
+        <th scope="row">{{i}}</th>
         <td>{{inventory.id}}</td>
         <td>{{inventory.version}}</td>
         <td>{{inventory.name}}</td>

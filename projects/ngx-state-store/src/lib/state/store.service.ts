@@ -87,10 +87,9 @@ export class Store<S> {
    * The Observable is complete after forward one value.
    *
    * @param prop property to select
-   * @param objectComparator custom object comparator
    */
-  selectOnce<keyString extends keyof S>(prop: keyString, objectComparator?: ObjectComparator): Observable<S[keyString]> {
-    return this.select(prop, objectComparator).pipe(take(1));
+  selectOnce<keyString extends keyof S>(prop: keyString): Observable<S[keyString]> {
+    return this.select(prop).pipe(take(1));
   }
 
   private getStateContext(): StateContext<S> {

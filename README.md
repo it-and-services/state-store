@@ -3,6 +3,10 @@ ngx-state-store is the state management module for the angular applications star
 
 ## state-store
 Sample application for the ngx-state-store module usage demonstration.  
+The sample application solely concentrated on the ngx-state-store usage.  
+
+IT IS NOT ABOUT THE ARCHITECTURE OF AN APPLICATION.   
+
 Sourcecode examples are available at [https://github.com/it-and-services/state-store](https://github.com/it-and-services/state-store).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
@@ -275,8 +279,8 @@ import { Action, StateContext } from 'ngx-state-store';
 import { ActionIds } from '../action-ids';
 import { AppState } from '../app-state';
 import { InventoryConnector } from '../../connectors/inventory.connector';
-import { Observable, of } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 export class LoadInventoriesAction extends Action {
 
@@ -287,12 +291,11 @@ export class LoadInventoriesAction extends Action {
   handleState(stateContext: StateContext<AppState>): Observable<any> {
     return this.inventoryConnector.loadInventory()
       .pipe(
-        flatMap(inventories => {
+        tap(inventories => {
           const newState: AppState = this.getEmptyState();
           newState.Inventories = inventories;
           newState.LastDownloadAt = (new Date()).toISOString();
           stateContext.patchState(newState);
-          return of(null);
         })
       );
   }
@@ -365,27 +368,55 @@ export class ActionFactory {
 Example: src/app/components/inventories-button.component/inventories-button.component.ts  
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from 'ngx-state-store';
 import { AppState } from '../../services/state-store/app-state';
 import { ActionFactory, LoadIndicator } from '../../services/state-store/action-factory';
-import { catchError, flatMap } from 'rxjs/operators';
+import { catchError, flatMap, skip } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Inventory } from '../../models/inventory';
+
+export interface Changes {
+  addedEntries: Inventory[];
+  removedEntries: Inventory[];
+}
 
 @Component({
   selector: 'app-inventories-button',
   templateUrl: './inventories-button.component.html',
   styleUrls: ['./inventories-button.component.scss']
 })
-export class InventoriesButtonComponent {
+export class InventoriesButtonComponent implements OnInit {
 
   lastDownloadAt: string;
+  changes: Changes = {addedEntries: [], removedEntries: []} as Changes;
 
   constructor(private store: Store<AppState>,
               private factory: ActionFactory) {
   }
 
+  ngOnInit(): void {
+    this.store.select('Inventories',
+      (oldInventories: Inventory[], newInventories: Inventory[]) => {
+        if (oldInventories === newInventories || oldInventories && newInventories
+          && !this.calcDiff(oldInventories, newInventories) && !this.calcDiff(newInventories, oldInventories)) {
+          return true;
+        }
+        this.changes.addedEntries = this.calcDiff(oldInventories, newInventories);
+        this.changes.removedEntries = this.calcDiff(newInventories, oldInventories);
+        console.log('->', oldInventories, newInventories);
+        return false;
+      }).pipe(skip(1))
+      .subscribe();
+  }
+
+  private calcDiff(source: Inventory[], target: Inventory[]): Inventory[] {
+    return (target || []).filter(t => !(source || []).find(s => s.id === t.id));
+  }
+
   loadInventory() {
+    this.changes.addedEntries = [];
+    this.changes.removedEntries = [];
     this.store.dispatch(
         this.factory.showLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
         .pipe(
@@ -395,10 +426,14 @@ export class InventoriesButtonComponent {
                 return of(error);
             })
         ).subscribe((state: AppState) => {
-                 this.lastDownloadAt = state.LastDownloadAt;
-                 this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES));
+            this.lastDownloadAt = state.LastDownloadAt;
+            this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES));
           }
         );
+  }
+
+  inventoriesToString(inventories: Inventory[]): string {
+    return inventories.map(e => e.id).toString();
   }
 }
 ```
@@ -450,9 +485,12 @@ Keep in mind that all objects passed to the state store will be frozen.
 
 ##### 3.1. Store.
 
-- `select(string, ObjectComparator?): Observable<any>` - select some state of the state store, `ObjectComparator` is optional, in 99,99% of cases you do not need it, just omit it
-- `selectOnce(string, ObjectComparator?): Observable<any>` - the same as `select` but the Observable is complete after forward one value
-- `dispatch(action: Action): Observable<state: S>` - dispatch the Action that changes some state, the dispatch function always returns an Observable of your state
+- `select(string, ObjectComparator?): Observable<any>` - select some state of the state store, `ObjectComparator` is
+ optional, can be used to implement more advanced comparison of the potential changes. It is also convenient way
+ to only subscribe to some property/properties changes of some state object.
+- `selectOnce(string): Observable<any>` - the same as `select` but the Observable is complete after forward one value
+- `dispatch(action: Action): Observable<state: S>` - dispatch the Action that changes some state, the dispatch function
+ always returns an Observable of your state
 
 **Tip**: you could join many dispatch calls in a pipe and have access to the last state change from the previous call,
          in this case your actions must do your changes of the state by returning an Observable,
@@ -474,6 +512,33 @@ this.store.dispatch(<some action>)
     })
   ).subscribe((state: S) => {
     // ... read and use data from the state
+  });
+```
+
+##### 3.1.1. ObjectComparator.
+
+`export type ObjectComparator = (oldObject: any, newObject: any) => boolean;` - is a function.  
+The ObjectComparator can be used by `Store#select(string, ObjectComparator?): Observable<any>` as second parameter.
+By the ObjectComparator you may implement more advanced comparison of the potential changes.
+
+The method must return `true` if there are no changes you are interested in. For example the property/properties of some state object
+was/were not changed.
+
+
+*Pseudo code example:*
+```typescript
+this.store.select('<some state>', (oldObjectState: any, newObjectState: any) => {
+    // here you can compare if the value of some property was changed
+    if (oldObjectState === newObjectState || oldObjectState && newObjectState
+            && oldObjectState['someProperty'] === newObjectState['someProperty']) {
+       // nothing changed
+       return true;
+    }
+    
+    // someProperty of the state object was changed
+    return false;
+  }).subscribe((state: S) => {
+    // ... do somethig if the newObjectState partly changed
   });
 ```
 
