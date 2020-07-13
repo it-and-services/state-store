@@ -23,15 +23,6 @@ describe('Store', () => {
         expect(count).toBe(0);
       })));
 
-    it('initial state with ObjectComparator',
-      fakeAsync(inject([Store], (store: Store<any>) => {
-        let count = -1;
-        const objectComparator: ObjectComparator = (a, b) => a === b;
-        store.select('count', objectComparator).subscribe(c => count = c);
-        flushMicrotasks();
-        expect(count).toBe(0);
-      })));
-
     it('dispatch action',
       fakeAsync(inject([Store], (store: Store<any>) => {
         store.dispatch({
@@ -160,6 +151,7 @@ describe('Store', () => {
         expect(error.message).toBe('Patching primitives is not supported.');
       })));
   });
+
   describe('without initial state', () => {
     beforeEach(() => {
       const storeConfig: StateConfig = {storeName: 'test'} as StateConfig;
@@ -186,5 +178,67 @@ describe('Store', () => {
         expect(count).toBe(1);
       })));
   });
+
+  describe('state change subscription with ObjectComparator;', () => {
+    // react only if the prop2 changed
+    const objectComparator: ObjectComparator = (a, b) => {
+      return !a && !b || a && b && a.prop2 === b.prop2;
+    };
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [Store, {
+          provide: STATE_CONFIG, useValue: {
+            storeName: 'test', log: true, timekeeping: true,
+            initialState: {complexObject: {prop: 'prop - value', prop2: 'prop2 - value'}}
+          }
+        }]
+      });
+    });
+
+    it('no state change emitted;',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+
+        let complexObject;
+        store.select('complexObject', objectComparator).subscribe(c => {
+          complexObject = c;
+        });
+
+        // update prop
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState({complexObject: {prop: 'prop - value2', prop2: 'prop2 - value'}});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+
+        expect(complexObject.prop).toBe('prop - value', 'no reaction expected on prop change');
+        expect(complexObject.prop2).toBe('prop2 - value', 'no reaction expected on prop change');
+      })));
+
+    it('state change emitted;',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+
+        let complexObject;
+        store.select('complexObject', objectComparator).subscribe(c => {
+          complexObject = c;
+        });
+
+        // update prop
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState({complexObject: {prop: 'prop - value', prop2: 'prop2 - value2'}});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+
+        expect(complexObject.prop).toBe('prop - value', 'reaction expected on prop2 change');
+        expect(complexObject.prop2).toBe('prop2 - value2', 'reaction expected on prop2 change');
+      })));
+
+  });
+
 });
 

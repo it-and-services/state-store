@@ -1,5 +1,10 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.11
+  - second unused parameter (objectComparator?: ObjectComparator) removed from the method Store#selectOnce<keyString extends keyof S>(prop: keyString)
+  - documentation improvement in the README.md regarding the ObjectComparator in the method Store#select<keyString extends keyof S>(prop: keyString, objectComparator?: ObjectComparator)
+  - increase test coverage regarding the ObjectComparator in the method Store#select<keyString extends keyof S>(prop: keyString, objectComparator?: ObjectComparator)
+
 v1.0.10
   - updated to angular 10
   - functions cloning is optional, default is 'true', StateHelper.cloneObject(any, cloneFunctions = true)

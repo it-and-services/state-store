@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Inventory } from '../../models/inventory';
-import { delay } from 'rxjs/operators';
+import { delay, mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class InventoryConnector {
@@ -12,6 +12,16 @@ export class InventoryConnector {
 
   loadInventory(): Observable<Inventory[]> {
     // delay(2000) to imitate the network throttling
-    return this.http.get<Inventory[]>('assets/mock-data/inventories.json').pipe(delay(2000));
+    return this.http.get<Inventory[]>('assets/mock-data/inventories.json').pipe(
+      delay(2000),
+      mergeMap(inventories => {
+        inventories.splice(this.getRandomInt(inventories.length), this.getRandomInt(2));
+        return of(inventories);
+      })
+    );
+  }
+
+  getRandomInt(max): number {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 }

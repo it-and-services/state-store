@@ -11,6 +11,8 @@ import { InventoryConnector } from './services/connectors/inventory.connector';
 import { HttpClientModule } from '@angular/common/http';
 import { InventoriesButtonComponent } from './components/inventories-button.component/inventories-button.component';
 import { InventoriesComponent } from './components/inventories.component/inventories.component';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxStateStoreModule } from 'ngx-state-store';
 
 @NgModule({
@@ -23,6 +25,8 @@ import { NgxStateStoreModule } from 'ngx-state-store';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    NgbModule,
     HttpClientModule,
     NgxStateStoreModule.forRoot({
       storeName: 'store-demo',
