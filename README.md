@@ -2,8 +2,8 @@
 ngx-state-store is the state management module for the angular applications starting from the angular version >= 7.2.0
 
 ## state-store
-Sample application for the ngx-state-store module usage demonstration.  
-The sample application solely concentrated on the ngx-state-store usage.  
+Sample application for the ngx-state-store module usage features demonstration.  
+The sample application solely concentrated on the ngx-state-store usage features.  
 
 IT IS NOT ABOUT THE ARCHITECTURE OF AN APPLICATION.   
 
@@ -406,10 +406,11 @@ export class InventoriesButtonComponent implements OnInit {
         }
         this.changes.addedEntries = this.calcDiff(oldInventories, newInventories);
         this.changes.removedEntries = this.calcDiff(newInventories, oldInventories);
-        console.log('->', oldInventories, newInventories);
         return false;
       }).pipe(skip(1))
-      .subscribe();
+      .subscribe(() => {
+        console.log('the log is present only if there are some changes');
+      });
   }
 
   private calcDiff(source: Inventory[], target: Inventory[]): Inventory[] {
