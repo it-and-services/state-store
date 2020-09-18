@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1200,
+    "version": "01",
+    "name": "A_BLOCK"
+  },
+  {
+    "id": 1201,
+    "version": "01",
+    "name": "B_BLOCK"
+  },
+  {
+    "id": 1202,
+    "version": "04",
+    "name": "C_BLOCK"
+  },
+  {
+    "id": 1203,
+    "version": "01",
+    "name": "D_BLOCK"
+  },
+  {
+    "id": 1204,
+    "version": "01",
+    "name": "I_BLOCK"
+  },
+  {
+    "id": 1205,
+    "version": "11",
+    "name": "J_BLOCK"
+  },
+  {
+    "id": 1206,
+    "version": "01",
+    "name": "K_BLOCK"
+  },
+  {
+    "id": 1207,
+    "version": "03",
+    "name": "L_BLOCK"
+  },
+  {
+    "id": 1208,
+    "version": "01",
+    "name": "M_BLOCK"
+  },
+  {
+    "id": 1209,
+    "version": "01",
+    "name": "N_BLOCK"
+  },
+  {
+    "id": 1210,
+    "version": "01",
+    "name": "P_BLOCK"
+  }
+]
