@@ -15,7 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 [1. Usage description of the ngx-state-store module.](#1-usage-description-of-the-ngx-state-store-module)  
 [2. More complex use case with the back-end call.](#2-more-complex-use-case-with-the-back-end-call)  
 [3. API overview.](#3-api-overview)  
-[4. StateStore App example.](https://it-and-services.github.io/state-store/app.html "StateStore App example"){:target="_blank"}  
+<a href="https://it-and-services.github.io/state-store/app.html" title="StateStore App example" target="_blank">4. StateStore App example.</a>  
 
 ### 1. Usage description of the ngx-state-store module.
 
