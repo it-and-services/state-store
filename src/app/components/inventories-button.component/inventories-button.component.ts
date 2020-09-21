@@ -65,6 +65,6 @@ export class InventoriesButtonComponent implements OnInit {
   }
 
   inventoriesToString(inventories: Inventory[]): string {
-    return inventories.map(e => e.id).toString();
+    return inventories.map(e => e.id).join(', ');
   }
 }
