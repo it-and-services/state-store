@@ -5,7 +5,8 @@
     <meta charset='utf-8'>
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,maximum-scale=2" name="viewport">
-    <link href="/state-store/assets/css/style.css?v=7d8890763e9d62eef203a183b3db9a69ff41204f" media="screen" rel="stylesheet"
+    <link href="/state-store/assets/css/style.css?v=7d8890763e9d62eef203a183b3db9a69ff41204f" media="screen"
+          rel="stylesheet"
           type="text/css">
 
     <!-- Begin Jekyll SEO tag v2.6.1 -->
@@ -72,7 +73,7 @@
                 call.</a><br/>
             <a href="#3-api-overview">3. API overview.</a><br/>
             <a href="https://it-and-services.github.io/state-store/app.html"
-               title="StateStore App example" target="_blank">4. StateStore App example.</a></p>
+               target="_blank" title="StateStore App example">4. StateStore App example.</a></p>
 
         <h3 id="1-usage-description-of-the-ngx-state-store-module">1. Usage description of the ngx-state-store
             module.</h3>
@@ -148,8 +149,14 @@
             </div>
         </div>
 
-        <p>At run time you can access the store in the debug console by the path <code
+        <p>At run time you can access the store in the console by the path <code
                 class="language-plaintext highlighter-rouge">window['ngx-state-store']['store-demo']</code></p>
+
+        <p>To activate/deactivate log and timekeeping at runtime: </p>
+        <p><code
+                class="language-plaintext highlighter-rouge">window['ngx-state-store']['store-demo'].state.log.log =
+            true;<br/>
+            window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;</code></p>
 
         <h5 id="14-create-an-action">1.4. Create an action.</h5>
         <p>Example: src/app/services/state-store/actions/increment-counter.action.ts<br/>
