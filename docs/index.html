@@ -94,8 +94,8 @@
         <p>Example: src/app/services/state-store/app-initial-state.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">AppState</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">AppState</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">./app-state</span><span class="dl">'</span><span
                     class="p">;</span>
 
@@ -159,12 +159,16 @@
             window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;</code></p>
 
         <h5 id="14-create-an-action">1.4. Create an action.</h5>
-        <p>Example: src/app/services/state-store/actions/increment-counter.action.ts<br/>
-            Example: src/app/services/state-store/action-ids.ts</p>
+        <div class="language-typescript highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>
+                Example: src/app/services/state-store/actions/increment-counter.action.ts
+                Example: src/app/services/state-store/action-ids.ts
+            </code>
+            </pre></div></div>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
@@ -213,8 +217,8 @@
         <p>Example: src/app/services/state-store/action-factory.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
                     class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span> <span class="p">}</span> <span
@@ -242,8 +246,8 @@
         <p>Example: src/app/components/counter-button.component/counter-button.component.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
                     class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
@@ -285,8 +289,8 @@
         <p>Example: src/app/components/counter.component/counter.component.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
@@ -342,8 +346,8 @@
             Example: src/app/models/inventory.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Inventory</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Inventory</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">../../models/inventory</span><span class="dl">'</span><span
                     class="p">;</span>
 
@@ -372,8 +376,8 @@
         <p>Example: src/app/services/state-store/app-initial-state.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">AppState</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">AppState</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">./app-state</span><span class="dl">'</span><span
                     class="p">;</span>
 
@@ -394,8 +398,8 @@
             Example: src/app/services/state-store/actions/load-inventories.action.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
@@ -434,8 +438,8 @@
             </div>
         </div>
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
@@ -491,8 +495,8 @@
             </div>
         </div>
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
@@ -545,8 +549,8 @@
             Example: src/app/services/connectors/inventory.connector.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
                     class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span
@@ -584,8 +588,8 @@
             </div>
         </div>
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
                     class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
                     class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span> <span class="p">}</span> <span
@@ -654,8 +658,8 @@
         <p>Example: src/app/components/inventories-button.component/inventories-button.component.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
@@ -783,8 +787,8 @@
         <p>Example: src/app/components/inventories.component/inventories.component.ts</p>
 
         <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{
-                </span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
+<span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
                     class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
                     class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
