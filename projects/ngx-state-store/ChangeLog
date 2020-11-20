@@ -1,5 +1,10 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.12
+  - updated to angular 11
+  - documentation improvement
+  - extend performance plugin by the 'limit' parameter, default value is 1000
+
 v1.0.11
   - second unused parameter (objectComparator?: ObjectComparator) removed from the method Store#selectOnce<keyString extends keyof S>(prop: keyString)
   - documentation improvement in the README.md regarding the ObjectComparator in the method Store#select<keyString extends keyof S>(prop: keyString, objectComparator?: ObjectComparator)

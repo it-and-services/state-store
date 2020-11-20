@@ -6,11 +6,14 @@ import { StorePlugin } from './store-plugin';
 interface PerformanceSettings {
   // Measure action duration
   timekeeping: boolean;
+  // After reaching the limit it starts from the beginning
+  limit: number;
   performanceLog: ActionTime[];
 }
 
 interface ActionTime {
   id: string;
+  order: number;
   time: number;
 }
 
@@ -23,10 +26,11 @@ export class StorePerformancePlugin extends StorePlugin {
     return this.state.performance.timekeeping;
   }
 
-  constructor(storeName: string, log: boolean = false) {
+  constructor(storeName: string, log: boolean = false, limit = 1000) {
     super(storeName);
     this.settings = {
       timekeeping: log,
+      limit: limit < 1 ? 1 : limit,
       performanceLog: this.performanceLog
     };
     this.state.performance = this.settings;
@@ -36,8 +40,13 @@ export class StorePerformancePlugin extends StorePlugin {
     if (!this.timekeeping) {
       return;
     }
-    this.performanceLog[order] = {
+    const index = order % this.settings.limit;
+    if (this.performanceLog.length < index) {
+      this.performanceLog.length = index;
+    }
+    this.performanceLog[index] = {
       id: actionId,
+      order,
       time: performance.now()
     };
   }
@@ -49,6 +58,9 @@ export class StorePerformancePlugin extends StorePlugin {
     if (!this.timekeeping) {
       return;
     }
-    this.performanceLog[order].time = performance.now() - this.performanceLog[order].time;
+    const index = order % this.settings.limit;
+    if (this.performanceLog[index]?.order === order) {
+      this.performanceLog[index].time = performance.now() - this.performanceLog[index].time;
+    }
   }
 }

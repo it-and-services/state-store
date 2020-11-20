@@ -5,7 +5,7 @@ describe('StorePerformancePlugin', () => {
   let storePerformancePlugin: StorePerformancePlugin;
   describe('active', () => {
     beforeEach(() => {
-      storePerformancePlugin = new StorePerformancePlugin('test-store', true);
+      storePerformancePlugin = new StorePerformancePlugin('test-store', true, 100);
       spyOn(performance, 'now');
       TestBed.configureTestingModule({
         providers: []
@@ -18,6 +18,12 @@ describe('StorePerformancePlugin', () => {
     it('time save by dispatchAfter', inject([], () => {
       storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 0);
       storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 0);
+      expect(performance.now).toHaveBeenCalled();
+    }));
+    it('invalid order ignored', inject([], () => {
+      storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 10);
+      storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 5);
+      storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 10);
       expect(performance.now).toHaveBeenCalled();
     }));
   });
@@ -37,6 +43,30 @@ describe('StorePerformancePlugin', () => {
       storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 0);
       storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 0);
       expect(performance.now).not.toHaveBeenCalled();
+    }));
+    it('reactivate timekeeping', inject([], () => {
+      storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 1);
+      storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 1);
+      expect(performance.now).not.toHaveBeenCalled();
+      // tslint:disable-next-line:no-string-literal
+      storePerformancePlugin['settings']['timekeeping'] = true;
+      storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 1);
+      storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 1);
+      expect(performance.now).toHaveBeenCalled();
+    }));
+  });
+  describe('invalid limit', () => {
+    beforeEach(() => {
+      storePerformancePlugin = new StorePerformancePlugin('test-store', true, -1);
+      spyOn(performance, 'now');
+      TestBed.configureTestingModule({
+        providers: []
+      });
+    });
+    it('invalid limit corrected', inject([], () => {
+      storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 0);
+      storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 0);
+      expect(performance.now).toHaveBeenCalled();
     }));
   });
 });

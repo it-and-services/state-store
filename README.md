@@ -70,7 +70,13 @@ export class AppModule {
 }
 ```
 
-At run time you can access the store in the debug console by the path `window['ngx-state-store']['store-demo']`
+At run time you can access the store in the console by the path `window['ngx-state-store']['store-demo']`
+
+To activate/deactivate log and timekeeping at runtime:
+```javascript
+window['ngx-state-store']['store-demo'].state.log.log = true;
+window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;
+``` 
 
 ##### 1.4. Create an action.
 Example: src/app/services/state-store/actions/increment-counter.action.ts  
