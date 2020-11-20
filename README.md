@@ -9,7 +9,7 @@ IT IS NOT ABOUT THE ARCHITECTURE OF AN APPLICATION.
 
 Sourcecode examples are available at [https://github.com/it-and-services/state-store](https://github.com/it-and-services/state-store).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
 ##### Content:
 [1. Usage description of the ngx-state-store module.](#1-usage-description-of-the-ngx-state-store-module)  
