@@ -153,18 +153,14 @@
                 class="language-plaintext highlighter-rouge">window['ngx-state-store']['store-demo']</code></p>
 
         <p>To activate/deactivate log and timekeeping at runtime: </p>
-        <p><code
-                class="language-plaintext highlighter-rouge">window['ngx-state-store']['store-demo'].state.log.log =
-            true;<br/>
-            window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;</code></p>
-
-        <h5 id="14-create-an-action">1.4. Create an action.</h5>
         <div class="language-typescript highlighter-rouge">
             <div class="highlight"><pre class="highlight"><code>
-                Example: src/app/services/state-store/actions/increment-counter.action.ts
-                Example: src/app/services/state-store/action-ids.ts
+window['ngx-state-store']['store-demo'].state.log.log = true;
+window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;
             </code>
             </pre></div></div>
+
+        <h5 id="14-create-an-action">1.4. Create an action.</h5>
 
         <div class="language-typescript highlighter-rouge">
             <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{ </span>
