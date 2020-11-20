@@ -1,5 +1,8 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.13
+  - documentation update
+
 v1.0.12
   - updated to angular 11
   - documentation improvement
