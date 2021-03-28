@@ -1,1027 +1,1279 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <head>
-    <meta charset='utf-8'>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width,maximum-scale=2" name="viewport">
-    <link href="/state-store/assets/css/style.css?v=7d8890763e9d62eef203a183b3db9a69ff41204f" media="screen"
-          rel="stylesheet"
-          type="text/css">
 
-    <!-- Begin Jekyll SEO tag v2.6.1 -->
-    <title>ngx-state-store | state-store</title>
-    <meta content="Jekyll v3.9.0" name="generator"/>
-    <meta content="ngx-state-store" property="og:title"/>
-    <meta content="en_US" property="og:locale"/>
-    <meta content="Sample application for the ngx-state-store module usage features demonstration." name="description"/>
-    <meta content="Sample application for the ngx-state-store module usage features demonstration."
-          property="og:description"/>
-    <link href="https://it-and-services.github.io/state-store/" rel="canonical"/>
-    <meta content="https://it-and-services.github.io/state-store/" property="og:url"/>
-    <meta content="state-store" property="og:site_name"/>
-    <script type="application/ld+json">
-        {
-            "@type": "WebSite",
-            "headline": "ngx-state-store",
-            "url": "https://it-and-services.github.io/state-store/",
-            "description": "Sample application for the ngx-state-store module usage features demonstration.",
-            "name": "state-store",
-            "@context": "https://schema.org"
-        }</script>
-    <!-- End Jekyll SEO tag -->
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+  <meta content="" name="description">
+  <meta content="" name="author">
+  <meta content="" name="keywords">
+
+  <title>ngx-state-store | Documentation by Oleg Soloviov</title>
+
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+  <link href="fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/stroke.css" rel="stylesheet" type="text/css">
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="css/animate.css" rel="stylesheet" type="text/css">
+  <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <link href="js/syntax-highlighter/styles/shCore.css" media="all" rel="stylesheet" type="text/css">
+  <link href="js/syntax-highlighter/styles/shThemeRDark.css" media="all" rel="stylesheet" type="text/css">
+
+  <!-- CUSTOM -->
+  <link href="css/custom.css" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
 </head>
 
 <body>
+<button id="myBtn" onclick="topFunction()" title="Go to top"><i aria-hidden="true" class="fa fa-chevron-up"></i>
+</button>
 
-<!-- HEADER -->
-<div class="outer" id="header_wrap">
-    <header class="inner">
-        <a href="https://github.com/it-and-services/state-store" id="forkme_banner">View on GitHub</a>
+<script>
+    var mybutton = document.getElementById("myBtn");
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
-        <h1 id="project_title">state-store</h1>
-        <h2 id="project_tagline">Sample application for the ngx-state-store module usage features demonstration.</h2>
+    function scrollFunction() {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'})
+        document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector('#mode').addEventListener('click', () => {
+            document.querySelector('html').classList.toggle('dark');
+        })
+    });
 
 
-    </header>
-</div>
+</script>
 
-<!-- MAIN CONTENT -->
-<div class="outer" id="main_content_wrap">
-    <section class="inner" id="main_content" style="max-width: 960px">
-        <h1 id="ngx-state-store">ngx-state-store</h1>
-        <p>ngx-state-store is the state management module for the angular applications starting from the angular version
-            &gt;= 7.2.0</p>
+<div id="wrapper">
 
-        <h2 id="state-store">state-store</h2>
-        <p>Sample application for the ngx-state-store module usage features demonstration.<br/>
-            The sample application solely concentrated on the ngx-state-store usage features.</p>
+  <div id="mode">
+    <div class="dark">
+      <svg aria-hidden="true" viewBox="0 0 512 512">
+        <title>lightmode</title>
+        <path
+            d="M256 160c-52.9 0-96 43.1-96 96s43.1 96 96 96 96-43.1 96-96-43.1-96-96-96zm246.4 80.5l-94.7-47.3 33.5-100.4c4.5-13.6-8.4-26.5-21.9-21.9l-100.4 33.5-47.4-94.8c-6.4-12.8-24.6-12.8-31 0l-47.3 94.7L92.7 70.8c-13.6-4.5-26.5 8.4-21.9 21.9l33.5 100.4-94.7 47.4c-12.8 6.4-12.8 24.6 0 31l94.7 47.3-33.5 100.5c-4.5 13.6 8.4 26.5 21.9 21.9l100.4-33.5 47.3 94.7c6.4 12.8 24.6 12.8 31 0l47.3-94.7 100.4 33.5c13.6 4.5 26.5-8.4 21.9-21.9l-33.5-100.4 94.7-47.3c13-6.5 13-24.7.2-31.1zm-155.9 106c-49.9 49.9-131.1 49.9-181 0-49.9-49.9-49.9-131.1 0-181 49.9-49.9 131.1-49.9 181 0 49.9 49.9 49.9 131.1 0 181z"
+            fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="light">
+      <svg aria-hidden="true" viewBox="0 0 512 512">
+        <title>darkmode</title>
+        <path
+            d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"
+            fill="currentColor"></path>
+      </svg>
+    </div>
+  </div>
 
-        <p>IT IS NOT ABOUT THE ARCHITECTURE OF AN APPLICATION.</p>
+  <div class="container">
 
-        <p>Sourcecode examples are available at <a href="https://github.com/it-and-services/state-store">https://github.com/it-and-services/state-store</a>.
-        </p>
+    <section class="section docs-heading" id="top">
 
-        <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version
-            11.0.2.</p>
-
-        <h5 id="content">Content:</h5>
-        <p><a href="#1-usage-description-of-the-ngx-state-store-module">1. Usage description of the ngx-state-store
-            module.</a><br/>
-            <a href="#2-more-complex-use-case-with-the-back-end-call">2. More complex use case with the back-end
-                call.</a><br/>
-            <a href="#3-api-overview">3. API overview.</a><br/>
-            <a href="https://it-and-services.github.io/state-store/app.html"
-               target="_blank" title="StateStore App example">4. StateStore App example.</a></p>
-
-        <h3 id="1-usage-description-of-the-ngx-state-store-module">1. Usage description of the ngx-state-store
-            module.</h3>
-
-        <h5 id="11-create-a-state-object">1.1. Create a state object.</h5>
-        <p>Example: src/app/services/state-store/app-state.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span
-                    class="kd">class</span> <span class="nx">AppState</span> <span class="p">{</span>
-  <span class="nl">Counter</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="big-title text-center">
+            <h1>STATE-STORE</h1>
+            <p class="lead">Sample application for the <span>Ngx-State-Store</span> module usage features
+              demonstration.</p>
+          </div>
+          <!-- end title -->
         </div>
-
-        <h5 id="12-create-an-initial-state-object">1.2. Create an initial state object.</h5>
-        <p>Example: src/app/services/state-store/app-initial-state.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">./app-state</span><span class="dl">'</span><span
-                    class="p">;</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">AppInitialState</span><span
-                        class="p">:</span> <span class="nx">AppState</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">Counter</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">};</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="13-register-the-ngxstatestoremodule-in-srcappappmodulets">1.3. Register the NgxStateStoreModule in
-            src/app/app.module.ts</h5>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppInitialState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">./services/state-store/app-initial-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">NgxStateStoreModule</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="c1">// ...</span>
-
-<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
-  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
-    <span class="c1">// ...</span>
-  <span class="p">],</span>
-  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
-    <span class="c1">// ...</span>
-    <span class="nx">NgxStateStoreModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
-      <span class="na">storeName</span><span class="p">:</span> <span class="dl">'</span><span
-                        class="s1">store-demo</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">log</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="na">timekeeping</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="na">initialState</span><span class="p">:</span> <span class="nx">AppInitialState</span>
-    <span class="p">}),</span>
-    <span class="c1">// ...</span>
-  <span class="p">],</span>
-  <span class="c1">// ...</span>
-<span class="p">})</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{</span>
-    <span class="c1">// ...</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <p>At run time you can access the store in the console by the path <code
-                class="language-plaintext highlighter-rouge">window['ngx-state-store']['store-demo']</code></p>
-
-        <p>To activate/deactivate log and timekeeping at runtime: </p>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-window['ngx-state-store']['store-demo'].state.log.log = true;
-window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;
-            </code>
-            </pre></div></div>
-
-        <h5 id="14-create-an-action">1.4. Create an action.</h5>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../action-ids</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">IncrementCounterAction</span> <span
-                        class="kd">extends</span> <span class="nx">Action</span> <span class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">(</span><span class="nx">ActionIds</span><span class="p">.</span><span
-                        class="nx">UpdateCounter</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">handleState</span><span class="p">(</span><span class="nx">stateContext</span><span class="p">:</span> <span class="nx">StateContext</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">newValue</span> <span class="o">=</span> <span
-                        class="k">this</span><span class="p">.</span><span class="nx">getEmptyState</span><span
-                        class="p">();</span>
-    <span class="nx">newValue</span><span class="p">.</span><span class="nx">Counter</span> <span
-                        class="o">=</span> <span class="nx">stateContext</span><span class="p">.</span><span class="nx">getState</span><span
-                        class="p">().</span><span class="nx">Counter</span> <span class="o">+</span> <span
-                        class="mi">1</span><span class="p">;</span>
-    <span class="nx">stateContext</span><span class="p">.</span><span class="nx">patchState</span><span
-                        class="p">(</span><span class="nx">newValue</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span
-                    class="kr">enum</span> <span class="nx">ActionIds</span> <span class="p">{</span>
-    <span class="nx">UpdateCounter</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">[Common] update counter</span><span class="dl">'</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <p>The ids, like one above - <code class="language-plaintext highlighter-rouge">[Common] update counter</code>,
-            will be displayed in the console log output</p>
-
-        <h5 id="15-create-an-action-factory">1.5. Create an action factory.</h5>
-        <p>Example: src/app/services/state-store/action-factory.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
-                    class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">IncrementCounterAction</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">./actions/increment-counter.action</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">ActionFactory</span> <span class="p">{</span>
-
-  <span class="nx">incrementCounter</span><span class="p">():</span> <span class="nx">Action</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">IncrementCounterAction</span><span
-                        class="p">();</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="16-to-update-the-state-call-the-storedispatch">1.6. To update the state call the <code
-                class="language-plaintext highlighter-rouge">store.dispatch(...)</code>.</h5>
-        <p>Example: src/app/components/counter-button.component/counter-button.component.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
-                    class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">ActionFactory</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/action-factory</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
-  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-counter-button</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./counter-button.component.html</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./counter-button.component.scss</span><span class="dl">'</span><span class="p">]</span>
-<span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">CounterButtonComponent</span> <span
-                        class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">store</span><span class="p">:</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">,</span>
-              <span class="kr">private</span> <span class="nx">factory</span><span class="p">:</span> <span class="nx">ActionFactory</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
-
-  <span class="nx">incrementCounter</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span
-                        class="nx">dispatch</span><span class="p">(</span><span class="k">this</span><span
-                        class="p">.</span><span class="nx">factory</span><span class="p">.</span><span class="nx">incrementCounter</span><span
-                        class="p">());</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="17-to-subscribe-to-some-state-use-storeselect">1.7. To subscribe to some state use <code
-                class="language-plaintext highlighter-rouge">store.select(...)</code>.</h5>
-        <p>Example: src/app/components/counter.component/counter.component.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
-  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-counter</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./counter.component.html</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./counter.component.scss</span><span class="dl">'</span><span class="p">]</span>
-<span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">CounterComponent</span> <span class="kr">implements</span> <span
-                        class="nx">OnInit</span> <span class="p">{</span>
-
-  <span class="nx">counter$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="p">;</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">store</span><span class="p">:</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
-
-  <span class="nx">ngOnInit</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">counter$</span> <span class="o">=</span> <span
-                        class="k">this</span><span class="p">.</span><span class="nx">store</span><span
-                        class="p">.</span><span class="nx">select</span><span class="p">(</span><span
-                        class="dl">'</span><span class="s1">Counter</span><span class="dl">'</span><span
-                        class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <p>The <code class="language-plaintext highlighter-rouge">select(...)</code> method returns an Observable.</p>
-
-        <h3 id="2-more-complex-use-case-with-the-back-end-call">2. More complex use case with the back-end call.</h3>
-
-        <p>For the more complex use case with the back-end call refer to the source code:</p>
-
-        <ul>
-            <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>
-            <li>src/app/components/inventories.component/inventories.component.ts</li>
-            <li>src/app/services/state-store/actions/load-inventories.action.ts</li>
-            <li>src/app/services/connectors/inventory.connector.ts</li>
-        </ul>
-
-        <h5 id="21-extend-the-state-object">2.1. Extend the state object.</h5>
-        <p>Example: src/app/services/state-store/app-state.ts<br/>
-            Example: src/app/models/inventory.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Inventory</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">../../models/inventory</span><span class="dl">'</span><span
-                    class="p">;</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppState</span> <span class="p">{</span>
-  <span class="nl">ShowLoadingIndicator</span><span class="p">:</span> <span class="nx">string</span><span class="p">[];</span>
-  <span class="nl">Counter</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
-  <span class="nl">Inventories</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[];</span>
-  <span class="c1">// iso Date string</span>
-  <span class="nl">LastDownloadAt</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span
-                    class="kd">class</span> <span class="nx">Inventory</span> <span class="p">{</span>
-  <span class="nl">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
-  <span class="nl">version</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-  <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="22-extend-the-initial-state-object">2.2. Extend the initial state object.</h5>
-        <p>Example: src/app/services/state-store/app-initial-state.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">./app-state</span><span class="dl">'</span><span
-                    class="p">;</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">AppInitialState</span><span
-                        class="p">:</span> <span class="nx">AppState</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">ShowLoadingIndicator</span><span class="p">:</span> <span class="p">[],</span>
-  <span class="na">Counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="na">Inventories</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="na">LastDownloadAt</span><span class="p">:</span> <span class="dl">''</span>
-<span class="p">};</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="23-create-new-actions">2.3. Create new actions.</h5>
-        <p>Example: src/app/services/state-store/actions/show-loading-indicator.action.ts<br/>
-            Example: src/app/services/state-store/actions/hide-loading-indicator.action.ts<br/>
-            Example: src/app/services/state-store/actions/load-inventories.action.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../action-ids</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">ShowLoadingIndicatorAction</span> <span
-                        class="kd">extends</span> <span class="nx">Action</span> <span class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">identifier</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">(</span><span class="nx">ActionIds</span><span class="p">.</span><span
-                        class="nx">ShowLoadingIndicator</span> <span class="o">+</span> <span class="dl">'</span><span
-                        class="s1">: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">identifier</span><span
-                        class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">handleState</span><span class="p">(</span><span class="nx">stateContext</span><span class="p">:</span> <span class="nx">StateContext</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">newState</span> <span class="o">=</span> <span
-                        class="k">this</span><span class="p">.</span><span class="nx">getEmptyState</span><span
-                        class="p">();</span>
-    <span class="nx">newState</span><span class="p">.</span><span class="nx">ShowLoadingIndicator</span>
-        <span class="o">=</span> <span class="nx">stateContext</span><span class="p">.</span><span
-                        class="nx">getState</span><span class="p">().</span><span class="nx">ShowLoadingIndicator</span><span
-                        class="p">.</span><span class="nx">slice</span><span class="p">();</span>
-    <span class="nx">newState</span><span class="p">.</span><span class="nx">ShowLoadingIndicator</span><span class="p">.</span><span
-                        class="nx">push</span><span class="p">(</span><span class="k">this</span><span
-                        class="p">.</span><span class="nx">identifier</span><span class="p">);</span>
-    <span class="nx">stateContext</span><span class="p">.</span><span class="nx">patchState</span><span
-                        class="p">(</span><span class="nx">newState</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../action-ids</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">HideLoadingIndicatorAction</span> <span
-                        class="kd">extends</span> <span class="nx">Action</span> <span class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">identifier</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">(</span><span class="nx">ActionIds</span><span class="p">.</span><span
-                        class="nx">HideLoadingIndicator</span> <span class="o">+</span> <span class="dl">'</span><span
-                        class="s1">: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">identifier</span><span
-                        class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">handleState</span><span class="p">(</span><span class="nx">stateContext</span><span class="p">:</span> <span class="nx">StateContext</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">stateContext</span><span class="p">.</span><span
-                        class="nx">getState</span><span class="p">().</span><span class="nx">ShowLoadingIndicator</span> <span
-                        class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span
-                        class="nx">stateContext</span><span class="p">.</span><span class="nx">getState</span><span
-                        class="p">()</span>
-                    <span class="p">.</span><span class="nx">ShowLoadingIndicator</span><span class="p">.</span><span
-                        class="nx">indexOf</span><span class="p">(</span><span class="k">this</span><span
-                        class="p">.</span><span class="nx">identifier</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span
-                        class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">const</span> <span class="na">newState</span><span class="p">:</span> <span
-                        class="nx">AppState</span> <span class="o">=</span> <span class="k">this</span><span
-                        class="p">.</span><span class="nx">getEmptyState</span><span class="p">();</span>
-    <span class="nx">newState</span><span class="p">.</span><span class="nx">ShowLoadingIndicator</span>
-        <span class="o">=</span> <span class="nx">stateContext</span><span class="p">.</span><span
-                        class="nx">getState</span><span class="p">().</span><span class="nx">ShowLoadingIndicator</span><span
-                        class="p">.</span><span class="nx">slice</span><span class="p">();</span>
-    <span class="nx">newState</span><span class="p">.</span><span class="nx">ShowLoadingIndicator</span><span class="p">.</span><span
-                        class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span
-                        class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="nx">stateContext</span><span class="p">.</span><span class="nx">patchState</span><span
-                        class="p">(</span><span class="nx">newState</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span><span class="p">,</span> <span class="nx">StateContext</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">ActionIds</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../action-ids</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">InventoryConnector</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../connectors/inventory.connector</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">tap</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs/operators</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">LoadInventoriesAction</span> <span
-                        class="kd">extends</span> <span class="nx">Action</span> <span class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">inventoryConnector</span><span class="p">:</span> <span class="nx">InventoryConnector</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">(</span><span class="nx">ActionIds</span><span class="p">.</span><span
-                        class="nx">LoadInventories</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">handleState</span><span class="p">(</span><span class="nx">stateContext</span><span class="p">:</span> <span class="nx">StateContext</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span
-                        class="nx">inventoryConnector</span><span class="p">.</span><span
-                        class="nx">loadInventory</span><span class="p">()</span>
-      <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
-        <span class="nx">tap</span><span class="p">(</span><span class="nx">inventories</span> <span
-                        class="o">=&gt;</span> <span class="p">{</span>
-          <span class="kd">const</span> <span class="na">newState</span><span class="p">:</span> <span class="nx">AppState</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getEmptyState</span><span class="p">();</span>
-          <span class="nx">newState</span><span class="p">.</span><span class="nx">Inventories</span> <span class="o">=</span> <span class="nx">inventories</span><span class="p">;</span>
-          <span class="nx">newState</span><span class="p">.</span><span class="nx">LastDownloadAt</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">toISOString</span><span class="p">();</span>
-          <span class="nx">stateContext</span><span class="p">.</span><span class="nx">patchState</span><span class="p">(</span><span class="nx">newState</span><span class="p">);</span>
-        <span class="p">})</span>
-      <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="24-extend-the-action-factory-and-create-the-connector">2.4. Extend the action factory and create the
-            connector.</h5>
-        <p>Example: src/app/services/state-store/action-factory.ts<br/>
-            Example: src/app/services/connectors/inventory.connector.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
-                    class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">HttpClient</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">@angular/common/http</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Inventory</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span
-                        class="s1">../../models/inventory</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">delay</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs/operators</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">InventoryConnector</span> <span class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
-
-  <span class="nx">loadInventory</span><span class="p">():</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Inventory</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="c1">// delay(2000) to imitate the network throttling</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span
-                        class="p">.</span><span class="kd">get</span><span class="o">&lt;</span><span class="nx">Inventory</span><span
-                        class="p">[]</span><span class="o">&gt;</span><span class="p">(</span><span
-                        class="dl">'</span><span class="s1">assets/mock-data/inventories.json</span><span
-                        class="dl">'</span><span class="p">)</span>
-                    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span
-                        class="nx">delay</span><span class="p">(</span><span class="mi">2000</span><span
-                        class="p">));</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span
-                    class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span
-                    class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Action</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">ShowLoadingIndicatorAction</span> <span class="p">}</span> <span class="k">from</span> <span
-                        class="dl">'</span><span class="s1">./actions/show-loading-indicator.action</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">IncrementCounterAction</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">./actions/increment-counter.action</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">HideLoadingIndicatorAction</span> <span class="p">}</span> <span class="k">from</span> <span
-                        class="dl">'</span><span class="s1">./actions/hide-loading-indicator.action</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">LoadInventoriesAction</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">./actions/load-inventories.action</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">InventoryConnector</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../connectors/inventory.connector</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kr">enum</span> <span class="nx">LoadIndicator</span> <span class="p">{</span>
-  <span class="nx">DEFAULT</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">DEFAULT</span><span class="dl">'</span><span class="p">,</span>
-  <span class="nx">LOAD_INVENTORIES</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">LOAD_INVENTORIES</span><span class="dl">'</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">ActionFactory</span> <span class="p">{</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">inventoryConnector</span><span class="p">:</span> <span class="nx">InventoryConnector</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
-
-  <span class="nx">incrementCounter</span><span class="p">():</span> <span class="nx">Action</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">IncrementCounterAction</span><span
-                        class="p">();</span>
-  <span class="p">}</span>
-
-  <span class="nx">showLoadIndicator</span><span class="p">(</span><span class="nx">identifier</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">LoadIndicator</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">):</span> <span class="nx">Action</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">ShowLoadingIndicatorAction</span><span
-                        class="p">(</span><span class="nx">identifier</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">hideLoadIndicator</span><span class="p">(</span><span class="nx">identifier</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">LoadIndicator</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">):</span> <span class="nx">Action</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">HideLoadingIndicatorAction</span><span
-                        class="p">(</span><span class="nx">identifier</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">loadInventories</span><span class="p">():</span> <span class="nx">Action</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="nx">LoadInventoriesAction</span><span
-                        class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">inventoryConnector</span><span
-                        class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="25-to-load-the-data-from-back-end-and-update-the-states-call-the-storedispatch">2.5. To load the data
-            from back-end and update the states call the <code class="language-plaintext highlighter-rouge">store.dispatch(...)</code>.
-        </h5>
-        <p>Example: src/app/components/inventories-button.component/inventories-button.component.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">ActionFactory</span><span class="p">,</span> <span class="nx">LoadIndicator</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/action-factory</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">catchError</span><span class="p">,</span> <span class="nx">flatMap</span><span class="p">,</span> <span class="nx">skip</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs/operators</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="k">of</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Inventory</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span
-                        class="s1">../../models/inventory</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kr">interface</span> <span class="nx">Changes</span> <span class="p">{</span>
-  <span class="nl">addedEntries</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[];</span>
-  <span class="nl">removedEntries</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[];</span>
-<span class="p">}</span>
-
-<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
-  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-inventories-button</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./inventories-button.component.html</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./inventories-button.component.scss</span><span class="dl">'</span><span class="p">]</span>
-<span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">InventoriesButtonComponent</span> <span
-                        class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
-
-  <span class="nl">lastDownloadAt</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-  <span class="nl">changes</span><span class="p">:</span> <span class="nx">Changes</span> <span class="o">=</span> <span class="p">{</span><span
-                        class="na">addedEntries</span><span class="p">:</span> <span class="p">[],</span> <span
-                        class="na">removedEntries</span><span class="p">:</span> <span class="p">[]}</span> <span class="k">as</span> <span class="nx">Changes</span><span class="p">;</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">store</span><span class="p">:</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">,</span>
-              <span class="kr">private</span> <span class="nx">factory</span><span class="p">:</span> <span class="nx">ActionFactory</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
-
-  <span class="nx">ngOnInit</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span
-                        class="nx">select</span><span class="p">(</span><span class="dl">'</span><span class="s1">Inventories</span><span
-                        class="dl">'</span><span class="p">,</span>
-      <span class="p">(</span><span class="na">oldInventories</span><span class="p">:</span> <span
-                        class="nx">Inventory</span><span class="p">[],</span> <span
-                        class="na">newInventories</span><span class="p">:</span> <span class="nx">Inventory</span><span
-                        class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">oldInventories</span> <span class="o">===</span> <span class="nx">newInventories</span>
-          <span class="o">||</span> <span class="nx">oldInventories</span> <span class="o">&amp;&amp;</span> <span class="nx">newInventories</span>
-          <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">calcDiff</span><span class="p">(</span><span class="nx">oldInventories</span><span class="p">,</span> <span class="nx">newInventories</span><span class="p">).</span><span class="nx">length</span>
-          <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">calcDiff</span><span class="p">(</span><span class="nx">newInventories</span><span class="p">,</span> <span class="nx">oldInventories</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">changes</span><span class="p">.</span><span class="nx">addedEntries</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">calcDiff</span><span class="p">(</span><span class="nx">oldInventories</span><span class="p">,</span> <span class="nx">newInventories</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">changes</span><span class="p">.</span><span class="nx">removedEntries</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">calcDiff</span><span class="p">(</span><span class="nx">newInventories</span><span class="p">,</span> <span class="nx">oldInventories</span><span class="p">);</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-      <span class="p">}).</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">skip</span><span
-                        class="p">(</span><span class="mi">1</span><span class="p">))</span>
-      <span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span
-                        class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">the log is present only if there are some changes</span><span class="dl">'</span><span class="p">);</span>
-      <span class="p">});</span>
-  <span class="p">}</span>
-
-  <span class="kr">private</span> <span class="nx">calcDiff</span><span class="p">(</span><span class="na">source</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[],</span> <span class="na">target</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[]):</span> <span class="nx">Inventory</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nx">target</span> <span class="o">||</span> <span
-                        class="p">[]).</span><span class="nx">filter</span><span class="p">(</span><span
-                        class="nx">t</span> <span class="o">=&gt;</span> <span class="o">!</span><span
-                        class="p">(</span><span class="nx">source</span> <span class="o">||</span> <span
-                        class="p">[]).</span><span class="nx">find</span><span class="p">(</span><span
-                        class="nx">s</span> <span class="o">=&gt;</span> <span class="nx">s</span><span
-                        class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span
-                        class="nx">t</span><span class="p">.</span><span class="nx">id</span><span class="p">));</span>
-  <span class="p">}</span>
-
-  <span class="nx">loadInventory</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">changes</span><span class="p">.</span><span
-                        class="nx">addedEntries</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">changes</span><span class="p">.</span><span
-                        class="nx">removedEntries</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span
-                        class="nx">dispatch</span><span class="p">(</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">factory</span><span class="p">.</span><span
-                        class="nx">showLoadIndicator</span><span class="p">(</span><span class="nx">LoadIndicator</span><span
-                        class="p">.</span><span class="nx">LOAD_INVENTORIES</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
-            <span class="nx">flatMap</span><span class="p">(()</span> <span class="o">=&gt;</span> <span
-                        class="k">this</span><span class="p">.</span><span class="nx">store</span><span
-                        class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span
-                        class="k">this</span><span class="p">.</span><span class="nx">factory</span><span
-                        class="p">.</span><span class="nx">loadInventories</span><span class="p">())),</span>
-            <span class="nx">catchError</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span
-                        class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-                <span class="k">return</span> <span class="k">of</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-            <span class="p">})</span>
-        <span class="p">).</span><span class="nx">subscribe</span><span class="p">((</span><span class="na">state</span><span
-                        class="p">:</span> <span class="nx">AppState</span><span class="p">)</span> <span class="o">=&gt;</span> <span
-                        class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">lastDownloadAt</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">LastDownloadAt</span><span class="p">;</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">factory</span><span class="p">.</span><span class="nx">hideLoadIndicator</span><span class="p">(</span><span class="nx">LoadIndicator</span><span class="p">.</span><span class="nx">LOAD_INVENTORIES</span><span class="p">));</span>
-          <span class="p">}</span>
-        <span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="nx">inventoriesToString</span><span class="p">(</span><span class="na">inventories</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[]):</span> <span class="nx">string</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">inventories</span><span class="p">.</span><span class="nx">map</span><span
-                        class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span
-                        class="nx">e</span><span class="p">.</span><span class="nx">id</span><span
-                        class="p">).</span><span class="nx">toString</span><span class="p">();</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="26-to-subscribe-to-the-new-states-use-storeselect">2.6. To subscribe to the new states use <code
-                class="language-plaintext highlighter-rouge">store.select(...)</code>.</h5>
-        <p>Example: src/app/components/inventories.component/inventories.component.ts</p>
-
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span
-                    class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span
-                    class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">ngx-state-store</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AppState</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/app-state</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">Inventory</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span
-                        class="s1">../../models/inventory</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">Observable</span><span class="p">,</span> <span class="k">of</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">flatMap</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">rxjs/operators</span><span
-                        class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span
-class="nx">LoadIndicator</span> <span class="p">}</span> <span
-                        class="k">from</span> <span class="dl">'</span><span class="s1">../../services/state-store/action-factory</span><span
-                        class="dl">'</span><span class="p">;</span>
-
-<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
-  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-inventories</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./inventories.component.html</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./inventories.component.scss</span><span class="dl">'</span><span class="p">]</span>
-<span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">InventoriesComponent</span> <span
-                        class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
-
-  <span class="nl">inventories</span><span class="p">:</span> <span class="nx">Inventory</span><span class="p">[];</span>
-  <span class="nx">loading$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
-
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">store</span><span class="p">:</span> <span class="nx">Store</span><span class="o">&lt;</span><span class="nx">AppState</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">}</span>
-
-  <span class="nx">ngOnInit</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">loading$</span> <span class="o">=</span> <span
-                        class="k">this</span><span class="p">.</span><span class="nx">store</span><span
-                        class="p">.</span><span class="nx">select</span><span class="p">(</span><span
-                        class="dl">'</span><span class="s1">ShowLoadingIndicator</span><span class="dl">'</span><span
-                        class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
-      <span class="nx">flatMap</span><span class="p">(</span><span class="nx">indicators</span> <span
-                        class="o">=&gt;</span>
-        <span class="k">of</span><span class="p">(</span><span class="nx">indicators</span><span class="p">.</span><span
-                        class="nx">filter</span><span class="p">(</span><span class="nx">i</span> <span
-                        class="o">=&gt;</span> <span class="nx">i</span> <span class="o">===</span> <span class="nx">LoadIndicator</span><span
-                        class="p">.</span><span class="nx">LOAD_INVENTORIES</span><span class="p">).</span><span
-                        class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span
-                        class="p">))</span>
-    <span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span
-                        class="nx">select</span><span class="p">(</span><span class="dl">'</span><span class="s1">Inventories</span><span
-                        class="dl">'</span><span class="p">).</span><span class="nx">subscribe</span><span
-                        class="p">(</span><span class="nx">inventories</span> <span class="o">=&gt;</span> <span
-                        class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">inventories</span> <span class="o">=</span> <span class="nx">inventories</span><span class="p">;</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-            </div>
-        </div>
-
-        <p>The observables returned from the <code class="language-plaintext highlighter-rouge">store.select(...)</code>
-            return a frozen (read only)
-            state objects that were frozen by the <code class="language-plaintext highlighter-rouge">StateHelper.deepFreeze(any)</code>.
-            Use <code class="language-plaintext highlighter-rouge">StateHelper.cloneObject(any, cloneFunctions =
-                true)</code> to get a clone of the frozen object including functions (default) if it is needed.</p>
-
-        <p>Keep in mind that all objects passed to the state store will be frozen.</p>
-
-        <h3 id="3-api-overview">3. API overview.</h3>
-
-        <h5 id="31-store">3.1. Store.</h5>
-
-        <ul>
-            <li><code class="language-plaintext highlighter-rouge">select(string, ObjectComparator?): Observable&lt;any&gt;</code>
-                - select some state of the state store, <code class="language-plaintext highlighter-rouge">ObjectComparator</code>
-                is
-                optional, can be used to implement more advanced comparison of the potential changes. It is also
-                convenient way
-                to only subscribe to some property/properties changes of some state object.
-            </li>
-            <li><code class="language-plaintext highlighter-rouge">selectOnce(string): Observable&lt;any&gt;</code> -
-                the same as <code class="language-plaintext highlighter-rouge">select</code> but the Observable is
-                complete after forward one value
-            </li>
-            <li><code class="language-plaintext highlighter-rouge">dispatch(action: Action): Observable&lt;state:
-                S&gt;</code> - dispatch the Action that changes some state, the dispatch function
-                always returns an Observable of your state
-            </li>
-        </ul>
-
-        <p><strong>Tip</strong>: you could join many dispatch calls in a pipe and have access to the last state change
-            from the previous call,
-            in this case your actions must do your changes of the state by returning an Observable,
-            the return value of the Observable does not have any meaning, just use <code
-                    class="language-plaintext highlighter-rouge">return of(null);</code> from rxjs, or operator function
-            <code class="language-plaintext highlighter-rouge">tap((x: T) =&gt; void)</code><br/>
-            see example: <code class="language-plaintext highlighter-rouge">inventories-button.component.ts</code> and
-            <code class="language-plaintext highlighter-rouge">load-inventories.action.ts</code><br/>
-            in the example <code class="language-plaintext highlighter-rouge">load-inventories.action.ts</code> the
-            access to the <code class="language-plaintext highlighter-rouge">&lt;state: S&gt;</code> is in the
-            subscription.</p>
-
-        <p><em>Pseudo code example:</em></p>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span
-                    class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span
-                    class="p">(</span><span class="o">&lt;</span><span class="nx">some</span> <span
-                    class="nx">action</span><span class="o">&gt;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
-    <span class="nx">flatMap</span><span class="p">((</span><span class="nx">state</span><span class="p">:</span> <span
-                        class="nx">S</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// ... read and use data from the state</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">another</span> <span class="nx">action</span><span class="o">&gt;</span><span class="p">);</span>
-    <span class="p">}),</span>
-    <span class="nx">flatMap</span><span class="p">((</span><span class="na">state</span><span class="p">:</span> <span
-                        class="nx">S</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// ... read and use data from the state</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">another</span> <span class="nx">action</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">);</span>
-    <span class="p">})</span>
-  <span class="p">).</span><span class="nx">subscribe</span><span class="p">((</span><span class="na">state</span><span
-                        class="p">:</span> <span class="nx">S</span><span class="p">)</span> <span
-                        class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// ... read and use data from the state</span>
-  <span class="p">});</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="311-objectcomparator">3.1.1. ObjectComparator.</h5>
-
-        <p><code class="language-plaintext highlighter-rouge">export type ObjectComparator = (oldObject: any, newObject:
-            any) =&gt; boolean;</code> - is a function.<br/>
-            The ObjectComparator can be used by <code class="language-plaintext highlighter-rouge">Store#select(string,
-                ObjectComparator?): Observable&lt;any&gt;</code> as second parameter.
-            By the ObjectComparator you may implement more advanced comparison of the potential changes.</p>
-
-        <p>The method must return <code class="language-plaintext highlighter-rouge">true</code> if there are no changes
-            you are interested in. For example the property/properties of some state object
-            was/were not changed.</p>
-
-        <p><em>Pseudo code example:</em></p>
-        <div class="language-typescript highlighter-rouge">
-            <div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span
-                    class="nx">store</span><span class="p">.</span><span class="nx">select</span><span
-                    class="p">(</span><span class="dl">'</span><span class="s1">&lt;some state&gt;</span><span
-                    class="dl">'</span><span class="p">,</span> <span class="p">(</span><span
-                    class="nx">oldObjectState</span><span class="p">:</span> <span class="nx">any</span><span class="p">,</span> <span
-                    class="nx">newObjectState</span><span class="p">:</span> <span class="nx">any</span><span class="p">)</span> <span
-                    class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// here you can compare if the value of some property was changed</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">oldObjectState</span> <span class="o">===</span> <span class="nx">newObjectState</span> <span class="o">||</span> <span class="nx">oldObjectState</span> <span class="o">&amp;&amp;</span> <span class="nx">newObjectState</span>
-            <span class="o">&amp;&amp;</span> <span class="nx">oldObjectState</span><span class="p">[</span><span class="dl">'</span><span class="s1">someProperty</span><span class="dl">'</span><span class="p">]</span> <span class="o">===</span> <span class="nx">newObjectState</span><span class="p">[</span><span class="dl">'</span><span class="s1">someProperty</span><span class="dl">'</span><span class="p">])</span> <span class="p">{</span>
-       <span class="c1">// nothing changed</span>
-       <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// someProperty of the state object was changed</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="p">}).</span><span class="nx">subscribe</span><span class="p">((</span><span class="na">state</span><span
-                        class="p">:</span> <span class="nx">S</span><span class="p">)</span> <span
-                        class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// ... do somethig if the newObjectState partly changed</span>
-  <span class="p">});</span>
-</code></pre>
-            </div>
-        </div>
-
-        <h5 id="32-statehelper">3.2. StateHelper.</h5>
-
-        <ul>
-            <li><code class="language-plaintext highlighter-rouge">static deepFreeze&lt;T&gt;(o: T): T</code> - freezes
-                the object, the object is read only after the call
-            </li>
-            <li><code class="language-plaintext highlighter-rouge">static cloneObject&lt;T&gt;(o: T, cloneFunctions =
-                true): T</code> - creates a clone of the object including functions (default), it is useful if the
-                object was frozen by the <code class="language-plaintext highlighter-rouge">deepFreeze</code></li>
-        </ul>
-
-        <h5 id="33-statecontext">3.3. StateContext.</h5>
-
-        <ul>
-            <li><code class="language-plaintext highlighter-rouge">getState(): S</code> - returns the whole current
-                state
-            </li>
-            <li><code class="language-plaintext highlighter-rouge">patchState(val: Partial&lt;S&gt;)</code> - patch the
-                existing state with the provided value
-            </li>
-            <li><code class="language-plaintext highlighter-rouge">setState(state: S)</code> - reset the whole state to
-                a new value
-            </li>
-        </ul>
-
-        <h5 id="34-action">3.4. Action.</h5>
-
-        <ul>
-            <li><code class="language-plaintext highlighter-rouge">abstract handleState(stateContext: StateContext&lt;any&gt;):
-                Observable&lt;any&gt; | void</code> - it must be implemented by the user
-            </li>
-            <li><code class="language-plaintext highlighter-rouge">clone&lt;T&gt;(o: T, cloneFunctions = true): T</code>
-                - clone the object including functions (default), the same as <code
-                        class="language-plaintext highlighter-rouge">StateHelper.cloneObject(o, cloneFunctions =
-                    true)</code></li>
-        </ul>
-
-        <h2 id="build-the-application">Build the application</h2>
-
-        <p>Run <code class="language-plaintext highlighter-rouge">ng build</code> to build the project. The build
-            artifacts will be stored in the <code class="language-plaintext highlighter-rouge">dist/</code> directory.
-        </p>
-
-        <h2 id="running-the-development-server">Running the development server</h2>
-
-        <p>Run <code class="language-plaintext highlighter-rouge">ng serve</code> to start the app. The app is available
-            at <a href="http://localhost:4200/">http://localhost:4200/</a>.</p>
-
-        <h2 id="license">License</h2>
-        <p><a href="https://choosealicense.com/licenses/mit/">MIT</a></p>
+        <!-- end 12 -->
+      </div>
+      <!-- end row -->
+
+      <hr>
 
     </section>
+    <!-- end section -->
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <nav class="docs-sidebar" data-offset-bottom="200" data-offset-top="300" data-spy="affix"
+             role="navigation">
+          <ul class="nav">
+            <li><a href="#line1">First example</a>
+              <ul class="nav">
+                <li><a href="#line1_1">Create a state object</a></li>
+                <li><a href="#line1_2">Create an initial state object</a></li>
+                <li><a href="#line1_3">Register the module</a></li>
+                <li><a href="#line1_4">Create an action</a></li>
+                <li><a href="#line1_5">Create an action factory</a></li>
+                <li><a href="#line1_6">Update some state</a></li>
+                <li><a href="#line1_7">Subscribe to some state</a></li>
+              </ul>
+            </li>
+            <li><a href="#line2">More complex use case</a>
+              <ul class="nav">
+                <li><a href="#line2_1">Extend the state object</a></li>
+                <li><a href="#line2_2">Extend the initial state object</a></li>
+                <li><a href="#line2_3">Create new actions</a></li>
+                <li><a href="#line2_4">Extend the action factory</a></li>
+                <li><a href="#line2_5">Load the data</a></li>
+                <li><a href="#line2_6">Subscribe to the new states</a></li>
+              </ul>
+            </li>
+            <li><a href="#line3">API overview</a>
+                <ul class="nav">
+                    <li><a href="#line3_1">Store</a></li>
+                    <li><a href="#line3_2">ObjectComparator</a></li>
+                    <li><a href="#line3_3">StateHelper</a></li>
+                    <li><a href="#line3_4">StateContext</a></li>
+                    <li><a href="#line3_5">Action</a></li>
+                </ul>
+            </li>
+            <li><a href="#line4">Sources & StateStore online</a></li>
+            <li><a href="#line5">Version History (Changelog)</a></li>
+            <li><a href="#line6">TM Trademarks</a></li>
+            <li><a href="#line7">Copyright and license</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-9">
+        <section class="welcome">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">Introduction
+                <hr>
+              </h2>
+              <div class="row">
+
+                <div class="col-md-12 full">
+                  <div class="intro1">
+                    <ul>
+                      <li><strong>Module Name </strong> ngx-state-store</li>
+                      <li><strong>Module Version </strong> 1.0.13</li>
+                      <li><strong>Documentation Version </strong> 1.0.0</li>
+                      <li><strong>Author </strong> <a
+                          href="http://www.xing.com/profile/Oleg_Soloviov"
+                          target="_blank">Oleg Soloviov</a></li>
+                      <li><strong>Company </strong> <a
+                          href="http://it-and-services.net"
+                          target="_blank">IT&S Information Technologies and Services GmbH</a>
+                      </li>
+                      <li><strong>License </strong> <a
+                          href="https://choosealicense.com/licenses/mit/"
+                          target="_blank">MIT License</a></li>
+                    </ul>
+                  </div>
+
+                  <hr>
+                  <div>
+                    <p><strong>ngx-state-store</strong> is the state management module for the
+                      angular applications starting from the
+                      <strong>angular version >= 7.2.0</strong>
+                    </p>
+
+                    <p><strong>state-store</strong> is the sample angular application for the
+                      ngx-state-store module usage features demonstration.
+                    </p>
+
+                    <p>This documentation is to help you regarding the ngx-state-store module.
+                      The presented simplified code examples are to help you to grasp the
+                      major idea behind the module.</p>
+
+                    <h4>Requirements</h4>
+                    <p>It is expected to have the following knowledge:</p>
+                    <ol>
+                      <li><a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>
+                        is an open-source language which builds on JavaScript, one of the
+                        world’s
+                        most used tools, by adding static type definitions.
+                      </li>
+                      <li><a href="https://angular.io/" target="_blank">Angular</a> is a The
+                        modern web developer's platform.
+                      </li>
+                      <li><a href="https://rxjs-dev.firebaseapp.com/guide/overview"
+                             target="_blank">RxJS</a> is a library for composing asynchronous and
+                        event-based programs by using observable sequences.
+                      </li>
+                      <li>Understanding of the necessity of the state management in the modern web
+                        applications.
+                      </li>
+                      <li>Some modern web development platform like for example IntelliJ WebStorm
+                        or Microsoft Visual Studio for the TypeScript/Angular development.
+                      </li>
+                    </ol>
+
+                  </div>
+                </div>
+
+              </div>
+              <!-- end row -->
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="line1">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">First example
+                <hr>
+              </h2>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <div class="row" id="line1_1">
+            <div class="col-md-12">
+              <h4>Create a state object</h4>
+
+              <div>Source: src/app/services/state-store/app-state.ts</div>
+              <pre class="brush: typescript">
+              export class AppState {
+                Counter: number;
+              }
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line1_2">
+            <div class="col-md-12">
+              <h4>Create an initial state object</h4>
+
+              <div>Source: src/app/services/state-store/app-initial-state.ts</div>
+              <pre class="brush: typescript">
+              import { AppState } from './app-state';
+
+              export const AppInitialState: AppState = {
+                Counter: 0
+              };
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line1_3">
+            <div class="col-md-12">
+              <h4>Register the module</h4>
+
+              <div>Register the module in src/app/app.module.ts</div>
+              <div>Source: src/app/services/state-store/app-state.ts</div>
+              <pre class="brush: typescript">
+              // ...
+              import { NgModule } from '@angular/core';
+              import { AppInitialState } from './services/state-store/app-initial-state';
+              import { NgxStateStoreModule } from 'ngx-state-store';
+              // ...
+
+              @NgModule({
+                declarations: [
+                  // ...
+                ],
+                imports: [
+                  // ...
+                  NgxStateStoreModule.forRoot({
+                    storeName: 'store-demo',
+                    log: true,
+                    timekeeping: true,
+                    initialState: AppInitialState
+                  }),
+                  // ...
+                ],
+                // ...
+              })
+              export class AppModule {
+              // ...
+              }
+              </pre>
+
+              <div>At run time you can access the store in the console by the path <code>window['ngx-state-store']['store-demo']</code>.
+              </div>
+              <div>To activate/deactivate log and timekeeping at runtime:</div>
+              <pre class="brush: javascript">
+              window['ngx-state-store']['store-demo'].state.log.log = true;
+              window['ngx-state-store']['store-demo'].state.performance.timekeeping = true;
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line1_4">
+            <div class="col-md-12">
+              <h4>Create an action</h4>
+
+              <div>Source: src/app/services/state-store/actions/increment-counter.action.ts</div>
+              <pre class="brush: typescript">
+              import { Action, StateContext } from 'ngx-state-store';
+              import { ActionIds } from '../action-ids';
+              import { AppState } from '../app-state';
+
+              export class IncrementCounterAction extends Action {
+                constructor() {
+                  super(ActionIds.UpdateCounter);
+                }
+
+                handleState(stateContext: StateContext&lt;AppState&gt;): void {
+                  const newValue = this.getEmptyState();
+                  newValue.Counter = stateContext.getState().Counter + 1;
+                  stateContext.patchState(newValue);
+                }
+              }
+              </pre>
+
+              <div>Source: src/app/services/state-store/action-ids.ts</div>
+              <pre class="brush: typescript">
+              export enum ActionIds {
+                UpdateCounter = '[Common] update counter'
+              }
+              </pre>
+              <div>The ids, like one above - <code>[Common] update counter</code>, will be displayed in
+                the console log output.
+              </div>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line1_5">
+            <div class="col-md-12">
+              <h4>Create an action factory</h4>
+
+              <div>Source: src/app/services/state-store/action-factory.ts</div>
+              <pre class="brush: typescript">
+              import { Injectable } from '@angular/core';
+              import { Action } from 'ngx-state-store';
+              import { IncrementCounterAction } from './actions/increment-counter.action';
+
+              @Injectable()
+              export class ActionFactory {
+                incrementCounter(): Action {
+                  return new IncrementCounterAction();
+                }
+              }
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line1_6">
+            <div class="col-md-12">
+              <h4>Update some state</h4>
+
+              <div>To update some state call <code>store.dispatch(...)</code>.</div>
+              <div>Source: src/app/components/counter-button.component/counter-button.component.ts</div>
+              <pre class="brush: typescript">
+              import { Component } from '@angular/core';
+              import { AppState } from '../../services/state-store/app-state';
+              import { ActionFactory } from '../../services/state-store/action-factory';
+              import { Store } from 'ngx-state-store';
+
+              @Component({
+                selector: 'app-counter-button',
+                templateUrl: './counter-button.component.html',
+                styleUrls: ['./counter-button.component.scss']
+              })
+              export class CounterButtonComponent {
+                constructor(private store: Store&lt;AppState&gt;,
+                  private factory: ActionFactory) {
+                }
+
+                incrementCounter() {
+                  this.store.dispatch(this.factory.incrementCounter());
+                }
+              }
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line1_7">
+            <div class="col-md-12">
+              <h4>Subscribe to some state</h4>
+
+              <div>To subscribe to some state use <code>store.select(...)</code>.</div>
+              <div>Source: src/app/components/counter.component/counter.component.ts</div>
+              <pre class="brush: typescript">
+              import { Component, OnInit } from '@angular/core';
+              import { Store } from 'ngx-state-store';
+              import { AppState } from '../../services/state-store/app-state';
+              import { Observable } from 'rxjs';
+
+              @Component({
+                selector: 'app-counter',
+                templateUrl: './counter.component.html',
+                styleUrls: ['./counter.component.scss']
+              })
+              export class CounterComponent implements OnInit {
+                counter$: Observable&lt;number&gt;;
+
+                constructor(private store: Store&lt;AppState&gt;) {
+                }
+
+                ngOnInit(): void {
+                  this.counter$ = this.store.select('Counter');
+                }
+              }
+              </pre>
+              <div>The <code>select(...)</code> method returns an Observable.</div>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <br/><br/><br/>
+          <div class="intro2 clearfix">
+            <p><i class="fa fa-exclamation-triangle"></i> It is a bad design / architecture to put the state
+              management inside of the components as the components must be / expected to be reusable. The
+              better approach is to put the state management inside of so coled container-components.
+              Container-components are the components that contain all of the reusable components.
+              <br/><br/>
+              The design and architecture are out of the scope of this documentation. The presented
+              examples are simplified for the sake of the clarity.
+            </p>
+          </div>
+
+        </section>
+        <!-- end section -->
+
+        <section class="section" id="line2">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">More complex use case
+                <hr>
+              </h2>
+
+              <p>The more complex use case includes a back-end call.</p>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <div class="row" id="line2_1">
+            <div class="col-md-12">
+              <h4>Extend the state object</h4>
+
+              <div>Source: src/app/services/state-store/app-state.ts</div>
+              <pre class="brush: typescript">
+              import { Inventory } from '../../models/inventory';
+
+              export class AppState {
+                ShowLoadingIndicator: string[];
+                Counter: number;
+                Inventories: Inventory[];
+                // iso Date string
+                LastDownloadAt: string;
+              }
+              </pre>
+              <div>Source: src/app/models/inventory.ts</div>
+              <pre class="brush: typescript">
+              export class Inventory {
+                id: number;
+                version: string;
+                name: string;
+              }
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line2_2">
+            <div class="col-md-12">
+              <h4>Extend the initial state object</h4>
+
+              <div>Source: src/app/services/state-store/app-initial-state.ts</div>
+              <pre class="brush: typescript">
+              import { AppState } from './app-state';
+
+              export const AppInitialState: AppState = {
+                ShowLoadingIndicator: [],
+                Counter: 0,
+                Inventories: null,
+                LastDownloadAt: ''
+              };
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line2_3">
+            <div class="col-md-12">
+              <h4>Create new actions</h4>
+
+              <div>Source: src/app/services/state-store/actions/show-loading-indicator.action.ts</div>
+              <pre class="brush: typescript">
+              import { Action, StateContext } from 'ngx-state-store';
+              import { ActionIds } from '../action-ids';
+              import { AppState } from '../app-state';
+
+              export class ShowLoadingIndicatorAction extends Action {
+                constructor(private identifier: string) {
+                  super(ActionIds.ShowLoadingIndicator + ': ' + identifier);
+                }
+
+                handleState(stateContext: StateContext&lt;AppState&gt;): void {
+                  const newState = this.getEmptyState();
+                  newState.ShowLoadingIndicator
+                    = stateContext.getState().ShowLoadingIndicator.slice();
+                  newState.ShowLoadingIndicator.push(this.identifier);
+                  stateContext.patchState(newState);
+                }
+              }
+              </pre>
+
+              <div>Source: src/app/services/state-store/actions/hide-loading-indicator.action.ts</div>
+              <pre class="brush: typescript">
+              import { Action, StateContext } from 'ngx-state-store';
+              import { ActionIds } from '../action-ids';
+              import { AppState } from '../app-state';
+
+              export class HideLoadingIndicatorAction extends Action {
+                constructor(private identifier: string) {
+                  super(ActionIds.HideLoadingIndicator + ': ' + identifier);
+                }
+
+                handleState(stateContext: StateContext&lt;AppState&gt;): void {
+                  if (stateContext.getState().ShowLoadingIndicator == null) {
+                    return;
+                  }
+
+                  const index = stateContext.getState()
+                    .ShowLoadingIndicator.indexOf(this.identifier);
+                  if (index < 0) {
+                    return;
+                  }
+
+                  const newState: AppState = this.getEmptyState();
+                  newState.ShowLoadingIndicator
+                    = stateContext.getState().ShowLoadingIndicator.slice();
+                  newState.ShowLoadingIndicator.splice(index, 1);
+                  stateContext.patchState(newState);
+                }
+              }
+              </pre>
+
+              <div>Source: src/app/services/state-store/actions/load-inventories.action.ts</div>
+              <pre class="brush: typescript">
+              import { Action, StateContext } from 'ngx-state-store';
+              import { ActionIds } from '../action-ids';
+              import { AppState } from '../app-state';
+              import { InventoryConnector } from '../../connectors/inventory.connector';
+              import { Observable } from 'rxjs';
+              import { tap } from 'rxjs/operators';
+
+              export class LoadInventoriesAction extends Action {
+                constructor(private inventoryConnector: InventoryConnector) {
+                  super(ActionIds.LoadInventories);
+                }
+
+                handleState(stateContext: StateContext&lt;AppState&gt;): Observable&lt;any&gt; {
+                  return this.inventoryConnector.loadInventory()
+                    .pipe(
+                      tap(inventories => {
+                        const newState: AppState = this.getEmptyState();
+                        newState.Inventories = inventories;
+                        newState.LastDownloadAt = (new Date()).toISOString();
+                        stateContext.patchState(newState);
+                      })
+                  );
+                }
+              }
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line2_4">
+            <div class="col-md-12">
+              <h4>Extend the action factory</h4>
+
+              <div>Source: src/app/services/state-store/action-factory.ts</div>
+              <pre class="brush: typescript">
+              import { Injectable } from '@angular/core';
+              import { Action } from 'ngx-state-store';
+              import { ShowLoadingIndicatorAction } from './actions/show-loading-indicator.action';
+              import { IncrementCounterAction } from './actions/increment-counter.action';
+              import { HideLoadingIndicatorAction } from './actions/hide-loading-indicator.action';
+              import { LoadInventoriesAction } from './actions/load-inventories.action';
+              import { InventoryConnector } from '../connectors/inventory.connector';
+
+              export enum LoadIndicator {
+                DEFAULT = 'DEFAULT',
+                LOAD_INVENTORIES = 'LOAD_INVENTORIES'
+              }
+
+              @Injectable()
+              export class ActionFactory {
+                constructor(private inventoryConnector: InventoryConnector) {
+                }
+
+                incrementCounter(): Action {
+                  return new IncrementCounterAction();
+                }
+
+                showLoadIndicator(identifier: string = LoadIndicator.DEFAULT): Action {
+                  return new ShowLoadingIndicatorAction(identifier);
+                }
+
+                hideLoadIndicator(identifier: string = LoadIndicator.DEFAULT): Action {
+                  return new HideLoadingIndicatorAction(identifier);
+                }
+
+                loadInventories(): Action {
+                  return new LoadInventoriesAction(this.inventoryConnector);
+                }
+              }
+              </pre>
+
+              <div>Source: src/app/services/connectors/inventory.connector.ts</div>
+              <pre class="brush: typescript">
+              import { Injectable } from '@angular/core';
+              import { Observable } from 'rxjs';
+              import { HttpClient } from '@angular/common/http';
+              import { Inventory } from '../../models/inventory';
+              import { delay } from 'rxjs/operators';
+
+              @Injectable()
+              export class InventoryConnector {
+                constructor(private http: HttpClient) {
+                }
+
+                loadInventory(): Observable<Inventory[]> {
+                  // delay(2000) to imitate the network throttling
+                  return this.http.get&lt;Inventory[]&gt;('assets/mock-data/inventories.json')
+                    .pipe(delay(2000));
+                }
+              }
+              </pre>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line2_5">
+            <div class="col-md-12">
+              <h4>Load the data</h4>
+
+              <div>To load the data from the back-end and update the states call the
+                store.dispatch(...).subscribe()
+              </div>
+              <div>Source:
+                src/app/components/inventories-button.component/inventories-button.component.ts
+              </div>
+              <pre class="brush: typescript">
+              import { Component, OnInit } from '@angular/core';
+              import { Store } from 'ngx-state-store';
+              import { AppState } from '../../services/state-store/app-state';
+              import { ActionFactory, LoadIndicator } from '../../services/state-store/action-factory';
+              import { catchError, flatMap, skip } from 'rxjs/operators';
+              import { of } from 'rxjs';
+              import { Inventory } from '../../models/inventory';
+
+              export interface Changes {
+                addedEntries: Inventory[];
+                removedEntries: Inventory[];
+              }
+
+              @Component({
+                selector: 'app-inventories-button',
+                templateUrl: './inventories-button.component.html',
+                styleUrls: ['./inventories-button.component.scss']
+              })
+              export class InventoriesButtonComponent implements OnInit {
+                lastDownloadAt: string;
+                changes: Changes = {addedEntries: [], removedEntries: []} as Changes;
+
+                constructor(private store: Store&lt;AppState&gt;,
+                  private factory: ActionFactory) {
+                }
+
+                ngOnInit(): void {
+                  this.store.select('Inventories',
+                    (oldInventories: Inventory[], newInventories: Inventory[]) => {
+                  if (oldInventories === newInventories
+                    || oldInventories && newInventories
+                    && !this.calcDiff(oldInventories, newInventories).length
+                    && !this.calcDiff(newInventories, oldInventories).length) {
+                    return true;
+                  }
+                  this.changes.addedEntries = this.calcDiff(oldInventories, newInventories);
+                  this.changes.removedEntries = this.calcDiff(newInventories, oldInventories);
+                    return false;
+                  }).pipe(skip(1))
+                  .subscribe(() => {
+                    console.log('the log is present only if there are some changes');
+                  });
+                }
+
+                private calcDiff(source: Inventory[], target: Inventory[]): Inventory[] {
+                  return (target || []).filter(t => !(source || []).find(s => s.id === t.id));
+                }
+
+                loadInventory() {
+                  this.changes.addedEntries = [];
+                  this.changes.removedEntries = [];
+                  this.store.dispatch(
+                    this.factory.showLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
+                  .pipe(
+                    flatMap(() => this.store.dispatch(this.factory.loadInventories())),
+                    catchError(error => {
+                      console.log(error);
+                      return of(error);
+                    })
+                  ).subscribe((state: AppState) => {
+                      this.lastDownloadAt = state.LastDownloadAt;
+                      this.store.dispatch(this.factory.hideLoadIndicator(LoadIndicator.LOAD_INVENTORIES));
+                    }
+                  );
+                }
+
+                inventoriesToString(inventories: Inventory[]): string {
+                  return inventories.map(e => e.id).toString();
+                }
+              }
+              </pre>
+
+
+              <br/><br/><br/>
+              <div class="intro2 clearfix">
+                <p><i class="fa fa-exclamation-triangle"></i> If an action returns an Observable&lt;any&gt;
+                    like LoadInventoriesAction in our example, you must
+                    use <code>store.dispatch(...).subscribe()</code> variant to get the code executed.</code>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+          <div class="row" id="line2_6">
+            <div class="col-md-12">
+              <h4>Subscribe to the new states</h4>
+
+              <div>To subscribe to the new states use store.select(...)</div>
+              <div>Source: src/app/components/inventories.component/inventories.component.ts</div>
+              <pre class="brush: typescript">
+              import { Component, OnInit } from '@angular/core';
+              import { Store } from 'ngx-state-store';
+              import { AppState } from '../../services/state-store/app-state';
+              import { Inventory } from '../../models/inventory';
+              import { Observable, of } from 'rxjs';
+              import { flatMap } from 'rxjs/operators';
+              import { LoadIndicator } from '../../services/state-store/action-factory';
+
+              @Component({
+                selector: 'app-inventories',
+                templateUrl: './inventories.component.html',
+                styleUrls: ['./inventories.component.scss']
+              })
+              export class InventoriesComponent implements OnInit {
+                inventories: Inventory[];
+                loading$: Observable&lt;boolean&gt;;
+
+                constructor(private store: Store&lt;AppState&gt;) {
+                }
+
+                ngOnInit(): void {
+                  this.loading$ = this.store.select('ShowLoadingIndicator').pipe(
+                    flatMap(indicators =>
+                      of(indicators.filter(i => i === LoadIndicator.LOAD_INVENTORIES).length > 0))
+                  );
+                  this.store.select('Inventories').subscribe(inventories => {
+                    this.inventories = inventories;
+                  });
+                }
+              }
+              </pre>
+              <div>The observables returned from the <code>store.select(...)</code> return a frozen (read only) state
+                  objects that were frozen by the <code>StateHelper.deepFreeze(any)</code>. Use
+                  <code>StateHelper.cloneObject(any, cloneFunctions = true)</code> to get a clone of the frozen object
+                  including the functions (default) if it is needed.
+              </div>
+
+              <br/><br/><br/>
+              <div class="intro2 clearfix">
+                <p><i class="fa fa-exclamation-triangle"></i> Keep in mind that all objects passed to the state
+                    store will be frozen. The freeze process is based on JavaScript <code>Object.freeze()</code>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- end row -->
+
+          <hr>
+
+        </section>
+        <!-- end section -->
+
+        <section class="section" id="line3">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">API overview
+                <hr>
+              </h2>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+            <div class="row" id="line3_1">
+              <div class="col-md-12">
+                <h4>Store</h4>
+
+                  <ul>
+                      <li><strong>select</strong>
+                          - <code>select(string, ObjectComparator?): Observable&lt;any&gt;</code>
+                          - select some state of the state store, <code>ObjectComparator</code> is optional, can be used
+                          to implement more advanced comparison of the potential changes. It is also convenient way to
+                          only subscribe to some property/properties changes of some state object.</li>
+                      <li><strong>selectOnce</strong>
+                          - <code>selectOnce(string): Observable&lt;any&gt;</code>
+                          - the same as <code>select</code> but the Observable is complete after forward one value .</li>
+                      <li><strong>dispatch</strong>
+                          - <code>dispatch(action: Action): Observable&lt;state: S&gt;</code>
+                          - dispatch the Action that changes some state, the dispatch function always returns an
+                          Observable of your state .</li>
+                  </ul>
+
+                  <br />
+                  <div class="intro2 clearfix">
+                    <p><i class="fa fa-comment"> Tip:</i> you could join many dispatch
+                        calls in a pipe and have access to the last state change from the previous call, in this case
+                        the preferable way to do any changes of the state by returning an Observable, the return value
+                        of the Observable does not have any meaning, just use <code>return of(null);</code> from rxjs,
+                        or operator function <code>tap((x: T) => void)</code>
+                        <br />
+                        see example: inventories-button.component.ts and load-inventories.action.ts
+                        <br />
+                        in the example load-inventories.action.ts the access to the &lt;state: S&gt; is in the
+                        subscription.
+                    </p>
+                  </div>
+
+                  <br />
+                  <div>Pseudo code example:</div>
+                  <pre class="brush: typescript">
+                  this.store.dispatch(&lt;some action&gt;)
+                  .pipe(
+                    flatMap((state: S) => {
+                      // ... read and use data from the state
+                      return this.store.dispatch(&lt;another action&gt;);
+                    }),
+                    flatMap((state: S) => {
+                      // ... read and use data from the state
+                      return this.store.dispatch(&lt;another action 2&gt;);
+                    })
+                  ).subscribe((state: S) => {
+                    // ... read and use data from the state
+                  });
+                  </pre>
+              </div>
+            </div>
+            <!-- end row -->
+
+            <hr>
+
+            <div class="row" id="line3_2">
+                <div class="col-md-12">
+                  <h4>ObjectComparator</h4>
+
+                  <p><code>export type ObjectComparator = (oldObject: any, newObject: any) => boolean;</code> - is a
+                    function. The ObjectComparator can be used by
+                    <code>Store#select(string, ObjectComparator?): Observable&lt;any&gt;</code> as second parameter.
+                    By the ObjectComparator you may implement more advanced comparison of the potential changes.
+                    <br />
+                      The method must return <code>true</code> if there are no changes you are interested in. For
+                      example the property/properties of some state object was/were not changed.</p>
+
+                  <div>Pseudo code example:</div>
+                  <pre class="brush: typescript">
+                  this.store.select('&lt;some state&gt;', (oldObjectState: any, newObjectState: any) => {
+                    // here you can compare if the value of some property was changed
+                    if (oldObjectState === newObjectState || oldObjectState && newObjectState
+                      && oldObjectState['someProperty'] === newObjectState['someProperty']) {
+                      // nothing changed
+                      return true;
+                    }
+
+                    // someProperty of the state object was changed
+                    return false;
+                  }).subscribe((state: S) => {
+                    // ... do somethig if the newObjectState partly changed
+                  });
+                  </pre>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <hr>
+
+            <div class="row" id="line3_3">
+              <div class="col-md-12">
+                <h4>StateHelper</h4>
+
+                <ul>
+                    <li><strong>deepFreeze</strong>
+                        - <code>static deepFreeze&lt;T&gt;(o: T): T</code>
+                        - freezes the object, the object is read only after the call The freeze process is based on
+                        JavaScript <code>Object.freeze()</code>.</li>
+                    <li><strong>cloneObject</strong>
+                        - <code>static cloneObject&lt;T&gt;(o: T, cloneFunctions = true): T</code>
+                        - creates a clone of the object including functions (default), it is useful if the object was
+                        frozen by the <code>deepFreeze</code>.</li>
+                </ul>
+
+              </div>
+            </div>
+            <!-- end row -->
+
+            <hr>
+
+            <div class="row" id="line3_4">
+              <div class="col-md-12">
+                <h4>StateContext</h4>
+
+                <ul>
+                    <li><strong>getState</strong>
+                        - <code>getState(): S</code>
+                        - returns the whole current state.</li>
+                    <li><strong>patchState</strong>
+                        - <code>patchState(val: Partial&lt;S&gt;)</code>
+                        - patch the existing state with the provided value.</li>
+                    <li><strong>setState</strong>
+                        - <code>setState(state: S)</code>
+                        - reset the whole state to a new value.</li>
+                </ul>
+
+              </div>
+            </div>
+            <!-- end row -->
+
+            <hr>
+
+            <div class="row" id="line3_5">
+                <div class="col-md-12">
+                  <h4>Action</h4>
+
+                  <ul>
+                    <li><strong>handleState</strong>
+                        - <code>abstract handleState(stateContext: StateContext&lt;any&gt;): Observable&lt;any&gt; | void</code>
+                        - it must be implemented by the user.</li>
+                    <li><strong>clone</strong>
+                        - <code>pclone&lt;T&gt;(o: T, cloneFunctions = true): T</code>
+                        - clone the object including functions (default), the same as <code>StateHelper.cloneObject(o,
+                            cloneFunctions = true)</code>.</li>
+                  </ul>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <hr>
+
+        </section>
+        <!-- end section -->
+
+        <section class="section" id="line4">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">Sources & StateStore online
+                <hr>
+              </h2>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <p>The sourcecode can be downloaded from <a
+                  href="https://github.com/it-and-services/state-store"
+                  target="_blank">https://github.com/it-and-services/state-store</a>.
+
+              </p>
+
+              <p>
+                <strong>StateStore</strong> App example online <a
+                  href="https://it-and-services.github.io/state-store/app.html"
+                  target="_blank">here</a>.
+              </p>
+
+            </div>
+
+          </div>
+          <!-- end row -->
+
+        </section>
+        <!-- end section -->
+
+        <section class="section" id="line5">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">Version History (Changelog)
+                <hr>
+              </h2>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <p>The history section consists of two parts. The first part is regarding the
+                <strong>ngx-state-store</strong> changes. The second part is regarding the documentation
+                changes.</p>
+
+              <hr>
+
+              <h4>Ngx-State-Store Changelog</h4>
+
+              <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.13 - 20 Nov 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.12 - 20 Nov 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - updated to angular 11
+                                        - extend performance plugin by the 'limit' parameter, default value is 1000
+                                        - improve documentation
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.11 - 13 Jul 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+                                        - update example application
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.10 - 26 Jun 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.9 - 28 Apr 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.8 - 25 Mar 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.7 - 10 Feb 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.6 - 30 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - hide second parameter in the StateHelper.cloneObject(any)
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.5 - 28 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+                                        - increase test coverage
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.4 - 14 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - add clone Date into the StateHelper.cloneObject()
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.3 - 8 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - add keywords into the package.json
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.2 - 7 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+                                        - the plugins are always enabled
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.1 - 6 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - improve documentation
+                                        - improve build process
+                                        - increase test coverage
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.0 - 5 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - first release
+                                        - supported applications with angular version >= 7.2.0
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 0.0.1 - 4 Jan 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - first beta release
+
+
+                            </pre>
+
+              <p></p>
+
+              <hr>
+
+              <h4>Ngx-State-Store Documentation Changelog</h4>
+
+              <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.9 - 20 Nov 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - Initial HTML based documentation
+
+
+                            </pre>
+
+            </div>
+          </div>
+          <!-- end row -->
+
+        </section>
+        <!-- end section -->
+
+        <section class="section" id="line6">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">TM Trademarks
+                <hr>
+              </h2>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <p>JavaScript is a trademark of Oracle Corporation.</p>
+              <p>TypeScript is a trademark of Lotus Development Corporation.</p>
+              <p>IntelliJ is a registered trademarks of JetBrains s.r.o.</p>
+              <p>WebStorm is a registered trademarks of JetBrains s.r.o.</p>
+              <p>Microsoft is a registered trademark of Microsoft Corporation.</p>
+              <p>Visual Studio is a registered trademark of Microsoft Corporation.</p>
+              <p>All other product, company, and service names as well as company logos mentioned are the
+                property of their respective owners and are mentioned for identification purposes
+                only.</p>
+
+            </div>
+          </div>
+          <!-- end row -->
+
+        </section>
+        <!-- end section -->
+
+        <section class="section" id="line7">
+
+          <div class="row">
+            <div class="col-md-12 left-align">
+              <h2 class="dark-text">Copyright and license
+                <hr>
+              </h2>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <p>Code released under the <a href="https://choosealicense.com/licenses/mit/"
+                                            target="_blank">MIT License</a> License.</p>
+              <p>For more information about copyright and license check <a
+                  href="https://choosealicense.com/" target="_blank">choosealicense.com</a>.</p>
+
+            </div>
+          </div>
+          <!-- end row -->
+
+        </section>
+        <!-- end section -->
+      </div>
+      <!-- // end .col -->
+
+    </div>
+    <!-- // end .row -->
+
+  </div>
+  <!-- // end container -->
+
 </div>
+<!-- end wrapper -->
 
-<!-- FOOTER  -->
-<div class="outer" id="footer_wrap">
-    <footer class="inner">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/retina.js"></script>
+<script src="js/jquery.fitvids.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
 
-        <p class="copyright">state-store maintained by <a href="https://github.com/it-and-services">it-and-services</a>
-        </p>
+<!-- CUSTOM PLUGINS -->
+<script src="js/custom.js"></script>
+<script src="js/main.js"></script>
 
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-    </footer>
-</div>
-
+<script src="js/syntax-highlighter/scripts/shCore.js"></script>
+<script src="js/syntax-highlighter/scripts/shBrushXml.js"></script>
+<script src="js/syntax-highlighter/scripts/shBrushCss.js"></script>
+<script src="js/syntax-highlighter/scripts/shBrushJScript.js"></script>
+<script src="js/syntax-highlighter/scripts/shBrushTypeScript.js"></script>
 
 </body>
+
 </html>
