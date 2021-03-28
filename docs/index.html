@@ -154,7 +154,7 @@
                     <li><a href="#line3_5">Action</a></li>
                 </ul>
             </li>
-            <li><a href="#line4">Sources & StateStore online</a></li>
+            <li><a href="#line4">Sources & Example</a></li>
             <li><a href="#line5">Version History (Changelog)</a></li>
             <li><a href="#line6">TM Trademarks</a></li>
             <li><a href="#line7">Copyright and license</a></li>
@@ -175,7 +175,7 @@
                   <div class="intro1">
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
-                      <li><strong>Module Version </strong> 1.0.13</li>
+                      <li><strong>Module Version </strong> 1.0.14</li>
                       <li><strong>Documentation Version </strong> 1.0.0</li>
                       <li><strong>Author </strong> <a
                           href="http://www.xing.com/profile/Oleg_Soloviov"
@@ -287,8 +287,7 @@
             <div class="col-md-12">
               <h4>Register the module</h4>
 
-              <div>Register the module in src/app/app.module.ts</div>
-              <div>Source: src/app/services/state-store/app-state.ts</div>
+              <div>Source: src/app/app.module.ts</div>
               <pre class="brush: typescript">
               // ...
               import { NgModule } from '@angular/core';
@@ -460,9 +459,9 @@
           <br/><br/><br/>
           <div class="intro2 clearfix">
             <p><i class="fa fa-exclamation-triangle"></i> It is a bad design / architecture to put the state
-              management inside of the components as the components must be / expected to be reusable. The
-              better approach is to put the state management inside of so coled container-components.
-              Container-components are the components that contain all of the reusable components.
+              management inside of the components as the components must be / are expected to be reusable. The
+              better approach is to put the state management inside of so called container-components.
+              Container-components are the components, that contain all of the reusable components.
               <br/><br/>
               The design and architecture are out of the scope of this documentation. The presented
               examples are simplified for the sake of the clarity.
@@ -781,8 +780,9 @@
               <br/><br/><br/>
               <div class="intro2 clearfix">
                 <p><i class="fa fa-exclamation-triangle"></i> If an action returns an Observable&lt;any&gt;
-                    like LoadInventoriesAction in our example, you must
-                    use <code>store.dispatch(...).subscribe()</code> variant to get the code executed.</code>
+                  like LoadInventoriesAction in our example <br />
+                  <code>handleState(stateContext: StateContext&lt;AppState&gt;): Observable&lt;any&gt;</code>,
+                  you must use <code>store.dispatch(...).subscribe()</code> variant to get the code executed.</code>
                 </p>
               </div>
             </div>
@@ -874,7 +874,7 @@
                           only subscribe to some property/properties changes of some state object.</li>
                       <li><strong>selectOnce</strong>
                           - <code>selectOnce(string): Observable&lt;any&gt;</code>
-                          - the same as <code>select</code> but the Observable is complete after forward one value .</li>
+                          - the same as <code>select</code> but the Observable is complete after forward one value.</li>
                       <li><strong>dispatch</strong>
                           - <code>dispatch(action: Action): Observable&lt;state: S&gt;</code>
                           - dispatch the Action that changes some state, the dispatch function always returns an
@@ -883,13 +883,14 @@
 
                   <br />
                   <div class="intro2 clearfix">
-                    <p><i class="fa fa-comment"> Tip:</i> you could join many dispatch
-                        calls in a pipe and have access to the last state change from the previous call, in this case
-                        the preferable way to do any changes of the state by returning an Observable, the return value
-                        of the Observable does not have any meaning, just use <code>return of(null);</code> from rxjs,
-                        or operator function <code>tap((x: T) => void)</code>
+                    <p><i class="fa fa-comment"> Tip:</i> You could join many dispatch
+                        calls in a pipe and have access to the last state change from the previous call. In this case,
+                        the preferable way to do any changes of the state is by returning an Observable. The Observable
+                        itself returning value does not have any meaning. For the return value inside of the Observable
+                        you could use <code>return of(null);</code> from rxjs, or operator function <code>tap((x: T) =>
+                        void)</code>.
                         <br />
-                        see example: inventories-button.component.ts and load-inventories.action.ts
+                        see te examples: inventories-button.component.ts and load-inventories.action.ts
                         <br />
                         in the example load-inventories.action.ts the access to the &lt;state: S&gt; is in the
                         subscription.
@@ -925,7 +926,7 @@
 
                   <p><code>export type ObjectComparator = (oldObject: any, newObject: any) => boolean;</code> - is a
                     function. The ObjectComparator can be used by
-                    <code>Store#select(string, ObjectComparator?): Observable&lt;any&gt;</code> as second parameter.
+                    <code>Store.select(string, ObjectComparator?): Observable&lt;any&gt;</code> as second parameter.
                     By the ObjectComparator you may implement more advanced comparison of the potential changes.
                     <br />
                       The method must return <code>true</code> if there are no changes you are interested in. For
@@ -960,7 +961,7 @@
                 <ul>
                     <li><strong>deepFreeze</strong>
                         - <code>static deepFreeze&lt;T&gt;(o: T): T</code>
-                        - freezes the object, the object is read only after the call The freeze process is based on
+                        - freezes the object, the object is read only after the call. The freeze process is based on
                         JavaScript <code>Object.freeze()</code>.</li>
                     <li><strong>cloneObject</strong>
                         - <code>static cloneObject&lt;T&gt;(o: T, cloneFunctions = true): T</code>
@@ -1022,7 +1023,7 @@
 
           <div class="row">
             <div class="col-md-12 left-align">
-              <h2 class="dark-text">Sources & StateStore online
+              <h2 class="dark-text">Sources & Example
                 <hr>
               </h2>
             </div>
@@ -1033,7 +1034,7 @@
           <div class="row">
             <div class="col-md-12">
 
-              <p>The sourcecode can be downloaded from <a
+              <p>The source code can be downloaded from <a
                   href="https://github.com/it-and-services/state-store"
                   target="_blank">https://github.com/it-and-services/state-store</a>.
 
@@ -1077,6 +1078,11 @@
               <h4>Ngx-State-Store Changelog</h4>
 
               <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.14 - 28 Mar 2020
+                                        -----------------------------------------------------------------------------------------
+                                        - externalize the documentation
 
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.13 - 20 Nov 2020
@@ -1173,7 +1179,7 @@
               <pre class="brush: html">
 
                                         -----------------------------------------------------------------------------------------
-                                        Version 1.0.9 - 20 Nov 2020
+                                        Version 1.0.0 - 28 Mar 2020
                                         -----------------------------------------------------------------------------------------
                                         - Initial HTML based documentation
 
