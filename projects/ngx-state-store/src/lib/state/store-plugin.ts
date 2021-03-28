@@ -4,7 +4,7 @@ export abstract class StorePlugin {
 
   private namespace = 'ngx-state-store';
 
-  get state() {
+  get state(): any  {
     return window[this.namespace][this.storageName].state;
   }
 

@@ -112,7 +112,7 @@ export class Store<S> {
     };
   }
 
-  private updateState(state: S) {
+  private updateState(state: S): void {
     this.currentState = StateHelper.deepFreeze(state);
     this.dispatchState(this.currentState);
 
@@ -122,19 +122,19 @@ export class Store<S> {
     }, 0);
   }
 
-  private dispatchBefore(action: Action, state: any, order: number) {
+  private dispatchBefore(action: Action, state: any, order: number): void {
     this.plugins.forEach((plugin) => {
       plugin.dispatchBefore(action.Type, state, order);
     });
   }
 
-  private dispatchAfter(action: Action, state: any, order: number) {
+  private dispatchAfter(action: Action, state: any, order: number): void {
     this.plugins.forEach((plugin) => {
       plugin.dispatchAfter(action.Type, state, order);
     });
   }
 
-  private dispatchState(state: any) {
+  private dispatchState(state: any): void {
     this.plugins.forEach((plugin) => {
       plugin.newState(state);
     });

@@ -14,7 +14,7 @@ export class CounterButtonComponent {
               private factory: ActionFactory) {
   }
 
-  incrementCounter() {
+  incrementCounter(): void {
     this.store.dispatch(this.factory.incrementCounter());
   }
 }

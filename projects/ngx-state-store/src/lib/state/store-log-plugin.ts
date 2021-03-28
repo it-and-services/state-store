@@ -43,10 +43,10 @@ export class StoreLogPlugin extends StorePlugin {
     }
   }
 
-  dispatchBefore() {
+  dispatchBefore(): void {
   }
 
-  dispatchAfter(actionId: string, state: any, order: number) {
+  dispatchAfter(actionId: string, state: any, order: number): void {
     if (this.loggingDisabled) {
       return;
     }
@@ -61,6 +61,6 @@ export class StoreLogPlugin extends StorePlugin {
     StoreLogPlugin.logAction('', '');
   }
 
-  newState() {
+  newState(): void {
   }
 }

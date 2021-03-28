@@ -36,7 +36,7 @@ export class StorePerformancePlugin extends StorePlugin {
     this.state.performance = this.settings;
   }
 
-  dispatchBefore(actionId: string, state: any, order: number) {
+  dispatchBefore(actionId: string, state: any, order: number): void {
     if (!this.timekeeping) {
       return;
     }
@@ -51,10 +51,10 @@ export class StorePerformancePlugin extends StorePlugin {
     };
   }
 
-  newState() {
+  newState(): void {
   }
 
-  dispatchAfter(actionId: string, state: any, order: number) {
+  dispatchAfter(actionId: string, state: any, order: number): void {
     if (!this.timekeeping) {
       return;
     }

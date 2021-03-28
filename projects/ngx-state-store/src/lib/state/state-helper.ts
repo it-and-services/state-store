@@ -100,7 +100,7 @@ export class StateHelper {
     return Object.assign(StateHelper.getEmptyObject(), state, newValue);
   }
 
-  private static isValidDate(date) {
+  private static isValidDate(date): boolean {
     return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date as any);
   }
 }

@@ -67,7 +67,7 @@ describe('StateHelper', () => {
     const of = {
       prop: 88,
       // tslint:disable-next-line:object-literal-shorthand
-      funk: function(add: number) {
+      funk: function(add: number): number {
         return this.prop + add;
       }
     };
@@ -84,7 +84,7 @@ describe('StateHelper', () => {
     const of = {
       prop: 88,
       // tslint:disable-next-line:object-literal-shorthand
-      funk: function(add: number) {
+      funk: function(add: number): number {
         return this.prop + add;
       }
     };

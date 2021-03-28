@@ -47,7 +47,7 @@ export class InventoriesButtonComponent implements OnInit {
     return (target || []).filter(t => !(source || []).find(s => s.id === t.id));
   }
 
-  loadInventory() {
+  loadInventory(): void {
     this.changes.addedEntries = [];
     this.changes.removedEntries = [];
     this.store.dispatch(this.factory.showLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
