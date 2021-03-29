@@ -9,7 +9,7 @@
 
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
   function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -209,7 +209,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! C:\Dev\projects\state-store\src\main.ts */
+      /*! /home/oleg/P_DRIVE/DEV/projects/state-store/src/main.ts */
       "zUnb");
       /***/
     },
@@ -230,7 +230,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY291bnRlci5jb21wb25lbnQvY291bnRlci5jb21wb25lbnQuc2NzcyJ9 */";
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb3VudGVyLmNvbXBvbmVudC5zY3NzIn0= */";
       /***/
     },
 
@@ -250,7 +250,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<button (click)=\"loadInventory()\" class=\"btn-primary\">Load Inventory</button>\r\n<p>Last download at: {{lastDownloadAt}}</p>\r\n<p *ngIf=\"changes.addedEntries.length\">\r\n  {{changes.addedEntries.length}} new {{changes.addedEntries.length > 1 ? 'entries' : 'entry'}}:\r\n  {{inventoriesToString(changes.addedEntries)}}</p>\r\n<p *ngIf=\"changes.removedEntries.length\">\r\n  {{changes.removedEntries.length}} {{changes.removedEntries.length > 1 ? 'entries' : 'entry'}} removed:\r\n  {{inventoriesToString(changes.removedEntries)}}</p>\r\n";
+      __webpack_exports__["default"] = "<button (click)=\"loadInventory()\" class=\"btn-primary\">Load Inventory</button>\n<p>Last download at: {{lastDownloadAt}}</p>\n<p *ngIf=\"changes.addedEntries.length\">\n  {{changes.addedEntries.length}} new {{changes.addedEntries.length > 1 ? 'entries' : 'entry'}}:\n  {{inventoriesToString(changes.addedEntries)}}</p>\n<p *ngIf=\"changes.removedEntries.length\">\n  {{changes.removedEntries.length}} {{changes.removedEntries.length > 1 ? 'entries' : 'entry'}} removed:\n  {{inventoriesToString(changes.removedEntries)}}</p>\n";
       /***/
     },
 
@@ -270,7 +270,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".row {\r\n  margin-top: 1rem;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5yb3cge1xyXG4gIG1hcmdpbi10b3A6IDFyZW07XHJcbn1cclxuIl19 */";
+      __webpack_exports__["default"] = ".row {\n  margin-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnJvdyB7XG4gIG1hcmdpbi10b3A6IDFyZW07XG59XG4iXX0= */";
       /***/
     },
 
@@ -484,7 +484,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".inventories {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  max-height: 300px;\n  overflow: hidden;\n}\n\n.load-indicator-background {\n  background-color: #cccccc;\n  opacity: .7;\n}\n\n.load-indicator, .load-indicator-background, .inventories-table-container {\n  height: 100%;\n  width: 100%;\n  z-index: +1;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.inventories-table-container {\n  z-index: initial;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.load-indicator {\n  margin: auto;\n  background-color: white;\n  width: 7rem;\n  height: 3rem;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.load-indicator > div {\n  margin: 0;\n  padding: 0;\n  vertical-align: middle;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9pbnZlbnRvcmllcy5jb21wb25lbnQvaW52ZW50b3JpZXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFDbEIsV0FBVztFQUNYLFlBQVk7RUFDWixpQkFBaUI7RUFDakIsaUJBQWlCO0VBQ2pCLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxZQUFZO0VBQ1osV0FBVztFQUNYLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsTUFBTTtFQUNOLE9BQU87RUFDUCxRQUFRO0VBQ1IsU0FBUztBQUNYOztBQUVBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixnQkFBZ0I7QUFDbEI7O0FBRUE7RUFDRSxZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLFdBQVc7RUFDWCxZQUFZO0VBQ1osYUFBYTtFQUNiLDZCQUE2QjtFQUM3QixtQkFBbUI7QUFDckI7O0FBUkE7RUFVSSxTQUFTO0VBQ1QsVUFBVTtFQUNWLHNCQUFzQjtBQUUxQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaW52ZW50b3JpZXMuY29tcG9uZW50L2ludmVudG9yaWVzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmludmVudG9yaWVzIHtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG4gIG1pbi1oZWlnaHQ6IDMwMHB4O1xyXG4gIG1heC1oZWlnaHQ6IDMwMHB4O1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcbn1cclxuXHJcbi5sb2FkLWluZGljYXRvci1iYWNrZ3JvdW5kIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjY2NjO1xyXG4gIG9wYWNpdHk6IC43O1xyXG59XHJcblxyXG4ubG9hZC1pbmRpY2F0b3IsIC5sb2FkLWluZGljYXRvci1iYWNrZ3JvdW5kLCAuaW52ZW50b3JpZXMtdGFibGUtY29udGFpbmVyIHtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgei1pbmRleDogKzE7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogMDtcclxuICBsZWZ0OiAwO1xyXG4gIHJpZ2h0OiAwO1xyXG4gIGJvdHRvbTogMDtcclxufVxyXG5cclxuLmludmVudG9yaWVzLXRhYmxlLWNvbnRhaW5lciB7XHJcbiAgei1pbmRleDogaW5pdGlhbDtcclxuICBvdmVyZmxvdy14OiBhdXRvO1xyXG4gIG92ZXJmbG93LXk6IGF1dG87XHJcbn1cclxuXHJcbi5sb2FkLWluZGljYXRvciB7XHJcbiAgbWFyZ2luOiBhdXRvO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gIHdpZHRoOiA3cmVtO1xyXG4gIGhlaWdodDogM3JlbTtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblxyXG4gID4gZGl2IHtcclxuICAgIG1hcmdpbjogMDtcclxuICAgIHBhZGRpbmc6IDA7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xyXG4gIH1cclxufVxyXG5cclxuIl19 */";
+      __webpack_exports__["default"] = ".inventories {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  max-height: 300px;\n  overflow: hidden;\n}\n\n.load-indicator-background {\n  background-color: #cccccc;\n  opacity: 0.7;\n}\n\n.load-indicator, .load-indicator-background, .inventories-table-container {\n  height: 100%;\n  width: 100%;\n  z-index: 1;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.inventories-table-container {\n  z-index: initial;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.load-indicator {\n  margin: auto;\n  background-color: white;\n  width: 7rem;\n  height: 3rem;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.load-indicator > div {\n  margin: 0;\n  padding: 0;\n  vertical-align: middle;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL2ludmVudG9yaWVzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtBQUNGOztBQUVBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0FBQ0Y7O0FBRUE7RUFDRSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFVBQUE7RUFDQSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7QUFDRjs7QUFFQTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtBQUNGOztBQUVBO0VBQ0UsWUFBQTtFQUNBLHVCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsNkJBQUE7RUFDQSxtQkFBQTtBQUNGOztBQUNFO0VBQ0UsU0FBQTtFQUNBLFVBQUE7RUFDQSxzQkFBQTtBQUNKIiwiZmlsZSI6ImludmVudG9yaWVzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmludmVudG9yaWVzIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBtaW4taGVpZ2h0OiAzMDBweDtcbiAgbWF4LWhlaWdodDogMzAwcHg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5sb2FkLWluZGljYXRvci1iYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYztcbiAgb3BhY2l0eTogLjc7XG59XG5cbi5sb2FkLWluZGljYXRvciwgLmxvYWQtaW5kaWNhdG9yLWJhY2tncm91bmQsIC5pbnZlbnRvcmllcy10YWJsZS1jb250YWluZXIge1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICB6LWluZGV4OiArMTtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG59XG5cbi5pbnZlbnRvcmllcy10YWJsZS1jb250YWluZXIge1xuICB6LWluZGV4OiBpbml0aWFsO1xuICBvdmVyZmxvdy14OiBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG4ubG9hZC1pbmRpY2F0b3Ige1xuICBtYXJnaW46IGF1dG87XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB3aWR0aDogN3JlbTtcbiAgaGVpZ2h0OiAzcmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcblxuICA+IGRpdiB7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgfVxufVxuXG4iXX0= */";
       /***/
     },
 
@@ -633,7 +633,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY291bnRlci1idXR0b24uY29tcG9uZW50L2NvdW50ZXItYnV0dG9uLmNvbXBvbmVudC5zY3NzIn0= */";
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb3VudGVyLWJ1dHRvbi5jb21wb25lbnQuc2NzcyJ9 */";
       /***/
     },
 
@@ -709,7 +709,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"alert alert-primary\" role=\"alert\">\r\n  current counter {{counter$ | async}}\r\n</div>\r\n";
+      __webpack_exports__["default"] = "<div class=\"alert alert-primary\" role=\"alert\">\n  current counter {{counter$ | async}}\n</div>\n";
       /***/
     },
 
@@ -729,7 +729,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <h3>Usage example of the ngx-state-store module</h3>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/counter-button.component/counter-button.component.ts</li>\r\n        <li>src/app/components/counter.component/counter.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-counter-button></app-counter-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-counter></app-counter>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>\r\n        <li>src/app/components/inventories.component/inventories.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-inventories-button></app-inventories-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-inventories></app-inventories>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+      __webpack_exports__["default"] = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <h3>Usage example of the ngx-state-store module</h3>\n    </div>\n  </div>\n  <div class=\"row\"></div>\n  <div class=\"row\"></div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <ul>\n        <li>src/app/components/counter-button.component/counter-button.component.ts</li>\n        <li>src/app/components/counter.component/counter.component.ts</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-6\">\n      <app-counter-button></app-counter-button>\n    </div>\n    <div class=\"col-6\">\n      <app-counter></app-counter>\n    </div>\n  </div>\n  <div class=\"row\"></div>\n  <div class=\"row\"></div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <ul>\n        <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>\n        <li>src/app/components/inventories.component/inventories.component.ts</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-6\">\n      <app-inventories-button></app-inventories-button>\n    </div>\n    <div class=\"col-6\">\n      <app-inventories></app-inventories>\n    </div>\n  </div>\n</div>\n";
       /***/
     },
 
@@ -800,12 +800,6 @@
       var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/common */
       "ofXK");
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/state-helper.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
 
       var StateHelper = /*#__PURE__*/function () {
         function StateHelper() {
@@ -814,28 +808,17 @@
 
         _createClass(StateHelper, null, [{
           key: "deepFreeze",
-
+          value:
           /**
            * Makes a shadow freeze
            *
-           * @template T
-           * @param {?} o object to freeze
-           * @return {?}
+           * @param o object to freeze
            */
-          value: function deepFreeze(o) {
+          function deepFreeze(o) {
             Object.freeze(o);
-            /** @type {?} */
-
             var oIsFunction = typeof o === 'function';
-            /** @type {?} */
-
             var hasOwnProp = Object.prototype.hasOwnProperty;
-            Object.getOwnPropertyNames(o).forEach(
-            /**
-            * @param {?} prop
-            * @return {?}
-            */
-            function (prop) {
+            Object.getOwnPropertyNames(o).forEach(function (prop) {
               if (hasOwnProp.call(o, prop) && (oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true) && o[prop] !== null && (typeof o[prop] === 'object' || typeof o[prop] === 'function') && !Object.isFrozen(o[prop])) {
                 StateHelper.deepFreeze(o[prop]);
               }
@@ -845,10 +828,8 @@
           /**
            * The method returns the clone of the object. Useful to clone frozen object.
            *
-           * @template T
-           * @param {?} o object to clone
-           * @param {?=} cloneFunctions determines whether the functions must be also cloned, default value 'true'
-           * @return {?}
+           * @param o object to clone
+           * @param cloneFunctions determines whether the functions must be also cloned, default value 'true'
            */
 
         }, {
@@ -860,53 +841,28 @@
           /**
            * The method returns the clone of the object. Useful to clone frozen object.
            *
-           * @private
-           * @template T
-           * @param {?} o object to clone
-           * @param {?=} parent owner object of the object to clone, it is used for the functions cloning
-           * @param {?=} cloneFunctions determines whether the functions must be also cloned, default value 'true'
-           * @return {?}
+           * @param o object to clone
+           * @param parent owner object of the object to clone, it is used for the functions cloning
+           * @param cloneFunctions determines whether the functions must be also cloned, default value 'true'
            */
 
         }, {
           key: "cloneObjectIntern",
           value: function cloneObjectIntern(o, parent, cloneFunctions) {
-            /** @type {?} */
             var target;
 
             if (o) {
               if (typeof o === 'object') {
                 if (Array.isArray(o)) {
-                  target =
-                  /** @type {?} */
-                  o.slice();
-
-                  /** @type {?} */
-                  o.forEach(
-                  /**
-                  * @param {?} element
-                  * @param {?} index
-                  * @return {?}
-                  */
-                  function (element, index) {
-                    /** @type {?} */
+                  target = o.slice();
+                  o.forEach(function (element, index) {
                     target[index] = StateHelper.cloneObjectIntern(element, o, cloneFunctions);
                   });
                 } else if (StateHelper.isValidDate(o)) {
-                  target = new Date(
-                  /** @type {?} */
-
-                  /** @type {?} */
-                  o.toISOString());
+                  target = new Date(o.toISOString());
                 } else {
                   target = Object.assign({}, o);
-                  Object.getOwnPropertyNames(o).forEach(
-                  /**
-                  * @param {?} prop
-                  * @return {?}
-                  */
-                  function (prop) {
-                    /** @type {?} */
+                  Object.getOwnPropertyNames(o).forEach(function (prop) {
                     var functionType = typeof o[prop] === 'function';
 
                     if (cloneFunctions && functionType || !functionType) {
@@ -919,12 +875,7 @@
               } else if (typeof o === 'function') {
                 if (cloneFunctions) {
                   target = o.bind(parent || {});
-                  Object.getOwnPropertyNames(o).forEach(
-                  /**
-                  * @param {?} prop
-                  * @return {?}
-                  */
-                  function (prop) {
+                  Object.getOwnPropertyNames(o).forEach(function (prop) {
                     if (prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' && prop !== 'length' && prop !== 'name') {
                       target[prop] = StateHelper.cloneObjectIntern(target[prop], target, cloneFunctions);
                     }
@@ -939,60 +890,27 @@
 
             return target;
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "getEmptyObject",
           value: function getEmptyObject() {
             return Object.create(null);
           }
-          /**
-           * @template S
-           * @param {?} state
-           * @param {?} newValue
-           * @return {?}
-           */
-
         }, {
           key: "combine",
           value: function combine(state, newValue) {
             return Object.assign(StateHelper.getEmptyObject(), state, newValue);
           }
-          /**
-           * @private
-           * @param {?} date
-           * @return {?}
-           */
-
         }, {
           key: "isValidDate",
           value: function isValidDate(date) {
-            return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(
-            /** @type {?} */
-            date);
+            return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date);
           }
         }]);
 
         return StateHelper;
       }();
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/store-plugin.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /**
-       * @abstract
-       */
-
 
       var StorePlugin = /*#__PURE__*/function () {
-        /**
-         * @protected
-         * @param {?} storageName
-         */
         function StorePlugin(storageName) {
           _classCallCheck(this, StorePlugin);
 
@@ -1000,20 +918,19 @@
           this.namespace = 'ngx-state-store';
           this.prepareWindowObject(storageName);
         }
-        /**
-         * @return {?}
-         */
-
 
         _createClass(StorePlugin, [{
-          key: "prepareWindowObject",
-
+          key: "state",
+          get: function get() {
+            return window[this.namespace][this.storageName].state;
+          }
           /**
            *
-           * @private
-           * @param {?} storeName e.g. 'store-demo'
-           * @return {?}
+           * @param storeName e.g. 'store-demo'
            */
+
+        }, {
+          key: "prepareWindowObject",
           value: function prepareWindowObject(storeName) {
             if (!window[this.namespace]) {
               window[this.namespace] = StateHelper.getEmptyObject();
@@ -1027,50 +944,16 @@
               window[this.namespace][storeName].state = StateHelper.getEmptyObject();
             }
           }
-        }, {
-          key: "state",
-          get: function get() {
-            return window[this.namespace][this.storageName].state;
-          }
         }]);
 
         return StorePlugin;
       }();
-
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/store-log-plugin.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /**
-       * @record
-       */
-
-
-      function ActionToState() {}
-
-      if (false) {}
-      /**
-       * @record
-       */
-
-
-      function LogSettings() {}
-
-      if (false) {}
 
       var StoreLogPlugin = /*#__PURE__*/function (_StorePlugin) {
         _inherits(StoreLogPlugin, _StorePlugin);
 
         var _super2 = _createSuper(StoreLogPlugin);
 
-        /**
-         * @param {?} storeName
-         * @param {?=} log
-         * @param {?=} limit
-         */
         function StoreLogPlugin(storeName) {
           var _this5;
 
@@ -1088,34 +971,21 @@
           _this5.state.log = _this5.stateLog;
           return _this5;
         }
-        /**
-         * @private
-         * @return {?}
-         */
-
 
         _createClass(StoreLogPlugin, [{
+          key: "loggingDisabled",
+          get: function get() {
+            return !this.state.log.log;
+          }
+        }, {
           key: "dispatchBefore",
-
-          /**
-           * @return {?}
-           */
           value: function dispatchBefore() {}
-          /**
-           * @param {?} actionId
-           * @param {?} state
-           * @param {?} order
-           * @return {?}
-           */
-
         }, {
           key: "dispatchAfter",
           value: function dispatchAfter(actionId, state, order) {
             if (this.loggingDisabled) {
               return;
             }
-            /** @type {?} */
-
 
             var log = {
               actionId: actionId,
@@ -1123,43 +993,18 @@
             };
             this.stateLog.executedStack.push(log);
             StoreLogPlugin.restrict(this.stateLog.executedStack, this.stateLog.limit);
-            /** @type {?} */
-
             var message = this.actionEnd + actionId;
             StoreLogPlugin.logAction(order + '. ' + message, state);
             StoreLogPlugin.logAction('', '');
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "newState",
           value: function newState() {}
-        }, {
-          key: "loggingDisabled",
-          get: function get() {
-            return !this.state.log.log;
-          }
-          /**
-           * @private
-           * @param {?} message
-           * @param {?=} state
-           * @return {?}
-           */
-
         }], [{
           key: "logAction",
           value: function logAction(message, state) {
             console.log(message, state);
           }
-          /**
-           * @private
-           * @param {?} arr
-           * @param {?} limit
-           * @return {?}
-           */
-
         }, {
           key: "restrict",
           value: function restrict(arr, limit) {
@@ -1172,53 +1017,18 @@
         return StoreLogPlugin;
       }(StorePlugin);
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/state-config.token.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /** @type {?} */
-
-
       var STATE_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('STATE_CONFIG');
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/store-performance-plugin.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /**
-       * Measure time of action execution.
-       * @record
-       */
-
-      function PerformanceSettings() {}
-
-      if (false) {}
-      /**
-       * @record
-       */
-
-
-      function ActionTime() {}
-
-      if (false) {}
 
       var StorePerformancePlugin = /*#__PURE__*/function (_StorePlugin2) {
         _inherits(StorePerformancePlugin, _StorePlugin2);
 
         var _super3 = _createSuper(StorePerformancePlugin);
 
-        /**
-         * @param {?} storeName
-         * @param {?=} log
-         */
         function StorePerformancePlugin(storeName) {
           var _this6;
 
           var log = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+          var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1000;
 
           _classCallCheck(this, StorePerformancePlugin);
 
@@ -1226,85 +1036,61 @@
           _this6.performanceLog = [];
           _this6.settings = {
             timekeeping: log,
+            limit: limit < 1 ? 1 : limit,
             performanceLog: _this6.performanceLog
           };
           _this6.state.performance = _this6.settings;
           return _this6;
         }
-        /**
-         * @private
-         * @return {?}
-         */
-
 
         _createClass(StorePerformancePlugin, [{
+          key: "timekeeping",
+          get: function get() {
+            return this.state.performance.timekeeping;
+          }
+        }, {
           key: "dispatchBefore",
-
-          /**
-           * @param {?} actionId
-           * @param {?} state
-           * @param {?} order
-           * @return {?}
-           */
           value: function dispatchBefore(actionId, state, order) {
             if (!this.timekeeping) {
               return;
             }
 
-            this.performanceLog[order] = {
+            var index = order % this.settings.limit;
+
+            if (this.performanceLog.length < index) {
+              this.performanceLog.length = index;
+            }
+
+            this.performanceLog[index] = {
               id: actionId,
+              order: order,
               time: performance.now()
             };
           }
-          /**
-           * @return {?}
-           */
-
         }, {
           key: "newState",
           value: function newState() {}
-          /**
-           * @param {?} actionId
-           * @param {?} state
-           * @param {?} order
-           * @return {?}
-           */
-
         }, {
           key: "dispatchAfter",
           value: function dispatchAfter(actionId, state, order) {
+            var _a;
+
             if (!this.timekeeping) {
               return;
             }
 
-            this.performanceLog[order].time = performance.now() - this.performanceLog[order].time;
-          }
-        }, {
-          key: "timekeeping",
-          get: function get() {
-            return this.state.performance.timekeeping;
+            var index = order % this.settings.limit;
+
+            if (((_a = this.performanceLog[index]) === null || _a === void 0 ? void 0 : _a.order) === order) {
+              this.performanceLog[index].time = performance.now() - this.performanceLog[index].time;
+            }
           }
         }]);
 
         return StorePerformancePlugin;
       }(StorePlugin);
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/store.service.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /**
-       * @template S
-       */
-
-
       var Store = /*#__PURE__*/function () {
-        /**
-         * @param {?} config
-         */
         function Store(config) {
           _classCallCheck(this, Store);
 
@@ -1316,29 +1102,14 @@
           this.currentState = config.initialState || {};
           this.stateStream = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this.currentState);
         }
-        /**
-         * @private
-         * @param {?} action
-         * @param {?} error
-         * @return {?}
-         */
-
 
         _createClass(Store, [{
           key: "dispatch",
-
-          /**
-           * @param {?} action
-           * @return {?}
-           */
           value: function dispatch(action) {
             var _this7 = this;
 
-            /** @type {?} */
-            var currentCounter = ++this.actionCounter;
+            var currentCounter = this.actionCounter++;
             this.dispatchBefore(action, this.currentState, currentCounter);
-            /** @type {?} */
-
             var actionResult$;
 
             try {
@@ -1348,41 +1119,24 @@
               console.error(error);
               return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(error);
             }
-            /** @type {?} */
-
 
             var result = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"](); // Otherwise it will run sync.
             // And the result observable is
             // complete before return statement.
 
-            setTimeout(
-            /**
-            * @return {?}
-            */
-            function () {
+            setTimeout(function () {
               if (actionResult$ == null) {
                 _this7.dispatchAfter(action, _this7.currentState, currentCounter);
 
                 result.next(_this7.currentState);
                 result.complete();
               } else {
-                /** @type {?} */
-                actionResult$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1)).subscribe(
-                /**
-                * @return {?}
-                */
-                function () {
+                actionResult$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1)).subscribe(function () {
                   _this7.dispatchAfter(action, _this7.currentState, currentCounter);
 
                   result.next(_this7.currentState);
                   result.complete();
-                },
-                /**
-                * @param {?} error
-                * @return {?}
-                */
-                function (error) {
-                  /** @type {?} */
+                }, function (error) {
                   var errorState = Store.getErrorState(action, error);
 
                   _this7.dispatchAfter(action, errorState, currentCounter);
@@ -1394,32 +1148,19 @@
             });
             return result.asObservable();
           }
-          /**
-           * @template keyString
-           * @param {?} prop
-           * @param {?=} objectComparator
-           * @return {?}
-           */
-
         }, {
           key: "select",
           value: function select(prop, objectComparator) {
             if (objectComparator) {
-              return this.stateStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pluck"])(
-              /** @type {?} */
-              prop), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])(objectComparator));
+              return this.stateStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pluck"])(prop), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])(objectComparator));
             }
 
-            return this.stateStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pluck"])(
-            /** @type {?} */
-            prop), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])());
+            return this.stateStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pluck"])(prop), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])());
           }
           /**
            * The Observable is complete after forward one value.
            *
-           * @template keyString
-           * @param {?} prop property to select
-           * @return {?}
+           * @param prop property to select
            */
 
         }, {
@@ -1427,42 +1168,20 @@
           value: function selectOnce(prop) {
             return this.select(prop).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1));
           }
-          /**
-           * @private
-           * @return {?}
-           */
-
         }, {
           key: "getStateContext",
           value: function getStateContext() {
             var _this8 = this;
 
             return {
-              getState:
-              /**
-              * @return {?}
-              */
-              function getState() {
+              getState: function getState() {
                 return _this8.currentState;
               },
-              setState:
-              /**
-              * @param {?} state
-              * @return {?}
-              */
-              function setState(state) {
+              setState: function setState(state) {
                 _this8.updateState(state);
               },
-              patchState:
-              /**
-              * @param {?} partOfState
-              * @return {?}
-              */
-              function patchState(partOfState) {
-                /** @type {?} */
+              patchState: function patchState(partOfState) {
                 var isArray = Array.isArray(partOfState);
-                /** @type {?} */
-
                 var isPrimitive = typeof partOfState !== 'object';
 
                 if (isArray) {
@@ -1470,8 +1189,6 @@
                 } else if (isPrimitive) {
                   throw new Error('Patching primitives is not supported.');
                 }
-                /** @type {?} */
-
 
                 var newState = StateHelper.combine(_this8.currentState, partOfState);
 
@@ -1479,12 +1196,6 @@
               }
             };
           }
-          /**
-           * @private
-           * @param {?} state
-           * @return {?}
-           */
-
         }, {
           key: "updateState",
           value: function updateState(state) {
@@ -1493,76 +1204,34 @@
             this.currentState = StateHelper.deepFreeze(state);
             this.dispatchState(this.currentState); // next-sync. Otherwise the state change will trigger all other changes.
 
-            setTimeout(
-            /**
-            * @return {?}
-            */
-            function () {
+            setTimeout(function () {
               _this9.stateStream.next(_this9.currentState);
             }, 0);
           }
-          /**
-           * @private
-           * @param {?} action
-           * @param {?} state
-           * @param {?} order
-           * @return {?}
-           */
-
         }, {
           key: "dispatchBefore",
           value: function dispatchBefore(action, state, order) {
-            this.plugins.forEach(
-            /**
-            * @param {?} plugin
-            * @return {?}
-            */
-            function (plugin) {
+            this.plugins.forEach(function (plugin) {
               plugin.dispatchBefore(action.Type, state, order);
             });
           }
-          /**
-           * @private
-           * @param {?} action
-           * @param {?} state
-           * @param {?} order
-           * @return {?}
-           */
-
         }, {
           key: "dispatchAfter",
           value: function dispatchAfter(action, state, order) {
-            this.plugins.forEach(
-            /**
-            * @param {?} plugin
-            * @return {?}
-            */
-            function (plugin) {
+            this.plugins.forEach(function (plugin) {
               plugin.dispatchAfter(action.Type, state, order);
             });
           }
-          /**
-           * @private
-           * @param {?} state
-           * @return {?}
-           */
-
         }, {
           key: "dispatchState",
           value: function dispatchState(state) {
-            this.plugins.forEach(
-            /**
-            * @param {?} plugin
-            * @return {?}
-            */
-            function (plugin) {
+            this.plugins.forEach(function (plugin) {
               plugin.newState(state);
             });
           }
         }], [{
           key: "getErrorState",
           value: function getErrorState(action, error) {
-            /** @type {?} */
             var state = StateHelper.getEmptyObject();
             state.error = error;
             state.action = action.Type;
@@ -1592,11 +1261,9 @@
           }]
         }];
       };
-      /*@__PURE__*/
-
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Store, [{
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Store, [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
         }], function () {
           return [{
@@ -1609,98 +1276,43 @@
         }, null);
       })();
 
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/state/action.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
-      /**
-       * @abstract
-       */
-
-
       var Action = /*#__PURE__*/function () {
-        /**
-         * @protected
-         * @param {?} actionId
-         */
         function Action(actionId) {
           _classCallCheck(this, Action);
 
           this.actionId = actionId;
         }
-        /**
-         * @return {?}
-         */
-
 
         _createClass(Action, [{
+          key: "Type",
+          get: function get() {
+            return this.actionId;
+          }
+        }, {
           key: "clone",
-
-          /**
-           * @protected
-           * @template T
-           * @param {?} o
-           * @param {?=} cloneFunctions
-           * @return {?}
-           */
           value: function clone(o) {
             var cloneFunctions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
             return StateHelper.cloneObject(o, cloneFunctions);
           }
-          /**
-           * @protected
-           * @return {?}
-           */
-
         }, {
           key: "getEmptyState",
           value: function getEmptyState() {
             return StateHelper.getEmptyObject();
           }
-          /**
-           * @protected
-           * @template T
-           * @return {?}
-           */
-
         }, {
           key: "getEmptyObject",
           value: function getEmptyObject() {
             return StateHelper.getEmptyObject();
           }
-          /**
-           * @protected
-           * @template S
-           * @param {?} state
-           * @param {?} newValue
-           * @return {?}
-           */
-
         }, {
           key: "combine",
           value: function combine(state, newValue) {
             return StateHelper.combine(state, newValue);
           }
-        }, {
-          key: "Type",
-          get: function get() {
-            return this.actionId;
-          }
         }]);
 
         return Action;
       }();
-
-      if (false) {}
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: lib/ngx-state-store.module.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-       */
-
 
       var NgxStateStoreModule = /*#__PURE__*/function () {
         function NgxStateStoreModule() {
@@ -1709,11 +1321,6 @@
 
         _createClass(NgxStateStoreModule, null, [{
           key: "forRoot",
-
-          /**
-           * @param {?} config
-           * @return {?}
-           */
           value: function forRoot(config) {
             return {
               ngModule: NgxStateStoreModule,
@@ -1728,13 +1335,14 @@
         return NgxStateStoreModule;
       }();
 
+      NgxStateStoreModule.ɵfac = function NgxStateStoreModule_Factory(t) {
+        return new (t || NgxStateStoreModule)();
+      };
+
       NgxStateStoreModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
         type: NgxStateStoreModule
       });
       NgxStateStoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
-        factory: function NgxStateStoreModule_Factory(t) {
-          return new (t || NgxStateStoreModule)();
-        },
         imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]]]
       });
 
@@ -1745,11 +1353,9 @@
           }
         });
       })();
-      /*@__PURE__*/
-
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxStateStoreModule, [{
+        (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxStateStoreModule, [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
           args: [{
             declarations: [],
@@ -1758,18 +1364,13 @@
           }]
         }], null, null);
       })();
-      /**
-       * @fileoverview added by tsickle
-       * Generated from: public-api.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+      /*
+       * Public API Surface of ngx-state-store
        */
 
       /**
-       * @fileoverview added by tsickle
-       * Generated from: ngx-state-store.ts
-       * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+       * Generated bundle index. Do not edit.
        */
-      //# sourceMappingURL=ngx-state-store.js.map
 
       /***/
 
@@ -1925,7 +1526,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<button class=\"btn-primary\" (click)=\"incrementCounter()\">Increment Counter</button>\r\n";
+      __webpack_exports__["default"] = "<button class=\"btn-primary\" (click)=\"incrementCounter()\">Increment Counter</button>\n";
       /***/
     },
 
@@ -1945,7 +1546,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"inventories\">\r\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator-background\"></div>\r\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator\">\r\n    <div>Loading ...</div>\r\n  </div>\r\n\r\n  <div class=\"inventories-table-container\">\r\n    <table class=\"table table-bordered\">\r\n      <thead>\r\n      <tr>\r\n        <th scope=\"col\">#</th>\r\n        <th scope=\"col\">ID</th>\r\n        <th scope=\"col\">Version</th>\r\n        <th scope=\"col\">Name</th>\r\n      </tr>\r\n      </thead>\r\n      <tbody>\r\n      <tr *ngFor=\"let inventory of inventories; let i=index\">\r\n        <th scope=\"row\">{{i}}</th>\r\n        <td>{{inventory.id}}</td>\r\n        <td>{{inventory.version}}</td>\r\n        <td>{{inventory.name}}</td>\r\n      </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n";
+      __webpack_exports__["default"] = "<div class=\"inventories\">\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator-background\"></div>\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator\">\n    <div>Loading ...</div>\n  </div>\n\n  <div class=\"inventories-table-container\">\n    <table class=\"table table-bordered\">\n      <thead>\n      <tr>\n        <th scope=\"col\">#</th>\n        <th scope=\"col\">ID</th>\n        <th scope=\"col\">Version</th>\n        <th scope=\"col\">Name</th>\n      </tr>\n      </thead>\n      <tbody>\n      <tr *ngFor=\"let inventory of inventories; let i=index\">\n        <th scope=\"row\">{{i}}</th>\n        <td>{{inventory.id}}</td>\n        <td>{{inventory.version}}</td>\n        <td>{{inventory.name}}</td>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n";
       /***/
     },
 
@@ -2066,7 +1667,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaW52ZW50b3JpZXMtYnV0dG9uLmNvbXBvbmVudC9pbnZlbnRvcmllcy1idXR0b24uY29tcG9uZW50LnNjc3MifQ== */";
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbnZlbnRvcmllcy1idXR0b24uY29tcG9uZW50LnNjc3MifQ== */";
       /***/
     },
 
