@@ -17,7 +17,7 @@ html.dark hr {
     border-color: #111;
 }
 
-html.dark .docs-sidebar .nav>li>a {
+html.dark .docs-sidebar .nav > li > a {
     color: #eee;
 }
 
@@ -139,13 +139,16 @@ html #mode .dark {
     .affix-bottom {
         width: 213px
     }
+
     .affix {
         position: fixed;
         top: 20px
     }
+
     .affix-bottom {
         position: absolute
     }
+
     .affix .bs-docs-sidenav,
     .affix-bottom .bs-docs-sidenav {
         margin-top: 0;
@@ -170,7 +173,7 @@ html #mode .dark {
 }
 
 /* all links */
-.docs-sidebar .nav>li>a {
+.docs-sidebar .nav > li > a {
     color: #111;
     border-left: 2px solid transparent;
     padding: 0 20px;
@@ -179,41 +182,45 @@ html #mode .dark {
 }
 
 /* nested links */
-.docs-sidebar .nav .nav>li>a {
+.docs-sidebar .nav .nav > li > a {
     padding-left: 40px;
     font-size: 14px;
 }
 
-/* hover links */ 
-.docs-sidebar .nav>li:not(.active)>a:hover {
+/* hover links */
+.docs-sidebar .nav > li:not(.active) > a:hover {
     color: #0E97EE;
     text-decoration: none;
     background-color: transparent;
     border-left-width: 1px;
     border-left-color: #0E97EE;
 }
+
 /* focus links */
-.docs-sidebar .nav>li>a:focus {
+.docs-sidebar .nav > li > a:focus {
     text-decoration: none;
     background-color: transparent;
 }
+
 /* active links */
-.docs-sidebar .nav>.active>a {
+.docs-sidebar .nav > .active > a {
     color: #0E97EE;
     text-decoration: none;
     background-color: transparent;
     border-left-color: #0E97EE;
 }
+
 /* all active links */
-.docs-sidebar .nav>.active>a, 
-.docs-sidebar .nav>.active:hover>a,
-.docs-sidebar .nav>.active:focus>a {
+.docs-sidebar .nav > .active > a,
+.docs-sidebar .nav > .active:hover > a,
+.docs-sidebar .nav > .active:focus > a {
     font-weight: 700;
 }
+
 /* nested active links */
-.docs-sidebar .nav .nav>.active>a, 
-.docs-sidebar .nav .nav>.active:hover>a,
-.docs-sidebar .nav .nav>.active:focus>a {
+.docs-sidebar .nav .nav > .active > a,
+.docs-sidebar .nav .nav > .active:hover > a,
+.docs-sidebar .nav .nav > .active:focus > a {
     font-weight: 500;
 }
 
@@ -222,10 +229,12 @@ html #mode .dark {
         display: none;
         padding-bottom: 10px;
     }
-    .docs-sidebar .nav>.active>ul {
+
+    .docs-sidebar .nav > .active > ul {
         display: block
     }
 }
+
 /*Syntax Highlighter : Sublime Theme */
 
 .syntaxhighlighter {
@@ -291,6 +300,7 @@ html #mode .dark {
 .syntaxhighlighter .value {
     color: #96b5b4 !important;
 }
+
 /*css*/
 /* .syntaxhighlighter .css.plain,
 .syntaxhighlighter .css.plain a {
@@ -305,6 +315,7 @@ html #mode .dark {
 .syntaxhighlighter .color3 a {
     color: #b48ead !important;
 }
+
 /*js*/
 
 .syntaxhighlighter .js.keyword {
@@ -313,4 +324,25 @@ html #mode .dark {
 
 .syntaxhighlighter {
     margin-top: .5em !important;
+}
+
+/* code examples - colour adjustments for the :not(.dark) */
+html:not(.dark) .syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+    color: #2b303b !important;
+}
+
+html:not(.dark) .syntaxhighlighter {
+    background-color: #e8e8e8 !important;
+}
+
+html:not(.dark) .syntaxhighlighter .line.alt1 {
+    background-color: #e8e8e8 !important;
+}
+
+html:not(.dark) .syntaxhighlighter .line.alt2 {
+    background-color: #e8e8e8 !important;
+}
+
+html:not(.dark) .syntaxhighlighter .string, .syntaxhighlighter .string a {
+    color: #357d2f !important;
 }
