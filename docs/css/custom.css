@@ -346,3 +346,71 @@ html:not(.dark) .syntaxhighlighter .line.alt2 {
 html:not(.dark) .syntaxhighlighter .string, .syntaxhighlighter .string a {
     color: #357d2f !important;
 }
+
+html.dark code {
+    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 1em !important;
+    color: #bf616a;
+    background-color: #2b303b;
+}
+
+html:not(.dark) code {
+    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 1em !important;
+    color: #bf616a;
+    background-color: #e8e8e8;
+}
+
+.intro2 code {
+    white-space: nowrap;
+}
+
+html.dark strong {
+    color: #dbdbdb;
+}
+
+html:not(.dark) strong {
+    color: #242424;
+}
+
+/* colours in intros */
+
+html.dark .intro2 {
+    background-color: #80441e;
+    border-color: #80441e;
+    color: #dbdbdb;
+}
+
+html:not(.dark) .intro2 {
+    background-color: #4b96c5;
+    border-color: #4b96c5;
+}
+
+html.dark .intro1 a {
+    color: #CC8548 !important;
+}
+
+html.dark .intro1 a:hover {
+    color: #F16811 !important;
+}
+
+html.dark .intro1 a:active {
+    color: #F16811 !important;
+}
+
+html:not(.dark) .intro1 a {
+    color: #337ab7 !important;
+}
+
+html:not(.dark) .intro1 a:hover {
+    color: #0e97ee !important;
+}
+
+html:not(.dark) .intro1 a:active {
+    color: #0e97ee !important;
+}
+
