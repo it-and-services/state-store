@@ -365,8 +365,11 @@ html:not(.dark) code {
     background-color: #e8e8e8;
 }
 
-.intro2 code {
-    white-space: nowrap;
+/* the widest code line in the intro2 */
+@media (min-width:640px) {
+    .intro2 code {
+        white-space: nowrap;
+    }
 }
 
 html.dark strong {
