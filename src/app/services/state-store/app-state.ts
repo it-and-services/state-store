@@ -1,6 +1,6 @@
 import { Inventory } from '../../models/inventory';
 
-export class AppState {
+export interface AppState {
   ShowLoadingIndicator: string[];
   Counter: number;
   Inventories: Inventory[];
