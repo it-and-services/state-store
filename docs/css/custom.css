@@ -417,3 +417,7 @@ html:not(.dark) .intro1 a:active {
     color: #0e97ee !important;
 }
 
+.authors-list {
+    display: inline-flex;
+    flex-direction: column;
+}

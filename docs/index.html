@@ -124,7 +124,7 @@
         <nav class="docs-sidebar" data-offset-bottom="200" data-offset-top="300" data-spy="affix"
              role="navigation">
           <ul class="nav">
-            <li><a href="#line1">First example</a>
+            <li><a href="#line1">Simple example</a>
               <ul class="nav">
                 <li><a href="#line1_1">Create a state object</a></li>
                 <li><a href="#line1_2">Create an initial state object</a></li>
@@ -177,9 +177,14 @@
                       <li><strong>Module Name </strong> ngx-state-store</li>
                       <li><strong>Module Version </strong> 1.0.14</li>
                       <li><strong>Documentation Version </strong> 1.0.0</li>
-                      <li><strong>Author </strong> <a
-                          href="http://www.xing.com/profile/Oleg_Soloviov"
-                          target="_blank">Oleg Soloviov</a></li>
+                      <li><strong>Authors </strong>
+                        <div class="authors-list">
+                          <a href="http://www.xing.com/profile/Oleg_Soloviov"
+                            target="_blank">Oleg Soloviov</a>
+                          <a href="https://www.xing.com/profile/Spartak_Akhmedov"
+                            target="_blank">Spartak Akhmedov</a>
+                        </div>
+                      </li>
                       <li><strong>Company </strong> <a
                           href="http://it-and-services.net"
                           target="_blank">IT&S Information Technologies and Services GmbH</a>
@@ -205,6 +210,10 @@
                       The presented simplified code examples are to help you to grasp the
                       major idea behind the module.</p>
 
+                    <p>The benefits of using the <strong>ngx-state-store</strong> in comparison to other
+                      known state management frameworks are: much less written code, better overview over the code,
+                      subscription to async actions, simple to refactor by new implementation of an action.</p>
+
                     <h4>Requirements</h4>
                     <p>It is expected to have the following knowledge:</p>
                     <ol>
@@ -224,7 +233,7 @@
                         applications.
                       </li>
                       <li>Some modern web development platform like for example IntelliJ WebStorm
-                        or Microsoft Visual Studio for the TypeScript/Angular development.
+                        or Microsoft Visual Studio Code for the TypeScript/Angular development.
                       </li>
                     </ol>
 
@@ -241,7 +250,7 @@
 
           <div class="row">
             <div class="col-md-12 left-align">
-              <h2 class="dark-text">First example
+              <h2 class="dark-text">Simple example
                 <hr>
               </h2>
             </div>
@@ -255,7 +264,7 @@
 
               <div>Source: src/app/services/state-store/app-state.ts</div>
               <pre class="brush: typescript">
-              export class AppState {
+              export interface AppState {
                 Counter: number;
               }
               </pre>
@@ -394,7 +403,7 @@
             <div class="col-md-12">
               <h4>Update some state</h4>
 
-              <div>To update some state call <code>store.dispatch(...)</code>.</div>
+              <div>To update some state by an Action use <code>store.dispatch(...)</code>.</div>
               <div>Source: src/app/components/counter-button.component/counter-button.component.ts</div>
               <pre class="brush: typescript">
               import { Component } from '@angular/core';
@@ -493,7 +502,7 @@
               <pre class="brush: typescript">
               import { Inventory } from '../../models/inventory';
 
-              export class AppState {
+              export interface AppState {
                 ShowLoadingIndicator: string[];
                 Counter: number;
                 Inventories: Inventory[];
@@ -680,7 +689,7 @@
                 constructor(private http: HttpClient) {
                 }
 
-                loadInventory(): Observable<Inventory[]> {
+                loadInventory(): Observable&lt;Inventory[]&gt; {
                   // delay(2000) to imitate the network throttling
                   return this.http.get&lt;Inventory[]&gt;('assets/mock-data/inventories.json')
                     .pipe(delay(2000));
@@ -782,7 +791,8 @@
                 <p><i class="fa fa-exclamation-triangle"></i> If an action returns an Observable&lt;any&gt;
                   like LoadInventoriesAction in our example <br />
                   <code>handleState(stateContext: StateContext&lt;AppState&gt;): Observable&lt;any&gt;</code>,
-                  you must use <code>store.dispatch(...).subscribe()</code> variant to get the code executed.</code>
+                  you must use <code>store.dispatch(...).subscribe()</code> variant to get the code inside the
+                  Observable executed.
                 </p>
               </div>
             </div>
@@ -820,8 +830,8 @@
 
                 ngOnInit(): void {
                   this.loading$ = this.store.select('ShowLoadingIndicator').pipe(
-                    flatMap(indicators =>
-                      of(indicators.filter(i => i === LoadIndicator.LOAD_INVENTORIES).length > 0))
+                    map(indicators =>
+                      indicators.filter(i => i === LoadIndicator.LOAD_INVENTORIES).length > 0)
                   );
                   this.store.select('Inventories').subscribe(inventories => {
                     this.inventories = inventories;
@@ -1219,7 +1229,7 @@
               <p>IntelliJ is a registered trademarks of JetBrains s.r.o.</p>
               <p>WebStorm is a registered trademarks of JetBrains s.r.o.</p>
               <p>Microsoft is a registered trademark of Microsoft Corporation.</p>
-              <p>Visual Studio is a registered trademark of Microsoft Corporation.</p>
+              <p>Visual Studio Code is a registered trademark of Microsoft Corporation.</p>
               <p>All other product, company, and service names as well as company logos mentioned are the
                 property of their respective owners and are mentioned for identification purposes
                 only.</p>
