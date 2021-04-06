@@ -706,8 +706,8 @@
             <div class="col-md-12">
               <h4>Load the data</h4>
 
-              <div>To load the data from the back-end and update the states call the
-                store.dispatch(...).subscribe()
+              <div>To load the data from the back-end and update the states by the Actions use
+                <code>store.dispatch(...)</code>
               </div>
               <div>Source:
                 src/app/components/inventories-button.component/inventories-button.component.ts
@@ -785,16 +785,6 @@
               }
               </pre>
 
-
-              <br/><br/><br/>
-              <div class="intro2 clearfix">
-                <p><i class="fa fa-exclamation-triangle"></i> If an action returns an Observable&lt;any&gt;
-                  like LoadInventoriesAction in our example <br />
-                  <code>handleState(stateContext: StateContext&lt;AppState&gt;): Observable&lt;any&gt;</code>,
-                  you must use <code>store.dispatch(...).subscribe()</code> variant to get the code inside the
-                  Observable executed.
-                </p>
-              </div>
             </div>
           </div>
           <!-- end row -->
