@@ -1,5 +1,10 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.15
+  - cyclic dependencies resolution by the StateHelper.cloneObject()
+  - prevent clone window by the StateHelper.cloneObject()
+  - check return value of the Action.handleState() by rxjs isObservable()
+
 v1.0.14
   - documentation was externalized and now available at https://it-and-services.github.io/state-store/
 

@@ -8,7 +8,7 @@ import { StorePlugin } from './store-plugin';
 import { StateConfig } from './state-config';
 import { STATE_CONFIG } from './state-config.token';
 import { StorePerformancePlugin } from './store-performance-plugin';
-import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
+import { BehaviorSubject, isObservable, Observable, Subject, throwError } from 'rxjs';
 
 export type ObjectComparator = (oldObject: any, newObject: any) => boolean;
 
@@ -54,11 +54,7 @@ export class Store<S> {
     // And the result observable is
     // complete before return statement.
     setTimeout(() => {
-      if (actionResult$ == null) {
-        this.dispatchAfter(action, this.currentState, currentCounter);
-        result.next(this.currentState);
-        result.complete();
-      } else {
+      if (isObservable(actionResult$)) {
         (actionResult$ as Observable<void>)
           .pipe(take(1)).subscribe(
           () => {
@@ -71,6 +67,10 @@ export class Store<S> {
             console.error(error);
             result.error(error);
           });
+      } else {
+        this.dispatchAfter(action, this.currentState, currentCounter);
+        result.next(this.currentState);
+        result.complete();
       }
     });
     return result.asObservable();

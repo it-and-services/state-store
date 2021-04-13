@@ -1,7 +1,7 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { StateHelper } from './state-helper';
 
-describe('StateHelper', () => {
+describe('StateHelper - clone and freeze tests;', () => {
   let funk;
   let simpleObject;
   let complexObject;
@@ -14,6 +14,17 @@ describe('StateHelper', () => {
       providers: []
     });
   });
+
+  it('Clone is null', inject([], () => {
+    const clone = StateHelper.cloneObject(null);
+    expect(clone).toBeFalsy();
+  }));
+
+  it('Clone window', inject([], () => {
+    const clone = StateHelper.cloneObject(window);
+    expect(clone).toBeTruthy();
+    expect(clone === window).toBeTruthy();
+  }));
 
   it('simple object should be frozen', inject([], () => {
     const o = StateHelper.deepFreeze(simpleObject);
