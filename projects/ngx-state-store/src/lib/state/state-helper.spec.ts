@@ -15,15 +15,22 @@ describe('StateHelper - clone and freeze tests;', () => {
     });
   });
 
-  it('Clone is null', inject([], () => {
+  it('clone is null', inject([], () => {
     const clone = StateHelper.cloneObject(null);
     expect(clone).toBeFalsy();
   }));
 
-  it('Clone window', inject([], () => {
+  it('do not clone the window', inject([], () => {
     const clone = StateHelper.cloneObject(window);
     expect(clone).toBeTruthy();
-    expect(clone === window).toBeTruthy();
+    expect(clone === window).toBeTruthy('By clone the window the return object is the same');
+  }));
+
+  it('do not freeze the window', inject([], () => {
+    const frozenWindow = StateHelper.deepFreeze(window);
+    expect(frozenWindow).toBeTruthy();
+    expect(frozenWindow === window).toBeTruthy('By freeze the window the return object is the same');
+    expect(Object.isFrozen(frozenWindow)).toBeFalsy('It is not allowed to freeze the window');
   }));
 
   it('simple object should be frozen', inject([], () => {

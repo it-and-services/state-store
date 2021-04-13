@@ -6,6 +6,12 @@ export class StateHelper {
    * @param o object to freeze
    */
   public static deepFreeze<T>(o: T): T {
+
+    // @ts-ignore
+    if (o === window) {
+      return o;
+    }
+
     Object.freeze(o);
 
     const oIsFunction = typeof o === 'function';
