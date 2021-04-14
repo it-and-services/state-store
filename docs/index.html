@@ -175,7 +175,7 @@
                   <div class="intro1">
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
-                      <li><strong>Module Version </strong> 1.0.14</li>
+                      <li><strong>Module Version </strong> 1.0.15</li>
                       <li><strong>Documentation Version </strong> 1.0.0</li>
                       <li><strong>Authors </strong>
                         <div class="authors-list">
@@ -1084,6 +1084,14 @@
               <h4>Ngx-State-Store Changelog</h4>
 
               <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.15 - 14 Apr 2021
+                                        -----------------------------------------------------------------------------------------
+                                        - cyclic dependencies resolution by the StateHelper.cloneObject()
+                                        - prevent to clone the window by the StateHelper.cloneObject()
+                                        - prevent to freeze the window by the StateHelper.deepFreeze()
+                                        - check return value of the Action.handleState() by rxjs isObservable()
 
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.14 - 28 Mar 2021

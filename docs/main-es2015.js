@@ -100,7 +100,7 @@ CounterButtonComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/oleg/P_DRIVE/DEV/projects/state-store/src/main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Dev\projects\state-store\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -127,7 +127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<button (click)=\"loadInventory()\" class=\"btn-primary\">Load Inventory</button>\n<p>Last download at: {{lastDownloadAt}}</p>\n<p *ngIf=\"changes.addedEntries.length\">\n  {{changes.addedEntries.length}} new {{changes.addedEntries.length > 1 ? 'entries' : 'entry'}}:\n  {{inventoriesToString(changes.addedEntries)}}</p>\n<p *ngIf=\"changes.removedEntries.length\">\n  {{changes.removedEntries.length}} {{changes.removedEntries.length > 1 ? 'entries' : 'entry'}} removed:\n  {{inventoriesToString(changes.removedEntries)}}</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<button (click)=\"loadInventory()\" class=\"btn-primary\">Load Inventory</button>\r\n<p>Last download at: {{lastDownloadAt}}</p>\r\n<p *ngIf=\"changes.addedEntries.length\">\r\n  {{changes.addedEntries.length}} new {{changes.addedEntries.length > 1 ? 'entries' : 'entry'}}:\r\n  {{inventoriesToString(changes.addedEntries)}}</p>\r\n<p *ngIf=\"changes.removedEntries.length\">\r\n  {{changes.removedEntries.length}} {{changes.removedEntries.length > 1 ? 'entries' : 'entry'}} removed:\r\n  {{inventoriesToString(changes.removedEntries)}}</p>\r\n");
 
 /***/ }),
 
@@ -140,7 +140,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".row {\n  margin-top: 1rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnJvdyB7XG4gIG1hcmdpbi10b3A6IDFyZW07XG59XG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".row {\r\n  margin-top: 1rem;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6ImFwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnJvdyB7XHJcbiAgbWFyZ2luLXRvcDogMXJlbTtcclxufVxyXG4iXX0= */");
 
 /***/ }),
 
@@ -268,7 +268,7 @@ InventoriesButtonComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decora
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".inventories {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  max-height: 300px;\n  overflow: hidden;\n}\n\n.load-indicator-background {\n  background-color: #cccccc;\n  opacity: 0.7;\n}\n\n.load-indicator, .load-indicator-background, .inventories-table-container {\n  height: 100%;\n  width: 100%;\n  z-index: 1;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.inventories-table-container {\n  z-index: initial;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.load-indicator {\n  margin: auto;\n  background-color: white;\n  width: 7rem;\n  height: 3rem;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.load-indicator > div {\n  margin: 0;\n  padding: 0;\n  vertical-align: middle;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL2ludmVudG9yaWVzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtBQUNGOztBQUVBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0FBQ0Y7O0FBRUE7RUFDRSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFVBQUE7RUFDQSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7QUFDRjs7QUFFQTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtBQUNGOztBQUVBO0VBQ0UsWUFBQTtFQUNBLHVCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsNkJBQUE7RUFDQSxtQkFBQTtBQUNGOztBQUNFO0VBQ0UsU0FBQTtFQUNBLFVBQUE7RUFDQSxzQkFBQTtBQUNKIiwiZmlsZSI6ImludmVudG9yaWVzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmludmVudG9yaWVzIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBtaW4taGVpZ2h0OiAzMDBweDtcbiAgbWF4LWhlaWdodDogMzAwcHg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5sb2FkLWluZGljYXRvci1iYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYztcbiAgb3BhY2l0eTogLjc7XG59XG5cbi5sb2FkLWluZGljYXRvciwgLmxvYWQtaW5kaWNhdG9yLWJhY2tncm91bmQsIC5pbnZlbnRvcmllcy10YWJsZS1jb250YWluZXIge1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICB6LWluZGV4OiArMTtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBib3R0b206IDA7XG59XG5cbi5pbnZlbnRvcmllcy10YWJsZS1jb250YWluZXIge1xuICB6LWluZGV4OiBpbml0aWFsO1xuICBvdmVyZmxvdy14OiBhdXRvO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG4ubG9hZC1pbmRpY2F0b3Ige1xuICBtYXJnaW46IGF1dG87XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICB3aWR0aDogN3JlbTtcbiAgaGVpZ2h0OiAzcmVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcblxuICA+IGRpdiB7XG4gICAgbWFyZ2luOiAwO1xuICAgIHBhZGRpbmc6IDA7XG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgfVxufVxuXG4iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".inventories {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  max-height: 300px;\n  overflow: hidden;\n}\n\n.load-indicator-background {\n  background-color: #cccccc;\n  opacity: 0.7;\n}\n\n.load-indicator, .load-indicator-background, .inventories-table-container {\n  height: 100%;\n  width: 100%;\n  z-index: 1;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.inventories-table-container {\n  z-index: initial;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.load-indicator {\n  margin: auto;\n  background-color: white;\n  width: 7rem;\n  height: 3rem;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.load-indicator > div {\n  margin: 0;\n  padding: 0;\n  vertical-align: middle;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxpbnZlbnRvcmllcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLGlCQUFBO0VBQ0EsZ0JBQUE7QUFDRjs7QUFFQTtFQUNFLHlCQUFBO0VBQ0EsWUFBQTtBQUNGOztBQUVBO0VBQ0UsWUFBQTtFQUNBLFdBQUE7RUFDQSxVQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0FBQ0Y7O0FBRUE7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUFDRjs7QUFFQTtFQUNFLFlBQUE7RUFDQSx1QkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsYUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7QUFDRjs7QUFDRTtFQUNFLFNBQUE7RUFDQSxVQUFBO0VBQ0Esc0JBQUE7QUFDSiIsImZpbGUiOiJpbnZlbnRvcmllcy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbnZlbnRvcmllcyB7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICBtaW4taGVpZ2h0OiAzMDBweDtcclxuICBtYXgtaGVpZ2h0OiAzMDBweDtcclxuICBvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcblxyXG4ubG9hZC1pbmRpY2F0b3ItYmFja2dyb3VuZCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYztcclxuICBvcGFjaXR5OiAuNztcclxufVxyXG5cclxuLmxvYWQtaW5kaWNhdG9yLCAubG9hZC1pbmRpY2F0b3ItYmFja2dyb3VuZCwgLmludmVudG9yaWVzLXRhYmxlLWNvbnRhaW5lciB7XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIHotaW5kZXg6ICsxO1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICB0b3A6IDA7XHJcbiAgbGVmdDogMDtcclxuICByaWdodDogMDtcclxuICBib3R0b206IDA7XHJcbn1cclxuXHJcbi5pbnZlbnRvcmllcy10YWJsZS1jb250YWluZXIge1xyXG4gIHotaW5kZXg6IGluaXRpYWw7XHJcbiAgb3ZlcmZsb3cteDogYXV0bztcclxuICBvdmVyZmxvdy15OiBhdXRvO1xyXG59XHJcblxyXG4ubG9hZC1pbmRpY2F0b3Ige1xyXG4gIG1hcmdpbjogYXV0bztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICB3aWR0aDogN3JlbTtcclxuICBoZWlnaHQ6IDNyZW07XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG5cclxuICA+IGRpdiB7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgICBwYWRkaW5nOiAwO1xyXG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcclxuICB9XHJcbn1cclxuXHJcbiJdfQ== */");
 
 /***/ }),
 
@@ -401,7 +401,7 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"alert alert-primary\" role=\"alert\">\n  current counter {{counter$ | async}}\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"alert alert-primary\" role=\"alert\">\r\n  current counter {{counter$ | async}}\r\n</div>\r\n");
 
 /***/ }),
 
@@ -414,7 +414,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <h3>Usage example of the ngx-state-store module</h3>\n    </div>\n  </div>\n  <div class=\"row\"></div>\n  <div class=\"row\"></div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <ul>\n        <li>src/app/components/counter-button.component/counter-button.component.ts</li>\n        <li>src/app/components/counter.component/counter.component.ts</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-6\">\n      <app-counter-button></app-counter-button>\n    </div>\n    <div class=\"col-6\">\n      <app-counter></app-counter>\n    </div>\n  </div>\n  <div class=\"row\"></div>\n  <div class=\"row\"></div>\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <ul>\n        <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>\n        <li>src/app/components/inventories.component/inventories.component.ts</li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-6\">\n      <app-inventories-button></app-inventories-button>\n    </div>\n    <div class=\"col-6\">\n      <app-inventories></app-inventories>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <h3>Usage example of the ngx-state-store module</h3>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/counter-button.component/counter-button.component.ts</li>\r\n        <li>src/app/components/counter.component/counter.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-counter-button></app-counter-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-counter></app-counter>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>\r\n        <li>src/app/components/inventories.component/inventories.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-inventories-button></app-inventories-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-inventories></app-inventories>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -449,6 +449,10 @@ class StateHelper {
      * @param o object to freeze
      */
     static deepFreeze(o) {
+        // @ts-ignore
+        if (o === window) {
+            return o;
+        }
         Object.freeze(o);
         const oIsFunction = typeof o === 'function';
         const hasOwnProp = Object.prototype.hasOwnProperty;
@@ -470,34 +474,46 @@ class StateHelper {
      * @param cloneFunctions determines whether the functions must be also cloned, default value 'true'
      */
     static cloneObject(o, cloneFunctions = true) {
-        return StateHelper.cloneObjectIntern(o, undefined, cloneFunctions);
+        const cyclicDependenciesMap = new Map();
+        return StateHelper.cloneObjectIntern(cyclicDependenciesMap, o, undefined, cloneFunctions);
     }
     /**
      * The method returns the clone of the object. Useful to clone frozen object.
      *
+     * @param cyclicDependenciesMap map to detect and resolve cyclic dependencies
      * @param o object to clone
      * @param parent owner object of the object to clone, it is used for the functions cloning
      * @param cloneFunctions determines whether the functions must be also cloned, default value 'true'
      */
-    static cloneObjectIntern(o, parent, cloneFunctions) {
+    static cloneObjectIntern(cyclicDependenciesMap, o, parent, cloneFunctions) {
         let target;
+        // @ts-ignore
+        if (o === window) {
+            return o;
+        }
         if (o) {
+            if (cyclicDependenciesMap.has(o)) {
+                return cyclicDependenciesMap.get(o);
+            }
             if (typeof o === 'object') {
                 if (Array.isArray(o)) {
                     target = o.slice();
+                    cyclicDependenciesMap.set(o, target);
                     o.forEach((element, index) => {
-                        target[index] = StateHelper.cloneObjectIntern(element, o, cloneFunctions);
+                        target[index] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, element, o, cloneFunctions);
                     });
                 }
                 else if (StateHelper.isValidDate(o)) {
                     target = new Date(o.toISOString());
+                    cyclicDependenciesMap.set(o, target);
                 }
                 else {
                     target = Object.assign({}, o);
+                    cyclicDependenciesMap.set(o, target);
                     Object.getOwnPropertyNames(o).forEach((prop) => {
                         const functionType = (typeof o[prop] === 'function');
                         if (cloneFunctions && functionType || !functionType) {
-                            target[prop] = StateHelper.cloneObjectIntern(target[prop], target, cloneFunctions);
+                            target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
                         }
                         else {
                             delete target[prop];
@@ -508,9 +524,10 @@ class StateHelper {
             else if (typeof o === 'function') {
                 if (cloneFunctions) {
                     target = o.bind(parent || {});
+                    cyclicDependenciesMap.set(o, target);
                     Object.getOwnPropertyNames(o).forEach((prop) => {
                         if (prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' && prop !== 'length' && prop !== 'name') {
-                            target[prop] = StateHelper.cloneObjectIntern(target[prop], target, cloneFunctions);
+                            target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
                         }
                     });
                 }
@@ -679,12 +696,7 @@ class Store {
         // And the result observable is
         // complete before return statement.
         setTimeout(() => {
-            if (actionResult$ == null) {
-                this.dispatchAfter(action, this.currentState, currentCounter);
-                result.next(this.currentState);
-                result.complete();
-            }
-            else {
+            if (Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["isObservable"])(actionResult$)) {
                 actionResult$
                     .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1)).subscribe(() => {
                     this.dispatchAfter(action, this.currentState, currentCounter);
@@ -696,6 +708,11 @@ class Store {
                     console.error(error);
                     result.error(error);
                 });
+            }
+            else {
+                this.dispatchAfter(action, this.currentState, currentCounter);
+                result.next(this.currentState);
+                result.complete();
             }
         });
         return result.asObservable();
@@ -917,7 +934,7 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<button class=\"btn-primary\" (click)=\"incrementCounter()\">Increment Counter</button>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<button class=\"btn-primary\" (click)=\"incrementCounter()\">Increment Counter</button>\r\n");
 
 /***/ }),
 
@@ -930,7 +947,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"inventories\">\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator-background\"></div>\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator\">\n    <div>Loading ...</div>\n  </div>\n\n  <div class=\"inventories-table-container\">\n    <table class=\"table table-bordered\">\n      <thead>\n      <tr>\n        <th scope=\"col\">#</th>\n        <th scope=\"col\">ID</th>\n        <th scope=\"col\">Version</th>\n        <th scope=\"col\">Name</th>\n      </tr>\n      </thead>\n      <tbody>\n      <tr *ngFor=\"let inventory of inventories; let i=index\">\n        <th scope=\"row\">{{i}}</th>\n        <td>{{inventory.id}}</td>\n        <td>{{inventory.version}}</td>\n        <td>{{inventory.name}}</td>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"inventories\">\r\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator-background\"></div>\r\n  <div *ngIf=\"loading$ | async\" class=\"load-indicator\">\r\n    <div>Loading ...</div>\r\n  </div>\r\n\r\n  <div class=\"inventories-table-container\">\r\n    <table class=\"table table-bordered\">\r\n      <thead>\r\n      <tr>\r\n        <th scope=\"col\">#</th>\r\n        <th scope=\"col\">ID</th>\r\n        <th scope=\"col\">Version</th>\r\n        <th scope=\"col\">Name</th>\r\n      </tr>\r\n      </thead>\r\n      <tbody>\r\n      <tr *ngFor=\"let inventory of inventories; let i=index\">\r\n        <th scope=\"row\">{{i}}</th>\r\n        <td>{{inventory.id}}</td>\r\n        <td>{{inventory.version}}</td>\r\n        <td>{{inventory.name}}</td>\r\n      </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -1160,10 +1177,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inventories_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inventories.component.scss */ "JizG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/state-store/action-factory */ "flpt");
-
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/state-store/action-factory */ "flpt");
 
 
 
@@ -1176,7 +1191,7 @@ let InventoriesComponent = class InventoriesComponent {
         this.store = store;
     }
     ngOnInit() {
-        this.loading$ = this.store.select('ShowLoadingIndicator').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["mergeMap"])(indicators => Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(indicators.filter(i => i === _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_7__["LoadIndicator"].LOAD_INVENTORIES).length > 0)));
+        this.loading$ = this.store.select('ShowLoadingIndicator').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(indicators => indicators.filter(i => i === _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_6__["LoadIndicator"].LOAD_INVENTORIES).length > 0));
         this.store.select('Inventories').subscribe(inventories => {
             this.inventories = inventories;
         });

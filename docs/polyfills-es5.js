@@ -539,7 +539,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       __webpack_require__(
-      /*! /home/oleg/P_DRIVE/DEV/projects/state-store/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */
+      /*! C:\Dev\projects\state-store\node_modules\@angular-devkit\build-angular\src\webpack\es5-polyfills.js */
       "voQr");
 
       __webpack_require__(
@@ -547,15 +547,15 @@
       "R0gw");
 
       __webpack_require__(
-      /*! /home/oleg/P_DRIVE/DEV/projects/state-store/node_modules/@angular-devkit/build-angular/src/webpack/jit-polyfills.js */
+      /*! C:\Dev\projects\state-store\node_modules\@angular-devkit\build-angular\src\webpack\jit-polyfills.js */
       "rZy+");
 
       __webpack_require__(
-      /*! /home/oleg/P_DRIVE/DEV/projects/state-store/node_modules/@angular-devkit/build-angular/src/webpack/es5-jit-polyfills.js */
+      /*! C:\Dev\projects\state-store\node_modules\@angular-devkit\build-angular\src\webpack\es5-jit-polyfills.js */
       "aYjs");
 
       module.exports = __webpack_require__(
-      /*! /home/oleg/P_DRIVE/DEV/projects/state-store/src/polyfills.ts */
+      /*! C:\Dev\projects\state-store\src\polyfills.ts */
       "hN/g");
       /***/
     },
