@@ -1,6 +1,6 @@
 {
   "name": "state-store",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "keywords": [
     "ngx-state-store",
     "ngx-state",
@@ -42,7 +42,7 @@
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
-    "ngx-state-store": "^1.0.14",
+    "ngx-state-store": "^1.0.15",
     "rxjs": "~6.6.6",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4",
