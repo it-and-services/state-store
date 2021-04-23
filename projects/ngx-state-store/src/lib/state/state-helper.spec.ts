@@ -116,19 +116,6 @@ describe('StateHelper - clone and freeze tests;', () => {
     expect(o as any).toEqual({prop: 88});
   }));
 
-  it('Date should be unfrozen and cloned', inject([], () => {
-    const dateObject = {date: new Date()};
-    const timeMillis = dateObject.date.getTime();
-    let o = StateHelper.deepFreeze(dateObject);
-    expect(o === dateObject).toBeTruthy();
-    expect(timeMillis).toBe((o.date as Date).getTime());
-    o = StateHelper.cloneObject(o);
-    expect(o === dateObject).not.toBeTruthy();
-    expect(o.date.getTime).toBeTruthy();
-    expect(o.date.getTime()).toBe(timeMillis);
-    expect(JSON.stringify(dateObject)).toBe(JSON.stringify(o));
-  }));
-
   it('JSON.stringify() of the objects must be identical', inject([], () => {
     const origin = JSON.stringify(complexObject);
     const frozen = JSON.stringify(StateHelper.deepFreeze(complexObject));
