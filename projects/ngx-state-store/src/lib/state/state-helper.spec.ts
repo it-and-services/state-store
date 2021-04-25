@@ -2,14 +2,14 @@ import { inject, TestBed } from '@angular/core/testing';
 import { StateHelper } from './state-helper';
 
 describe('StateHelper - clone and freeze tests;', () => {
-  let funk;
+  let get77;
   let simpleObject;
   let complexObject;
   beforeEach(() => {
-    funk = () => 77;
-    funk.x = 7;
-    simpleObject = {prop: 1};
-    complexObject = {prop: [{one: [{oneOne: 4}, {}]}, {two: ['5']}]};
+    get77 = () => 77;
+    get77.prop7 = 7;
+    simpleObject = {propOne: 1};
+    complexObject = {prop: [{one: [{oneOne: 1}, {}]}, {two: ['2']}]};
     TestBed.configureTestingModule({
       providers: []
     });
@@ -36,20 +36,20 @@ describe('StateHelper - clone and freeze tests;', () => {
   it('simple object should be frozen', inject([], () => {
     const o = StateHelper.deepFreeze(simpleObject);
     expect(o === simpleObject).toBeTruthy();
-    expect(() => o.prop = 2).toThrowError();
+    expect(() => o.propOne = 2).toThrowError();
   }));
 
   it('function should be frozen', inject([], () => {
-    const o = StateHelper.deepFreeze(funk);
-    expect(o === funk).toBeTruthy();
-    expect(() => o.x = 2).toThrowError();
+    const o = StateHelper.deepFreeze(get77);
+    expect(o === get77).toBeTruthy();
+    expect(() => o.prop7 = 2).toThrowError();
     expect(o.call(o)).toBe(77);
   }));
 
   it('complex object should be unfrozen and cloned', inject([], () => {
     let o = StateHelper.deepFreeze(complexObject);
     expect(o === complexObject).toBeTruthy();
-    expect(o.prop[0].one[0].oneOne).toBe(4);
+    expect(o.prop[0].one[0].oneOne).toBe(1);
     o = StateHelper.cloneObject(o);
     expect(o.prop[0].one[0].oneOne = 2).toBe(2);
   }));
@@ -57,25 +57,25 @@ describe('StateHelper - clone and freeze tests;', () => {
   it('complex object should be unfrozen and cloned 2', inject([], () => {
     let o = StateHelper.deepFreeze(complexObject);
     expect(o === complexObject).toBeTruthy();
-    expect(o.prop[1].two[0]).toBe('5');
+    expect(o.prop[1].two[0]).toBe('2');
     o = StateHelper.cloneObject(o);
-    expect((o.prop[1].two = ['6'])[0]).toBe('6');
+    expect((o.prop[1].two = ['3'])[0]).toBe('3');
   }));
 
   it('function should be unfrozen and cloned', inject([], () => {
-    let o = StateHelper.deepFreeze(funk);
-    expect(o === funk).toBeTruthy();
-    expect(funk.x).toBe(7);
+    let o = StateHelper.deepFreeze(get77);
+    expect(o === get77).toBeTruthy();
+    expect(get77.prop7).toBe(7);
     expect(o.call(o)).toBe(77);
     o = StateHelper.cloneObject(o);
-    expect(o.x = 2).toBe(2);
+    expect(o.prop7 = 2).toBe(2);
     expect(o.call(o)).toBe(77);
   }));
 
   it('function should not cloned', inject([], () => {
-    let o = StateHelper.deepFreeze(funk);
-    expect(o === funk).toBeTruthy();
-    expect(funk.x).toBe(7);
+    let o = StateHelper.deepFreeze(get77);
+    expect(o === get77).toBeTruthy();
+    expect(get77.prop7).toBe(7);
     expect(o.call(o)).toBe(77);
     o = StateHelper.cloneObject(o, false);
     expect(o).toBeFalsy();
@@ -125,10 +125,10 @@ describe('StateHelper - clone and freeze tests;', () => {
   }));
 
   it('JSON.stringify() of the functions must be identical', inject([], () => {
-    const origin = JSON.stringify(funk);
-    const frozen = JSON.stringify(StateHelper.deepFreeze(funk));
+    const origin = JSON.stringify(get77);
+    const frozen = JSON.stringify(StateHelper.deepFreeze(get77));
     expect(origin).toBe(frozen);
-    const unfrozen = JSON.stringify(StateHelper.cloneObject(StateHelper.deepFreeze(funk)));
+    const unfrozen = JSON.stringify(StateHelper.cloneObject(StateHelper.deepFreeze(get77)));
     expect(frozen).toBe(unfrozen);
   }));
 });

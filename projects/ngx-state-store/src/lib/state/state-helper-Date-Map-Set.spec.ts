@@ -77,22 +77,23 @@ describe('StateHelper - Date, Map, Set tests;', () => {
     const obj = {a: 5};
     map.set('1', ['1.1', '1.2', obj]);
     map.set('0', ['0.2', '0.1']);
-    const o2 = StateHelper.cloneObject(StateHelper.deepFreeze(map));
+    const mapCopy = new Map(map);
+    let mapFreezeClone = StateHelper.cloneObject(StateHelper.deepFreeze(map));
 
-    expect(o2).toBeTruthy();
-    expect(o2 instanceof Map).toBeTruthy();
-    expect(map === o2).toBeFalsy();
-    expect(o2.get('0')).toEqual(['0.2', '0.1']);
-    expect(o2.get('1')).toEqual(['1.1', '1.2', {a: 5}]);
-    expect(Array.from(o2.keys())).toEqual(['1', '0']);
+    expect(mapFreezeClone).toBeTruthy();
+    expect(mapFreezeClone instanceof Map).toBeTruthy();
+    expect(map === mapFreezeClone).toBeFalsy();
+    expect(mapFreezeClone.get('0')).toEqual(['0.2', '0.1']);
+    expect(mapFreezeClone.get('1')).toEqual(['1.1', '1.2', {a: 5}]);
+    expect(Array.from(mapFreezeClone.keys())).toEqual(['1', '0']);
 
     expect(map.get('1')[2]).toEqual({a: 5});
     expect(map.get('1')[2] === obj).toBeTruthy();
-    expect(o2.get('1')[2] === obj).toBeFalsy();
+    expect(mapFreezeClone.get('1')[2] === obj).toBeFalsy();
     expect(Object.isFrozen(map.get('1'))).toBeTruthy();
     expect(Object.isFrozen(map.get('1')[2])).toBeTruthy();
-    expect(Object.isFrozen(o2.get('1'))).toBeFalsy();
-    expect(Object.isFrozen(o2.get('1')[2])).toBeFalsy();
+    expect(Object.isFrozen(mapFreezeClone.get('1'))).toBeFalsy();
+    expect(Object.isFrozen(mapFreezeClone.get('1')[2])).toBeFalsy();
 
     expect(() => {
       map.get('1')[2].a = 6;
@@ -107,77 +108,127 @@ describe('StateHelper - Date, Map, Set tests;', () => {
       map.delete('any');
     }).toThrow();
 
-    expect(() => {
-      o2.get('1')[2].a = 6;
-    }).not.toThrow();
-    expect(() => {
-      o2.set('any', ['any']);
-    }).not.toThrow();
-    expect(() => {
-      o2.delete('any');
-    }).not.toThrow();
-    expect(() => {
-      o2.clear();
-    }).not.toThrow();
-    expect(o2.size).toEqual(0);
+    const beforeString = Array.from(mapCopy).join(', ');
+    const beforeKeysString = Array.from(mapCopy.keys()).join(', ');
+    const beforeValuesString = Array.from(mapCopy.values()).join(', ');
+    const beforeEntriesString = Array.from(mapCopy.entries()).join(', ');
+    new Map().clear.call(map);
+    expect(map.size).toEqual(2);
+    expect(Array.from(map).join(', ')).toEqual(beforeString);
+    expect(Array.from(map.keys()).join(', ')).toEqual(beforeKeysString);
+    expect(Array.from(map.values()).join(', ')).toEqual(beforeValuesString);
+    expect(Array.from(map.entries()).join(', ')).toEqual(beforeEntriesString);
 
+    expect(() => {
+      mapFreezeClone.get('1')[2].a = 6;
+    }).not.toThrow();
+    expect(() => {
+      mapFreezeClone.set('any', ['any']);
+    }).not.toThrow();
+    expect(() => {
+      mapFreezeClone.delete('any');
+    }).not.toThrow();
+    expect(() => {
+      mapFreezeClone.clear();
+    }).not.toThrow();
+    expect(mapFreezeClone.size).toEqual(0);
+
+    new Map<any, any>().set.call(map, 'any', ['any']);
+    expect(map.get('any')).toBeUndefined();
+    new Map<any, any>().delete.call(map, '1');
+    expect(map.keys()).toEqual(mapCopy.keys());
+    expect(map.values()).toEqual(mapCopy.values());
+
+    mapFreezeClone = StateHelper.cloneObject(map);
+    expect(mapFreezeClone.keys()).toEqual(mapCopy.keys());
+    expect(mapFreezeClone.values()).toEqual(mapCopy.values());
+    mapFreezeClone = new Map(map);
+    expect(mapFreezeClone.keys()).toEqual(mapCopy.keys());
+    expect(mapFreezeClone.values()).toEqual(mapCopy.values());
+
+    map.forEach((value, key) => {
+      expect(mapCopy.get(key)).toEqual(value);
+    });
+
+    expect(map.has('1')).toBeTruthy();
+    expect(map.get('1')).toEqual(['1.1', '1.2', {a: 5}]);
   }));
 
   it('Set should be unfrozen and cloned', inject([], () => {
-    const o: Set<any> = new Set<any>();
-    o.add('1.2');
-    o.add('1');
-    o.add('1.1');
+    const set: Set<any> = new Set<any>();
+    set.add('1.2');
+    set.add('1');
+    set.add('1.1');
     const obj = {a: 5};
-    o.add(obj);
-    const o2 = StateHelper.cloneObject(StateHelper.deepFreeze(o));
+    set.add(obj);
+    const setCopy = new Set(set);
+    let setFreezeClone = StateHelper.cloneObject(StateHelper.deepFreeze(set));
 
-    expect(o2).toBeTruthy();
-    expect(o2 instanceof Set).toBeTruthy();
-    expect(o === o2).toBeFalsy();
-    expect(Array.from(o2)).toEqual(['1.2', '1', '1.1', {a: 5}]);
-    expect(Array.from(o)).toEqual(['1.2', '1', '1.1', {a: 5}]);
+    expect(setFreezeClone).toBeTruthy();
+    expect(setFreezeClone instanceof Set).toBeTruthy();
+    expect(set === setFreezeClone).toBeFalsy();
+    expect(Array.from(setFreezeClone)).toEqual(['1.2', '1', '1.1', {a: 5}]);
+    expect(Array.from(set)).toEqual(['1.2', '1', '1.1', {a: 5}]);
+    expect(setFreezeClone.has('1.2')).toBeTruthy();
 
-    expect(Array.from(o2)[3]).toEqual({a: 5});
-    expect(Array.from(o)[3] === obj).toBeTruthy();
-    expect(Array.from(o2)[3] === obj).toBeFalsy();
-    expect(Object.isFrozen(Array.from(o)[3])).toBeTruthy();
-    expect(Object.isFrozen(Array.from(o2)[3])).toBeFalsy();
+    expect(Array.from(setFreezeClone)[3]).toEqual({a: 5});
+    expect(Array.from(set)[3] === obj).toBeTruthy();
+    expect(Array.from(setFreezeClone)[3] === obj).toBeFalsy();
+    expect(Object.isFrozen(Array.from(set)[3])).toBeTruthy();
+    expect(Object.isFrozen(Array.from(setFreezeClone)[3])).toBeFalsy();
 
     expect(() => {
-      Array.from(o)[3].a = 6;
+      Array.from(set)[3].a = 6;
     }).toThrow();
     expect(() => {
-      o.clear();
+      set.clear();
     }).toThrow();
     expect(() => {
-      o.add('any');
+      set.add('any');
     }).toThrow();
     expect(() => {
-      o.delete('any');
+      set.delete('any');
     }).toThrow();
 
-    const beforeString = Array.from(o).join(', ');
-    const beforeKeysString = Array.from(o.keys()).join(', ');
-    const beforeValuesString = Array.from(o.values()).join(', ');
-    const beforeEntriesString = Array.from(o.entries()).join(', ');
-    new Set().clear.call(o);
-    expect(o.size).toEqual(4);
-    expect(Array.from(o).join(', ')).toEqual(beforeString);
-    expect(Array.from(o.keys()).join(', ')).toEqual(beforeKeysString);
-    expect(Array.from(o.values()).join(', ')).toEqual(beforeValuesString);
-    expect(Array.from(o.entries()).join(', ')).toEqual(beforeEntriesString);
+    const beforeString = Array.from(set).join(', ');
+    const beforeKeysString = Array.from(set.keys()).join(', ');
+    const beforeValuesString = Array.from(set.values()).join(', ');
+    const beforeEntriesString = Array.from(set.entries()).join(', ');
+    new Set().clear.call(set);
+    expect(set.size).toEqual(4);
+    expect(Array.from(set).join(', ')).toEqual(beforeString);
+    expect(Array.from(set.keys()).join(', ')).toEqual(beforeKeysString);
+    expect(Array.from(set.values()).join(', ')).toEqual(beforeValuesString);
+    expect(Array.from(set.entries()).join(', ')).toEqual(beforeEntriesString);
 
     expect(() => {
-      o2.add('any');
+      setFreezeClone.add('any');
     }).not.toThrow();
     expect(() => {
-      o2.delete('any');
+      setFreezeClone.delete('any');
     }).not.toThrow();
     expect(() => {
-      o2.clear();
+      setFreezeClone.clear();
     }).not.toThrow();
-    expect(o2.size).toEqual(0);
+    expect(setFreezeClone.size).toEqual(0);
+
+    new Set<any>().add.call(set, 'any');
+    expect(set.has('any')).toBeFalsy();
+    new Set<any>().delete.call(set, '1.2');
+    expect(set.keys()).toEqual(setCopy.keys());
+    expect(set.values()).toEqual(setCopy.values());
+
+    setFreezeClone = StateHelper.cloneObject(set);
+    expect(setFreezeClone.keys()).toEqual(setCopy.keys());
+    expect(setFreezeClone.values()).toEqual(setCopy.values());
+    setFreezeClone = new Set(set);
+    expect(setFreezeClone.keys()).toEqual(setCopy.keys());
+    expect(setFreezeClone.values()).toEqual(setCopy.values());
+
+    set.forEach((value) => {
+      expect(setCopy.has(value)).toBeTruthy();
+    });
+
   }));
 });
 
