@@ -54,7 +54,7 @@ describe('StateHelper - Date, Map, Set tests;', () => {
       if (prop.startsWith('set')) {
         expect(() => {
           dateObjectCloneFreeze.date[prop](0);
-        }).toThrow();
+        }).toThrow(new Error('Date is immutable'));
         const getProp = 'get' + prop.substr(3);
 
         expect(dateObjectCloneFreeze.date[getProp]()).toEqual(dateObjectCopy.date[getProp]());
@@ -95,18 +95,23 @@ describe('StateHelper - Date, Map, Set tests;', () => {
     expect(Object.isFrozen(mapFreezeClone.get('1'))).toBeFalsy();
     expect(Object.isFrozen(mapFreezeClone.get('1')[2])).toBeFalsy();
 
+    for (const [key, value] of map.entries()) {
+      expect(Object.isFrozen(key)).toBeTruthy();
+      expect(Object.isFrozen(value)).toBeTruthy();
+    }
+
     expect(() => {
       map.get('1')[2].a = 6;
     }).toThrow();
     expect(() => {
       map.clear();
-    }).toThrow();
+    }).toThrow(new Error('Map is immutable'));
     expect(() => {
       map.set('any', ['any']);
-    }).toThrow();
+    }).toThrow(new Error('Map is immutable'));
     expect(() => {
       map.delete('any');
-    }).toThrow();
+    }).toThrow(new Error('Map is immutable'));
 
     const beforeString = Array.from(mapCopy).join(', ');
     const beforeKeysString = Array.from(mapCopy.keys()).join(', ');
@@ -177,18 +182,22 @@ describe('StateHelper - Date, Map, Set tests;', () => {
     expect(Object.isFrozen(Array.from(set)[3])).toBeTruthy();
     expect(Object.isFrozen(Array.from(setFreezeClone)[3])).toBeFalsy();
 
+    for (const value of set) {
+      expect(Object.isFrozen(value)).toBeTruthy();
+    }
+
     expect(() => {
       Array.from(set)[3].a = 6;
     }).toThrow();
     expect(() => {
       set.clear();
-    }).toThrow();
+    }).toThrow(new Error('Set is immutable'));
     expect(() => {
       set.add('any');
-    }).toThrow();
+    }).toThrow(new Error('Set is immutable'));
     expect(() => {
       set.delete('any');
-    }).toThrow();
+    }).toThrow(new Error('Set is immutable'));
 
     const beforeString = Array.from(set).join(', ');
     const beforeKeysString = Array.from(set.keys()).join(', ');

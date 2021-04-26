@@ -1,3 +1,4 @@
+// @dynamic
 export class StateHelper {
 
   private static immutableMapFunction = StateHelper.immutableFunction('Map');
