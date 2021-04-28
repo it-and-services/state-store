@@ -4,7 +4,7 @@ import { Action } from './action';
 import { STATE_CONFIG } from './state-config.token';
 import { StateContext } from './state-context';
 import { ObjectComparator, Store } from './store.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, mergeMap, tap } from 'rxjs/operators';
 import { StateConfig } from './state-config';
 
 describe('Store', () => {
@@ -240,5 +240,77 @@ describe('Store', () => {
 
   });
 
+  describe('dispatch, pipe and select', () => {
+    let store: Store<any>;
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [Store, {
+          provide: STATE_CONFIG,
+          useValue: {initialState: {Counter: 1}} // initial Counter = 1
+        }]
+      });
+      store = TestBed.inject(Store);
+    });
+
+    it('selecting stale state that is changing by the dispatch', (done) => {
+      of(null)
+        .pipe(
+          mergeMap(() => store.dispatch({
+            handleState(stateContext: StateContext<any>): Observable<void> {
+
+              expect(stateContext.getState().Counter).toBe(1); // initial - Counter = 1
+
+              return of(null)
+                .pipe(
+                  tap(() => {
+                    stateContext.patchState({Counter: 2}); // patch state - Counter = 2
+                  }),
+                  mergeMap(() => store.selectOnce('Counter')), // select Counter
+                  tap((Counter) => {
+
+                    // despite the patchState() the select returns stale state - Counter = 1
+                    expect(Counter).toBe(1); // stale state - Counter = 1
+                  })
+                );
+            }
+          } as Action)),
+          mergeMap((newState) => store.dispatch({
+            handleState(stateContext: StateContext<any>): Observable<void> {
+
+              // but the returned state from dispatch is always newest state - Counter = 2
+              expect(newState.Counter).toBe(2); // newest state - Counter = 2
+
+              // the state of the stateContext is also newest state - Counter = 2
+              expect(stateContext.getState().Counter).toBe(2); // newest state - Counter = 2
+
+              return of(null)
+                .pipe(
+                  tap(() => {
+                    stateContext.patchState({Counter: 3}); // patch state again - Counter = 3
+                  }),
+                );
+            }
+          } as Action)),
+          mergeMap((newState) => {
+
+            // the returned state from dispatch is always newest state - Counter = 3
+            expect(newState.Counter).toBe(3); // newest state - Counter = 3
+
+            return store.selectOnce('Counter'); // select Counter
+          })
+        )
+        .subscribe(selectedCounterValue => {
+
+          // result of any select is stale state - Counter = 2
+          expect(selectedCounterValue).toBe(2); // stale state - Counter = 2
+
+          // select Counter again
+          store.selectOnce('Counter').subscribe((stillStaleCounterValue) => {
+            expect(stillStaleCounterValue).toBe(2); // it is stale state - Counter = 2
+            done();
+          });
+        });
+    });
+  });
 });
 

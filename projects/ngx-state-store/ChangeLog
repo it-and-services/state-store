@@ -1,5 +1,10 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.16
+  - Date, Map and Set objects may be used in by the state
+  - StateHelper.cloneObject() was extended to clone Date, Map and Set including content
+  - StateHelper.deepFreeze() was extended to makes Date, Map and Set immutable including content
+
 v1.0.15
   - cyclic dependencies resolution by the StateHelper.cloneObject()
   - prevent to clone the window by the StateHelper.cloneObject()
