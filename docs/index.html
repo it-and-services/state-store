@@ -175,8 +175,8 @@
                   <div class="intro1">
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
-                      <li><strong>Module Version </strong> 1.0.15</li>
-                      <li><strong>Documentation Version </strong> 1.0.0</li>
+                      <li><strong>Module Version </strong> 1.0.16</li>
+                      <li><strong>Documentation Version </strong> 1.0.1</li>
                       <li><strong>Authors </strong>
                         <div class="authors-list">
                           <a href="http://www.xing.com/profile/Oleg_Soloviov"
@@ -717,7 +717,7 @@
               import { Store } from 'ngx-state-store';
               import { AppState } from '../../services/state-store/app-state';
               import { ActionFactory, LoadIndicator } from '../../services/state-store/action-factory';
-              import { catchError, flatMap, skip } from 'rxjs/operators';
+              import { catchError, mergeMap, skip } from 'rxjs/operators';
               import { of } from 'rxjs';
               import { Inventory } from '../../models/inventory';
 
@@ -767,7 +767,7 @@
                   this.store.dispatch(
                     this.factory.showLoadIndicator(LoadIndicator.LOAD_INVENTORIES))
                   .pipe(
-                    flatMap(() => this.store.dispatch(this.factory.loadInventories())),
+                    mergeMap(() => this.store.dispatch(this.factory.loadInventories())),
                     catchError(error => {
                       console.log(error);
                       return of(error);
@@ -803,7 +803,7 @@
               import { AppState } from '../../services/state-store/app-state';
               import { Inventory } from '../../models/inventory';
               import { Observable, of } from 'rxjs';
-              import { flatMap } from 'rxjs/operators';
+              import { mergeMap } from 'rxjs/operators';
               import { LoadIndicator } from '../../services/state-store/action-factory';
 
               @Component({
@@ -875,11 +875,11 @@
                         object.</li>
                       <li><strong>selectOnce</strong>
                           - <code>selectOnce(string): Observable&lt;any&gt;</code>
-                          - the same as <code>select</code> but the Observable is complete after forward one value.</li>
+                          - the same as <code>select</code> but the Observable terminates after forward one value.</li>
                       <li><strong>dispatch</strong>
                           - <code>dispatch(action: Action): Observable&lt;state: S&gt;</code>
                           - dispatch the Action that changes some state, the dispatch function always returns an
-                          Observable of your state .</li>
+                          Observable of your newest state.</li>
                   </ul>
 
                   <br />
@@ -903,11 +903,11 @@
                   <pre class="brush: typescript">
                   this.store.dispatch(&lt;some action&gt;)
                   .pipe(
-                    flatMap((state: S) => {
+                    mergeMap((state: S) => {
                       // ... read and use data from the state
                       return this.store.dispatch(&lt;another action&gt;);
                     }),
-                    flatMap((state: S) => {
+                    mergeMap((state: S) => {
                       // ... read and use data from the state
                       return this.store.dispatch(&lt;another action 2&gt;);
                     })
@@ -915,6 +915,107 @@
                     // ... read and use data from the state
                   });
                   </pre>
+
+                  <br/>
+                  <strong><i>dispatch rules:</i></strong>
+                  <div class="code-nowrap">
+                    <strong><i>1)</i></strong> Do not use
+                    <code><s>store.select(string)</s></code> in the subscription / pipe to
+                    <code>store.dispatch(&lt;some action&gt;)</code>.
+                    <br/>
+                    The <code>store.dispatch(&lt;some action&gt;)</code> returns an Observable that emits only one value,
+                    that is newest state, and terminates, whereas the <code>store.select(string)</code> returns an
+                    Observable that emits the value every time the state was changed. As the result the subscription
+                    stays further active.
+                  </div>
+
+                  <div class="code-nowrap">
+                    <strong><i>2)</i></strong> Any <code>store.selectOnce(string)</code> in the subscription / pipe to
+                    <code>store.dispatch(&lt;some action&gt;)</code> returns stale state.
+                    <br/>
+                    Only the state emitted by the Observable returned by the <code>store.dispatch(&lt;some action&gt;)</code>
+                    and the state of the StateContext in the <code>action.handleState(stateContext)</code> are the
+                    newest in the subscription / pipe to <code>store.dispatch(&lt;some action&gt;)</code>.
+                  </div>
+                  <br/>
+
+                  <div>Code snippet that demonstrates the <code>store.dispatch(&lt;some action&gt;)</code> rules</div>
+                  <div>Source: projects/ngx-state-store/src/lib/state/store.service.spec.ts</div>
+                  <pre class="brush: typescript">
+                  describe('dispatch, pipe and selectOnce', () => {
+                    let store: Store&lt;any&gt;;
+                    beforeEach(() => {
+                      TestBed.configureTestingModule({
+                        providers: [Store, {
+                            provide: STATE_CONFIG,
+                            useValue: {initialState: {Counter: 1}}  // initial Counter = 1
+                        }]
+                      });
+                      store = TestBed.inject(Store);
+                    });
+
+                    it('selecting stale state that is changing by the dispatch', (done) => {
+                      of(null)
+                        .pipe(
+                          mergeMap(() => store.dispatch({
+                            handleState(stateContext: StateContext&lt;any&gt;): Observable&lt;void&gt; {
+
+                              expect(stateContext.getState().Counter).toBe(1); // initial - Counter = 1
+
+                              return of(null)
+                                .pipe(
+                                  tap(() => {
+                                    stateContext.patchState({Counter: 2}); // patch state - Counter = 2
+                                  }),
+                                  mergeMap(() => store.selectOnce('Counter')), // select Counter
+                                  tap((Counter) => {
+
+                                    // despite the patchState() the select returns stale state - Counter = 1
+                                    expect(Counter).toBe(1); // stale state - Counter = 1
+                                  })
+                                );
+                            }
+                          } as Action)),
+                          mergeMap((newState) => store.dispatch({
+                            handleState(stateContext: StateContext&lt;any&gt;): Observable&lt;void&gt; {
+
+                              // but the returned state from dispatch is always newest state - Counter = 2
+                              expect(newState.Counter).toBe(2); // newest state - Counter = 2
+
+                              // the state of the stateContext is also newest state - Counter = 2
+                              expect(stateContext.getState().Counter).toBe(2); // newest state - Counter = 2
+
+                              return of(null)
+                                .pipe(
+                                  tap(() => {
+                                    stateContext.patchState({Counter: 3}); // patch state again - Counter = 3
+                                }),
+                              );
+                            }
+                          } as Action)),
+                          mergeMap((newState) => {
+
+                            // the returned state from dispatch is always newest state - Counter = 3
+                            expect(newState.Counter).toBe(3); // newest state - Counter = 3
+
+                            return store.selectOnce('Counter'); // select Counter
+                          })
+                        )
+                        .subscribe(selectedCounterValue => {
+
+                          // result of any select is stale state - Counter = 2
+                          expect(selectedCounterValue).toBe(2); // stale state - Counter = 2
+
+                          // select Counter again
+                          store.selectOnce('Counter').subscribe((stillStaleCounterValue) => {
+                            expect(stillStaleCounterValue).toBe(2); // it is stale state - Counter = 2
+                            done();
+                          });
+                        });
+                    });
+                  });
+                  </pre>
+
               </div>
             </div>
             <!-- end row -->
@@ -1086,6 +1187,13 @@
               <pre class="brush: html">
 
                                         -----------------------------------------------------------------------------------------
+                                        Version 1.0.16 - 29 Apr 2021
+                                        -----------------------------------------------------------------------------------------
+                                        - Date, Map and Set objects may be used in by the state
+                                        - StateHelper.cloneObject() was extended to clone Date, Map and Set including content
+                                        - StateHelper.deepFreeze() was extended to make Date, Map and Set immutable including content
+
+                                        -----------------------------------------------------------------------------------------
                                         Version 1.0.15 - 14 Apr 2021
                                         -----------------------------------------------------------------------------------------
                                         - cyclic dependencies resolution by the StateHelper.cloneObject()
@@ -1193,12 +1301,17 @@
               <pre class="brush: html">
 
                                         -----------------------------------------------------------------------------------------
+                                        Version 1.0.1 - 29 Apr 2021
+                                        -----------------------------------------------------------------------------------------
+                                        - dispatch rules in the API-Store-dispatch section
+
+                                        -----------------------------------------------------------------------------------------
                                         Version 1.0.0 - 28 Mar 2021
                                         -----------------------------------------------------------------------------------------
-                                        - Initial HTML based documentation
+                                        - initial HTML based documentation
 
 
-                            </pre>
+              </pre>
 
             </div>
           </div>

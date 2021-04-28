@@ -421,3 +421,9 @@ html:not(.dark) .intro1 a:active {
     display: inline-flex;
     flex-direction: column;
 }
+
+div.code-nowrap code {
+    white-space: nowrap;
+    display: inline-block;
+    line-height: initial;
+}

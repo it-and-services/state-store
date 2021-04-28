@@ -441,8 +441,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// @dynamic
 
 class StateHelper {
+    static immutableFunction(objectName) {
+        return (...a) => {
+            throw Error(objectName + ' is immutable');
+        };
+    }
     /**
      * Makes a shadow freeze
      *
@@ -453,19 +459,115 @@ class StateHelper {
         if (o === window) {
             return o;
         }
+        if (o instanceof Map) {
+            StateHelper.freezeMap(o);
+        }
+        else if (o instanceof Set) {
+            StateHelper.freezeSet(o);
+        }
+        else if (o instanceof Date && StateHelper.isValidDate(o)) {
+            StateHelper.freezeDate(o);
+        }
+        StateHelper.freezeObject(o);
+        return o;
+    }
+    static freezeMap(o) {
+        o.clear = StateHelper.immutableMapFunction;
+        o.set = StateHelper.immutableMapFunction;
+        o.delete = StateHelper.immutableMapFunction;
+        const origin = new Map(o);
+        for (const [key, value] of origin.entries()) {
+            StateHelper.deepFreeze(key);
+            StateHelper.deepFreeze(value);
+        }
+        o.entries = () => origin.entries();
+        o.values = () => origin.values();
+        o.keys = () => origin.keys();
+        o.has = (a) => origin.has(a);
+        o.get = (a) => origin.get(a);
+        o.forEach = (callbackFn) => origin.forEach(callbackFn);
+        o[Symbol.iterator] = () => origin[Symbol.iterator]();
+        Object.defineProperty(o, 'size', {
+            value: origin.size,
+            writable: false
+        });
+    }
+    static freezeSet(o) {
+        o.clear = StateHelper.immutableSetFunction;
+        o.add = StateHelper.immutableSetFunction;
+        o.delete = StateHelper.immutableSetFunction;
+        const origin = new Set(o);
+        for (const value of origin) {
+            StateHelper.deepFreeze(value);
+        }
+        o.entries = () => origin.entries();
+        o.values = () => origin.values();
+        o.keys = () => origin.keys();
+        o.has = (a) => origin.has(a);
+        o.forEach = (callbackFn) => origin.forEach(callbackFn);
+        o[Symbol.iterator] = () => origin[Symbol.iterator]();
+        Object.defineProperty(o, 'size', {
+            value: origin.size,
+            writable: false
+        });
+    }
+    static freezeDate(o) {
+        o.setDate = StateHelper.immutableDateFunction;
+        o.setHours = StateHelper.immutableDateFunction;
+        o.setFullYear = StateHelper.immutableDateFunction;
+        o.setMilliseconds = StateHelper.immutableDateFunction;
+        o.setMinutes = StateHelper.immutableDateFunction;
+        o.setMonth = StateHelper.immutableDateFunction;
+        o.setSeconds = StateHelper.immutableDateFunction;
+        o.setTime = StateHelper.immutableDateFunction;
+        o.setUTCDate = StateHelper.immutableDateFunction;
+        o.setUTCHours = StateHelper.immutableDateFunction;
+        o.setUTCFullYear = StateHelper.immutableDateFunction;
+        o.setUTCMilliseconds = StateHelper.immutableDateFunction;
+        o.setUTCMinutes = StateHelper.immutableDateFunction;
+        o.setUTCMonth = StateHelper.immutableDateFunction;
+        o.setUTCSeconds = StateHelper.immutableDateFunction;
+        const origin = new Date(o.getTime());
+        o.getDate = () => origin.getDate();
+        o.getDay = () => origin.getDay();
+        o.getFullYear = () => origin.getFullYear();
+        o.getHours = () => origin.getHours();
+        o.getMilliseconds = () => origin.getMilliseconds();
+        o.getMinutes = () => origin.getMinutes();
+        o.getMonth = () => origin.getMonth();
+        o.getSeconds = () => origin.getSeconds();
+        o.getTimezoneOffset = () => origin.getTimezoneOffset();
+        o.getTime = () => origin.getTime();
+        o.getUTCDate = () => origin.getUTCDate();
+        o.getUTCDay = () => origin.getUTCDay();
+        o.getUTCFullYear = () => origin.getUTCFullYear();
+        o.getUTCHours = () => origin.getUTCHours();
+        o.getUTCMilliseconds = () => origin.getUTCMilliseconds();
+        o.getUTCMinutes = () => origin.getUTCMinutes();
+        o.getUTCMonth = () => origin.getUTCMonth();
+        o.getUTCSeconds = () => origin.getUTCSeconds();
+        o.valueOf = () => origin.valueOf();
+        o.toDateString = () => origin.toDateString();
+        o.toString = () => origin.toString();
+        o.toJSON = (key) => origin.toJSON(key);
+        o.toLocaleDateString = () => origin.toLocaleDateString();
+        o.toLocaleString = () => origin.toLocaleString();
+        o.toLocaleTimeString = () => origin.toLocaleTimeString();
+        o.toISOString = () => origin.toISOString();
+        o.toTimeString = () => origin.toTimeString();
+        o.toUTCString = () => origin.toUTCString();
+    }
+    static freezeObject(o) {
         Object.freeze(o);
         const oIsFunction = typeof o === 'function';
-        const hasOwnProp = Object.prototype.hasOwnProperty;
         Object.getOwnPropertyNames(o).forEach((prop) => {
-            if (hasOwnProp.call(o, prop) &&
-                (oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true)
+            if ((oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true)
                 && o[prop] !== null
                 && (typeof o[prop] === 'object' || typeof o[prop] === 'function')
                 && !Object.isFrozen(o[prop])) {
                 StateHelper.deepFreeze(o[prop]);
             }
         });
-        return o;
     }
     /**
      * The method returns the clone of the object. Useful to clone frozen object.
@@ -496,40 +598,32 @@ class StateHelper {
                 return cyclicDependenciesMap.get(o);
             }
             if (typeof o === 'object') {
+                // clone Array
                 if (Array.isArray(o)) {
-                    target = o.slice();
-                    cyclicDependenciesMap.set(o, target);
-                    o.forEach((element, index) => {
-                        target[index] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, element, o, cloneFunctions);
-                    });
+                    target = StateHelper.cloneArray(o, cyclicDependenciesMap, cloneFunctions);
+                    // clone Map
+                }
+                else if (o instanceof Map) {
+                    target = StateHelper.cloneMap(o, cyclicDependenciesMap, cloneFunctions);
+                    // clone Set
+                }
+                else if (o instanceof Set) {
+                    target = StateHelper.cloneSet(o, cyclicDependenciesMap, cloneFunctions);
+                    // clone Date
                 }
                 else if (StateHelper.isValidDate(o)) {
-                    target = new Date(o.toISOString());
+                    target = new Date(o.getTime());
                     cyclicDependenciesMap.set(o, target);
+                    // clone Object
                 }
                 else {
-                    target = Object.assign({}, o);
-                    cyclicDependenciesMap.set(o, target);
-                    Object.getOwnPropertyNames(o).forEach((prop) => {
-                        const functionType = (typeof o[prop] === 'function');
-                        if (cloneFunctions && functionType || !functionType) {
-                            target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
-                        }
-                        else {
-                            delete target[prop];
-                        }
-                    });
+                    target = StateHelper.cloneSimpleObject(o, cyclicDependenciesMap, cloneFunctions);
                 }
+                // clone function
             }
             else if (typeof o === 'function') {
                 if (cloneFunctions) {
-                    target = o.bind(parent || {});
-                    cyclicDependenciesMap.set(o, target);
-                    Object.getOwnPropertyNames(o).forEach((prop) => {
-                        if (prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' && prop !== 'length' && prop !== 'name') {
-                            target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
-                        }
-                    });
+                    target = StateHelper.cloneFunction(o, cyclicDependenciesMap, parent, cloneFunctions);
                 }
             }
             else {
@@ -539,6 +633,57 @@ class StateHelper {
         else {
             target = o;
         }
+        return target;
+    }
+    static cloneArray(o, cyclicDependenciesMap, cloneFunctions) {
+        const target = o.slice();
+        cyclicDependenciesMap.set(o, target);
+        o.forEach((element, index) => {
+            target[index] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, element, undefined, cloneFunctions);
+        });
+        return target;
+    }
+    static cloneMap(o, cyclicDependenciesMap, cloneFunctions) {
+        const target = new Map();
+        cyclicDependenciesMap.set(o, target);
+        for (const [key, value] of o.entries()) {
+            const keyClone = StateHelper.cloneObjectIntern(cyclicDependenciesMap, key, undefined, cloneFunctions);
+            const valueClone = StateHelper.cloneObjectIntern(cyclicDependenciesMap, value, undefined, cloneFunctions);
+            target.set(keyClone, valueClone);
+        }
+        return target;
+    }
+    static cloneSet(o, cyclicDependenciesMap, cloneFunctions) {
+        const target = new Set();
+        cyclicDependenciesMap.set(o, target);
+        for (const value of o) {
+            const valueClone = StateHelper.cloneObjectIntern(cyclicDependenciesMap, value, undefined, cloneFunctions);
+            target.add(valueClone);
+        }
+        return target;
+    }
+    static cloneSimpleObject(o, cyclicDependenciesMap, cloneFunctions) {
+        const target = Object.assign({}, o);
+        cyclicDependenciesMap.set(o, target);
+        Object.getOwnPropertyNames(o).forEach((prop) => {
+            const functionType = (typeof o[prop] === 'function');
+            if (cloneFunctions && functionType || !functionType) {
+                target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
+            }
+            else {
+                delete target[prop];
+            }
+        });
+        return target;
+    }
+    static cloneFunction(o, cyclicDependenciesMap, parent, cloneFunctions) {
+        const target = o.bind(parent || {});
+        cyclicDependenciesMap.set(o, target);
+        Object.getOwnPropertyNames(o).forEach((prop) => {
+            if (prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' && prop !== 'length' && prop !== 'name') {
+                target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
+            }
+        });
         return target;
     }
     static getEmptyObject() {
@@ -551,6 +696,9 @@ class StateHelper {
         return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date);
     }
 }
+StateHelper.immutableMapFunction = StateHelper.immutableFunction('Map');
+StateHelper.immutableSetFunction = StateHelper.immutableFunction('Set');
+StateHelper.immutableDateFunction = StateHelper.immutableFunction('Date');
 
 class StorePlugin {
     constructor(storageName) {
