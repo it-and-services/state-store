@@ -930,8 +930,9 @@
                   </div>
 
                   <div class="code-nowrap">
-                    <strong><i>2)</i></strong> Any <code>store.selectOnce(string)</code> in the subscription / pipe to
-                    <code>store.dispatch(&lt;some action&gt;)</code> returns stale state.
+                    <strong><i>2)</i></strong> Any <code>store.selectOnce(string)</code> of some state in the
+                    subscription / pipe to <code>store.dispatch(&lt;some action&gt;)</code> that is changing the state
+                    returns stale state.
                     <br/>
                     Only the state emitted by the Observable returned by the <code>store.dispatch(&lt;some action&gt;)</code>
                     and the state of the StateContext in the <code>action.handleState(stateContext)</code> are the
@@ -1189,7 +1190,7 @@
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.16 - 29 Apr 2021
                                         -----------------------------------------------------------------------------------------
-                                        - Date, Map and Set objects may be used in by the state
+                                        - Date, Map and Set objects may be used in the state
                                         - StateHelper.cloneObject() was extended to clone Date, Map and Set
                                         - StateHelper.deepFreeze() was extended to make Date, Map and Set immutable
 
