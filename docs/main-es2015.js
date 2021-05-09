@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _counter_button_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./counter-button.component.scss */ "QI/C");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/state-store/action-factory */ "flpt");
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 
 
 
@@ -190,7 +190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_inventories_button_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./inventories-button.component.html */ "4FLy");
 /* harmony import */ var _inventories_button_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inventories-button.component.scss */ "iZzG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 /* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/state-store/action-factory */ "flpt");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ "qCKp");
@@ -323,7 +323,7 @@ var ActionIds;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowLoadingIndicatorAction", function() { return ShowLoadingIndicatorAction; });
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 /* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../action-ids */ "Kdq/");
 
 
@@ -414,588 +414,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <h3>Usage example of the ngx-state-store module</h3>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/counter-button.component/counter-button.component.ts</li>\r\n        <li>src/app/components/counter.component/counter.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-counter-button></app-counter-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-counter></app-counter>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>\r\n        <li>src/app/components/inventories.component/inventories.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-inventories-button></app-inventories-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-inventories></app-inventories>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
-
-/***/ }),
-
-/***/ "Xmul":
-/*!***********************************************************************!*\
-  !*** ./dist/ngx-state-store/__ivy_ngcc__/fesm2015/ngx-state-store.js ***!
-  \***********************************************************************/
-/*! exports provided: Action, NgxStateStoreModule, StateHelper, Store, ɵa */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Action", function() { return Action; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgxStateStoreModule", function() { return NgxStateStoreModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StateHelper", function() { return StateHelper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa", function() { return STATE_CONFIG; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
-
-
-
-
-
-// @dynamic
-
-class StateHelper {
-    static immutableFunction(objectName) {
-        return (...a) => {
-            throw Error(objectName + ' is immutable');
-        };
-    }
-    /**
-     * Makes a shadow freeze
-     *
-     * @param o object to freeze
-     */
-    static deepFreeze(o) {
-        // @ts-ignore
-        if (o === window) {
-            return o;
-        }
-        if (o instanceof Map) {
-            StateHelper.freezeMap(o);
-        }
-        else if (o instanceof Set) {
-            StateHelper.freezeSet(o);
-        }
-        else if (o instanceof Date && StateHelper.isValidDate(o)) {
-            StateHelper.freezeDate(o);
-        }
-        StateHelper.freezeObject(o);
-        return o;
-    }
-    static freezeMap(o) {
-        o.clear = StateHelper.immutableMapFunction;
-        o.set = StateHelper.immutableMapFunction;
-        o.delete = StateHelper.immutableMapFunction;
-        const origin = new Map(o);
-        for (const [key, value] of origin.entries()) {
-            StateHelper.deepFreeze(key);
-            StateHelper.deepFreeze(value);
-        }
-        o.entries = () => origin.entries();
-        o.values = () => origin.values();
-        o.keys = () => origin.keys();
-        o.has = (a) => origin.has(a);
-        o.get = (a) => origin.get(a);
-        o.forEach = (callbackFn) => origin.forEach(callbackFn);
-        o[Symbol.iterator] = () => origin[Symbol.iterator]();
-        Object.defineProperty(o, 'size', {
-            value: origin.size,
-            writable: false
-        });
-    }
-    static freezeSet(o) {
-        o.clear = StateHelper.immutableSetFunction;
-        o.add = StateHelper.immutableSetFunction;
-        o.delete = StateHelper.immutableSetFunction;
-        const origin = new Set(o);
-        for (const value of origin) {
-            StateHelper.deepFreeze(value);
-        }
-        o.entries = () => origin.entries();
-        o.values = () => origin.values();
-        o.keys = () => origin.keys();
-        o.has = (a) => origin.has(a);
-        o.forEach = (callbackFn) => origin.forEach(callbackFn);
-        o[Symbol.iterator] = () => origin[Symbol.iterator]();
-        Object.defineProperty(o, 'size', {
-            value: origin.size,
-            writable: false
-        });
-    }
-    static freezeDate(o) {
-        o.setDate = StateHelper.immutableDateFunction;
-        o.setHours = StateHelper.immutableDateFunction;
-        o.setFullYear = StateHelper.immutableDateFunction;
-        o.setMilliseconds = StateHelper.immutableDateFunction;
-        o.setMinutes = StateHelper.immutableDateFunction;
-        o.setMonth = StateHelper.immutableDateFunction;
-        o.setSeconds = StateHelper.immutableDateFunction;
-        o.setTime = StateHelper.immutableDateFunction;
-        o.setUTCDate = StateHelper.immutableDateFunction;
-        o.setUTCHours = StateHelper.immutableDateFunction;
-        o.setUTCFullYear = StateHelper.immutableDateFunction;
-        o.setUTCMilliseconds = StateHelper.immutableDateFunction;
-        o.setUTCMinutes = StateHelper.immutableDateFunction;
-        o.setUTCMonth = StateHelper.immutableDateFunction;
-        o.setUTCSeconds = StateHelper.immutableDateFunction;
-        const origin = new Date(o.getTime());
-        o.getDate = () => origin.getDate();
-        o.getDay = () => origin.getDay();
-        o.getFullYear = () => origin.getFullYear();
-        o.getHours = () => origin.getHours();
-        o.getMilliseconds = () => origin.getMilliseconds();
-        o.getMinutes = () => origin.getMinutes();
-        o.getMonth = () => origin.getMonth();
-        o.getSeconds = () => origin.getSeconds();
-        o.getTimezoneOffset = () => origin.getTimezoneOffset();
-        o.getTime = () => origin.getTime();
-        o.getUTCDate = () => origin.getUTCDate();
-        o.getUTCDay = () => origin.getUTCDay();
-        o.getUTCFullYear = () => origin.getUTCFullYear();
-        o.getUTCHours = () => origin.getUTCHours();
-        o.getUTCMilliseconds = () => origin.getUTCMilliseconds();
-        o.getUTCMinutes = () => origin.getUTCMinutes();
-        o.getUTCMonth = () => origin.getUTCMonth();
-        o.getUTCSeconds = () => origin.getUTCSeconds();
-        o.valueOf = () => origin.valueOf();
-        o.toDateString = () => origin.toDateString();
-        o.toString = () => origin.toString();
-        o.toJSON = (key) => origin.toJSON(key);
-        o.toLocaleDateString = () => origin.toLocaleDateString();
-        o.toLocaleString = () => origin.toLocaleString();
-        o.toLocaleTimeString = () => origin.toLocaleTimeString();
-        o.toISOString = () => origin.toISOString();
-        o.toTimeString = () => origin.toTimeString();
-        o.toUTCString = () => origin.toUTCString();
-    }
-    static freezeObject(o) {
-        Object.freeze(o);
-        const oIsFunction = typeof o === 'function';
-        Object.getOwnPropertyNames(o).forEach((prop) => {
-            if ((oIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true)
-                && o[prop] !== null
-                && (typeof o[prop] === 'object' || typeof o[prop] === 'function')
-                && !Object.isFrozen(o[prop])) {
-                StateHelper.deepFreeze(o[prop]);
-            }
-        });
-    }
-    /**
-     * The method returns the clone of the object. Useful to clone frozen object.
-     *
-     * @param o object to clone
-     * @param cloneFunctions determines whether the functions must be also cloned, default value 'true'
-     */
-    static cloneObject(o, cloneFunctions = true) {
-        const cyclicDependenciesMap = new Map();
-        return StateHelper.cloneObjectIntern(cyclicDependenciesMap, o, undefined, cloneFunctions);
-    }
-    /**
-     * The method returns the clone of the object. Useful to clone frozen object.
-     *
-     * @param cyclicDependenciesMap map to detect and resolve cyclic dependencies
-     * @param o object to clone
-     * @param parent owner object of the object to clone, it is used for the functions cloning
-     * @param cloneFunctions determines whether the functions must be also cloned, default value 'true'
-     */
-    static cloneObjectIntern(cyclicDependenciesMap, o, parent, cloneFunctions) {
-        let target;
-        // @ts-ignore
-        if (o === window) {
-            return o;
-        }
-        if (o) {
-            if (cyclicDependenciesMap.has(o)) {
-                return cyclicDependenciesMap.get(o);
-            }
-            if (typeof o === 'object') {
-                // clone Array
-                if (Array.isArray(o)) {
-                    target = StateHelper.cloneArray(o, cyclicDependenciesMap, cloneFunctions);
-                    // clone Map
-                }
-                else if (o instanceof Map) {
-                    target = StateHelper.cloneMap(o, cyclicDependenciesMap, cloneFunctions);
-                    // clone Set
-                }
-                else if (o instanceof Set) {
-                    target = StateHelper.cloneSet(o, cyclicDependenciesMap, cloneFunctions);
-                    // clone Date
-                }
-                else if (StateHelper.isValidDate(o)) {
-                    target = new Date(o.getTime());
-                    cyclicDependenciesMap.set(o, target);
-                    // clone Object
-                }
-                else {
-                    target = StateHelper.cloneSimpleObject(o, cyclicDependenciesMap, cloneFunctions);
-                }
-                // clone function
-            }
-            else if (typeof o === 'function') {
-                if (cloneFunctions) {
-                    target = StateHelper.cloneFunction(o, cyclicDependenciesMap, parent, cloneFunctions);
-                }
-            }
-            else {
-                target = o;
-            }
-        }
-        else {
-            target = o;
-        }
-        return target;
-    }
-    static cloneArray(o, cyclicDependenciesMap, cloneFunctions) {
-        const target = o.slice();
-        cyclicDependenciesMap.set(o, target);
-        o.forEach((element, index) => {
-            target[index] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, element, undefined, cloneFunctions);
-        });
-        return target;
-    }
-    static cloneMap(o, cyclicDependenciesMap, cloneFunctions) {
-        const target = new Map();
-        cyclicDependenciesMap.set(o, target);
-        for (const [key, value] of o.entries()) {
-            const keyClone = StateHelper.cloneObjectIntern(cyclicDependenciesMap, key, undefined, cloneFunctions);
-            const valueClone = StateHelper.cloneObjectIntern(cyclicDependenciesMap, value, undefined, cloneFunctions);
-            target.set(keyClone, valueClone);
-        }
-        return target;
-    }
-    static cloneSet(o, cyclicDependenciesMap, cloneFunctions) {
-        const target = new Set();
-        cyclicDependenciesMap.set(o, target);
-        for (const value of o) {
-            const valueClone = StateHelper.cloneObjectIntern(cyclicDependenciesMap, value, undefined, cloneFunctions);
-            target.add(valueClone);
-        }
-        return target;
-    }
-    static cloneSimpleObject(o, cyclicDependenciesMap, cloneFunctions) {
-        const target = Object.assign({}, o);
-        cyclicDependenciesMap.set(o, target);
-        Object.getOwnPropertyNames(o).forEach((prop) => {
-            const functionType = (typeof o[prop] === 'function');
-            if (cloneFunctions && functionType || !functionType) {
-                target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
-            }
-            else {
-                delete target[prop];
-            }
-        });
-        return target;
-    }
-    static cloneFunction(o, cyclicDependenciesMap, parent, cloneFunctions) {
-        const target = o.bind(parent || {});
-        cyclicDependenciesMap.set(o, target);
-        Object.getOwnPropertyNames(o).forEach((prop) => {
-            if (prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' && prop !== 'length' && prop !== 'name') {
-                target[prop] = StateHelper.cloneObjectIntern(cyclicDependenciesMap, o[prop], target, cloneFunctions);
-            }
-        });
-        return target;
-    }
-    static getEmptyObject() {
-        return Object.create(null);
-    }
-    static combine(state, newValue) {
-        return Object.assign(StateHelper.getEmptyObject(), state, newValue);
-    }
-    static isValidDate(date) {
-        return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date);
-    }
-}
-StateHelper.immutableMapFunction = StateHelper.immutableFunction('Map');
-StateHelper.immutableSetFunction = StateHelper.immutableFunction('Set');
-StateHelper.immutableDateFunction = StateHelper.immutableFunction('Date');
-
-class StorePlugin {
-    constructor(storageName) {
-        this.storageName = storageName;
-        this.namespace = 'ngx-state-store';
-        this.prepareWindowObject(storageName);
-    }
-    get state() {
-        return window[this.namespace][this.storageName].state;
-    }
-    /**
-     *
-     * @param storeName e.g. 'store-demo'
-     */
-    prepareWindowObject(storeName) {
-        if (!window[this.namespace]) {
-            window[this.namespace] = StateHelper.getEmptyObject();
-        }
-        if (!window[this.namespace][storeName]) {
-            window[this.namespace][storeName] = StateHelper.getEmptyObject();
-        }
-        if (!window[this.namespace][storeName].state) {
-            window[this.namespace][storeName].state = StateHelper.getEmptyObject();
-        }
-    }
-}
-
-class StoreLogPlugin extends StorePlugin {
-    constructor(storeName, log = false, limit = 0) {
-        super(storeName);
-        this.actionEnd = 'Action end:   ';
-        this.stateLog = StateHelper.getEmptyObject();
-        this.stateLog.executedStack = [];
-        this.stateLog.limit = limit;
-        this.stateLog.log = log;
-        this.state.log = this.stateLog;
-    }
-    get loggingDisabled() {
-        return !this.state.log.log;
-    }
-    static logAction(message, state) {
-        console.log(message, state);
-    }
-    static restrict(arr, limit) {
-        if (arr.length > limit) {
-            arr.splice(0, 1);
-        }
-    }
-    dispatchBefore() {
-    }
-    dispatchAfter(actionId, state, order) {
-        if (this.loggingDisabled) {
-            return;
-        }
-        const log = {
-            actionId,
-            state
-        };
-        this.stateLog.executedStack.push(log);
-        StoreLogPlugin.restrict(this.stateLog.executedStack, this.stateLog.limit);
-        const message = this.actionEnd + actionId;
-        StoreLogPlugin.logAction(order + '. ' + message, state);
-        StoreLogPlugin.logAction('', '');
-    }
-    newState() {
-    }
-}
-
-const STATE_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('STATE_CONFIG');
-
-class StorePerformancePlugin extends StorePlugin {
-    constructor(storeName, log = false, limit = 1000) {
-        super(storeName);
-        this.performanceLog = [];
-        this.settings = {
-            timekeeping: log,
-            limit: limit < 1 ? 1 : limit,
-            performanceLog: this.performanceLog
-        };
-        this.state.performance = this.settings;
-    }
-    get timekeeping() {
-        return this.state.performance.timekeeping;
-    }
-    dispatchBefore(actionId, state, order) {
-        if (!this.timekeeping) {
-            return;
-        }
-        const index = order % this.settings.limit;
-        if (this.performanceLog.length < index) {
-            this.performanceLog.length = index;
-        }
-        this.performanceLog[index] = {
-            id: actionId,
-            order,
-            time: performance.now()
-        };
-    }
-    newState() {
-    }
-    dispatchAfter(actionId, state, order) {
-        var _a;
-        if (!this.timekeeping) {
-            return;
-        }
-        const index = order % this.settings.limit;
-        if (((_a = this.performanceLog[index]) === null || _a === void 0 ? void 0 : _a.order) === order) {
-            this.performanceLog[index].time = performance.now() - this.performanceLog[index].time;
-        }
-    }
-}
-
-class Store {
-    constructor(config) {
-        this.config = config;
-        this.actionCounter = 0;
-        this.plugins = [];
-        this.plugins.push(new StoreLogPlugin(this.config.storeName, this.config.log));
-        this.plugins.push(new StorePerformancePlugin(this.config.storeName, this.config.timekeeping));
-        this.currentState = config.initialState || {};
-        this.stateStream = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this.currentState);
-    }
-    static getErrorState(action, error) {
-        const state = StateHelper.getEmptyObject();
-        state.error = error;
-        state.action = action.Type;
-        return state;
-    }
-    dispatch(action) {
-        const currentCounter = this.actionCounter++;
-        this.dispatchBefore(action, this.currentState, currentCounter);
-        let actionResult$;
-        try {
-            actionResult$ = action.handleState(this.getStateContext());
-        }
-        catch (error) {
-            this.dispatchAfter(action, this.currentState, currentCounter);
-            console.error(error);
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(error);
-        }
-        const result = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        // Otherwise it will run sync.
-        // And the result observable is
-        // complete before return statement.
-        setTimeout(() => {
-            if (Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["isObservable"])(actionResult$)) {
-                actionResult$
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1)).subscribe(() => {
-                    this.dispatchAfter(action, this.currentState, currentCounter);
-                    result.next(this.currentState);
-                    result.complete();
-                }, (error) => {
-                    const errorState = Store.getErrorState(action, error);
-                    this.dispatchAfter(action, errorState, currentCounter);
-                    console.error(error);
-                    result.error(error);
-                });
-            }
-            else {
-                this.dispatchAfter(action, this.currentState, currentCounter);
-                result.next(this.currentState);
-                result.complete();
-            }
-        });
-        return result.asObservable();
-    }
-    select(prop, objectComparator) {
-        if (objectComparator) {
-            return this.stateStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pluck"])(prop), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])(objectComparator));
-        }
-        return this.stateStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pluck"])(prop), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["distinctUntilChanged"])());
-    }
-    /**
-     * The Observable is complete after forward one value.
-     *
-     * @param prop property to select
-     */
-    selectOnce(prop) {
-        return this.select(prop).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1));
-    }
-    getStateContext() {
-        return {
-            getState: () => this.currentState,
-            setState: (state) => {
-                this.updateState(state);
-            },
-            patchState: (partOfState) => {
-                const isArray = Array.isArray(partOfState);
-                const isPrimitive = typeof partOfState !== 'object';
-                if (isArray) {
-                    throw new Error('Patching arrays is not supported.');
-                }
-                else if (isPrimitive) {
-                    throw new Error('Patching primitives is not supported.');
-                }
-                const newState = StateHelper.combine(this.currentState, partOfState);
-                this.updateState(newState);
-            }
-        };
-    }
-    updateState(state) {
-        this.currentState = StateHelper.deepFreeze(state);
-        this.dispatchState(this.currentState);
-        // next-sync. Otherwise the state change will trigger all other changes.
-        setTimeout(() => {
-            this.stateStream.next(this.currentState);
-        }, 0);
-    }
-    dispatchBefore(action, state, order) {
-        this.plugins.forEach((plugin) => {
-            plugin.dispatchBefore(action.Type, state, order);
-        });
-    }
-    dispatchAfter(action, state, order) {
-        this.plugins.forEach((plugin) => {
-            plugin.dispatchAfter(action.Type, state, order);
-        });
-    }
-    dispatchState(state) {
-        this.plugins.forEach((plugin) => {
-            plugin.newState(state);
-        });
-    }
-}
-Store.ɵfac = function Store_Factory(t) { return new (t || Store)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](STATE_CONFIG)); };
-Store.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: Store, factory: Store.ɵfac });
-/** @nocollapse */
-Store.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [STATE_CONFIG,] }] }
-];
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Store, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }], function () { return [{ type: undefined, decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
-                args: [STATE_CONFIG]
-            }] }]; }, null); })();
-
-class Action {
-    constructor(actionId) {
-        this.actionId = actionId;
-    }
-    get Type() {
-        return this.actionId;
-    }
-    clone(o, cloneFunctions = true) {
-        return StateHelper.cloneObject(o, cloneFunctions);
-    }
-    getEmptyState() {
-        return StateHelper.getEmptyObject();
-    }
-    getEmptyObject() {
-        return StateHelper.getEmptyObject();
-    }
-    combine(state, newValue) {
-        return StateHelper.combine(state, newValue);
-    }
-}
-
-class NgxStateStoreModule {
-    static forRoot(config) {
-        return {
-            ngModule: NgxStateStoreModule,
-            providers: [
-                Store,
-                { provide: STATE_CONFIG, useValue: config }
-            ]
-        };
-    }
-}
-NgxStateStoreModule.ɵfac = function NgxStateStoreModule_Factory(t) { return new (t || NgxStateStoreModule)(); };
-NgxStateStoreModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: NgxStateStoreModule });
-NgxStateStoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [[
-            _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]
-        ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NgxStateStoreModule, { imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]]; } }); })();
-(function () { (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxStateStoreModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
-        args: [{
-                declarations: [],
-                imports: [
-                    _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"]
-                ],
-                exports: []
-            }]
-    }], null, null); })();
-
-/*
- * Public API Surface of ngx-state-store
- */
-
-/**
- * Generated bundle index. Do not edit.
- */
-
-
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <h3>Usage example of the ngx-state-store module</h3>\r\n      The complete module documentation is available at <a\r\n      href=\"https://it-and-services.github.io/state-store/\"\r\n      target=\"_blank\">https://it-and-services.github.io/state-store/</a>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/counter-button.component/counter-button.component.ts</li>\r\n        <li>src/app/components/counter.component/counter.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-counter-button></app-counter-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-counter></app-counter>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\"></div>\r\n  <div class=\"row\">\r\n    <div class=\"col-12\">\r\n      <ul>\r\n        <li>src/app/components/inventories-button.component/inventories-button.component.ts</li>\r\n        <li>src/app/components/inventories.component/inventories.component.ts</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-6\">\r\n      <app-inventories-button></app-inventories-button>\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <app-inventories></app-inventories>\r\n    </div>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -1024,7 +443,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inventories_component_inventories_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/inventories.component/inventories.component */ "uwD1");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 
 
 
@@ -1174,7 +593,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IncrementCounterAction", function() { return IncrementCounterAction; });
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 /* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../action-ids */ "Kdq/");
 
 
@@ -1206,7 +625,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_counter_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./counter.component.html */ "UD5o");
 /* harmony import */ var _counter_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./counter.component.scss */ "1lFn");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 
 
 
@@ -1246,7 +665,7 @@ CounterComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HideLoadingIndicatorAction", function() { return HideLoadingIndicatorAction; });
 /* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ "Kdq/");
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 
 
 /**
@@ -1285,7 +704,7 @@ class HideLoadingIndicatorAction extends ngx_state_store__WEBPACK_IMPORTED_MODUL
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadInventoriesAction", function() { return LoadInventoriesAction; });
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 /* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../action-ids */ "Kdq/");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 
@@ -1324,7 +743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_inventories_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./inventories.component.html */ "fWts");
 /* harmony import */ var _inventories_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inventories.component.scss */ "JizG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Xmul");
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ "Zvfn");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
 /* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/state-store/action-factory */ "flpt");
 
