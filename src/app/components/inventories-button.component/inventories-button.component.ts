@@ -20,6 +20,7 @@ export class InventoriesButtonComponent implements OnInit {
 
   lastDownloadAt: string;
   changes: Changes = {addedEntries: [], removedEntries: []} as Changes;
+  private inventories: Inventory[] = [];
 
   constructor(private store: Store<AppState>,
               private factory: ActionFactory) {
@@ -34,11 +35,12 @@ export class InventoriesButtonComponent implements OnInit {
           && !this.calcDiff(newInventories, oldInventories).length) {
           return true;
         }
-        this.changes.addedEntries = this.calcDiff(oldInventories, newInventories);
-        this.changes.removedEntries = this.calcDiff(newInventories, oldInventories);
         return false;
       }).pipe(skip(1))
-      .subscribe(() => {
+      .subscribe((newInventories) => {
+        this.changes.addedEntries = this.calcDiff(this.inventories, newInventories);
+        this.changes.removedEntries = this.calcDiff(newInventories, this.inventories);
+        this.inventories = newInventories;
         console.log('the log is present only if there are some changes');
       });
   }
