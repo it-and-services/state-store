@@ -176,7 +176,7 @@
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
                       <li><strong>Module Version </strong> 1.0.17</li>
-                      <li><strong>Documentation Version </strong> 1.0.1</li>
+                      <li><strong>Documentation Version </strong> 1.0.2</li>
                       <li><strong>Authors </strong>
                         <div class="authors-list">
                           <a href="http://www.xing.com/profile/Oleg_Soloviov"
@@ -1051,15 +1051,22 @@
               <div class="col-md-12">
                 <h4>StateHelper</h4>
 
+                <p>The objects of the types: Date, Map and Set may be used in the state. The StateHelper can make them
+                  immutable and clone them accordingly. Also the objects with any kind of cyclic dependencies may be
+                  used in the state, for example composite or hierarchical properties or lists with the parent child
+                  relations where the leaves reference each other in different ways. The StateHelper can make them
+                  immutable and clone them respectively, and it keeps the relations.</p>
+
                 <ul>
                     <li><strong>deepFreeze</strong>
                         - <code>static deepFreeze&lt;T&gt;(o: T): T</code>
                         - freezes the object, the object is read only after the call. The freeze process is based on
-                        JavaScript <code>Object.freeze()</code>.</li>
+                        JavaScript <code>Object.freeze()</code>. It makes te Sat, Map and Date objects immutable.</li>
                     <li><strong>cloneObject</strong>
                         - <code>static cloneObject&lt;T&gt;(o: T, cloneFunctions = true): T</code>
                         - creates a clone of the object including functions (default), it is useful if the object was
-                        frozen by the <code>deepFreeze</code>.</li>
+                        frozen by the <code>deepFreeze</code>. It handles also objects with any kind of cyclic
+                        dependencies.</li>
                 </ul>
 
               </div>
@@ -1295,6 +1302,12 @@
               <h4>Ngx-State-Store Documentation Changelog</h4>
 
               <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.2 - 21 May 2021
+                                        -----------------------------------------------------------------------------------------
+                                        - functional description of the StateHelper and its methods
+                                          in the API-Store-StateHelper section
 
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.1 - 29 Apr 2021
