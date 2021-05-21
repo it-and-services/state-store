@@ -10,6 +10,7 @@
     "state-store",
     "state-management",
     "redux",
+    "ngxs",
     "rxjs",
     "angular",
     "angular2"
