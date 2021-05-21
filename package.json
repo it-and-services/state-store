@@ -42,7 +42,7 @@
     "@ng-bootstrap/ng-bootstrap": "^9.1.1",
     "bootstrap": "^5.0.1",
     "jquery": "^3.6.0",
-    "ngx-state-store": "^1.0.16",
+    "ngx-state-store": "^1.0.17",
     "rxjs": "~6.6.6",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4",
