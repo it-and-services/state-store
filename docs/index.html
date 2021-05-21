@@ -175,7 +175,7 @@
                   <div class="intro1">
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
-                      <li><strong>Module Version </strong> 1.0.16</li>
+                      <li><strong>Module Version </strong> 1.0.17</li>
                       <li><strong>Documentation Version </strong> 1.0.1</li>
                       <li><strong>Authors </strong>
                         <div class="authors-list">
@@ -197,9 +197,10 @@
 
                   <hr>
                   <div>
-                    <p><strong>ngx-state-store</strong> is the state management module for the
-                      angular applications starting from the
-                      <strong>angular version >= 7.2.0</strong>
+                    <p><strong>ngx-state-store</strong> is based on <a
+                        href="https://rxjs-dev.firebaseapp.com/guide/overview" target="_blank">RxJS</a>, easy to learn
+                      and use, light and quick the state management module for the angular applications starting from
+                      the <strong>angular version >= 7.2.0</strong>
                     </p>
 
                     <p><strong>state-store</strong> is the sample angular application for the
@@ -734,6 +735,7 @@
               export class InventoriesButtonComponent implements OnInit {
                 lastDownloadAt: string;
                 changes: Changes = {addedEntries: [], removedEntries: []} as Changes;
+                private inventories: Inventory[] = [];
 
                 constructor(private store: Store&lt;AppState&gt;,
                   private factory: ActionFactory) {
@@ -748,11 +750,12 @@
                     && !this.calcDiff(newInventories, oldInventories).length) {
                     return true;
                   }
-                  this.changes.addedEntries = this.calcDiff(oldInventories, newInventories);
-                  this.changes.removedEntries = this.calcDiff(newInventories, oldInventories);
                     return false;
                   }).pipe(skip(1))
-                  .subscribe(() => {
+                  .subscribe((newInventories) => {
+                    this.changes.addedEntries = this.calcDiff(this.inventories, newInventories);
+                    this.changes.removedEntries = this.calcDiff(newInventories, this.inventories);
+                    this.inventories = newInventories;
                     console.log('the log is present only if there are some changes');
                   });
                 }
@@ -1173,6 +1176,11 @@
               <h4>Ngx-State-Store Changelog</h4>
 
               <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.17 - 21 May 2021
+                                        -----------------------------------------------------------------------------------------
+                                        - updated and tested up to the angular 12
 
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.16 - 29 Apr 2021
