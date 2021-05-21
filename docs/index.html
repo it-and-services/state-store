@@ -744,12 +744,12 @@
                 ngOnInit(): void {
                   this.store.select('Inventories',
                     (oldInventories: Inventory[], newInventories: Inventory[]) => {
-                  if (oldInventories === newInventories
-                    || oldInventories && newInventories
-                    && !this.calcDiff(oldInventories, newInventories).length
-                    && !this.calcDiff(newInventories, oldInventories).length) {
-                    return true;
-                  }
+                    if (oldInventories === newInventories
+                      || oldInventories && newInventories
+                      && !this.calcDiff(oldInventories, newInventories).length
+                      && !this.calcDiff(newInventories, oldInventories).length) {
+                      return true;
+                    }
                     return false;
                   }).pipe(skip(1))
                   .subscribe((newInventories) => {
