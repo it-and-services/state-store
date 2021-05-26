@@ -1053,21 +1053,22 @@
 
                 <p>Besides the simply structured JSON objects, also the objects of the types: Date, Map and Set may be
                   used in the state. The StateHelper can make them immutable and clone them accordingly. Also the
-                  objects with any kind of cyclic dependencies may be used in the state, for example composite or
-                  hierarchical properties or lists with the parent child relations where the leaves reference each other
-                  in different ways. The StateHelper can make them immutable and clone them respectively, and it keeps
-                  the relations.</p>
+                  objects with any kind of cyclic dependencies of its properties may be used in the state, for example
+                  composite or hierarchical properties or lists with the parent child relations where the leaves
+                  reference each other in different ways. The StateHelper can make them immutable and clone them
+                  respectively, and it keeps the relations.</p>
 
                 <ul>
                     <li><strong>deepFreeze</strong>
                         - <code>static deepFreeze&lt;T&gt;(o: T): T</code>
-                        - freezes the object, the object is read only after the call. The freeze process is based on
-                        JavaScript <code>Object.freeze()</code>. It makes the Sat, Map and Date objects immutable.</li>
+                        - freezes the object, the object is read only after the call. Also the objects/properties of
+                          the types: Sat, Map and Date are immutable. The freeze process is based on  JavaScript
+                          <code>Object.freeze()</code>.</li>
                     <li><strong>cloneObject</strong>
                         - <code>static cloneObject&lt;T&gt;(o: T, cloneFunctions = true): T</code>
-                        - creates a clone of the object including functions (default), it is useful if the object was
-                        frozen by the <code>deepFreeze</code>. It handles also objects with any kind of cyclic
-                        dependencies.</li>
+                        - creates a clone of the object including functions (default), the method is useful if the
+                          object was frozen by the <code>deepFreeze</code>. The method handles also objects with any
+                          kind of cyclic dependencies of its properties.</li>
                 </ul>
 
               </div>
