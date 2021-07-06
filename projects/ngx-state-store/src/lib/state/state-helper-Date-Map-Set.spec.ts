@@ -55,6 +55,9 @@ describe('StateHelper - Date, Map, Set tests;', () => {
         expect(() => {
           dateObjectCloneFreeze.date[prop](0);
         }).toThrow(new Error('Date is immutable'));
+        expect(() => {
+          dateObjectCloneFreeze.date[prop] = () => console.log('it cannot be');
+        }).toThrow(new Error('Cannot assign to read only property \'' + prop + '\' of object \'[object Date]\''));
         const getProp = 'get' + prop.substr(3);
 
         expect(dateObjectCloneFreeze.date[getProp]()).toEqual(dateObjectCopy.date[getProp]());
@@ -112,6 +115,14 @@ describe('StateHelper - Date, Map, Set tests;', () => {
     expect(() => {
       map.delete('any');
     }).toThrow(new Error('Map is immutable'));
+    for (const prop of ['clear', 'set', 'delete', 'entries', 'values', 'keys', 'has', 'get', 'forEach']) {
+      expect(() => {
+        map[prop] = () => console.log('it cannot be');
+      }).toThrow(new Error('Cannot assign to read only property \'' + prop + '\' of object \'[object Map]\''));
+    }
+    expect(() => {
+      map[Symbol.iterator] = () => new Map()[Symbol.iterator]();
+    }).toThrow(new Error('Cannot assign to read only property \'Symbol(Symbol.iterator)\' of object \'[object Map]\''));
 
     const beforeString = Array.from(mapCopy).join(', ');
     const beforeKeysString = Array.from(mapCopy.keys()).join(', ');
@@ -198,6 +209,14 @@ describe('StateHelper - Date, Map, Set tests;', () => {
     expect(() => {
       set.delete('any');
     }).toThrow(new Error('Set is immutable'));
+    for (const prop of ['clear', 'add', 'delete', 'entries', 'values', 'keys', 'has', 'forEach']) {
+      expect(() => {
+        set[prop] = () => console.log('it cannot be');
+      }).toThrow(new Error('Cannot assign to read only property \'' + prop + '\' of object \'[object Set]\''));
+    }
+    expect(() => {
+      set[Symbol.iterator] = () => new Map()[Symbol.iterator]();
+    }).toThrow(new Error('Cannot assign to read only property \'Symbol(Symbol.iterator)\' of object \'[object Set]\''));
 
     const beforeString = Array.from(set).join(', ');
     const beforeKeysString = Array.from(set.keys()).join(', ');
