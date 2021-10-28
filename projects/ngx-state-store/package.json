@@ -1,6 +1,6 @@
 {
   "name": "ngx-state-store",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "keywords": [
     "ngx-state-store",
     "ngx-state",
@@ -16,7 +16,7 @@
     "angular2"
   ],
   "license": "MIT",
-  "description": "ngx-state-store is based on RxJs, easy to learn and use, light and quick the state management module for the angular applications starting from the version >= 7.2.0",
+  "description": "ngx-state-store is based on RxJs, easy to learn and use, light and quick the state management module for the Angular applications starting from the version >= 7.2.0",
   "peerDependencies": {
     "@angular/common": ">=7.2.0",
     "@angular/core": ">=7.2.0",

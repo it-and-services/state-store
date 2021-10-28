@@ -1,7 +1,11 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.0.18
+  - the Angular update remark was moved out of the release into the documentation
+    to avoid empty releases just because of the Angular update
+
 v1.0.17
-  - updated and tested up to the angular 12
+  - updated and tested up to the Angular 12
 
 v1.0.16
   - Date, Map and Set objects may be used in by the state
@@ -21,7 +25,7 @@ v1.0.13
   - documentation update
 
 v1.0.12
-  - updated to angular 11
+  - updated to Angular 11
   - documentation improvement
   - extend performance plugin by the 'limit' parameter, default value is 1000
 
@@ -31,7 +35,7 @@ v1.0.11
   - increase test coverage regarding the ObjectComparator in the method Store#select<keyString extends keyof S>(prop: keyString, objectComparator?: ObjectComparator)
 
 v1.0.10
-  - updated to angular 10
+  - updated to Angular 10
   - functions cloning is optional, default is 'true', StateHelper.cloneObject(any, cloneFunctions = true)
   - documentation improvement in the README.md
 
@@ -67,7 +71,7 @@ v1.0.1
   - improve build process
 
 v1.0.0
-  - first release; supported applications with angular version >= 7.2.0
+  - first release; supported applications with Angular version >= 7.2.0
 
 v0.0.1
   - first beta release
