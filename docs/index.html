@@ -176,7 +176,7 @@
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
                       <li><strong>Module Version </strong> 1.0.18</li>
-                      <li><strong>Documentation Version </strong> 1.0.4</li>
+                      <li><strong>Documentation Version </strong> 1.0.5</li>
                       <li><strong>Authors </strong>
                         <div class="authors-list">
                           <a href="https://www.xing.com/profile/Oleg_Soloviov"
@@ -838,7 +838,8 @@
               <div>The observables returned from the <code>store.select(...)</code> return a frozen (read only) state
                   objects that were frozen by the <code>StateHelper.deepFreeze(any)</code>. Use
                   <code>StateHelper.cloneObject(any, cloneFunctions = true)</code> to get a clone of the frozen object
-                  including the functions (default) if it is needed.
+                  including the functions (default) if it is needed. Cloning the functions is in experimental stage.
+                  Usually the state objects do not have any functions, and it is not recommended they have any.
               </div>
 
               <br/><br/><br/>
@@ -1071,7 +1072,8 @@
                         - <code>static cloneObject&lt;T&gt;(o: T, cloneFunctions = true): T</code>
                         - creates a clone of the object including functions (default), the method is useful if the
                           object was frozen by the <code>deepFreeze</code>. The method handles also objects with any
-                          kind of cyclic dependencies of its properties.</li>
+                          kind of cyclic dependencies of its properties. Cloning the functions is in experimental stage.
+                          Usually the state objects do not have any functions, and it is not recommended they have any.</li>
                 </ul>
 
               </div>
@@ -1113,7 +1115,8 @@
                     <li><strong>clone</strong>
                         - <code>clone&lt;T&gt;(o: T, cloneFunctions = true): T</code>
                         - clone the object including functions (default), the same as <code>StateHelper.cloneObject(o,
-                            cloneFunctions = true)</code>.</li>
+                            cloneFunctions = true)</code>. Cloning the functions is in experimental stage. Usually the
+                            state objects do not have any functions, and it is not recommended they have any.</li>
                   </ul>
                 </div>
             </div>
@@ -1314,6 +1317,13 @@
               <h4>Ngx-State-Store Documentation Changelog</h4>
 
               <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.5 - 28 Aug 2022
+                                        -----------------------------------------------------------------------------------------
+                                        - Remark about "cloneFunctions = true"; Cloning the functions is in
+                                          experimental stage. Usually the state objects do not have any functions,
+                                          and it is not recommended they have any.
 
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.4 - 20 Jun 2022
