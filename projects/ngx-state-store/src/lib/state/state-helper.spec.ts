@@ -84,7 +84,7 @@ describe('StateHelper - clone and freeze tests;', () => {
   it('this reference in the function remains the same', inject([], () => {
     const of = {
       prop: 88,
-      // tslint:disable-next-line:object-literal-shorthand
+      // eslint-disable-next-line object-shorthand
       funk: function(add: number): number {
         return this.prop + add;
       }
@@ -101,7 +101,7 @@ describe('StateHelper - clone and freeze tests;', () => {
   it('the function of an object should not be cloned', inject([], () => {
     const of = {
       prop: 88,
-      // tslint:disable-next-line:object-literal-shorthand
+      // eslint-disable-next-line object-shorthand
       funk: function(add: number): number {
         return this.prop + add;
       }

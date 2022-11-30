@@ -48,7 +48,7 @@ describe('StorePerformancePlugin', () => {
       storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 1);
       storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 1);
       expect(performance.now).not.toHaveBeenCalled();
-      // tslint:disable-next-line:no-string-literal
+      // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
       storePerformancePlugin['settings']['timekeeping'] = true;
       storePerformancePlugin.dispatchBefore('ActionId', {prop: 1}, 1);
       storePerformancePlugin.dispatchAfter('ActionId', {prop: 1}, 1);
