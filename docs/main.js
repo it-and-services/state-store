@@ -675,7 +675,7 @@ var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../node_m
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ 931);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".row {\n  margin-top: 1rem;\n}", "",{"version":3,"sources":["webpack://./src/app/app.component.scss"],"names":[],"mappings":"AAAA;EACE,gBAAA;AACF","sourcesContent":[".row {\r\n  margin-top: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".row {\n  margin-top: 1rem;\n}", "",{"version":3,"sources":["webpack://./src/app/app.component.scss"],"names":[],"mappings":"AAAA;EACE,gBAAA;AACF","sourcesContent":[".row {\n  margin-top: 1rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___.toString();
 
@@ -825,13 +825,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 9295);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ 4276);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 8977);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ 635);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 3158);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ 8977);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 6317);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 5474);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 228);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ 4437);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 745);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ 4666);
 
 
 
@@ -1083,13 +1085,13 @@ StateHelper.immutableMapFunction = StateHelper.immutableFunction('Map');
 StateHelper.immutableSetFunction = StateHelper.immutableFunction('Set');
 StateHelper.immutableDateFunction = StateHelper.immutableFunction('Date');
 class StorePlugin {
+  get state() {
+    return window[this.namespace][this.storageName].state;
+  }
   constructor(storageName) {
     this.storageName = storageName;
     this.namespace = 'ngx-state-store';
     this.prepareWindowObject(storageName);
-  }
-  get state() {
-    return window[this.namespace][this.storageName].state;
   }
   /**
    *
@@ -1108,6 +1110,9 @@ class StorePlugin {
   }
 }
 class StoreLogPlugin extends StorePlugin {
+  get loggingDisabled() {
+    return !this.state.log.log;
+  }
   constructor(storeName, log = false, limit = 0) {
     super(storeName);
     this.actionEnd = 'Action end:   ';
@@ -1116,9 +1121,6 @@ class StoreLogPlugin extends StorePlugin {
     this.stateLog.limit = limit;
     this.stateLog.log = log;
     this.state.log = this.stateLog;
-  }
-  get loggingDisabled() {
-    return !this.state.log.log;
   }
   static logAction(message, state) {
     console.log(message, state);
@@ -1147,6 +1149,9 @@ class StoreLogPlugin extends StorePlugin {
 }
 const STATE_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.InjectionToken('STATE_CONFIG');
 class StorePerformancePlugin extends StorePlugin {
+  get timekeeping() {
+    return this.state.performance.timekeeping;
+  }
   constructor(storeName, log = false, limit = 1000) {
     super(storeName);
     this.performanceLog = [];
@@ -1156,9 +1161,6 @@ class StorePerformancePlugin extends StorePlugin {
       performanceLog: this.performanceLog
     };
     this.state.performance = this.settings;
-  }
-  get timekeeping() {
-    return this.state.performance.timekeeping;
   }
   dispatchBefore(actionId, state, order) {
     if (!this.timekeeping) {
@@ -1218,16 +1220,18 @@ class Store {
     // complete before return statement.
     setTimeout(() => {
       if ((0,rxjs__WEBPACK_IMPORTED_MODULE_4__.isObservable)(actionResult$)) {
-        actionResult$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1)).subscribe(() => {
+        actionResult$.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.map)(some => {
           this.dispatchAfter(action, this.currentState, currentCounter);
           result.next(this.currentState);
           result.complete();
-        }, error => {
+          return some;
+        }), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.catchError)(error => {
           const errorState = Store.getErrorState(action, error);
           this.dispatchAfter(action, errorState, currentCounter);
           console.error(error);
           result.error(error);
-        });
+          return (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.of)(error);
+        })).subscribe();
       } else {
         this.dispatchAfter(action, this.currentState, currentCounter);
         result.next(this.currentState);
@@ -1236,19 +1240,129 @@ class Store {
     });
     return result.asObservable();
   }
-  select(prop, objectComparator) {
-    if (objectComparator) {
-      return this.stateStream.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.pluck)(prop), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.distinctUntilChanged)(objectComparator));
-    }
-    return this.stateStream.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.pluck)(prop), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.distinctUntilChanged)());
+  /**
+   * Select observable to subscribe to the state.
+   *
+   * @param key state name to select
+   * @param objectComparator optional comparator for advanced state change detection
+   */
+  select(key, objectComparator) {
+    return this.selectState(key, undefined, undefined, objectComparator);
   }
   /**
+   * Select observable to subscribe to the state.
+   *
+   * @param key state name to select
+   * @param defaultValue default value to return if the state is undefined or null
+   * @param objectComparator optional comparator for advanced state change detection
+   */
+  selectOrDefault(key, defaultValue, objectComparator) {
+    return this.selectState(key, undefined, defaultValue, objectComparator);
+  }
+  /**
+   * Select observable to subscribe to the state's sub-property. The parameter subPropertyPath is a string representation of the path.
+   * For example: if some state identified by 'key1' has property object with name 'prop1', and this object has an array of other objects
+   * saved in property 'prop2', and it is the property 'prop3' of the second element (index 1) of the object from array is needed then
+   * the subPropertyPath would be: 'prop1/prop2/1/prop3'
+   *
+   * @param key state name to select the sub-property
+   * @param subPropertyPath path to the sub-property of the state
+   * @param objectComparator optional comparator for advanced property change detection
+   */
+  selectSubProperty(key, subPropertyPath, objectComparator) {
+    return this.selectState(key, subPropertyPath, undefined, objectComparator);
+  }
+  /**
+   * Select observable to subscribe to the state's sub-property. The parameter subPropertyPath is a string representation of the path.
+   * For example: if some state identified by 'key1' has property object with name 'prop1', and this object has an array of other objects
+   * saved in property 'prop2', and it is the property 'prop3' of the second element (index 1) of the object from array is needed then
+   * the subPropertyPath would be: 'prop1/prop2/1/prop3'
+   *
+   * @param key state name to select the sub-property
+   * @param subPropertyPath path to the sub-property of the state
+   * @param defaultValue default value to return if the property is undefined or null
+   * @param objectComparator optional comparator for advanced property change detection
+   */
+  selectSubPropertyOrDefault(key, subPropertyPath, defaultValue, objectComparator) {
+    return this.selectState(key, subPropertyPath, defaultValue, objectComparator);
+  }
+  /**
+   * Select observable to subscribe to the state.
    * The Observable is complete after forward one value.
    *
-   * @param prop property to select
+   * @param key state name to select
    */
-  selectOnce(prop) {
-    return this.select(prop).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1));
+  selectOnce(key) {
+    return this.selectState(key, undefined, undefined, undefined).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1));
+  }
+  /**
+   * Select observable to subscribe to the state.
+   * The Observable is complete after forward one value.
+   *
+   * @param key state name to select
+   * @param defaultValue default value to return if the state is undefined or null
+   */
+  selectOnceOrDefault(key, defaultValue) {
+    return this.selectState(key, undefined, defaultValue, undefined).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1));
+  }
+  /**
+   * Select observable to subscribe to the state's sub-property. The parameter subPropertyPath is a string representation of the path.
+   * For example: if some state identified by 'key1' has property object with name 'prop1', and this object has an array of other objects
+   * saved in property 'prop2', and it is the property 'prop3' of the second element (index 1) of the object from array is needed then
+   * the subPropertyPath would be: 'prop1/prop2/1/prop3'
+   * The Observable is complete after forward one value.
+   *
+   * @param key state name to select the sub-property
+   * @param subPropertyPath path to the sub-property of the state
+   */
+  selectOnceSubProperty(key, subPropertyPath) {
+    return this.selectState(key, subPropertyPath, undefined, undefined).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1));
+  }
+  /**
+   * Select observable to subscribe to the state's sub-property. The parameter subPropertyPath is a string representation of the path.
+   * For example: if some state identified by 'key1' has property object with name 'prop1', and this object has an array of other objects
+   * saved in property 'prop2', and it is the property 'prop3' of the second element (index 1) of the object from array is needed then
+   * the subPropertyPath would be: 'prop1/prop2/1/prop3'
+   * The Observable is complete after forward one value.
+   *
+   * @param key state name to select the sub-property
+   * @param subPropertyPath path to the sub-property of the state
+   * @param defaultValue default value to return if the property is undefined or null
+   */
+  selectOnceSubPropertyOrDefault(key, subPropertyPath, defaultValue) {
+    return this.selectState(key, subPropertyPath, defaultValue, undefined).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1));
+  }
+  selectState(key, subPropertyPath, defaultValue, objectComparator) {
+    const result = this.stateStream.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.map)(s => this.valueOrDefault(this.getPropertyValue(s[key], subPropertyPath), defaultValue)));
+    if (objectComparator) {
+      return result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)(objectComparator));
+    }
+    return result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)());
+  }
+  getPropertyValue(target, path) {
+    if (!target || !path) {
+      return target;
+    }
+    const properties = path.split('/').filter(p => !!p);
+    const length = properties.length;
+    let currentProp = target;
+    for (let i = 0; i < length; i++) {
+      const p = currentProp?.[properties[i]];
+      if (typeof p !== 'undefined') {
+        currentProp = p;
+      } else {
+        return undefined;
+      }
+    }
+    return currentProp;
+  }
+  valueOrDefault(value, defaultValue) {
+    if (value) {
+      return value;
+    } else if (typeof value === 'string' || typeof value === 'number') {
+      return value;
+    }
+    return defaultValue;
   }
   getStateContext() {
     return {
@@ -1272,7 +1386,7 @@ class Store {
   updateState(state) {
     this.currentState = StateHelper.deepFreeze(state);
     this.dispatchState(this.currentState);
-    // next-sync. Otherwise the state change will trigger all other changes.
+    // next-sync. Otherwise, the state change will trigger all other changes.
     setTimeout(() => {
       this.stateStream.next(this.currentState);
     }, 0);
@@ -1316,11 +1430,11 @@ Store.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
   }, null);
 })();
 class Action {
-  constructor(actionId) {
-    this.actionId = actionId;
-  }
   get Type() {
     return this.actionId;
+  }
+  constructor(actionId) {
+    this.actionId = actionId;
   }
   clone(o, cloneFunctions = true) {
     return StateHelper.cloneObject(o, cloneFunctions);
@@ -1353,18 +1467,18 @@ NgxStateStoreModule.ɵfac = function NgxStateStoreModule_Factory(t) {
 /** @nocollapse */
 NgxStateStoreModule.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
   type: NgxStateStoreModule,
-  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_8__.CommonModule]
+  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
 });
 /** @nocollapse */
 NgxStateStoreModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
-  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_8__.CommonModule]
+  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
 });
 (function () {
   (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxStateStoreModule, [{
     type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
     args: [{
       declarations: [],
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_8__.CommonModule],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule],
       exports: []
     }]
   }], null, null);

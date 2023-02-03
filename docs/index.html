@@ -175,8 +175,8 @@
                   <div class="intro1">
                     <ul>
                       <li><strong>Module Name </strong> ngx-state-store</li>
-                      <li><strong>Module Version </strong> 1.0.18</li>
-                      <li><strong>Documentation Version </strong> 1.0.6</li>
+                      <li><strong>Module Version </strong> 1.1.0</li>
+                      <li><strong>Documentation Version </strong> 1.0.7</li>
                       <li><strong>Authors </strong>
                         <div class="authors-list">
                           <a href="https://www.xing.com/profile/Oleg_Soloviov"
@@ -876,16 +876,53 @@
                   <ul>
                       <li><strong>select</strong>
                           - <code>select(string, ObjectComparator?): Observable&lt;any&gt;</code>
-                          - select some state of the state store, <code>ObjectComparator</code> is optional.
-                        The ObjectComparator can be used to implement more advanced comparison of the potential changes.
-                        It is also convenient way to only subscribe to some property/properties changes of some state
-                        object.</li>
+                          - select any state of the state store by the first parameter - the state key, the second parameter
+                        <code>ObjectComparator</code> is optional. The ObjectComparator can be used to implement a more
+                        advanced comparison of potential changes. It is also a convenient way to only subscribe to
+                        some property/properties changes of any state object.</li>
+
+                      <li><strong>selectOrDefault</strong>
+                          - <code>selectOrDefault(string, any, ObjectComparator?): Observable&lt;any&gt;</code>
+                          - select any state of the state store by the first parameter - the state key or return the default
+                        value, the second parameter, if the state is undefined or null. The third parameter
+                        <code>ObjectComparator</code> is optional.</li>
+
+                      <li><strong>selectSubProperty</strong>
+                        - <code>selectSubProperty(string, string, ObjectComparator?): Observable&lt;any&gt;</code>
+                        - select any state sub-property of the state store by the first parameter - the state key. The second
+                        parameter sub-property path is a string representation of the property path. For example: if
+                        any state identified by 'key1' has a property object with the name 'prop1', and this object has an
+                        array of other objects saved in property 'prop2', and the property 'prop3' of the second
+                        element (index 1) of the object from the array is needed, then the sub-property
+                        path would be: 'prop1/prop2/1/prop3'. The third parameter <code>ObjectComparator</code> is
+                        optional.</li>
+
+                      <li><strong>selectSubPropertyOrDefault</strong>
+                        - <code>select(string, string, any, ObjectComparator?): Observable&lt;any&gt;</code>
+                        - select any state sub-property of the state store by the first parameter - the state key or return
+                        the default value for the sub-property, the third parameter, if the sub-property is undefined
+                        or null. The second parameter is the sub-property path, explanation above. The fourth parameter
+                        <code>ObjectComparator</code> is optional.</li>
+
                       <li><strong>selectOnce</strong>
                           - <code>selectOnce(string): Observable&lt;any&gt;</code>
                           - the same as <code>select</code> but the Observable terminates after forward one value.</li>
+
+                      <li><strong>selectOnceOrDefault</strong>
+                        - <code>selectOnceOrDefault(string, any): Observable&lt;any&gt;</code>
+                        - the same as <code>selectOrDefault</code> but the Observable terminates after forward one value.</li>
+
+                      <li><strong>selectOnceSubProperty</strong>
+                        - <code>selectOnceSubProperty(string, string): Observable&lt;any&gt;</code>
+                        - the same as <code>selectSubProperty</code> but the Observable terminates after forward one value.</li>
+
+                      <li><strong>selectOnceSubPropertyOrDefault</strong>
+                        - <code>selectOnceSubPropertyOrDefault(string, string, any): Observable&lt;any&gt;</code>
+                        - the same as <code>selectSubPropertyOrDefault</code> but the Observable terminates after forward one value.</li>
+
                       <li><strong>dispatch</strong>
-                          - <code>dispatch(action: Action): Observable&lt;state: S&gt;</code>
-                          - dispatch the Action that changes some state, the dispatch function always returns an
+                        - <code>dispatch(action: Action): Observable&lt;state: S&gt;</code>
+                        - dispatch the Action that changes some state, the dispatch function always returns an
                           Observable of your newest state.</li>
                   </ul>
 
@@ -1194,6 +1231,18 @@
               <pre class="brush: html">
 
                                         -----------------------------------------------------------------------------------------
+                                        Version 1.1.0 - 03 Feb 2023
+                                        -----------------------------------------------------------------------------------------
+                                       - clean up RxJs deprecations that will be removed in v8, the clean up was done
+                                         with backward compatibility
+                                       - new comfort methods presented:
+                                         - selectOrDefault(...) returns default value if the state is undefined or null
+                                         - selectSubProperty(...) returns state object property by path
+                                         - selectSubPropertyOrDefault(...) returns state object property by path or
+                                           default value if the property is undefined or null
+                                         - duplicate methods of the listed above for single select - selectOnce...(...)
+
+                                        -----------------------------------------------------------------------------------------
                                         Version 1.0.18 - 28 Oct 2021
                                         -----------------------------------------------------------------------------------------
                                         - the Angular update remark was moved out of the release into the documentation
@@ -1317,6 +1366,11 @@
               <h4>Ngx-State-Store Documentation Changelog</h4>
 
               <pre class="brush: html">
+
+                                        -----------------------------------------------------------------------------------------
+                                        Version 1.0.7 - 03 Feb 2023
+                                        -----------------------------------------------------------------------------------------
+                                        - New ngx-state-store 1.1.0 release
 
                                         -----------------------------------------------------------------------------------------
                                         Version 1.0.6 - 06 Jun 2023
