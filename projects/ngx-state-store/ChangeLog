@@ -1,5 +1,13 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.1.0
+  - clean up RxJs deprecations that will be removed in v8, the clean up was done with backward compatibility
+  - new comfort methods presented:
+    - selectOrDefault(...) returns default value if the state is undefined or null
+    - selectSubProperty(...) returns state object property by path
+    - selectSubPropertyOrDefault(...) returns state object property by path or default value if the property is undefined or null
+    - and the duplicate methods of the listed above for single select - selectOnce...(...)
+
 v1.0.18
   - the Angular update remark was moved out of the release into the documentation
     to avoid empty releases just because of the Angular update

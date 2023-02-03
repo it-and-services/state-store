@@ -9,36 +9,40 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
+      require('karma-coverage'),
       require('karma-junit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/state-store'),
-      reports: ['html', 'cobertura', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+    jasmineHtmlReporter: {
+      suppressAll: true, // removes the duplicated traces
+    },
+    coverageReporter: {
+      dir: require('path').join(__dirname, './coverage'),
+      subdir: '.',
+      reporters: [{ type: 'html' }, { type: 'lcovonly' }, { type: 'text-summary' }],
     },
     junitReporter: {
-      outputDir: 'coverage', // results will be saved as $outputDir/$browserName.xml
+      outputDir: require('path').join(__dirname, './coverage'), // results will be saved as $outputDir/$browserName.xml
       useBrowserName: false, // add browser name to report and classes names
-      outputFile: 'test-report.xml' // if included, results will be saved as $outputDir/$browserName/$outputFile
+      outputFile: 'test-report.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
     },
-    angularCli: {
-      environment: 'dev'
-    },
-    reporters: config.angularCli && config.angularCli.codeCoverage
-      ? ['progress', 'coverage-istanbul', 'junit']
-      : ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: true,
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox'],
+      },
+    },
+    singleRun: false,
     browserNoActivityTimeout: 60000,
-    restartOnFileChange: true
+    restartOnFileChange: true,
   });
 };

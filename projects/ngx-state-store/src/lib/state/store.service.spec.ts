@@ -9,13 +9,32 @@ import { StateConfig } from './state-config';
 
 describe('Store', () => {
   describe('with initial state', () => {
+    const INITIAL_STATE = {
+      count: 0,
+      complexObject: {
+        prop: {
+          prop2: [
+            {
+              prop3: 'value3',
+              prop4: '',
+              prop5: 0
+            }
+          ]
+        }
+      }
+    };
     beforeEach(() => {
       TestBed.configureTestingModule({
-        providers: [Store, {provide: STATE_CONFIG, useValue: {storeName: 'test', log: true, timekeeping: true, initialState: {count: 0}}}]
+        providers: [Store, {
+          provide: STATE_CONFIG, useValue: {
+            storeName: 'test', log: true, timekeeping: true,
+            initialState: INITIAL_STATE
+          }
+        }]
       });
     });
 
-    it('initial state',
+    it('select initial state',
       fakeAsync(inject([Store], (store: Store<any>) => {
         let count = -1;
         store.selectOnce('count').subscribe(c => count = c);
@@ -23,7 +42,57 @@ describe('Store', () => {
         expect(count).toBe(0);
       })));
 
-    it('dispatch action',
+    it('select initial state with default value',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let value3 = null;
+        store.selectOnceOrDefault('count', 3).subscribe(c => value3 = c);
+        flushMicrotasks();
+        expect(value3).toBe(0);
+      })));
+
+    it('select initial state by path',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let value3 = null;
+        store.selectOnceSubProperty('complexObject', 'prop/prop2/0/prop3').subscribe(c => value3 = c);
+        let value4 = null;
+        store.selectOnceSubProperty('complexObject', 'prop/prop2/0/prop4').subscribe(c => value4 = c);
+        let value5 = null;
+        store.selectOnceSubProperty('complexObject', 'prop/prop2/0/prop5').subscribe(c => value5 = c);
+        flushMicrotasks();
+        expect(value3).toBe('value3');
+        expect(value4).toBe('');
+        expect(value5).toBe(0);
+      })));
+
+    it('select initial state by path with default value',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let value3 = null;
+        store.selectOnceSubPropertyOrDefault('complexObject', 'prop/prop2/0/prop3', null).subscribe(c => value3 = c);
+        let value4 = null;
+        store.selectOnceSubPropertyOrDefault('complexObject', 'prop/prop2/0/prop4', null).subscribe(c => value4 = c);
+        let value5 = null;
+        store.selectOnceSubPropertyOrDefault('complexObject', 'prop/prop2/0/prop5', null).subscribe(c => value5 = c);
+        flushMicrotasks();
+        expect(value3).toBe('value3');
+        expect(value4).toBe('');
+        expect(value5).toBe(0);
+      })));
+
+    it('select initial state by invalid path with default value',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        let value3 = null;
+        store.selectOnceSubPropertyOrDefault('complexObject', 'prop/prop2/1/prop3', 'value3').subscribe(c => value3 = c);
+        let value4 = null;
+        store.selectOnceSubPropertyOrDefault('complexObject', 'prop/prop2/1/prop4', '').subscribe(c => value4 = c);
+        let value5 = null;
+        store.selectOnceSubPropertyOrDefault('complexObject', 'prop/prop2/1/prop5', 0).subscribe(c => value5 = c);
+        flushMicrotasks();
+        expect(value3).toBe('value3');
+        expect(value4).toBe('');
+        expect(value5).toBe(0);
+      })));
+
+    it('dispatch action and select',
       fakeAsync(inject([Store], (store: Store<any>) => {
         store.dispatch({
           handleState(stateContext: StateContext<any>): Observable<void> | void {
@@ -34,6 +103,51 @@ describe('Store', () => {
         tick(1);
         let count = -1;
         store.select('count').subscribe(c => count = c);
+        flushMicrotasks();
+        expect(count).toBe(1);
+      })));
+
+    it('dispatch action and select with default',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState({count: 1});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        store.selectOrDefault('count', 3).subscribe(c => count = c);
+        flushMicrotasks();
+        expect(count).toBe(1);
+      })));
+
+    it('dispatch action and select sub-property',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState({count: 1});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        store.selectSubProperty('count', null).subscribe((c: number) => count = c);
+        flushMicrotasks();
+        expect(count).toBe(1);
+      })));
+
+    it('dispatch action and select sub-property with default',
+      fakeAsync(inject([Store], (store: Store<any>) => {
+        store.dispatch({
+          handleState(stateContext: StateContext<any>): Observable<void> | void {
+            stateContext.patchState({count: 1});
+          }
+        } as Action).subscribe();
+        flushMicrotasks();
+        tick(1);
+        let count = -1;
+        store.selectSubPropertyOrDefault('count', null, 3).subscribe(c => count = c);
         flushMicrotasks();
         expect(count).toBe(1);
       })));
@@ -89,7 +203,7 @@ describe('Store', () => {
         tick(1);
         let count = -1;
         let count2 = -1;
-        expect(initialState).toEqual({count: 0});
+        expect(initialState).toEqual(INITIAL_STATE);
         store.select('count').subscribe(c => count = c);
         store.select('count2').subscribe(c => count2 = c);
         flushMicrotasks();

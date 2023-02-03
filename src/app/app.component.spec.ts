@@ -7,7 +7,6 @@ import { CounterComponent } from './components/counter.component/counter.compone
 import { InventoriesButtonComponent } from './components/inventories-button.component/inventories-button.component';
 import { InventoriesComponent } from './components/inventories.component/inventories.component';
 import { ActionFactory } from './services/state-store/action-factory';
-import clock = jasmine.clock;
 
 describe('Component: AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -22,7 +21,6 @@ describe('Component: AppComponent', () => {
         }
       };
     });
-    clock().install();
     actionFactory = jasmine.createSpyObj('ActionFactory', ['showLoadIndicator', 'hideLoadIndicator']);
     actionFactory.showLoadIndicator.and.callFake(() => {
       return of([]);
@@ -44,9 +42,6 @@ describe('Component: AppComponent', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     hostComponent = fixture.componentInstance;
-  });
-  afterEach(() => {
-    clock().uninstall();
   });
 
   it('should have a defined component', () => {
