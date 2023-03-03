@@ -180,17 +180,17 @@ export class Store<S> {
   }
 
   private selectState<keyString extends keyof S, T>(key: keyString, subPropertyPath: string, defaultValue: S[keyString] | T, objectComparator: ObjectComparator): Observable<any> {
-    const result = this.stateStream.pipe(map(s => this.valueOrDefault(this.getPropertyValue(s[key as string], subPropertyPath), defaultValue)));
-    if (objectComparator) {
-      return result.pipe(distinctUntilChanged<any>(objectComparator));
-    }
-    return result.pipe(distinctUntilChanged<any>());
+    return this.stateStream.pipe(
+      map(s => s[key as string]),
+      distinctUntilChanged<any>(),
+      map(v => {
+        v = !v || !subPropertyPath ? v : this.getSubPropertyValue(v, subPropertyPath);
+        return v || typeof v === 'string' || typeof v === 'number' ? v : defaultValue;
+      }),
+      objectComparator ? distinctUntilChanged<any>(objectComparator) : distinctUntilChanged<any>());
   }
 
-  private getPropertyValue<keyString extends keyof S, T>(target: S[keyString], path: string): T {
-    if (!target || !path) {
-      return target as T;
-    }
+  private getSubPropertyValue<T>(target: any, path: string): T {
     const properties = path.split('/').filter(p => !!p);
     const length = properties.length;
     let currentProp = target as T;
@@ -203,15 +203,6 @@ export class Store<S> {
       }
     }
     return currentProp;
-  }
-
-  private valueOrDefault<T>(value: T, defaultValue: T): T {
-    if (value) {
-      return value;
-    } else if (typeof value === 'string' || typeof value === 'number') {
-      return value;
-    }
-    return defaultValue;
   }
 
   private getStateContext(): StateContext<S> {

@@ -9,68 +9,68 @@ describe('StateHelper - cyclic dependencies tests;', () => {
   let complexObject3;
   const checkExpectations = (cloneSource, clone) => {
 
-    expect(clone === cloneSource).toBeFalsy('; the clone is not the source');
+    expect(clone === cloneSource).withContext('; the clone is not the source').toBeFalsy();
 
-    expect(cloneSource.funk).toBeTruthy('; the source has funk (1)');
-    expect(cloneSource.funk2).toBeTruthy('; the source has funk2');
-    expect(cloneSource.complexObject).toBeTruthy('; the source has complexObject');
-    expect(cloneSource.complexObject2).toBeTruthy('; the source has complexObject2');
-    expect(cloneSource.complexObject3).toBeTruthy('; the source has complexObject3');
+    expect(cloneSource.funk).withContext('; the source has funk (1)').toBeTruthy();
+    expect(cloneSource.funk2).withContext('; the source has funk2').toBeTruthy();
+    expect(cloneSource.complexObject).withContext('; the source has complexObject').toBeTruthy();
+    expect(cloneSource.complexObject2).withContext('; the source has complexObject2').toBeTruthy();
+    expect(cloneSource.complexObject3).withContext('; the source has complexObject3').toBeTruthy();
 
-    expect(clone.funk).toBeTruthy('; the clone has funk (1)');
-    expect(clone.funk2).toBeTruthy('; the clone has funk2');
-    expect(clone.complexObject).toBeTruthy('; the clone has complexObject');
-    expect(clone.complexObject2).toBeTruthy('; the clone has complexObject2');
-    expect(clone.complexObject3).toBeTruthy('; the clone has complexObject3');
+    expect(clone.funk).withContext('; the clone has funk (1)').toBeTruthy();
+    expect(clone.funk2).withContext('; the clone has funk2').toBeTruthy();
+    expect(clone.complexObject).withContext('; the clone has complexObject').toBeTruthy();
+    expect(clone.complexObject2).withContext('; the clone has complexObject2').toBeTruthy();
+    expect(clone.complexObject3).withContext('; the clone has complexObject3').toBeTruthy();
 
-    expect(clone.funk === cloneSource.funk).toBeFalsy('; the funk of source and clone are different (1)');
-    expect(clone.funk2 === cloneSource.funk2).toBeFalsy('; the funk2 of source and clone are different (1)');
-    expect(clone.complexObject === cloneSource.complexObject).toBeFalsy('; the complexObject of source and clone are different');
-    expect(clone.complexObject2 === cloneSource.complexObject2).toBeFalsy('; the complexObject2 of source and clone are different');
-    expect(clone.complexObject3 === cloneSource.complexObject3).toBeFalsy('; the complexObject3 of source and clone are different (1)');
+    expect(clone.funk === cloneSource.funk).withContext('; the funk of source and clone are different (1)').toBeFalsy();
+    expect(clone.funk2 === cloneSource.funk2).withContext('; the funk2 of source and clone are different (1)').toBeFalsy();
+    expect(clone.complexObject === cloneSource.complexObject).withContext('; the complexObject of source and clone are different').toBeFalsy();
+    expect(clone.complexObject2 === cloneSource.complexObject2).withContext('; the complexObject2 of source and clone are different').toBeFalsy();
+    expect(clone.complexObject3 === cloneSource.complexObject3).withContext('; the complexObject3 of source and clone are different (1)').toBeFalsy();
 
     expect(cloneSource.complexObject3 === cloneSource.complexObject2.prop[0].subArray[0].prop[0].complexObject3)
-      .toBeTruthy('; the complexObject3 of source in cyclic dependencies is the same (1)');
+      .withContext('; the complexObject3 of source in cyclic dependencies is the same (1)').toBeTruthy();
     expect(cloneSource.complexObject3 === clone.complexObject2.prop[0].subArray[0].prop[0].complexObject3)
-      .toBeFalsy('; the complexObject3 of source and clone are different (2)');
+      .withContext('; the complexObject3 of source and clone are different (2)').toBeFalsy();
     expect(clone.complexObject3 === clone.complexObject2.prop[0].subArray[0].prop[0].complexObject3)
-      .toBeTruthy('; the complexObject3 of clone in cyclic dependencies is the same (1)');
+      .withContext('; the complexObject3 of clone in cyclic dependencies is the same (1)').toBeTruthy();
     expect(clone.complexObject3 === cloneSource.complexObject2.prop[0].subArray[0].prop[0].complexObject3)
-      .toBeFalsy('; the complexObject3 of source and clone are different (3)');
+      .withContext('; the complexObject3 of source and clone are different (3)').toBeFalsy();
 
     expect(cloneSource.complexObject3 === cloneSource.complexObject.prop[0].complexObject3)
-      .toBeTruthy('; the complexObject3 of source in cyclic dependencies is the same (2)');
+      .withContext('; the complexObject3 of source in cyclic dependencies is the same (2)').toBeTruthy();
     expect(clone.complexObject3 === clone.complexObject.prop[0].complexObject3)
-      .toBeTruthy('; the complexObject3 of clone in cyclic dependencies is the same (2)');
+      .withContext('; the complexObject3 of clone in cyclic dependencies is the same (2)').toBeTruthy();
 
     // reference to itself
     expect(cloneSource.complexObject === cloneSource.complexObject.complexObject)
-      .toBeTruthy('; the complexObject of source in cyclic dependencies is the same');
+      .withContext('; the complexObject of source in cyclic dependencies is the same').toBeTruthy();
     expect(clone.complexObject === clone.complexObject.complexObject)
-      .toBeTruthy('; the complexObject of clone in cyclic dependencies is the same');
+      .withContext('; the complexObject of clone in cyclic dependencies is the same').toBeTruthy();
 
     // functions in cyclic dependencies
 
     expect(cloneSource.funk === cloneSource.complexObject2.prop[0].subArray[1])
-      .toBeTruthy('; the funk of source in cyclic dependencies is the same (1)');
+      .withContext('; the funk of source in cyclic dependencies is the same (1)').toBeTruthy();
     expect(cloneSource.funk === clone.complexObject2.prop[0].subArray[1])
-      .toBeFalsy('; the funk of source and clone are different (2)');
+      .withContext('; the funk of source and clone are different (2)').toBeFalsy();
     expect(clone.funk === clone.complexObject2.prop[0].subArray[1])
-      .toBeTruthy('; the funk of clone in cyclic dependencies is the same (1)');
+      .withContext('; the funk of clone in cyclic dependencies is the same (1)').toBeTruthy();
     expect(clone.funk === cloneSource.complexObject2.prop[0].subArray[1])
-      .toBeFalsy('; the funk of source and clone are different (3)');
+      .withContext('; the funk of source and clone are different (3)').toBeFalsy();
 
-    expect(cloneSource.funk2 === cloneSource.funk.funk2).toBeTruthy('; the funk2 of source in cyclic dependencies is the same');
-    expect(clone.funk2 === cloneSource.funk.funk2).toBeFalsy('; the funk2 of source and clone are different (2)');
-    expect(clone.funk2 === clone.funk.funk2).toBeTruthy('; the funk2 of clone in cyclic dependencies is the same');
-    expect(cloneSource.funk2 === clone.funk.funk2).toBeFalsy('; the funk2 of source and clone are different (3)');
+    expect(cloneSource.funk2 === cloneSource.funk.funk2).withContext('; the funk2 of source in cyclic dependencies is the same').toBeTruthy();
+    expect(clone.funk2 === cloneSource.funk.funk2).withContext('; the funk2 of source and clone are different (2)').toBeFalsy();
+    expect(clone.funk2 === clone.funk.funk2).withContext('; the funk2 of clone in cyclic dependencies is the same').toBeTruthy();
+    expect(cloneSource.funk2 === clone.funk.funk2).withContext('; the funk2 of source and clone are different (3)').toBeFalsy();
 
-    expect(cloneSource.funk2.funk).toBeTruthy('; the source has funk (2)');
-    expect(cloneSource.funk2.funk === cloneSource.funk).toBeTruthy('; the funk of source in cyclic dependencies is the same (2)');
-    expect(clone.funk2.funk).toBeTruthy('; the clone has funk (2)');
-    expect(clone.funk2.funk === cloneSource.funk).toBeFalsy('; the funk of source and clone are different (4)');
-    expect(clone.funk2.funk === clone.funk).toBeTruthy('; the funk of clone in cyclic dependencies is the same (2)');
-    expect(cloneSource.funk2.funk === clone.funk).toBeFalsy('; the funk of source and clone are different (5)');
+    expect(cloneSource.funk2.funk).withContext('; the source has funk (2)').toBeTruthy();
+    expect(cloneSource.funk2.funk === cloneSource.funk).withContext('; the funk of source in cyclic dependencies is the same (2)').toBeTruthy();
+    expect(clone.funk2.funk).withContext('; the clone has funk (2)').toBeTruthy();
+    expect(clone.funk2.funk === cloneSource.funk).withContext('; the funk of source and clone are different (4)').toBeFalsy();
+    expect(clone.funk2.funk === clone.funk).withContext('; the funk of clone in cyclic dependencies is the same (2)').toBeTruthy();
+    expect(cloneSource.funk2.funk === clone.funk).withContext('; the funk of source and clone are different (5)').toBeFalsy();
   };
 
   beforeEach(() => {

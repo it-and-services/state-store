@@ -327,8 +327,8 @@ describe('Store', () => {
         flushMicrotasks();
         tick(1);
 
-        expect(complexObject.prop).toBe('prop - value', 'no reaction expected on prop change');
-        expect(complexObject.prop2).toBe('prop2 - value', 'no reaction expected on prop change');
+        expect(complexObject.prop).withContext('no reaction expected on prop change').toBe('prop - value');
+        expect(complexObject.prop2).withContext('no reaction expected on prop change').toBe('prop2 - value');
       })));
 
     it('state change emitted;',
@@ -348,8 +348,8 @@ describe('Store', () => {
         flushMicrotasks();
         tick(1);
 
-        expect(complexObject.prop).toBe('prop - value', 'reaction expected on prop2 change');
-        expect(complexObject.prop2).toBe('prop2 - value2', 'reaction expected on prop2 change');
+        expect(complexObject.prop).withContext('reaction expected on prop2 change').toBe('prop - value');
+        expect(complexObject.prop2).withContext('reaction expected on prop2 change').toBe('prop2 - value2');
       })));
 
   });

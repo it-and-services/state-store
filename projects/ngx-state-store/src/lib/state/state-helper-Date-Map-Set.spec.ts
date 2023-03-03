@@ -58,7 +58,7 @@ describe('StateHelper - Date, Map, Set tests;', () => {
         expect(() => {
           dateObjectCloneFreeze.date[prop] = () => console.log('it cannot be');
         }).toThrow(new Error('Cannot assign to read only property \'' + prop + '\' of object \'[object Date]\''));
-        const getProp = 'get' + prop.substr(3);
+        const getProp = 'get' + prop.slice(3);
 
         expect(dateObjectCloneFreeze.date[getProp]()).toEqual(dateObjectCopy.date[getProp]());
         expect(dateObjectCloneFreeze.date[getProp]()).not.toEqual(otherDateObject.date[getProp]());
