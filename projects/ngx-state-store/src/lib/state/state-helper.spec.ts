@@ -23,14 +23,14 @@ describe('StateHelper - clone and freeze tests;', () => {
   it('do not clone the window', inject([], () => {
     const clone = StateHelper.cloneObject(window);
     expect(clone).toBeTruthy();
-    expect(clone === window).toBeTruthy('By clone the window the return object is the same');
+    expect(clone === window).withContext('By clone the window the return object is the same').toBeTruthy();
   }));
 
   it('do not freeze the window', inject([], () => {
     const frozenWindow = StateHelper.deepFreeze(window);
     expect(frozenWindow).toBeTruthy();
-    expect(frozenWindow === window).toBeTruthy('By freeze the window the return object is the same');
-    expect(Object.isFrozen(frozenWindow)).toBeFalsy('It is not allowed to freeze the window');
+    expect(frozenWindow === window).withContext('By freeze the window the return object is the same').toBeTruthy();
+    expect(Object.isFrozen(frozenWindow)).withContext('It is not allowed to freeze the window').toBeFalsy();
   }));
 
   it('simple object should be frozen', inject([], () => {
@@ -83,7 +83,7 @@ describe('StateHelper - clone and freeze tests;', () => {
 
   it('this reference in the function remains the same', inject([], () => {
     const of = {
-      prop: 88,
+      prop: 77,
       // eslint-disable-next-line object-shorthand
       funk: function(add: number): number {
         return this.prop + add;
@@ -91,11 +91,11 @@ describe('StateHelper - clone and freeze tests;', () => {
     };
     let o = StateHelper.deepFreeze(of);
     expect(o === of).toBeTruthy();
-    expect(o.funk(1)).toBe(89);
-    expect(o.funk.call(o, 1)).toBe(89);
+    expect(o.funk(1)).toBe(78);
+    expect(o.funk.call(o, 1)).toBe(78);
     o = StateHelper.cloneObject(o);
-    expect(o.funk(1)).toBe(89);
-    expect(o.funk.call(o, 1)).toBe(89);
+    expect(o.funk(1)).toBe(78);
+    expect(o.funk.call(o, 1)).toBe(78);
   }));
 
   it('the function of an object should not be cloned', inject([], () => {

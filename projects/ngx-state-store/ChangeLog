@@ -1,5 +1,9 @@
 This file lists a summary of changes for released ngx-state-store versions.
 
+v1.1.1
+  - performance optimization
+  - clean up deprecations
+
 v1.1.0
   - clean up RxJs deprecations that will be removed in v8, the clean up was done with backward compatibility
   - new comfort methods presented:

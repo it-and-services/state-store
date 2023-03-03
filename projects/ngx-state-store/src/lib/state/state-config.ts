@@ -1,7 +1,7 @@
 export interface StateConfig {
 
   /**
-   * Name of the store. the content can be find by the property window['ngx-state-store'][storeName]
+   * Name of the store. the content can be found by the property window['ngx-state-store'][storeName]
    */
   storeName: string;
 
