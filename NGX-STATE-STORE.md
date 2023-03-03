@@ -13,4 +13,4 @@ Execute the following:
          $ git push origin state-store
          $ git push --tags
          $ npm login // only first time
-         $ npm publish dist/ngx-state-store --otp=<code>
+         $ npm publish dist/ngx-state-store --otp=<code> # (dist\ngx-state-store - for windows)
