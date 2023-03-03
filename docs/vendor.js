@@ -6729,7 +6729,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -12343,7 +12343,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.Version('15.1.3');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.Version('15.2.0');
 
 /**
  * Defines a scroll position manager. Implemented by `BrowserViewportScroller`.
@@ -13371,6 +13371,7 @@ class NgOptimizedImage {
       }
       assertNotMissingBuiltInLoader(this.ngSrc, this.imageLoader);
       assertNoNgSrcsetWithoutLoader(this, this.imageLoader);
+      assertNoLoaderParamsWithoutLoader(this, this.imageLoader);
       if (this.priority) {
         const checker = this.injector.get(PreconnectLinkChecker);
         checker.assertPreconnect(this.getRewrittenSrc(), this.ngSrc);
@@ -13427,8 +13428,15 @@ class NgOptimizedImage {
   /** @nodoc */
   ngOnChanges(changes) {
     if (ngDevMode) {
-      assertNoPostInitInputChange(this, changes, ['ngSrc', 'ngSrcset', 'width', 'height', 'priority', 'fill', 'loading', 'sizes', 'disableOptimizedSrcset']);
+      assertNoPostInitInputChange(this, changes, ['ngSrc', 'ngSrcset', 'width', 'height', 'priority', 'fill', 'loading', 'sizes', 'loaderParams', 'disableOptimizedSrcset']);
     }
+  }
+  callImageLoader(configWithoutCustomParams) {
+    let augmentedConfig = configWithoutCustomParams;
+    if (this.loaderParams) {
+      augmentedConfig.loaderParams = this.loaderParams;
+    }
+    return this.imageLoader(augmentedConfig);
   }
   getLoadingBehavior() {
     if (!this.priority && this.loading !== undefined) {
@@ -13448,7 +13456,7 @@ class NgOptimizedImage {
         src: this.ngSrc
       };
       // Cache calculated image src to reuse it later in the code.
-      this._renderedSrc = this.imageLoader(imgConfig);
+      this._renderedSrc = this.callImageLoader(imgConfig);
     }
     return this._renderedSrc;
   }
@@ -13457,7 +13465,7 @@ class NgOptimizedImage {
     const finalSrcs = this.ngSrcset.split(',').filter(src => src !== '').map(srcStr => {
       srcStr = srcStr.trim();
       const width = widthSrcSet ? parseFloat(srcStr) : parseFloat(srcStr) * this.width;
-      return `${this.imageLoader({
+      return `${this.callImageLoader({
         src: this.ngSrc,
         width
       })} ${srcStr}`;
@@ -13481,14 +13489,14 @@ class NgOptimizedImage {
       // breakpoints with full viewport widths.
       filteredBreakpoints = breakpoints.filter(bp => bp >= VIEWPORT_BREAKPOINT_CUTOFF);
     }
-    const finalSrcs = filteredBreakpoints.map(bp => `${this.imageLoader({
+    const finalSrcs = filteredBreakpoints.map(bp => `${this.callImageLoader({
       src: this.ngSrc,
       width: bp
     })} ${bp}w`);
     return finalSrcs.join(', ');
   }
   getFixedSrcset() {
-    const finalSrcs = DENSITY_SRCSET_MULTIPLIERS.map(multiplier => `${this.imageLoader({
+    const finalSrcs = DENSITY_SRCSET_MULTIPLIERS.map(multiplier => `${this.callImageLoader({
       src: this.ngSrc,
       width: this.width * multiplier
     })} ${multiplier}x`);
@@ -13529,6 +13537,7 @@ NgOptimizedImage.ɵdir = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0
     height: "height",
     loading: "loading",
     priority: "priority",
+    loaderParams: "loaderParams",
     disableOptimizedSrcset: "disableOptimizedSrcset",
     fill: "fill",
     src: "src",
@@ -13570,6 +13579,9 @@ NgOptimizedImage.ɵdir = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0
       type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
     }],
     priority: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    loaderParams: [{
       type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
     }],
     disableOptimizedSrcset: [{
@@ -13847,7 +13859,16 @@ function assertNotMissingBuiltInLoader(ngSrc, imageLoader) {
  */
 function assertNoNgSrcsetWithoutLoader(dir, imageLoader) {
   if (dir.ngSrcset && imageLoader === noopImageLoader) {
-    console.warn((0,_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵformatRuntimeError"])(2963 /* RuntimeErrorCode.NGSRCSET_WITHOUT_LOADER */, `${imgDirectiveDetails(dir.ngSrc)} the \`ngSrcset\` attribute is present but ` + `no image loader is configured (i.e. the default one is being used), ` + `which would result in the same image being used for all configured sizes. ` + `To fix this, provide a loader or remove the \`ngSrcset\` attribute from the image.`));
+    console.warn((0,_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵformatRuntimeError"])(2963 /* RuntimeErrorCode.MISSING_NECESSARY_LOADER */, `${imgDirectiveDetails(dir.ngSrc)} the \`ngSrcset\` attribute is present but ` + `no image loader is configured (i.e. the default one is being used), ` + `which would result in the same image being used for all configured sizes. ` + `To fix this, provide a loader or remove the \`ngSrcset\` attribute from the image.`));
+  }
+}
+/**
+ * Warns if loaderParams is present and no loader is configured (i.e. the default one is being
+ * used).
+ */
+function assertNoLoaderParamsWithoutLoader(dir, imageLoader) {
+  if (dir.loaderParams && imageLoader === noopImageLoader) {
+    console.warn((0,_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵformatRuntimeError"])(2963 /* RuntimeErrorCode.MISSING_NECESSARY_LOADER */, `${imgDirectiveDetails(dir.ngSrc)} the \`loaderParams\` attribute is present but ` + `no image loader is configured (i.e. the default one is being used), ` + `which means that the loaderParams data will not be consumed and will not affect the URL. ` + `To fix this, provide a custom loader or remove the \`loaderParams\` attribute from the image.`));
   }
 }
 
@@ -13926,7 +13947,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 116);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 635);
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -16386,10 +16407,7 @@ HttpClientModule.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_4
   type: HttpClientModule
 });
 HttpClientModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({
-  providers: [provideHttpClient(withInterceptorsFromDi(), withXsrfConfiguration({
-    cookieName: XSRF_DEFAULT_COOKIE_NAME,
-    headerName: XSRF_DEFAULT_HEADER_NAME
-  }))]
+  providers: [provideHttpClient(withInterceptorsFromDi())]
 });
 (function () {
   (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵsetClassMetadata"](HttpClientModule, [{
@@ -16399,10 +16417,7 @@ HttpClientModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_4
        * Configures the [dependency injector](guide/glossary#injector) where it is imported
        * with supporting services for HTTP communications.
        */
-      providers: [provideHttpClient(withInterceptorsFromDi(), withXsrfConfiguration({
-        cookieName: XSRF_DEFAULT_COOKIE_NAME,
-        headerName: XSRF_DEFAULT_HEADER_NAME
-      }))]
+      providers: [provideHttpClient(withInterceptorsFromDi())]
     }]
   }], null, null);
 })();
@@ -16664,7 +16679,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "visitAll": () => (/* binding */ visitAll)
 /* harmony export */ });
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -24423,9 +24438,8 @@ const animationKeywords = new Set([
 // `steps()` function
 'end', 'jump-both', 'jump-end', 'jump-none', 'jump-start', 'start']);
 /**
- * The following class is a port of shadowCSS from webcomponents.js to TypeScript.
- *
- * Please make sure to keep to edits in sync with the source file.
+ * The following class has its origin from a port of shadowCSS from webcomponents.js to TypeScript.
+ * It has since diverge in many ways to tailor Angular's needs.
  *
  * Source:
  * https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js
@@ -24465,28 +24479,8 @@ const animationKeywords = new Set([
     }
 
   * encapsulation: Styles defined within ShadowDOM, apply only to
-  dom inside the ShadowDOM. Polymer uses one of two techniques to implement
-  this feature.
-
-  By default, rules are prefixed with the host element tag name
-  as a descendant selector. This ensures styling does not leak out of the 'top'
-  of the element's ShadowDOM. For example,
-
-  div {
-      font-weight: bold;
-    }
-
-  becomes:
-
-  x-foo div {
-      font-weight: bold;
-    }
-
-  becomes:
-
-
-  Alternatively, if WebComponents.ShadowCSS.strictStyling is set to true then
-  selectors are scoped by adding an attribute selector suffix to each
+  dom inside the ShadowDOM.
+  The selectors are scoped by adding an attribute selector suffix to each
   simple selector that contains the host element tag name. Each element
   in the element's ShadowDOM template is also given the scope attribute.
   Thus, these rules match only elements that have the scope attribute.
@@ -24548,8 +24542,6 @@ const animationKeywords = new Set([
 */
 class ShadowCss {
   constructor() {
-    // TODO: Is never re-assigned, could be removed.
-    this.strictStyling = true;
     /**
      * Regular expression used to extrapolate the possible keyframes from an
      * animation declaration (with possibly multiple animation definitions)
@@ -24567,12 +24559,10 @@ class ShadowCss {
     this._animationDeclarationKeyframesRe = /(^|\s+)(?:(?:(['"])((?:\\\\|\\\2|(?!\2).)+)\2)|(-?[A-Za-z][\w\-]*))(?=[,\s]|$)/g;
   }
   /*
-   * Shim some cssText with the given selector. Returns cssText that can
-   * be included in the document via WebComponents.ShadowCSS.addCssToDocument(css).
+   * Shim some cssText with the given selector. Returns cssText that can be included in the document
    *
-   * When strictStyling is true:
-   * - selector is the attribute added to all elements inside the host,
-   * - hostSelector is the attribute added to the host itself.
+   * The selector is the attribute added to all elements inside the host,
+   * The hostSelector is the attribute added to the host itself.
    */
   shimCssText(cssText, selector, hostSelector = '') {
     const commentsWithHash = extractCommentsWithHash(cssText);
@@ -24734,7 +24724,6 @@ class ShadowCss {
    *
    **/
   _insertPolyfillDirectivesInCssText(cssText) {
-    // Difference with webcomponents.js: does not handle comments
     return cssText.replace(_cssContentNextSelectorRe, function (...m) {
       return m[2] + '{';
     });
@@ -24755,7 +24744,6 @@ class ShadowCss {
    *
    **/
   _insertPolyfillRulesInCssText(cssText) {
-    // Difference with webcomponents.js: does not handle comments
     return cssText.replace(_cssContentRuleRe, (...m) => {
       const rule = m[0].replace(m[1], '').replace(m[2], '');
       return m[4] + rule;
@@ -24799,7 +24787,6 @@ class ShadowCss {
    *
    **/
   _extractUnscopedRulesFromCssText(cssText) {
-    // Difference with webcomponents.js: does not handle comments
     let r = '';
     let m;
     _cssContentUnscopedRuleRe.lastIndex = 0;
@@ -24911,7 +24898,7 @@ class ShadowCss {
       let selector = rule.selector;
       let content = rule.content;
       if (rule.selector[0] !== '@') {
-        selector = this._scopeSelector(rule.selector, scopeSelector, hostSelector, this.strictStyling);
+        selector = this._scopeSelector(rule.selector, scopeSelector, hostSelector);
       } else if (rule.selector.startsWith('@media') || rule.selector.startsWith('@supports') || rule.selector.startsWith('@document') || rule.selector.startsWith('@layer') || rule.selector.startsWith('@container')) {
         content = this._scopeSelectors(rule.content, scopeSelector, hostSelector);
       } else if (rule.selector.startsWith('@font-face') || rule.selector.startsWith('@page')) {
@@ -24947,12 +24934,12 @@ class ShadowCss {
       return new CssRule(selector, rule.content);
     });
   }
-  _scopeSelector(selector, scopeSelector, hostSelector, strict) {
+  _scopeSelector(selector, scopeSelector, hostSelector) {
     return selector.split(',').map(part => part.trim().split(_shadowDeepSelectors)).map(deepParts => {
       const [shallowPart, ...otherParts] = deepParts;
       const applyScope = shallowPart => {
         if (this._selectorNeedsScoping(shallowPart, scopeSelector)) {
-          return strict ? this._applyStrictSelectorScope(shallowPart, scopeSelector, hostSelector) : this._applySelectorScope(shallowPart, scopeSelector, hostSelector);
+          return this._applySelectorScope(shallowPart, scopeSelector, hostSelector);
         } else {
           return shallowPart;
         }
@@ -24970,16 +24957,12 @@ class ShadowCss {
     scopeSelector = scopeSelector.replace(lre, '\\[').replace(rre, '\\]');
     return new RegExp('^(' + scopeSelector + ')' + _selectorReSuffix, 'm');
   }
-  _applySelectorScope(selector, scopeSelector, hostSelector) {
-    // Difference from webcomponents.js: scopeSelector could not be an array
-    return this._applySimpleSelectorScope(selector, scopeSelector, hostSelector);
-  }
   // scope via name and [is=name]
   _applySimpleSelectorScope(selector, scopeSelector, hostSelector) {
     // In Android browser, the lastIndex is not reset when the regex is used in String.replace()
     _polyfillHostRe.lastIndex = 0;
     if (_polyfillHostRe.test(selector)) {
-      const replaceBy = this.strictStyling ? `[${hostSelector}]` : scopeSelector;
+      const replaceBy = `[${hostSelector}]`;
       return selector.replace(_polyfillHostNoCombinatorRe, (hnc, selector) => {
         return selector.replace(/([^:]*)(:*)(.*)/, (_, before, colon, after) => {
           return before + replaceBy + colon + after;
@@ -24990,7 +24973,7 @@ class ShadowCss {
   }
   // return a selector with [name] suffix on each simple selector
   // e.g. .foo.bar > .zot becomes .foo[name].bar[name] > .zot[name]  /** @internal */
-  _applyStrictSelectorScope(selector, scopeSelector, hostSelector) {
+  _applySelectorScope(selector, scopeSelector, hostSelector) {
     const isRe = /\[is=([^\]]*)\]/g;
     scopeSelector = scopeSelector.replace(isRe, (_, ...parts) => parts[0]);
     const attrName = '[' + scopeSelector + ']';
@@ -36675,7 +36658,7 @@ function publishFacade(global) {
  * @description
  * Entry point for all public APIs of the compiler package.
  */
-const VERSION = new Version('15.1.3');
+const VERSION = new Version('15.2.0');
 class CompilerConfig {
   constructor({
     defaultEncapsulation = ViewEncapsulation.Emulated,
@@ -38448,7 +38431,6 @@ class TemplateBinder extends RecursiveAstVisitor {
     this.scope = scope;
     this.template = template;
     this.level = level;
-    this.pipesUsed = [];
     // Save a bit of processing time by constructing this closure in advance.
     this.visitNode = node => node.visit(this);
   }
@@ -38678,7 +38660,7 @@ const MINIMUM_PARTIAL_LINKER_VERSION$6 = '12.0.0';
 function compileDeclareClassMetadata(metadata) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$6));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', metadata.type);
   definitionMap.set('decorators', metadata.decorators);
@@ -38786,7 +38768,7 @@ function compileDeclareDirectiveFromMetadata(meta) {
 function createDirectiveDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$5));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   // e.g. `type: MyDirective`
   definitionMap.set('type', meta.internalType);
   if (meta.isStandalone) {
@@ -39016,7 +38998,7 @@ const MINIMUM_PARTIAL_LINKER_VERSION$4 = '12.0.0';
 function compileDeclareFactoryFunction(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$4));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.internalType);
   definitionMap.set('deps', compileDependencies(meta.deps));
@@ -39055,7 +39037,7 @@ function compileDeclareInjectableFromMetadata(meta) {
 function createInjectableDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$3));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.internalType);
   // Only generate providedIn property if it has a non-null value
@@ -39110,7 +39092,7 @@ function compileDeclareInjectorFromMetadata(meta) {
 function createInjectorDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$2));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.internalType);
   definitionMap.set('providers', meta.providers);
@@ -39144,7 +39126,7 @@ function compileDeclareNgModuleFromMetadata(meta) {
 function createNgModuleDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$1));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.internalType);
   // We only generate the keys in the metadata if the arrays contain values.
@@ -39199,7 +39181,7 @@ function compileDeclarePipeFromMetadata(meta) {
 function createPipeDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION));
-  definitionMap.set('version', literal('15.1.3'));
+  definitionMap.set('version', literal('15.2.0'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   // e.g. `type: MyPipe`
   definitionMap.set('type', meta.internalType);
@@ -39619,7 +39601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 6646);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 1203);
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -40010,9 +39992,7 @@ function getInheritedInjectableDef(type) {
   const def = type && (type[NG_PROV_DEF] || type[NG_INJECTABLE_DEF]);
   if (def) {
     const typeName = getTypeName(type);
-    // TODO(FW-1307): Re-add ngDevMode when closure can handle it
-    // ngDevMode &&
-    console.warn(`DEPRECATED: DI is instantiating a token "${typeName}" that inherits its @Injectable decorator but does not provide one itself.\n` + `This will become an error in a future version of Angular. Please add @Injectable() to the "${typeName}" class.`);
+    ngDevMode && console.warn(`DEPRECATED: DI is instantiating a token "${typeName}" that inherits its @Injectable decorator but does not provide one itself.\n` + `This will become an error in a future version of Angular. Please add @Injectable() to the "${typeName}" class.`);
     return def;
   } else {
     return null;
@@ -46402,69 +46382,18 @@ class DOMParserHelper {
   }
 }
 /**
- * Use an HTML5 `template` element, if supported, or an inert body element created via
- * `createHtmlDocument` to create and fill an inert DOM element.
+ * Use an HTML5 `template` element to create and fill an inert DOM element.
  * This is the fallback strategy if the browser does not support DOMParser.
  */
 class InertDocumentHelper {
   constructor(defaultDoc) {
     this.defaultDoc = defaultDoc;
     this.inertDocument = this.defaultDoc.implementation.createHTMLDocument('sanitization-inert');
-    if (this.inertDocument.body == null) {
-      // usually there should be only one body element in the document, but IE doesn't have any, so
-      // we need to create one.
-      const inertHtml = this.inertDocument.createElement('html');
-      this.inertDocument.appendChild(inertHtml);
-      const inertBodyElement = this.inertDocument.createElement('body');
-      inertHtml.appendChild(inertBodyElement);
-    }
   }
   getInertBodyElement(html) {
-    // Prefer using <template> element if supported.
     const templateEl = this.inertDocument.createElement('template');
-    if ('content' in templateEl) {
-      templateEl.innerHTML = trustedHTMLFromString(html);
-      return templateEl;
-    }
-    // Note that previously we used to do something like `this.inertDocument.body.innerHTML = html`
-    // and we returned the inert `body` node. This was changed, because IE seems to treat setting
-    // `innerHTML` on an inserted element differently, compared to one that hasn't been inserted
-    // yet. In particular, IE appears to split some of the text into multiple text nodes rather
-    // than keeping them in a single one which ends up messing with Ivy's i18n parsing further
-    // down the line. This has been worked around by creating a new inert `body` and using it as
-    // the root node in which we insert the HTML.
-    const inertBody = this.inertDocument.createElement('body');
-    inertBody.innerHTML = trustedHTMLFromString(html);
-    // Support: IE 11 only
-    // strip custom-namespaced attributes on IE<=11
-    if (this.defaultDoc.documentMode) {
-      this.stripCustomNsAttrs(inertBody);
-    }
-    return inertBody;
-  }
-  /**
-   * When IE11 comes across an unknown namespaced attribute e.g. 'xlink:foo' it adds 'xmlns:ns1'
-   * attribute to declare ns1 namespace and prefixes the attribute with 'ns1' (e.g.
-   * 'ns1:xlink:foo').
-   *
-   * This is undesirable since we don't want to allow any of these custom attributes. This method
-   * strips them all.
-   */
-  stripCustomNsAttrs(el) {
-    const elAttrs = el.attributes;
-    // loop backwards so that we can support removals.
-    for (let i = elAttrs.length - 1; 0 < i; i--) {
-      const attrib = elAttrs.item(i);
-      const attrName = attrib.name;
-      if (attrName === 'xmlns:ns1' || attrName.indexOf('ns1:') === 0) {
-        el.removeAttribute(attrName);
-      }
-    }
-    let childNode = el.firstChild;
-    while (childNode) {
-      if (childNode.nodeType === Node.ELEMENT_NODE) this.stripCustomNsAttrs(childNode);
-      childNode = childNode.nextSibling;
-    }
+    templateEl.innerHTML = trustedHTMLFromString(html);
+    return templateEl;
   }
 }
 /**
@@ -47796,7 +47725,7 @@ class Version {
 /**
  * @publicApi
  */
-const VERSION = new Version('15.1.3');
+const VERSION = new Version('15.2.0');
 
 // This default value is when checking the hierarchy for a token.
 //
@@ -66727,7 +66656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 1640);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 635);
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -67605,8 +67534,6 @@ function toObservable(value) {
 }
 function mergeErrors(arrayOfErrors) {
   let res = {};
-  // Not using Array.reduce here due to a Chrome 80 bug
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
   arrayOfErrors.forEach(errors => {
     res = errors != null ? {
       ...res,
@@ -71344,6 +71271,7 @@ class RadioControlValueAccessor extends BuiltInControlValueAccessor {
     super(renderer, elementRef);
     this._registry = _registry;
     this._injector = _injector;
+    this.setDisabledStateFired = false;
     /**
      * The registered callback function called when a change event occurs on the input element.
      * Note: we declare `onChange` here (also used as host listener) as a function with no arguments
@@ -71352,6 +71280,9 @@ class RadioControlValueAccessor extends BuiltInControlValueAccessor {
      * @nodoc
      */
     this.onChange = () => {};
+    this.callSetDisabledState = (0,_angular_core__WEBPACK_IMPORTED_MODULE_0__.inject)(CALL_SET_DISABLED_STATE, {
+      optional: true
+    }) ?? setDisabledStateDefault;
   }
   /** @nodoc */
   ngOnInit() {
@@ -71381,6 +71312,31 @@ class RadioControlValueAccessor extends BuiltInControlValueAccessor {
       fn(this.value);
       this._registry.select(this);
     };
+  }
+  /** @nodoc */
+  setDisabledState(isDisabled) {
+    /**
+     * `setDisabledState` is supposed to be called whenever the disabled state of a control changes,
+     * including upon control creation. However, a longstanding bug caused the method to not fire
+     * when an *enabled* control was attached. This bug was fixed in v15 in #47576.
+     *
+     * This had a side effect: previously, it was possible to instantiate a reactive form control
+     * with `[attr.disabled]=true`, even though the the corresponding control was enabled in the
+     * model. This resulted in a mismatch between the model and the DOM. Now, because
+     * `setDisabledState` is always called, the value in the DOM will be immediately overwritten
+     * with the "correct" enabled value.
+     *
+     * However, the fix also created an exceptional case: radio buttons. Because Reactive Forms
+     * models the entire group of radio buttons as a single `FormControl`, there is no way to
+     * control the disabled state for individual radios, so they can no longer be configured as
+     * disabled. Thus, we keep the old behavior for radio buttons, so that `[attr.disabled]`
+     * continues to work. Specifically, we drop the first call to `setDisabledState` if `disabled`
+     * is `false`, and we are not in legacy mode.
+     */
+    if (this.setDisabledStateFired || isDisabled || this.callSetDisabledState === 'whenDisabledForLegacyCode') {
+      this.setProperty('disabled', isDisabled);
+    }
+    this.setDisabledStateFired = true;
   }
   /**
    * Sets the "value" on the radio input element and unchecks it.
@@ -74610,7 +74566,7 @@ UntypedFormBuilder.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODUL
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.Version('15.1.3');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.Version('15.2.0');
 
 /**
  * Exports the required providers and directives for template-driven forms,
@@ -74769,7 +74725,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 4666);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ 4497);
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -74975,7 +74931,7 @@ class CachedResourceLoader extends _angular_compiler__WEBPACK_IMPORTED_MODULE_0_
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.Version('15.1.3');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.Version('15.2.0');
 
 /**
  * @publicApi
@@ -75030,6 +74986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "HammerGestureConfig": () => (/* binding */ HammerGestureConfig),
 /* harmony export */   "HammerModule": () => (/* binding */ HammerModule),
 /* harmony export */   "Meta": () => (/* binding */ Meta),
+/* harmony export */   "REMOVE_STYLES_ON_COMPONENT_DESTROY": () => (/* binding */ REMOVE_STYLES_ON_COMPONENT_DESTROY),
 /* harmony export */   "Title": () => (/* binding */ Title),
 /* harmony export */   "TransferState": () => (/* binding */ TransferState),
 /* harmony export */   "VERSION": () => (/* binding */ VERSION),
@@ -75062,7 +75019,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ 4666);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2560);
 /**
- * @license Angular v15.1.3
+ * @license Angular v15.2.0
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -75370,22 +75327,45 @@ class EventManagerPlugin {
 }
 class SharedStylesHost {
   constructor() {
-    /** @internal */
-    this._stylesSet = new Set();
+    this.usageCount = new Map();
   }
   addStyles(styles) {
-    const additions = new Set();
-    styles.forEach(style => {
-      if (!this._stylesSet.has(style)) {
-        this._stylesSet.add(style);
-        additions.add(style);
+    for (const style of styles) {
+      const usageCount = this.changeUsageCount(style, 1);
+      if (usageCount === 1) {
+        this.onStyleAdded(style);
       }
-    });
-    this.onStylesAdded(additions);
+    }
   }
-  onStylesAdded(additions) {}
+  removeStyles(styles) {
+    for (const style of styles) {
+      const usageCount = this.changeUsageCount(style, -1);
+      if (usageCount === 0) {
+        this.onStyleRemoved(style);
+      }
+    }
+  }
+  onStyleRemoved(style) {}
+  onStyleAdded(style) {}
   getAllStyles() {
-    return Array.from(this._stylesSet);
+    return this.usageCount.keys();
+  }
+  changeUsageCount(style, delta) {
+    const map = this.usageCount;
+    let usage = map.get(style) ?? 0;
+    usage += delta;
+    if (usage > 0) {
+      map.set(style, usage);
+    } else {
+      map.delete(style);
+    }
+    return usage;
+  }
+  ngOnDestroy() {
+    for (const style of this.getAllStyles()) {
+      this.onStyleRemoved(style);
+    }
+    this.usageCount.clear();
   }
 }
 SharedStylesHost.ɵfac = function SharedStylesHost_Factory(t) {
@@ -75401,39 +75381,55 @@ SharedStylesHost.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_
   }], null, null);
 })();
 class DomSharedStylesHost extends SharedStylesHost {
-  constructor(_doc) {
+  constructor(doc) {
     super();
-    this._doc = _doc;
+    this.doc = doc;
     // Maps all registered host nodes to a list of style nodes that have been added to the host node.
-    this._hostNodes = new Map();
-    this._hostNodes.set(_doc.head, []);
+    this.styleRef = new Map();
+    this.hostNodes = new Set();
+    this.resetHostNodes();
   }
-  _addStylesToHost(styles, host, styleNodes) {
-    styles.forEach(style => {
-      const styleEl = this._doc.createElement('style');
-      styleEl.textContent = style;
-      styleNodes.push(host.appendChild(styleEl));
-    });
-  }
-  addHost(hostNode) {
-    const styleNodes = [];
-    this._addStylesToHost(this._stylesSet, hostNode, styleNodes);
-    this._hostNodes.set(hostNode, styleNodes);
-  }
-  removeHost(hostNode) {
-    const styleNodes = this._hostNodes.get(hostNode);
-    if (styleNodes) {
-      styleNodes.forEach(removeStyle);
+  onStyleAdded(style) {
+    for (const host of this.hostNodes) {
+      this.addStyleToHost(host, style);
     }
-    this._hostNodes.delete(hostNode);
   }
-  onStylesAdded(additions) {
-    this._hostNodes.forEach((styleNodes, hostNode) => {
-      this._addStylesToHost(additions, hostNode, styleNodes);
-    });
+  onStyleRemoved(style) {
+    const styleRef = this.styleRef;
+    const styleElements = styleRef.get(style);
+    styleElements?.forEach(e => e.remove());
+    styleRef.delete(style);
   }
   ngOnDestroy() {
-    this._hostNodes.forEach(styleNodes => styleNodes.forEach(removeStyle));
+    super.ngOnDestroy();
+    this.styleRef.clear();
+    this.resetHostNodes();
+  }
+  addHost(hostNode) {
+    this.hostNodes.add(hostNode);
+    for (const style of this.getAllStyles()) {
+      this.addStyleToHost(hostNode, style);
+    }
+  }
+  removeHost(hostNode) {
+    this.hostNodes.delete(hostNode);
+  }
+  addStyleToHost(host, style) {
+    const styleEl = this.doc.createElement('style');
+    styleEl.textContent = style;
+    host.appendChild(styleEl);
+    const styleElRef = this.styleRef.get(style);
+    if (styleElRef) {
+      styleElRef.push(styleEl);
+    } else {
+      this.styleRef.set(style, [styleEl]);
+    }
+  }
+  resetHostNodes() {
+    const hostNodes = this.hostNodes;
+    hostNodes.clear();
+    // Re-add the head element back since this is the default host.
+    hostNodes.add(this.doc.head);
   }
 }
 DomSharedStylesHost.ɵfac = function DomSharedStylesHost_Factory(t) {
@@ -75456,9 +75452,6 @@ DomSharedStylesHost.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODU
     }];
   }, null);
 })();
-function removeStyle(styleNode) {
-  (0,_angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"])().remove(styleNode);
-}
 const NAMESPACE_URIS = {
   'svg': 'http://www.w3.org/2000/svg',
   'xhtml': 'http://www.w3.org/1999/xhtml',
@@ -75472,6 +75465,21 @@ const NG_DEV_MODE$1 = typeof ngDevMode === 'undefined' || !!ngDevMode;
 const COMPONENT_VARIABLE = '%COMP%';
 const HOST_ATTR = `_nghost-${COMPONENT_VARIABLE}`;
 const CONTENT_ATTR = `_ngcontent-${COMPONENT_VARIABLE}`;
+/**
+ * The default value for the `REMOVE_STYLES_ON_COMPONENT_DESTROY` DI token.
+ */
+const REMOVE_STYLES_ON_COMPONENT_DESTROY_DEFAULT = false;
+/**
+ * A [DI token](guide/glossary#di-token "DI token definition") that indicates whether styles
+ * of destroyed components should be removed from DOM.
+ *
+ * By default, the value is set to `false`. This will be changed in the next major version.
+ * @publicApi
+ */
+const REMOVE_STYLES_ON_COMPONENT_DESTROY = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.InjectionToken('RemoveStylesOnCompDestory', {
+  providedIn: 'root',
+  factory: () => REMOVE_STYLES_ON_COMPONENT_DESTROY_DEFAULT
+});
 function shimContentAttribute(componentShortId) {
   return CONTENT_ATTR.replace(COMPONENT_REGEX, componentShortId);
 }
@@ -75506,10 +75514,11 @@ function decoratePreventDefault(eventHandler) {
   };
 }
 class DomRendererFactory2 {
-  constructor(eventManager, sharedStylesHost, appId) {
+  constructor(eventManager, sharedStylesHost, appId, removeStylesOnCompDestory) {
     this.eventManager = eventManager;
     this.sharedStylesHost = sharedStylesHost;
     this.appId = appId;
+    this.removeStylesOnCompDestory = removeStylesOnCompDestory;
     this.rendererByCompId = new Map();
     this.defaultRenderer = new DefaultDomRenderer2(eventManager);
   }
@@ -75517,35 +75526,46 @@ class DomRendererFactory2 {
     if (!element || !type) {
       return this.defaultRenderer;
     }
-    switch (type.encapsulation) {
-      case _angular_core__WEBPACK_IMPORTED_MODULE_1__.ViewEncapsulation.Emulated:
-        {
-          let renderer = this.rendererByCompId.get(type.id);
-          if (!renderer) {
-            renderer = new EmulatedEncapsulationDomRenderer2(this.eventManager, this.sharedStylesHost, type, this.appId);
-            this.rendererByCompId.set(type.id, renderer);
-          }
-          renderer.applyToHost(element);
-          return renderer;
-        }
-      case _angular_core__WEBPACK_IMPORTED_MODULE_1__.ViewEncapsulation.ShadowDom:
-        return new ShadowDomRenderer(this.eventManager, this.sharedStylesHost, element, type);
-      default:
-        {
-          if (!this.rendererByCompId.has(type.id)) {
-            const styles = flattenStyles(type.id, type.styles);
-            this.sharedStylesHost.addStyles(styles);
-            this.rendererByCompId.set(type.id, this.defaultRenderer);
-          }
-          return this.defaultRenderer;
-        }
+    const renderer = this.getOrCreateRenderer(element, type);
+    // Renderers have different logic due to different encapsulation behaviours.
+    // Ex: for emulated, an attribute is added to the element.
+    if (renderer instanceof EmulatedEncapsulationDomRenderer2) {
+      renderer.applyToHost(element);
+    } else if (renderer instanceof NoneEncapsulationDomRenderer) {
+      renderer.applyStyles();
     }
+    return renderer;
+  }
+  getOrCreateRenderer(element, type) {
+    const rendererByCompId = this.rendererByCompId;
+    let renderer = rendererByCompId.get(type.id);
+    if (!renderer) {
+      const eventManager = this.eventManager;
+      const sharedStylesHost = this.sharedStylesHost;
+      const removeStylesOnCompDestory = this.removeStylesOnCompDestory;
+      switch (type.encapsulation) {
+        case _angular_core__WEBPACK_IMPORTED_MODULE_1__.ViewEncapsulation.Emulated:
+          renderer = new EmulatedEncapsulationDomRenderer2(eventManager, sharedStylesHost, type, this.appId, removeStylesOnCompDestory);
+          break;
+        case _angular_core__WEBPACK_IMPORTED_MODULE_1__.ViewEncapsulation.ShadowDom:
+          return new ShadowDomRenderer(eventManager, sharedStylesHost, element, type);
+        default:
+          renderer = new NoneEncapsulationDomRenderer(eventManager, sharedStylesHost, type, removeStylesOnCompDestory);
+          break;
+      }
+      renderer.onDestroy = () => rendererByCompId.delete(type.id);
+      rendererByCompId.set(type.id, renderer);
+    }
+    return renderer;
+  }
+  ngOnDestroy() {
+    this.rendererByCompId.clear();
   }
   begin() {}
   end() {}
 }
 DomRendererFactory2.ɵfac = function DomRendererFactory2_Factory(t) {
-  return new (t || DomRendererFactory2)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](EventManager), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](DomSharedStylesHost), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__.APP_ID));
+  return new (t || DomRendererFactory2)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](EventManager), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](DomSharedStylesHost), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__.APP_ID), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](REMOVE_STYLES_ON_COMPONENT_DESTROY));
 };
 DomRendererFactory2.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
   token: DomRendererFactory2,
@@ -75564,6 +75584,12 @@ DomRendererFactory2.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODU
       decorators: [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Inject,
         args: [_angular_core__WEBPACK_IMPORTED_MODULE_1__.APP_ID]
+      }]
+    }, {
+      type: undefined,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__.Inject,
+        args: [REMOVE_STYLES_ON_COMPONENT_DESTROY]
       }]
     }];
   }, null);
@@ -75700,24 +75726,6 @@ function checkNoSyntheticProp(name, nameKind) {
 function isTemplateNode(node) {
   return node.tagName === 'TEMPLATE' && node.content !== undefined;
 }
-class EmulatedEncapsulationDomRenderer2 extends DefaultDomRenderer2 {
-  constructor(eventManager, sharedStylesHost, component, appId) {
-    super(eventManager);
-    this.component = component;
-    const styles = flattenStyles(appId + '-' + component.id, component.styles);
-    sharedStylesHost.addStyles(styles);
-    this.contentAttr = shimContentAttribute(appId + '-' + component.id);
-    this.hostAttr = shimHostAttribute(appId + '-' + component.id);
-  }
-  applyToHost(element) {
-    super.setAttribute(element, this.hostAttr, '');
-  }
-  createElement(parent, name) {
-    const el = super.createElement(parent, name);
-    super.setAttribute(el, this.contentAttr, '');
-    return el;
-  }
-}
 class ShadowDomRenderer extends DefaultDomRenderer2 {
   constructor(eventManager, sharedStylesHost, hostEl, component) {
     super(eventManager);
@@ -75728,17 +75736,14 @@ class ShadowDomRenderer extends DefaultDomRenderer2 {
     });
     this.sharedStylesHost.addHost(this.shadowRoot);
     const styles = flattenStyles(component.id, component.styles);
-    for (let i = 0; i < styles.length; i++) {
+    for (const style of styles) {
       const styleEl = document.createElement('style');
-      styleEl.textContent = styles[i];
+      styleEl.textContent = style;
       this.shadowRoot.appendChild(styleEl);
     }
   }
   nodeOrShadowRoot(node) {
     return node === this.hostEl ? this.shadowRoot : node;
-  }
-  destroy() {
-    this.sharedStylesHost.removeHost(this.shadowRoot);
   }
   appendChild(parent, newChild) {
     return super.appendChild(this.nodeOrShadowRoot(parent), newChild);
@@ -75751,6 +75756,49 @@ class ShadowDomRenderer extends DefaultDomRenderer2 {
   }
   parentNode(node) {
     return this.nodeOrShadowRoot(super.parentNode(this.nodeOrShadowRoot(node)));
+  }
+  destroy() {
+    this.sharedStylesHost.removeHost(this.shadowRoot);
+  }
+}
+class NoneEncapsulationDomRenderer extends DefaultDomRenderer2 {
+  constructor(eventManager, sharedStylesHost, component, removeStylesOnCompDestory, compId = component.id) {
+    super(eventManager);
+    this.sharedStylesHost = sharedStylesHost;
+    this.removeStylesOnCompDestory = removeStylesOnCompDestory;
+    this.rendererUsageCount = 0;
+    this.styles = flattenStyles(compId, component.styles);
+  }
+  applyStyles() {
+    this.sharedStylesHost.addStyles(this.styles);
+    this.rendererUsageCount++;
+  }
+  destroy() {
+    if (!this.removeStylesOnCompDestory) {
+      return;
+    }
+    this.sharedStylesHost.removeStyles(this.styles);
+    this.rendererUsageCount--;
+    if (this.rendererUsageCount === 0) {
+      this.onDestroy?.();
+    }
+  }
+}
+class EmulatedEncapsulationDomRenderer2 extends NoneEncapsulationDomRenderer {
+  constructor(eventManager, sharedStylesHost, component, appId, removeStylesOnCompDestory) {
+    const compId = appId + '-' + component.id;
+    super(eventManager, sharedStylesHost, component, removeStylesOnCompDestory, compId);
+    this.contentAttr = shimContentAttribute(compId);
+    this.hostAttr = shimHostAttribute(compId);
+  }
+  applyToHost(element) {
+    this.applyStyles();
+    this.setAttribute(element, this.hostAttr, '');
+  }
+  createElement(parent, name) {
+    const el = super.createElement(parent, name);
+    super.setAttribute(el, this.contentAttr, '');
+    return el;
   }
 }
 class DomEventsPlugin extends EventManagerPlugin {
@@ -76153,7 +76201,7 @@ const BROWSER_MODULE_PROVIDERS = [{
 }, {
   provide: DomRendererFactory2,
   useClass: DomRendererFactory2,
-  deps: [EventManager, DomSharedStylesHost, _angular_core__WEBPACK_IMPORTED_MODULE_1__.APP_ID]
+  deps: [EventManager, DomSharedStylesHost, _angular_core__WEBPACK_IMPORTED_MODULE_1__.APP_ID, REMOVE_STYLES_ON_COMPONENT_DESTROY]
 }, {
   provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__.RendererFactory2,
   useExisting: DomRendererFactory2
@@ -77291,7 +77339,7 @@ DomSanitizerImpl.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_
 /**
  * @publicApi
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.Version('15.1.3');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.Version('15.2.0');
 
 /**
  * @module

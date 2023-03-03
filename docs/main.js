@@ -1333,16 +1333,12 @@ class Store {
     return this.selectState(key, subPropertyPath, defaultValue, undefined).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.take)(1));
   }
   selectState(key, subPropertyPath, defaultValue, objectComparator) {
-    const result = this.stateStream.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.map)(s => this.valueOrDefault(this.getPropertyValue(s[key], subPropertyPath), defaultValue)));
-    if (objectComparator) {
-      return result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)(objectComparator));
-    }
-    return result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)());
+    return this.stateStream.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.map)(s => s[key]), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)(), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.map)(v => {
+      v = !v || !subPropertyPath ? v : this.getSubPropertyValue(v, subPropertyPath);
+      return v || typeof v === 'string' || typeof v === 'number' ? v : defaultValue;
+    }), objectComparator ? (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)(objectComparator) : (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_9__.distinctUntilChanged)());
   }
-  getPropertyValue(target, path) {
-    if (!target || !path) {
-      return target;
-    }
+  getSubPropertyValue(target, path) {
     const properties = path.split('/').filter(p => !!p);
     const length = properties.length;
     let currentProp = target;
@@ -1355,14 +1351,6 @@ class Store {
       }
     }
     return currentProp;
-  }
-  valueOrDefault(value, defaultValue) {
-    if (value) {
-      return value;
-    } else if (typeof value === 'string' || typeof value === 'number') {
-      return value;
-    }
-    return defaultValue;
   }
   getStateContext() {
     return {
