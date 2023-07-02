@@ -1,6 +1,6 @@
 (self["webpackChunkstate_store"] = self["webpackChunkstate_store"] || []).push([["main"],{
 
-/***/ 5041:
+/***/ 6401:
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
   \**********************************/
@@ -9,13 +9,13 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
+/* harmony export */   AppComponent: () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 2321);
 /* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component.html?ngResource */ 3383);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 9595);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 1699);
 
 
 
@@ -27,10 +27,9 @@ AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_co
   styles: [(_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], AppComponent);
 
-
 /***/ }),
 
-/***/ 6747:
+/***/ 8629:
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
@@ -39,24 +38,24 @@ AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_co
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppModule": () => (/* binding */ AppModule)
+/* harmony export */   AppModule: () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/platform-browser */ 4497);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component */ 5041);
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../environments/environment */ 2340);
-/* harmony import */ var _services_state_store_app_initial_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/state-store/app-initial-state */ 4735);
-/* harmony import */ var _components_counter_button_component_counter_button_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/counter-button.component/counter-button.component */ 8950);
-/* harmony import */ var _components_counter_component_counter_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/counter.component/counter.component */ 83);
-/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/state-store/action-factory */ 1924);
-/* harmony import */ var _services_connectors_inventory_connector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/connectors/inventory.connector */ 4026);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _components_inventories_button_component_inventories_button_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/inventories-button.component/inventories-button.component */ 3083);
-/* harmony import */ var _components_inventories_component_inventories_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/inventories.component/inventories.component */ 2513);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ 4534);
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-state-store */ 6593);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 2321);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/platform-browser */ 6480);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component */ 6401);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../environments/environment */ 553);
+/* harmony import */ var _services_state_store_app_initial_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/state-store/app-initial-state */ 9200);
+/* harmony import */ var _components_counter_button_component_counter_button_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/counter-button.component/counter-button.component */ 3727);
+/* harmony import */ var _components_counter_component_counter_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/counter.component/counter.component */ 8078);
+/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/state-store/action-factory */ 9481);
+/* harmony import */ var _services_connectors_inventory_connector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/connectors/inventory.connector */ 9925);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ 4860);
+/* harmony import */ var _components_inventories_button_component_inventories_button_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/inventories-button.component/inventories-button.component */ 5541);
+/* harmony import */ var _components_inventories_component_inventories_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/inventories.component/inventories.component */ 8217);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ 8849);
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ 6101);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ngx-state-store */ 8501);
 
 
 
@@ -86,10 +85,9 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core_
   bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent]
 })], AppModule);
 
-
 /***/ }),
 
-/***/ 8950:
+/***/ 3727:
 /*!*********************************************************************************!*\
   !*** ./src/app/components/counter-button.component/counter-button.component.ts ***!
   \*********************************************************************************/
@@ -98,23 +96,22 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CounterButtonComponent": () => (/* binding */ CounterButtonComponent)
+/* harmony export */   CounterButtonComponent: () => (/* binding */ CounterButtonComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 2321);
 /* harmony import */ var _counter_button_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./counter-button.component.html?ngResource */ 9054);
 /* harmony import */ var _counter_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./counter-button.component.scss?ngResource */ 3475);
 /* harmony import */ var _counter_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_counter_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/state-store/action-factory */ 1924);
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-state-store */ 6593);
-var _class;
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/state-store/action-factory */ 9481);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-state-store */ 8501);
 
 
 
 
 
 
-let CounterButtonComponent = (_class = class CounterButtonComponent {
+let CounterButtonComponent = class CounterButtonComponent {
   constructor(store, factory) {
     this.store = store;
     this.factory = factory;
@@ -122,21 +119,21 @@ let CounterButtonComponent = (_class = class CounterButtonComponent {
   incrementCounter() {
     this.store.dispatch(this.factory.incrementCounter());
   }
-}, _class.ctorParameters = () => [{
-  type: ngx_state_store__WEBPACK_IMPORTED_MODULE_3__.Store
-}, {
-  type: _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__.ActionFactory
-}], _class);
+  static #_ = this.ctorParameters = () => [{
+    type: ngx_state_store__WEBPACK_IMPORTED_MODULE_3__.Store
+  }, {
+    type: _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__.ActionFactory
+  }];
+};
 CounterButtonComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
   selector: 'app-counter-button',
   template: _counter_button_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
   styles: [(_counter_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], CounterButtonComponent);
 
-
 /***/ }),
 
-/***/ 83:
+/***/ 8078:
 /*!*******************************************************************!*\
   !*** ./src/app/components/counter.component/counter.component.ts ***!
   \*******************************************************************/
@@ -145,40 +142,39 @@ CounterButtonComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CounterComponent": () => (/* binding */ CounterComponent)
+/* harmony export */   CounterComponent: () => (/* binding */ CounterComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 2321);
 /* harmony import */ var _counter_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./counter.component.html?ngResource */ 4065);
 /* harmony import */ var _counter_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./counter.component.scss?ngResource */ 1185);
 /* harmony import */ var _counter_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_counter_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-state-store */ 6593);
-var _class;
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-state-store */ 8501);
 
 
 
 
 
-let CounterComponent = (_class = class CounterComponent {
+let CounterComponent = class CounterComponent {
   constructor(store) {
     this.store = store;
   }
   ngOnInit() {
     this.counter$ = this.store.select('Counter');
   }
-}, _class.ctorParameters = () => [{
-  type: ngx_state_store__WEBPACK_IMPORTED_MODULE_2__.Store
-}], _class);
+  static #_ = this.ctorParameters = () => [{
+    type: ngx_state_store__WEBPACK_IMPORTED_MODULE_2__.Store
+  }];
+};
 CounterComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
   selector: 'app-counter',
   template: _counter_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
   styles: [(_counter_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], CounterComponent);
 
-
 /***/ }),
 
-/***/ 3083:
+/***/ 5541:
 /*!*****************************************************************************************!*\
   !*** ./src/app/components/inventories-button.component/inventories-button.component.ts ***!
   \*****************************************************************************************/
@@ -187,20 +183,19 @@ CounterComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angula
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "InventoriesButtonComponent": () => (/* binding */ InventoriesButtonComponent)
+/* harmony export */   InventoriesButtonComponent: () => (/* binding */ InventoriesButtonComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 2321);
 /* harmony import */ var _inventories_button_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inventories-button.component.html?ngResource */ 869);
 /* harmony import */ var _inventories_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inventories-button.component.scss?ngResource */ 6767);
 /* harmony import */ var _inventories_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_inventories_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-state-store */ 6593);
-/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/state-store/action-factory */ 1924);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 7260);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 1353);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 3158);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 745);
-var _class;
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-state-store */ 8501);
+/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/state-store/action-factory */ 9481);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 5357);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 2607);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 2389);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ 4980);
 
 
 
@@ -209,7 +204,7 @@ var _class;
 
 
 
-let InventoriesButtonComponent = (_class = class InventoriesButtonComponent {
+let InventoriesButtonComponent = class InventoriesButtonComponent {
   constructor(store, factory) {
     this.store = store;
     this.factory = factory;
@@ -249,21 +244,21 @@ let InventoriesButtonComponent = (_class = class InventoriesButtonComponent {
   inventoriesToString(inventories) {
     return inventories.map(e => e.id).join(', ');
   }
-}, _class.ctorParameters = () => [{
-  type: ngx_state_store__WEBPACK_IMPORTED_MODULE_7__.Store
-}, {
-  type: _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__.ActionFactory
-}], _class);
+  static #_ = this.ctorParameters = () => [{
+    type: ngx_state_store__WEBPACK_IMPORTED_MODULE_7__.Store
+  }, {
+    type: _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__.ActionFactory
+  }];
+};
 InventoriesButtonComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
   selector: 'app-inventories-button',
   template: _inventories_button_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
   styles: [(_inventories_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], InventoriesButtonComponent);
 
-
 /***/ }),
 
-/***/ 2513:
+/***/ 8217:
 /*!***************************************************************************!*\
   !*** ./src/app/components/inventories.component/inventories.component.ts ***!
   \***************************************************************************/
@@ -272,17 +267,16 @@ InventoriesButtonComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "InventoriesComponent": () => (/* binding */ InventoriesComponent)
+/* harmony export */   InventoriesComponent: () => (/* binding */ InventoriesComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 2321);
 /* harmony import */ var _inventories_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inventories.component.html?ngResource */ 2938);
 /* harmony import */ var _inventories_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inventories.component.scss?ngResource */ 3040);
 /* harmony import */ var _inventories_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_inventories_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ 6593);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 635);
-/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/state-store/action-factory */ 1924);
-var _class;
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-state-store */ 8501);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 9736);
+/* harmony import */ var _services_state_store_action_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/state-store/action-factory */ 9481);
 
 
 
@@ -290,7 +284,7 @@ var _class;
 
 
 
-let InventoriesComponent = (_class = class InventoriesComponent {
+let InventoriesComponent = class InventoriesComponent {
   constructor(store) {
     this.store = store;
   }
@@ -300,19 +294,19 @@ let InventoriesComponent = (_class = class InventoriesComponent {
       this.inventories = inventories;
     });
   }
-}, _class.ctorParameters = () => [{
-  type: ngx_state_store__WEBPACK_IMPORTED_MODULE_4__.Store
-}], _class);
+  static #_ = this.ctorParameters = () => [{
+    type: ngx_state_store__WEBPACK_IMPORTED_MODULE_4__.Store
+  }];
+};
 InventoriesComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
   selector: 'app-inventories',
   template: _inventories_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
   styles: [(_inventories_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], InventoriesComponent);
 
-
 /***/ }),
 
-/***/ 4026:
+/***/ 9925:
 /*!************************************************************!*\
   !*** ./src/app/services/connectors/inventory.connector.ts ***!
   \************************************************************/
@@ -321,21 +315,20 @@ InventoriesComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_an
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "InventoryConnector": () => (/* binding */ InventoryConnector)
+/* harmony export */   InventoryConnector: () => (/* binding */ InventoryConnector)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 745);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ 1339);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 1353);
-var _class;
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 2321);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 4980);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 4860);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ 7592);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 2607);
 
 
 
 
 
-let InventoryConnector = (_class = class InventoryConnector {
+let InventoryConnector = class InventoryConnector {
   constructor(http) {
     this.http = http;
   }
@@ -349,15 +342,15 @@ let InventoryConnector = (_class = class InventoryConnector {
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-}, _class.ctorParameters = () => [{
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient
-}], _class);
+  static #_ = this.ctorParameters = () => [{
+    type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient
+  }];
+};
 InventoryConnector = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Injectable)()], InventoryConnector);
-
 
 /***/ }),
 
-/***/ 1924:
+/***/ 9481:
 /*!********************************************************!*\
   !*** ./src/app/services/state-store/action-factory.ts ***!
   \********************************************************/
@@ -366,14 +359,13 @@ InventoryConnector = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angu
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActionFactory": () => (/* binding */ ActionFactory),
-/* harmony export */   "LoadIndicator": () => (/* binding */ LoadIndicator)
+/* harmony export */   ActionFactory: () => (/* binding */ ActionFactory),
+/* harmony export */   LoadIndicator: () => (/* binding */ LoadIndicator)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions */ 8811);
-/* harmony import */ var _connectors_inventory_connector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../connectors/inventory.connector */ 4026);
-var _class;
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 2321);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions */ 2308);
+/* harmony import */ var _connectors_inventory_connector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../connectors/inventory.connector */ 9925);
 
 
 
@@ -383,7 +375,7 @@ var LoadIndicator;
   LoadIndicator["DEFAULT"] = "DEFAULT";
   LoadIndicator["LOAD_INVENTORIES"] = "LOAD_INVENTORIES";
 })(LoadIndicator || (LoadIndicator = {}));
-let ActionFactory = (_class = class ActionFactory {
+let ActionFactory = class ActionFactory {
   constructor(inventoryConnector) {
     this.inventoryConnector = inventoryConnector;
   }
@@ -399,15 +391,15 @@ let ActionFactory = (_class = class ActionFactory {
   loadInventories() {
     return new _actions__WEBPACK_IMPORTED_MODULE_0__.LoadInventoriesAction(this.inventoryConnector);
   }
-}, _class.ctorParameters = () => [{
-  type: _connectors_inventory_connector__WEBPACK_IMPORTED_MODULE_1__.InventoryConnector
-}], _class);
+  static #_ = this.ctorParameters = () => [{
+    type: _connectors_inventory_connector__WEBPACK_IMPORTED_MODULE_1__.InventoryConnector
+  }];
+};
 ActionFactory = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)()], ActionFactory);
-
 
 /***/ }),
 
-/***/ 4172:
+/***/ 5862:
 /*!****************************************************!*\
   !*** ./src/app/services/state-store/action-ids.ts ***!
   \****************************************************/
@@ -416,7 +408,7 @@ ActionFactory = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_c
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActionIds": () => (/* binding */ ActionIds)
+/* harmony export */   ActionIds: () => (/* binding */ ActionIds)
 /* harmony export */ });
 var ActionIds;
 (function (ActionIds) {
@@ -428,7 +420,7 @@ var ActionIds;
 
 /***/ }),
 
-/***/ 5948:
+/***/ 8049:
 /*!*******************************************************************************!*\
   !*** ./src/app/services/state-store/actions/hide-loading-indicator.action.ts ***!
   \*******************************************************************************/
@@ -437,10 +429,10 @@ var ActionIds;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HideLoadingIndicatorAction": () => (/* binding */ HideLoadingIndicatorAction)
+/* harmony export */   HideLoadingIndicatorAction: () => (/* binding */ HideLoadingIndicatorAction)
 /* harmony export */ });
-/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 4172);
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 6593);
+/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 5862);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 8501);
 
 
 /**
@@ -468,7 +460,7 @@ class HideLoadingIndicatorAction extends ngx_state_store__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
-/***/ 6022:
+/***/ 8451:
 /*!**************************************************************************!*\
   !*** ./src/app/services/state-store/actions/increment-counter.action.ts ***!
   \**************************************************************************/
@@ -477,10 +469,10 @@ class HideLoadingIndicatorAction extends ngx_state_store__WEBPACK_IMPORTED_MODUL
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "IncrementCounterAction": () => (/* binding */ IncrementCounterAction)
+/* harmony export */   IncrementCounterAction: () => (/* binding */ IncrementCounterAction)
 /* harmony export */ });
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 6593);
-/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 4172);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 8501);
+/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 5862);
 
 
 class IncrementCounterAction extends ngx_state_store__WEBPACK_IMPORTED_MODULE_1__.Action {
@@ -496,7 +488,7 @@ class IncrementCounterAction extends ngx_state_store__WEBPACK_IMPORTED_MODULE_1_
 
 /***/ }),
 
-/***/ 8811:
+/***/ 2308:
 /*!*******************************************************!*\
   !*** ./src/app/services/state-store/actions/index.ts ***!
   \*******************************************************/
@@ -505,15 +497,15 @@ class IncrementCounterAction extends ngx_state_store__WEBPACK_IMPORTED_MODULE_1_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HideLoadingIndicatorAction": () => (/* reexport safe */ _hide_loading_indicator_action__WEBPACK_IMPORTED_MODULE_0__.HideLoadingIndicatorAction),
-/* harmony export */   "IncrementCounterAction": () => (/* reexport safe */ _increment_counter_action__WEBPACK_IMPORTED_MODULE_1__.IncrementCounterAction),
-/* harmony export */   "LoadInventoriesAction": () => (/* reexport safe */ _load_inventories_action__WEBPACK_IMPORTED_MODULE_2__.LoadInventoriesAction),
-/* harmony export */   "ShowLoadingIndicatorAction": () => (/* reexport safe */ _show_loading_indicator_action__WEBPACK_IMPORTED_MODULE_3__.ShowLoadingIndicatorAction)
+/* harmony export */   HideLoadingIndicatorAction: () => (/* reexport safe */ _hide_loading_indicator_action__WEBPACK_IMPORTED_MODULE_0__.HideLoadingIndicatorAction),
+/* harmony export */   IncrementCounterAction: () => (/* reexport safe */ _increment_counter_action__WEBPACK_IMPORTED_MODULE_1__.IncrementCounterAction),
+/* harmony export */   LoadInventoriesAction: () => (/* reexport safe */ _load_inventories_action__WEBPACK_IMPORTED_MODULE_2__.LoadInventoriesAction),
+/* harmony export */   ShowLoadingIndicatorAction: () => (/* reexport safe */ _show_loading_indicator_action__WEBPACK_IMPORTED_MODULE_3__.ShowLoadingIndicatorAction)
 /* harmony export */ });
-/* harmony import */ var _hide_loading_indicator_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hide-loading-indicator.action */ 5948);
-/* harmony import */ var _increment_counter_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./increment-counter.action */ 6022);
-/* harmony import */ var _load_inventories_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load-inventories.action */ 4589);
-/* harmony import */ var _show_loading_indicator_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./show-loading-indicator.action */ 7994);
+/* harmony import */ var _hide_loading_indicator_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hide-loading-indicator.action */ 8049);
+/* harmony import */ var _increment_counter_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./increment-counter.action */ 8451);
+/* harmony import */ var _load_inventories_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load-inventories.action */ 3806);
+/* harmony import */ var _show_loading_indicator_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./show-loading-indicator.action */ 5045);
 
 
 
@@ -521,7 +513,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4589:
+/***/ 3806:
 /*!*************************************************************************!*\
   !*** ./src/app/services/state-store/actions/load-inventories.action.ts ***!
   \*************************************************************************/
@@ -530,11 +522,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LoadInventoriesAction": () => (/* binding */ LoadInventoriesAction)
+/* harmony export */   LoadInventoriesAction: () => (/* binding */ LoadInventoriesAction)
 /* harmony export */ });
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 6593);
-/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 4172);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 9337);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 8501);
+/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 5862);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 3738);
 
 
 
@@ -555,7 +547,7 @@ class LoadInventoriesAction extends ngx_state_store__WEBPACK_IMPORTED_MODULE_1__
 
 /***/ }),
 
-/***/ 7994:
+/***/ 5045:
 /*!*******************************************************************************!*\
   !*** ./src/app/services/state-store/actions/show-loading-indicator.action.ts ***!
   \*******************************************************************************/
@@ -564,10 +556,10 @@ class LoadInventoriesAction extends ngx_state_store__WEBPACK_IMPORTED_MODULE_1__
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ShowLoadingIndicatorAction": () => (/* binding */ ShowLoadingIndicatorAction)
+/* harmony export */   ShowLoadingIndicatorAction: () => (/* binding */ ShowLoadingIndicatorAction)
 /* harmony export */ });
-/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 6593);
-/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 4172);
+/* harmony import */ var ngx_state_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-state-store */ 8501);
+/* harmony import */ var _action_ids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-ids */ 5862);
 
 
 /**
@@ -589,7 +581,7 @@ class ShowLoadingIndicatorAction extends ngx_state_store__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
-/***/ 4735:
+/***/ 9200:
 /*!***********************************************************!*\
   !*** ./src/app/services/state-store/app-initial-state.ts ***!
   \***********************************************************/
@@ -598,7 +590,7 @@ class ShowLoadingIndicatorAction extends ngx_state_store__WEBPACK_IMPORTED_MODUL
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppInitialState": () => (/* binding */ AppInitialState)
+/* harmony export */   AppInitialState: () => (/* binding */ AppInitialState)
 /* harmony export */ });
 const AppInitialState = {
   ShowLoadingIndicator: [],
@@ -609,7 +601,7 @@ const AppInitialState = {
 
 /***/ }),
 
-/***/ 2340:
+/***/ 553:
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
   \*****************************************/
@@ -618,7 +610,7 @@ const AppInitialState = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "environment": () => (/* binding */ environment)
+/* harmony export */   environment: () => (/* binding */ environment)
 /* harmony export */ });
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --configuration production` replaces `environment.ts` with `environment.prod.ts`.
@@ -641,7 +633,7 @@ const environment = {
 
 /***/ }),
 
-/***/ 4431:
+/***/ 4913:
 /*!*********************!*\
   !*** ./src/main.ts ***!
   \*********************/
@@ -649,10 +641,10 @@ const environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ 6057);
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app.module */ 6747);
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ 4737);
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/app.module */ 8629);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environments/environment */ 553);
 
 
 
@@ -671,11 +663,13 @@ if (_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.productio
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // Imports
-var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 9579);
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ 931);
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 2487);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ 1386);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".row {\n  margin-top: 1rem;\n}", "",{"version":3,"sources":["webpack://./src/app/app.component.scss"],"names":[],"mappings":"AAAA;EACE,gBAAA;AACF","sourcesContent":[".row {\n  margin-top: 1rem;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.row {
+  margin-top: 1rem;
+}`, "",{"version":3,"sources":["webpack://./src/app/app.component.scss"],"names":[],"mappings":"AAAA;EACE,gBAAA;AACF","sourcesContent":[".row {\r\n  margin-top: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___.toString();
 
@@ -689,11 +683,11 @@ module.exports = ___CSS_LOADER_EXPORT___.toString();
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // Imports
-var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 9579);
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 931);
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 2487);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 1386);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___.toString();
 
@@ -707,11 +701,11 @@ module.exports = ___CSS_LOADER_EXPORT___.toString();
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // Imports
-var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 9579);
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 931);
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 2487);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 1386);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___.toString();
 
@@ -725,11 +719,11 @@ module.exports = ___CSS_LOADER_EXPORT___.toString();
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // Imports
-var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 9579);
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 931);
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 2487);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 1386);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___.toString();
 
@@ -743,11 +737,55 @@ module.exports = ___CSS_LOADER_EXPORT___.toString();
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // Imports
-var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 9579);
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 931);
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 2487);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ 1386);
 var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".inventories {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 300px;\n  max-height: 300px;\n  overflow: hidden;\n}\n\n.load-indicator-background {\n  background-color: #cccccc;\n  opacity: 0.7;\n}\n\n.load-indicator, .load-indicator-background, .inventories-table-container {\n  height: 100%;\n  width: 100%;\n  z-index: 1;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n\n.inventories-table-container {\n  z-index: initial;\n  overflow-x: auto;\n  overflow-y: auto;\n}\n\n.load-indicator {\n  margin: auto;\n  background-color: white;\n  width: 7rem;\n  height: 3rem;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.load-indicator > div {\n  margin: 0;\n  padding: 0;\n  vertical-align: middle;\n}", "",{"version":3,"sources":["webpack://./src/app/components/inventories.component/inventories.component.scss"],"names":[],"mappings":"AAAA;EACE,kBAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,iBAAA;EACA,gBAAA;AACF;;AAEA;EACE,yBAAA;EACA,YAAA;AACF;;AAEA;EACE,YAAA;EACA,WAAA;EACA,UAAA;EACA,kBAAA;EACA,MAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;AACF;;AAEA;EACE,gBAAA;EACA,gBAAA;EACA,gBAAA;AACF;;AAEA;EACE,YAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,aAAA;EACA,6BAAA;EACA,mBAAA;AACF;AACE;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AACJ","sourcesContent":[".inventories {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100%;\r\n  min-height: 300px;\r\n  max-height: 300px;\r\n  overflow: hidden;\r\n}\r\n\r\n.load-indicator-background {\r\n  background-color: #cccccc;\r\n  opacity: .7;\r\n}\r\n\r\n.load-indicator, .load-indicator-background, .inventories-table-container {\r\n  height: 100%;\r\n  width: 100%;\r\n  z-index: +1;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n}\r\n\r\n.inventories-table-container {\r\n  z-index: initial;\r\n  overflow-x: auto;\r\n  overflow-y: auto;\r\n}\r\n\r\n.load-indicator {\r\n  margin: auto;\r\n  background-color: white;\r\n  width: 7rem;\r\n  height: 3rem;\r\n  display: flex;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n\r\n  > div {\r\n    margin: 0;\r\n    padding: 0;\r\n    vertical-align: middle;\r\n  }\r\n}\r\n\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.inventories {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.load-indicator-background {
+  background-color: #cccccc;
+  opacity: 0.7;
+}
+
+.load-indicator, .load-indicator-background, .inventories-table-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.inventories-table-container {
+  z-index: initial;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.load-indicator {
+  margin: auto;
+  background-color: white;
+  width: 7rem;
+  height: 3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.load-indicator > div {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}`, "",{"version":3,"sources":["webpack://./src/app/components/inventories.component/inventories.component.scss"],"names":[],"mappings":"AAAA;EACE,kBAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,iBAAA;EACA,gBAAA;AACF;;AAEA;EACE,yBAAA;EACA,YAAA;AACF;;AAEA;EACE,YAAA;EACA,WAAA;EACA,UAAA;EACA,kBAAA;EACA,MAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;AACF;;AAEA;EACE,gBAAA;EACA,gBAAA;EACA,gBAAA;AACF;;AAEA;EACE,YAAA;EACA,uBAAA;EACA,WAAA;EACA,YAAA;EACA,aAAA;EACA,6BAAA;EACA,mBAAA;AACF;AACE;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AACJ","sourcesContent":[".inventories {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100%;\r\n  min-height: 300px;\r\n  max-height: 300px;\r\n  overflow: hidden;\r\n}\r\n\r\n.load-indicator-background {\r\n  background-color: #cccccc;\r\n  opacity: .7;\r\n}\r\n\r\n.load-indicator, .load-indicator-background, .inventories-table-container {\r\n  height: 100%;\r\n  width: 100%;\r\n  z-index: +1;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n}\r\n\r\n.inventories-table-container {\r\n  z-index: initial;\r\n  overflow-x: auto;\r\n  overflow-y: auto;\r\n}\r\n\r\n.load-indicator {\r\n  margin: auto;\r\n  background-color: white;\r\n  width: 7rem;\r\n  height: 3rem;\r\n  display: flex;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n\r\n  > div {\r\n    margin: 0;\r\n    padding: 0;\r\n    vertical-align: middle;\r\n  }\r\n}\r\n\r\n"],"sourceRoot":""}]);
 // Exports
 module.exports = ___CSS_LOADER_EXPORT___.toString();
 
@@ -809,31 +847,31 @@ module.exports = "<div class=\"inventories\">\r\n  <div *ngIf=\"loading$ | async
 
 /***/ }),
 
-/***/ 6593:
+/***/ 8501:
 /*!***********************************************************!*\
-  !*** ./dist/ngx-state-store/fesm2020/ngx-state-store.mjs ***!
+  !*** ./dist/ngx-state-store/fesm2022/ngx-state-store.mjs ***!
   \***********************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Action": () => (/* binding */ Action),
-/* harmony export */   "NgxStateStoreModule": () => (/* binding */ NgxStateStoreModule),
-/* harmony export */   "StateHelper": () => (/* binding */ StateHelper),
-/* harmony export */   "Store": () => (/* binding */ Store)
+/* harmony export */   Action: () => (/* binding */ Action),
+/* harmony export */   NgxStateStoreModule: () => (/* binding */ NgxStateStoreModule),
+/* harmony export */   StateHelper: () => (/* binding */ StateHelper),
+/* harmony export */   Store: () => (/* binding */ Store)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 9295);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ 635);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 3158);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ 8977);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 6317);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 5474);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 228);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ 4437);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 745);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 1699);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 1527);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ 9736);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 2389);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! rxjs/operators */ 3317);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 8071);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 3252);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 2513);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ 2568);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 4980);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ 6575);
 
 
 
@@ -842,6 +880,9 @@ __webpack_require__.r(__webpack_exports__);
 
 // @dynamic
 class StateHelper {
+  static #_ = this.immutableMapFunction = StateHelper.immutableFunction('Map');
+  static #_2 = this.immutableSetFunction = StateHelper.immutableFunction('Set');
+  static #_3 = this.immutableDateFunction = StateHelper.immutableFunction('Date');
   static immutableFunction(objectName) {
     return (...a) => {
       throw Error(objectName + ' is immutable');
@@ -1081,9 +1122,6 @@ class StateHelper {
     return date && date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date);
   }
 }
-StateHelper.immutableMapFunction = StateHelper.immutableFunction('Map');
-StateHelper.immutableSetFunction = StateHelper.immutableFunction('Set');
-StateHelper.immutableDateFunction = StateHelper.immutableFunction('Date');
 class StorePlugin {
   get state() {
     return window[this.namespace][this.storageName].state;
@@ -1394,16 +1432,16 @@ class Store {
       plugin.newState(state);
     });
   }
+  /** @nocollapse */
+  static #_ = this.ɵfac = function Store_Factory(t) {
+    return new (t || Store)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](STATE_CONFIG));
+  };
+  /** @nocollapse */
+  static #_2 = this.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+    token: Store,
+    factory: Store.ɵfac
+  });
 }
-/** @nocollapse */
-Store.ɵfac = function Store_Factory(t) {
-  return new (t || Store)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](STATE_CONFIG));
-};
-/** @nocollapse */
-Store.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-  token: Store,
-  factory: Store.ɵfac
-});
 (function () {
   (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Store, [{
     type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable
@@ -1447,20 +1485,20 @@ class NgxStateStoreModule {
       }]
     };
   }
+  /** @nocollapse */
+  static #_ = this.ɵfac = function NgxStateStoreModule_Factory(t) {
+    return new (t || NgxStateStoreModule)();
+  };
+  /** @nocollapse */
+  static #_2 = this.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+    type: NgxStateStoreModule,
+    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
+  });
+  /** @nocollapse */
+  static #_3 = this.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
+  });
 }
-/** @nocollapse */
-NgxStateStoreModule.ɵfac = function NgxStateStoreModule_Factory(t) {
-  return new (t || NgxStateStoreModule)();
-};
-/** @nocollapse */
-NgxStateStoreModule.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
-  type: NgxStateStoreModule,
-  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
-});
-/** @nocollapse */
-NgxStateStoreModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
-  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
-});
 (function () {
   (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxStateStoreModule, [{
     type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
@@ -1487,7 +1525,7 @@ NgxStateStoreModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODUL
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(4431)));
+/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(4913)));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
