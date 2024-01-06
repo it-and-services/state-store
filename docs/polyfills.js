@@ -673,7 +673,7 @@ __webpack_require__.r(__webpack_exports__);
   function noop() {}
   performanceMeasure('Zone', 'Zone');
   return global['Zone'] = Zone;
-})(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
+})(globalThis);
 
 /**
  * Suppress closure compiler errors about unknown 'Zone' variable
@@ -715,7 +715,7 @@ function scheduleMacroTaskWithCurrentZone(source, callback, data, customSchedule
 const zoneSymbol = Zone.__symbol__;
 const isWindowExists = typeof window !== 'undefined';
 const internalWindow = isWindowExists ? window : undefined;
-const _global = isWindowExists && internalWindow || typeof self === 'object' && self || global;
+const _global = isWindowExists && internalWindow || globalThis;
 const REMOVE_ATTRIBUTE = 'removeAttribute';
 function bindArguments(args, source) {
   for (let i = args.length - 1; i >= 0; i--) {
@@ -1059,7 +1059,7 @@ Zone.__load_patch('ZoneAwarePromise', (global, Zone, api) => {
   }
   const __symbol__ = api.symbol;
   const _uncaughtPromiseErrors = [];
-  const isDisableWrappingUncaughtPromiseRejection = global[__symbol__('DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION')] === true;
+  const isDisableWrappingUncaughtPromiseRejection = global[__symbol__('DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION')] !== false;
   const symbolPromise = __symbol__('Promise');
   const symbolThen = __symbol__('then');
   const creationTrace = '__creationTrace__';
@@ -2743,6 +2743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ASTWithSource: () => (/* binding */ ASTWithSource),
 /* harmony export */   AbsoluteSourceSpan: () => (/* binding */ AbsoluteSourceSpan),
 /* harmony export */   ArrayType: () => (/* binding */ ArrayType),
+/* harmony export */   ArrowFunctionExpr: () => (/* binding */ ArrowFunctionExpr),
 /* harmony export */   AstMemoryEfficientTransformer: () => (/* binding */ AstMemoryEfficientTransformer),
 /* harmony export */   AstTransformer: () => (/* binding */ AstTransformer),
 /* harmony export */   Attribute: () => (/* binding */ Attribute),
@@ -2750,6 +2751,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   BinaryOperator: () => (/* binding */ BinaryOperator),
 /* harmony export */   BinaryOperatorExpr: () => (/* binding */ BinaryOperatorExpr),
 /* harmony export */   BindingPipe: () => (/* binding */ BindingPipe),
+/* harmony export */   Block: () => (/* binding */ Block),
+/* harmony export */   BlockParameter: () => (/* binding */ BlockParameter),
 /* harmony export */   BoundElementProperty: () => (/* binding */ BoundElementProperty),
 /* harmony export */   BuiltinType: () => (/* binding */ BuiltinType),
 /* harmony export */   BuiltinTypeName: () => (/* binding */ BuiltinTypeName),
@@ -2769,11 +2772,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   DeclareFunctionStmt: () => (/* binding */ DeclareFunctionStmt),
 /* harmony export */   DeclareVarStmt: () => (/* binding */ DeclareVarStmt),
 /* harmony export */   DomElementSchemaRegistry: () => (/* binding */ DomElementSchemaRegistry),
+/* harmony export */   DynamicImportExpr: () => (/* binding */ DynamicImportExpr),
 /* harmony export */   EOF: () => (/* binding */ EOF),
 /* harmony export */   Element: () => (/* binding */ Element),
 /* harmony export */   ElementSchemaRegistry: () => (/* binding */ ElementSchemaRegistry),
 /* harmony export */   EmitterVisitorContext: () => (/* binding */ EmitterVisitorContext),
-/* harmony export */   EmptyExpr: () => (/* binding */ EmptyExpr),
+/* harmony export */   EmptyExpr: () => (/* binding */ EmptyExpr$1),
 /* harmony export */   Expansion: () => (/* binding */ Expansion),
 /* harmony export */   ExpansionCase: () => (/* binding */ ExpansionCase),
 /* harmony export */   Expression: () => (/* binding */ Expression),
@@ -2790,7 +2794,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   IfStmt: () => (/* binding */ IfStmt),
 /* harmony export */   ImplicitReceiver: () => (/* binding */ ImplicitReceiver),
 /* harmony export */   InstantiateExpr: () => (/* binding */ InstantiateExpr),
-/* harmony export */   Interpolation: () => (/* binding */ Interpolation),
+/* harmony export */   Interpolation: () => (/* binding */ Interpolation$1),
 /* harmony export */   InterpolationConfig: () => (/* binding */ InterpolationConfig),
 /* harmony export */   InvokeFunctionExpr: () => (/* binding */ InvokeFunctionExpr),
 /* harmony export */   JSDocComment: () => (/* binding */ JSDocComment),
@@ -2831,6 +2835,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PropertyWrite: () => (/* binding */ PropertyWrite),
 /* harmony export */   R3BoundTarget: () => (/* binding */ R3BoundTarget),
 /* harmony export */   R3Identifiers: () => (/* binding */ Identifiers),
+/* harmony export */   R3NgModuleMetadataKind: () => (/* binding */ R3NgModuleMetadataKind),
 /* harmony export */   R3SelectorScopeMode: () => (/* binding */ R3SelectorScopeMode),
 /* harmony export */   R3TargetBinder: () => (/* binding */ R3TargetBinder),
 /* harmony export */   R3TemplateDependencyKind: () => (/* binding */ R3TemplateDependencyKind),
@@ -2860,17 +2865,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Text: () => (/* binding */ Text),
 /* harmony export */   ThisReceiver: () => (/* binding */ ThisReceiver),
 /* harmony export */   TmplAstBoundAttribute: () => (/* binding */ BoundAttribute),
+/* harmony export */   TmplAstBoundDeferredTrigger: () => (/* binding */ BoundDeferredTrigger),
 /* harmony export */   TmplAstBoundEvent: () => (/* binding */ BoundEvent),
 /* harmony export */   TmplAstBoundText: () => (/* binding */ BoundText),
 /* harmony export */   TmplAstContent: () => (/* binding */ Content),
+/* harmony export */   TmplAstDeferredBlock: () => (/* binding */ DeferredBlock),
+/* harmony export */   TmplAstDeferredBlockError: () => (/* binding */ DeferredBlockError),
+/* harmony export */   TmplAstDeferredBlockLoading: () => (/* binding */ DeferredBlockLoading),
+/* harmony export */   TmplAstDeferredBlockPlaceholder: () => (/* binding */ DeferredBlockPlaceholder),
+/* harmony export */   TmplAstDeferredTrigger: () => (/* binding */ DeferredTrigger),
 /* harmony export */   TmplAstElement: () => (/* binding */ Element$1),
+/* harmony export */   TmplAstForLoopBlock: () => (/* binding */ ForLoopBlock),
+/* harmony export */   TmplAstForLoopBlockEmpty: () => (/* binding */ ForLoopBlockEmpty),
+/* harmony export */   TmplAstHoverDeferredTrigger: () => (/* binding */ HoverDeferredTrigger),
 /* harmony export */   TmplAstIcu: () => (/* binding */ Icu$1),
+/* harmony export */   TmplAstIdleDeferredTrigger: () => (/* binding */ IdleDeferredTrigger),
+/* harmony export */   TmplAstIfBlock: () => (/* binding */ IfBlock),
+/* harmony export */   TmplAstIfBlockBranch: () => (/* binding */ IfBlockBranch),
+/* harmony export */   TmplAstImmediateDeferredTrigger: () => (/* binding */ ImmediateDeferredTrigger),
+/* harmony export */   TmplAstInteractionDeferredTrigger: () => (/* binding */ InteractionDeferredTrigger),
 /* harmony export */   TmplAstRecursiveVisitor: () => (/* binding */ RecursiveVisitor$1),
 /* harmony export */   TmplAstReference: () => (/* binding */ Reference),
+/* harmony export */   TmplAstSwitchBlock: () => (/* binding */ SwitchBlock),
+/* harmony export */   TmplAstSwitchBlockCase: () => (/* binding */ SwitchBlockCase),
 /* harmony export */   TmplAstTemplate: () => (/* binding */ Template),
 /* harmony export */   TmplAstText: () => (/* binding */ Text$3),
 /* harmony export */   TmplAstTextAttribute: () => (/* binding */ TextAttribute),
+/* harmony export */   TmplAstTimerDeferredTrigger: () => (/* binding */ TimerDeferredTrigger),
+/* harmony export */   TmplAstUnknownBlock: () => (/* binding */ UnknownBlock),
 /* harmony export */   TmplAstVariable: () => (/* binding */ Variable),
+/* harmony export */   TmplAstViewportDeferredTrigger: () => (/* binding */ ViewportDeferredTrigger),
 /* harmony export */   Token: () => (/* binding */ Token),
 /* harmony export */   TokenType: () => (/* binding */ TokenType),
 /* harmony export */   TransplantedType: () => (/* binding */ TransplantedType),
@@ -2895,7 +2919,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   XmlParser: () => (/* binding */ XmlParser),
 /* harmony export */   Xtb: () => (/* binding */ Xtb),
 /* harmony export */   _ParseAST: () => (/* binding */ _ParseAST),
+/* harmony export */   compileClassDebugInfo: () => (/* binding */ compileClassDebugInfo),
 /* harmony export */   compileClassMetadata: () => (/* binding */ compileClassMetadata),
+/* harmony export */   compileComponentClassMetadata: () => (/* binding */ compileComponentClassMetadata),
 /* harmony export */   compileComponentFromMetadata: () => (/* binding */ compileComponentFromMetadata),
 /* harmony export */   compileDeclareClassMetadata: () => (/* binding */ compileDeclareClassMetadata),
 /* harmony export */   compileDeclareComponentFromMetadata: () => (/* binding */ compileDeclareComponentFromMetadata),
@@ -2913,6 +2939,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   compilePipeFromMetadata: () => (/* binding */ compilePipeFromMetadata),
 /* harmony export */   computeMsgId: () => (/* binding */ computeMsgId),
 /* harmony export */   core: () => (/* binding */ core),
+/* harmony export */   createCssSelectorFromNode: () => (/* binding */ createCssSelectorFromNode),
 /* harmony export */   createInjectableType: () => (/* binding */ createInjectableType),
 /* harmony export */   createMayBeForwardRefExpression: () => (/* binding */ createMayBeForwardRefExpression),
 /* harmony export */   devOnlyGuardedExpression: () => (/* binding */ devOnlyGuardedExpression),
@@ -2927,6 +2954,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   isNgTemplate: () => (/* binding */ isNgTemplate),
 /* harmony export */   jsDocComment: () => (/* binding */ jsDocComment),
 /* harmony export */   leadingComment: () => (/* binding */ leadingComment),
+/* harmony export */   literal: () => (/* binding */ literal),
 /* harmony export */   literalMap: () => (/* binding */ literalMap),
 /* harmony export */   makeBindingParser: () => (/* binding */ makeBindingParser),
 /* harmony export */   mergeNsAndName: () => (/* binding */ mergeNsAndName),
@@ -2942,7 +2970,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   visitAll: () => (/* binding */ visitAll)
 /* harmony export */ });
 /**
- * @license Angular v16.1.3
+ * @license Angular v17.0.8
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -3410,178 +3438,6 @@ var core = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * Represents a big integer using a buffer of its individual digits, with the least significant
- * digit stored at the beginning of the array (little endian).
- *
- * For performance reasons, each instance is mutable. The addition operation can be done in-place
- * to reduce memory pressure of allocation for the digits array.
- */
-class BigInteger {
-  static zero() {
-    return new BigInteger([0]);
-  }
-  static one() {
-    return new BigInteger([1]);
-  }
-  /**
-   * Creates a big integer using its individual digits in little endian storage.
-   */
-  constructor(digits) {
-    this.digits = digits;
-  }
-  /**
-   * Creates a clone of this instance.
-   */
-  clone() {
-    return new BigInteger(this.digits.slice());
-  }
-  /**
-   * Returns a new big integer with the sum of `this` and `other` as its value. This does not mutate
-   * `this` but instead returns a new instance, unlike `addToSelf`.
-   */
-  add(other) {
-    const result = this.clone();
-    result.addToSelf(other);
-    return result;
-  }
-  /**
-   * Adds `other` to the instance itself, thereby mutating its value.
-   */
-  addToSelf(other) {
-    const maxNrOfDigits = Math.max(this.digits.length, other.digits.length);
-    let carry = 0;
-    for (let i = 0; i < maxNrOfDigits; i++) {
-      let digitSum = carry;
-      if (i < this.digits.length) {
-        digitSum += this.digits[i];
-      }
-      if (i < other.digits.length) {
-        digitSum += other.digits[i];
-      }
-      if (digitSum >= 10) {
-        this.digits[i] = digitSum - 10;
-        carry = 1;
-      } else {
-        this.digits[i] = digitSum;
-        carry = 0;
-      }
-    }
-    // Apply a remaining carry if needed.
-    if (carry > 0) {
-      this.digits[maxNrOfDigits] = 1;
-    }
-  }
-  /**
-   * Builds the decimal string representation of the big integer. As this is stored in
-   * little endian, the digits are concatenated in reverse order.
-   */
-  toString() {
-    let res = '';
-    for (let i = this.digits.length - 1; i >= 0; i--) {
-      res += this.digits[i];
-    }
-    return res;
-  }
-}
-/**
- * Represents a big integer which is optimized for multiplication operations, as its power-of-twos
- * are memoized. See `multiplyBy()` for details on the multiplication algorithm.
- */
-class BigIntForMultiplication {
-  constructor(value) {
-    this.powerOfTwos = [value];
-  }
-  /**
-   * Returns the big integer itself.
-   */
-  getValue() {
-    return this.powerOfTwos[0];
-  }
-  /**
-   * Computes the value for `num * b`, where `num` is a JS number and `b` is a big integer. The
-   * value for `b` is represented by a storage model that is optimized for this computation.
-   *
-   * This operation is implemented in N(log2(num)) by continuous halving of the number, where the
-   * least-significant bit (LSB) is tested in each iteration. If the bit is set, the bit's index is
-   * used as exponent into the power-of-two multiplication of `b`.
-   *
-   * As an example, consider the multiplication num=42, b=1337. In binary 42 is 0b00101010 and the
-   * algorithm unrolls into the following iterations:
-   *
-   *  Iteration | num        | LSB  | b * 2^iter | Add? | product
-   * -----------|------------|------|------------|------|--------
-   *  0         | 0b00101010 | 0    | 1337       | No   | 0
-   *  1         | 0b00010101 | 1    | 2674       | Yes  | 2674
-   *  2         | 0b00001010 | 0    | 5348       | No   | 2674
-   *  3         | 0b00000101 | 1    | 10696      | Yes  | 13370
-   *  4         | 0b00000010 | 0    | 21392      | No   | 13370
-   *  5         | 0b00000001 | 1    | 42784      | Yes  | 56154
-   *  6         | 0b00000000 | 0    | 85568      | No   | 56154
-   *
-   * The computed product of 56154 is indeed the correct result.
-   *
-   * The `BigIntForMultiplication` representation for a big integer provides memoized access to the
-   * power-of-two values to reduce the workload in computing those values.
-   */
-  multiplyBy(num) {
-    const product = BigInteger.zero();
-    this.multiplyByAndAddTo(num, product);
-    return product;
-  }
-  /**
-   * See `multiplyBy()` for details. This function allows for the computed product to be added
-   * directly to the provided result big integer.
-   */
-  multiplyByAndAddTo(num, result) {
-    for (let exponent = 0; num !== 0; num = num >>> 1, exponent++) {
-      if (num & 1) {
-        const value = this.getMultipliedByPowerOfTwo(exponent);
-        result.addToSelf(value);
-      }
-    }
-  }
-  /**
-   * Computes and memoizes the big integer value for `this.number * 2^exponent`.
-   */
-  getMultipliedByPowerOfTwo(exponent) {
-    // Compute the powers up until the requested exponent, where each value is computed from its
-    // predecessor. This is simple as `this.number * 2^(exponent - 1)` only has to be doubled (i.e.
-    // added to itself) to reach `this.number * 2^exponent`.
-    for (let i = this.powerOfTwos.length; i <= exponent; i++) {
-      const previousPower = this.powerOfTwos[i - 1];
-      this.powerOfTwos[i] = previousPower.add(previousPower);
-    }
-    return this.powerOfTwos[exponent];
-  }
-}
-/**
- * Represents an exponentiation operation for the provided base, of which exponents are computed and
- * memoized. The results are represented by a `BigIntForMultiplication` which is tailored for
- * multiplication operations by memoizing the power-of-twos. This effectively results in a matrix
- * representation that is lazily computed upon request.
- */
-class BigIntExponentiation {
-  constructor(base) {
-    this.base = base;
-    this.exponents = [new BigIntForMultiplication(BigInteger.one())];
-  }
-  /**
-   * Compute the value for `this.base^exponent`, resulting in a big integer that is optimized for
-   * further multiplication operations.
-   */
-  toThePowerOf(exponent) {
-    // Compute the results up until the requested exponent, where every value is computed from its
-    // predecessor. This is because `this.base^(exponent - 1)` only has to be multiplied by `base`
-    // to reach `this.base^exponent`.
-    for (let i = this.exponents.length; i <= exponent; i++) {
-      const value = this.exponents[i - 1].multiplyBy(this.base);
-      this.exponents[i] = new BigIntForMultiplication(value);
-    }
-    return this.exponents[exponent];
-  }
-}
-
-/**
  * A lazily created TextEncoder instance for converting strings into UTF-8 bytes
  */
 let textEncoder;
@@ -3637,6 +3493,9 @@ class _SerializerVisitor {
   }
   visitIcuPlaceholder(ph, context) {
     return `<ph icu name="${ph.name}">${ph.value.visit(this)}</ph>`;
+  }
+  visitBlockPlaceholder(ph, context) {
+    return `<ph block name="${ph.startName}">${ph.children.map(child => child.visit(this)).join(', ')}</ph name="${ph.closeName}">`;
   }
 }
 const serializerVisitor$1 = new _SerializerVisitor();
@@ -3748,17 +3607,17 @@ function fingerprint(str) {
     hi = hi ^ 0x130f9bef;
     lo = lo ^ -0x6b5f56d8;
   }
-  return [hi, lo];
+  return BigInt.asUintN(32, BigInt(hi)) << BigInt(32) | BigInt.asUintN(32, BigInt(lo));
 }
 function computeMsgId(msg, meaning = '') {
   let msgFingerprint = fingerprint(msg);
   if (meaning) {
-    const meaningFingerprint = fingerprint(meaning);
-    msgFingerprint = add64(rol64(msgFingerprint, 1), meaningFingerprint);
+    // Rotate the 64-bit message fingerprint one bit to the left and then add the meaning
+    // fingerprint.
+    msgFingerprint = BigInt.asUintN(64, msgFingerprint << BigInt(1)) | msgFingerprint >> BigInt(63) & BigInt(1);
+    msgFingerprint += fingerprint(meaning);
   }
-  const hi = msgFingerprint[0];
-  const lo = msgFingerprint[1];
-  return wordsToDecimalString(hi & 0x7fffffff, lo);
+  return BigInt.asUintN(63, msgFingerprint).toString();
 }
 function hash32(view, length, c) {
   let a = 0x9e3779b9,
@@ -3863,28 +3722,9 @@ function add32to64(a, b) {
   const high = (a >>> 16) + (b >>> 16) + (low >>> 16);
   return [high >>> 16, high << 16 | low & 0xffff];
 }
-function add64(a, b) {
-  const ah = a[0],
-    al = a[1];
-  const bh = b[0],
-    bl = b[1];
-  const result = add32to64(al, bl);
-  const carry = result[0];
-  const l = result[1];
-  const h = add32(add32(ah, bh), carry);
-  return [h, l];
-}
 // Rotate a 32b number left `count` position
 function rol32(a, count) {
   return a << count | a >>> 32 - count;
-}
-// Rotate a 64b number left `count` position
-function rol64(num, count) {
-  const hi = num[0],
-    lo = num[1];
-  const h = hi << count | lo >>> 32 - count;
-  const l = lo << count | hi >>> 32 - count;
-  return [h, l];
 }
 function bytesToWords32(bytes, endian) {
   const size = bytes.length + 3 >>> 2;
@@ -3909,31 +3749,6 @@ function wordAt(bytes, index, endian) {
     }
   }
   return word;
-}
-/**
- * Create a shared exponentiation pool for base-256 computations. This shared pool provides memoized
- * power-of-256 results with memoized power-of-two computations for efficient multiplication.
- *
- * For our purposes, this can be safely stored as a global without memory concerns. The reason is
- * that we encode two words, so only need the 0th (for the low word) and 4th (for the high word)
- * exponent.
- */
-const base256 = new BigIntExponentiation(256);
-/**
- * Represents two 32-bit words as a single decimal number. This requires a big integer storage
- * model as JS numbers are not accurate enough to represent the 64-bit number.
- *
- * Based on https://www.danvk.org/hex2dec.html
- */
-function wordsToDecimalString(hi, lo) {
-  // Encode the four bytes in lo in the lower digits of the decimal number.
-  // Note: the multiplication results in lo itself but represented by a big integer using its
-  // decimal digits.
-  const decimal = base256.toThePowerOf(0).multiplyBy(lo);
-  // Encode the four bytes in hi above the four lo bytes. lo is a maximum of (2^8)^4, which is why
-  // this multiplication factor is applied.
-  base256.toThePowerOf(4).multiplyByAndAddTo(hi, decimal);
-  return decimal.toString();
 }
 
 //// Types
@@ -4156,6 +3971,9 @@ class ReadVarExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitReadVarExpr(this, context);
   }
+  clone() {
+    return new ReadVarExpr(this.name, this.type, this.sourceSpan);
+  }
   set(value) {
     return new WriteVarExpr(this.name, value, null, this.sourceSpan);
   }
@@ -4174,6 +3992,9 @@ class TypeofExpr extends Expression {
   isConstant() {
     return this.expr.isConstant();
   }
+  clone() {
+    return new TypeofExpr(this.expr.clone());
+  }
 }
 class WrappedNodeExpr extends Expression {
   constructor(node, type, sourceSpan) {
@@ -4188,6 +4009,9 @@ class WrappedNodeExpr extends Expression {
   }
   visitExpression(visitor, context) {
     return visitor.visitWrappedNodeExpr(this, context);
+  }
+  clone() {
+    return new WrappedNodeExpr(this.node, this.type, this.sourceSpan);
   }
 }
 class WriteVarExpr extends Expression {
@@ -4204,6 +4028,9 @@ class WriteVarExpr extends Expression {
   }
   visitExpression(visitor, context) {
     return visitor.visitWriteVarExpr(this, context);
+  }
+  clone() {
+    return new WriteVarExpr(this.name, this.value.clone(), this.type, this.sourceSpan);
   }
   toDeclStmt(type, modifiers) {
     return new DeclareVarStmt(this.name, this.value, type, modifiers, this.sourceSpan);
@@ -4228,6 +4055,9 @@ class WriteKeyExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitWriteKeyExpr(this, context);
   }
+  clone() {
+    return new WriteKeyExpr(this.receiver.clone(), this.index.clone(), this.value.clone(), this.type, this.sourceSpan);
+  }
 }
 class WritePropExpr extends Expression {
   constructor(receiver, name, value, type, sourceSpan) {
@@ -4245,6 +4075,9 @@ class WritePropExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitWritePropExpr(this, context);
   }
+  clone() {
+    return new WritePropExpr(this.receiver.clone(), this.name, this.value.clone(), this.type, this.sourceSpan);
+  }
 }
 class InvokeFunctionExpr extends Expression {
   constructor(fn, args, type, sourceSpan, pure = false) {
@@ -4252,6 +4085,10 @@ class InvokeFunctionExpr extends Expression {
     this.fn = fn;
     this.args = args;
     this.pure = pure;
+  }
+  // An alias for fn, which allows other logic to handle calls and property reads together.
+  get receiver() {
+    return this.fn;
   }
   isEquivalent(e) {
     return e instanceof InvokeFunctionExpr && this.fn.isEquivalent(e.fn) && areAllEquivalent(this.args, e.args) && this.pure === e.pure;
@@ -4261,6 +4098,9 @@ class InvokeFunctionExpr extends Expression {
   }
   visitExpression(visitor, context) {
     return visitor.visitInvokeFunctionExpr(this, context);
+  }
+  clone() {
+    return new InvokeFunctionExpr(this.fn.clone(), this.args.map(arg => arg.clone()), this.type, this.sourceSpan, this.pure);
   }
 }
 class TaggedTemplateExpr extends Expression {
@@ -4278,6 +4118,9 @@ class TaggedTemplateExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitTaggedTemplateExpr(this, context);
   }
+  clone() {
+    return new TaggedTemplateExpr(this.tag.clone(), this.template.clone(), this.type, this.sourceSpan);
+  }
 }
 class InstantiateExpr extends Expression {
   constructor(classExpr, args, type, sourceSpan) {
@@ -4294,6 +4137,9 @@ class InstantiateExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitInstantiateExpr(this, context);
   }
+  clone() {
+    return new InstantiateExpr(this.classExpr.clone(), this.args.map(arg => arg.clone()), this.type, this.sourceSpan);
+  }
 }
 class LiteralExpr extends Expression {
   constructor(value, type, sourceSpan) {
@@ -4309,11 +4155,17 @@ class LiteralExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitLiteralExpr(this, context);
   }
+  clone() {
+    return new LiteralExpr(this.value, this.type, this.sourceSpan);
+  }
 }
 class TemplateLiteral {
   constructor(elements, expressions) {
     this.elements = elements;
     this.expressions = expressions;
+  }
+  clone() {
+    return new TemplateLiteral(this.elements.map(el => el.clone()), this.expressions.map(expr => expr.clone()));
   }
 }
 class TemplateLiteralElement {
@@ -4327,6 +4179,9 @@ class TemplateLiteralElement {
     // - "`" and "${" are template string control sequences that would otherwise prematurely
     // indicate the end of the template literal element.
     this.rawText = rawText ?? sourceSpan?.toString() ?? escapeForTemplateLiteral(escapeSlashes(text));
+  }
+  clone() {
+    return new TemplateLiteralElement(this.text, this.sourceSpan, this.rawText);
   }
 }
 class LiteralPiece {
@@ -4371,6 +4226,9 @@ class LocalizedString extends Expression {
   }
   visitExpression(visitor, context) {
     return visitor.visitLocalizedString(this, context);
+  }
+  clone() {
+    return new LocalizedString(this.metaBlock, this.messageParts, this.placeHolderNames, this.expressions.map(expr => expr.clone()), this.sourceSpan);
   }
   /**
    * Serialize the given `meta` and `messagePart` into "cooked" and "raw" strings that can be used
@@ -4470,6 +4328,9 @@ class ExternalExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitExternalExpr(this, context);
   }
+  clone() {
+    return new ExternalExpr(this.value, this.type, this.typeParams, this.sourceSpan);
+  }
 }
 class ExternalReference {
   constructor(moduleName, name, runtime) {
@@ -4494,6 +4355,27 @@ class ConditionalExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitConditionalExpr(this, context);
   }
+  clone() {
+    return new ConditionalExpr(this.condition.clone(), this.trueCase.clone(), this.falseCase?.clone(), this.type, this.sourceSpan);
+  }
+}
+class DynamicImportExpr extends Expression {
+  constructor(url, sourceSpan) {
+    super(null, sourceSpan);
+    this.url = url;
+  }
+  isEquivalent(e) {
+    return e instanceof DynamicImportExpr && this.url === e.url;
+  }
+  isConstant() {
+    return false;
+  }
+  visitExpression(visitor, context) {
+    return visitor.visitDynamicImportExpr(this, context);
+  }
+  clone() {
+    return new DynamicImportExpr(this.url, this.sourceSpan);
+  }
 }
 class NotExpr extends Expression {
   constructor(condition, sourceSpan) {
@@ -4509,6 +4391,9 @@ class NotExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitNotExpr(this, context);
   }
+  clone() {
+    return new NotExpr(this.condition.clone(), this.sourceSpan);
+  }
 }
 class FnParam {
   constructor(name, type = null) {
@@ -4517,6 +4402,9 @@ class FnParam {
   }
   isEquivalent(param) {
     return this.name === param.name;
+  }
+  clone() {
+    return new FnParam(this.name, this.type);
   }
 }
 class FunctionExpr extends Expression {
@@ -4527,7 +4415,7 @@ class FunctionExpr extends Expression {
     this.name = name;
   }
   isEquivalent(e) {
-    return e instanceof FunctionExpr && areAllEquivalent(this.params, e.params) && areAllEquivalent(this.statements, e.statements);
+    return (e instanceof FunctionExpr || e instanceof DeclareFunctionStmt) && areAllEquivalent(this.params, e.params) && areAllEquivalent(this.statements, e.statements);
   }
   isConstant() {
     return false;
@@ -4537,6 +4425,44 @@ class FunctionExpr extends Expression {
   }
   toDeclStmt(name, modifiers) {
     return new DeclareFunctionStmt(name, this.params, this.statements, this.type, modifiers, this.sourceSpan);
+  }
+  clone() {
+    // TODO: Should we deep clone statements?
+    return new FunctionExpr(this.params.map(p => p.clone()), this.statements, this.type, this.sourceSpan, this.name);
+  }
+}
+class ArrowFunctionExpr extends Expression {
+  // Note that `body: Expression` represents `() => expr` whereas
+  // `body: Statement[]` represents `() => { expr }`.
+  constructor(params, body, type, sourceSpan) {
+    super(type, sourceSpan);
+    this.params = params;
+    this.body = body;
+  }
+  isEquivalent(e) {
+    if (!(e instanceof ArrowFunctionExpr) || !areAllEquivalent(this.params, e.params)) {
+      return false;
+    }
+    if (this.body instanceof Expression && e.body instanceof Expression) {
+      return this.body.isEquivalent(e.body);
+    }
+    if (Array.isArray(this.body) && Array.isArray(e.body)) {
+      return areAllEquivalent(this.body, e.body);
+    }
+    return false;
+  }
+  isConstant() {
+    return false;
+  }
+  visitExpression(visitor, context) {
+    return visitor.visitArrowFunctionExpr(this, context);
+  }
+  clone() {
+    // TODO: Should we deep clone statements?
+    return new ArrowFunctionExpr(this.params.map(p => p.clone()), Array.isArray(this.body) ? this.body : this.body.clone(), this.type, this.sourceSpan);
+  }
+  toDeclStmt(name, modifiers) {
+    return new DeclareVarStmt(name, this, INFERRED_TYPE, modifiers, this.sourceSpan);
   }
 }
 class UnaryOperatorExpr extends Expression {
@@ -4554,6 +4480,9 @@ class UnaryOperatorExpr extends Expression {
   }
   visitExpression(visitor, context) {
     return visitor.visitUnaryOperatorExpr(this, context);
+  }
+  clone() {
+    return new UnaryOperatorExpr(this.operator, this.expr.clone(), this.type, this.sourceSpan, this.parens);
   }
 }
 class BinaryOperatorExpr extends Expression {
@@ -4573,12 +4502,19 @@ class BinaryOperatorExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitBinaryOperatorExpr(this, context);
   }
+  clone() {
+    return new BinaryOperatorExpr(this.operator, this.lhs.clone(), this.rhs.clone(), this.type, this.sourceSpan, this.parens);
+  }
 }
 class ReadPropExpr extends Expression {
   constructor(receiver, name, type, sourceSpan) {
     super(type, sourceSpan);
     this.receiver = receiver;
     this.name = name;
+  }
+  // An alias for name, which allows other logic to handle property reads and keyed reads together.
+  get index() {
+    return this.name;
   }
   isEquivalent(e) {
     return e instanceof ReadPropExpr && this.receiver.isEquivalent(e.receiver) && this.name === e.name;
@@ -4591,6 +4527,9 @@ class ReadPropExpr extends Expression {
   }
   set(value) {
     return new WritePropExpr(this.receiver, this.name, value, null, this.sourceSpan);
+  }
+  clone() {
+    return new ReadPropExpr(this.receiver.clone(), this.name, this.type, this.sourceSpan);
   }
 }
 class ReadKeyExpr extends Expression {
@@ -4611,6 +4550,9 @@ class ReadKeyExpr extends Expression {
   set(value) {
     return new WriteKeyExpr(this.receiver, this.index, value, null, this.sourceSpan);
   }
+  clone() {
+    return new ReadKeyExpr(this.receiver.clone(), this.index.clone(), this.type, this.sourceSpan);
+  }
 }
 class LiteralArrayExpr extends Expression {
   constructor(entries, type, sourceSpan) {
@@ -4626,6 +4568,9 @@ class LiteralArrayExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitLiteralArrayExpr(this, context);
   }
+  clone() {
+    return new LiteralArrayExpr(this.entries.map(e => e.clone()), this.type, this.sourceSpan);
+  }
 }
 class LiteralMapEntry {
   constructor(key, value, quoted) {
@@ -4635,6 +4580,9 @@ class LiteralMapEntry {
   }
   isEquivalent(e) {
     return this.key === e.key && this.value.isEquivalent(e.value);
+  }
+  clone() {
+    return new LiteralMapEntry(this.key, this.value.clone(), this.quoted);
   }
 }
 class LiteralMapExpr extends Expression {
@@ -4655,6 +4603,10 @@ class LiteralMapExpr extends Expression {
   visitExpression(visitor, context) {
     return visitor.visitLiteralMapExpr(this, context);
   }
+  clone() {
+    const entriesClone = this.entries.map(entry => entry.clone());
+    return new LiteralMapExpr(entriesClone, this.type, this.sourceSpan);
+  }
 }
 class CommaExpr extends Expression {
   constructor(parts, sourceSpan) {
@@ -4669,6 +4621,9 @@ class CommaExpr extends Expression {
   }
   visitExpression(visitor, context) {
     return visitor.visitCommaExpr(this, context);
+  }
+  clone() {
+    return new CommaExpr(this.parts.map(p => p.clone()));
   }
 }
 const NULL_EXPR = new LiteralExpr(null, null, null);
@@ -4835,6 +4790,9 @@ class RecursiveAstVisitor$1 {
     ast.value.visitExpression(this, context);
     return this.visitExpression(ast, context);
   }
+  visitDynamicImportExpr(ast, context) {
+    return this.visitExpression(ast, context);
+  }
   visitInvokeFunctionExpr(ast, context) {
     ast.fn.visitExpression(this, context);
     this.visitAllExpressions(ast.args, context);
@@ -4874,6 +4832,14 @@ class RecursiveAstVisitor$1 {
   }
   visitFunctionExpr(ast, context) {
     this.visitAllStatements(ast.statements, context);
+    return this.visitExpression(ast, context);
+  }
+  visitArrowFunctionExpr(ast, context) {
+    if (Array.isArray(ast.body)) {
+      this.visitAllStatements(ast.body, context);
+    } else {
+      this.visitExpression(ast.body, context);
+    }
     return this.visitExpression(ast, context);
   }
   visitUnaryOperatorExpr(ast, context) {
@@ -4982,6 +4948,9 @@ function not(expr, sourceSpan) {
 function fn(params, body, type, sourceSpan, name) {
   return new FunctionExpr(params, body, type, sourceSpan, name);
 }
+function arrowFn(params, body, type, sourceSpan) {
+  return new ArrowFunctionExpr(params, body, type, sourceSpan);
+}
 function ifStmt(condition, thenClause, elseClause, sourceSpan, leadingComments) {
   return new IfStmt(condition, thenClause, elseClause, sourceSpan, leadingComments);
 }
@@ -5079,9 +5048,11 @@ var output_ast = /*#__PURE__*/Object.freeze({
   ExternalExpr: ExternalExpr,
   ExternalReference: ExternalReference,
   ConditionalExpr: ConditionalExpr,
+  DynamicImportExpr: DynamicImportExpr,
   NotExpr: NotExpr,
   FnParam: FnParam,
   FunctionExpr: FunctionExpr,
+  ArrowFunctionExpr: ArrowFunctionExpr,
   UnaryOperatorExpr: UnaryOperatorExpr,
   BinaryOperatorExpr: BinaryOperatorExpr,
   ReadPropExpr: ReadPropExpr,
@@ -5117,6 +5088,7 @@ var output_ast = /*#__PURE__*/Object.freeze({
   unary: unary,
   not: not,
   fn: fn,
+  arrowFn: arrowFn,
   ifStmt: ifStmt,
   taggedTemplate: taggedTemplate,
   literal: literal,
@@ -5175,6 +5147,9 @@ class FixupExpression extends Expression {
   }
   isConstant() {
     return true;
+  }
+  clone() {
+    throw new Error(`Not supported.`);
   }
   fixup(expression) {
     this.resolved = expression;
@@ -5274,13 +5249,34 @@ class ConstantPool {
       }))));
     }
   }
+  // TODO: useUniqueName(false) is necessary for naming compatibility with
+  // TemplateDefinitionBuilder, but should be removed once Template Pipeline is the default.
+  getSharedFunctionReference(fn, prefix, useUniqueName = true) {
+    const isArrow = fn instanceof ArrowFunctionExpr;
+    for (const current of this.statements) {
+      // Arrow functions are saved as variables so we check if the
+      // value of the variable is the same as the arrow function.
+      if (isArrow && current instanceof DeclareVarStmt && current.value?.isEquivalent(fn)) {
+        return variable(current.name);
+      }
+      // Function declarations are saved as function statements
+      // so we compare them directly to the passed-in function.
+      if (!isArrow && current instanceof DeclareFunctionStmt && fn.isEquivalent(current)) {
+        return variable(current.name);
+      }
+    }
+    // Otherwise declare the function.
+    const name = useUniqueName ? this.uniqueName(prefix) : prefix;
+    this.statements.push(fn.toDeclStmt(name, StmtModifier.Final));
+    return variable(name);
+  }
   _getLiteralFactory(key, values, resultMap) {
     let literalFactory = this.literalFactories.get(key);
     const literalFactoryArguments = values.filter(e => !e.isConstant());
     if (!literalFactory) {
       const resultExpressions = values.map((e, index) => e.isConstant() ? this.getConstLiteral(e, true) : variable(`a${index}`));
       const parameters = resultExpressions.filter(isVariable).map(e => new FnParam(e.name, DYNAMIC_TYPE));
-      const pureFunctionDeclaration = fn(parameters, [new ReturnStatement(resultMap(resultExpressions))], INFERRED_TYPE);
+      const pureFunctionDeclaration = arrowFn(parameters, resultMap(resultExpressions), INFERRED_TYPE);
       const name = this.freshName();
       this.statements.push(variable(name).set(pureFunctionDeclaration).toDeclStmt(INFERRED_TYPE, StmtModifier.Final));
       literalFactory = variable(name);
@@ -5580,467 +5576,567 @@ class Identifiers {
     name: 'ɵɵtemplate',
     moduleName: CORE
   };
-  static #_61 = this.text = {
+  static #_61 = this.defer = {
+    name: 'ɵɵdefer',
+    moduleName: CORE
+  };
+  static #_62 = this.deferWhen = {
+    name: 'ɵɵdeferWhen',
+    moduleName: CORE
+  };
+  static #_63 = this.deferOnIdle = {
+    name: 'ɵɵdeferOnIdle',
+    moduleName: CORE
+  };
+  static #_64 = this.deferOnImmediate = {
+    name: 'ɵɵdeferOnImmediate',
+    moduleName: CORE
+  };
+  static #_65 = this.deferOnTimer = {
+    name: 'ɵɵdeferOnTimer',
+    moduleName: CORE
+  };
+  static #_66 = this.deferOnHover = {
+    name: 'ɵɵdeferOnHover',
+    moduleName: CORE
+  };
+  static #_67 = this.deferOnInteraction = {
+    name: 'ɵɵdeferOnInteraction',
+    moduleName: CORE
+  };
+  static #_68 = this.deferOnViewport = {
+    name: 'ɵɵdeferOnViewport',
+    moduleName: CORE
+  };
+  static #_69 = this.deferPrefetchWhen = {
+    name: 'ɵɵdeferPrefetchWhen',
+    moduleName: CORE
+  };
+  static #_70 = this.deferPrefetchOnIdle = {
+    name: 'ɵɵdeferPrefetchOnIdle',
+    moduleName: CORE
+  };
+  static #_71 = this.deferPrefetchOnImmediate = {
+    name: 'ɵɵdeferPrefetchOnImmediate',
+    moduleName: CORE
+  };
+  static #_72 = this.deferPrefetchOnTimer = {
+    name: 'ɵɵdeferPrefetchOnTimer',
+    moduleName: CORE
+  };
+  static #_73 = this.deferPrefetchOnHover = {
+    name: 'ɵɵdeferPrefetchOnHover',
+    moduleName: CORE
+  };
+  static #_74 = this.deferPrefetchOnInteraction = {
+    name: 'ɵɵdeferPrefetchOnInteraction',
+    moduleName: CORE
+  };
+  static #_75 = this.deferPrefetchOnViewport = {
+    name: 'ɵɵdeferPrefetchOnViewport',
+    moduleName: CORE
+  };
+  static #_76 = this.deferEnableTimerScheduling = {
+    name: 'ɵɵdeferEnableTimerScheduling',
+    moduleName: CORE
+  };
+  static #_77 = this.conditional = {
+    name: 'ɵɵconditional',
+    moduleName: CORE
+  };
+  static #_78 = this.repeater = {
+    name: 'ɵɵrepeater',
+    moduleName: CORE
+  };
+  static #_79 = this.repeaterCreate = {
+    name: 'ɵɵrepeaterCreate',
+    moduleName: CORE
+  };
+  static #_80 = this.repeaterTrackByIndex = {
+    name: 'ɵɵrepeaterTrackByIndex',
+    moduleName: CORE
+  };
+  static #_81 = this.repeaterTrackByIdentity = {
+    name: 'ɵɵrepeaterTrackByIdentity',
+    moduleName: CORE
+  };
+  static #_82 = this.componentInstance = {
+    name: 'ɵɵcomponentInstance',
+    moduleName: CORE
+  };
+  static #_83 = this.text = {
     name: 'ɵɵtext',
     moduleName: CORE
   };
-  static #_62 = this.enableBindings = {
+  static #_84 = this.enableBindings = {
     name: 'ɵɵenableBindings',
     moduleName: CORE
   };
-  static #_63 = this.disableBindings = {
+  static #_85 = this.disableBindings = {
     name: 'ɵɵdisableBindings',
     moduleName: CORE
   };
-  static #_64 = this.getCurrentView = {
+  static #_86 = this.getCurrentView = {
     name: 'ɵɵgetCurrentView',
     moduleName: CORE
   };
-  static #_65 = this.textInterpolate = {
+  static #_87 = this.textInterpolate = {
     name: 'ɵɵtextInterpolate',
     moduleName: CORE
   };
-  static #_66 = this.textInterpolate1 = {
+  static #_88 = this.textInterpolate1 = {
     name: 'ɵɵtextInterpolate1',
     moduleName: CORE
   };
-  static #_67 = this.textInterpolate2 = {
+  static #_89 = this.textInterpolate2 = {
     name: 'ɵɵtextInterpolate2',
     moduleName: CORE
   };
-  static #_68 = this.textInterpolate3 = {
+  static #_90 = this.textInterpolate3 = {
     name: 'ɵɵtextInterpolate3',
     moduleName: CORE
   };
-  static #_69 = this.textInterpolate4 = {
+  static #_91 = this.textInterpolate4 = {
     name: 'ɵɵtextInterpolate4',
     moduleName: CORE
   };
-  static #_70 = this.textInterpolate5 = {
+  static #_92 = this.textInterpolate5 = {
     name: 'ɵɵtextInterpolate5',
     moduleName: CORE
   };
-  static #_71 = this.textInterpolate6 = {
+  static #_93 = this.textInterpolate6 = {
     name: 'ɵɵtextInterpolate6',
     moduleName: CORE
   };
-  static #_72 = this.textInterpolate7 = {
+  static #_94 = this.textInterpolate7 = {
     name: 'ɵɵtextInterpolate7',
     moduleName: CORE
   };
-  static #_73 = this.textInterpolate8 = {
+  static #_95 = this.textInterpolate8 = {
     name: 'ɵɵtextInterpolate8',
     moduleName: CORE
   };
-  static #_74 = this.textInterpolateV = {
+  static #_96 = this.textInterpolateV = {
     name: 'ɵɵtextInterpolateV',
     moduleName: CORE
   };
-  static #_75 = this.restoreView = {
+  static #_97 = this.restoreView = {
     name: 'ɵɵrestoreView',
     moduleName: CORE
   };
-  static #_76 = this.pureFunction0 = {
+  static #_98 = this.pureFunction0 = {
     name: 'ɵɵpureFunction0',
     moduleName: CORE
   };
-  static #_77 = this.pureFunction1 = {
+  static #_99 = this.pureFunction1 = {
     name: 'ɵɵpureFunction1',
     moduleName: CORE
   };
-  static #_78 = this.pureFunction2 = {
+  static #_100 = this.pureFunction2 = {
     name: 'ɵɵpureFunction2',
     moduleName: CORE
   };
-  static #_79 = this.pureFunction3 = {
+  static #_101 = this.pureFunction3 = {
     name: 'ɵɵpureFunction3',
     moduleName: CORE
   };
-  static #_80 = this.pureFunction4 = {
+  static #_102 = this.pureFunction4 = {
     name: 'ɵɵpureFunction4',
     moduleName: CORE
   };
-  static #_81 = this.pureFunction5 = {
+  static #_103 = this.pureFunction5 = {
     name: 'ɵɵpureFunction5',
     moduleName: CORE
   };
-  static #_82 = this.pureFunction6 = {
+  static #_104 = this.pureFunction6 = {
     name: 'ɵɵpureFunction6',
     moduleName: CORE
   };
-  static #_83 = this.pureFunction7 = {
+  static #_105 = this.pureFunction7 = {
     name: 'ɵɵpureFunction7',
     moduleName: CORE
   };
-  static #_84 = this.pureFunction8 = {
+  static #_106 = this.pureFunction8 = {
     name: 'ɵɵpureFunction8',
     moduleName: CORE
   };
-  static #_85 = this.pureFunctionV = {
+  static #_107 = this.pureFunctionV = {
     name: 'ɵɵpureFunctionV',
     moduleName: CORE
   };
-  static #_86 = this.pipeBind1 = {
+  static #_108 = this.pipeBind1 = {
     name: 'ɵɵpipeBind1',
     moduleName: CORE
   };
-  static #_87 = this.pipeBind2 = {
+  static #_109 = this.pipeBind2 = {
     name: 'ɵɵpipeBind2',
     moduleName: CORE
   };
-  static #_88 = this.pipeBind3 = {
+  static #_110 = this.pipeBind3 = {
     name: 'ɵɵpipeBind3',
     moduleName: CORE
   };
-  static #_89 = this.pipeBind4 = {
+  static #_111 = this.pipeBind4 = {
     name: 'ɵɵpipeBind4',
     moduleName: CORE
   };
-  static #_90 = this.pipeBindV = {
+  static #_112 = this.pipeBindV = {
     name: 'ɵɵpipeBindV',
     moduleName: CORE
   };
-  static #_91 = this.hostProperty = {
+  static #_113 = this.hostProperty = {
     name: 'ɵɵhostProperty',
     moduleName: CORE
   };
-  static #_92 = this.property = {
+  static #_114 = this.property = {
     name: 'ɵɵproperty',
     moduleName: CORE
   };
-  static #_93 = this.propertyInterpolate = {
+  static #_115 = this.propertyInterpolate = {
     name: 'ɵɵpropertyInterpolate',
     moduleName: CORE
   };
-  static #_94 = this.propertyInterpolate1 = {
+  static #_116 = this.propertyInterpolate1 = {
     name: 'ɵɵpropertyInterpolate1',
     moduleName: CORE
   };
-  static #_95 = this.propertyInterpolate2 = {
+  static #_117 = this.propertyInterpolate2 = {
     name: 'ɵɵpropertyInterpolate2',
     moduleName: CORE
   };
-  static #_96 = this.propertyInterpolate3 = {
+  static #_118 = this.propertyInterpolate3 = {
     name: 'ɵɵpropertyInterpolate3',
     moduleName: CORE
   };
-  static #_97 = this.propertyInterpolate4 = {
+  static #_119 = this.propertyInterpolate4 = {
     name: 'ɵɵpropertyInterpolate4',
     moduleName: CORE
   };
-  static #_98 = this.propertyInterpolate5 = {
+  static #_120 = this.propertyInterpolate5 = {
     name: 'ɵɵpropertyInterpolate5',
     moduleName: CORE
   };
-  static #_99 = this.propertyInterpolate6 = {
+  static #_121 = this.propertyInterpolate6 = {
     name: 'ɵɵpropertyInterpolate6',
     moduleName: CORE
   };
-  static #_100 = this.propertyInterpolate7 = {
+  static #_122 = this.propertyInterpolate7 = {
     name: 'ɵɵpropertyInterpolate7',
     moduleName: CORE
   };
-  static #_101 = this.propertyInterpolate8 = {
+  static #_123 = this.propertyInterpolate8 = {
     name: 'ɵɵpropertyInterpolate8',
     moduleName: CORE
   };
-  static #_102 = this.propertyInterpolateV = {
+  static #_124 = this.propertyInterpolateV = {
     name: 'ɵɵpropertyInterpolateV',
     moduleName: CORE
   };
-  static #_103 = this.i18n = {
+  static #_125 = this.i18n = {
     name: 'ɵɵi18n',
     moduleName: CORE
   };
-  static #_104 = this.i18nAttributes = {
+  static #_126 = this.i18nAttributes = {
     name: 'ɵɵi18nAttributes',
     moduleName: CORE
   };
-  static #_105 = this.i18nExp = {
+  static #_127 = this.i18nExp = {
     name: 'ɵɵi18nExp',
     moduleName: CORE
   };
-  static #_106 = this.i18nStart = {
+  static #_128 = this.i18nStart = {
     name: 'ɵɵi18nStart',
     moduleName: CORE
   };
-  static #_107 = this.i18nEnd = {
+  static #_129 = this.i18nEnd = {
     name: 'ɵɵi18nEnd',
     moduleName: CORE
   };
-  static #_108 = this.i18nApply = {
+  static #_130 = this.i18nApply = {
     name: 'ɵɵi18nApply',
     moduleName: CORE
   };
-  static #_109 = this.i18nPostprocess = {
+  static #_131 = this.i18nPostprocess = {
     name: 'ɵɵi18nPostprocess',
     moduleName: CORE
   };
-  static #_110 = this.pipe = {
+  static #_132 = this.pipe = {
     name: 'ɵɵpipe',
     moduleName: CORE
   };
-  static #_111 = this.projection = {
+  static #_133 = this.projection = {
     name: 'ɵɵprojection',
     moduleName: CORE
   };
-  static #_112 = this.projectionDef = {
+  static #_134 = this.projectionDef = {
     name: 'ɵɵprojectionDef',
     moduleName: CORE
   };
-  static #_113 = this.reference = {
+  static #_135 = this.reference = {
     name: 'ɵɵreference',
     moduleName: CORE
   };
-  static #_114 = this.inject = {
+  static #_136 = this.inject = {
     name: 'ɵɵinject',
     moduleName: CORE
   };
-  static #_115 = this.injectAttribute = {
+  static #_137 = this.injectAttribute = {
     name: 'ɵɵinjectAttribute',
     moduleName: CORE
   };
-  static #_116 = this.directiveInject = {
+  static #_138 = this.directiveInject = {
     name: 'ɵɵdirectiveInject',
     moduleName: CORE
   };
-  static #_117 = this.invalidFactory = {
+  static #_139 = this.invalidFactory = {
     name: 'ɵɵinvalidFactory',
     moduleName: CORE
   };
-  static #_118 = this.invalidFactoryDep = {
+  static #_140 = this.invalidFactoryDep = {
     name: 'ɵɵinvalidFactoryDep',
     moduleName: CORE
   };
-  static #_119 = this.templateRefExtractor = {
+  static #_141 = this.templateRefExtractor = {
     name: 'ɵɵtemplateRefExtractor',
     moduleName: CORE
   };
-  static #_120 = this.forwardRef = {
+  static #_142 = this.forwardRef = {
     name: 'forwardRef',
     moduleName: CORE
   };
-  static #_121 = this.resolveForwardRef = {
+  static #_143 = this.resolveForwardRef = {
     name: 'resolveForwardRef',
     moduleName: CORE
   };
-  static #_122 = this.ɵɵdefineInjectable = {
+  static #_144 = this.ɵɵdefineInjectable = {
     name: 'ɵɵdefineInjectable',
     moduleName: CORE
   };
-  static #_123 = this.declareInjectable = {
+  static #_145 = this.declareInjectable = {
     name: 'ɵɵngDeclareInjectable',
     moduleName: CORE
   };
-  static #_124 = this.InjectableDeclaration = {
+  static #_146 = this.InjectableDeclaration = {
     name: 'ɵɵInjectableDeclaration',
     moduleName: CORE
   };
-  static #_125 = this.resolveWindow = {
+  static #_147 = this.resolveWindow = {
     name: 'ɵɵresolveWindow',
     moduleName: CORE
   };
-  static #_126 = this.resolveDocument = {
+  static #_148 = this.resolveDocument = {
     name: 'ɵɵresolveDocument',
     moduleName: CORE
   };
-  static #_127 = this.resolveBody = {
+  static #_149 = this.resolveBody = {
     name: 'ɵɵresolveBody',
     moduleName: CORE
   };
-  static #_128 = this.defineComponent = {
+  static #_150 = this.getComponentDepsFactory = {
+    name: 'ɵɵgetComponentDepsFactory',
+    moduleName: CORE
+  };
+  static #_151 = this.defineComponent = {
     name: 'ɵɵdefineComponent',
     moduleName: CORE
   };
-  static #_129 = this.declareComponent = {
+  static #_152 = this.declareComponent = {
     name: 'ɵɵngDeclareComponent',
     moduleName: CORE
   };
-  static #_130 = this.setComponentScope = {
+  static #_153 = this.setComponentScope = {
     name: 'ɵɵsetComponentScope',
     moduleName: CORE
   };
-  static #_131 = this.ChangeDetectionStrategy = {
+  static #_154 = this.ChangeDetectionStrategy = {
     name: 'ChangeDetectionStrategy',
     moduleName: CORE
   };
-  static #_132 = this.ViewEncapsulation = {
+  static #_155 = this.ViewEncapsulation = {
     name: 'ViewEncapsulation',
     moduleName: CORE
   };
-  static #_133 = this.ComponentDeclaration = {
+  static #_156 = this.ComponentDeclaration = {
     name: 'ɵɵComponentDeclaration',
     moduleName: CORE
   };
-  static #_134 = this.FactoryDeclaration = {
+  static #_157 = this.FactoryDeclaration = {
     name: 'ɵɵFactoryDeclaration',
     moduleName: CORE
   };
-  static #_135 = this.declareFactory = {
+  static #_158 = this.declareFactory = {
     name: 'ɵɵngDeclareFactory',
     moduleName: CORE
   };
-  static #_136 = this.FactoryTarget = {
+  static #_159 = this.FactoryTarget = {
     name: 'ɵɵFactoryTarget',
     moduleName: CORE
   };
-  static #_137 = this.defineDirective = {
+  static #_160 = this.defineDirective = {
     name: 'ɵɵdefineDirective',
     moduleName: CORE
   };
-  static #_138 = this.declareDirective = {
+  static #_161 = this.declareDirective = {
     name: 'ɵɵngDeclareDirective',
     moduleName: CORE
   };
-  static #_139 = this.DirectiveDeclaration = {
+  static #_162 = this.DirectiveDeclaration = {
     name: 'ɵɵDirectiveDeclaration',
     moduleName: CORE
   };
-  static #_140 = this.InjectorDef = {
+  static #_163 = this.InjectorDef = {
     name: 'ɵɵInjectorDef',
     moduleName: CORE
   };
-  static #_141 = this.InjectorDeclaration = {
+  static #_164 = this.InjectorDeclaration = {
     name: 'ɵɵInjectorDeclaration',
     moduleName: CORE
   };
-  static #_142 = this.defineInjector = {
+  static #_165 = this.defineInjector = {
     name: 'ɵɵdefineInjector',
     moduleName: CORE
   };
-  static #_143 = this.declareInjector = {
+  static #_166 = this.declareInjector = {
     name: 'ɵɵngDeclareInjector',
     moduleName: CORE
   };
-  static #_144 = this.NgModuleDeclaration = {
+  static #_167 = this.NgModuleDeclaration = {
     name: 'ɵɵNgModuleDeclaration',
     moduleName: CORE
   };
-  static #_145 = this.ModuleWithProviders = {
+  static #_168 = this.ModuleWithProviders = {
     name: 'ModuleWithProviders',
     moduleName: CORE
   };
-  static #_146 = this.defineNgModule = {
+  static #_169 = this.defineNgModule = {
     name: 'ɵɵdefineNgModule',
     moduleName: CORE
   };
-  static #_147 = this.declareNgModule = {
+  static #_170 = this.declareNgModule = {
     name: 'ɵɵngDeclareNgModule',
     moduleName: CORE
   };
-  static #_148 = this.setNgModuleScope = {
+  static #_171 = this.setNgModuleScope = {
     name: 'ɵɵsetNgModuleScope',
     moduleName: CORE
   };
-  static #_149 = this.registerNgModuleType = {
+  static #_172 = this.registerNgModuleType = {
     name: 'ɵɵregisterNgModuleType',
     moduleName: CORE
   };
-  static #_150 = this.PipeDeclaration = {
+  static #_173 = this.PipeDeclaration = {
     name: 'ɵɵPipeDeclaration',
     moduleName: CORE
   };
-  static #_151 = this.definePipe = {
+  static #_174 = this.definePipe = {
     name: 'ɵɵdefinePipe',
     moduleName: CORE
   };
-  static #_152 = this.declarePipe = {
+  static #_175 = this.declarePipe = {
     name: 'ɵɵngDeclarePipe',
     moduleName: CORE
   };
-  static #_153 = this.declareClassMetadata = {
+  static #_176 = this.declareClassMetadata = {
     name: 'ɵɵngDeclareClassMetadata',
     moduleName: CORE
   };
-  static #_154 = this.setClassMetadata = {
+  static #_177 = this.setClassMetadata = {
     name: 'ɵsetClassMetadata',
     moduleName: CORE
   };
-  static #_155 = this.queryRefresh = {
+  static #_178 = this.setClassMetadataAsync = {
+    name: 'ɵsetClassMetadataAsync',
+    moduleName: CORE
+  };
+  static #_179 = this.setClassDebugInfo = {
+    name: 'ɵsetClassDebugInfo',
+    moduleName: CORE
+  };
+  static #_180 = this.queryRefresh = {
     name: 'ɵɵqueryRefresh',
     moduleName: CORE
   };
-  static #_156 = this.viewQuery = {
+  static #_181 = this.viewQuery = {
     name: 'ɵɵviewQuery',
     moduleName: CORE
   };
-  static #_157 = this.loadQuery = {
+  static #_182 = this.loadQuery = {
     name: 'ɵɵloadQuery',
     moduleName: CORE
   };
-  static #_158 = this.contentQuery = {
+  static #_183 = this.contentQuery = {
     name: 'ɵɵcontentQuery',
     moduleName: CORE
   };
-  static #_159 = this.NgOnChangesFeature = {
+  static #_184 = this.NgOnChangesFeature = {
     name: 'ɵɵNgOnChangesFeature',
     moduleName: CORE
   };
-  static #_160 = this.InheritDefinitionFeature = {
+  static #_185 = this.InheritDefinitionFeature = {
     name: 'ɵɵInheritDefinitionFeature',
     moduleName: CORE
   };
-  static #_161 = this.CopyDefinitionFeature = {
+  static #_186 = this.CopyDefinitionFeature = {
     name: 'ɵɵCopyDefinitionFeature',
     moduleName: CORE
   };
-  static #_162 = this.StandaloneFeature = {
+  static #_187 = this.StandaloneFeature = {
     name: 'ɵɵStandaloneFeature',
     moduleName: CORE
   };
-  static #_163 = this.ProvidersFeature = {
+  static #_188 = this.ProvidersFeature = {
     name: 'ɵɵProvidersFeature',
     moduleName: CORE
   };
-  static #_164 = this.HostDirectivesFeature = {
+  static #_189 = this.HostDirectivesFeature = {
     name: 'ɵɵHostDirectivesFeature',
     moduleName: CORE
   };
-  static #_165 = this.InputTransformsFeatureFeature = {
+  static #_190 = this.InputTransformsFeatureFeature = {
     name: 'ɵɵInputTransformsFeature',
     moduleName: CORE
   };
-  static #_166 = this.listener = {
+  static #_191 = this.listener = {
     name: 'ɵɵlistener',
     moduleName: CORE
   };
-  static #_167 = this.getInheritedFactory = {
+  static #_192 = this.getInheritedFactory = {
     name: 'ɵɵgetInheritedFactory',
     moduleName: CORE
   }; // sanitization-related functions
-  static #_168 = this.sanitizeHtml = {
+  static #_193 = this.sanitizeHtml = {
     name: 'ɵɵsanitizeHtml',
     moduleName: CORE
   };
-  static #_169 = this.sanitizeStyle = {
+  static #_194 = this.sanitizeStyle = {
     name: 'ɵɵsanitizeStyle',
     moduleName: CORE
   };
-  static #_170 = this.sanitizeResourceUrl = {
+  static #_195 = this.sanitizeResourceUrl = {
     name: 'ɵɵsanitizeResourceUrl',
     moduleName: CORE
   };
-  static #_171 = this.sanitizeScript = {
+  static #_196 = this.sanitizeScript = {
     name: 'ɵɵsanitizeScript',
     moduleName: CORE
   };
-  static #_172 = this.sanitizeUrl = {
+  static #_197 = this.sanitizeUrl = {
     name: 'ɵɵsanitizeUrl',
     moduleName: CORE
   };
-  static #_173 = this.sanitizeUrlOrResourceUrl = {
+  static #_198 = this.sanitizeUrlOrResourceUrl = {
     name: 'ɵɵsanitizeUrlOrResourceUrl',
     moduleName: CORE
   };
-  static #_174 = this.trustConstantHtml = {
+  static #_199 = this.trustConstantHtml = {
     name: 'ɵɵtrustConstantHtml',
     moduleName: CORE
   };
-  static #_175 = this.trustConstantResourceUrl = {
+  static #_200 = this.trustConstantResourceUrl = {
     name: 'ɵɵtrustConstantResourceUrl',
     moduleName: CORE
   };
-  static #_176 = this.validateIframeAttribute = {
+  static #_201 = this.validateIframeAttribute = {
     name: 'ɵɵvalidateIframeAttribute',
     moduleName: CORE
   };
@@ -6132,11 +6228,7 @@ class Version {
     this.patch = splits.slice(2).join('.');
   }
 }
-// Check `global` first, because in Node tests both `global` and `window` may be defined and our
-// `_global` variable should point to the NodeJS `global` in that case. Note: Typeof/Instanceof
-// checks are considered side-effects in Terser. We explicitly mark this as side-effect free:
-// https://github.com/terser/terser/issues/250.
-const _global = /* @__PURE__ */(() => typeof global !== 'undefined' && global || typeof window !== 'undefined' && window || typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope && self)();
+const _global = globalThis;
 function newArray(size, value) {
   const list = [];
   for (let i = 0; i < size; i++) {
@@ -6544,7 +6636,14 @@ class AbstractEmitterVisitor {
     return null;
   }
   visitInvokeFunctionExpr(expr, ctx) {
+    const shouldParenthesize = expr.fn instanceof ArrowFunctionExpr;
+    if (shouldParenthesize) {
+      ctx.print(expr.fn, '(');
+    }
     expr.fn.visitExpression(this, ctx);
+    if (shouldParenthesize) {
+      ctx.print(expr.fn, ')');
+    }
     ctx.print(expr, `(`);
     this.visitAllExpressions(expr.args, ctx, ',');
     ctx.print(expr, `)`);
@@ -6609,6 +6708,9 @@ class AbstractEmitterVisitor {
     ast.falseCase.visitExpression(this, ctx);
     ctx.print(ast, `)`);
     return null;
+  }
+  visitDynamicImportExpr(ast, ctx) {
+    ctx.print(ast, `import(${ast.url})`);
   }
   visitNotExpr(ast, ctx) {
     ctx.print(ast, '!');
@@ -6835,7 +6937,7 @@ function wrapReference(value) {
 }
 function refsToArray(refs, shouldForwardDeclare) {
   const values = literalArr(refs.map(ref => ref.value));
-  return shouldForwardDeclare ? fn([], [new ReturnStatement(values)]) : values;
+  return shouldForwardDeclare ? arrowFn([], values) : values;
 }
 function createMayBeForwardRefExpression(expression, forwardRef) {
   return {
@@ -6874,7 +6976,7 @@ function convertFromMaybeForwardRefExpression({
  * ```
  */
 function generateForwardRef(expr) {
-  return importExpr(Identifiers.forwardRef).callFn([fn([], [new ReturnStatement(expr)])]);
+  return importExpr(Identifiers.forwardRef).callFn([arrowFn([], expr)]);
 }
 var R3FactoryDelegateType;
 (function (R3FactoryDelegateType) {
@@ -6951,7 +7053,7 @@ function compileFactoryFunction(meta) {
   if (baseFactoryVar !== null) {
     // There is a base factory variable so wrap its declaration along with the factory function into
     // an IIFE.
-    factoryFn = fn([], [new DeclareVarStmt(baseFactoryVar.name), new ReturnStatement(factoryFn)]).callFn([], /* sourceSpan */undefined, /* pure */true);
+    factoryFn = arrowFn([], [new DeclareVarStmt(baseFactoryVar.name), new ReturnStatement(factoryFn)]).callFn([], /* sourceSpan */undefined, /* pure */true);
   }
   return {
     expression: factoryFn,
@@ -7069,6 +7171,44 @@ function getInjectFn(target) {
       return Identifiers.inject;
   }
 }
+var TagContentType;
+(function (TagContentType) {
+  TagContentType[TagContentType["RAW_TEXT"] = 0] = "RAW_TEXT";
+  TagContentType[TagContentType["ESCAPABLE_RAW_TEXT"] = 1] = "ESCAPABLE_RAW_TEXT";
+  TagContentType[TagContentType["PARSABLE_DATA"] = 2] = "PARSABLE_DATA";
+})(TagContentType || (TagContentType = {}));
+function splitNsName(elementName, fatal = true) {
+  if (elementName[0] != ':') {
+    return [null, elementName];
+  }
+  const colonIndex = elementName.indexOf(':', 1);
+  if (colonIndex === -1) {
+    if (fatal) {
+      throw new Error(`Unsupported format "${elementName}" expecting ":namespace:name"`);
+    } else {
+      return [null, elementName];
+    }
+  }
+  return [elementName.slice(1, colonIndex), elementName.slice(colonIndex + 1)];
+}
+// `<ng-container>` tags work the same regardless the namespace
+function isNgContainer(tagName) {
+  return splitNsName(tagName)[1] === 'ng-container';
+}
+// `<ng-content>` tags work the same regardless the namespace
+function isNgContent(tagName) {
+  return splitNsName(tagName)[1] === 'ng-content';
+}
+// `<ng-template>` tags work the same regardless the namespace
+function isNgTemplate(tagName) {
+  return splitNsName(tagName)[1] === 'ng-template';
+}
+function getNsPrefix(fullName) {
+  return fullName === null ? null : splitNsName(fullName)[0];
+}
+function mergeNsAndName(prefix, localName) {
+  return prefix ? `:${prefix}:${localName}` : localName;
+}
 
 /**
  * This is an R3 `Node`-like wrapper for a raw `html.Comment` node. We do not currently
@@ -7185,6 +7325,207 @@ class Element$1 {
     return visitor.visitElement(this);
   }
 }
+class DeferredTrigger {
+  constructor(nameSpan, sourceSpan, prefetchSpan, whenOrOnSourceSpan) {
+    this.nameSpan = nameSpan;
+    this.sourceSpan = sourceSpan;
+    this.prefetchSpan = prefetchSpan;
+    this.whenOrOnSourceSpan = whenOrOnSourceSpan;
+  }
+  visit(visitor) {
+    return visitor.visitDeferredTrigger(this);
+  }
+}
+class BoundDeferredTrigger extends DeferredTrigger {
+  constructor(value, sourceSpan, prefetchSpan, whenSourceSpan) {
+    // BoundDeferredTrigger is for 'when' triggers. These aren't really "triggers" and don't have a
+    // nameSpan. Trigger names are the built in event triggers like hover, interaction, etc.
+    super( /** nameSpan */null, sourceSpan, prefetchSpan, whenSourceSpan);
+    this.value = value;
+  }
+}
+class IdleDeferredTrigger extends DeferredTrigger {}
+class ImmediateDeferredTrigger extends DeferredTrigger {}
+class HoverDeferredTrigger extends DeferredTrigger {
+  constructor(reference, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+    super(nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+    this.reference = reference;
+  }
+}
+class TimerDeferredTrigger extends DeferredTrigger {
+  constructor(delay, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+    super(nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+    this.delay = delay;
+  }
+}
+class InteractionDeferredTrigger extends DeferredTrigger {
+  constructor(reference, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+    super(nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+    this.reference = reference;
+  }
+}
+class ViewportDeferredTrigger extends DeferredTrigger {
+  constructor(reference, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+    super(nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+    this.reference = reference;
+  }
+}
+class BlockNode {
+  constructor(nameSpan, sourceSpan, startSourceSpan, endSourceSpan) {
+    this.nameSpan = nameSpan;
+    this.sourceSpan = sourceSpan;
+    this.startSourceSpan = startSourceSpan;
+    this.endSourceSpan = endSourceSpan;
+  }
+}
+class DeferredBlockPlaceholder extends BlockNode {
+  constructor(children, minimumTime, nameSpan, sourceSpan, startSourceSpan, endSourceSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.children = children;
+    this.minimumTime = minimumTime;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitDeferredBlockPlaceholder(this);
+  }
+}
+class DeferredBlockLoading extends BlockNode {
+  constructor(children, afterTime, minimumTime, nameSpan, sourceSpan, startSourceSpan, endSourceSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.children = children;
+    this.afterTime = afterTime;
+    this.minimumTime = minimumTime;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitDeferredBlockLoading(this);
+  }
+}
+class DeferredBlockError extends BlockNode {
+  constructor(children, nameSpan, sourceSpan, startSourceSpan, endSourceSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.children = children;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitDeferredBlockError(this);
+  }
+}
+class DeferredBlock extends BlockNode {
+  constructor(children, triggers, prefetchTriggers, placeholder, loading, error, nameSpan, sourceSpan, mainBlockSpan, startSourceSpan, endSourceSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.children = children;
+    this.placeholder = placeholder;
+    this.loading = loading;
+    this.error = error;
+    this.mainBlockSpan = mainBlockSpan;
+    this.i18n = i18n;
+    this.triggers = triggers;
+    this.prefetchTriggers = prefetchTriggers;
+    // We cache the keys since we know that they won't change and we
+    // don't want to enumarate them every time we're traversing the AST.
+    this.definedTriggers = Object.keys(triggers);
+    this.definedPrefetchTriggers = Object.keys(prefetchTriggers);
+  }
+  visit(visitor) {
+    return visitor.visitDeferredBlock(this);
+  }
+  visitAll(visitor) {
+    this.visitTriggers(this.definedTriggers, this.triggers, visitor);
+    this.visitTriggers(this.definedPrefetchTriggers, this.prefetchTriggers, visitor);
+    visitAll$1(visitor, this.children);
+    const remainingBlocks = [this.placeholder, this.loading, this.error].filter(x => x !== null);
+    visitAll$1(visitor, remainingBlocks);
+  }
+  visitTriggers(keys, triggers, visitor) {
+    visitAll$1(visitor, keys.map(k => triggers[k]));
+  }
+}
+class SwitchBlock extends BlockNode {
+  constructor(expression, cases,
+  /**
+   * These blocks are only captured to allow for autocompletion in the language service. They
+   * aren't meant to be processed in any other way.
+   */
+  unknownBlocks, sourceSpan, startSourceSpan, endSourceSpan, nameSpan) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.expression = expression;
+    this.cases = cases;
+    this.unknownBlocks = unknownBlocks;
+  }
+  visit(visitor) {
+    return visitor.visitSwitchBlock(this);
+  }
+}
+class SwitchBlockCase extends BlockNode {
+  constructor(expression, children, sourceSpan, startSourceSpan, endSourceSpan, nameSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.expression = expression;
+    this.children = children;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitSwitchBlockCase(this);
+  }
+}
+class ForLoopBlock extends BlockNode {
+  constructor(item, expression, trackBy, trackKeywordSpan, contextVariables, children, empty, sourceSpan, mainBlockSpan, startSourceSpan, endSourceSpan, nameSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.item = item;
+    this.expression = expression;
+    this.trackBy = trackBy;
+    this.trackKeywordSpan = trackKeywordSpan;
+    this.contextVariables = contextVariables;
+    this.children = children;
+    this.empty = empty;
+    this.mainBlockSpan = mainBlockSpan;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitForLoopBlock(this);
+  }
+}
+class ForLoopBlockEmpty extends BlockNode {
+  constructor(children, sourceSpan, startSourceSpan, endSourceSpan, nameSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.children = children;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitForLoopBlockEmpty(this);
+  }
+}
+class IfBlock extends BlockNode {
+  constructor(branches, sourceSpan, startSourceSpan, endSourceSpan, nameSpan) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.branches = branches;
+  }
+  visit(visitor) {
+    return visitor.visitIfBlock(this);
+  }
+}
+class IfBlockBranch extends BlockNode {
+  constructor(expression, children, expressionAlias, sourceSpan, startSourceSpan, endSourceSpan, nameSpan, i18n) {
+    super(nameSpan, sourceSpan, startSourceSpan, endSourceSpan);
+    this.expression = expression;
+    this.children = children;
+    this.expressionAlias = expressionAlias;
+    this.i18n = i18n;
+  }
+  visit(visitor) {
+    return visitor.visitIfBlockBranch(this);
+  }
+}
+class UnknownBlock {
+  constructor(name, sourceSpan, nameSpan) {
+    this.name = name;
+    this.sourceSpan = sourceSpan;
+    this.nameSpan = nameSpan;
+  }
+  visit(visitor) {
+    return visitor.visitUnknownBlock(this);
+  }
+}
 class Template {
   constructor(
   // tagName is the name of the container element, if applicable.
@@ -7272,6 +7613,40 @@ class RecursiveVisitor$1 {
     visitAll$1(this, template.references);
     visitAll$1(this, template.variables);
   }
+  visitDeferredBlock(deferred) {
+    deferred.visitAll(this);
+  }
+  visitDeferredBlockPlaceholder(block) {
+    visitAll$1(this, block.children);
+  }
+  visitDeferredBlockError(block) {
+    visitAll$1(this, block.children);
+  }
+  visitDeferredBlockLoading(block) {
+    visitAll$1(this, block.children);
+  }
+  visitSwitchBlock(block) {
+    visitAll$1(this, block.cases);
+  }
+  visitSwitchBlockCase(block) {
+    visitAll$1(this, block.children);
+  }
+  visitForLoopBlock(block) {
+    const blockItems = [block.item, ...Object.values(block.contextVariables), ...block.children];
+    block.empty && blockItems.push(block.empty);
+    visitAll$1(this, blockItems);
+  }
+  visitForLoopBlockEmpty(block) {
+    visitAll$1(this, block.children);
+  }
+  visitIfBlock(block) {
+    visitAll$1(this, block.branches);
+  }
+  visitIfBlockBranch(block) {
+    const blockItems = block.children;
+    block.expressionAlias && blockItems.push(block.expressionAlias);
+    visitAll$1(this, blockItems);
+  }
   visitContent(content) {}
   visitVariable(variable) {}
   visitReference(reference) {}
@@ -7281,6 +7656,8 @@ class RecursiveVisitor$1 {
   visitText(text) {}
   visitBoundText(text) {}
   visitIcu(icu) {}
+  visitDeferredTrigger(trigger) {}
+  visitUnknownBlock(block) {}
 }
 function visitAll$1(visitor, nodes) {
   const result = [];
@@ -7400,6 +7777,21 @@ class IcuPlaceholder {
     return visitor.visitIcuPlaceholder(this, context);
   }
 }
+class BlockPlaceholder {
+  constructor(name, parameters, startName, closeName, children, sourceSpan, startSourceSpan, endSourceSpan) {
+    this.name = name;
+    this.parameters = parameters;
+    this.startName = startName;
+    this.closeName = closeName;
+    this.children = children;
+    this.sourceSpan = sourceSpan;
+    this.startSourceSpan = startSourceSpan;
+    this.endSourceSpan = endSourceSpan;
+  }
+  visit(visitor, context) {
+    return visitor.visitBlockPlaceholder(this, context);
+  }
+}
 // Clone the AST
 class CloneVisitor {
   visitText(text, context) {
@@ -7425,6 +7817,10 @@ class CloneVisitor {
   visitIcuPlaceholder(ph, context) {
     return new IcuPlaceholder(ph.value, ph.name, ph.sourceSpan);
   }
+  visitBlockPlaceholder(ph, context) {
+    const children = ph.children.map(n => n.visit(this, context));
+    return new BlockPlaceholder(ph.name, ph.parameters, ph.startName, ph.closeName, children, ph.sourceSpan, ph.startSourceSpan, ph.endSourceSpan);
+  }
 }
 // Visit all the nodes recursively
 class RecurseVisitor {
@@ -7442,6 +7838,9 @@ class RecurseVisitor {
   }
   visitPlaceholder(ph, context) {}
   visitIcuPlaceholder(ph, context) {}
+  visitBlockPlaceholder(ph, context) {
+    ph.children.forEach(child => child.visit(this));
+  }
 }
 /**
  * Serialize the message to the Localize backtick string format that would appear in compiled code.
@@ -7471,6 +7870,10 @@ class LocalizeMessageStringVisitor {
   }
   visitIcuPlaceholder(ph) {
     return `{$${ph.name}}`;
+  }
+  visitBlockPlaceholder(ph) {
+    const children = ph.children.map(child => child.visit(this)).join('');
+    return `{$${ph.startName}}${children}{$${ph.closeName}}`;
   }
 }
 class Serializer {
@@ -7509,6 +7912,11 @@ class SimplePlaceholderMapper extends RecurseVisitor {
   }
   visitPlaceholder(ph, context) {
     this.visitPlaceholderName(ph.name);
+  }
+  visitBlockPlaceholder(ph, context) {
+    this.visitPlaceholderName(ph.startName);
+    super.visitBlockPlaceholder(ph, context);
+    this.visitPlaceholderName(ph.closeName);
   }
   visitIcuPlaceholder(ph, context) {
     this.visitPlaceholderName(ph.name);
@@ -7716,6 +8124,21 @@ class _Visitor$1 {
       name: ph.name
     }, [exTag, interpolationAsText])];
   }
+  visitBlockPlaceholder(ph, context) {
+    const startAsText = new Text$1(`@${ph.name}`);
+    const startEx = new Tag(_EXAMPLE_TAG, {}, [startAsText]);
+    // TC requires PH to have a non empty EX, and uses the text node to show the "original" value.
+    const startTagPh = new Tag(_PLACEHOLDER_TAG$3, {
+      name: ph.startName
+    }, [startEx, startAsText]);
+    const closeAsText = new Text$1(`}`);
+    const closeEx = new Tag(_EXAMPLE_TAG, {}, [closeAsText]);
+    // TC requires PH to have a non empty EX, and uses the text node to show the "original" value.
+    const closeTagPh = new Tag(_PLACEHOLDER_TAG$3, {
+      name: ph.closeName
+    }, [closeEx, closeAsText]);
+    return [startTagPh, ...this.serialize(ph.children), closeTagPh];
+  }
   visitIcuPlaceholder(ph, context) {
     const icuExpression = ph.value.expression;
     const icuType = ph.value.type;
@@ -7767,14 +8190,14 @@ const CLOSURE_TRANSLATION_VAR_PREFIX = 'MSG_';
  * Note: the prefix uses lowercase characters intentionally due to a Closure behavior that
  * considers variables like `I18N_0` as constants and throws an error when their value changes.
  */
-const TRANSLATION_VAR_PREFIX = 'i18n_';
+const TRANSLATION_VAR_PREFIX$1 = 'i18n_';
 /** Name of the i18n attributes **/
 const I18N_ATTR = 'i18n';
 const I18N_ATTR_PREFIX = 'i18n-';
 /** Prefix of var expressions used in ICUs */
 const I18N_ICU_VAR_PREFIX = 'VAR_';
 /** Prefix of ICU expressions for post processing */
-const I18N_ICU_MAPPING_PREFIX = 'I18N_EXP_';
+const I18N_ICU_MAPPING_PREFIX$1 = 'I18N_EXP_';
 /** Placeholder wrapper for i18n expressions **/
 const I18N_PLACEHOLDER_SYMBOL = '�';
 function isI18nAttribute(name) {
@@ -7903,7 +8326,7 @@ function declareI18nVariable(variable) {
 /**
  * Checks whether an object key contains potentially unsafe chars, thus the key should be wrapped in
  * quotes. Note: we do not wrap all keys into quotes, as it may have impact on minification and may
- * bot work in some cases when object keys are mangled by minifier.
+ * not work in some cases when object keys are mangled by a minifier.
  *
  * TODO(FW-1136): this is a temporary solution, we need to come up with a better way of working with
  * inputs that contain potentially unsafe chars.
@@ -7923,6 +8346,8 @@ const IMPLICIT_REFERENCE = '$implicit';
 const NON_BINDABLE_ATTR = 'ngNonBindable';
 /** Name for the variable keeping track of the context returned by `ɵɵrestoreView`. */
 const RESTORED_VIEW_CONTEXT_NAME = 'restoredCtx';
+/** Special value representing a direct access to a template's context. */
+const DIRECT_CONTEXT_REFERENCE = '#context';
 /**
  * Maximum length of a single instruction chain. Because our output AST uses recursion, we're
  * limited in how many expressions we can nest before we reach the call stack limit. This
@@ -7930,7 +8355,7 @@ const RESTORED_VIEW_CONTEXT_NAME = 'restoredCtx';
  */
 const MAX_CHAIN_LENGTH = 500;
 /** Instructions that support chaining. */
-const CHAINABLE_INSTRUCTIONS = new Set([Identifiers.element, Identifiers.elementStart, Identifiers.elementEnd, Identifiers.elementContainer, Identifiers.elementContainerStart, Identifiers.elementContainerEnd, Identifiers.i18nExp, Identifiers.listener, Identifiers.classProp, Identifiers.syntheticHostListener, Identifiers.hostProperty, Identifiers.syntheticHostProperty, Identifiers.property, Identifiers.propertyInterpolate1, Identifiers.propertyInterpolate2, Identifiers.propertyInterpolate3, Identifiers.propertyInterpolate4, Identifiers.propertyInterpolate5, Identifiers.propertyInterpolate6, Identifiers.propertyInterpolate7, Identifiers.propertyInterpolate8, Identifiers.propertyInterpolateV, Identifiers.attribute, Identifiers.attributeInterpolate1, Identifiers.attributeInterpolate2, Identifiers.attributeInterpolate3, Identifiers.attributeInterpolate4, Identifiers.attributeInterpolate5, Identifiers.attributeInterpolate6, Identifiers.attributeInterpolate7, Identifiers.attributeInterpolate8, Identifiers.attributeInterpolateV, Identifiers.styleProp, Identifiers.stylePropInterpolate1, Identifiers.stylePropInterpolate2, Identifiers.stylePropInterpolate3, Identifiers.stylePropInterpolate4, Identifiers.stylePropInterpolate5, Identifiers.stylePropInterpolate6, Identifiers.stylePropInterpolate7, Identifiers.stylePropInterpolate8, Identifiers.stylePropInterpolateV, Identifiers.textInterpolate, Identifiers.textInterpolate1, Identifiers.textInterpolate2, Identifiers.textInterpolate3, Identifiers.textInterpolate4, Identifiers.textInterpolate5, Identifiers.textInterpolate6, Identifiers.textInterpolate7, Identifiers.textInterpolate8, Identifiers.textInterpolateV]);
+const CHAINABLE_INSTRUCTIONS = new Set([Identifiers.element, Identifiers.elementStart, Identifiers.elementEnd, Identifiers.elementContainer, Identifiers.elementContainerStart, Identifiers.elementContainerEnd, Identifiers.i18nExp, Identifiers.listener, Identifiers.classProp, Identifiers.syntheticHostListener, Identifiers.hostProperty, Identifiers.syntheticHostProperty, Identifiers.property, Identifiers.propertyInterpolate1, Identifiers.propertyInterpolate2, Identifiers.propertyInterpolate3, Identifiers.propertyInterpolate4, Identifiers.propertyInterpolate5, Identifiers.propertyInterpolate6, Identifiers.propertyInterpolate7, Identifiers.propertyInterpolate8, Identifiers.propertyInterpolateV, Identifiers.attribute, Identifiers.attributeInterpolate1, Identifiers.attributeInterpolate2, Identifiers.attributeInterpolate3, Identifiers.attributeInterpolate4, Identifiers.attributeInterpolate5, Identifiers.attributeInterpolate6, Identifiers.attributeInterpolate7, Identifiers.attributeInterpolate8, Identifiers.attributeInterpolateV, Identifiers.styleProp, Identifiers.stylePropInterpolate1, Identifiers.stylePropInterpolate2, Identifiers.stylePropInterpolate3, Identifiers.stylePropInterpolate4, Identifiers.stylePropInterpolate5, Identifiers.stylePropInterpolate6, Identifiers.stylePropInterpolate7, Identifiers.stylePropInterpolate8, Identifiers.stylePropInterpolateV, Identifiers.textInterpolate, Identifiers.textInterpolate1, Identifiers.textInterpolate2, Identifiers.textInterpolate3, Identifiers.textInterpolate4, Identifiers.textInterpolate5, Identifiers.textInterpolate6, Identifiers.textInterpolate7, Identifiers.textInterpolate8, Identifiers.textInterpolateV, Identifiers.templateCreate]);
 /** Generates a call to a single instruction. */
 function invokeInstruction(span, reference, params) {
   return importExpr(reference, null, span).callFn(params, span);
@@ -8040,16 +8465,41 @@ class DefinitionMap {
   }
   set(key, value) {
     if (value) {
-      this.values.push({
-        key: key,
-        value,
-        quoted: false
-      });
+      const existing = this.values.find(value => value.key === key);
+      if (existing) {
+        existing.value = value;
+      } else {
+        this.values.push({
+          key: key,
+          value,
+          quoted: false
+        });
+      }
     }
   }
   toLiteralMap() {
     return literalMap(this.values);
   }
+}
+/**
+ * Creates a `CssSelector` from an AST node.
+ */
+function createCssSelectorFromNode(node) {
+  const elementName = node instanceof Element$1 ? node.name : 'ng-template';
+  const attributes = getAttrsForDirectiveMatching(node);
+  const cssSelector = new CssSelector();
+  const elementNameNoNs = splitNsName(elementName)[1];
+  cssSelector.setElement(elementNameNoNs);
+  Object.getOwnPropertyNames(attributes).forEach(name => {
+    const nameNoNs = splitNsName(name)[1];
+    const value = attributes[name];
+    cssSelector.addAttribute(nameNoNs, value);
+    if (name.toLowerCase() === 'class') {
+      const classes = value.trim().split(/\s+/);
+      classes.forEach(className => cssSelector.addClassName(className));
+    }
+  });
+  return cssSelector;
 }
 /**
  * Extract a map of properties to values for a given element or template node, which can be used
@@ -8182,7 +8632,7 @@ function compileInjectable(meta, resolveForwardRefs) {
     } else {
       result = {
         statements: [],
-        expression: fn([], [new ReturnStatement(meta.useFactory.callFn([]))])
+        expression: arrowFn([], meta.useFactory.callFn([]))
       };
     }
   } else if (meta.useValue !== undefined) {
@@ -8248,7 +8698,7 @@ function delegateToFactory(type, useType, unwrapForwardRefs) {
   return createFactoryFunction(unwrappedType);
 }
 function createFactoryFunction(type) {
-  return fn([new FnParam('t', DYNAMIC_TYPE)], [new ReturnStatement(type.prop('ɵfac').callFn([variable('t')]))]);
+  return arrowFn([new FnParam('t', DYNAMIC_TYPE)], type.prop('ɵfac').callFn([variable('t')]));
 }
 const UNUSABLE_INTERPOLATION_REGEXPS = [/^\s*$/, /[<>]/, /^[{}]$/, /&(#|[a-z])/i, /^\/\// // comment
 ];
@@ -8281,6 +8731,7 @@ class InterpolationConfig {
   }
 }
 const DEFAULT_INTERPOLATION_CONFIG = new InterpolationConfig('{{', '}}');
+const DEFAULT_CONTAINER_BLOCKS = new Set(['switch']);
 const $EOF = 0;
 const $BSPACE = 8;
 const $TAB = 9;
@@ -8605,6 +9056,28 @@ class AbstractJsEmitterVisitor extends AbstractEmitterVisitor {
     ctx.print(ast, `}`);
     return null;
   }
+  visitArrowFunctionExpr(ast, ctx) {
+    ctx.print(ast, '(');
+    this._visitParams(ast.params, ctx);
+    ctx.print(ast, ') =>');
+    if (Array.isArray(ast.body)) {
+      ctx.println(ast, `{`);
+      ctx.incIndent();
+      this.visitAllStatements(ast.body, ctx);
+      ctx.decIndent();
+      ctx.print(ast, `}`);
+    } else {
+      const isObjectLiteral = ast.body instanceof LiteralMapExpr;
+      if (isObjectLiteral) {
+        ctx.print(ast, '(');
+      }
+      ast.body.visitExpression(this, ctx);
+      if (isObjectLiteral) {
+        ctx.print(ast, ')');
+      }
+    }
+    return null;
+  }
   visitDeclareFunctionStmt(stmt, ctx) {
     ctx.print(stmt, `function ${stmt.name}(`);
     this._visitParams(stmt.params, ctx);
@@ -8663,10 +9136,11 @@ let policy;
  */
 function getPolicy() {
   if (policy === undefined) {
+    const trustedTypes = _global['trustedTypes'];
     policy = null;
-    if (_global.trustedTypes) {
+    if (trustedTypes) {
       try {
-        policy = _global.trustedTypes.createPolicy('angular#unsafe-jit', {
+        policy = trustedTypes.createPolicy('angular#unsafe-jit', {
           createScript: s => s
         });
       } catch {
@@ -8697,7 +9171,7 @@ function trustedScriptFromString(script) {
  * vulnerabilities.
  */
 function newTrustedFunctionForJIT(...args) {
-  if (!_global.trustedTypes) {
+  if (!_global['trustedTypes']) {
     // In environments that don't support Trusted Types, fall back to the most
     // straightforward implementation:
     return new Function(...args);
@@ -8932,39 +9406,42 @@ var R3SelectorScopeMode;
   R3SelectorScopeMode[R3SelectorScopeMode["Omit"] = 2] = "Omit";
 })(R3SelectorScopeMode || (R3SelectorScopeMode = {}));
 /**
+ * The type of the NgModule meta data.
+ * - Global: Used for full and partial compilation modes which mainly includes R3References.
+ * - Local: Used for the local compilation mode which mainly includes the raw expressions as appears
+ * in the NgModule decorator.
+ */
+var R3NgModuleMetadataKind;
+(function (R3NgModuleMetadataKind) {
+  R3NgModuleMetadataKind[R3NgModuleMetadataKind["Global"] = 0] = "Global";
+  R3NgModuleMetadataKind[R3NgModuleMetadataKind["Local"] = 1] = "Local";
+})(R3NgModuleMetadataKind || (R3NgModuleMetadataKind = {}));
+/**
  * Construct an `R3NgModuleDef` for the given `R3NgModuleMetadata`.
  */
 function compileNgModule(meta) {
-  const {
-    type: moduleType,
-    bootstrap,
-    declarations,
-    imports,
-    exports,
-    schemas,
-    containsForwardDecls,
-    selectorScopeMode,
-    id
-  } = meta;
   const statements = [];
   const definitionMap = new DefinitionMap();
-  definitionMap.set('type', moduleType.value);
-  if (bootstrap.length > 0) {
-    definitionMap.set('bootstrap', refsToArray(bootstrap, containsForwardDecls));
+  definitionMap.set('type', meta.type.value);
+  // Assign bootstrap definition. In local compilation mode (i.e., for
+  // `R3NgModuleMetadataKind.LOCAL`) we assign the bootstrap field using the runtime
+  // `ɵɵsetNgModuleScope`.
+  if (meta.kind === R3NgModuleMetadataKind.Global && meta.bootstrap.length > 0) {
+    definitionMap.set('bootstrap', refsToArray(meta.bootstrap, meta.containsForwardDecls));
   }
-  if (selectorScopeMode === R3SelectorScopeMode.Inline) {
+  if (meta.selectorScopeMode === R3SelectorScopeMode.Inline) {
     // If requested to emit scope information inline, pass the `declarations`, `imports` and
     // `exports` to the `ɵɵdefineNgModule()` call directly.
-    if (declarations.length > 0) {
-      definitionMap.set('declarations', refsToArray(declarations, containsForwardDecls));
+    if (meta.declarations.length > 0) {
+      definitionMap.set('declarations', refsToArray(meta.declarations, meta.containsForwardDecls));
     }
-    if (imports.length > 0) {
-      definitionMap.set('imports', refsToArray(imports, containsForwardDecls));
+    if (meta.imports.length > 0) {
+      definitionMap.set('imports', refsToArray(meta.imports, meta.containsForwardDecls));
     }
-    if (exports.length > 0) {
-      definitionMap.set('exports', refsToArray(exports, containsForwardDecls));
+    if (meta.exports.length > 0) {
+      definitionMap.set('exports', refsToArray(meta.exports, meta.containsForwardDecls));
     }
-  } else if (selectorScopeMode === R3SelectorScopeMode.SideEffect) {
+  } else if (meta.selectorScopeMode === R3SelectorScopeMode.SideEffect) {
     // In this mode, scope information is not passed into `ɵɵdefineNgModule` as it
     // would prevent tree-shaking of the declarations, imports and exports references. Instead, it's
     // patched onto the NgModule definition with a `ɵɵsetNgModuleScope` call that's guarded by the
@@ -8976,14 +9453,14 @@ function compileNgModule(meta) {
   } else {
     // Selector scope emit was not requested, so skip it.
   }
-  if (schemas !== null && schemas.length > 0) {
-    definitionMap.set('schemas', literalArr(schemas.map(ref => ref.value)));
+  if (meta.schemas !== null && meta.schemas.length > 0) {
+    definitionMap.set('schemas', literalArr(meta.schemas.map(ref => ref.value)));
   }
-  if (id !== null) {
-    definitionMap.set('id', id);
+  if (meta.id !== null) {
+    definitionMap.set('id', meta.id);
     // Generate a side-effectful call to register this NgModule by its id, as per the semantics of
     // NgModule ids.
-    statements.push(importExpr(Identifiers.registerNgModuleType).callFn([moduleType.value, id]).toStmt());
+    statements.push(importExpr(Identifiers.registerNgModuleType).callFn([meta.type.value, meta.id]).toStmt());
   }
   const expression = importExpr(Identifiers.defineNgModule).callFn([definitionMap.toLiteralMap()], undefined, true);
   const type = createNgModuleType(meta);
@@ -9020,14 +9497,18 @@ function compileNgModuleDeclarationExpression(meta) {
   }
   return importExpr(Identifiers.defineNgModule).callFn([definitionMap.toLiteralMap()]);
 }
-function createNgModuleType({
-  type: moduleType,
-  declarations,
-  exports,
-  imports,
-  includeImportTypes,
-  publicDeclarationTypes
-}) {
+function createNgModuleType(meta) {
+  if (meta.kind === R3NgModuleMetadataKind.Local) {
+    return new ExpressionType(meta.type.value);
+  }
+  const {
+    type: moduleType,
+    declarations,
+    exports,
+    imports,
+    includeImportTypes,
+    publicDeclarationTypes
+  } = meta;
   return new ExpressionType(importExpr(Identifiers.NgModuleDeclaration, [new ExpressionType(moduleType.type), publicDeclarationTypes === null ? tupleTypeOf(declarations) : tupleOfTypes(publicDeclarationTypes), includeImportTypes ? tupleTypeOf(imports) : NONE_TYPE, tupleTypeOf(exports)]));
 }
 /**
@@ -9037,28 +9518,42 @@ function createNgModuleType({
  * symbols to become tree-shakeable.
  */
 function generateSetNgModuleScopeCall(meta) {
-  const {
-    type: moduleType,
-    declarations,
-    imports,
-    exports,
-    containsForwardDecls
-  } = meta;
   const scopeMap = new DefinitionMap();
-  if (declarations.length > 0) {
-    scopeMap.set('declarations', refsToArray(declarations, containsForwardDecls));
+  if (meta.kind === R3NgModuleMetadataKind.Global) {
+    if (meta.declarations.length > 0) {
+      scopeMap.set('declarations', refsToArray(meta.declarations, meta.containsForwardDecls));
+    }
+  } else {
+    if (meta.declarationsExpression) {
+      scopeMap.set('declarations', meta.declarationsExpression);
+    }
   }
-  if (imports.length > 0) {
-    scopeMap.set('imports', refsToArray(imports, containsForwardDecls));
+  if (meta.kind === R3NgModuleMetadataKind.Global) {
+    if (meta.imports.length > 0) {
+      scopeMap.set('imports', refsToArray(meta.imports, meta.containsForwardDecls));
+    }
+  } else {
+    if (meta.importsExpression) {
+      scopeMap.set('imports', meta.importsExpression);
+    }
   }
-  if (exports.length > 0) {
-    scopeMap.set('exports', refsToArray(exports, containsForwardDecls));
+  if (meta.kind === R3NgModuleMetadataKind.Global) {
+    if (meta.exports.length > 0) {
+      scopeMap.set('exports', refsToArray(meta.exports, meta.containsForwardDecls));
+    }
+  } else {
+    if (meta.exportsExpression) {
+      scopeMap.set('exports', meta.exportsExpression);
+    }
+  }
+  if (meta.kind === R3NgModuleMetadataKind.Local && meta.bootstrapExpression) {
+    scopeMap.set('bootstrap', meta.bootstrapExpression);
   }
   if (Object.keys(scopeMap.values).length === 0) {
     return null;
   }
   // setNgModuleScope(...)
-  const fnCall = new InvokeFunctionExpr( /* fn */importExpr(Identifiers.setNgModuleScope), /* args */[moduleType.value, scopeMap.toLiteralMap()]);
+  const fnCall = new InvokeFunctionExpr( /* fn */importExpr(Identifiers.setNgModuleScope), /* args */[meta.type.value, scopeMap.toLiteralMap()]);
   // (ngJitMode guard) && setNgModuleScope(...)
   const guardedCall = jitOnlyGuardedExpression(fnCall);
   // function() { (ngJitMode guard) && setNgModuleScope(...); }
@@ -9155,7 +9650,7 @@ class ASTWithName extends AST {
     this.nameSpan = nameSpan;
   }
 }
-class EmptyExpr extends AST {
+class EmptyExpr$1 extends AST {
   visit(visitor, context = null) {
     // do nothing
   }
@@ -9302,7 +9797,7 @@ class LiteralMap extends AST {
     return visitor.visitLiteralMap(this, context);
   }
 }
-class Interpolation extends AST {
+class Interpolation$1 extends AST {
   constructor(span, sourceSpan, strings, expressions) {
     super(span, sourceSpan);
     this.strings = strings;
@@ -9549,7 +10044,7 @@ class AstTransformer {
     return ast;
   }
   visitInterpolation(ast, context) {
-    return new Interpolation(ast.span, ast.sourceSpan, ast.strings, this.visitAll(ast.expressions));
+    return new Interpolation$1(ast.span, ast.sourceSpan, ast.strings, this.visitAll(ast.expressions));
   }
   visitLiteralPrimitive(ast, context) {
     return new LiteralPrimitive(ast.span, ast.sourceSpan, ast.value);
@@ -9631,7 +10126,7 @@ class AstMemoryEfficientTransformer {
   }
   visitInterpolation(ast, context) {
     const expressions = this.visitAll(ast.expressions);
-    if (expressions !== ast.expressions) return new Interpolation(ast.span, ast.sourceSpan, ast.strings, expressions);
+    if (expressions !== ast.expressions) return new Interpolation$1(ast.span, ast.sourceSpan, ast.strings, expressions);
     return ast;
   }
   visitLiteralPrimitive(ast, context) {
@@ -9915,6 +10410,26 @@ function convertPropertyBinding(localResolver, implicitReceiver, expressionWitho
     localResolver.notifyImplicitReceiverUse();
   }
   return new ConvertPropertyBindingResult(stmts, outputExpr);
+}
+/** Converts an AST to a pure function that may have access to the component scope. */
+function convertPureComponentScopeFunction(ast, localResolver, implicitReceiver, bindingId) {
+  const converted = convertPropertyBindingBuiltins({
+    createLiteralArrayConverter: () => args => literalArr(args),
+    createLiteralMapConverter: keys => values => literalMap(keys.map((key, index) => {
+      return {
+        key: key.key,
+        value: values[index],
+        quoted: key.quoted
+      };
+    })),
+    createPipeConverter: () => {
+      throw new Error('Illegal State: Pipes are not allowed in this context');
+    }
+  }, ast);
+  const visitor = new _AstToIrVisitor(localResolver, implicitReceiver, bindingId, false);
+  const statements = [];
+  flattenStatements(converted.visit(visitor, _Mode.Statement), statements);
+  return statements;
 }
 /**
  * Given some expression, such as a binding or interpolation expression, and a context expression to
@@ -10553,6 +11068,7 @@ class InterpolationExpression extends Expression {
     this.isConstant = unsupported;
     this.isEquivalent = unsupported;
     this.visitExpression = unsupported;
+    this.clone = unsupported;
   }
 }
 class DefaultLocalResolver {
@@ -10570,7 +11086,7 @@ class DefaultLocalResolver {
 }
 class BuiltinFunctionCall extends Call {
   constructor(span, sourceSpan, args, converter) {
-    super(span, sourceSpan, new EmptyExpr(span, sourceSpan), args, null);
+    super(span, sourceSpan, new EmptyExpr$1(span, sourceSpan), args, null);
     this.converter = converter;
   }
 }
@@ -11118,7 +11634,7 @@ class ShadowCss {
       let content = rule.content;
       if (rule.selector[0] !== '@') {
         selector = this._scopeSelector(rule.selector, scopeSelector, hostSelector);
-      } else if (rule.selector.startsWith('@media') || rule.selector.startsWith('@supports') || rule.selector.startsWith('@document') || rule.selector.startsWith('@layer') || rule.selector.startsWith('@container')) {
+      } else if (rule.selector.startsWith('@media') || rule.selector.startsWith('@supports') || rule.selector.startsWith('@document') || rule.selector.startsWith('@layer') || rule.selector.startsWith('@container') || rule.selector.startsWith('@scope')) {
         content = this._scopeSelectors(rule.content, scopeSelector, hostSelector);
       } else if (rule.selector.startsWith('@font-face') || rule.selector.startsWith('@page')) {
         content = this._stripScopingSelectors(rule.content);
@@ -11242,7 +11758,7 @@ class ShadowCss {
       // (ie: ".\fc ber" for ".über") is not a separator between 2 selectors
       // also keep in mind that backslashes are replaced by a placeholder by SafeSelector
       // These escaped selectors happen for example when esbuild runs with optimization.minify.
-      if (part.match(_placeholderRe) && selector[res.index + 1]?.match(/[a-fA-F\d]/)) {
+      if (part.match(/__esc-ph-(\d+)__/) && selector[res.index + 1]?.match(/[a-fA-F\d]/)) {
         continue;
       }
       shouldScope = shouldScope || part.indexOf(_polyfillHostNoCombinator) > -1;
@@ -11272,7 +11788,13 @@ class SafeSelector {
     // pseudo-class, but writing `.foo\:blue` will match, because the colon was escaped.
     // Replace all escape sequences (`\` followed by a character) with a placeholder so
     // that our handling of pseudo-selectors doesn't mess with them.
-    selector = this._escapeRegexMatches(selector, /(\\.)/g);
+    // Escaped characters have a specific placeholder so they can be detected separately.
+    selector = selector.replace(/(\\.)/g, (_, keep) => {
+      const replaceBy = `__esc-ph-${this.index}__`;
+      this.placeholders.push(keep);
+      this.index++;
+      return replaceBy;
+    });
     // Replaces the expression in `:nth-child(2n + 1)` with a placeholder.
     // WS and "+" would otherwise be interpreted as selector separators.
     this._content = selector.replace(/(:nth-[-\w]+)(\([^)]+\))/g, (_, pseudo, exp) => {
@@ -11283,7 +11805,7 @@ class SafeSelector {
     });
   }
   restore(content) {
-    return content.replace(_placeholderRe, (_ph, index) => this.placeholders[+index]);
+    return content.replace(/__(?:ph|esc-ph)-(\d+)__/g, (_ph, index) => this.placeholders[+index]);
   }
   content() {
     return this._content;
@@ -11329,7 +11851,6 @@ const _commentRe = /\/\*[\s\S]*?\*\//g;
 const _commentWithHashRe = /\/\*\s*#\s*source(Mapping)?URL=/g;
 const COMMENT_PLACEHOLDER = '%COMMENT%';
 const _commentWithHashPlaceHolderRe = new RegExp(COMMENT_PLACEHOLDER, 'g');
-const _placeholderRe = /__ph-(\d+)__/g;
 const BLOCK_PLACEHOLDER = '%BLOCK%';
 const _ruleRe = new RegExp(`(\\s*(?:${COMMENT_PLACEHOLDER}\\s*)*)([^;\\{\\}]+?)(\\s*)((?:{%BLOCK%}?\\s*;?)|(?:\\s*;))`, 'g');
 const CONTENT_PAIRS = new Map([['{', '}']]);
@@ -11581,130 +12102,6 @@ function repeatGroups(groups, multiples) {
     }
   }
 }
-var TagContentType;
-(function (TagContentType) {
-  TagContentType[TagContentType["RAW_TEXT"] = 0] = "RAW_TEXT";
-  TagContentType[TagContentType["ESCAPABLE_RAW_TEXT"] = 1] = "ESCAPABLE_RAW_TEXT";
-  TagContentType[TagContentType["PARSABLE_DATA"] = 2] = "PARSABLE_DATA";
-})(TagContentType || (TagContentType = {}));
-function splitNsName(elementName) {
-  if (elementName[0] != ':') {
-    return [null, elementName];
-  }
-  const colonIndex = elementName.indexOf(':', 1);
-  if (colonIndex === -1) {
-    throw new Error(`Unsupported format "${elementName}" expecting ":namespace:name"`);
-  }
-  return [elementName.slice(1, colonIndex), elementName.slice(colonIndex + 1)];
-}
-// `<ng-container>` tags work the same regardless the namespace
-function isNgContainer(tagName) {
-  return splitNsName(tagName)[1] === 'ng-container';
-}
-// `<ng-content>` tags work the same regardless the namespace
-function isNgContent(tagName) {
-  return splitNsName(tagName)[1] === 'ng-content';
-}
-// `<ng-template>` tags work the same regardless the namespace
-function isNgTemplate(tagName) {
-  return splitNsName(tagName)[1] === 'ng-template';
-}
-function getNsPrefix(fullName) {
-  return fullName === null ? null : splitNsName(fullName)[0];
-}
-function mergeNsAndName(prefix, localName) {
-  return prefix ? `:${prefix}:${localName}` : localName;
-}
-
-/**
- * Enumeration of the types of attributes which can be applied to an element.
- */
-var ElementAttributeKind;
-(function (ElementAttributeKind) {
-  /**
-   * Static attributes.
-   */
-  ElementAttributeKind[ElementAttributeKind["Attribute"] = 0] = "Attribute";
-  /**
-   * Class bindings.
-   */
-  ElementAttributeKind[ElementAttributeKind["Class"] = 1] = "Class";
-  /**
-   * Style bindings.
-   */
-  ElementAttributeKind[ElementAttributeKind["Style"] = 2] = "Style";
-  /**
-   * Dynamic property or attribute bindings.
-   */
-  ElementAttributeKind[ElementAttributeKind["Binding"] = 3] = "Binding";
-  /**
-   * Attributes on a template node.
-   */
-  ElementAttributeKind[ElementAttributeKind["Template"] = 4] = "Template";
-  /**
-   * Internationalized attributes.
-   */
-  ElementAttributeKind[ElementAttributeKind["I18n"] = 5] = "I18n";
-})(ElementAttributeKind || (ElementAttributeKind = {}));
-const FLYWEIGHT_ARRAY = Object.freeze([]);
-/**
- * Container for all of the various kinds of attributes which are applied on an element.
- */
-class ElementAttributes {
-  constructor() {
-    this.known = new Set();
-    this.byKind = new Map();
-    this.projectAs = null;
-  }
-  get attributes() {
-    return this.byKind.get(ElementAttributeKind.Attribute) ?? FLYWEIGHT_ARRAY;
-  }
-  get classes() {
-    return this.byKind.get(ElementAttributeKind.Class) ?? FLYWEIGHT_ARRAY;
-  }
-  get styles() {
-    return this.byKind.get(ElementAttributeKind.Style) ?? FLYWEIGHT_ARRAY;
-  }
-  get bindings() {
-    return this.byKind.get(ElementAttributeKind.Binding) ?? FLYWEIGHT_ARRAY;
-  }
-  get template() {
-    return this.byKind.get(ElementAttributeKind.Template) ?? FLYWEIGHT_ARRAY;
-  }
-  get i18n() {
-    return this.byKind.get(ElementAttributeKind.I18n) ?? FLYWEIGHT_ARRAY;
-  }
-  add(kind, name, value) {
-    if (this.known.has(name)) {
-      return;
-    }
-    this.known.add(name);
-    const array = this.arrayFor(kind);
-    array.push(...getAttributeNameLiterals$1(name));
-    if (value !== null) {
-      array.push(value);
-    }
-  }
-  arrayFor(kind) {
-    if (!this.byKind.has(kind)) {
-      this.byKind.set(kind, []);
-    }
-    return this.byKind.get(kind);
-  }
-}
-function getAttributeNameLiterals$1(name) {
-  const [attributeNamespace, attributeName] = splitNsName(name);
-  const nameLiteral = literal(attributeName);
-  if (attributeNamespace) {
-    return [literal(0 /* core.AttributeMarker.NamespaceURI */), literal(attributeNamespace), nameLiteral];
-  }
-  return [nameLiteral];
-}
-function assertIsElementAttributes(attrs) {
-  if (!(attrs instanceof ElementAttributes)) {
-    throw new Error(`AssertionError: ElementAttributes has already been coalesced into the view constants`);
-  }
-}
 
 /**
  * Distinguishes different kinds of IR operations.
@@ -11755,33 +12152,151 @@ var OpKind;
    */
   OpKind[OpKind["ContainerEnd"] = 9] = "ContainerEnd";
   /**
+   * An operation disable binding for subsequent elements, which are descendants of a non-bindable
+   * node.
+   */
+  OpKind[OpKind["DisableBindings"] = 10] = "DisableBindings";
+  /**
+   * An op to conditionally render a template.
+   */
+  OpKind[OpKind["Conditional"] = 11] = "Conditional";
+  /**
+   * An operation to re-enable binding, after it was previously disabled.
+   */
+  OpKind[OpKind["EnableBindings"] = 12] = "EnableBindings";
+  /**
    * An operation to render a text node.
    */
-  OpKind[OpKind["Text"] = 10] = "Text";
+  OpKind[OpKind["Text"] = 13] = "Text";
   /**
    * An operation declaring an event listener for an element.
    */
-  OpKind[OpKind["Listener"] = 11] = "Listener";
+  OpKind[OpKind["Listener"] = 14] = "Listener";
   /**
    * An operation to interpolate text into a text node.
    */
-  OpKind[OpKind["InterpolateText"] = 12] = "InterpolateText";
+  OpKind[OpKind["InterpolateText"] = 15] = "InterpolateText";
+  /**
+   * An intermediate binding op, that has not yet been processed into an individual property,
+   * attribute, style, etc.
+   */
+  OpKind[OpKind["Binding"] = 16] = "Binding";
   /**
    * An operation to bind an expression to a property of an element.
    */
-  OpKind[OpKind["Property"] = 13] = "Property";
+  OpKind[OpKind["Property"] = 17] = "Property";
   /**
-   * An operation to interpolate text into a property binding.
+   * An operation to bind an expression to a style property of an element.
    */
-  OpKind[OpKind["InterpolateProperty"] = 14] = "InterpolateProperty";
+  OpKind[OpKind["StyleProp"] = 18] = "StyleProp";
+  /**
+   * An operation to bind an expression to a class property of an element.
+   */
+  OpKind[OpKind["ClassProp"] = 19] = "ClassProp";
+  /**
+   * An operation to bind an expression to the styles of an element.
+   */
+  OpKind[OpKind["StyleMap"] = 20] = "StyleMap";
+  /**
+   * An operation to bind an expression to the classes of an element.
+   */
+  OpKind[OpKind["ClassMap"] = 21] = "ClassMap";
   /**
    * An operation to advance the runtime's implicit slot context during the update phase of a view.
    */
-  OpKind[OpKind["Advance"] = 15] = "Advance";
+  OpKind[OpKind["Advance"] = 22] = "Advance";
   /**
    * An operation to instantiate a pipe.
    */
-  OpKind[OpKind["Pipe"] = 16] = "Pipe";
+  OpKind[OpKind["Pipe"] = 23] = "Pipe";
+  /**
+   * An operation to associate an attribute with an element.
+   */
+  OpKind[OpKind["Attribute"] = 24] = "Attribute";
+  /**
+   * An attribute that has been extracted for inclusion in the consts array.
+   */
+  OpKind[OpKind["ExtractedAttribute"] = 25] = "ExtractedAttribute";
+  /**
+   * An operation that configures a `@defer` block.
+   */
+  OpKind[OpKind["Defer"] = 26] = "Defer";
+  /**
+   * An operation that controls when a `@defer` loads.
+   */
+  OpKind[OpKind["DeferOn"] = 27] = "DeferOn";
+  /**
+   * An operation that controls when a `@defer` loads, using a custom expression as the condition.
+   */
+  OpKind[OpKind["DeferWhen"] = 28] = "DeferWhen";
+  /**
+   * An i18n message that has been extracted for inclusion in the consts array.
+   */
+  OpKind[OpKind["I18nMessage"] = 29] = "I18nMessage";
+  /**
+   * A host binding property.
+   */
+  OpKind[OpKind["HostProperty"] = 30] = "HostProperty";
+  /**
+   * A namespace change, which causes the subsequent elements to be processed as either HTML or SVG.
+   */
+  OpKind[OpKind["Namespace"] = 31] = "Namespace";
+  /**
+   * Configure a content projeciton definition for the view.
+   */
+  OpKind[OpKind["ProjectionDef"] = 32] = "ProjectionDef";
+  /**
+   * Create a content projection slot.
+   */
+  OpKind[OpKind["Projection"] = 33] = "Projection";
+  /**
+   * Create a repeater creation instruction op.
+   */
+  OpKind[OpKind["RepeaterCreate"] = 34] = "RepeaterCreate";
+  /**
+   * An update up for a repeater.
+   */
+  OpKind[OpKind["Repeater"] = 35] = "Repeater";
+  /**
+   * The start of an i18n block.
+   */
+  OpKind[OpKind["I18nStart"] = 36] = "I18nStart";
+  /**
+   * A self-closing i18n on a single element.
+   */
+  OpKind[OpKind["I18n"] = 37] = "I18n";
+  /**
+   * The end of an i18n block.
+   */
+  OpKind[OpKind["I18nEnd"] = 38] = "I18nEnd";
+  /**
+   * An expression in an i18n message.
+   */
+  OpKind[OpKind["I18nExpression"] = 39] = "I18nExpression";
+  /**
+   * An instruction that applies a set of i18n expressions.
+   */
+  OpKind[OpKind["I18nApply"] = 40] = "I18nApply";
+  /**
+   * An instruction to create an ICU expression.
+   */
+  OpKind[OpKind["IcuStart"] = 41] = "IcuStart";
+  /**
+   * An instruction to update an ICU expression.
+   */
+  OpKind[OpKind["IcuEnd"] = 42] = "IcuEnd";
+  /**
+   * An instruction representing a placeholder in an ICU expression.
+   */
+  OpKind[OpKind["IcuPlaceholder"] = 43] = "IcuPlaceholder";
+  /**
+   * An i18n context containing information needed to generate an i18n message.
+   */
+  OpKind[OpKind["I18nContext"] = 44] = "I18nContext";
+  /**
+   * A creation op that corresponds to i18n attributes on an element.
+   */
+  OpKind[OpKind["I18nAttributes"] = 45] = "I18nAttributes";
 })(OpKind || (OpKind = {}));
 /**
  * Distinguishes different kinds of IR expressions.
@@ -11797,46 +12312,113 @@ var ExpressionKind;
    */
   ExpressionKind[ExpressionKind["Context"] = 1] = "Context";
   /**
+   * A reference to the view context, for use inside a track function.
+   */
+  ExpressionKind[ExpressionKind["TrackContext"] = 2] = "TrackContext";
+  /**
    * Read of a variable declared in a `VariableOp`.
    */
-  ExpressionKind[ExpressionKind["ReadVariable"] = 2] = "ReadVariable";
+  ExpressionKind[ExpressionKind["ReadVariable"] = 3] = "ReadVariable";
   /**
    * Runtime operation to navigate to the next view context in the view hierarchy.
    */
-  ExpressionKind[ExpressionKind["NextContext"] = 3] = "NextContext";
+  ExpressionKind[ExpressionKind["NextContext"] = 4] = "NextContext";
   /**
    * Runtime operation to retrieve the value of a local reference.
    */
-  ExpressionKind[ExpressionKind["Reference"] = 4] = "Reference";
+  ExpressionKind[ExpressionKind["Reference"] = 5] = "Reference";
   /**
    * Runtime operation to snapshot the current view context.
    */
-  ExpressionKind[ExpressionKind["GetCurrentView"] = 5] = "GetCurrentView";
+  ExpressionKind[ExpressionKind["GetCurrentView"] = 6] = "GetCurrentView";
   /**
    * Runtime operation to restore a snapshotted view.
    */
-  ExpressionKind[ExpressionKind["RestoreView"] = 6] = "RestoreView";
+  ExpressionKind[ExpressionKind["RestoreView"] = 7] = "RestoreView";
   /**
    * Runtime operation to reset the current view context after `RestoreView`.
    */
-  ExpressionKind[ExpressionKind["ResetView"] = 7] = "ResetView";
+  ExpressionKind[ExpressionKind["ResetView"] = 8] = "ResetView";
   /**
    * Defines and calls a function with change-detected arguments.
    */
-  ExpressionKind[ExpressionKind["PureFunctionExpr"] = 8] = "PureFunctionExpr";
+  ExpressionKind[ExpressionKind["PureFunctionExpr"] = 9] = "PureFunctionExpr";
   /**
    * Indicates a positional parameter to a pure function definition.
    */
-  ExpressionKind[ExpressionKind["PureFunctionParameterExpr"] = 9] = "PureFunctionParameterExpr";
+  ExpressionKind[ExpressionKind["PureFunctionParameterExpr"] = 10] = "PureFunctionParameterExpr";
   /**
    * Binding to a pipe transformation.
    */
-  ExpressionKind[ExpressionKind["PipeBinding"] = 10] = "PipeBinding";
+  ExpressionKind[ExpressionKind["PipeBinding"] = 11] = "PipeBinding";
   /**
    * Binding to a pipe transformation with a variable number of arguments.
    */
-  ExpressionKind[ExpressionKind["PipeBindingVariadic"] = 11] = "PipeBindingVariadic";
+  ExpressionKind[ExpressionKind["PipeBindingVariadic"] = 12] = "PipeBindingVariadic";
+  /*
+   * A safe property read requiring expansion into a null check.
+   */
+  ExpressionKind[ExpressionKind["SafePropertyRead"] = 13] = "SafePropertyRead";
+  /**
+   * A safe keyed read requiring expansion into a null check.
+   */
+  ExpressionKind[ExpressionKind["SafeKeyedRead"] = 14] = "SafeKeyedRead";
+  /**
+   * A safe function call requiring expansion into a null check.
+   */
+  ExpressionKind[ExpressionKind["SafeInvokeFunction"] = 15] = "SafeInvokeFunction";
+  /**
+   * An intermediate expression that will be expanded from a safe read into an explicit ternary.
+   */
+  ExpressionKind[ExpressionKind["SafeTernaryExpr"] = 16] = "SafeTernaryExpr";
+  /**
+   * An empty expression that will be stipped before generating the final output.
+   */
+  ExpressionKind[ExpressionKind["EmptyExpr"] = 17] = "EmptyExpr";
+  /*
+   * An assignment to a temporary variable.
+   */
+  ExpressionKind[ExpressionKind["AssignTemporaryExpr"] = 18] = "AssignTemporaryExpr";
+  /**
+   * A reference to a temporary variable.
+   */
+  ExpressionKind[ExpressionKind["ReadTemporaryExpr"] = 19] = "ReadTemporaryExpr";
+  /**
+   * An expression representing a sanitizer function.
+   */
+  ExpressionKind[ExpressionKind["SanitizerExpr"] = 20] = "SanitizerExpr";
+  /**
+   * An expression representing a function to create trusted values.
+   */
+  ExpressionKind[ExpressionKind["TrustedValueFnExpr"] = 21] = "TrustedValueFnExpr";
+  /**
+   * An expression that will cause a literal slot index to be emitted.
+   */
+  ExpressionKind[ExpressionKind["SlotLiteralExpr"] = 22] = "SlotLiteralExpr";
+  /**
+   * A test expression for a conditional op.
+   */
+  ExpressionKind[ExpressionKind["ConditionalCase"] = 23] = "ConditionalCase";
+  /**
+   * A variable for use inside a repeater, providing one of the ambiently-available context
+   * properties ($even, $first, etc.).
+   */
+  ExpressionKind[ExpressionKind["DerivedRepeaterVar"] = 24] = "DerivedRepeaterVar";
+  /**
+   * An expression that will be automatically extracted to the component const array.
+   */
+  ExpressionKind[ExpressionKind["ConstCollected"] = 25] = "ConstCollected";
 })(ExpressionKind || (ExpressionKind = {}));
+var VariableFlags;
+(function (VariableFlags) {
+  VariableFlags[VariableFlags["None"] = 0] = "None";
+  /**
+   * Always inline this variable, regardless of the number of times it's used.
+   * An `AlwaysInline` variable may not depend on context, because doing so may cause side effects
+   * that are illegal when multi-inlined. (The optimizer will enforce this constraint.)
+   */
+  VariableFlags[VariableFlags["AlwaysInline"] = 1] = "AlwaysInline";
+})(VariableFlags || (VariableFlags = {}));
 /**
  * Distinguishes between different kinds of `SemanticVariable`s.
  */
@@ -11854,7 +12436,168 @@ var SemanticVariableKind;
    * Represents a saved state that can be used to restore a view in a listener handler function.
    */
   SemanticVariableKind[SemanticVariableKind["SavedView"] = 2] = "SavedView";
+  /**
+   * An alias generated by a special embedded view type (e.g. a `@for` block).
+   */
+  SemanticVariableKind[SemanticVariableKind["Alias"] = 3] = "Alias";
 })(SemanticVariableKind || (SemanticVariableKind = {}));
+/**
+ * Whether to compile in compatibilty mode. In compatibility mode, the template pipeline will
+ * attempt to match the output of `TemplateDefinitionBuilder` as exactly as possible, at the cost
+ * of producing quirky or larger code in some cases.
+ */
+var CompatibilityMode;
+(function (CompatibilityMode) {
+  CompatibilityMode[CompatibilityMode["Normal"] = 0] = "Normal";
+  CompatibilityMode[CompatibilityMode["TemplateDefinitionBuilder"] = 1] = "TemplateDefinitionBuilder";
+})(CompatibilityMode || (CompatibilityMode = {}));
+/**
+ * Enumeration of the different kinds of `@defer` secondary blocks.
+ */
+var DeferSecondaryKind;
+(function (DeferSecondaryKind) {
+  DeferSecondaryKind[DeferSecondaryKind["Loading"] = 0] = "Loading";
+  DeferSecondaryKind[DeferSecondaryKind["Placeholder"] = 1] = "Placeholder";
+  DeferSecondaryKind[DeferSecondaryKind["Error"] = 2] = "Error";
+})(DeferSecondaryKind || (DeferSecondaryKind = {}));
+/**
+ * Enumeration of the types of attributes which can be applied to an element.
+ */
+var BindingKind;
+(function (BindingKind) {
+  /**
+   * Static attributes.
+   */
+  BindingKind[BindingKind["Attribute"] = 0] = "Attribute";
+  /**
+   * Class bindings.
+   */
+  BindingKind[BindingKind["ClassName"] = 1] = "ClassName";
+  /**
+   * Style bindings.
+   */
+  BindingKind[BindingKind["StyleProperty"] = 2] = "StyleProperty";
+  /**
+   * Dynamic property bindings.
+   */
+  BindingKind[BindingKind["Property"] = 3] = "Property";
+  /**
+   * Property or attribute bindings on a template.
+   */
+  BindingKind[BindingKind["Template"] = 4] = "Template";
+  /**
+   * Internationalized attributes.
+   */
+  BindingKind[BindingKind["I18n"] = 5] = "I18n";
+  /**
+   * Animation property bindings.
+   */
+  BindingKind[BindingKind["Animation"] = 6] = "Animation";
+})(BindingKind || (BindingKind = {}));
+/**
+ * Enumeration of possible times i18n params can be resolved.
+ */
+var I18nParamResolutionTime;
+(function (I18nParamResolutionTime) {
+  /**
+   * Param is resolved at message creation time. Most params should be resolved at message creation
+   * time. However, ICU params need to be handled in post-processing.
+   */
+  I18nParamResolutionTime[I18nParamResolutionTime["Creation"] = 0] = "Creation";
+  /**
+   * Param is resolved during post-processing. This should be used for params who's value comes from
+   * an ICU.
+   */
+  I18nParamResolutionTime[I18nParamResolutionTime["Postproccessing"] = 1] = "Postproccessing";
+})(I18nParamResolutionTime || (I18nParamResolutionTime = {}));
+/**
+ * The contexts in which an i18n expression can be used.
+ */
+var I18nExpressionFor;
+(function (I18nExpressionFor) {
+  /**
+   * This expression is used as a value (i.e. inside an i18n block).
+   */
+  I18nExpressionFor[I18nExpressionFor["I18nText"] = 0] = "I18nText";
+  /**
+   * This expression is used in a binding.
+   */
+  I18nExpressionFor[I18nExpressionFor["I18nAttribute"] = 1] = "I18nAttribute";
+})(I18nExpressionFor || (I18nExpressionFor = {}));
+/**
+ * Flags that describe what an i18n param value. These determine how the value is serialized into
+ * the final map.
+ */
+var I18nParamValueFlags;
+(function (I18nParamValueFlags) {
+  I18nParamValueFlags[I18nParamValueFlags["None"] = 0] = "None";
+  /**
+   *  This value represtents an element tag.
+   */
+  I18nParamValueFlags[I18nParamValueFlags["ElementTag"] = 1] = "ElementTag";
+  /**
+   * This value represents a template tag.
+   */
+  I18nParamValueFlags[I18nParamValueFlags["TemplateTag"] = 2] = "TemplateTag";
+  /**
+   * This value represents the opening of a tag.
+   */
+  I18nParamValueFlags[I18nParamValueFlags["OpenTag"] = 4] = "OpenTag";
+  /**
+   * This value represents the closing of a tag.
+   */
+  I18nParamValueFlags[I18nParamValueFlags["CloseTag"] = 8] = "CloseTag";
+  /**
+   * This value represents an i18n expression index.
+   */
+  I18nParamValueFlags[I18nParamValueFlags["ExpressionIndex"] = 16] = "ExpressionIndex";
+})(I18nParamValueFlags || (I18nParamValueFlags = {}));
+/**
+ * Whether the active namespace is HTML, MathML, or SVG mode.
+ */
+var Namespace;
+(function (Namespace) {
+  Namespace[Namespace["HTML"] = 0] = "HTML";
+  Namespace[Namespace["SVG"] = 1] = "SVG";
+  Namespace[Namespace["Math"] = 2] = "Math";
+})(Namespace || (Namespace = {}));
+/**
+ * The type of a `@defer` trigger, for use in the ir.
+ */
+var DeferTriggerKind;
+(function (DeferTriggerKind) {
+  DeferTriggerKind[DeferTriggerKind["Idle"] = 0] = "Idle";
+  DeferTriggerKind[DeferTriggerKind["Immediate"] = 1] = "Immediate";
+  DeferTriggerKind[DeferTriggerKind["Timer"] = 2] = "Timer";
+  DeferTriggerKind[DeferTriggerKind["Hover"] = 3] = "Hover";
+  DeferTriggerKind[DeferTriggerKind["Interaction"] = 4] = "Interaction";
+  DeferTriggerKind[DeferTriggerKind["Viewport"] = 5] = "Viewport";
+})(DeferTriggerKind || (DeferTriggerKind = {}));
+/**
+ * Repeaters implicitly define these derived variables, and child nodes may read them.
+ */
+var DerivedRepeaterVarIdentity;
+(function (DerivedRepeaterVarIdentity) {
+  DerivedRepeaterVarIdentity[DerivedRepeaterVarIdentity["First"] = 0] = "First";
+  DerivedRepeaterVarIdentity[DerivedRepeaterVarIdentity["Last"] = 1] = "Last";
+  DerivedRepeaterVarIdentity[DerivedRepeaterVarIdentity["Even"] = 2] = "Even";
+  DerivedRepeaterVarIdentity[DerivedRepeaterVarIdentity["Odd"] = 3] = "Odd";
+})(DerivedRepeaterVarIdentity || (DerivedRepeaterVarIdentity = {}));
+/**
+ * Kinds of i18n contexts. They can be created because of root i18n blocks, or ICUs.
+ */
+var I18nContextKind;
+(function (I18nContextKind) {
+  I18nContextKind[I18nContextKind["RootI18n"] = 0] = "RootI18n";
+  I18nContextKind[I18nContextKind["Icu"] = 1] = "Icu";
+  I18nContextKind[I18nContextKind["Attr"] = 2] = "Attr";
+})(I18nContextKind || (I18nContextKind = {}));
+var TemplateKind;
+(function (TemplateKind) {
+  TemplateKind[TemplateKind["NgTemplate"] = 0] = "NgTemplate";
+  TemplateKind[TemplateKind["Structural"] = 1] = "Structural";
+  TemplateKind[TemplateKind["Block"] = 2] = "Block";
+})(TemplateKind || (TemplateKind = {}));
 
 /**
  * Marker symbol for `ConsumesSlotOpTrait`.
@@ -11864,10 +12607,6 @@ const ConsumesSlot = Symbol('ConsumesSlot');
  * Marker symbol for `DependsOnSlotContextOpTrait`.
  */
 const DependsOnSlotContext = Symbol('DependsOnSlotContext');
-/**
- * Marker symbol for `UsesSlotIndex` trait.
- */
-const UsesSlotIndex = Symbol('UsesSlotIndex');
 /**
  * Marker symbol for `ConsumesVars` trait.
  */
@@ -11882,16 +12621,7 @@ const UsesVarOffset = Symbol('UsesVarOffset');
  */
 const TRAIT_CONSUMES_SLOT = {
   [ConsumesSlot]: true,
-  slot: null,
   numSlotsUsed: 1
-};
-/**
- * Default values for most `UsesSlotIndexTrait` fields (used with the spread operator to initialize
- * implementors of the trait).
- */
-const TRAIT_USES_SLOT_INDEX = {
-  [UsesSlotIndex]: true,
-  slot: null
 };
 /**
  * Default values for most `DependsOnSlotContextOpTrait` fields (used with the spread operator to
@@ -11936,10 +12666,273 @@ function hasConsumesVarsTrait(value) {
 function hasUsesVarOffsetTrait(expr) {
   return expr[UsesVarOffset] === true;
 }
-function hasUsesSlotIndexTrait(value) {
-  return value[UsesSlotIndex] === true;
+
+/**
+ * Create a `StatementOp`.
+ */
+function createStatementOp(statement) {
+  return {
+    kind: OpKind.Statement,
+    statement,
+    ...NEW_OP
+  };
 }
-var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+/**
+ * Create a `VariableOp`.
+ */
+function createVariableOp(xref, variable, initializer, flags) {
+  return {
+    kind: OpKind.Variable,
+    xref,
+    variable,
+    initializer,
+    flags,
+    ...NEW_OP
+  };
+}
+/**
+ * Static structure shared by all operations.
+ *
+ * Used as a convenience via the spread operator (`...NEW_OP`) when creating new operations, and
+ * ensures the fields are always in the same order.
+ */
+const NEW_OP = {
+  debugListId: null,
+  prev: null,
+  next: null
+};
+
+/**
+ * Create an `InterpolationTextOp`.
+ */
+function createInterpolateTextOp(xref, interpolation, sourceSpan) {
+  return {
+    kind: OpKind.InterpolateText,
+    target: xref,
+    interpolation,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+class Interpolation {
+  constructor(strings, expressions, i18nPlaceholders) {
+    this.strings = strings;
+    this.expressions = expressions;
+    this.i18nPlaceholders = i18nPlaceholders;
+    if (i18nPlaceholders.length !== 0 && i18nPlaceholders.length !== expressions.length) {
+      throw new Error(`Expected ${expressions.length} placeholders to match interpolation expression count, but got ${i18nPlaceholders.length}`);
+    }
+  }
+}
+/**
+ * Create a `BindingOp`, not yet transformed into a particular type of binding.
+ */
+function createBindingOp(target, kind, name, expression, unit, securityContext, isTextAttribute, isStructuralTemplateAttribute, templateKind, i18nMessage, sourceSpan) {
+  return {
+    kind: OpKind.Binding,
+    bindingKind: kind,
+    target,
+    name,
+    expression,
+    unit,
+    securityContext,
+    isTextAttribute,
+    isStructuralTemplateAttribute,
+    templateKind,
+    i18nContext: null,
+    i18nMessage,
+    sourceSpan,
+    ...NEW_OP
+  };
+}
+/**
+ * Create a `PropertyOp`.
+ */
+function createPropertyOp(target, name, expression, isAnimationTrigger, securityContext, isStructuralTemplateAttribute, templateKind, i18nContext, i18nMessage, sourceSpan) {
+  return {
+    kind: OpKind.Property,
+    target,
+    name,
+    expression,
+    isAnimationTrigger,
+    securityContext,
+    sanitizer: null,
+    isStructuralTemplateAttribute,
+    templateKind,
+    i18nContext,
+    i18nMessage,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+/** Create a `StylePropOp`. */
+function createStylePropOp(xref, name, expression, unit, sourceSpan) {
+  return {
+    kind: OpKind.StyleProp,
+    target: xref,
+    name,
+    expression,
+    unit,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+/**
+ * Create a `ClassPropOp`.
+ */
+function createClassPropOp(xref, name, expression, sourceSpan) {
+  return {
+    kind: OpKind.ClassProp,
+    target: xref,
+    name,
+    expression,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+/** Create a `StyleMapOp`. */
+function createStyleMapOp(xref, expression, sourceSpan) {
+  return {
+    kind: OpKind.StyleMap,
+    target: xref,
+    expression,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+/**
+ * Create a `ClassMapOp`.
+ */
+function createClassMapOp(xref, expression, sourceSpan) {
+  return {
+    kind: OpKind.ClassMap,
+    target: xref,
+    expression,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+/**
+ * Create an `AttributeOp`.
+ */
+function createAttributeOp(target, name, expression, securityContext, isTextAttribute, isStructuralTemplateAttribute, templateKind, i18nMessage, sourceSpan) {
+  return {
+    kind: OpKind.Attribute,
+    target,
+    name,
+    expression,
+    securityContext,
+    sanitizer: null,
+    isTextAttribute,
+    isStructuralTemplateAttribute,
+    templateKind,
+    i18nContext: null,
+    i18nMessage,
+    sourceSpan,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS,
+    ...NEW_OP
+  };
+}
+/**
+ * Create an `AdvanceOp`.
+ */
+function createAdvanceOp(delta, sourceSpan) {
+  return {
+    kind: OpKind.Advance,
+    delta,
+    sourceSpan,
+    ...NEW_OP
+  };
+}
+/**
+ * Create a conditional op, which will display an embedded view according to a condtion.
+ */
+function createConditionalOp(target, targetSlot, test, conditions, sourceSpan) {
+  return {
+    kind: OpKind.Conditional,
+    target,
+    targetSlot,
+    test,
+    conditions,
+    processed: null,
+    sourceSpan,
+    contextValue: null,
+    ...NEW_OP,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS
+  };
+}
+function createRepeaterOp(repeaterCreate, targetSlot, collection, sourceSpan) {
+  return {
+    kind: OpKind.Repeater,
+    target: repeaterCreate,
+    targetSlot,
+    collection,
+    sourceSpan,
+    ...NEW_OP,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT
+  };
+}
+function createDeferWhenOp(target, expr, prefetch, sourceSpan) {
+  return {
+    kind: OpKind.DeferWhen,
+    target,
+    expr,
+    prefetch,
+    sourceSpan,
+    ...NEW_OP,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    ...TRAIT_CONSUMES_VARS
+  };
+}
+/**
+ * Create an i18n expression op.
+ */
+function createI18nExpressionOp(context, target, i18nOwner, handle, expression, icuPlaceholder, i18nPlaceholder, resolutionTime, usage, name, sourceSpan) {
+  return {
+    kind: OpKind.I18nExpression,
+    context,
+    target,
+    i18nOwner,
+    handle,
+    expression,
+    icuPlaceholder,
+    i18nPlaceholder,
+    resolutionTime,
+    usage,
+    name,
+    sourceSpan,
+    ...NEW_OP,
+    ...TRAIT_CONSUMES_VARS,
+    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT
+  };
+}
+/**
+ * Creates an op to apply i18n expression ops.
+ */
+function createI18nApplyOp(owner, handle, sourceSpan) {
+  return {
+    kind: OpKind.I18nApply,
+    owner,
+    handle,
+    sourceSpan,
+    ...NEW_OP
+  };
+}
+var _a, _b, _c, _d, _e, _f;
 /**
  * Check whether a given `o.Expression` is a logical IR expression type.
  */
@@ -11964,26 +12957,30 @@ class LexicalReadExpr extends ExpressionBase {
     this.kind = ExpressionKind.LexicalRead;
   }
   visitExpression(visitor, context) {}
-  isEquivalent() {
-    return false;
+  isEquivalent(other) {
+    // We assume that the lexical reads are in the same context, which must be true for parent
+    // expressions to be equivalent.
+    // TODO: is this generally safe?
+    return this.name === other.name;
   }
   isConstant() {
     return false;
   }
   transformInternalExpressions() {}
+  clone() {
+    return new LexicalReadExpr(this.name);
+  }
 }
 /**
  * Runtime operation to retrieve the value of a local reference.
  */
 class ReferenceExpr extends ExpressionBase {
-  static #_ = _a = UsesSlotIndex;
-  constructor(target, offset) {
+  constructor(target, targetSlot, offset) {
     super();
     this.target = target;
+    this.targetSlot = targetSlot;
     this.offset = offset;
     this.kind = ExpressionKind.Reference;
-    this[_a] = true;
-    this.slot = null;
   }
   visitExpression() {}
   isEquivalent(e) {
@@ -11993,6 +12990,9 @@ class ReferenceExpr extends ExpressionBase {
     return false;
   }
   transformInternalExpressions() {}
+  clone() {
+    return new ReferenceExpr(this.target, this.targetSlot, this.offset);
+  }
 }
 /**
  * A reference to the current view context (usually the `ctx` variable in a template function).
@@ -12011,6 +13011,30 @@ class ContextExpr extends ExpressionBase {
     return false;
   }
   transformInternalExpressions() {}
+  clone() {
+    return new ContextExpr(this.view);
+  }
+}
+/**
+ * A reference to the current view context inside a track function.
+ */
+class TrackContextExpr extends ExpressionBase {
+  constructor(view) {
+    super();
+    this.view = view;
+    this.kind = ExpressionKind.TrackContext;
+  }
+  visitExpression() {}
+  isEquivalent(e) {
+    return e instanceof TrackContextExpr && e.view === this.view;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions() {}
+  clone() {
+    return new TrackContextExpr(this.view);
+  }
 }
 /**
  * Runtime operation to navigate to the next view context in the view hierarchy.
@@ -12029,6 +13053,11 @@ class NextContextExpr extends ExpressionBase {
     return false;
   }
   transformInternalExpressions() {}
+  clone() {
+    const expr = new NextContextExpr();
+    expr.steps = this.steps;
+    return expr;
+  }
 }
 /**
  * Runtime operation to snapshot the current view context.
@@ -12049,6 +13078,9 @@ class GetCurrentViewExpr extends ExpressionBase {
     return false;
   }
   transformInternalExpressions() {}
+  clone() {
+    return new GetCurrentViewExpr();
+  }
 }
 /**
  * Runtime operation to restore a snapshotted view.
@@ -12082,6 +13114,9 @@ class RestoreViewExpr extends ExpressionBase {
       this.view = transformExpressionsInExpression(this.view, transform, flags);
     }
   }
+  clone() {
+    return new RestoreViewExpr(this.view instanceof Expression ? this.view.clone() : this.view);
+  }
 }
 /**
  * Runtime operation to reset the current view context after `RestoreView`.
@@ -12104,6 +13139,9 @@ class ResetViewExpr extends ExpressionBase {
   transformInternalExpressions(transform, flags) {
     this.expr = transformExpressionsInExpression(this.expr, transform, flags);
   }
+  clone() {
+    return new ResetViewExpr(this.expr.clone());
+  }
 }
 /**
  * Read of a variable declared as an `ir.VariableOp` and referenced through its `ir.XrefId`.
@@ -12123,14 +13161,19 @@ class ReadVariableExpr extends ExpressionBase {
     return false;
   }
   transformInternalExpressions() {}
+  clone() {
+    const expr = new ReadVariableExpr(this.xref);
+    expr.name = this.name;
+    return expr;
+  }
 }
 class PureFunctionExpr extends ExpressionBase {
-  static #_ = (_b = ConsumesVarsTrait, _c = UsesVarOffset);
+  static #_ = (_a = ConsumesVarsTrait, _b = UsesVarOffset);
   constructor(expression, args) {
     super();
     this.kind = ExpressionKind.PureFunctionExpr;
+    this[_a] = true;
     this[_b] = true;
-    this[_c] = true;
     this.varOffset = null;
     /**
      * Once extracted to the `ConstantPool`, a reference to the function which defines the computation
@@ -12166,6 +13209,12 @@ class PureFunctionExpr extends ExpressionBase {
       this.args[i] = transformExpressionsInExpression(this.args[i], transform, flags);
     }
   }
+  clone() {
+    const expr = new PureFunctionExpr(this.body?.clone() ?? null, this.args.map(arg => arg.clone()));
+    expr.fn = this.fn?.clone() ?? null;
+    expr.varOffset = this.varOffset;
+    return expr;
+  }
 }
 class PureFunctionParameterExpr extends ExpressionBase {
   constructor(index) {
@@ -12181,19 +13230,21 @@ class PureFunctionParameterExpr extends ExpressionBase {
     return true;
   }
   transformInternalExpressions() {}
+  clone() {
+    return new PureFunctionParameterExpr(this.index);
+  }
 }
 class PipeBindingExpr extends ExpressionBase {
-  static #_ = (_d = UsesSlotIndex, _e = ConsumesVarsTrait, _f = UsesVarOffset);
-  constructor(target, name, args) {
+  static #_ = (_c = ConsumesVarsTrait, _d = UsesVarOffset);
+  constructor(target, targetSlot, name, args) {
     super();
     this.target = target;
+    this.targetSlot = targetSlot;
     this.name = name;
     this.args = args;
     this.kind = ExpressionKind.PipeBinding;
+    this[_c] = true;
     this[_d] = true;
-    this[_e] = true;
-    this[_f] = true;
-    this.slot = null;
     this.varOffset = null;
   }
   visitExpression(visitor, context) {
@@ -12212,20 +13263,24 @@ class PipeBindingExpr extends ExpressionBase {
       this.args[idx] = transformExpressionsInExpression(this.args[idx], transform, flags);
     }
   }
+  clone() {
+    const r = new PipeBindingExpr(this.target, this.targetSlot, this.name, this.args.map(a => a.clone()));
+    r.varOffset = this.varOffset;
+    return r;
+  }
 }
 class PipeBindingVariadicExpr extends ExpressionBase {
-  static #_ = (_g = UsesSlotIndex, _h = ConsumesVarsTrait, _j = UsesVarOffset);
-  constructor(target, name, args, numArgs) {
+  static #_ = (_e = ConsumesVarsTrait, _f = UsesVarOffset);
+  constructor(target, targetSlot, name, args, numArgs) {
     super();
     this.target = target;
+    this.targetSlot = targetSlot;
     this.name = name;
     this.args = args;
     this.numArgs = numArgs;
     this.kind = ExpressionKind.PipeBindingVariadic;
-    this[_g] = true;
-    this[_h] = true;
-    this[_j] = true;
-    this.slot = null;
+    this[_e] = true;
+    this[_f] = true;
     this.varOffset = null;
   }
   visitExpression(visitor, context) {
@@ -12239,6 +13294,277 @@ class PipeBindingVariadicExpr extends ExpressionBase {
   }
   transformInternalExpressions(transform, flags) {
     this.args = transformExpressionsInExpression(this.args, transform, flags);
+  }
+  clone() {
+    const r = new PipeBindingVariadicExpr(this.target, this.targetSlot, this.name, this.args.clone(), this.numArgs);
+    r.varOffset = this.varOffset;
+    return r;
+  }
+}
+class SafePropertyReadExpr extends ExpressionBase {
+  constructor(receiver, name) {
+    super();
+    this.receiver = receiver;
+    this.name = name;
+    this.kind = ExpressionKind.SafePropertyRead;
+  }
+  // An alias for name, which allows other logic to handle property reads and keyed reads together.
+  get index() {
+    return this.name;
+  }
+  visitExpression(visitor, context) {
+    this.receiver.visitExpression(visitor, context);
+  }
+  isEquivalent() {
+    return false;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions(transform, flags) {
+    this.receiver = transformExpressionsInExpression(this.receiver, transform, flags);
+  }
+  clone() {
+    return new SafePropertyReadExpr(this.receiver.clone(), this.name);
+  }
+}
+class SafeKeyedReadExpr extends ExpressionBase {
+  constructor(receiver, index, sourceSpan) {
+    super(sourceSpan);
+    this.receiver = receiver;
+    this.index = index;
+    this.kind = ExpressionKind.SafeKeyedRead;
+  }
+  visitExpression(visitor, context) {
+    this.receiver.visitExpression(visitor, context);
+    this.index.visitExpression(visitor, context);
+  }
+  isEquivalent() {
+    return false;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions(transform, flags) {
+    this.receiver = transformExpressionsInExpression(this.receiver, transform, flags);
+    this.index = transformExpressionsInExpression(this.index, transform, flags);
+  }
+  clone() {
+    return new SafeKeyedReadExpr(this.receiver.clone(), this.index.clone(), this.sourceSpan);
+  }
+}
+class SafeInvokeFunctionExpr extends ExpressionBase {
+  constructor(receiver, args) {
+    super();
+    this.receiver = receiver;
+    this.args = args;
+    this.kind = ExpressionKind.SafeInvokeFunction;
+  }
+  visitExpression(visitor, context) {
+    this.receiver.visitExpression(visitor, context);
+    for (const a of this.args) {
+      a.visitExpression(visitor, context);
+    }
+  }
+  isEquivalent() {
+    return false;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions(transform, flags) {
+    this.receiver = transformExpressionsInExpression(this.receiver, transform, flags);
+    for (let i = 0; i < this.args.length; i++) {
+      this.args[i] = transformExpressionsInExpression(this.args[i], transform, flags);
+    }
+  }
+  clone() {
+    return new SafeInvokeFunctionExpr(this.receiver.clone(), this.args.map(a => a.clone()));
+  }
+}
+class SafeTernaryExpr extends ExpressionBase {
+  constructor(guard, expr) {
+    super();
+    this.guard = guard;
+    this.expr = expr;
+    this.kind = ExpressionKind.SafeTernaryExpr;
+  }
+  visitExpression(visitor, context) {
+    this.guard.visitExpression(visitor, context);
+    this.expr.visitExpression(visitor, context);
+  }
+  isEquivalent() {
+    return false;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions(transform, flags) {
+    this.guard = transformExpressionsInExpression(this.guard, transform, flags);
+    this.expr = transformExpressionsInExpression(this.expr, transform, flags);
+  }
+  clone() {
+    return new SafeTernaryExpr(this.guard.clone(), this.expr.clone());
+  }
+}
+class EmptyExpr extends ExpressionBase {
+  constructor() {
+    super(...arguments);
+    this.kind = ExpressionKind.EmptyExpr;
+  }
+  visitExpression(visitor, context) {}
+  isEquivalent(e) {
+    return e instanceof EmptyExpr;
+  }
+  isConstant() {
+    return true;
+  }
+  clone() {
+    return new EmptyExpr();
+  }
+  transformInternalExpressions() {}
+}
+class AssignTemporaryExpr extends ExpressionBase {
+  constructor(expr, xref) {
+    super();
+    this.expr = expr;
+    this.xref = xref;
+    this.kind = ExpressionKind.AssignTemporaryExpr;
+    this.name = null;
+  }
+  visitExpression(visitor, context) {
+    this.expr.visitExpression(visitor, context);
+  }
+  isEquivalent() {
+    return false;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions(transform, flags) {
+    this.expr = transformExpressionsInExpression(this.expr, transform, flags);
+  }
+  clone() {
+    const a = new AssignTemporaryExpr(this.expr.clone(), this.xref);
+    a.name = this.name;
+    return a;
+  }
+}
+class ReadTemporaryExpr extends ExpressionBase {
+  constructor(xref) {
+    super();
+    this.xref = xref;
+    this.kind = ExpressionKind.ReadTemporaryExpr;
+    this.name = null;
+  }
+  visitExpression(visitor, context) {}
+  isEquivalent() {
+    return this.xref === this.xref;
+  }
+  isConstant() {
+    return false;
+  }
+  transformInternalExpressions(transform, flags) {}
+  clone() {
+    const r = new ReadTemporaryExpr(this.xref);
+    r.name = this.name;
+    return r;
+  }
+}
+class SlotLiteralExpr extends ExpressionBase {
+  constructor(slot) {
+    super();
+    this.slot = slot;
+    this.kind = ExpressionKind.SlotLiteralExpr;
+  }
+  visitExpression(visitor, context) {}
+  isEquivalent(e) {
+    return e instanceof SlotLiteralExpr && e.slot === this.slot;
+  }
+  isConstant() {
+    return true;
+  }
+  clone() {
+    return new SlotLiteralExpr(this.slot);
+  }
+  transformInternalExpressions() {}
+}
+class ConditionalCaseExpr extends ExpressionBase {
+  /**
+   * Create an expression for one branch of a conditional.
+   * @param expr The expression to be tested for this case. Might be null, as in an `else` case.
+   * @param target The Xref of the view to be displayed if this condition is true.
+   */
+  constructor(expr, target, targetSlot, alias = null) {
+    super();
+    this.expr = expr;
+    this.target = target;
+    this.targetSlot = targetSlot;
+    this.alias = alias;
+    this.kind = ExpressionKind.ConditionalCase;
+  }
+  visitExpression(visitor, context) {
+    if (this.expr !== null) {
+      this.expr.visitExpression(visitor, context);
+    }
+  }
+  isEquivalent(e) {
+    return e instanceof ConditionalCaseExpr && e.expr === this.expr;
+  }
+  isConstant() {
+    return true;
+  }
+  clone() {
+    return new ConditionalCaseExpr(this.expr, this.target, this.targetSlot);
+  }
+  transformInternalExpressions(transform, flags) {
+    if (this.expr !== null) {
+      this.expr = transformExpressionsInExpression(this.expr, transform, flags);
+    }
+  }
+}
+class DerivedRepeaterVarExpr extends ExpressionBase {
+  constructor(xref, identity) {
+    super();
+    this.xref = xref;
+    this.identity = identity;
+    this.kind = ExpressionKind.DerivedRepeaterVar;
+  }
+  transformInternalExpressions(transform, flags) {}
+  visitExpression(visitor, context) {}
+  isEquivalent(e) {
+    return e instanceof DerivedRepeaterVarExpr && e.identity === this.identity && e.xref === this.xref;
+  }
+  isConstant() {
+    return false;
+  }
+  clone() {
+    return new DerivedRepeaterVarExpr(this.xref, this.identity);
+  }
+}
+class ConstCollectedExpr extends ExpressionBase {
+  constructor(expr) {
+    super();
+    this.expr = expr;
+    this.kind = ExpressionKind.ConstCollected;
+  }
+  transformInternalExpressions(transform, flags) {
+    this.expr = transform(this.expr, flags);
+  }
+  visitExpression(visitor, context) {
+    this.expr.visitExpression(visitor, context);
+  }
+  isEquivalent(e) {
+    if (!(e instanceof ConstCollectedExpr)) {
+      return false;
+    }
+    return this.expr.isEquivalent(e.expr);
+  }
+  isConstant() {
+    return this.expr.isConstant();
+  }
+  clone() {
+    return new ConstCollectedExpr(this.expr);
   }
 }
 /**
@@ -12255,6 +13581,11 @@ var VisitorContextFlag;
   VisitorContextFlag[VisitorContextFlag["None"] = 0] = "None";
   VisitorContextFlag[VisitorContextFlag["InChildOperation"] = 1] = "InChildOperation";
 })(VisitorContextFlag || (VisitorContextFlag = {}));
+function transformExpressionsInInterpolation(interpolation, transform, flags) {
+  for (let i = 0; i < interpolation.expressions.length; i++) {
+    interpolation.expressions[i] = transformExpressionsInExpression(interpolation.expressions[i], transform, flags);
+  }
+}
 /**
  * Transform all `Expression`s in the AST of `op` with the `transform` function.
  *
@@ -12263,13 +13594,32 @@ var VisitorContextFlag;
  */
 function transformExpressionsInOp(op, transform, flags) {
   switch (op.kind) {
+    case OpKind.StyleProp:
+    case OpKind.StyleMap:
+    case OpKind.ClassProp:
+    case OpKind.ClassMap:
+    case OpKind.Binding:
+      if (op.expression instanceof Interpolation) {
+        transformExpressionsInInterpolation(op.expression, transform, flags);
+      } else {
+        op.expression = transformExpressionsInExpression(op.expression, transform, flags);
+      }
+      break;
     case OpKind.Property:
+    case OpKind.HostProperty:
+    case OpKind.Attribute:
+      if (op.expression instanceof Interpolation) {
+        transformExpressionsInInterpolation(op.expression, transform, flags);
+      } else {
+        op.expression = transformExpressionsInExpression(op.expression, transform, flags);
+      }
+      op.sanitizer = op.sanitizer && transformExpressionsInExpression(op.sanitizer, transform, flags);
+      break;
+    case OpKind.I18nExpression:
       op.expression = transformExpressionsInExpression(op.expression, transform, flags);
       break;
-    case OpKind.InterpolateProperty:
-      for (let i = 0; i < op.expressions.length; i++) {
-        op.expressions[i] = transformExpressionsInExpression(op.expressions[i], transform, flags);
-      }
+    case OpKind.InterpolateText:
+      transformExpressionsInInterpolation(op.interpolation, transform, flags);
       break;
     case OpKind.Statement:
       transformExpressionsInStatement(op.statement, transform, flags);
@@ -12277,9 +13627,19 @@ function transformExpressionsInOp(op, transform, flags) {
     case OpKind.Variable:
       op.initializer = transformExpressionsInExpression(op.initializer, transform, flags);
       break;
-    case OpKind.InterpolateText:
-      for (let i = 0; i < op.expressions.length; i++) {
-        op.expressions[i] = transformExpressionsInExpression(op.expressions[i], transform, flags);
+    case OpKind.Conditional:
+      for (const condition of op.conditions) {
+        if (condition.expr === null) {
+          // This is a default case.
+          continue;
+        }
+        condition.expr = transformExpressionsInExpression(condition.expr, transform, flags);
+      }
+      if (op.processed !== null) {
+        op.processed = transformExpressionsInExpression(op.processed, transform, flags);
+      }
+      if (op.contextValue !== null) {
+        op.contextValue = transformExpressionsInExpression(op.contextValue, transform, flags);
       }
       break;
     case OpKind.Listener:
@@ -12287,16 +13647,66 @@ function transformExpressionsInOp(op, transform, flags) {
         transformExpressionsInOp(innerOp, transform, flags | VisitorContextFlag.InChildOperation);
       }
       break;
-    case OpKind.Element:
-    case OpKind.ElementStart:
-    case OpKind.ElementEnd:
+    case OpKind.ExtractedAttribute:
+      op.expression = op.expression && transformExpressionsInExpression(op.expression, transform, flags);
+      op.trustedValueFn = op.trustedValueFn && transformExpressionsInExpression(op.trustedValueFn, transform, flags);
+      break;
+    case OpKind.RepeaterCreate:
+      op.track = transformExpressionsInExpression(op.track, transform, flags);
+      if (op.trackByFn !== null) {
+        op.trackByFn = transformExpressionsInExpression(op.trackByFn, transform, flags);
+      }
+      break;
+    case OpKind.Repeater:
+      op.collection = transformExpressionsInExpression(op.collection, transform, flags);
+      break;
+    case OpKind.Defer:
+      if (op.loadingConfig !== null) {
+        op.loadingConfig = transformExpressionsInExpression(op.loadingConfig, transform, flags);
+      }
+      if (op.placeholderConfig !== null) {
+        op.placeholderConfig = transformExpressionsInExpression(op.placeholderConfig, transform, flags);
+      }
+      if (op.resolverFn !== null) {
+        op.resolverFn = transformExpressionsInExpression(op.resolverFn, transform, flags);
+      }
+      break;
+    case OpKind.I18nMessage:
+      for (const [placeholder, expr] of op.params) {
+        op.params.set(placeholder, transformExpressionsInExpression(expr, transform, flags));
+      }
+      for (const [placeholder, expr] of op.postprocessingParams) {
+        op.postprocessingParams.set(placeholder, transformExpressionsInExpression(expr, transform, flags));
+      }
+      break;
+    case OpKind.DeferWhen:
+      op.expr = transformExpressionsInExpression(op.expr, transform, flags);
+      break;
+    case OpKind.Advance:
     case OpKind.Container:
-    case OpKind.ContainerStart:
     case OpKind.ContainerEnd:
+    case OpKind.ContainerStart:
+    case OpKind.DeferOn:
+    case OpKind.DisableBindings:
+    case OpKind.Element:
+    case OpKind.ElementEnd:
+    case OpKind.ElementStart:
+    case OpKind.EnableBindings:
+    case OpKind.I18n:
+    case OpKind.I18nApply:
+    case OpKind.I18nContext:
+    case OpKind.I18nEnd:
+    case OpKind.I18nStart:
+    case OpKind.IcuEnd:
+    case OpKind.IcuStart:
+    case OpKind.Namespace:
+    case OpKind.Pipe:
+    case OpKind.Projection:
+    case OpKind.ProjectionDef:
     case OpKind.Template:
     case OpKind.Text:
-    case OpKind.Pipe:
-    case OpKind.Advance:
+    case OpKind.I18nAttributes:
+    case OpKind.IcuPlaceholder:
       // These operations contain no expressions.
       break;
     default:
@@ -12315,6 +13725,8 @@ function transformExpressionsInExpression(expr, transform, flags) {
   } else if (expr instanceof BinaryOperatorExpr) {
     expr.lhs = transformExpressionsInExpression(expr.lhs, transform, flags);
     expr.rhs = transformExpressionsInExpression(expr.rhs, transform, flags);
+  } else if (expr instanceof UnaryOperatorExpr) {
+    expr.expr = transformExpressionsInExpression(expr.expr, transform, flags);
   } else if (expr instanceof ReadPropExpr) {
     expr.receiver = transformExpressionsInExpression(expr.receiver, transform, flags);
   } else if (expr instanceof ReadKeyExpr) {
@@ -12346,6 +13758,21 @@ function transformExpressionsInExpression(expr, transform, flags) {
     if (expr.falseCase !== null) {
       expr.falseCase = transformExpressionsInExpression(expr.falseCase, transform, flags);
     }
+  } else if (expr instanceof TypeofExpr) {
+    expr.expr = transformExpressionsInExpression(expr.expr, transform, flags);
+  } else if (expr instanceof WriteVarExpr) {
+    expr.value = transformExpressionsInExpression(expr.value, transform, flags);
+  } else if (expr instanceof LocalizedString) {
+    for (let i = 0; i < expr.expressions.length; i++) {
+      expr.expressions[i] = transformExpressionsInExpression(expr.expressions[i], transform, flags);
+    }
+  } else if (expr instanceof NotExpr) {
+    expr.condition = transformExpressionsInExpression(expr.condition, transform, flags);
+  } else if (expr instanceof TaggedTemplateExpr) {
+    expr.tag = transformExpressionsInExpression(expr.tag, transform, flags);
+    expr.template.expressions = expr.template.expressions.map(e => transformExpressionsInExpression(e, transform, flags));
+  } else if (expr instanceof WrappedNodeExpr) {
+    // TODO: Do we need to transform any TS nodes nested inside of this expression?
   } else if (expr instanceof ReadVarExpr || expr instanceof ExternalExpr || expr instanceof LiteralExpr) {
     // No action for these types.
   } else {
@@ -12364,9 +13791,27 @@ function transformExpressionsInStatement(stmt, transform, flags) {
     stmt.expr = transformExpressionsInExpression(stmt.expr, transform, flags);
   } else if (stmt instanceof ReturnStatement) {
     stmt.value = transformExpressionsInExpression(stmt.value, transform, flags);
+  } else if (stmt instanceof DeclareVarStmt) {
+    if (stmt.value !== undefined) {
+      stmt.value = transformExpressionsInExpression(stmt.value, transform, flags);
+    }
+  } else if (stmt instanceof IfStmt) {
+    stmt.condition = transformExpressionsInExpression(stmt.condition, transform, flags);
+    for (const caseStatement of stmt.trueCase) {
+      transformExpressionsInStatement(caseStatement, transform, flags);
+    }
+    for (const caseStatement of stmt.falseCase) {
+      transformExpressionsInStatement(caseStatement, transform, flags);
+    }
   } else {
     throw new Error(`Unhandled statement kind: ${stmt.constructor.name}`);
   }
+}
+/**
+ * Checks whether the given expression is a string literal.
+ */
+function isStringLiteral(expr) {
+  return expr instanceof LiteralExpr && typeof expr.value === 'string';
 }
 
 /**
@@ -12404,6 +13849,12 @@ class OpList {
    * Push a new operation to the tail of the list.
    */
   push(op) {
+    if (Array.isArray(op)) {
+      for (const o of op) {
+        this.push(o);
+      }
+      return;
+    }
     OpList.assertIsNotEnd(op);
     OpList.assertIsUnowned(op);
     op.debugListId = this.debugListId;
@@ -12528,7 +13979,7 @@ class OpList {
     // Replace `oldOp` with the chain `first` -> `last`.
     if (oldPrev !== null) {
       oldPrev.next = first;
-      first.prev = oldOp.prev;
+      first.prev = oldPrev;
     }
     if (oldNext !== null) {
       oldNext.prev = last;
@@ -12550,22 +14001,44 @@ class OpList {
     op.next = null;
   }
   /**
-   * Insert `op` before `before`.
+   * Insert `op` before `target`.
    */
-  static insertBefore(op, before) {
-    OpList.assertIsOwned(before);
-    if (before.prev === null) {
+  static insertBefore(op, target) {
+    if (Array.isArray(op)) {
+      for (const o of op) {
+        this.insertBefore(o, target);
+      }
+      return;
+    }
+    OpList.assertIsOwned(target);
+    if (target.prev === null) {
       throw new Error(`AssertionError: illegal operation on list start`);
     }
     OpList.assertIsNotEnd(op);
     OpList.assertIsUnowned(op);
-    op.debugListId = before.debugListId;
+    op.debugListId = target.debugListId;
     // Just in case.
     op.prev = null;
-    before.prev.next = op;
-    op.prev = before.prev;
-    op.next = before;
-    before.prev = op;
+    target.prev.next = op;
+    op.prev = target.prev;
+    op.next = target;
+    target.prev = op;
+  }
+  /**
+   * Insert `op` after `target`.
+   */
+  static insertAfter(op, target) {
+    OpList.assertIsOwned(target);
+    if (target.next === null) {
+      throw new Error(`AssertionError: illegal operation on list end`);
+    }
+    OpList.assertIsNotEnd(op);
+    OpList.assertIsUnowned(op);
+    op.debugListId = target.debugListId;
+    target.next.prev = op;
+    op.next = target.next;
+    op.prev = target;
+    target.next = op;
   }
   /**
    * Asserts that `op` does not currently belong to a list.
@@ -12595,51 +14068,38 @@ class OpList {
     }
   }
 }
+class SlotHandle {
+  constructor() {
+    this.slot = null;
+  }
+}
 
 /**
- * Create a `StatementOp`.
+ * The set of OpKinds that represent the creation of an element or container
  */
-function createStatementOp(statement) {
-  return {
-    kind: OpKind.Statement,
-    statement,
-    ...NEW_OP
-  };
-}
+const elementContainerOpKinds = new Set([OpKind.Element, OpKind.ElementStart, OpKind.Container, OpKind.ContainerStart, OpKind.Template, OpKind.RepeaterCreate]);
 /**
- * Create a `VariableOp`.
+ * Checks whether the given operation represents the creation of an element or container.
  */
-function createVariableOp(xref, variable, initializer) {
-  return {
-    kind: OpKind.Variable,
-    xref,
-    variable,
-    initializer,
-    ...NEW_OP
-  };
+function isElementOrContainerOp(op) {
+  return elementContainerOpKinds.has(op.kind);
 }
-/**
- * Static structure shared by all operations.
- *
- * Used as a convenience via the spread operator (`...NEW_OP`) when creating new operations, and
- * ensures the fields are always in the same order.
- */
-const NEW_OP = {
-  debugListId: null,
-  prev: null,
-  next: null
-};
-
 /**
  * Create an `ElementStartOp`.
  */
-function createElementStartOp(tag, xref) {
+function createElementStartOp(tag, xref, namespace, i18nPlaceholder, startSourceSpan, wholeSourceSpan) {
   return {
     kind: OpKind.ElementStart,
     xref,
     tag,
-    attributes: new ElementAttributes(),
+    handle: new SlotHandle(),
+    attributes: null,
     localRefs: [],
+    nonBindable: false,
+    namespace,
+    i18nPlaceholder,
+    startSourceSpan,
+    wholeSourceSpan,
     ...TRAIT_CONSUMES_SLOT,
     ...NEW_OP
   };
@@ -12647,25 +14107,76 @@ function createElementStartOp(tag, xref) {
 /**
  * Create a `TemplateOp`.
  */
-function createTemplateOp(xref, tag) {
+function createTemplateOp(xref, templateKind, tag, functionNameSuffix, namespace, i18nPlaceholder, startSourceSpan, wholeSourceSpan) {
   return {
     kind: OpKind.Template,
     xref,
-    attributes: new ElementAttributes(),
+    templateKind,
+    attributes: null,
     tag,
+    handle: new SlotHandle(),
+    functionNameSuffix,
     decls: null,
     vars: null,
     localRefs: [],
+    nonBindable: false,
+    namespace,
+    i18nPlaceholder,
+    startSourceSpan,
+    wholeSourceSpan,
     ...TRAIT_CONSUMES_SLOT,
     ...NEW_OP
+  };
+}
+function createRepeaterCreateOp(primaryView, emptyView, tag, track, varNames, i18nPlaceholder, emptyI18nPlaceholder, startSourceSpan, wholeSourceSpan) {
+  return {
+    kind: OpKind.RepeaterCreate,
+    attributes: null,
+    xref: primaryView,
+    handle: new SlotHandle(),
+    emptyView,
+    track,
+    trackByFn: null,
+    tag,
+    functionNameSuffix: 'For',
+    namespace: Namespace.HTML,
+    nonBindable: false,
+    localRefs: [],
+    decls: null,
+    vars: null,
+    varNames,
+    usesComponentInstance: false,
+    i18nPlaceholder,
+    emptyI18nPlaceholder,
+    startSourceSpan,
+    wholeSourceSpan,
+    ...TRAIT_CONSUMES_SLOT,
+    ...NEW_OP,
+    ...TRAIT_CONSUMES_VARS,
+    numSlotsUsed: emptyView === null ? 2 : 3
   };
 }
 /**
  * Create an `ElementEndOp`.
  */
-function createElementEndOp(xref) {
+function createElementEndOp(xref, sourceSpan) {
   return {
     kind: OpKind.ElementEnd,
+    xref,
+    sourceSpan,
+    ...NEW_OP
+  };
+}
+function createDisableBindingsOp(xref) {
+  return {
+    kind: OpKind.DisableBindings,
+    xref,
+    ...NEW_OP
+  };
+}
+function createEnableBindingsOp(xref) {
+  return {
+    kind: OpKind.EnableBindings,
     xref,
     ...NEW_OP
   };
@@ -12673,1431 +14184,738 @@ function createElementEndOp(xref) {
 /**
  * Create a `TextOp`.
  */
-function createTextOp(xref, initialValue) {
+function createTextOp(xref, initialValue, icuPlaceholder, sourceSpan) {
   return {
     kind: OpKind.Text,
     xref,
+    handle: new SlotHandle(),
     initialValue,
+    icuPlaceholder,
+    sourceSpan,
     ...TRAIT_CONSUMES_SLOT,
     ...NEW_OP
   };
 }
 /**
- * Create a `ListenerOp`.
+ * Create a `ListenerOp`. Host bindings reuse all the listener logic.
  */
-function createListenerOp(target, name, tag) {
+function createListenerOp(target, targetSlot, name, tag, handlerOps, animationPhase, eventTarget, hostListener, sourceSpan) {
+  const handlerList = new OpList();
+  handlerList.push(handlerOps);
   return {
     kind: OpKind.Listener,
     target,
+    targetSlot,
     tag,
+    hostListener,
     name,
-    handlerOps: new OpList(),
+    handlerOps: handlerList,
     handlerFnName: null,
-    ...NEW_OP,
-    ...TRAIT_USES_SLOT_INDEX
+    consumesDollarEvent: false,
+    isAnimationListener: animationPhase !== null,
+    animationPhase,
+    eventTarget,
+    sourceSpan,
+    ...NEW_OP
   };
 }
-function createPipeOp(xref, name) {
+function createPipeOp(xref, slot, name) {
   return {
     kind: OpKind.Pipe,
     xref,
+    handle: slot,
     name,
     ...NEW_OP,
     ...TRAIT_CONSUMES_SLOT
   };
 }
-
-/**
- * Create an `InterpolationTextOp`.
- */
-function createInterpolateTextOp(xref, strings, expressions) {
+function createNamespaceOp(namespace) {
   return {
-    kind: OpKind.InterpolateText,
-    target: xref,
-    strings,
-    expressions,
-    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
-    ...TRAIT_CONSUMES_VARS,
+    kind: OpKind.Namespace,
+    active: namespace,
     ...NEW_OP
   };
 }
-/**
- * Create a `PropertyOp`.
- */
-function createPropertyOp(xref, name, expression) {
+function createProjectionDefOp(def) {
   return {
-    kind: OpKind.Property,
-    target: xref,
+    kind: OpKind.ProjectionDef,
+    def,
+    ...NEW_OP
+  };
+}
+function createProjectionOp(xref, selector, i18nPlaceholder, attributes, sourceSpan) {
+  return {
+    kind: OpKind.Projection,
+    xref,
+    handle: new SlotHandle(),
+    selector,
+    i18nPlaceholder,
+    projectionSlotIndex: 0,
+    attributes,
+    localRefs: [],
+    sourceSpan,
+    ...NEW_OP,
+    ...TRAIT_CONSUMES_SLOT
+  };
+}
+/**
+ * Create an `ExtractedAttributeOp`.
+ */
+function createExtractedAttributeOp(target, bindingKind, name, expression, i18nContext, i18nMessage, securityContext) {
+  return {
+    kind: OpKind.ExtractedAttribute,
+    target,
+    bindingKind,
     name,
     expression,
-    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
-    ...TRAIT_CONSUMES_VARS,
+    i18nContext,
+    i18nMessage,
+    securityContext,
+    trustedValueFn: null,
+    ...NEW_OP
+  };
+}
+function createDeferOp(xref, main, mainSlot, metadata, sourceSpan) {
+  return {
+    kind: OpKind.Defer,
+    xref,
+    handle: new SlotHandle(),
+    mainView: main,
+    mainSlot,
+    loadingView: null,
+    loadingSlot: null,
+    loadingConfig: null,
+    loadingMinimumTime: null,
+    loadingAfterTime: null,
+    placeholderView: null,
+    placeholderSlot: null,
+    placeholderConfig: null,
+    placeholderMinimumTime: null,
+    errorView: null,
+    errorSlot: null,
+    metadata,
+    resolverFn: null,
+    sourceSpan,
+    ...NEW_OP,
+    ...TRAIT_CONSUMES_SLOT,
+    numSlotsUsed: 2
+  };
+}
+function createDeferOnOp(defer, trigger, prefetch, sourceSpan) {
+  return {
+    kind: OpKind.DeferOn,
+    defer,
+    trigger,
+    prefetch,
+    sourceSpan,
     ...NEW_OP
   };
 }
 /**
- * Create a `InterpolateProperty`.
+ * Create an `ExtractedMessageOp`.
  */
-function createInterpolatePropertyOp(xref, name, strings, expressions) {
+function createI18nMessageOp(xref, i18nContext, i18nBlock, message, messagePlaceholder, params, postprocessingParams, needsPostprocessing) {
   return {
-    kind: OpKind.InterpolateProperty,
-    target: xref,
+    kind: OpKind.I18nMessage,
+    xref,
+    i18nContext,
+    i18nBlock,
+    message,
+    messagePlaceholder,
+    params,
+    postprocessingParams,
+    needsPostprocessing,
+    subMessages: [],
+    ...NEW_OP
+  };
+}
+/**
+ * Create an `I18nStartOp`.
+ */
+function createI18nStartOp(xref, message, root) {
+  return {
+    kind: OpKind.I18nStart,
+    xref,
+    handle: new SlotHandle(),
+    root: root ?? xref,
+    message,
+    messageIndex: null,
+    subTemplateIndex: null,
+    context: null,
+    ...NEW_OP,
+    ...TRAIT_CONSUMES_SLOT
+  };
+}
+/**
+ * Create an `I18nEndOp`.
+ */
+function createI18nEndOp(xref) {
+  return {
+    kind: OpKind.I18nEnd,
+    xref,
+    ...NEW_OP
+  };
+}
+/**
+ * Creates an ICU start op.
+ */
+function createIcuStartOp(xref, message, messagePlaceholder, sourceSpan) {
+  return {
+    kind: OpKind.IcuStart,
+    xref,
+    message,
+    messagePlaceholder,
+    context: null,
+    sourceSpan,
+    ...NEW_OP
+  };
+}
+/**
+ * Creates an ICU end op.
+ */
+function createIcuEndOp(xref) {
+  return {
+    kind: OpKind.IcuEnd,
+    xref,
+    ...NEW_OP
+  };
+}
+/**
+ * Creates an ICU placeholder op.
+ */
+function createIcuPlaceholderOp(xref, name, strings) {
+  return {
+    kind: OpKind.IcuPlaceholder,
+    xref,
     name,
     strings,
-    expressions,
-    ...TRAIT_DEPENDS_ON_SLOT_CONTEXT,
+    expressionPlaceholders: [],
+    ...NEW_OP
+  };
+}
+function createI18nContextOp(contextKind, xref, i18nBlock, message, sourceSpan) {
+  if (i18nBlock === null && contextKind !== I18nContextKind.Attr) {
+    throw new Error('AssertionError: i18nBlock must be provided for non-attribute contexts.');
+  }
+  return {
+    kind: OpKind.I18nContext,
+    contextKind,
+    xref,
+    i18nBlock,
+    message,
+    sourceSpan,
+    params: new Map(),
+    postprocessingParams: new Map(),
+    ...NEW_OP
+  };
+}
+function createI18nAttributesOp(xref, handle, target) {
+  return {
+    kind: OpKind.I18nAttributes,
+    xref,
+    handle,
+    target,
+    i18nAttributesConfig: null,
+    ...NEW_OP,
+    ...TRAIT_CONSUMES_SLOT
+  };
+}
+function literalOrArrayLiteral$1(value) {
+  if (Array.isArray(value)) {
+    return literalArr(value.map(literalOrArrayLiteral$1));
+  }
+  return literal(value, INFERRED_TYPE);
+}
+function createHostPropertyOp(name, expression, isAnimationTrigger, i18nContext, securityContext, sourceSpan) {
+  return {
+    kind: OpKind.HostProperty,
+    name,
+    expression,
+    isAnimationTrigger,
+    i18nContext,
+    securityContext,
+    sanitizer: null,
+    sourceSpan,
     ...TRAIT_CONSUMES_VARS,
     ...NEW_OP
   };
 }
-/**
- * Create an `AdvanceOp`.
- */
-function createAdvanceOp(delta) {
-  return {
-    kind: OpKind.Advance,
-    delta,
-    ...NEW_OP
-  };
-}
 
 /**
- * Converts the semantic attributes of element-like operations (elements, templates) into constant
- * array expressions, and lifts them into the overall component `consts`.
+ * When referenced in the template's context parameters, this indicates a reference to the entire
+ * context object, rather than a specific parameter.
  */
-function phaseConstCollection(cpl) {
-  for (const [_, view] of cpl.views) {
-    for (const op of view.create) {
-      if (op.kind !== OpKind.ElementStart && op.kind !== OpKind.Element && op.kind !== OpKind.Template) {
-        continue;
-      } else if (!(op.attributes instanceof ElementAttributes)) {
-        continue;
-      }
-      const attrArray = serializeAttributes(op.attributes);
-      if (attrArray.entries.length > 0) {
-        op.attributes = cpl.addConst(attrArray);
-      } else {
-        op.attributes = null;
-      }
-    }
-  }
-}
-function serializeAttributes({
-  attributes,
-  bindings,
-  classes,
-  i18n,
-  projectAs,
-  styles,
-  template
-}) {
-  const attrArray = [...attributes];
-  if (projectAs !== null) {
-    attrArray.push(literal(5 /* core.AttributeMarker.ProjectAs */), literal(projectAs));
-  }
-  if (classes.length > 0) {
-    attrArray.push(literal(1 /* core.AttributeMarker.Classes */), ...classes);
-  }
-  if (styles.length > 0) {
-    attrArray.push(literal(2 /* core.AttributeMarker.Styles */), ...styles);
-  }
-  if (bindings.length > 0) {
-    attrArray.push(literal(3 /* core.AttributeMarker.Bindings */), ...bindings);
-  }
-  if (template.length > 0) {
-    attrArray.push(literal(4 /* core.AttributeMarker.Template */), ...template);
-  }
-  if (i18n.length > 0) {
-    attrArray.push(literal(6 /* core.AttributeMarker.I18n */), ...i18n);
-  }
-  return literalArr(attrArray);
-}
-const REPLACEMENTS = new Map([[OpKind.ElementEnd, [OpKind.ElementStart, OpKind.Element]], [OpKind.ContainerEnd, [OpKind.ContainerStart, OpKind.Container]]]);
+const CTX_REF = 'CTX_REF_MARKER';
+var CompilationJobKind;
+(function (CompilationJobKind) {
+  CompilationJobKind[CompilationJobKind["Tmpl"] = 0] = "Tmpl";
+  CompilationJobKind[CompilationJobKind["Host"] = 1] = "Host";
+  CompilationJobKind[CompilationJobKind["Both"] = 2] = "Both";
+})(CompilationJobKind || (CompilationJobKind = {}));
 /**
- * Replace sequences of mergable elements (e.g. `ElementStart` and `ElementEnd`) with a consolidated
- * element (e.g. `Element`).
+ * An entire ongoing compilation, which will result in one or more template functions when complete.
+ * Contains one or more corresponding compilation units.
  */
-function phaseEmptyElements(cpl) {
-  for (const [_, view] of cpl.views) {
-    for (const op of view.create) {
-      const opReplacements = REPLACEMENTS.get(op.kind);
-      if (opReplacements === undefined) {
-        continue;
-      }
-      const [startKind, mergedKind] = opReplacements;
-      if (op.prev !== null && op.prev.kind === startKind) {
-        // Transmute the start instruction to the merged version. This is safe as they're designed
-        // to be identical apart from the `kind`.
-        op.prev.kind = mergedKind;
-        // Remove the end instruction.
-        OpList.remove(op);
-      }
-    }
+class CompilationJob {
+  constructor(componentName, pool, compatibility) {
+    this.componentName = componentName;
+    this.pool = pool;
+    this.compatibility = compatibility;
+    this.kind = CompilationJobKind.Both;
+    /**
+     * Tracks the next `ir.XrefId` which can be assigned as template structures are ingested.
+     */
+    this.nextXrefId = 0;
   }
-}
-
-/**
- * Generate `ir.AdvanceOp`s in between `ir.UpdateOp`s that ensure the runtime's implicit slot
- * context will be advanced correctly.
- */
-function phaseGenerateAdvance(cpl) {
-  for (const [_, view] of cpl.views) {
-    // First build a map of all of the declarations in the view that have assigned slots.
-    const slotMap = new Map();
-    for (const op of view.create) {
-      if (!hasConsumesSlotTrait(op)) {
-        continue;
-      } else if (op.slot === null) {
-        throw new Error(`AssertionError: expected slots to have been allocated before generating advance() calls`);
-      }
-      slotMap.set(op.xref, op.slot);
-    }
-    // Next, step through the update operations and generate `ir.AdvanceOp`s as required to ensure
-    // the runtime's implicit slot counter will be set to the correct slot before executing each
-    // update operation which depends on it.
-    //
-    // To do that, we track what the runtime's slot counter will be through the update operations.
-    let slotContext = 0;
-    for (const op of view.update) {
-      if (!hasDependsOnSlotContextTrait(op)) {
-        // `op` doesn't depend on the slot counter, so it can be skipped.
-        continue;
-      } else if (!slotMap.has(op.target)) {
-        // We expect ops that _do_ depend on the slot counter to point at declarations that exist in
-        // the `slotMap`.
-        throw new Error(`AssertionError: reference to unknown slot for var ${op.target}`);
-      }
-      const slot = slotMap.get(op.target);
-      // Does the slot counter need to be adjusted?
-      if (slotContext !== slot) {
-        // If so, generate an `ir.AdvanceOp` to advance the counter.
-        const delta = slot - slotContext;
-        if (delta < 0) {
-          throw new Error(`AssertionError: slot counter should never need to move backwards`);
-        }
-        OpList.insertBefore(createAdvanceOp(delta), op);
-        slotContext = slot;
-      }
-    }
-  }
-}
-
-// This file contains helpers for generating calls to Ivy instructions. In particular, each
-// instruction type is represented as a function, which may select a specific instruction variant
-// depending on the exact arguments.
-function element(slot, tag, constIndex, localRefIndex) {
-  return elementOrContainerBase(Identifiers.element, slot, tag, constIndex, localRefIndex);
-}
-function elementStart(slot, tag, constIndex, localRefIndex) {
-  return elementOrContainerBase(Identifiers.elementStart, slot, tag, constIndex, localRefIndex);
-}
-function elementOrContainerBase(instruction, slot, tag, constIndex, localRefIndex) {
-  const args = [literal(slot)];
-  if (tag !== null) {
-    args.push(literal(tag));
-  }
-  if (localRefIndex !== null) {
-    args.push(literal(constIndex),
-    // might be null, but that's okay.
-    literal(localRefIndex));
-  } else if (constIndex !== null) {
-    args.push(literal(constIndex));
-  }
-  return call(instruction, args);
-}
-function elementEnd() {
-  return call(Identifiers.elementEnd, []);
-}
-function elementContainerStart(slot, constIndex, localRefIndex) {
-  return elementOrContainerBase(Identifiers.elementContainerStart, slot, /* tag */null, constIndex, localRefIndex);
-}
-function elementContainer(slot, constIndex, localRefIndex) {
-  return elementOrContainerBase(Identifiers.elementContainer, slot, /* tag */null, constIndex, localRefIndex);
-}
-function elementContainerEnd() {
-  return call(Identifiers.elementContainerEnd, []);
-}
-function template(slot, templateFnRef, decls, vars, tag, constIndex) {
-  return call(Identifiers.templateCreate, [literal(slot), templateFnRef, literal(decls), literal(vars), literal(tag), literal(constIndex)]);
-}
-function listener(name, handlerFn) {
-  return call(Identifiers.listener, [literal(name), handlerFn]);
-}
-function pipe(slot, name) {
-  return call(Identifiers.pipe, [literal(slot), literal(name)]);
-}
-function advance(delta) {
-  return call(Identifiers.advance, [literal(delta)]);
-}
-function reference(slot) {
-  return importExpr(Identifiers.reference).callFn([literal(slot)]);
-}
-function nextContext(steps) {
-  return importExpr(Identifiers.nextContext).callFn(steps === 1 ? [] : [literal(steps)]);
-}
-function getCurrentView() {
-  return importExpr(Identifiers.getCurrentView).callFn([]);
-}
-function restoreView(savedView) {
-  return importExpr(Identifiers.restoreView).callFn([savedView]);
-}
-function resetView(returnValue) {
-  return importExpr(Identifiers.resetView).callFn([returnValue]);
-}
-function text(slot, initialValue) {
-  const args = [literal(slot)];
-  if (initialValue !== '') {
-    args.push(literal(initialValue));
-  }
-  return call(Identifiers.text, args);
-}
-function property(name, expression) {
-  return call(Identifiers.property, [literal(name), expression]);
-}
-const PIPE_BINDINGS = [Identifiers.pipeBind1, Identifiers.pipeBind2, Identifiers.pipeBind3, Identifiers.pipeBind4];
-function pipeBind(slot, varOffset, args) {
-  if (args.length < 1 || args.length > PIPE_BINDINGS.length) {
-    throw new Error(`pipeBind() argument count out of bounds`);
-  }
-  const instruction = PIPE_BINDINGS[args.length - 1];
-  return importExpr(instruction).callFn([literal(slot), literal(varOffset), ...args]);
-}
-function pipeBindV(slot, varOffset, args) {
-  return importExpr(Identifiers.pipeBindV).callFn([literal(slot), literal(varOffset), args]);
-}
-function textInterpolate(strings, expressions) {
-  if (strings.length < 1 || expressions.length !== strings.length - 1) {
-    throw new Error(`AssertionError: expected specific shape of args for strings/expressions in interpolation`);
-  }
-  const interpolationArgs = [];
-  if (expressions.length === 1 && strings[0] === '' && strings[1] === '') {
-    interpolationArgs.push(expressions[0]);
-  } else {
-    let idx;
-    for (idx = 0; idx < expressions.length; idx++) {
-      interpolationArgs.push(literal(strings[idx]), expressions[idx]);
-    }
-    // idx points at the last string.
-    interpolationArgs.push(literal(strings[idx]));
-  }
-  return callVariadicInstruction(TEXT_INTERPOLATE_CONFIG, [], interpolationArgs);
-}
-function propertyInterpolate(name, strings, expressions) {
-  if (strings.length < 1 || expressions.length !== strings.length - 1) {
-    throw new Error(`AssertionError: expected specific shape of args for strings/expressions in interpolation`);
-  }
-  const interpolationArgs = [];
-  if (expressions.length === 1 && strings[0] === '' && strings[1] === '') {
-    interpolationArgs.push(expressions[0]);
-  } else {
-    let idx;
-    for (idx = 0; idx < expressions.length; idx++) {
-      interpolationArgs.push(literal(strings[idx]), expressions[idx]);
-    }
-    // idx points at the last string.
-    interpolationArgs.push(literal(strings[idx]));
-  }
-  return callVariadicInstruction(PROPERTY_INTERPOLATE_CONFIG, [literal(name)], interpolationArgs);
-}
-function pureFunction(varOffset, fn, args) {
-  return callVariadicInstructionExpr(PURE_FUNCTION_CONFIG, [literal(varOffset), fn], args);
-}
-function call(instruction, args) {
-  return createStatementOp(importExpr(instruction).callFn(args).toStmt());
-}
-/**
- * `InterpolationConfig` for the `textInterpolate` instruction.
- */
-const TEXT_INTERPOLATE_CONFIG = {
-  constant: [Identifiers.textInterpolate, Identifiers.textInterpolate1, Identifiers.textInterpolate2, Identifiers.textInterpolate3, Identifiers.textInterpolate4, Identifiers.textInterpolate5, Identifiers.textInterpolate6, Identifiers.textInterpolate7, Identifiers.textInterpolate8],
-  variable: Identifiers.textInterpolateV,
-  mapping: n => {
-    if (n % 2 === 0) {
-      throw new Error(`Expected odd number of arguments`);
-    }
-    return (n - 1) / 2;
-  }
-};
-/**
- * `InterpolationConfig` for the `propertyInterpolate` instruction.
- */
-const PROPERTY_INTERPOLATE_CONFIG = {
-  constant: [Identifiers.propertyInterpolate, Identifiers.propertyInterpolate1, Identifiers.propertyInterpolate2, Identifiers.propertyInterpolate3, Identifiers.propertyInterpolate4, Identifiers.propertyInterpolate5, Identifiers.propertyInterpolate6, Identifiers.propertyInterpolate7, Identifiers.propertyInterpolate8],
-  variable: Identifiers.propertyInterpolateV,
-  mapping: n => {
-    if (n % 2 === 0) {
-      throw new Error(`Expected odd number of arguments`);
-    }
-    return (n - 1) / 2;
-  }
-};
-const PURE_FUNCTION_CONFIG = {
-  constant: [Identifiers.pureFunction0, Identifiers.pureFunction1, Identifiers.pureFunction2, Identifiers.pureFunction3, Identifiers.pureFunction4, Identifiers.pureFunction5, Identifiers.pureFunction6, Identifiers.pureFunction7, Identifiers.pureFunction8],
-  variable: Identifiers.pureFunctionV,
-  mapping: n => n
-};
-function callVariadicInstructionExpr(config, baseArgs, interpolationArgs) {
-  const n = config.mapping(interpolationArgs.length);
-  if (n < config.constant.length) {
-    // Constant calling pattern.
-    return importExpr(config.constant[n]).callFn([...baseArgs, ...interpolationArgs]);
-  } else if (config.variable !== null) {
-    // Variable calling pattern.
-    return importExpr(config.variable).callFn([...baseArgs, literalArr(interpolationArgs)]);
-  } else {
-    throw new Error(`AssertionError: unable to call variadic function`);
-  }
-}
-function callVariadicInstruction(config, baseArgs, interpolationArgs) {
-  return createStatementOp(callVariadicInstructionExpr(config, baseArgs, interpolationArgs).toStmt());
-}
-
-/**
- * Compiles semantic operations across all views and generates output `o.Statement`s with actual
- * runtime calls in their place.
- *
- * Reification replaces semantic operations with selected Ivy instructions and other generated code
- * structures. After reification, the create/update operation lists of all views should only contain
- * `ir.StatementOp`s (which wrap generated `o.Statement`s).
- */
-function phaseReify(cpl) {
-  for (const [_, view] of cpl.views) {
-    reifyCreateOperations(view, view.create);
-    reifyUpdateOperations(view, view.update);
-  }
-}
-function reifyCreateOperations(view, ops) {
-  for (const op of ops) {
-    transformExpressionsInOp(op, reifyIrExpression, VisitorContextFlag.None);
-    switch (op.kind) {
-      case OpKind.Text:
-        OpList.replace(op, text(op.slot, op.initialValue));
-        break;
-      case OpKind.ElementStart:
-        OpList.replace(op, elementStart(op.slot, op.tag, op.attributes, op.localRefs));
-        break;
-      case OpKind.Element:
-        OpList.replace(op, element(op.slot, op.tag, op.attributes, op.localRefs));
-        break;
-      case OpKind.ElementEnd:
-        OpList.replace(op, elementEnd());
-        break;
-      case OpKind.ContainerStart:
-        OpList.replace(op, elementContainerStart(op.slot, op.attributes, op.localRefs));
-        break;
-      case OpKind.Container:
-        OpList.replace(op, elementContainer(op.slot, op.attributes, op.localRefs));
-        break;
-      case OpKind.ContainerEnd:
-        OpList.replace(op, elementContainerEnd());
-        break;
-      case OpKind.Template:
-        const childView = view.tpl.views.get(op.xref);
-        OpList.replace(op, template(op.slot, variable(childView.fnName), childView.decls, childView.vars, op.tag, op.attributes));
-        break;
-      case OpKind.Pipe:
-        OpList.replace(op, pipe(op.slot, op.name));
-        break;
-      case OpKind.Listener:
-        const listenerFn = reifyListenerHandler(view, op.handlerFnName, op.handlerOps);
-        OpList.replace(op, listener(op.name, listenerFn));
-        break;
-      case OpKind.Variable:
-        if (op.variable.name === null) {
-          throw new Error(`AssertionError: unnamed variable ${op.xref}`);
-        }
-        OpList.replace(op, createStatementOp(new DeclareVarStmt(op.variable.name, op.initializer, undefined, StmtModifier.Final)));
-        break;
-      case OpKind.Statement:
-        // Pass statement operations directly through.
-        break;
-      default:
-        throw new Error(`AssertionError: Unsupported reification of create op ${OpKind[op.kind]}`);
-    }
-  }
-}
-function reifyUpdateOperations(_view, ops) {
-  for (const op of ops) {
-    transformExpressionsInOp(op, reifyIrExpression, VisitorContextFlag.None);
-    switch (op.kind) {
-      case OpKind.Advance:
-        OpList.replace(op, advance(op.delta));
-        break;
-      case OpKind.Property:
-        OpList.replace(op, property(op.name, op.expression));
-        break;
-      case OpKind.InterpolateProperty:
-        OpList.replace(op, propertyInterpolate(op.name, op.strings, op.expressions));
-        break;
-      case OpKind.InterpolateText:
-        OpList.replace(op, textInterpolate(op.strings, op.expressions));
-        break;
-      case OpKind.Variable:
-        if (op.variable.name === null) {
-          throw new Error(`AssertionError: unnamed variable ${op.xref}`);
-        }
-        OpList.replace(op, createStatementOp(new DeclareVarStmt(op.variable.name, op.initializer, undefined, StmtModifier.Final)));
-        break;
-      case OpKind.Statement:
-        // Pass statement operations directly through.
-        break;
-      default:
-        throw new Error(`AssertionError: Unsupported reification of update op ${OpKind[op.kind]}`);
-    }
-  }
-}
-function reifyIrExpression(expr) {
-  if (!isIrExpression(expr)) {
-    return expr;
-  }
-  switch (expr.kind) {
-    case ExpressionKind.NextContext:
-      return nextContext(expr.steps);
-    case ExpressionKind.Reference:
-      return reference(expr.slot + 1 + expr.offset);
-    case ExpressionKind.LexicalRead:
-      throw new Error(`AssertionError: unresolved LexicalRead of ${expr.name}`);
-    case ExpressionKind.RestoreView:
-      if (typeof expr.view === 'number') {
-        throw new Error(`AssertionError: unresolved RestoreView`);
-      }
-      return restoreView(expr.view);
-    case ExpressionKind.ResetView:
-      return resetView(expr.expr);
-    case ExpressionKind.GetCurrentView:
-      return getCurrentView();
-    case ExpressionKind.ReadVariable:
-      if (expr.name === null) {
-        throw new Error(`Read of unnamed variable ${expr.xref}`);
-      }
-      return variable(expr.name);
-    case ExpressionKind.PureFunctionExpr:
-      if (expr.fn === null) {
-        throw new Error(`AssertionError: expected PureFunctions to have been extracted`);
-      }
-      return pureFunction(expr.varOffset, expr.fn, expr.args);
-    case ExpressionKind.PureFunctionParameterExpr:
-      throw new Error(`AssertionError: expected PureFunctionParameterExpr to have been extracted`);
-    case ExpressionKind.PipeBinding:
-      return pipeBind(expr.slot, expr.varOffset, expr.args);
-    case ExpressionKind.PipeBindingVariadic:
-      return pipeBindV(expr.slot, expr.varOffset, expr.args);
-    default:
-      throw new Error(`AssertionError: Unsupported reification of ir.Expression kind: ${ExpressionKind[expr.kind]}`);
+  /**
+   * Generate a new unique `ir.XrefId` in this job.
+   */
+  allocateXrefId() {
+    return this.nextXrefId++;
   }
 }
 /**
- * Listeners get turned into a function expression, which may or may not have the `$event`
- * parameter defined.
+ * Compilation-in-progress of a whole component's template, including the main template and any
+ * embedded views or host bindings.
  */
-function reifyListenerHandler(view, name, handlerOps) {
-  const lookForEvent = new LookForEventVisitor();
-  // First, reify all instruction calls within `handlerOps`.
-  reifyUpdateOperations(view, handlerOps);
-  // Next, extract all the `o.Statement`s from the reified operations. We can expect that at this
-  // point, all operations have been converted to statements.
-  const handlerStmts = [];
-  for (const op of handlerOps) {
-    if (op.kind !== OpKind.Statement) {
-      throw new Error(`AssertionError: expected reified statements, but found op ${OpKind[op.kind]}`);
-    }
-    handlerStmts.push(op.statement);
+class ComponentCompilationJob extends CompilationJob {
+  constructor(componentName, pool, compatibility, relativeContextFilePath, i18nUseExternalIds, deferBlocksMeta) {
+    super(componentName, pool, compatibility);
+    this.relativeContextFilePath = relativeContextFilePath;
+    this.i18nUseExternalIds = i18nUseExternalIds;
+    this.deferBlocksMeta = deferBlocksMeta;
+    this.kind = CompilationJobKind.Tmpl;
+    this.fnSuffix = 'Template';
+    this.views = new Map();
+    /**
+     * Causes ngContentSelectors to be emitted, for content projection slots in the view. Possibly a
+     * reference into the constant pool.
+     */
+    this.contentSelectors = null;
+    /**
+     * Constant expressions used by operations within this component's compilation.
+     *
+     * This will eventually become the `consts` array in the component definition.
+     */
+    this.consts = [];
+    /**
+     * Initialization statements needed to set up the consts.
+     */
+    this.constsInitializers = [];
+    this.root = new ViewCompilationUnit(this, this.allocateXrefId(), null);
+    this.views.set(this.root.xref, this.root);
   }
-  // Scan the statement list for usages of `$event`. If referenced, we need to generate it as a
-  // parameter.
-  lookForEvent.visitAllStatements(handlerStmts, null);
-  const params = [];
-  if (lookForEvent.seenEventRead) {
-    // We need the `$event` parameter.
-    params.push(new FnParam('$event'));
+  /**
+   * Add a `ViewCompilation` for a new embedded view to this compilation.
+   */
+  allocateView(parent) {
+    const view = new ViewCompilationUnit(this, this.allocateXrefId(), parent);
+    this.views.set(view.xref, view);
+    return view;
   }
-  return fn(params, handlerStmts, undefined, undefined, name);
-}
-/**
- * Visitor which scans for reads of the `$event` special variable.
- */
-class LookForEventVisitor extends RecursiveAstVisitor$1 {
-  constructor() {
-    super(...arguments);
-    this.seenEventRead = false;
+  get units() {
+    return this.views.values();
   }
-  visitReadVarExpr(ast, context) {
-    if (ast.name === '$event') {
-      this.seenEventRead = true;
-    }
-  }
-}
-
-/**
- * Assign data slots for all operations which implement `ConsumesSlotOpTrait`, and propagate the
- * assigned data slots of those operations to any expressions which reference them via
- * `UsesSlotIndexTrait`.
- *
- * This phase is also responsible for counting the number of slots used for each view (its `decls`)
- * and propagating that number into the `Template` operations which declare embedded views.
- */
-function phaseSlotAllocation(cpl) {
-  // Map of all declarations in all views within the component which require an assigned slot index.
-  // This map needs to be global (across all views within the component) since it's possible to
-  // reference a slot from one view from an expression within another (e.g. local references work
-  // this way).
-  const slotMap = new Map();
-  // Process all views in the component and assign slot indexes.
-  for (const [_, view] of cpl.views) {
-    // Slot indices start at 0 for each view (and are not unique between views).
-    let slotCount = 0;
-    for (const op of view.create) {
-      // Only consider declarations which consume data slots.
-      if (!hasConsumesSlotTrait(op)) {
-        continue;
-      }
-      // Assign slots to this declaration starting at the current `slotCount`.
-      op.slot = slotCount;
-      // And track its assigned slot in the `slotMap`.
-      slotMap.set(op.xref, op.slot);
-      // Each declaration may use more than 1 slot, so increment `slotCount` to reserve the number
-      // of slots required.
-      slotCount += op.numSlotsUsed;
-    }
-    // Record the total number of slots used on the view itself. This will later be propagated into
-    // `ir.TemplateOp`s which declare those views (except for the root view).
-    view.decls = slotCount;
-  }
-  // After slot assignment, `slotMap` now contains slot assignments for every declaration in the
-  // whole template, across all views. Next, look for expressions which implement
-  // `UsesSlotIndexExprTrait` and propagate the assigned slot indexes into them.
-  // Additionally, this second scan allows us to find `ir.TemplateOp`s which declare views and
-  // propagate the number of slots used for each view into the operation which declares it.
-  for (const [_, view] of cpl.views) {
-    for (const op of view.ops()) {
-      if (op.kind === OpKind.Template) {
-        // Record the number of slots used by the view this `ir.TemplateOp` declares in the
-        // operation itself, so it can be emitted later.
-        const childView = cpl.views.get(op.xref);
-        op.decls = childView.decls;
-      }
-      if (hasUsesSlotIndexTrait(op) && op.slot === null) {
-        if (!slotMap.has(op.target)) {
-          // We do expect to find a slot allocated for everything which might be referenced.
-          throw new Error(`AssertionError: no slot allocated for ${OpKind[op.kind]} target ${op.target}`);
-        }
-        op.slot = slotMap.get(op.target);
-      }
-      // Process all `ir.Expression`s within this view, and look for `usesSlotIndexExprTrait`.
-      visitExpressionsInOp(op, expr => {
-        if (!isIrExpression(expr)) {
-          return;
-        }
-        if (!hasUsesSlotIndexTrait(expr) || expr.slot !== null) {
-          return;
-        }
-        // The `UsesSlotIndexExprTrait` indicates that this expression references something declared
-        // in this component template by its slot index. Use the `target` `ir.XrefId` to find the
-        // allocated slot for that declaration in `slotMap`.
-        if (!slotMap.has(expr.target)) {
-          // We do expect to find a slot allocated for everything which might be referenced.
-          throw new Error(`AssertionError: no slot allocated for ${expr.constructor.name} target ${expr.target}`);
-        }
-        // Record the allocated slot on the expression.
-        expr.slot = slotMap.get(expr.target);
-      });
-    }
-  }
-}
-
-/**
- * Counts the number of variable slots used within each view, and stores that on the view itself, as
- * well as propagates it to the `ir.TemplateOp` for embedded views.
- */
-function phaseVarCounting(cpl) {
-  // First, count the vars used in each view, and update the view-level counter.
-  for (const [_, view] of cpl.views) {
-    let varCount = 0;
-    for (const op of view.ops()) {
-      if (hasConsumesVarsTrait(op)) {
-        varCount += varsUsedByOp(op);
-      }
-      visitExpressionsInOp(op, expr => {
-        if (!isIrExpression(expr)) {
-          return;
-        }
-        // Some expressions require knowledge of the number of variable slots consumed.
-        if (hasUsesVarOffsetTrait(expr)) {
-          expr.varOffset = varCount;
-        }
-        if (hasConsumesVarsTrait(expr)) {
-          varCount += varsUsedByIrExpression(expr);
-        }
-      });
-    }
-    view.vars = varCount;
-  }
-  // Add var counts for each view to the `ir.TemplateOp` which declares that view (if the view is an
-  // embedded view).
-  for (const [_, view] of cpl.views) {
-    for (const op of view.create) {
-      if (op.kind !== OpKind.Template) {
-        continue;
-      }
-      const childView = cpl.views.get(op.xref);
-      op.vars = childView.vars;
-    }
-  }
-}
-/**
- * Different operations that implement `ir.UsesVarsTrait` use different numbers of variables, so
- * count the variables used by any particular `op`.
- */
-function varsUsedByOp(op) {
-  switch (op.kind) {
-    case OpKind.Property:
-      // Property bindings use 1 variable slot.
-      return 1;
-    case OpKind.InterpolateText:
-      // `ir.InterpolateTextOp`s use a variable slot for each dynamic expression.
-      return op.expressions.length;
-    case OpKind.InterpolateProperty:
-      // `ir.InterpolatePropertyOp`s use a variable slot for each dynamic expression, plus one for
-      // the result.
-      return 1 + op.expressions.length;
-    default:
-      throw new Error(`Unhandled op: ${OpKind[op.kind]}`);
-  }
-}
-function varsUsedByIrExpression(expr) {
-  switch (expr.kind) {
-    case ExpressionKind.PureFunctionExpr:
-      return 1 + expr.args.length;
-    case ExpressionKind.PipeBinding:
-      return 1 + expr.args.length;
-    case ExpressionKind.PipeBindingVariadic:
-      return 1 + expr.numArgs;
-    default:
-      throw new Error(`AssertionError: unhandled ConsumesVarsTrait expression ${expr.constructor.name}`);
-  }
-}
-
-/**
- * Generate names for functions and variables across all views.
- *
- * This includes propagating those names into any `ir.ReadVariableExpr`s of those variables, so that
- * the reads can be emitted correctly.
- */
-function phaseNaming(cpl) {
-  addNamesToView(cpl.root, cpl.componentName, {
-    index: 0
-  });
-}
-function addNamesToView(view, baseName, state) {
-  if (view.fnName === null) {
-    view.fnName = `${baseName}_Template`;
-  }
-  // Keep track of the names we assign to variables in the view. We'll need to propagate these
-  // into reads of those variables afterwards.
-  const varNames = new Map();
-  for (const op of view.ops()) {
-    switch (op.kind) {
-      case OpKind.Listener:
-        if (op.handlerFnName === null) {
-          // TODO(alxhub): convert this temporary name to match how the
-          // `TemplateDefinitionBuilder` names listener functions.
-          if (op.slot === null) {
-            throw new Error(`Expected a slot to be assigned`);
-          }
-          op.handlerFnName = `${view.fnName}_${op.tag}_${op.name}_${op.slot}_listener`;
-        }
-        break;
-      case OpKind.Variable:
-        varNames.set(op.xref, getVariableName(op.variable, state));
-        break;
-      case OpKind.Template:
-        const childView = view.tpl.views.get(op.xref);
-        if (op.slot === null) {
-          throw new Error(`Expected slot to be assigned`);
-        }
-        // TODO: properly escape the tag name.
-        const safeTagName = op.tag.replace('-', '_');
-        addNamesToView(childView, `${baseName}_${safeTagName}_${op.slot}`, state);
-        break;
-    }
-  }
-  // Having named all variables declared in the view, now we can push those names into the
-  // `ir.ReadVariableExpr` expressions which represent reads of those variables.
-  for (const op of view.ops()) {
-    visitExpressionsInOp(op, expr => {
-      if (!(expr instanceof ReadVariableExpr) || expr.name !== null) {
-        return;
-      }
-      if (!varNames.has(expr.xref)) {
-        throw new Error(`Variable ${expr.xref} not yet named`);
-      }
-      expr.name = varNames.get(expr.xref);
-    });
-  }
-}
-function getVariableName(variable, state) {
-  if (variable.name === null) {
-    switch (variable.kind) {
-      case SemanticVariableKind.Identifier:
-        variable.name = `${variable.identifier}_${state.index++}`;
-        break;
-      default:
-        variable.name = `_r${state.index++}`;
-        break;
-    }
-  }
-  return variable.name;
-}
-
-/**
- * Lifts local reference declarations on element-like structures within each view into an entry in
- * the `consts` array for the whole component.
- */
-function phaseLocalRefs(cpl) {
-  for (const view of cpl.views.values()) {
-    for (const op of view.create) {
-      switch (op.kind) {
-        case OpKind.ElementStart:
-        case OpKind.Element:
-        case OpKind.Template:
-          if (!Array.isArray(op.localRefs)) {
-            throw new Error(`AssertionError: expected localRefs to be an array still`);
-          }
-          op.numSlotsUsed += op.localRefs.length;
-          if (op.localRefs.length > 0) {
-            const localRefs = serializeLocalRefs(op.localRefs);
-            op.localRefs = cpl.addConst(localRefs);
-          } else {
-            op.localRefs = null;
-          }
-          break;
+  /**
+   * Add a constant `o.Expression` to the compilation and return its index in the `consts` array.
+   */
+  addConst(newConst, initializers) {
+    for (let idx = 0; idx < this.consts.length; idx++) {
+      if (this.consts[idx].isEquivalent(newConst)) {
+        return idx;
       }
     }
-  }
-}
-function serializeLocalRefs(refs) {
-  const constRefs = [];
-  for (const ref of refs) {
-    constRefs.push(literal(ref.name), literal(ref.target));
-  }
-  return literalArr(constRefs);
-}
-
-/**
- * Generate a preamble sequence for each view creation block and listener function which declares
- * any variables that be referenced in other operations in the block.
- *
- * Variables generated include:
- *   * a saved view context to be used to restore the current view in event listeners.
- *   * the context of the restored view within event listener handlers.
- *   * context variables from the current view as well as all parent views (including the root
- *     context if needed).
- *   * local references from elements within the current view and any lexical parents.
- *
- * Variables are generated here unconditionally, and may optimized away in future operations if it
- * turns out their values (and any side effects) are unused.
- */
-function phaseGenerateVariables(cpl) {
-  recursivelyProcessView(cpl.root, /* there is no parent scope for the root view */null);
-}
-/**
- * Process the given `ViewCompilation` and generate preambles for it and any listeners that it
- * declares.
- *
- * @param `parentScope` a scope extracted from the parent view which captures any variables which
- *     should be inherited by this view. `null` if the current view is the root view.
- */
-function recursivelyProcessView(view, parentScope) {
-  // Extract a `Scope` from this view.
-  const scope = getScopeForView(view, parentScope);
-  // Embedded views require an operation to save/restore the view context.
-  if (view.parent !== null) {
-    // Start the view creation block with an operation to save the current view context. This may be
-    // used to restore the view context in any listeners that may be present.
-  }
-  for (const op of view.create) {
-    switch (op.kind) {
-      case OpKind.Template:
-        // Descend into child embedded views.
-        recursivelyProcessView(view.tpl.views.get(op.xref), scope);
-        break;
-      case OpKind.Listener:
-        // Prepend variables to listener handler functions.
-        op.handlerOps.prepend(generateVariablesInScopeForView(view, scope));
-        break;
+    const idx = this.consts.length;
+    this.consts.push(newConst);
+    if (initializers) {
+      this.constsInitializers.push(...initializers);
     }
+    return idx;
   }
-  // Prepend the declarations for all available variables in scope to the `update` block.
-  const preambleOps = generateVariablesInScopeForView(view, scope);
-  view.update.prepend(preambleOps);
 }
 /**
- * Process a view and generate a `Scope` representing the variables available for reference within
- * that view.
+ * A compilation unit is compiled into a template function. Some example units are views and host
+ * bindings.
  */
-function getScopeForView(view, parent) {
-  const scope = {
-    view: view.xref,
-    viewContextVariable: {
-      kind: SemanticVariableKind.Context,
-      name: null,
-      view: view.xref
-    },
-    contextVariables: new Map(),
-    references: [],
-    parent
-  };
-  for (const identifier of view.contextVariables.keys()) {
-    scope.contextVariables.set(identifier, {
-      kind: SemanticVariableKind.Identifier,
-      name: null,
-      identifier
-    });
+class CompilationUnit {
+  constructor(xref) {
+    this.xref = xref;
+    /**
+     * List of creation operations for this view.
+     *
+     * Creation operations may internally contain other operations, including update operations.
+     */
+    this.create = new OpList();
+    /**
+     * List of update operations for this view.
+     */
+    this.update = new OpList();
+    /**
+     * Name of the function which will be generated for this unit.
+     *
+     * May be `null` if not yet determined.
+     */
+    this.fnName = null;
+    /**
+     * Number of variable slots used within this view, or `null` if variables have not yet been
+     * counted.
+     */
+    this.vars = null;
   }
-  for (const op of view.create) {
-    switch (op.kind) {
-      case OpKind.Element:
-      case OpKind.ElementStart:
-      case OpKind.Template:
-        if (!Array.isArray(op.localRefs)) {
-          throw new Error(`AssertionError: expected localRefs to be an array`);
-        }
-        // Record available local references from this element.
-        for (let offset = 0; offset < op.localRefs.length; offset++) {
-          scope.references.push({
-            name: op.localRefs[offset].name,
-            targetId: op.xref,
-            offset,
-            variable: {
-              kind: SemanticVariableKind.Identifier,
-              name: null,
-              identifier: op.localRefs[offset].name
-            }
-          });
-        }
-        break;
-    }
-  }
-  return scope;
-}
-/**
- * Generate declarations for all variables that are in scope for a given view.
- *
- * This is a recursive process, as views inherit variables available from their parent view, which
- * itself may have inherited variables, etc.
- */
-function generateVariablesInScopeForView(view, scope) {
-  const newOps = [];
-  if (scope.view !== view.xref) {
-    // Before generating variables for a parent view, we need to switch to the context of the parent
-    // view with a `nextContext` expression. This context switching operation itself declares a
-    // variable, because the context of the view may be referenced directly.
-    newOps.push(createVariableOp(view.tpl.allocateXrefId(), scope.viewContextVariable, new NextContextExpr()));
-  }
-  // Add variables for all context variables available in this scope's view.
-  for (const [name, value] of view.tpl.views.get(scope.view).contextVariables) {
-    newOps.push(createVariableOp(view.tpl.allocateXrefId(), scope.contextVariables.get(name), new ReadPropExpr(new ContextExpr(scope.view), value)));
-  }
-  // Add variables for all local references declared for elements in this scope.
-  for (const ref of scope.references) {
-    newOps.push(createVariableOp(view.tpl.allocateXrefId(), ref.variable, new ReferenceExpr(ref.targetId, ref.offset)));
-  }
-  if (scope.parent !== null) {
-    // Recursively add variables from the parent scope.
-    newOps.push(...generateVariablesInScopeForView(view, scope.parent));
-  }
-  return newOps;
-}
-
-/**
- * Resolves lexical references in views (`ir.LexicalReadExpr`) to either a target variable or to
- * property reads on the top-level component context.
- *
- * Also matches `ir.RestoreViewExpr` expressions with the variables of their corresponding saved
- * views.
- */
-function phaseResolveNames(cpl) {
-  for (const [_, view] of cpl.views) {
-    processLexicalScope$1(view, view.create, null);
-    processLexicalScope$1(view, view.update, null);
-  }
-}
-function processLexicalScope$1(view, ops, savedView) {
-  // Maps names defined in the lexical scope of this template to the `ir.XrefId`s of the variable
-  // declarations which represent those values.
-  //
-  // Since variables are generated in each view for the entire lexical scope (including any
-  // identifiers from parent templates) only local variables need be considered here.
-  const scope = new Map();
-  // First, step through the operations list and:
-  // 1) build up the `scope` mapping
-  // 2) recurse into any listener functions
-  for (const op of ops) {
-    switch (op.kind) {
-      case OpKind.Variable:
-        switch (op.variable.kind) {
-          case SemanticVariableKind.Identifier:
-            // This variable represents some kind of identifier which can be used in the template.
-            if (scope.has(op.variable.identifier)) {
-              continue;
-            }
-            scope.set(op.variable.identifier, op.xref);
-            break;
-          case SemanticVariableKind.SavedView:
-            // This variable represents a snapshot of the current view context, and can be used to
-            // restore that context within listener functions.
-            savedView = {
-              view: op.variable.view,
-              variable: op.xref
-            };
-            break;
-        }
-        break;
-      case OpKind.Listener:
-        // Listener functions have separate variable declarations, so process them as a separate
-        // lexical scope.
-        processLexicalScope$1(view, op.handlerOps, savedView);
-        break;
-    }
-  }
-  // Next, use the `scope` mapping to match `ir.LexicalReadExpr` with defined names in the lexical
-  // scope. Also, look for `ir.RestoreViewExpr`s and match them with the snapshotted view context
-  // variable.
-  for (const op of ops) {
-    transformExpressionsInOp(op, expr => {
-      if (expr instanceof LexicalReadExpr) {
-        // `expr` is a read of a name within the lexical scope of this view.
-        // Either that name is defined within the current view, or it represents a property from the
-        // main component context.
-        if (scope.has(expr.name)) {
-          // This was a defined variable in the current scope.
-          return new ReadVariableExpr(scope.get(expr.name));
-        } else {
-          // Reading from the component context.
-          return new ReadPropExpr(new ContextExpr(view.tpl.root.xref), expr.name);
-        }
-      } else if (expr instanceof RestoreViewExpr && typeof expr.view === 'number') {
-        // `ir.RestoreViewExpr` happens in listener functions and restores a saved view from the
-        // parent creation list. We expect to find that we captured the `savedView` previously, and
-        // that it matches the expected view to be restored.
-        if (savedView === null || savedView.view !== expr.view) {
-          throw new Error(`AssertionError: no saved view ${expr.view} from view ${view.xref}`);
-        }
-        expr.view = new ReadVariableExpr(savedView.variable);
-        return expr;
-      } else {
-        return expr;
-      }
-    }, VisitorContextFlag.None);
-  }
-}
-
-/**
- * Resolves `ir.ContextExpr` expressions (which represent embedded view or component contexts) to
- * either the `ctx` parameter to component functions (for the current view context) or to variables
- * that store those contexts (for contexts accessed via the `nextContext()` instruction).
- */
-function phaseResolveContexts(cpl) {
-  for (const view of cpl.views.values()) {
-    processLexicalScope(view, view.create);
-    processLexicalScope(view, view.update);
-  }
-}
-function processLexicalScope(view, ops) {
-  // Track the expressions used to access all available contexts within the current view, by the
-  // view `ir.XrefId`.
-  const scope = new Map();
-  // The current view's context is accessible via the `ctx` parameter.
-  scope.set(view.xref, variable('ctx'));
-  for (const op of ops) {
-    switch (op.kind) {
-      case OpKind.Variable:
-        switch (op.variable.kind) {
-          case SemanticVariableKind.Context:
-            scope.set(op.variable.view, new ReadVariableExpr(op.xref));
-            break;
-        }
-        break;
-      case OpKind.Listener:
-        processLexicalScope(view, op.handlerOps);
-        break;
-    }
-  }
-  for (const op of ops) {
-    transformExpressionsInOp(op, expr => {
-      if (expr instanceof ContextExpr) {
-        if (!scope.has(expr.view)) {
-          throw new Error(`No context found for reference to view ${expr.view} from view ${view.xref}`);
-        }
-        return scope.get(expr.view);
-      } else {
-        return expr;
-      }
-    }, VisitorContextFlag.None);
-  }
-}
-
-/**
- * Optimize variables declared and used in the IR.
- *
- * Variables are eagerly generated by pipeline stages for all possible values that could be
- * referenced. This stage processes the list of declared variables and all variable usages,
- * and optimizes where possible. It performs 3 main optimizations:
- *
- *   * It transforms variable declarations to side effectful expressions when the
- *     variable is not used, but its initializer has global effects which other
- *     operations rely upon.
- *   * It removes variable declarations if those variables are not referenced and
- *     either they do not have global effects, or nothing relies on them.
- *   * It inlines variable declarations when those variables are only used once
- *     and the inlining is semantically safe.
- *
- * To guarantee correctness, analysis of "fences" in the instruction lists is used to determine
- * which optimizations are safe to perform.
- */
-function phaseVariableOptimization(cpl, options) {
-  for (const [_, view] of cpl.views) {
-    optimizeVariablesInOpList(view.create, options);
-    optimizeVariablesInOpList(view.update, options);
-    for (const op of view.create) {
+  /**
+   * Iterate over all `ir.Op`s within this view.
+   *
+   * Some operations may have child operations, which this iterator will visit.
+   */
+  *ops() {
+    for (const op of this.create) {
+      yield op;
       if (op.kind === OpKind.Listener) {
-        optimizeVariablesInOpList(op.handlerOps, options);
-      }
-    }
-  }
-}
-/**
- * A [fence](https://en.wikipedia.org/wiki/Memory_barrier) flag for an expression which indicates
- * how that expression can be optimized in relation to other expressions or instructions.
- *
- * `Fence`s are a bitfield, so multiple flags may be set on a single expression.
- */
-var Fence;
-(function (Fence) {
-  /**
-   * Empty flag (no fence exists).
-   */
-  Fence[Fence["None"] = 0] = "None";
-  /**
-   * A context read fence, meaning that the expression in question reads from the "current view"
-   * context of the runtime.
-   */
-  Fence[Fence["ViewContextRead"] = 1] = "ViewContextRead";
-  /**
-   * A context write fence, meaning that the expression in question writes to the "current view"
-   * context of the runtime.
-   *
-   * Note that all `ContextWrite` fences are implicitly `ContextRead` fences as operations which
-   * change the view context do so based on the current one.
-   */
-  Fence[Fence["ViewContextWrite"] = 3] = "ViewContextWrite";
-  /**
-   * Indicates that a call is required for its side-effects, even if nothing reads its result.
-   *
-   * This is also true of `ViewContextWrite` operations **if** they are followed by a
-   * `ViewContextRead`.
-   */
-  Fence[Fence["SideEffectful"] = 4] = "SideEffectful";
-})(Fence || (Fence = {}));
-/**
- * Process a list of operations and optimize variables within that list.
- */
-function optimizeVariablesInOpList(ops, options) {
-  const varDecls = new Map();
-  const varUsages = new Map();
-  // Track variables that are used outside of the immediate operation list. For example, within
-  // `ListenerOp` handler operations of listeners in the current operation list.
-  const varRemoteUsages = new Set();
-  const opMap = new Map();
-  // First, extract information about variables declared or used within the whole list.
-  for (const op of ops) {
-    if (op.kind === OpKind.Variable) {
-      if (varDecls.has(op.xref) || varUsages.has(op.xref)) {
-        throw new Error(`Should not see two declarations of the same variable: ${op.xref}`);
-      }
-      varDecls.set(op.xref, op);
-      varUsages.set(op.xref, 0);
-    }
-    opMap.set(op, collectOpInfo(op));
-    countVariableUsages(op, varUsages, varRemoteUsages);
-  }
-  // The next step is to remove any variable declarations for variables that aren't used. The
-  // variable initializer expressions may be side-effectful, so they may need to be retained as
-  // expression statements.
-  // Track whether we've seen an operation which reads from the view context yet. This is used to
-  // determine whether a write to the view context in a variable initializer can be observed.
-  let contextIsUsed = false;
-  // Note that iteration through the list happens in reverse, which guarantees that we'll process
-  // all reads of a variable prior to processing its declaration.
-  for (const op of ops.reversed()) {
-    const opInfo = opMap.get(op);
-    if (op.kind === OpKind.Variable && varUsages.get(op.xref) === 0) {
-      // This variable is unused and can be removed. We might need to keep the initializer around,
-      // though, if something depends on it running.
-      if (contextIsUsed && opInfo.fences & Fence.ViewContextWrite || opInfo.fences & Fence.SideEffectful) {
-        // This variable initializer has a side effect which must be retained. Either:
-        //  * it writes to the view context, and we know there is a future operation which depends
-        //    on that write, or
-        //  * it's an operation which is inherently side-effectful.
-        // We can't remove the initializer, but we can remove the variable declaration itself and
-        // replace it with a side-effectful statement.
-        const stmtOp = createStatementOp(op.initializer.toStmt());
-        opMap.set(stmtOp, opInfo);
-        OpList.replace(op, stmtOp);
-      } else {
-        // It's safe to delete this entire variable declaration as nothing depends on it, even
-        // side-effectfully. Note that doing this might make other variables unused. Since we're
-        // iterating in reverse order, we should always be processing usages before declarations
-        // and therefore by the time we get to a declaration, all removable usages will have been
-        // removed.
-        uncountVariableUsages(op, varUsages);
-        OpList.remove(op);
-      }
-      opMap.delete(op);
-      varDecls.delete(op.xref);
-      varUsages.delete(op.xref);
-      continue;
-    }
-    // Does this operation depend on the view context?
-    if (opInfo.fences & Fence.ViewContextRead) {
-      contextIsUsed = true;
-    }
-  }
-  // Next, inline any remaining variables with exactly one usage.
-  const toInline = [];
-  for (const [id, count] of varUsages) {
-    // We can inline variables that:
-    //  - are used once
-    //  - are not used remotely
-    if (count !== 1) {
-      // We can't inline this variable as it's used more than once.
-      continue;
-    }
-    if (varRemoteUsages.has(id)) {
-      // This variable is used once, but across an operation boundary, so it can't be inlined.
-      continue;
-    }
-    toInline.push(id);
-  }
-  let candidate;
-  while (candidate = toInline.pop()) {
-    // We will attempt to inline this variable. If inlining fails (due to fences for example),
-    // no future operation will make inlining legal.
-    const decl = varDecls.get(candidate);
-    const varInfo = opMap.get(decl);
-    // Scan operations following the variable declaration and look for the point where that variable
-    // is used. There should only be one usage given the precondition above.
-    for (let targetOp = decl.next; targetOp.kind !== OpKind.ListEnd; targetOp = targetOp.next) {
-      const opInfo = opMap.get(targetOp);
-      // Is the variable used in this operation?
-      if (opInfo.variablesUsed.has(candidate)) {
-        if (options.conservative && !allowConservativeInlining(decl, targetOp)) {
-          // We're in conservative mode, and this variable is not eligible for inlining into the
-          // target operation in this mode.
-          break;
+        for (const listenerOp of op.handlerOps) {
+          yield listenerOp;
         }
-        // Yes, try to inline it. Inlining may not be successful if fences in this operation before
-        // the variable's usage cannot be safely crossed.
-        if (tryInlineVariableInitializer(candidate, decl.initializer, targetOp, varInfo.fences)) {
-          // Inlining was successful! Update the tracking structures to reflect the inlined
-          // variable.
-          opInfo.variablesUsed.delete(candidate);
-          // Add all variables used in the variable's initializer to its new usage site.
-          for (const id of varInfo.variablesUsed) {
-            opInfo.variablesUsed.add(id);
-          }
-          // Merge fences in the variable's initializer into its new usage site.
-          opInfo.fences |= varInfo.fences;
-          // Delete tracking info related to the declaration.
-          varDecls.delete(candidate);
-          varUsages.delete(candidate);
-          opMap.delete(decl);
-          // And finally, delete the original declaration from the operation list.
-          OpList.remove(decl);
-        }
-        // Whether inlining succeeded or failed, we're done processing this variable.
-        break;
-      }
-      // If the variable is not used in this operation, then we'd need to inline across it. Check if
-      // that's safe to do.
-      if (!safeToInlinePastFences(opInfo.fences, varInfo.fences)) {
-        // We can't safely inline this variable beyond this operation, so don't proceed with
-        // inlining this variable.
-        break;
       }
     }
+    for (const op of this.update) {
+      yield op;
+    }
+  }
+}
+/**
+ * Compilation-in-progress of an individual view within a template.
+ */
+class ViewCompilationUnit extends CompilationUnit {
+  constructor(job, xref, parent) {
+    super(xref);
+    this.job = job;
+    this.parent = parent;
+    /**
+     * Map of declared variables available within this view to the property on the context object
+     * which they alias.
+     */
+    this.contextVariables = new Map();
+    /**
+     * Set of aliases available within this view. An alias is a variable whose provided expression is
+     * inlined at every location it is used. It may also depend on context variables, by name.
+     */
+    this.aliases = new Set();
+    /**
+     * Number of declaration slots used within this view, or `null` if slots have not yet been
+     * allocated.
+     */
+    this.decls = null;
   }
 }
 /**
- * Given an `ir.Expression`, returns the `Fence` flags for that expression type.
+ * Compilation-in-progress of a host binding, which contains a single unit for that host binding.
  */
-function fencesForIrExpression(expr) {
-  switch (expr.kind) {
-    case ExpressionKind.NextContext:
-      return Fence.ViewContextWrite;
-    case ExpressionKind.RestoreView:
-      return Fence.ViewContextWrite | Fence.SideEffectful;
-    case ExpressionKind.Reference:
-      return Fence.ViewContextRead;
-    default:
-      return Fence.None;
+class HostBindingCompilationJob extends CompilationJob {
+  constructor(componentName, pool, compatibility) {
+    super(componentName, pool, compatibility);
+    this.kind = CompilationJobKind.Host;
+    this.fnSuffix = 'HostBindings';
+    this.root = new HostBindingCompilationUnit(this);
+  }
+  get units() {
+    return [this.root];
+  }
+}
+class HostBindingCompilationUnit extends CompilationUnit {
+  constructor(job) {
+    super(0);
+    this.job = job;
+    /**
+     * Much like an element can have attributes, so can a host binding function.
+     */
+    this.attributes = null;
+  }
+}
+
+/**
+ * Find any function calls to `$any`, excluding `this.$any`, and delete them, since they have no
+ * runtime effects.
+ */
+function deleteAnyCasts(job) {
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      transformExpressionsInOp(op, removeAnys, VisitorContextFlag.None);
+    }
+  }
+}
+function removeAnys(e) {
+  if (e instanceof InvokeFunctionExpr && e.fn instanceof LexicalReadExpr && e.fn.name === '$any') {
+    if (e.args.length !== 1) {
+      throw new Error('The $any builtin function expects exactly one argument.');
+    }
+    return e.args[0];
+  }
+  return e;
+}
+
+/**
+ * Adds apply operations after i18n expressions.
+ */
+function applyI18nExpressions(job) {
+  const i18nContexts = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.I18nContext) {
+        i18nContexts.set(op.xref, op);
+      }
+    }
+  }
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      // Only add apply after expressions that are not followed by more expressions.
+      if (op.kind === OpKind.I18nExpression && needsApplication(i18nContexts, op)) {
+        // TODO: what should be the source span for the apply op?
+        OpList.insertAfter(createI18nApplyOp(op.i18nOwner, op.handle, null), op);
+      }
+    }
   }
 }
 /**
- * Build the `OpInfo` structure for the given `op`. This performs two operations:
- *
- *  * It tracks which variables are used in the operation's expressions.
- *  * It rolls up fence flags for expressions within the operation.
+ * Checks whether the given expression op needs to be followed with an apply op.
  */
-function collectOpInfo(op) {
-  let fences = Fence.None;
-  const variablesUsed = new Set();
-  visitExpressionsInOp(op, expr => {
-    if (!isIrExpression(expr)) {
-      return;
-    }
-    switch (expr.kind) {
-      case ExpressionKind.ReadVariable:
-        variablesUsed.add(expr.xref);
-        break;
-      default:
-        fences |= fencesForIrExpression(expr);
-    }
-  });
-  return {
-    fences,
-    variablesUsed
-  };
-}
-/**
- * Count the number of usages of each variable, being careful to track whether those usages are
- * local or remote.
- */
-function countVariableUsages(op, varUsages, varRemoteUsage) {
-  visitExpressionsInOp(op, (expr, flags) => {
-    if (!isIrExpression(expr)) {
-      return;
-    }
-    if (expr.kind !== ExpressionKind.ReadVariable) {
-      return;
-    }
-    const count = varUsages.get(expr.xref);
-    if (count === undefined) {
-      // This variable is declared outside the current scope of optimization.
-      return;
-    }
-    varUsages.set(expr.xref, count + 1);
-    if (flags & VisitorContextFlag.InChildOperation) {
-      varRemoteUsage.add(expr.xref);
-    }
-  });
-}
-/**
- * Remove usages of a variable in `op` from the `varUsages` tracking.
- */
-function uncountVariableUsages(op, varUsages) {
-  visitExpressionsInOp(op, expr => {
-    if (!isIrExpression(expr)) {
-      return;
-    }
-    if (expr.kind !== ExpressionKind.ReadVariable) {
-      return;
-    }
-    const count = varUsages.get(expr.xref);
-    if (count === undefined) {
-      // This variable is declared outside the current scope of optimization.
-      return;
-    } else if (count === 0) {
-      throw new Error(`Inaccurate variable count: ${expr.xref} - found another read but count is already 0`);
-    }
-    varUsages.set(expr.xref, count - 1);
-  });
-}
-/**
- * Checks whether it's safe to inline a variable across a particular operation.
- *
- * @param fences the fences of the operation which the inlining will cross
- * @param declFences the fences of the variable being inlined.
- */
-function safeToInlinePastFences(fences, declFences) {
-  if (fences & Fence.ViewContextWrite) {
-    // It's not safe to inline context reads across context writes.
-    if (declFences & Fence.ViewContextRead) {
-      return false;
-    }
-  } else if (fences & Fence.ViewContextRead) {
-    // It's not safe to inline context writes across context reads.
-    if (declFences & Fence.ViewContextWrite) {
-      return false;
-    }
+function needsApplication(i18nContexts, op) {
+  // If the next op is not another expression, we need to apply.
+  if (op.next?.kind !== OpKind.I18nExpression) {
+    return true;
   }
-  return true;
-}
-/**
- * Attempt to inline the initializer of a variable into a target operation's expressions.
- *
- * This may or may not be safe to do. For example, the variable could be read following the
- * execution of an expression with fences that don't permit the variable to be inlined across them.
- */
-function tryInlineVariableInitializer(id, initializer, target, declFences) {
-  // We use `ir.transformExpressionsInOp` to walk the expressions and inline the variable if
-  // possible. Since this operation is callback-based, once inlining succeeds or fails we can't
-  // "stop" the expression processing, and have to keep track of whether inlining has succeeded or
-  // is no longer allowed.
-  let inlined = false;
-  let inliningAllowed = true;
-  transformExpressionsInOp(target, (expr, flags) => {
-    if (!isIrExpression(expr)) {
-      return expr;
-    }
-    if (inlined || !inliningAllowed) {
-      // Either the inlining has already succeeded, or we've passed a fence that disallows inlining
-      // at this point, so don't try.
-      return expr;
-    } else if (flags & VisitorContextFlag.InChildOperation && declFences & Fence.ViewContextRead) {
-      // We cannot inline variables that are sensitive to the current context across operation
-      // boundaries.
-      return expr;
-    }
-    switch (expr.kind) {
-      case ExpressionKind.ReadVariable:
-        if (expr.xref === id) {
-          // This is the usage site of the variable. Since nothing has disallowed inlining, it's
-          // safe to inline the initializer here.
-          inlined = true;
-          return initializer;
-        }
-        break;
-      default:
-        // For other types of `ir.Expression`s, whether inlining is allowed depends on their fences.
-        const exprFences = fencesForIrExpression(expr);
-        inliningAllowed = inliningAllowed && safeToInlinePastFences(exprFences, declFences);
-        break;
-    }
-    return expr;
-  }, VisitorContextFlag.None);
-  return inlined;
-}
-/**
- * Determines whether inlining of `decl` should be allowed in "conservative" mode.
- *
- * In conservative mode, inlining behavior is limited to those operations which the
- * `TemplateDefinitionBuilder` supported, with the goal of producing equivalent output.
- */
-function allowConservativeInlining(decl, target) {
-  // TODO(alxhub): understand exactly how TemplateDefinitionBuilder approaches inlining, and record
-  // that behavior here.
-  switch (decl.variable.kind) {
-    case SemanticVariableKind.Identifier:
-      return false;
-    case SemanticVariableKind.Context:
-      // Context can only be inlined into other variables.
-      return target.kind === OpKind.Variable;
-    default:
+  const context = i18nContexts.get(op.context);
+  const nextContext = i18nContexts.get(op.next.context);
+  if (context === undefined) {
+    throw new Error('AssertionError: expected an I18nContextOp to exist for the I18nExpressionOp\'s context');
+  }
+  if (nextContext === undefined) {
+    throw new Error('AssertionError: expected an I18nContextOp to exist for the next I18nExpressionOp\'s context');
+  }
+  // If the next op is an expression targeting a different i18n block (or different element, in the
+  // case of i18n attributes), we need to apply.
+  // First, handle the case of i18n blocks.
+  if (context.i18nBlock !== null) {
+    // This is a block context. Compare the blocks.
+    if (context.i18nBlock !== nextContext.i18nBlock) {
       return true;
+    }
+    return false;
+  }
+  // Second, handle the case of i18n attributes.
+  if (op.i18nOwner !== op.next.i18nOwner) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Updates i18n expression ops to target the last slot in their owning i18n block, and moves them
+ * after the last update instruction that depends on that slot.
+ */
+function assignI18nSlotDependencies(job) {
+  for (const unit of job.units) {
+    // The first update op.
+    let updateOp = unit.update.head;
+    // I18n expressions currently being moved during the iteration.
+    let i18nExpressionsInProgress = [];
+    // Non-null  while we are iterating through an i18nStart/i18nEnd pair
+    let state = null;
+    for (const createOp of unit.create) {
+      if (createOp.kind === OpKind.I18nStart) {
+        state = {
+          blockXref: createOp.xref,
+          lastSlotConsumer: createOp.xref
+        };
+      } else if (createOp.kind === OpKind.I18nEnd) {
+        for (const op of i18nExpressionsInProgress) {
+          op.target = state.lastSlotConsumer;
+          OpList.insertBefore(op, updateOp);
+        }
+        i18nExpressionsInProgress.length = 0;
+        state = null;
+      }
+      if (hasConsumesSlotTrait(createOp)) {
+        if (state !== null) {
+          state.lastSlotConsumer = createOp.xref;
+        }
+        while (true) {
+          if (updateOp.next === null) {
+            break;
+          }
+          if (state !== null && updateOp.kind === OpKind.I18nExpression && updateOp.usage === I18nExpressionFor.I18nText && updateOp.i18nOwner === state.blockXref) {
+            const opToRemove = updateOp;
+            updateOp = updateOp.next;
+            OpList.remove(opToRemove);
+            i18nExpressionsInProgress.push(opToRemove);
+            continue;
+          }
+          if (hasDependsOnSlotContextTrait(updateOp) && updateOp.target !== createOp.xref) {
+            break;
+          }
+          updateOp = updateOp.next;
+        }
+      }
+    }
   }
 }
-const CHAINABLE = new Set([Identifiers.elementStart, Identifiers.elementEnd, Identifiers.property, Identifiers.elementContainerStart, Identifiers.elementContainerEnd, Identifiers.elementContainer]);
+
+/**
+ * Gets a map of all elements in the given view by their xref id.
+ */
+function createOpXrefMap(unit) {
+  const map = new Map();
+  for (const op of unit.create) {
+    if (!hasConsumesSlotTrait(op)) {
+      continue;
+    }
+    map.set(op.xref, op);
+  }
+  return map;
+}
+
+/**
+ * Find all extractable attribute and binding ops, and create ExtractedAttributeOps for them.
+ * In cases where no instruction needs to be generated for the attribute or binding, it is removed.
+ */
+function extractAttributes(job) {
+  for (const unit of job.units) {
+    const elements = createOpXrefMap(unit);
+    for (const op of unit.ops()) {
+      switch (op.kind) {
+        case OpKind.Attribute:
+          extractAttributeOp(unit, op, elements);
+          break;
+        case OpKind.Property:
+          if (!op.isAnimationTrigger) {
+            let bindingKind;
+            if (op.i18nMessage !== null && op.templateKind === null) {
+              // If the binding has an i18n context, it is an i18n attribute, and should have that
+              // kind in the consts array.
+              bindingKind = BindingKind.I18n;
+            } else if (op.isStructuralTemplateAttribute) {
+              bindingKind = BindingKind.Template;
+            } else {
+              bindingKind = BindingKind.Property;
+            }
+            OpList.insertBefore(
+            // Deliberaly null i18nMessage value
+            createExtractedAttributeOp(op.target, bindingKind, op.name, /* expression */null, /* i18nContext */null, /* i18nMessage */null, op.securityContext), lookupElement$2(elements, op.target));
+          }
+          break;
+        case OpKind.StyleProp:
+        case OpKind.ClassProp:
+          // TODO: Can style or class bindings be i18n attributes?
+          // The old compiler treated empty style bindings as regular bindings for the purpose of
+          // directive matching. That behavior is incorrect, but we emulate it in compatibility
+          // mode.
+          if (unit.job.compatibility === CompatibilityMode.TemplateDefinitionBuilder && op.expression instanceof EmptyExpr) {
+            OpList.insertBefore(createExtractedAttributeOp(op.target, BindingKind.Property, op.name, /* expression */null, /* i18nContext */null, /* i18nMessage */null, SecurityContext.STYLE), lookupElement$2(elements, op.target));
+          }
+          break;
+        case OpKind.Listener:
+          if (!op.isAnimationListener) {
+            const extractedAttributeOp = createExtractedAttributeOp(op.target, BindingKind.Property, op.name, /* expression */null, /* i18nContext */null, /* i18nMessage */null, SecurityContext.NONE);
+            if (job.kind === CompilationJobKind.Host) {
+              // This attribute will apply to the enclosing host binding compilation unit, so order
+              // doesn't matter.
+              unit.create.push(extractedAttributeOp);
+            } else {
+              OpList.insertBefore(extractedAttributeOp, lookupElement$2(elements, op.target));
+            }
+          }
+          break;
+      }
+    }
+  }
+}
+/**
+ * Looks up an element in the given map by xref ID.
+ */
+function lookupElement$2(elements, xref) {
+  const el = elements.get(xref);
+  if (el === undefined) {
+    throw new Error('All attributes should have an element-like target.');
+  }
+  return el;
+}
+/**
+ * Extracts an attribute binding.
+ */
+function extractAttributeOp(unit, op, elements) {
+  if (op.expression instanceof Interpolation) {
+    return;
+  }
+  let extractable = op.isTextAttribute || op.expression.isConstant();
+  if (unit.job.compatibility === CompatibilityMode.TemplateDefinitionBuilder) {
+    // TemplateDefinitionBuilder only extracts text attributes. It does not extract attriibute
+    // bindings, even if they are constants.
+    extractable &&= op.isTextAttribute;
+  }
+  if (extractable) {
+    const extractedAttributeOp = createExtractedAttributeOp(op.target, op.isStructuralTemplateAttribute ? BindingKind.Template : BindingKind.Attribute, op.name, op.expression, op.i18nContext, op.i18nMessage, op.securityContext);
+    if (unit.job.kind === CompilationJobKind.Host) {
+      // This attribute will apply to the enclosing host binding compilation unit, so order doesn't
+      // matter.
+      unit.create.push(extractedAttributeOp);
+    } else {
+      const ownerOp = lookupElement$2(elements, op.target);
+      OpList.insertBefore(extractedAttributeOp, ownerOp);
+    }
+    OpList.remove(op);
+  }
+}
+
+/**
+ * Looks up an element in the given map by xref ID.
+ */
+function lookupElement$1(elements, xref) {
+  const el = elements.get(xref);
+  if (el === undefined) {
+    throw new Error('All attributes should have an element-like target.');
+  }
+  return el;
+}
+function specializeBindings(job) {
+  const elements = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (!isElementOrContainerOp(op)) {
+        continue;
+      }
+      elements.set(op.xref, op);
+    }
+  }
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      if (op.kind !== OpKind.Binding) {
+        continue;
+      }
+      switch (op.bindingKind) {
+        case BindingKind.Attribute:
+          if (op.name === 'ngNonBindable') {
+            OpList.remove(op);
+            const target = lookupElement$1(elements, op.target);
+            target.nonBindable = true;
+          } else {
+            OpList.replace(op, createAttributeOp(op.target, op.name, op.expression, op.securityContext, op.isTextAttribute, op.isStructuralTemplateAttribute, op.templateKind, op.i18nMessage, op.sourceSpan));
+          }
+          break;
+        case BindingKind.Property:
+        case BindingKind.Animation:
+          if (job.kind === CompilationJobKind.Host) {
+            OpList.replace(op, createHostPropertyOp(op.name, op.expression, op.bindingKind === BindingKind.Animation, op.i18nContext, op.securityContext, op.sourceSpan));
+          } else {
+            OpList.replace(op, createPropertyOp(op.target, op.name, op.expression, op.bindingKind === BindingKind.Animation, op.securityContext, op.isStructuralTemplateAttribute, op.templateKind, op.i18nContext, op.i18nMessage, op.sourceSpan));
+          }
+          break;
+        case BindingKind.I18n:
+        case BindingKind.ClassName:
+        case BindingKind.StyleProperty:
+          throw new Error(`Unhandled binding of kind ${BindingKind[op.bindingKind]}`);
+      }
+    }
+  }
+}
+const CHAINABLE = new Set([Identifiers.attribute, Identifiers.classProp, Identifiers.element, Identifiers.elementContainer, Identifiers.elementContainerEnd, Identifiers.elementContainerStart, Identifiers.elementEnd, Identifiers.elementStart, Identifiers.hostProperty, Identifiers.i18nExp, Identifiers.listener, Identifiers.listener, Identifiers.property, Identifiers.styleProp, Identifiers.stylePropInterpolate1, Identifiers.stylePropInterpolate2, Identifiers.stylePropInterpolate3, Identifiers.stylePropInterpolate4, Identifiers.stylePropInterpolate5, Identifiers.stylePropInterpolate6, Identifiers.stylePropInterpolate7, Identifiers.stylePropInterpolate8, Identifiers.stylePropInterpolateV, Identifiers.syntheticHostListener, Identifiers.syntheticHostProperty, Identifiers.templateCreate]);
 /**
  * Post-process a reified view compilation and convert sequential calls to chainable instructions
  * into chain calls.
@@ -14115,10 +14933,10 @@ const CHAINABLE = new Set([Identifiers.elementStart, Identifiers.elementEnd, Ide
  * elementStart(0, 'div')(1, 'span');
  * ```
  */
-function phaseChaining(cpl) {
-  for (const [_, view] of cpl.views) {
-    chainOperationsInList(view.create);
-    chainOperationsInList(view.update);
+function chain(job) {
+  for (const unit of job.units) {
+    chainOperationsInList(unit.create);
+    chainOperationsInList(unit.update);
   }
 }
 function chainOperationsInList(opList) {
@@ -14160,1248 +14978,1312 @@ function chainOperationsInList(opList) {
 }
 
 /**
- * Merges logically sequential `NextContextExpr` operations.
+ * Attribute interpolations of the form `[attr.foo]="{{foo}}""` should be "collapsed" into a plain
+ * attribute instruction, instead of an `attributeInterpolate` instruction.
  *
- * `NextContextExpr` can be referenced repeatedly, "popping" the runtime's context stack each time.
- * When two such expressions appear back-to-back, it's possible to merge them together into a single
- * `NextContextExpr` that steps multiple contexts. This merging is possible if all conditions are
- * met:
+ * (We cannot do this for singleton property interpolations, because `propertyInterpolate`
+ * stringifies its expression.)
  *
- *   * The result of the `NextContextExpr` that's folded into the subsequent one is not stored (that
- *     is, the call is purely side-effectful).
- *   * No operations in between them uses the implicit context.
+ * The reification step is also capable of performing this transformation, but doing it early in the
+ * pipeline allows other phases to accurately know what instruction will be emitted.
  */
-function phaseMergeNextContext(cpl) {
-  for (const view of cpl.views.values()) {
-    for (const op of view.create) {
-      if (op.kind === OpKind.Listener) {
-        mergeNextContextsInOps(op.handlerOps);
+function collapseSingletonInterpolations(job) {
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      const eligibleOpKind = op.kind === OpKind.Attribute;
+      if (eligibleOpKind && op.expression instanceof Interpolation && op.expression.strings.length === 2 && op.expression.strings.every(s => s === '')) {
+        op.expression = op.expression.expressions[0];
       }
     }
-    mergeNextContextsInOps(view.update);
   }
 }
-function mergeNextContextsInOps(ops) {
-  for (const op of ops) {
-    // Look for a candidate operation to maybe merge.
-    if (op.kind !== OpKind.Statement || !(op.statement instanceof ExpressionStatement) || !(op.statement.expr instanceof NextContextExpr)) {
-      continue;
-    }
-    const mergeSteps = op.statement.expr.steps;
-    // Try to merge this `ir.NextContextExpr`.
-    let tryToMerge = true;
-    for (let candidate = op.next; candidate.kind !== OpKind.ListEnd && tryToMerge; candidate = candidate.next) {
-      visitExpressionsInOp(candidate, (expr, flags) => {
-        if (!isIrExpression(expr)) {
-          return expr;
-        }
-        if (!tryToMerge) {
-          // Either we've already merged, or failed to merge.
-          return;
-        }
-        if (flags & VisitorContextFlag.InChildOperation) {
-          // We cannot merge into child operations.
-          return;
-        }
-        switch (expr.kind) {
-          case ExpressionKind.NextContext:
-            // Merge the previous `ir.NextContextExpr` into this one.
-            expr.steps += mergeSteps;
-            OpList.remove(op);
-            tryToMerge = false;
-            break;
-          case ExpressionKind.GetCurrentView:
-          case ExpressionKind.Reference:
-            // Can't merge past a dependency on the context.
-            tryToMerge = false;
-            break;
-        }
-      });
-    }
-  }
-}
-const CONTAINER_TAG = 'ng-container';
+
 /**
- * Replace an `Element` or `ElementStart` whose tag is `ng-container` with a specific op.
+ * Collapse the various conditions of conditional ops (if, switch) into a single test expression.
  */
-function phaseNgContainer(cpl) {
-  for (const [_, view] of cpl.views) {
-    const updatedElementXrefs = new Set();
-    for (const op of view.create) {
-      if (op.kind === OpKind.ElementStart && op.tag === CONTAINER_TAG) {
-        // Transmute the `ElementStart` instruction to `ContainerStart`.
-        op.kind = OpKind.ContainerStart;
-        updatedElementXrefs.add(op.xref);
-      }
-      if (op.kind === OpKind.ElementEnd && updatedElementXrefs.has(op.xref)) {
-        // This `ElementEnd` is associated with an `ElementStart` we already transmuted.
-        op.kind = OpKind.ContainerEnd;
-      }
-    }
-  }
-}
-function phaseSaveRestoreView(cpl) {
-  for (const view of cpl.views.values()) {
-    if (view === cpl.root) {
-      // Save/restore operations are not necessary for the root view.
-      continue;
-    }
-    view.create.prepend([createVariableOp(view.tpl.allocateXrefId(), {
-      kind: SemanticVariableKind.SavedView,
-      name: null,
-      view: view.xref
-    }, new GetCurrentViewExpr())]);
-    for (const op of view.create) {
-      if (op.kind !== OpKind.Listener) {
+function generateConditionalExpressions(job) {
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      if (op.kind !== OpKind.Conditional) {
         continue;
       }
-      op.handlerOps.prepend([createVariableOp(view.tpl.allocateXrefId(), {
-        kind: SemanticVariableKind.Context,
-        name: null,
-        view: view.xref
-      }, new RestoreViewExpr(view.xref))]);
-      // The "restore view" operation in listeners requires a call to `resetView` to reset the
-      // context prior to returning from the listener operation. Find any `return` statements in
-      // the listener body and wrap them in a call to reset the view.
-      for (const handlerOp of op.handlerOps) {
-        if (handlerOp.kind === OpKind.Statement && handlerOp.statement instanceof ReturnStatement) {
-          handlerOp.statement.value = new ResetViewExpr(handlerOp.statement.value);
-        }
+      let test;
+      // Any case with a `null` condition is `default`. If one exists, default to it instead.
+      const defaultCase = op.conditions.findIndex(cond => cond.expr === null);
+      if (defaultCase >= 0) {
+        const slot = op.conditions.splice(defaultCase, 1)[0].targetSlot;
+        test = new SlotLiteralExpr(slot);
+      } else {
+        // By default, a switch evaluates to `-1`, causing no template to be displayed.
+        test = literal(-1);
       }
-    }
-  }
-}
-function phasePureFunctionExtraction(cpl) {
-  for (const view of cpl.views.values()) {
-    for (const op of view.ops()) {
-      visitExpressionsInOp(op, expr => {
-        if (!(expr instanceof PureFunctionExpr) || expr.body === null) {
-          return;
+      // Switch expressions assign their main test to a temporary, to avoid re-executing it.
+      let tmp = op.test == null ? null : new AssignTemporaryExpr(op.test, job.allocateXrefId());
+      // For each remaining condition, test whether the temporary satifies the check. (If no temp is
+      // present, just check each expression directly.)
+      for (let i = op.conditions.length - 1; i >= 0; i--) {
+        let conditionalCase = op.conditions[i];
+        if (conditionalCase.expr === null) {
+          continue;
         }
-        const constantDef = new PureFunctionConstant(expr.args.length);
-        expr.fn = cpl.pool.getSharedConstant(constantDef, expr.body);
-        expr.body = null;
-      });
-    }
-  }
-}
-class PureFunctionConstant extends GenericKeyFn {
-  constructor(numArgs) {
-    super();
-    this.numArgs = numArgs;
-  }
-  keyOf(expr) {
-    if (expr instanceof PureFunctionParameterExpr) {
-      return `param(${expr.index})`;
-    } else {
-      return super.keyOf(expr);
-    }
-  }
-  toSharedConstantDeclaration(declName, keyExpr) {
-    const fnParams = [];
-    for (let idx = 0; idx < this.numArgs; idx++) {
-      fnParams.push(new FnParam('_p' + idx));
-    }
-    // We will never visit `ir.PureFunctionParameterExpr`s that don't belong to us, because this
-    // transform runs inside another visitor which will visit nested pure functions before this one.
-    const returnExpr = transformExpressionsInExpression(keyExpr, expr => {
-      if (!(expr instanceof PureFunctionParameterExpr)) {
-        return expr;
+        if (tmp !== null) {
+          const useTmp = i === 0 ? tmp : new ReadTemporaryExpr(tmp.xref);
+          conditionalCase.expr = new BinaryOperatorExpr(BinaryOperator.Identical, useTmp, conditionalCase.expr);
+        } else if (conditionalCase.alias !== null) {
+          const caseExpressionTemporaryXref = job.allocateXrefId();
+          conditionalCase.expr = new AssignTemporaryExpr(conditionalCase.expr, caseExpressionTemporaryXref);
+          op.contextValue = new ReadTemporaryExpr(caseExpressionTemporaryXref);
+        }
+        test = new ConditionalExpr(conditionalCase.expr, new SlotLiteralExpr(conditionalCase.targetSlot), test);
       }
-      return variable('_p' + expr.index);
-    }, VisitorContextFlag.None);
-    return new DeclareFunctionStmt(declName, fnParams, [new ReturnStatement(returnExpr)]);
-  }
-}
-function phasePipeCreation(cpl) {
-  for (const view of cpl.views.values()) {
-    processPipeBindingsInView(view);
-  }
-}
-function processPipeBindingsInView(view) {
-  for (const updateOp of view.update) {
-    visitExpressionsInOp(updateOp, (expr, flags) => {
-      if (!isIrExpression(expr)) {
-        return;
-      }
-      if (expr.kind !== ExpressionKind.PipeBinding) {
-        return;
-      }
-      if (flags & VisitorContextFlag.InChildOperation) {
-        throw new Error(`AssertionError: pipe bindings should not appear in child expressions`);
-      }
-      if (!hasDependsOnSlotContextTrait(updateOp)) {
-        throw new Error(`AssertionError: pipe binding associated with non-slot operation ${OpKind[updateOp.kind]}`);
-      }
-      addPipeToCreationBlock(view, updateOp.target, expr);
-    });
-  }
-}
-function addPipeToCreationBlock(view, afterTargetXref, binding) {
-  // Find the appropriate point to insert the Pipe creation operation.
-  // We're looking for `afterTargetXref` (and also want to insert after any other pipe operations
-  // which might be beyond it).
-  for (let op = view.create.head.next; op.kind !== OpKind.ListEnd; op = op.next) {
-    if (!hasConsumesSlotTrait(op)) {
-      continue;
-    }
-    if (op.xref !== afterTargetXref) {
-      continue;
-    }
-    // We've found a tentative insertion point; however, we also want to skip past any _other_ pipe
-    // operations present.
-    while (op.next.kind === OpKind.Pipe) {
-      op = op.next;
-    }
-    const pipe = createPipeOp(binding.target, binding.name);
-    OpList.insertBefore(pipe, op.next);
-    // This completes adding the pipe to the creation block.
-    return;
-  }
-  // At this point, we've failed to add the pipe to the creation block.
-  throw new Error(`AssertionError: unable to find insertion point for pipe ${binding.name}`);
-}
-function phasePipeVariadic(cpl) {
-  for (const view of cpl.views.values()) {
-    for (const op of view.update) {
-      transformExpressionsInOp(op, expr => {
-        if (!(expr instanceof PipeBindingExpr)) {
-          return expr;
-        }
-        // Pipes are variadic if they have more than 4 arguments.
-        if (expr.args.length <= 4) {
-          return expr;
-        }
-        return new PipeBindingVariadicExpr(expr.target, expr.name, literalArr(expr.args), expr.args.length);
-      }, VisitorContextFlag.None);
-    }
-  }
-}
-function phasePureLiteralStructures(cpl) {
-  for (const view of cpl.views.values()) {
-    for (const op of view.update) {
-      transformExpressionsInOp(op, (expr, flags) => {
-        if (flags & VisitorContextFlag.InChildOperation) {
-          return expr;
-        }
-        if (expr instanceof LiteralArrayExpr) {
-          return transformLiteralArray(expr);
-        } else if (expr instanceof LiteralMapExpr) {
-          return transformLiteralMap(expr);
-        }
-        return expr;
-      }, VisitorContextFlag.None);
-    }
-  }
-}
-function transformLiteralArray(expr) {
-  const derivedEntries = [];
-  const nonConstantArgs = [];
-  for (const entry of expr.entries) {
-    if (entry.isConstant()) {
-      derivedEntries.push(entry);
-    } else {
-      const idx = nonConstantArgs.length;
-      nonConstantArgs.push(entry);
-      derivedEntries.push(new PureFunctionParameterExpr(idx));
-    }
-  }
-  return new PureFunctionExpr(literalArr(derivedEntries), nonConstantArgs);
-}
-function transformLiteralMap(expr) {
-  let derivedEntries = [];
-  const nonConstantArgs = [];
-  for (const entry of expr.entries) {
-    if (entry.value.isConstant()) {
-      derivedEntries.push(entry);
-    } else {
-      const idx = nonConstantArgs.length;
-      nonConstantArgs.push(entry.value);
-      derivedEntries.push(new LiteralMapEntry(entry.key, new PureFunctionParameterExpr(idx), entry.quoted));
-    }
-  }
-  return new PureFunctionExpr(literalMap(derivedEntries), nonConstantArgs);
-}
-function phaseAlignPipeVariadicVarOffset(cpl) {
-  for (const view of cpl.views.values()) {
-    for (const op of view.update) {
-      visitExpressionsInOp(op, expr => {
-        if (!(expr instanceof PipeBindingVariadicExpr)) {
-          return expr;
-        }
-        if (!(expr.args instanceof PureFunctionExpr)) {
-          return expr;
-        }
-        if (expr.varOffset === null || expr.args.varOffset === null) {
-          throw new Error(`Must run after variable counting`);
-        }
-        // The structure of this variadic pipe expression is:
-        // PipeBindingVariadic(#, Y, PureFunction(X, ...ARGS))
-        // Where X and Y are the slot offsets for the variables used by these operations, and Y > X.
-        // In `TemplateDefinitionBuilder` the PipeBindingVariadic variable slots are allocated
-        // before the PureFunction slots, which is unusually out-of-order.
-        //
-        // To maintain identical output for the tests in question, we adjust the variable offsets of
-        // these two calls to emulate TDB's behavior. This is not perfect, because the ARGS of the
-        // PureFunction call may also allocate slots which by TDB's ordering would come after X, and
-        // we don't account for that. Still, this should be enough to pass the existing pipe tests.
-        // Put the PipeBindingVariadic vars where the PureFunction vars were previously allocated.
-        expr.varOffset = expr.args.varOffset;
-        // Put the PureFunction vars following the PipeBindingVariadic vars.
-        expr.args.varOffset = expr.varOffset + varsUsedByIrExpression(expr);
-      });
-    }
-  }
-}
-
-/**
- * Run all transformation phases in the correct order against a `ComponentCompilation`. After this
- * processing, the compilation should be in a state where it can be emitted via `emitTemplateFn`.s
- */
-function transformTemplate(cpl) {
-  phasePipeCreation(cpl);
-  phasePipeVariadic(cpl);
-  phasePureLiteralStructures(cpl);
-  phaseGenerateVariables(cpl);
-  phaseSaveRestoreView(cpl);
-  phaseResolveNames(cpl);
-  phaseResolveContexts(cpl);
-  phaseLocalRefs(cpl);
-  phaseConstCollection(cpl);
-  phaseSlotAllocation(cpl);
-  phaseVarCounting(cpl);
-  phaseGenerateAdvance(cpl);
-  phaseNaming(cpl);
-  phaseVariableOptimization(cpl, {
-    conservative: true
-  });
-  phaseMergeNextContext(cpl);
-  phaseNgContainer(cpl);
-  phaseEmptyElements(cpl);
-  phasePureFunctionExtraction(cpl);
-  phaseAlignPipeVariadicVarOffset(cpl);
-  phaseReify(cpl);
-  phaseChaining(cpl);
-}
-/**
- * Compile all views in the given `ComponentCompilation` into the final template function, which may
- * reference constants defined in a `ConstantPool`.
- */
-function emitTemplateFn(tpl, pool) {
-  const rootFn = emitView(tpl.root);
-  emitChildViews(tpl.root, pool);
-  return rootFn;
-}
-function emitChildViews(parent, pool) {
-  for (const view of parent.tpl.views.values()) {
-    if (view.parent !== parent.xref) {
-      continue;
-    }
-    // Child views are emitted depth-first.
-    emitChildViews(view, pool);
-    const viewFn = emitView(view);
-    pool.statements.push(viewFn.toDeclStmt(viewFn.name));
-  }
-}
-/**
- * Emit a template function for an individual `ViewCompilation` (which may be either the root view
- * or an embedded view).
- */
-function emitView(view) {
-  if (view.fnName === null) {
-    throw new Error(`AssertionError: view ${view.xref} is unnamed`);
-  }
-  const createStatements = [];
-  for (const op of view.create) {
-    if (op.kind !== OpKind.Statement) {
-      throw new Error(`AssertionError: expected all create ops to have been compiled, but got ${OpKind[op.kind]}`);
-    }
-    createStatements.push(op.statement);
-  }
-  const updateStatements = [];
-  for (const op of view.update) {
-    if (op.kind !== OpKind.Statement) {
-      throw new Error(`AssertionError: expected all update ops to have been compiled, but got ${OpKind[op.kind]}`);
-    }
-    updateStatements.push(op.statement);
-  }
-  const createCond = maybeGenerateRfBlock(1, createStatements);
-  const updateCond = maybeGenerateRfBlock(2, updateStatements);
-  return fn([new FnParam('rf'), new FnParam('ctx')], [...createCond, ...updateCond], /* type */undefined, /* sourceSpan */undefined, view.fnName);
-}
-function maybeGenerateRfBlock(flag, statements) {
-  if (statements.length === 0) {
-    return [];
-  }
-  return [ifStmt(new BinaryOperatorExpr(BinaryOperator.BitwiseAnd, variable('rf'), literal(flag)), statements)];
-}
-
-/**
- * Compilation-in-progress of a whole component's template, including the main template and any
- * embedded views or host bindings.
- */
-class ComponentCompilation {
-  constructor(componentName, pool) {
-    this.componentName = componentName;
-    this.pool = pool;
-    /**
-     * Tracks the next `ir.XrefId` which can be assigned as template structures are ingested.
-     */
-    this.nextXrefId = 0;
-    /**
-     * Map of view IDs to `ViewCompilation`s.
-     */
-    this.views = new Map();
-    /**
-     * Constant expressions used by operations within this component's compilation.
-     *
-     * This will eventually become the `consts` array in the component definition.
-     */
-    this.consts = [];
-    // Allocate the root view.
-    const root = new ViewCompilation(this, this.allocateXrefId(), null);
-    this.views.set(root.xref, root);
-    this.root = root;
-  }
-  /**
-   * Add a `ViewCompilation` for a new embedded view to this compilation.
-   */
-  allocateView(parent) {
-    const view = new ViewCompilation(this, this.allocateXrefId(), parent);
-    this.views.set(view.xref, view);
-    return view;
-  }
-  /**
-   * Generate a new unique `ir.XrefId`.
-   */
-  allocateXrefId() {
-    return this.nextXrefId++;
-  }
-  /**
-   * Add a constant `o.Expression` to the compilation and return its index in the `consts` array.
-   */
-  addConst(newConst) {
-    for (let idx = 0; idx < this.consts.length; idx++) {
-      if (this.consts[idx].isEquivalent(newConst)) {
-        return idx;
-      }
-    }
-    const idx = this.consts.length;
-    this.consts.push(newConst);
-    return idx;
-  }
-}
-/**
- * Compilation-in-progress of an individual view within a template.
- */
-class ViewCompilation {
-  constructor(tpl, xref, parent) {
-    this.tpl = tpl;
-    this.xref = xref;
-    this.parent = parent;
-    /**
-     * Name of the function which will be generated for this view.
-     *
-     * May be `null` if not yet determined.
-     */
-    this.fnName = null;
-    /**
-     * List of creation operations for this view.
-     *
-     * Creation operations may internally contain other operations, including update operations.
-     */
-    this.create = new OpList();
-    /**
-     * List of update operations for this view.
-     */
-    this.update = new OpList();
-    /**
-     * Map of declared variables available within this view to the property on the context object
-     * which they alias.
-     */
-    this.contextVariables = new Map();
-    /**
-     * Number of declaration slots used within this view, or `null` if slots have not yet been
-     * allocated.
-     */
-    this.decls = null;
-    /**
-     * Number of variable slots used within this view, or `null` if variables have not yet been
-     * counted.
-     */
-    this.vars = null;
-  }
-  /**
-   * Iterate over all `ir.Op`s within this view.
-   *
-   * Some operations may have child operations, which this iterator will visit.
-   */
-  *ops() {
-    for (const op of this.create) {
-      yield op;
-      if (op.kind === OpKind.Listener) {
-        for (const listenerOp of op.handlerOps) {
-          yield listenerOp;
-        }
-      }
-    }
-    for (const op of this.update) {
-      yield op;
+      // Save the resulting aggregate Joost-expression.
+      op.processed = test;
+      // Clear the original conditions array, since we no longer need it, and don't want it to
+      // affect subsequent phases (e.g. pipe creation).
+      op.conditions = [];
     }
   }
 }
 const BINARY_OPERATORS = new Map([['&&', BinaryOperator.And], ['>', BinaryOperator.Bigger], ['>=', BinaryOperator.BiggerEquals], ['&', BinaryOperator.BitwiseAnd], ['/', BinaryOperator.Divide], ['==', BinaryOperator.Equals], ['===', BinaryOperator.Identical], ['<', BinaryOperator.Lower], ['<=', BinaryOperator.LowerEquals], ['-', BinaryOperator.Minus], ['%', BinaryOperator.Modulo], ['*', BinaryOperator.Multiply], ['!=', BinaryOperator.NotEquals], ['!==', BinaryOperator.NotIdentical], ['??', BinaryOperator.NullishCoalesce], ['||', BinaryOperator.Or], ['+', BinaryOperator.Plus]]);
+function namespaceForKey(namespacePrefixKey) {
+  const NAMESPACES = new Map([['svg', Namespace.SVG], ['math', Namespace.Math]]);
+  if (namespacePrefixKey === null) {
+    return Namespace.HTML;
+  }
+  return NAMESPACES.get(namespacePrefixKey) ?? Namespace.HTML;
+}
+function keyForNamespace(namespace) {
+  const NAMESPACES = new Map([['svg', Namespace.SVG], ['math', Namespace.Math]]);
+  for (const [k, n] of NAMESPACES.entries()) {
+    if (n === namespace) {
+      return k;
+    }
+  }
+  return null; // No namespace prefix for HTML
+}
+
+function prefixWithNamespace(strippedTag, namespace) {
+  if (namespace === Namespace.HTML) {
+    return strippedTag;
+  }
+  return `:${keyForNamespace(namespace)}:${strippedTag}`;
+}
+function literalOrArrayLiteral(value) {
+  if (Array.isArray(value)) {
+    return literalArr(value.map(literalOrArrayLiteral));
+  }
+  return literal(value);
+}
 
 /**
- * Process a template AST and convert it into a `ComponentCompilation` in the intermediate
- * representation.
+ * Converts the semantic attributes of element-like operations (elements, templates) into constant
+ * array expressions, and lifts them into the overall component `consts`.
  */
-function ingest(componentName, template, constantPool) {
-  const cpl = new ComponentCompilation(componentName, constantPool);
-  ingestNodes(cpl.root, template);
-  return cpl;
-}
-/**
- * Ingest the nodes of a template AST into the given `ViewCompilation`.
- */
-function ingestNodes(view, template) {
-  for (const node of template) {
-    if (node instanceof Element$1) {
-      ingestElement(view, node);
-    } else if (node instanceof Template) {
-      ingestTemplate(view, node);
-    } else if (node instanceof Text$3) {
-      ingestText(view, node);
-    } else if (node instanceof BoundText) {
-      ingestBoundText(view, node);
-    } else {
-      throw new Error(`Unsupported template node: ${node.constructor.name}`);
+function collectElementConsts(job) {
+  // Collect all extracted attributes.
+  const allElementAttributes = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.ExtractedAttribute) {
+        const attributes = allElementAttributes.get(op.target) || new ElementAttributes(job.compatibility);
+        allElementAttributes.set(op.target, attributes);
+        attributes.add(op.bindingKind, op.name, op.expression, op.trustedValueFn);
+        OpList.remove(op);
+      }
+    }
+  }
+  // Serialize the extracted attributes into the const array.
+  if (job instanceof ComponentCompilationJob) {
+    for (const unit of job.units) {
+      for (const op of unit.create) {
+        if (isElementOrContainerOp(op)) {
+          const attributes = allElementAttributes.get(op.xref);
+          if (attributes !== undefined) {
+            const attrArray = serializeAttributes(attributes);
+            if (attrArray.entries.length > 0) {
+              op.attributes = job.addConst(attrArray);
+            }
+          }
+        }
+      }
+    }
+  } else if (job instanceof HostBindingCompilationJob) {
+    // TODO: If the host binding case further diverges, we may want to split it into its own
+    // phase.
+    for (const [xref, attributes] of allElementAttributes.entries()) {
+      if (xref !== job.root.xref) {
+        throw new Error(`An attribute would be const collected into the host binding's template function, but is not associated with the root xref.`);
+      }
+      const attrArray = serializeAttributes(attributes);
+      if (attrArray.entries.length > 0) {
+        job.root.attributes = attrArray;
+      }
     }
   }
 }
 /**
- * Ingest an element AST from the template into the given `ViewCompilation`.
+ * Shared instance of an empty array to avoid unnecessary array allocations.
  */
-function ingestElement(view, element) {
-  const staticAttributes = {};
-  for (const attr of element.attributes) {
-    staticAttributes[attr.name] = attr.value;
-  }
-  const id = view.tpl.allocateXrefId();
-  const startOp = createElementStartOp(element.name, id);
-  view.create.push(startOp);
-  ingestAttributes(startOp, element);
-  ingestBindings(view, startOp, element);
-  ingestReferences(startOp, element);
-  ingestNodes(view, element.children);
-  view.create.push(createElementEndOp(id));
-}
+const FLYWEIGHT_ARRAY = Object.freeze([]);
 /**
- * Ingest an `ng-template` node from the AST into the given `ViewCompilation`.
+ * Container for all of the various kinds of attributes which are applied on an element.
  */
-function ingestTemplate(view, tmpl) {
-  const childView = view.tpl.allocateView(view.xref);
-  // TODO: validate the fallback tag name here.
-  const tplOp = createTemplateOp(childView.xref, tmpl.tagName ?? 'ng-template');
-  view.create.push(tplOp);
-  ingestAttributes(tplOp, tmpl);
-  ingestBindings(view, tplOp, tmpl);
-  ingestReferences(tplOp, tmpl);
-  ingestNodes(childView, tmpl.children);
-  for (const {
-    name,
-    value
-  } of tmpl.variables) {
-    childView.contextVariables.set(name, value);
+class ElementAttributes {
+  get attributes() {
+    return this.byKind.get(BindingKind.Attribute) ?? FLYWEIGHT_ARRAY;
   }
-}
-/**
- * Ingest a literal text node from the AST into the given `ViewCompilation`.
- */
-function ingestText(view, text) {
-  view.create.push(createTextOp(view.tpl.allocateXrefId(), text.value));
-}
-/**
- * Ingest an interpolated text node from the AST into the given `ViewCompilation`.
- */
-function ingestBoundText(view, text) {
-  let value = text.value;
-  if (value instanceof ASTWithSource) {
-    value = value.ast;
+  get classes() {
+    return this.byKind.get(BindingKind.ClassName) ?? FLYWEIGHT_ARRAY;
   }
-  if (!(value instanceof Interpolation)) {
-    throw new Error(`AssertionError: expected Interpolation for BoundText node, got ${value.constructor.name}`);
+  get styles() {
+    return this.byKind.get(BindingKind.StyleProperty) ?? FLYWEIGHT_ARRAY;
   }
-  const textXref = view.tpl.allocateXrefId();
-  view.create.push(createTextOp(textXref, ''));
-  view.update.push(createInterpolateTextOp(textXref, value.strings, value.expressions.map(expr => convertAst(expr, view.tpl))));
-}
-/**
- * Convert a template AST expression into an output AST expression.
- */
-function convertAst(ast, cpl) {
-  if (ast instanceof ASTWithSource) {
-    return convertAst(ast.ast, cpl);
-  } else if (ast instanceof PropertyRead) {
-    if (ast.receiver instanceof ImplicitReceiver) {
-      return new LexicalReadExpr(ast.name);
-    } else {
-      return new ReadPropExpr(convertAst(ast.receiver, cpl), ast.name);
+  get bindings() {
+    return this.byKind.get(BindingKind.Property) ?? FLYWEIGHT_ARRAY;
+  }
+  get template() {
+    return this.byKind.get(BindingKind.Template) ?? FLYWEIGHT_ARRAY;
+  }
+  get i18n() {
+    return this.byKind.get(BindingKind.I18n) ?? FLYWEIGHT_ARRAY;
+  }
+  constructor(compatibility) {
+    this.compatibility = compatibility;
+    this.known = new Map();
+    this.byKind = new Map();
+    this.projectAs = null;
+  }
+  isKnown(kind, name, value) {
+    const nameToValue = this.known.get(kind) ?? new Set();
+    this.known.set(kind, nameToValue);
+    if (nameToValue.has(name)) {
+      return true;
     }
-  } else if (ast instanceof PropertyWrite) {
-    return new WritePropExpr(convertAst(ast.receiver, cpl), ast.name, convertAst(ast.value, cpl));
-  } else if (ast instanceof KeyedWrite) {
-    return new WriteKeyExpr(convertAst(ast.receiver, cpl), convertAst(ast.key, cpl), convertAst(ast.value, cpl));
-  } else if (ast instanceof Call) {
-    if (ast.receiver instanceof ImplicitReceiver) {
-      throw new Error(`Unexpected ImplicitReceiver`);
-    } else {
-      return new InvokeFunctionExpr(convertAst(ast.receiver, cpl), ast.args.map(arg => convertAst(arg, cpl)));
+    nameToValue.add(name);
+    return false;
+  }
+  add(kind, name, value, trustedValueFn) {
+    // TemplateDefinitionBuilder puts duplicate attribute, class, and style values into the consts
+    // array. This seems inefficient, we can probably keep just the first one or the last value
+    // (whichever actually gets applied when multiple values are listed for the same attribute).
+    const allowDuplicates = this.compatibility === CompatibilityMode.TemplateDefinitionBuilder && (kind === BindingKind.Attribute || kind === BindingKind.ClassName || kind === BindingKind.StyleProperty);
+    if (!allowDuplicates && this.isKnown(kind, name, value)) {
+      return;
     }
-  } else if (ast instanceof LiteralPrimitive) {
-    return literal(ast.value);
-  } else if (ast instanceof Binary) {
-    const operator = BINARY_OPERATORS.get(ast.operation);
-    if (operator === undefined) {
-      throw new Error(`AssertionError: unknown binary operator ${ast.operation}`);
+    // TODO: Can this be its own phase
+    if (name === 'ngProjectAs') {
+      if (value === null || !(value instanceof LiteralExpr) || value.value == null || typeof value.value?.toString() !== 'string') {
+        throw Error('ngProjectAs must have a string literal value');
+      }
+      this.projectAs = value.value.toString();
+      // TODO: TemplateDefinitionBuilder allows `ngProjectAs` to also be assigned as a literal
+      // attribute. Is this sane?
     }
-    return new BinaryOperatorExpr(operator, convertAst(ast.left, cpl), convertAst(ast.right, cpl));
-  } else if (ast instanceof ThisReceiver) {
-    return new ContextExpr(cpl.root.xref);
-  } else if (ast instanceof KeyedRead) {
-    return new ReadKeyExpr(convertAst(ast.receiver, cpl), convertAst(ast.key, cpl));
-  } else if (ast instanceof Chain) {
-    throw new Error(`AssertionError: Chain in unknown context`);
-  } else if (ast instanceof LiteralMap) {
-    const entries = ast.keys.map((key, idx) => {
-      const value = ast.values[idx];
-      return new LiteralMapEntry(key.key, convertAst(value, cpl), key.quoted);
-    });
-    return new LiteralMapExpr(entries);
-  } else if (ast instanceof LiteralArray) {
-    return new LiteralArrayExpr(ast.expressions.map(expr => convertAst(expr, cpl)));
-  } else if (ast instanceof Conditional) {
-    return new ConditionalExpr(convertAst(ast.condition, cpl), convertAst(ast.trueExp, cpl), convertAst(ast.falseExp, cpl));
-  } else if (ast instanceof BindingPipe) {
-    return new PipeBindingExpr(cpl.allocateXrefId(), ast.name, [convertAst(ast.exp, cpl), ...ast.args.map(arg => convertAst(arg, cpl))]);
-  } else {
-    throw new Error(`Unhandled expression type: ${ast.constructor.name}`);
-  }
-}
-/**
- * Process all of the attributes on an element-like structure in the template AST and convert them
- * to their IR representation.
- */
-function ingestAttributes(op, element) {
-  assertIsElementAttributes(op.attributes);
-  for (const attr of element.attributes) {
-    op.attributes.add(ElementAttributeKind.Attribute, attr.name, literal(attr.value));
-  }
-  for (const input of element.inputs) {
-    op.attributes.add(ElementAttributeKind.Binding, input.name, null);
-  }
-  for (const output of element.outputs) {
-    op.attributes.add(ElementAttributeKind.Binding, output.name, null);
-  }
-  if (element instanceof Template) {
-    for (const attr of element.templateAttrs) {
-      // TODO: what do we do about the value here?
-      op.attributes.add(ElementAttributeKind.Template, attr.name, null);
+
+    const array = this.arrayFor(kind);
+    array.push(...getAttributeNameLiterals$1(name));
+    if (kind === BindingKind.Attribute || kind === BindingKind.StyleProperty) {
+      if (value === null) {
+        throw Error('Attribute, i18n attribute, & style element attributes must have a value');
+      }
+      if (trustedValueFn !== null) {
+        if (!isStringLiteral(value)) {
+          throw Error('AssertionError: extracted attribute value should be string literal');
+        }
+        array.push(taggedTemplate(trustedValueFn, new TemplateLiteral([new TemplateLiteralElement(value.value)], []), undefined, value.sourceSpan));
+      } else {
+        array.push(value);
+      }
     }
   }
+  arrayFor(kind) {
+    if (!this.byKind.has(kind)) {
+      this.byKind.set(kind, []);
+    }
+    return this.byKind.get(kind);
+  }
 }
 /**
- * Process all of the bindings on an element-like structure in the template AST and convert them
- * to their IR representation.
+ * Gets an array of literal expressions representing the attribute's namespaced name.
  */
-function ingestBindings(view, op, element) {
-  if (element instanceof Template) {
-    for (const attr of [...element.templateAttrs, ...element.inputs]) {
-      if (!(attr instanceof BoundAttribute)) {
+function getAttributeNameLiterals$1(name) {
+  const [attributeNamespace, attributeName] = splitNsName(name, false);
+  const nameLiteral = literal(attributeName);
+  if (attributeNamespace) {
+    return [literal(0 /* core.AttributeMarker.NamespaceURI */), literal(attributeNamespace), nameLiteral];
+  }
+  return [nameLiteral];
+}
+/**
+ * Serializes an ElementAttributes object into an array expression.
+ */
+function serializeAttributes({
+  attributes,
+  bindings,
+  classes,
+  i18n,
+  projectAs,
+  styles,
+  template
+}) {
+  const attrArray = [...attributes];
+  if (projectAs !== null) {
+    // Parse the attribute value into a CssSelectorList. Note that we only take the
+    // first selector, because we don't support multiple selectors in ngProjectAs.
+    const parsedR3Selector = parseSelectorToR3Selector(projectAs)[0];
+    attrArray.push(literal(5 /* core.AttributeMarker.ProjectAs */), literalOrArrayLiteral(parsedR3Selector));
+  }
+  if (classes.length > 0) {
+    attrArray.push(literal(1 /* core.AttributeMarker.Classes */), ...classes);
+  }
+  if (styles.length > 0) {
+    attrArray.push(literal(2 /* core.AttributeMarker.Styles */), ...styles);
+  }
+  if (bindings.length > 0) {
+    attrArray.push(literal(3 /* core.AttributeMarker.Bindings */), ...bindings);
+  }
+  if (template.length > 0) {
+    attrArray.push(literal(4 /* core.AttributeMarker.Template */), ...template);
+  }
+  if (i18n.length > 0) {
+    attrArray.push(literal(6 /* core.AttributeMarker.I18n */), ...i18n);
+  }
+  return literalArr(attrArray);
+}
+
+/**
+ * Some binding instructions in the update block may actually correspond to i18n bindings. In that
+ * case, they should be replaced with i18nExp instructions for the dynamic portions.
+ */
+function convertI18nBindings(job) {
+  const i18nAttributesByElem = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.I18nAttributes) {
+        i18nAttributesByElem.set(op.target, op);
+      }
+    }
+    for (const op of unit.update) {
+      switch (op.kind) {
+        case OpKind.Property:
+        case OpKind.Attribute:
+          if (op.i18nContext === null) {
+            continue;
+          }
+          if (!(op.expression instanceof Interpolation)) {
+            continue;
+          }
+          const i18nAttributesForElem = i18nAttributesByElem.get(op.target);
+          if (i18nAttributesForElem === undefined) {
+            throw new Error('AssertionError: An i18n attribute binding instruction requires the owning element to have an I18nAttributes create instruction');
+          }
+          if (i18nAttributesForElem.target !== op.target) {
+            throw new Error('AssertionError: Expected i18nAttributes target element to match binding target element');
+          }
+          const ops = [];
+          for (let i = 0; i < op.expression.expressions.length; i++) {
+            const expr = op.expression.expressions[i];
+            if (op.expression.i18nPlaceholders.length !== op.expression.expressions.length) {
+              throw new Error(`AssertionError: An i18n attribute binding instruction requires the same number of expressions and placeholders, but found ${op.expression.i18nPlaceholders.length} placeholders and ${op.expression.expressions.length} expressions`);
+            }
+            ops.push(createI18nExpressionOp(op.i18nContext, i18nAttributesForElem.target, i18nAttributesForElem.xref, i18nAttributesForElem.handle, expr, null, op.expression.i18nPlaceholders[i], I18nParamResolutionTime.Creation, I18nExpressionFor.I18nAttribute, op.name, op.sourceSpan));
+          }
+          OpList.replaceWithMany(op, ops);
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Create extracted deps functions for defer ops.
+ */
+function createDeferDepsFns(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.Defer) {
+        if (op.metadata.deps.length === 0) {
+          continue;
+        }
+        const dependencies = [];
+        for (const dep of op.metadata.deps) {
+          if (dep.isDeferrable) {
+            // Callback function, e.g. `m () => m.MyCmp;`.
+            const innerFn = arrowFn([new FnParam('m', DYNAMIC_TYPE)], variable('m').prop(dep.symbolName));
+            // Dynamic import, e.g. `import('./a').then(...)`.
+            const importExpr = new DynamicImportExpr(dep.importPath).prop('then').callFn([innerFn]);
+            dependencies.push(importExpr);
+          } else {
+            // Non-deferrable symbol, just use a reference to the type.
+            dependencies.push(dep.type);
+          }
+        }
+        const depsFnExpr = arrowFn([], literalArr(dependencies));
+        if (op.handle.slot === null) {
+          throw new Error('AssertionError: slot must be assigned bfore extracting defer deps functions');
+        }
+        op.resolverFn = job.pool.getSharedFunctionReference(depsFnExpr, `${job.componentName}_Defer_${op.handle.slot}_DepsFn`, /* Don't use unique names for TDB compatibility */false);
+      }
+    }
+  }
+}
+
+/**
+ * Create one helper context op per i18n block (including generate descending blocks).
+ *
+ * Also, if an ICU exists inside an i18n block that also contains other localizable content (such as
+ * string), create an additional helper context op for the ICU.
+ *
+ * These context ops are later used for generating i18n messages. (Although we generate at least one
+ * context op per nested view, we will collect them up the tree later, to generate a top-level
+ * message.)
+ */
+function createI18nContexts(job) {
+  // Create i18n context ops for i18n attrs.
+  const attrContextByMessage = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      switch (op.kind) {
+        case OpKind.Binding:
+        case OpKind.Property:
+        case OpKind.Attribute:
+        case OpKind.ExtractedAttribute:
+          if (op.i18nMessage === null) {
+            continue;
+          }
+          if (!attrContextByMessage.has(op.i18nMessage)) {
+            const i18nContext = createI18nContextOp(I18nContextKind.Attr, job.allocateXrefId(), null, op.i18nMessage, null);
+            unit.create.push(i18nContext);
+            attrContextByMessage.set(op.i18nMessage, i18nContext.xref);
+          }
+          op.i18nContext = attrContextByMessage.get(op.i18nMessage);
+          break;
+      }
+    }
+  }
+  // Create i18n context ops for root i18n blocks.
+  const blockContextByI18nBlock = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nStart:
+          if (op.xref === op.root) {
+            const contextOp = createI18nContextOp(I18nContextKind.RootI18n, job.allocateXrefId(), op.xref, op.message, null);
+            unit.create.push(contextOp);
+            op.context = contextOp.xref;
+            blockContextByI18nBlock.set(op.xref, contextOp);
+          }
+          break;
+      }
+    }
+  }
+  // Assign i18n contexts for child i18n blocks. These don't need their own conext, instead they
+  // should inherit from their root i18n block.
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.I18nStart && op.xref !== op.root) {
+        const rootContext = blockContextByI18nBlock.get(op.root);
+        if (rootContext === undefined) {
+          throw Error('AssertionError: Root i18n block i18n context should have been created.');
+        }
+        op.context = rootContext.xref;
+        blockContextByI18nBlock.set(op.xref, rootContext);
+      }
+    }
+  }
+  // Create or assign i18n contexts for ICUs.
+  let currentI18nOp = null;
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nStart:
+          currentI18nOp = op;
+          break;
+        case OpKind.I18nEnd:
+          currentI18nOp = null;
+          break;
+        case OpKind.IcuStart:
+          if (currentI18nOp === null) {
+            throw Error('AssertionError: Unexpected ICU outside of an i18n block.');
+          }
+          if (op.message.id !== currentI18nOp.message.id) {
+            // This ICU is a sub-message inside its parent i18n block message. We need to give it
+            // its own context.
+            const contextOp = createI18nContextOp(I18nContextKind.Icu, job.allocateXrefId(), currentI18nOp.xref, op.message, null);
+            unit.create.push(contextOp);
+            op.context = contextOp.xref;
+          } else {
+            // This ICU is the only translatable content in its parent i18n block. We need to
+            // convert the parent's context into an ICU context.
+            op.context = currentI18nOp.context;
+            blockContextByI18nBlock.get(currentI18nOp.xref).contextKind = I18nContextKind.Icu;
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Deduplicate text bindings, e.g. <div class="cls1" class="cls2">
+ */
+function deduplicateTextBindings(job) {
+  const seen = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.update.reversed()) {
+      if (op.kind === OpKind.Binding && op.isTextAttribute) {
+        const seenForElement = seen.get(op.target) || new Set();
+        if (seenForElement.has(op.name)) {
+          if (job.compatibility === CompatibilityMode.TemplateDefinitionBuilder) {
+            // For most duplicated attributes, TemplateDefinitionBuilder lists all of the values in
+            // the consts array. However, for style and class attributes it only keeps the last one.
+            // We replicate that behavior here since it has actual consequences for apps with
+            // duplicate class or style attrs.
+            if (op.name === 'style' || op.name === 'class') {
+              OpList.remove(op);
+            }
+          } else {
+            // TODO: Determine the correct behavior. It would probably make sense to merge multiple
+            // style and class attributes. Alternatively we could just throw an error, as HTML
+            // doesn't permit duplicate attributes.
+          }
+        }
+        seenForElement.add(op.name);
+        seen.set(op.target, seenForElement);
+      }
+    }
+  }
+}
+
+/**
+ * Defer instructions take a configuration array, which should be collected into the component
+ * consts. This phase finds the config options, and creates the corresponding const array.
+ */
+function configureDeferInstructions(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind !== OpKind.Defer) {
         continue;
       }
-      ingestPropertyBinding(view, op.xref, attr.name, attr.value);
-    }
-  } else {
-    for (const input of element.inputs) {
-      ingestPropertyBinding(view, op.xref, input.name, input.value);
-    }
-    for (const output of element.outputs) {
-      const listenerOp = createListenerOp(op.xref, output.name, op.tag);
-      // if output.handler is a chain, then push each statement from the chain separately, and
-      // return the last one?
-      let inputExprs;
-      let handler = output.handler;
-      if (handler instanceof ASTWithSource) {
-        handler = handler.ast;
+      if (op.placeholderMinimumTime !== null) {
+        op.placeholderConfig = new ConstCollectedExpr(literalOrArrayLiteral([op.placeholderMinimumTime]));
       }
-      if (handler instanceof Chain) {
-        inputExprs = handler.expressions;
-      } else {
-        inputExprs = [handler];
+      if (op.loadingMinimumTime !== null || op.loadingAfterTime !== null) {
+        op.loadingConfig = new ConstCollectedExpr(literalOrArrayLiteral([op.loadingMinimumTime, op.loadingAfterTime]));
       }
-      if (inputExprs.length === 0) {
-        throw new Error('Expected listener to have non-empty expression list.');
-      }
-      const expressions = inputExprs.map(expr => convertAst(expr, view.tpl));
-      const returnExpr = expressions.pop();
-      for (const expr of expressions) {
-        const stmtOp = createStatementOp(new ExpressionStatement(expr));
-        listenerOp.handlerOps.push(stmtOp);
-      }
-      listenerOp.handlerOps.push(createStatementOp(new ReturnStatement(returnExpr)));
-      view.create.push(listenerOp);
     }
   }
 }
-function ingestPropertyBinding(view, xref, name, value) {
-  if (value instanceof ASTWithSource) {
-    value = value.ast;
+
+/**
+ * Some `defer` conditions can reference other elements in the template, using their local reference
+ * names. However, the semantics are quite different from the normal local reference system: in
+ * particular, we need to look at local reference names in enclosing views. This phase resolves
+ * all such references to actual xrefs.
+ */
+function resolveDeferTargetNames(job) {
+  const scopes = new Map();
+  function getScopeForView(view) {
+    if (scopes.has(view.xref)) {
+      return scopes.get(view.xref);
+    }
+    const scope = new Scope$1();
+    for (const op of view.create) {
+      // add everything that can be referenced.
+      if (!isElementOrContainerOp(op) || op.localRefs === null) {
+        continue;
+      }
+      if (!Array.isArray(op.localRefs)) {
+        throw new Error('LocalRefs were already processed, but were needed to resolve defer targets.');
+      }
+      for (const ref of op.localRefs) {
+        if (ref.target !== '') {
+          continue;
+        }
+        scope.targets.set(ref.name, {
+          xref: op.xref,
+          slot: op.handle
+        });
+      }
+    }
+    scopes.set(view.xref, scope);
+    return scope;
   }
-  if (value instanceof Interpolation) {
-    view.update.push(createInterpolatePropertyOp(xref, name, value.strings, value.expressions.map(expr => convertAst(expr, view.tpl))));
+  function resolveTrigger(deferOwnerView, op, placeholderView) {
+    switch (op.trigger.kind) {
+      case DeferTriggerKind.Idle:
+      case DeferTriggerKind.Immediate:
+      case DeferTriggerKind.Timer:
+        return;
+      case DeferTriggerKind.Hover:
+      case DeferTriggerKind.Interaction:
+      case DeferTriggerKind.Viewport:
+        if (op.trigger.targetName === null) {
+          // A `null` target name indicates we should default to the first element in the
+          // placeholder block.
+          if (placeholderView === null) {
+            throw new Error('defer on trigger with no target name must have a placeholder block');
+          }
+          const placeholder = job.views.get(placeholderView);
+          if (placeholder == undefined) {
+            throw new Error('AssertionError: could not find placeholder view for defer on trigger');
+          }
+          for (const placeholderOp of placeholder.create) {
+            if (hasConsumesSlotTrait(placeholderOp) && (isElementOrContainerOp(placeholderOp) || placeholderOp.kind === OpKind.Projection)) {
+              op.trigger.targetXref = placeholderOp.xref;
+              op.trigger.targetView = placeholderView;
+              op.trigger.targetSlotViewSteps = -1;
+              op.trigger.targetSlot = placeholderOp.handle;
+              return;
+            }
+          }
+          return;
+        }
+        let view = placeholderView !== null ? job.views.get(placeholderView) : deferOwnerView;
+        let step = placeholderView !== null ? -1 : 0;
+        while (view !== null) {
+          const scope = getScopeForView(view);
+          if (scope.targets.has(op.trigger.targetName)) {
+            const {
+              xref,
+              slot
+            } = scope.targets.get(op.trigger.targetName);
+            op.trigger.targetXref = xref;
+            op.trigger.targetView = view.xref;
+            op.trigger.targetSlotViewSteps = step;
+            op.trigger.targetSlot = slot;
+            return;
+          }
+          view = view.parent !== null ? job.views.get(view.parent) : null;
+          step++;
+        }
+        break;
+      default:
+        throw new Error(`Trigger kind ${op.trigger.kind} not handled`);
+    }
+  }
+  // Find the defer ops, and assign the data about their targets.
+  for (const unit of job.units) {
+    const defers = new Map();
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.Defer:
+          defers.set(op.xref, op);
+          break;
+        case OpKind.DeferOn:
+          const deferOp = defers.get(op.defer);
+          resolveTrigger(unit, op, deferOp.placeholderView);
+          break;
+      }
+    }
+  }
+}
+class Scope$1 {
+  constructor() {
+    this.targets = new Map();
+  }
+}
+const REPLACEMENTS = new Map([[OpKind.ElementEnd, [OpKind.ElementStart, OpKind.Element]], [OpKind.ContainerEnd, [OpKind.ContainerStart, OpKind.Container]], [OpKind.I18nEnd, [OpKind.I18nStart, OpKind.I18n]]]);
+/**
+ * Op kinds that should not prevent merging of start/end ops.
+ */
+const IGNORED_OP_KINDS = new Set([OpKind.Pipe]);
+/**
+ * Replace sequences of mergable instructions (e.g. `ElementStart` and `ElementEnd`) with a
+ * consolidated instruction (e.g. `Element`).
+ */
+function collapseEmptyInstructions(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      // Find end ops that may be able to be merged.
+      const opReplacements = REPLACEMENTS.get(op.kind);
+      if (opReplacements === undefined) {
+        continue;
+      }
+      const [startKind, mergedKind] = opReplacements;
+      // Locate the previous (non-ignored) op.
+      let prevOp = op.prev;
+      while (prevOp !== null && IGNORED_OP_KINDS.has(prevOp.kind)) {
+        prevOp = prevOp.prev;
+      }
+      // If the previous op is the corresponding start op, we can megre.
+      if (prevOp !== null && prevOp.kind === startKind) {
+        // Transmute the start instruction to the merged version. This is safe as they're designed
+        // to be identical apart from the `kind`.
+        prevOp.kind = mergedKind;
+        // Remove the end instruction.
+        OpList.remove(op);
+      }
+    }
+  }
+}
+
+/**
+ * Safe read expressions such as `a?.b` have different semantics in Angular templates as
+ * compared to JavaScript. In particular, they default to `null` instead of `undefined`. This phase
+ * finds all unresolved safe read expressions, and converts them into the appropriate output AST
+ * reads, guarded by null checks. We generate temporaries as needed, to avoid re-evaluating the same
+ * sub-expression multiple times.
+ */
+function expandSafeReads(job) {
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      transformExpressionsInOp(op, e => safeTransform(e, {
+        job
+      }), VisitorContextFlag.None);
+      transformExpressionsInOp(op, ternaryTransform, VisitorContextFlag.None);
+    }
+  }
+}
+// A lookup set of all the expression kinds that require a temporary variable to be generated.
+const requiresTemporary = [InvokeFunctionExpr, LiteralArrayExpr, LiteralMapExpr, SafeInvokeFunctionExpr, PipeBindingExpr].map(e => e.constructor.name);
+function needsTemporaryInSafeAccess(e) {
+  // TODO: We probably want to use an expression visitor to recursively visit all descendents.
+  // However, that would potentially do a lot of extra work (because it cannot short circuit), so we
+  // implement the logic ourselves for now.
+  if (e instanceof UnaryOperatorExpr) {
+    return needsTemporaryInSafeAccess(e.expr);
+  } else if (e instanceof BinaryOperatorExpr) {
+    return needsTemporaryInSafeAccess(e.lhs) || needsTemporaryInSafeAccess(e.rhs);
+  } else if (e instanceof ConditionalExpr) {
+    if (e.falseCase && needsTemporaryInSafeAccess(e.falseCase)) return true;
+    return needsTemporaryInSafeAccess(e.condition) || needsTemporaryInSafeAccess(e.trueCase);
+  } else if (e instanceof NotExpr) {
+    return needsTemporaryInSafeAccess(e.condition);
+  } else if (e instanceof AssignTemporaryExpr) {
+    return needsTemporaryInSafeAccess(e.expr);
+  } else if (e instanceof ReadPropExpr) {
+    return needsTemporaryInSafeAccess(e.receiver);
+  } else if (e instanceof ReadKeyExpr) {
+    return needsTemporaryInSafeAccess(e.receiver) || needsTemporaryInSafeAccess(e.index);
+  }
+  // TODO: Switch to a method which is exhaustive of newly added expression subtypes.
+  return e instanceof InvokeFunctionExpr || e instanceof LiteralArrayExpr || e instanceof LiteralMapExpr || e instanceof SafeInvokeFunctionExpr || e instanceof PipeBindingExpr;
+}
+function temporariesIn(e) {
+  const temporaries = new Set();
+  // TODO: Although it's not currently supported by the transform helper, we should be able to
+  // short-circuit exploring the tree to do less work. In particular, we don't have to penetrate
+  // into the subexpressions of temporary assignments.
+  transformExpressionsInExpression(e, e => {
+    if (e instanceof AssignTemporaryExpr) {
+      temporaries.add(e.xref);
+    }
+    return e;
+  }, VisitorContextFlag.None);
+  return temporaries;
+}
+function eliminateTemporaryAssignments(e, tmps, ctx) {
+  // TODO: We can be more efficient than the transform helper here. We don't need to visit any
+  // descendents of temporary assignments.
+  transformExpressionsInExpression(e, e => {
+    if (e instanceof AssignTemporaryExpr && tmps.has(e.xref)) {
+      const read = new ReadTemporaryExpr(e.xref);
+      // `TemplateDefinitionBuilder` has the (accidental?) behavior of generating assignments of
+      // temporary variables to themselves. This happens because some subexpression that the
+      // temporary refers to, possibly through nested temporaries, has a function call. We copy that
+      // behavior here.
+      return ctx.job.compatibility === CompatibilityMode.TemplateDefinitionBuilder ? new AssignTemporaryExpr(read, read.xref) : read;
+    }
+    return e;
+  }, VisitorContextFlag.None);
+  return e;
+}
+/**
+ * Creates a safe ternary guarded by the input expression, and with a body generated by the provided
+ * callback on the input expression. Generates a temporary variable assignment if needed, and
+ * deduplicates nested temporary assignments if needed.
+ */
+function safeTernaryWithTemporary(guard, body, ctx) {
+  let result;
+  if (needsTemporaryInSafeAccess(guard)) {
+    const xref = ctx.job.allocateXrefId();
+    result = [new AssignTemporaryExpr(guard, xref), new ReadTemporaryExpr(xref)];
   } else {
-    view.update.push(createPropertyOp(xref, name, convertAst(value, view.tpl)));
+    result = [guard, guard.clone()];
+    // Consider an expression like `a?.[b?.c()]?.d`. The `b?.c()` will be transformed first,
+    // introducing a temporary assignment into the key. Then, as part of expanding the `?.d`. That
+    // assignment will be duplicated into both the guard and expression sides. We de-duplicate it,
+    // by transforming it from an assignment into a read on the expression side.
+    eliminateTemporaryAssignments(result[1], temporariesIn(result[0]), ctx);
+  }
+  return new SafeTernaryExpr(result[0], body(result[1]));
+}
+function isSafeAccessExpression(e) {
+  return e instanceof SafePropertyReadExpr || e instanceof SafeKeyedReadExpr || e instanceof SafeInvokeFunctionExpr;
+}
+function isUnsafeAccessExpression(e) {
+  return e instanceof ReadPropExpr || e instanceof ReadKeyExpr || e instanceof InvokeFunctionExpr;
+}
+function isAccessExpression(e) {
+  return isSafeAccessExpression(e) || isUnsafeAccessExpression(e);
+}
+function deepestSafeTernary(e) {
+  if (isAccessExpression(e) && e.receiver instanceof SafeTernaryExpr) {
+    let st = e.receiver;
+    while (st.expr instanceof SafeTernaryExpr) {
+      st = st.expr;
+    }
+    return st;
+  }
+  return null;
+}
+// TODO: When strict compatibility with TemplateDefinitionBuilder is not required, we can use `&&`
+// instead to save some code size.
+function safeTransform(e, ctx) {
+  if (!isAccessExpression(e)) {
+    return e;
+  }
+  const dst = deepestSafeTernary(e);
+  if (dst) {
+    if (e instanceof InvokeFunctionExpr) {
+      dst.expr = dst.expr.callFn(e.args);
+      return e.receiver;
+    }
+    if (e instanceof ReadPropExpr) {
+      dst.expr = dst.expr.prop(e.name);
+      return e.receiver;
+    }
+    if (e instanceof ReadKeyExpr) {
+      dst.expr = dst.expr.key(e.index);
+      return e.receiver;
+    }
+    if (e instanceof SafeInvokeFunctionExpr) {
+      dst.expr = safeTernaryWithTemporary(dst.expr, r => r.callFn(e.args), ctx);
+      return e.receiver;
+    }
+    if (e instanceof SafePropertyReadExpr) {
+      dst.expr = safeTernaryWithTemporary(dst.expr, r => r.prop(e.name), ctx);
+      return e.receiver;
+    }
+    if (e instanceof SafeKeyedReadExpr) {
+      dst.expr = safeTernaryWithTemporary(dst.expr, r => r.key(e.index), ctx);
+      return e.receiver;
+    }
+  } else {
+    if (e instanceof SafeInvokeFunctionExpr) {
+      return safeTernaryWithTemporary(e.receiver, r => r.callFn(e.args), ctx);
+    }
+    if (e instanceof SafePropertyReadExpr) {
+      return safeTernaryWithTemporary(e.receiver, r => r.prop(e.name), ctx);
+    }
+    if (e instanceof SafeKeyedReadExpr) {
+      return safeTernaryWithTemporary(e.receiver, r => r.key(e.index), ctx);
+    }
+  }
+  return e;
+}
+function ternaryTransform(e) {
+  if (!(e instanceof SafeTernaryExpr)) {
+    return e;
+  }
+  return new ConditionalExpr(new BinaryOperatorExpr(BinaryOperator.Equals, e.guard, NULL_EXPR), NULL_EXPR, e.expr);
+}
+
+/**
+ * The escape sequence used indicate message param values.
+ */
+const ESCAPE$1 = '\uFFFD';
+/**
+ * Marker used to indicate an element tag.
+ */
+const ELEMENT_MARKER = '#';
+/**
+ * Marker used to indicate a template tag.
+ */
+const TEMPLATE_MARKER = '*';
+/**
+ * Marker used to indicate closing of an element or template tag.
+ */
+const TAG_CLOSE_MARKER = '/';
+/**
+ * Marker used to indicate the sub-template context.
+ */
+const CONTEXT_MARKER = ':';
+/**
+ * Marker used to indicate the start of a list of values.
+ */
+const LIST_START_MARKER = '[';
+/**
+ * Marker used to indicate the end of a list of values.
+ */
+const LIST_END_MARKER = ']';
+/**
+ * Delimiter used to separate multiple values in a list.
+ */
+const LIST_DELIMITER = '|';
+/**
+ * Formats the param maps on extracted message ops into a maps of `Expression` objects that can be
+ * used in the final output.
+ */
+function extractI18nMessages(job) {
+  // Create an i18n message for each context.
+  // TODO: Merge the context op with the message op since they're 1:1 anyways.
+  const i18nMessagesByContext = new Map();
+  const i18nBlocks = new Map();
+  const i18nContexts = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nContext:
+          const i18nMessageOp = createI18nMessage(job, op);
+          unit.create.push(i18nMessageOp);
+          i18nMessagesByContext.set(op.xref, i18nMessageOp);
+          i18nContexts.set(op.xref, op);
+          break;
+        case OpKind.I18nStart:
+          i18nBlocks.set(op.xref, op);
+          break;
+      }
+    }
+  }
+  // Associate sub-messages for ICUs with their root message. At this point we can also remove the
+  // ICU start/end ops, as they are no longer needed.
+  let currentIcu = null;
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.IcuStart:
+          currentIcu = op;
+          OpList.remove(op);
+          // Skip any contexts not associated with an ICU.
+          const icuContext = i18nContexts.get(op.context);
+          if (icuContext.contextKind !== I18nContextKind.Icu) {
+            continue;
+          }
+          // Skip ICUs that share a context with their i18n message. These represent root-level
+          // ICUs, not sub-messages.
+          const i18nBlock = i18nBlocks.get(icuContext.i18nBlock);
+          if (i18nBlock.context === icuContext.xref) {
+            continue;
+          }
+          // Find the root message and push this ICUs message as a sub-message.
+          const rootI18nBlock = i18nBlocks.get(i18nBlock.root);
+          const rootMessage = i18nMessagesByContext.get(rootI18nBlock.context);
+          if (rootMessage === undefined) {
+            throw Error('AssertionError: ICU sub-message should belong to a root message.');
+          }
+          const subMessage = i18nMessagesByContext.get(icuContext.xref);
+          subMessage.messagePlaceholder = op.messagePlaceholder;
+          rootMessage.subMessages.push(subMessage.xref);
+          break;
+        case OpKind.IcuEnd:
+          currentIcu = null;
+          OpList.remove(op);
+          break;
+        case OpKind.IcuPlaceholder:
+          // Add ICU placeholders to the message, then remove the ICU placeholder ops.
+          if (currentIcu === null || currentIcu.context == null) {
+            throw Error('AssertionError: Unexpected ICU placeholder outside of i18n context');
+          }
+          const msg = i18nMessagesByContext.get(currentIcu.context);
+          msg.postprocessingParams.set(op.name, literal(formatIcuPlaceholder(op)));
+          OpList.remove(op);
+          break;
+      }
+    }
   }
 }
 /**
- * Process all of the local references on an element-like structure in the template AST and convert
- * them to their IR representation.
+ * Create an i18n message op from an i18n context op.
  */
-function ingestReferences(op, element) {
-  assertIsArray(op.localRefs);
-  for (const {
-    name,
-    value
-  } of element.references) {
-    op.localRefs.push({
-      name,
-      target: value
+function createI18nMessage(job, context, messagePlaceholder) {
+  let formattedParams = formatParams(context.params);
+  const formattedPostprocessingParams = formatParams(context.postprocessingParams);
+  let needsPostprocessing = [...context.params.values()].some(v => v.length > 1);
+  return createI18nMessageOp(job.allocateXrefId(), context.xref, context.i18nBlock, context.message, messagePlaceholder ?? null, formattedParams, formattedPostprocessingParams, needsPostprocessing);
+}
+/**
+ * Formats an ICU placeholder into a single string with expression placeholders.
+ */
+function formatIcuPlaceholder(op) {
+  if (op.strings.length !== op.expressionPlaceholders.length + 1) {
+    throw Error(`AsserionError: Invalid ICU placeholder with ${op.strings.length} strings and ${op.expressionPlaceholders.length} expressions`);
+  }
+  const values = op.expressionPlaceholders.map(formatValue);
+  return op.strings.flatMap((str, i) => [str, values[i] || '']).join('');
+}
+/**
+ * Formats a map of `I18nParamValue[]` values into a map of `Expression` values.
+ */
+function formatParams(params) {
+  const formattedParams = new Map();
+  for (const [placeholder, placeholderValues] of params) {
+    const serializedValues = formatParamValues(placeholderValues);
+    if (serializedValues !== null) {
+      formattedParams.set(placeholder, literal(serializedValues));
+    }
+  }
+  return formattedParams;
+}
+/**
+ * Formats an `I18nParamValue[]` into a string (or null for empty array).
+ */
+function formatParamValues(values) {
+  if (values.length === 0) {
+    return null;
+  }
+  const serializedValues = values.map(value => formatValue(value));
+  return serializedValues.length === 1 ? serializedValues[0] : `${LIST_START_MARKER}${serializedValues.join(LIST_DELIMITER)}${LIST_END_MARKER}`;
+}
+/**
+ * Formats a single `I18nParamValue` into a string
+ */
+function formatValue(value) {
+  // Element tags with a structural directive use a special form that concatenates the element and
+  // template values.
+  if (value.flags & I18nParamValueFlags.ElementTag && value.flags & I18nParamValueFlags.TemplateTag) {
+    if (typeof value.value !== 'object') {
+      throw Error('AssertionError: Expected i18n param value to have an element and template slot');
+    }
+    const elementValue = formatValue({
+      ...value,
+      value: value.value.element,
+      flags: value.flags & ~I18nParamValueFlags.TemplateTag
+    });
+    const templateValue = formatValue({
+      ...value,
+      value: value.value.template,
+      flags: value.flags & ~I18nParamValueFlags.ElementTag
+    });
+    // TODO(mmalerba): This is likely a bug in TemplateDefinitionBuilder, we should not need to
+    // record the template value twice. For now I'm re-implementing the behavior here to keep the
+    // output consistent with TemplateDefinitionBuilder.
+    if (value.flags & I18nParamValueFlags.OpenTag && value.flags & I18nParamValueFlags.CloseTag) {
+      return `${templateValue}${elementValue}${templateValue}`;
+    }
+    // To match the TemplateDefinitionBuilder output, flip the order depending on whether the
+    // values represent a closing or opening tag (or both).
+    // TODO(mmalerba): Figure out if this makes a difference in terms of either functionality,
+    // or the resulting message ID. If not, we can remove the special-casing in the future.
+    return value.flags & I18nParamValueFlags.CloseTag ? `${elementValue}${templateValue}` : `${templateValue}${elementValue}`;
+  }
+  // Self-closing tags use a special form that concatenates the start and close tag values.
+  if (value.flags & I18nParamValueFlags.OpenTag && value.flags & I18nParamValueFlags.CloseTag) {
+    return `${formatValue({
+      ...value,
+      flags: value.flags & ~I18nParamValueFlags.CloseTag
+    })}${formatValue({
+      ...value,
+      flags: value.flags & ~I18nParamValueFlags.OpenTag
+    })}`;
+  }
+  // If there are no special flags, just return the raw value.
+  if (value.flags === I18nParamValueFlags.None) {
+    return `${value.value}`;
+  }
+  // Encode the remaining flags as part of the value.
+  let tagMarker = '';
+  let closeMarker = '';
+  if (value.flags & I18nParamValueFlags.ElementTag) {
+    tagMarker = ELEMENT_MARKER;
+  } else if (value.flags & I18nParamValueFlags.TemplateTag) {
+    tagMarker = TEMPLATE_MARKER;
+  }
+  if (tagMarker !== '') {
+    closeMarker = value.flags & I18nParamValueFlags.CloseTag ? TAG_CLOSE_MARKER : '';
+  }
+  const context = value.subTemplateIndex === null ? '' : `${CONTEXT_MARKER}${value.subTemplateIndex}`;
+  return `${ESCAPE$1}${closeMarker}${tagMarker}${value.value}${context}${ESCAPE$1}`;
+}
+
+/**
+ * Generate `ir.AdvanceOp`s in between `ir.UpdateOp`s that ensure the runtime's implicit slot
+ * context will be advanced correctly.
+ */
+function generateAdvance(job) {
+  for (const unit of job.units) {
+    // First build a map of all of the declarations in the view that have assigned slots.
+    const slotMap = new Map();
+    for (const op of unit.create) {
+      if (!hasConsumesSlotTrait(op)) {
+        continue;
+      } else if (op.handle.slot === null) {
+        throw new Error(`AssertionError: expected slots to have been allocated before generating advance() calls`);
+      }
+      slotMap.set(op.xref, op.handle.slot);
+    }
+    // Next, step through the update operations and generate `ir.AdvanceOp`s as required to ensure
+    // the runtime's implicit slot counter will be set to the correct slot before executing each
+    // update operation which depends on it.
+    //
+    // To do that, we track what the runtime's slot counter will be through the update operations.
+    let slotContext = 0;
+    for (const op of unit.update) {
+      if (!hasDependsOnSlotContextTrait(op)) {
+        // `op` doesn't depend on the slot counter, so it can be skipped.
+        continue;
+      } else if (!slotMap.has(op.target)) {
+        // We expect ops that _do_ depend on the slot counter to point at declarations that exist in
+        // the `slotMap`.
+        throw new Error(`AssertionError: reference to unknown slot for target ${op.target}`);
+      }
+      const slot = slotMap.get(op.target);
+      // Does the slot counter need to be adjusted?
+      if (slotContext !== slot) {
+        // If so, generate an `ir.AdvanceOp` to advance the counter.
+        const delta = slot - slotContext;
+        if (delta < 0) {
+          throw new Error(`AssertionError: slot counter should never need to move backwards`);
+        }
+        OpList.insertBefore(createAdvanceOp(delta, op.sourceSpan), op);
+        slotContext = slot;
+      }
+    }
+  }
+}
+
+/**
+ * Locate projection slots, populate the each component's `ngContentSelectors` literal field,
+ * populate `project` arguments, and generate the required `projectionDef` instruction for the job's
+ * root view.
+ */
+function generateProjectionDefs(job) {
+  // TODO: Why does TemplateDefinitionBuilder force a shared constant?
+  const share = job.compatibility === CompatibilityMode.TemplateDefinitionBuilder;
+  // Collect all selectors from this component, and its nested views. Also, assign each projection a
+  // unique ascending projection slot index.
+  const selectors = [];
+  let projectionSlotIndex = 0;
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.Projection) {
+        selectors.push(op.selector);
+        op.projectionSlotIndex = projectionSlotIndex++;
+      }
+    }
+  }
+  if (selectors.length > 0) {
+    // Create the projectionDef array. If we only found a single wildcard selector, then we use the
+    // default behavior with no arguments instead.
+    let defExpr = null;
+    if (selectors.length > 1 || selectors[0] !== '*') {
+      const def = selectors.map(s => s === '*' ? s : parseSelectorToR3Selector(s));
+      defExpr = job.pool.getConstLiteral(literalOrArrayLiteral(def), share);
+    }
+    // Create the ngContentSelectors constant.
+    job.contentSelectors = job.pool.getConstLiteral(literalOrArrayLiteral(selectors), share);
+    // The projection def instruction goes at the beginning of the root view, before any
+    // `projection` instructions.
+    job.root.create.prepend([createProjectionDefOp(defExpr)]);
+  }
+}
+
+/**
+ * Generate a preamble sequence for each view creation block and listener function which declares
+ * any variables that be referenced in other operations in the block.
+ *
+ * Variables generated include:
+ *   * a saved view context to be used to restore the current view in event listeners.
+ *   * the context of the restored view within event listener handlers.
+ *   * context variables from the current view as well as all parent views (including the root
+ *     context if needed).
+ *   * local references from elements within the current view and any lexical parents.
+ *
+ * Variables are generated here unconditionally, and may optimized away in future operations if it
+ * turns out their values (and any side effects) are unused.
+ */
+function generateVariables(job) {
+  recursivelyProcessView(job.root, /* there is no parent scope for the root view */null);
+}
+/**
+ * Process the given `ViewCompilation` and generate preambles for it and any listeners that it
+ * declares.
+ *
+ * @param `parentScope` a scope extracted from the parent view which captures any variables which
+ *     should be inherited by this view. `null` if the current view is the root view.
+ */
+function recursivelyProcessView(view, parentScope) {
+  // Extract a `Scope` from this view.
+  const scope = getScopeForView(view, parentScope);
+  for (const op of view.create) {
+    switch (op.kind) {
+      case OpKind.Template:
+        // Descend into child embedded views.
+        recursivelyProcessView(view.job.views.get(op.xref), scope);
+        break;
+      case OpKind.RepeaterCreate:
+        // Descend into child embedded views.
+        recursivelyProcessView(view.job.views.get(op.xref), scope);
+        if (op.emptyView) {
+          recursivelyProcessView(view.job.views.get(op.emptyView), scope);
+        }
+        break;
+      case OpKind.Listener:
+        // Prepend variables to listener handler functions.
+        op.handlerOps.prepend(generateVariablesInScopeForView(view, scope));
+        break;
+    }
+  }
+  // Prepend the declarations for all available variables in scope to the `update` block.
+  const preambleOps = generateVariablesInScopeForView(view, scope);
+  view.update.prepend(preambleOps);
+}
+/**
+ * Process a view and generate a `Scope` representing the variables available for reference within
+ * that view.
+ */
+function getScopeForView(view, parent) {
+  const scope = {
+    view: view.xref,
+    viewContextVariable: {
+      kind: SemanticVariableKind.Context,
+      name: null,
+      view: view.xref
+    },
+    contextVariables: new Map(),
+    aliases: view.aliases,
+    references: [],
+    parent
+  };
+  for (const identifier of view.contextVariables.keys()) {
+    scope.contextVariables.set(identifier, {
+      kind: SemanticVariableKind.Identifier,
+      name: null,
+      identifier
     });
   }
-}
-/**
- * Assert that the given value is an array.
- */
-function assertIsArray(value) {
-  if (!Array.isArray(value)) {
-    throw new Error(`AssertionError: expected an array`);
-  }
-}
-const USE_TEMPLATE_PIPELINE = false;
-
-/**
- * Parses string representation of a style and converts it into object literal.
- *
- * @param value string representation of style as used in the `style` attribute in HTML.
- *   Example: `color: red; height: auto`.
- * @returns An array of style property name and value pairs, e.g. `['color', 'red', 'height',
- * 'auto']`
- */
-function parse(value) {
-  // we use a string array here instead of a string map
-  // because a string-map is not guaranteed to retain the
-  // order of the entries whereas a string array can be
-  // constructed in a [key, value, key, value] format.
-  const styles = [];
-  let i = 0;
-  let parenDepth = 0;
-  let quote = 0 /* Char.QuoteNone */;
-  let valueStart = 0;
-  let propStart = 0;
-  let currentProp = null;
-  while (i < value.length) {
-    const token = value.charCodeAt(i++);
-    switch (token) {
-      case 40 /* Char.OpenParen */:
-        parenDepth++;
-        break;
-      case 41 /* Char.CloseParen */:
-        parenDepth--;
-        break;
-      case 39 /* Char.QuoteSingle */:
-        // valueStart needs to be there since prop values don't
-        // have quotes in CSS
-        if (quote === 0 /* Char.QuoteNone */) {
-          quote = 39 /* Char.QuoteSingle */;
-        } else if (quote === 39 /* Char.QuoteSingle */ && value.charCodeAt(i - 1) !== 92 /* Char.BackSlash */) {
-          quote = 0 /* Char.QuoteNone */;
+  for (const op of view.create) {
+    switch (op.kind) {
+      case OpKind.ElementStart:
+      case OpKind.Template:
+        if (!Array.isArray(op.localRefs)) {
+          throw new Error(`AssertionError: expected localRefs to be an array`);
         }
-
-        break;
-      case 34 /* Char.QuoteDouble */:
-        // same logic as above
-        if (quote === 0 /* Char.QuoteNone */) {
-          quote = 34 /* Char.QuoteDouble */;
-        } else if (quote === 34 /* Char.QuoteDouble */ && value.charCodeAt(i - 1) !== 92 /* Char.BackSlash */) {
-          quote = 0 /* Char.QuoteNone */;
-        }
-
-        break;
-      case 58 /* Char.Colon */:
-        if (!currentProp && parenDepth === 0 && quote === 0 /* Char.QuoteNone */) {
-          currentProp = hyphenate(value.substring(propStart, i - 1).trim());
-          valueStart = i;
-        }
-        break;
-      case 59 /* Char.Semicolon */:
-        if (currentProp && valueStart > 0 && parenDepth === 0 && quote === 0 /* Char.QuoteNone */) {
-          const styleVal = value.substring(valueStart, i - 1).trim();
-          styles.push(currentProp, styleVal);
-          propStart = i;
-          valueStart = 0;
-          currentProp = null;
+        // Record available local references from this element.
+        for (let offset = 0; offset < op.localRefs.length; offset++) {
+          scope.references.push({
+            name: op.localRefs[offset].name,
+            targetId: op.xref,
+            targetSlot: op.handle,
+            offset,
+            variable: {
+              kind: SemanticVariableKind.Identifier,
+              name: null,
+              identifier: op.localRefs[offset].name
+            }
+          });
         }
         break;
     }
   }
-  if (currentProp && valueStart) {
-    const styleVal = value.slice(valueStart).trim();
-    styles.push(currentProp, styleVal);
-  }
-  return styles;
+  return scope;
 }
-function hyphenate(value) {
+/**
+ * Generate declarations for all variables that are in scope for a given view.
+ *
+ * This is a recursive process, as views inherit variables available from their parent view, which
+ * itself may have inherited variables, etc.
+ */
+function generateVariablesInScopeForView(view, scope) {
+  const newOps = [];
+  if (scope.view !== view.xref) {
+    // Before generating variables for a parent view, we need to switch to the context of the parent
+    // view with a `nextContext` expression. This context switching operation itself declares a
+    // variable, because the context of the view may be referenced directly.
+    newOps.push(createVariableOp(view.job.allocateXrefId(), scope.viewContextVariable, new NextContextExpr(), VariableFlags.None));
+  }
+  // Add variables for all context variables available in this scope's view.
+  const scopeView = view.job.views.get(scope.view);
+  for (const [name, value] of scopeView.contextVariables) {
+    const context = new ContextExpr(scope.view);
+    // We either read the context, or, if the variable is CTX_REF, use the context directly.
+    const variable = value === CTX_REF ? context : new ReadPropExpr(context, value);
+    // Add the variable declaration.
+    newOps.push(createVariableOp(view.job.allocateXrefId(), scope.contextVariables.get(name), variable, VariableFlags.None));
+  }
+  for (const alias of scopeView.aliases) {
+    newOps.push(createVariableOp(view.job.allocateXrefId(), alias, alias.expression.clone(), VariableFlags.AlwaysInline));
+  }
+  // Add variables for all local references declared for elements in this scope.
+  for (const ref of scope.references) {
+    newOps.push(createVariableOp(view.job.allocateXrefId(), ref.variable, new ReferenceExpr(ref.targetId, ref.targetSlot, ref.offset), VariableFlags.None));
+  }
+  if (scope.parent !== null) {
+    // Recursively add variables from the parent scope.
+    newOps.push(...generateVariablesInScopeForView(view, scope.parent));
+  }
+  return newOps;
+}
+
+/**
+ * `ir.ConstCollectedExpr` may be present in any IR expression. This means that expression needs to
+ * be lifted into the component const array, and replaced with a reference to the const array at its
+ *
+ * usage site. This phase walks the IR and performs this transformation.
+ */
+function collectConstExpressions(job) {
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      transformExpressionsInOp(op, expr => {
+        if (!(expr instanceof ConstCollectedExpr)) {
+          return expr;
+        }
+        return literal(job.addConst(expr.expr));
+      }, VisitorContextFlag.None);
+    }
+  }
+}
+const STYLE_DOT = 'style.';
+const CLASS_DOT = 'class.';
+const STYLE_BANG = 'style!';
+const CLASS_BANG = 'class!';
+const BANG_IMPORTANT = '!important';
+/**
+ * Host bindings are compiled using a different parser entrypoint, and are parsed quite differently
+ * as a result. Therefore, we need to do some extra parsing for host style properties, as compared
+ * to non-host style properties.
+ * TODO: Unify host bindings and non-host bindings in the parser.
+ */
+function parseHostStyleProperties(job) {
+  for (const op of job.root.update) {
+    if (!(op.kind === OpKind.Binding && op.bindingKind === BindingKind.Property)) {
+      continue;
+    }
+    if (op.name.endsWith(BANG_IMPORTANT)) {
+      // Delete any `!important` suffixes from the binding name.
+      op.name = op.name.substring(0, op.name.length - BANG_IMPORTANT.length);
+    }
+    if (op.name.startsWith(STYLE_DOT)) {
+      op.bindingKind = BindingKind.StyleProperty;
+      op.name = op.name.substring(STYLE_DOT.length);
+      if (isCssCustomProperty$1(op.name)) {
+        op.name = hyphenate$1(op.name);
+      }
+      const {
+        property,
+        suffix
+      } = parseProperty$1(op.name);
+      op.name = property;
+      op.unit = suffix;
+    } else if (op.name.startsWith(STYLE_BANG)) {
+      op.bindingKind = BindingKind.StyleProperty;
+      op.name = 'style';
+    } else if (op.name.startsWith(CLASS_DOT)) {
+      op.bindingKind = BindingKind.ClassName;
+      op.name = parseProperty$1(op.name.substring(CLASS_DOT.length)).property;
+    } else if (op.name.startsWith(CLASS_BANG)) {
+      op.bindingKind = BindingKind.ClassName;
+      op.name = parseProperty$1(op.name.substring(CLASS_BANG.length)).property;
+    }
+  }
+}
+/**
+ * Checks whether property name is a custom CSS property.
+ * See: https://www.w3.org/TR/css-variables-1
+ */
+function isCssCustomProperty$1(name) {
+  return name.startsWith('--');
+}
+function hyphenate$1(value) {
   return value.replace(/[a-z][A-Z]/g, v => {
     return v.charAt(0) + '-' + v.charAt(1);
   }).toLowerCase();
 }
-const IMPORTANT_FLAG = '!important';
-/**
- * Minimum amount of binding slots required in the runtime for style/class bindings.
- *
- * Styling in Angular uses up two slots in the runtime LView/TData data structures to
- * record binding data, property information and metadata.
- *
- * When a binding is registered it will place the following information in the `LView`:
- *
- * slot 1) binding value
- * slot 2) cached value (all other values collected before it in string form)
- *
- * When a binding is registered it will place the following information in the `TData`:
- *
- * slot 1) prop name
- * slot 2) binding index that points to the previous style/class binding (and some extra config
- * values)
- *
- * Let's imagine we have a binding that looks like so:
- *
- * ```
- * <div [style.width]="x" [style.height]="y">
- * ```
- *
- * Our `LView` and `TData` data-structures look like so:
- *
- * ```typescript
- * LView = [
- *   // ...
- *   x, // value of x
- *   "width: x",
- *
- *   y, // value of y
- *   "width: x; height: y",
- *   // ...
- * ];
- *
- * TData = [
- *   // ...
- *   "width", // binding slot 20
- *   0,
- *
- *   "height",
- *   20,
- *   // ...
- * ];
- * ```
- *
- * */
-const MIN_STYLING_BINDING_SLOTS_REQUIRED = 2;
-/**
- * Produces creation/update instructions for all styling bindings (class and style)
- *
- * It also produces the creation instruction to register all initial styling values
- * (which are all the static class="..." and style="..." attribute values that exist
- * on an element within a template).
- *
- * The builder class below handles producing instructions for the following cases:
- *
- * - Static style/class attributes (style="..." and class="...")
- * - Dynamic style/class map bindings ([style]="map" and [class]="map|string")
- * - Dynamic style/class property bindings ([style.prop]="exp" and [class.name]="exp")
- *
- * Due to the complex relationship of all of these cases, the instructions generated
- * for these attributes/properties/bindings must be done so in the correct order. The
- * order which these must be generated is as follows:
- *
- * if (createMode) {
- *   styling(...)
- * }
- * if (updateMode) {
- *   styleMap(...)
- *   classMap(...)
- *   styleProp(...)
- *   classProp(...)
- * }
- *
- * The creation/update methods within the builder class produce these instructions.
- */
-class StylingBuilder {
-  constructor(_directiveExpr) {
-    this._directiveExpr = _directiveExpr;
-    /** Whether or not there are any static styling values present */
-    this._hasInitialValues = false;
-    /**
-     *  Whether or not there are any styling bindings present
-     *  (i.e. `[style]`, `[class]`, `[style.prop]` or `[class.name]`)
-     */
-    this.hasBindings = false;
-    this.hasBindingsWithPipes = false;
-    /** the input for [class] (if it exists) */
-    this._classMapInput = null;
-    /** the input for [style] (if it exists) */
-    this._styleMapInput = null;
-    /** an array of each [style.prop] input */
-    this._singleStyleInputs = null;
-    /** an array of each [class.name] input */
-    this._singleClassInputs = null;
-    this._lastStylingInput = null;
-    this._firstStylingInput = null;
-    // maps are used instead of hash maps because a Map will
-    // retain the ordering of the keys
-    /**
-     * Represents the location of each style binding in the template
-     * (e.g. `<div [style.width]="w" [style.height]="h">` implies
-     * that `width=0` and `height=1`)
-     */
-    this._stylesIndex = new Map();
-    /**
-     * Represents the location of each class binding in the template
-     * (e.g. `<div [class.big]="b" [class.hidden]="h">` implies
-     * that `big=0` and `hidden=1`)
-     */
-    this._classesIndex = new Map();
-    this._initialStyleValues = [];
-    this._initialClassValues = [];
-  }
-  /**
-   * Registers a given input to the styling builder to be later used when producing AOT code.
-   *
-   * The code below will only accept the input if it is somehow tied to styling (whether it be
-   * style/class bindings or static style/class attributes).
-   */
-  registerBoundInput(input) {
-    // [attr.style] or [attr.class] are skipped in the code below,
-    // they should not be treated as styling-based bindings since
-    // they are intended to be written directly to the attr and
-    // will therefore skip all style/class resolution that is present
-    // with style="", [style]="" and [style.prop]="", class="",
-    // [class.prop]="". [class]="" assignments
-    let binding = null;
-    let name = input.name;
-    switch (input.type) {
-      case 0 /* BindingType.Property */:
-        binding = this.registerInputBasedOnName(name, input.value, input.sourceSpan);
-        break;
-      case 3 /* BindingType.Style */:
-        binding = this.registerStyleInput(name, false, input.value, input.sourceSpan, input.unit);
-        break;
-      case 2 /* BindingType.Class */:
-        binding = this.registerClassInput(name, false, input.value, input.sourceSpan);
-        break;
-    }
-    return binding ? true : false;
-  }
-  registerInputBasedOnName(name, expression, sourceSpan) {
-    let binding = null;
-    const prefix = name.substring(0, 6);
-    const isStyle = name === 'style' || prefix === 'style.' || prefix === 'style!';
-    const isClass = !isStyle && (name === 'class' || prefix === 'class.' || prefix === 'class!');
-    if (isStyle || isClass) {
-      const isMapBased = name.charAt(5) !== '.'; // style.prop or class.prop makes this a no
-      const property = name.slice(isMapBased ? 5 : 6); // the dot explains why there's a +1
-      if (isStyle) {
-        binding = this.registerStyleInput(property, isMapBased, expression, sourceSpan);
-      } else {
-        binding = this.registerClassInput(property, isMapBased, expression, sourceSpan);
-      }
-    }
-    return binding;
-  }
-  registerStyleInput(name, isMapBased, value, sourceSpan, suffix) {
-    if (isEmptyExpression(value)) {
-      return null;
-    }
-    // CSS custom properties are case-sensitive so we shouldn't normalize them.
-    // See: https://www.w3.org/TR/css-variables-1/#defining-variables
-    if (!isCssCustomProperty(name)) {
-      name = hyphenate(name);
-    }
-    const {
-      property,
-      hasOverrideFlag,
-      suffix: bindingSuffix
-    } = parseProperty(name);
-    suffix = typeof suffix === 'string' && suffix.length !== 0 ? suffix : bindingSuffix;
-    const entry = {
-      name: property,
-      suffix: suffix,
-      value,
-      sourceSpan,
-      hasOverrideFlag
-    };
-    if (isMapBased) {
-      this._styleMapInput = entry;
-    } else {
-      (this._singleStyleInputs = this._singleStyleInputs || []).push(entry);
-      registerIntoMap(this._stylesIndex, property);
-    }
-    this._lastStylingInput = entry;
-    this._firstStylingInput = this._firstStylingInput || entry;
-    this._checkForPipes(value);
-    this.hasBindings = true;
-    return entry;
-  }
-  registerClassInput(name, isMapBased, value, sourceSpan) {
-    if (isEmptyExpression(value)) {
-      return null;
-    }
-    const {
-      property,
-      hasOverrideFlag
-    } = parseProperty(name);
-    const entry = {
-      name: property,
-      value,
-      sourceSpan,
-      hasOverrideFlag,
-      suffix: null
-    };
-    if (isMapBased) {
-      this._classMapInput = entry;
-    } else {
-      (this._singleClassInputs = this._singleClassInputs || []).push(entry);
-      registerIntoMap(this._classesIndex, property);
-    }
-    this._lastStylingInput = entry;
-    this._firstStylingInput = this._firstStylingInput || entry;
-    this._checkForPipes(value);
-    this.hasBindings = true;
-    return entry;
-  }
-  _checkForPipes(value) {
-    if (value instanceof ASTWithSource && value.ast instanceof BindingPipe) {
-      this.hasBindingsWithPipes = true;
-    }
-  }
-  /**
-   * Registers the element's static style string value to the builder.
-   *
-   * @param value the style string (e.g. `width:100px; height:200px;`)
-   */
-  registerStyleAttr(value) {
-    this._initialStyleValues = parse(value);
-    this._hasInitialValues = true;
-  }
-  /**
-   * Registers the element's static class string value to the builder.
-   *
-   * @param value the className string (e.g. `disabled gold zoom`)
-   */
-  registerClassAttr(value) {
-    this._initialClassValues = value.trim().split(/\s+/g);
-    this._hasInitialValues = true;
-  }
-  /**
-   * Appends all styling-related expressions to the provided attrs array.
-   *
-   * @param attrs an existing array where each of the styling expressions
-   * will be inserted into.
-   */
-  populateInitialStylingAttrs(attrs) {
-    // [CLASS_MARKER, 'foo', 'bar', 'baz' ...]
-    if (this._initialClassValues.length) {
-      attrs.push(literal(1 /* AttributeMarker.Classes */));
-      for (let i = 0; i < this._initialClassValues.length; i++) {
-        attrs.push(literal(this._initialClassValues[i]));
-      }
-    }
-    // [STYLE_MARKER, 'width', '200px', 'height', '100px', ...]
-    if (this._initialStyleValues.length) {
-      attrs.push(literal(2 /* AttributeMarker.Styles */));
-      for (let i = 0; i < this._initialStyleValues.length; i += 2) {
-        attrs.push(literal(this._initialStyleValues[i]), literal(this._initialStyleValues[i + 1]));
-      }
-    }
-  }
-  /**
-   * Builds an instruction with all the expressions and parameters for `elementHostAttrs`.
-   *
-   * The instruction generation code below is used for producing the AOT statement code which is
-   * responsible for registering initial styles (within a directive hostBindings' creation block),
-   * as well as any of the provided attribute values, to the directive host element.
-   */
-  assignHostAttrs(attrs, definitionMap) {
-    if (this._directiveExpr && (attrs.length || this._hasInitialValues)) {
-      this.populateInitialStylingAttrs(attrs);
-      definitionMap.set('hostAttrs', literalArr(attrs));
-    }
-  }
-  /**
-   * Builds an instruction with all the expressions and parameters for `classMap`.
-   *
-   * The instruction data will contain all expressions for `classMap` to function
-   * which includes the `[class]` expression params.
-   */
-  buildClassMapInstruction(valueConverter) {
-    if (this._classMapInput) {
-      return this._buildMapBasedInstruction(valueConverter, true, this._classMapInput);
-    }
-    return null;
-  }
-  /**
-   * Builds an instruction with all the expressions and parameters for `styleMap`.
-   *
-   * The instruction data will contain all expressions for `styleMap` to function
-   * which includes the `[style]` expression params.
-   */
-  buildStyleMapInstruction(valueConverter) {
-    if (this._styleMapInput) {
-      return this._buildMapBasedInstruction(valueConverter, false, this._styleMapInput);
-    }
-    return null;
-  }
-  _buildMapBasedInstruction(valueConverter, isClassBased, stylingInput) {
-    // each styling binding value is stored in the LView
-    // map-based bindings allocate two slots: one for the
-    // previous binding value and another for the previous
-    // className or style attribute value.
-    let totalBindingSlotsRequired = MIN_STYLING_BINDING_SLOTS_REQUIRED;
-    // these values must be outside of the update block so that they can
-    // be evaluated (the AST visit call) during creation time so that any
-    // pipes can be picked up in time before the template is built
-    const mapValue = stylingInput.value.visit(valueConverter);
-    let reference;
-    if (mapValue instanceof Interpolation) {
-      totalBindingSlotsRequired += mapValue.expressions.length;
-      reference = isClassBased ? getClassMapInterpolationExpression(mapValue) : getStyleMapInterpolationExpression(mapValue);
-    } else {
-      reference = isClassBased ? Identifiers.classMap : Identifiers.styleMap;
-    }
-    return {
-      reference,
-      calls: [{
-        supportsInterpolation: true,
-        sourceSpan: stylingInput.sourceSpan,
-        allocateBindingSlots: totalBindingSlotsRequired,
-        params: convertFn => {
-          const convertResult = convertFn(mapValue);
-          const params = Array.isArray(convertResult) ? convertResult : [convertResult];
-          return params;
-        }
-      }]
-    };
-  }
-  _buildSingleInputs(reference, inputs, valueConverter, getInterpolationExpressionFn, isClassBased) {
-    const instructions = [];
-    inputs.forEach(input => {
-      const previousInstruction = instructions[instructions.length - 1];
-      const value = input.value.visit(valueConverter);
-      let referenceForCall = reference;
-      // each styling binding value is stored in the LView
-      // but there are two values stored for each binding:
-      //   1) the value itself
-      //   2) an intermediate value (concatenation of style up to this point).
-      //      We need to store the intermediate value so that we don't allocate
-      //      the strings on each CD.
-      let totalBindingSlotsRequired = MIN_STYLING_BINDING_SLOTS_REQUIRED;
-      if (value instanceof Interpolation) {
-        totalBindingSlotsRequired += value.expressions.length;
-        if (getInterpolationExpressionFn) {
-          referenceForCall = getInterpolationExpressionFn(value);
-        }
-      }
-      const call = {
-        sourceSpan: input.sourceSpan,
-        allocateBindingSlots: totalBindingSlotsRequired,
-        supportsInterpolation: !!getInterpolationExpressionFn,
-        params: convertFn => {
-          // params => stylingProp(propName, value, suffix)
-          const params = [];
-          params.push(literal(input.name));
-          const convertResult = convertFn(value);
-          if (Array.isArray(convertResult)) {
-            params.push(...convertResult);
-          } else {
-            params.push(convertResult);
-          }
-          // [style.prop] bindings may use suffix values (e.g. px, em, etc...), therefore,
-          // if that is detected then we need to pass that in as an optional param.
-          if (!isClassBased && input.suffix !== null) {
-            params.push(literal(input.suffix));
-          }
-          return params;
-        }
-      };
-      // If we ended up generating a call to the same instruction as the previous styling property
-      // we can chain the calls together safely to save some bytes, otherwise we have to generate
-      // a separate instruction call. This is primarily a concern with interpolation instructions
-      // where we may start off with one `reference`, but end up using another based on the
-      // number of interpolations.
-      if (previousInstruction && previousInstruction.reference === referenceForCall) {
-        previousInstruction.calls.push(call);
-      } else {
-        instructions.push({
-          reference: referenceForCall,
-          calls: [call]
-        });
-      }
-    });
-    return instructions;
-  }
-  _buildClassInputs(valueConverter) {
-    if (this._singleClassInputs) {
-      return this._buildSingleInputs(Identifiers.classProp, this._singleClassInputs, valueConverter, null, true);
-    }
-    return [];
-  }
-  _buildStyleInputs(valueConverter) {
-    if (this._singleStyleInputs) {
-      return this._buildSingleInputs(Identifiers.styleProp, this._singleStyleInputs, valueConverter, getStylePropInterpolationExpression, false);
-    }
-    return [];
-  }
-  /**
-   * Constructs all instructions which contain the expressions that will be placed
-   * into the update block of a template function or a directive hostBindings function.
-   */
-  buildUpdateLevelInstructions(valueConverter) {
-    const instructions = [];
-    if (this.hasBindings) {
-      const styleMapInstruction = this.buildStyleMapInstruction(valueConverter);
-      if (styleMapInstruction) {
-        instructions.push(styleMapInstruction);
-      }
-      const classMapInstruction = this.buildClassMapInstruction(valueConverter);
-      if (classMapInstruction) {
-        instructions.push(classMapInstruction);
-      }
-      instructions.push(...this._buildStyleInputs(valueConverter));
-      instructions.push(...this._buildClassInputs(valueConverter));
-    }
-    return instructions;
-  }
-}
-function registerIntoMap(map, key) {
-  if (!map.has(key)) {
-    map.set(key, map.size);
-  }
-}
-function parseProperty(name) {
-  let hasOverrideFlag = false;
-  const overrideIndex = name.indexOf(IMPORTANT_FLAG);
+function parseProperty$1(name) {
+  const overrideIndex = name.indexOf('!important');
   if (overrideIndex !== -1) {
     name = overrideIndex > 0 ? name.substring(0, overrideIndex) : '';
-    hasOverrideFlag = true;
   }
   let suffix = null;
   let property = name;
@@ -15412,106 +16294,54 @@ function parseProperty(name) {
   }
   return {
     property,
-    suffix,
-    hasOverrideFlag
+    suffix
   };
 }
-/**
- * Gets the instruction to generate for an interpolated class map.
- * @param interpolation An Interpolation AST
- */
-function getClassMapInterpolationExpression(interpolation) {
-  switch (getInterpolationArgsLength(interpolation)) {
-    case 1:
-      return Identifiers.classMap;
-    case 3:
-      return Identifiers.classMapInterpolate1;
-    case 5:
-      return Identifiers.classMapInterpolate2;
-    case 7:
-      return Identifiers.classMapInterpolate3;
-    case 9:
-      return Identifiers.classMapInterpolate4;
-    case 11:
-      return Identifiers.classMapInterpolate5;
-    case 13:
-      return Identifiers.classMapInterpolate6;
-    case 15:
-      return Identifiers.classMapInterpolate7;
-    case 17:
-      return Identifiers.classMapInterpolate8;
-    default:
-      return Identifiers.classMapInterpolateV;
+function mapEntry(key, value) {
+  return {
+    key,
+    value,
+    quoted: false
+  };
+}
+function mapLiteral(obj, quoted = false) {
+  return literalMap(Object.keys(obj).map(key => ({
+    key,
+    quoted,
+    value: obj[key]
+  })));
+}
+class IcuSerializerVisitor {
+  visitText(text) {
+    return text.value;
+  }
+  visitContainer(container) {
+    return container.children.map(child => child.visit(this)).join('');
+  }
+  visitIcu(icu) {
+    const strCases = Object.keys(icu.cases).map(k => `${k} {${icu.cases[k].visit(this)}}`);
+    const result = `{${icu.expressionPlaceholder}, ${icu.type}, ${strCases.join(' ')}}`;
+    return result;
+  }
+  visitTagPlaceholder(ph) {
+    return ph.isVoid ? this.formatPh(ph.startName) : `${this.formatPh(ph.startName)}${ph.children.map(child => child.visit(this)).join('')}${this.formatPh(ph.closeName)}`;
+  }
+  visitPlaceholder(ph) {
+    return this.formatPh(ph.name);
+  }
+  visitBlockPlaceholder(ph) {
+    return `${this.formatPh(ph.startName)}${ph.children.map(child => child.visit(this)).join('')}${this.formatPh(ph.closeName)}`;
+  }
+  visitIcuPlaceholder(ph, context) {
+    return this.formatPh(ph.name);
+  }
+  formatPh(value) {
+    return `{${formatI18nPlaceholderName(value, /* useCamelCase */false)}}`;
   }
 }
-/**
- * Gets the instruction to generate for an interpolated style map.
- * @param interpolation An Interpolation AST
- */
-function getStyleMapInterpolationExpression(interpolation) {
-  switch (getInterpolationArgsLength(interpolation)) {
-    case 1:
-      return Identifiers.styleMap;
-    case 3:
-      return Identifiers.styleMapInterpolate1;
-    case 5:
-      return Identifiers.styleMapInterpolate2;
-    case 7:
-      return Identifiers.styleMapInterpolate3;
-    case 9:
-      return Identifiers.styleMapInterpolate4;
-    case 11:
-      return Identifiers.styleMapInterpolate5;
-    case 13:
-      return Identifiers.styleMapInterpolate6;
-    case 15:
-      return Identifiers.styleMapInterpolate7;
-    case 17:
-      return Identifiers.styleMapInterpolate8;
-    default:
-      return Identifiers.styleMapInterpolateV;
-  }
-}
-/**
- * Gets the instruction to generate for an interpolated style prop.
- * @param interpolation An Interpolation AST
- */
-function getStylePropInterpolationExpression(interpolation) {
-  switch (getInterpolationArgsLength(interpolation)) {
-    case 1:
-      return Identifiers.styleProp;
-    case 3:
-      return Identifiers.stylePropInterpolate1;
-    case 5:
-      return Identifiers.stylePropInterpolate2;
-    case 7:
-      return Identifiers.stylePropInterpolate3;
-    case 9:
-      return Identifiers.stylePropInterpolate4;
-    case 11:
-      return Identifiers.stylePropInterpolate5;
-    case 13:
-      return Identifiers.stylePropInterpolate6;
-    case 15:
-      return Identifiers.stylePropInterpolate7;
-    case 17:
-      return Identifiers.stylePropInterpolate8;
-    default:
-      return Identifiers.stylePropInterpolateV;
-  }
-}
-/**
- * Checks whether property name is a custom CSS property.
- * See: https://www.w3.org/TR/css-variables-1
- */
-function isCssCustomProperty(name) {
-  return name.startsWith('--');
-}
-function isEmptyExpression(ast) {
-  if (ast instanceof ASTWithSource) {
-    ast = ast.ast;
-  }
-  return ast instanceof EmptyExpr;
+const serializer = new IcuSerializerVisitor();
+function serializeIcuNode(icu) {
+  return icu.visit(serializer);
 }
 var TokenType;
 (function (TokenType) {
@@ -15940,6 +16770,7 @@ class Parser$1 {
     ast.visit(checker);
     return checker.errors;
   }
+  // Host bindings parsed here
   parseSimpleBinding(input, location, absoluteOffset, interpolationConfig = DEFAULT_INTERPOLATION_CONFIG) {
     const ast = this._parseBindingAst(input, location, absoluteOffset, interpolationConfig);
     const errors = this.checkSimpleExpression(ast);
@@ -16022,7 +16853,7 @@ class Parser$1 {
   }
   createInterpolationAst(strings, expressions, input, location, absoluteOffset) {
     const span = new ParseSpan(0, input.length);
-    const interpolation = new Interpolation(span, span.toAbsolute(absoluteOffset), strings, expressions);
+    const interpolation = new Interpolation$1(span, span.toAbsolute(absoluteOffset), strings, expressions);
     return new ASTWithSource(interpolation, input, location, absoluteOffset, this.errors);
   }
   /**
@@ -16396,7 +17227,7 @@ class _ParseAST {
       // We have no expressions so create an empty expression that spans the entire input length
       const artificialStart = this.offset;
       const artificialEnd = this.offset + this.input.length;
-      return new EmptyExpr(this.span(artificialStart, artificialEnd), this.sourceSpan(artificialStart, artificialEnd));
+      return new EmptyExpr$1(this.span(artificialStart, artificialEnd), this.sourceSpan(artificialStart, artificialEnd));
     }
     if (exprs.length == 1) return exprs[0];
     return new Chain(this.span(start), this.sourceSpan(start), exprs);
@@ -16456,7 +17287,7 @@ class _ParseAST {
         const end = this.inputIndex;
         const expression = this.input.substring(start, end);
         this.error(`Conditional expression ${expression} requires all 3 expressions`);
-        no = new EmptyExpr(this.span(start), this.sourceSpan(start));
+        no = new EmptyExpr$1(this.span(start), this.sourceSpan(start));
       } else {
         no = this.parsePipe();
       }
@@ -16660,13 +17491,13 @@ class _ParseAST {
       return new LiteralPrimitive(this.span(start), this.sourceSpan(start), literalValue);
     } else if (this.next.isPrivateIdentifier()) {
       this._reportErrorForPrivateIdentifier(this.next, null);
-      return new EmptyExpr(this.span(start), this.sourceSpan(start));
+      return new EmptyExpr$1(this.span(start), this.sourceSpan(start));
     } else if (this.index >= this.tokens.length) {
       this.error(`Unexpected end of expression: ${this.input}`);
-      return new EmptyExpr(this.span(start), this.sourceSpan(start));
+      return new EmptyExpr$1(this.span(start), this.sourceSpan(start));
     } else {
       this.error(`Unexpected token ${this.next}`);
-      return new EmptyExpr(this.span(start), this.sourceSpan(start));
+      return new EmptyExpr$1(this.span(start), this.sourceSpan(start));
     }
   }
   parseExpressionList(terminator) {
@@ -16726,7 +17557,7 @@ class _ParseAST {
     if (isSafe) {
       if (this.consumeOptionalAssignment()) {
         this.error('The \'?.\' operator cannot be used in the assignment');
-        receiver = new EmptyExpr(this.span(start), this.sourceSpan(start));
+        receiver = new EmptyExpr$1(this.span(start), this.sourceSpan(start));
       } else {
         receiver = new SafePropertyRead(this.span(start), this.sourceSpan(start), nameSpan, readReceiver, id);
       }
@@ -16734,7 +17565,7 @@ class _ParseAST {
       if (this.consumeOptionalAssignment()) {
         if (!(this.parseFlags & 1 /* ParseFlags.Action */)) {
           this.error('Bindings cannot contain assignments');
-          return new EmptyExpr(this.span(start), this.sourceSpan(start));
+          return new EmptyExpr$1(this.span(start), this.sourceSpan(start));
         }
         const value = this.parseConditional();
         receiver = new PropertyWrite(this.span(start), this.sourceSpan(start), nameSpan, readReceiver, id, value);
@@ -16856,7 +17687,7 @@ class _ParseAST {
     return this.withContext(ParseContextFlags.Writable, () => {
       this.rbracketsExpected++;
       const key = this.parsePipe();
-      if (key instanceof EmptyExpr) {
+      if (key instanceof EmptyExpr$1) {
         this.error(`Key access cannot be empty`);
       }
       this.rbracketsExpected--;
@@ -16871,7 +17702,7 @@ class _ParseAST {
       } else {
         return isSafe ? new SafeKeyedRead(this.span(start), this.sourceSpan(start), receiver, key) : new KeyedRead(this.span(start), this.sourceSpan(start), receiver, key);
       }
-      return new EmptyExpr(this.span(start), this.sourceSpan(start));
+      return new EmptyExpr$1(this.span(start), this.sourceSpan(start));
     });
   }
   /**
@@ -17161,6 +17992,29 @@ class Comment {
     return visitor.visitComment(this, context);
   }
 }
+class Block extends NodeWithI18n {
+  constructor(name, parameters, children, sourceSpan, nameSpan, startSourceSpan, endSourceSpan = null, i18n) {
+    super(sourceSpan, i18n);
+    this.name = name;
+    this.parameters = parameters;
+    this.children = children;
+    this.nameSpan = nameSpan;
+    this.startSourceSpan = startSourceSpan;
+    this.endSourceSpan = endSourceSpan;
+  }
+  visit(visitor, context) {
+    return visitor.visitBlock(this, context);
+  }
+}
+class BlockParameter {
+  constructor(expression, sourceSpan) {
+    this.expression = expression;
+    this.sourceSpan = sourceSpan;
+  }
+  visit(visitor, context) {
+    return visitor.visitBlockParameter(this, context);
+  }
+}
 function visitAll(visitor, nodes, context = null) {
   const result = [];
   const visit = visitor.visit ? ast => visitor.visit(ast, context) || ast.visit(visitor, context) : ast => ast.visit(visitor, context);
@@ -17189,6 +18043,13 @@ class RecursiveVisitor {
     });
   }
   visitExpansionCase(ast, context) {}
+  visitBlock(block, context) {
+    this.visitChildren(context, visit => {
+      visit(block.parameters);
+      visit(block.children);
+    });
+  }
+  visitBlockParameter(ast, context) {}
   visitChildren(context, cb) {
     let results = [];
     let t = this;
@@ -17524,7 +18385,7 @@ function getHtmlTagDefinition(tagName) {
     DEFAULT_TAG_DEFINITION = new HtmlTagDefinition({
       canSelfClose: true
     });
-    TAG_DEFINITIONS = {
+    TAG_DEFINITIONS = Object.assign(Object.create(null), {
       'base': new HtmlTagDefinition({
         isVoid: true
       }),
@@ -17670,9 +18531,9 @@ function getHtmlTagDefinition(tagName) {
         contentType: TagContentType.ESCAPABLE_RAW_TEXT,
         ignoreFirstLf: true
       })
-    };
+    });
     new DomElementSchemaRegistry().allKnownElementNames().forEach(knownTagName => {
-      if (!TAG_DEFINITIONS.hasOwnProperty(knownTagName) && getNsPrefix(knownTagName) === null) {
+      if (!TAG_DEFINITIONS[knownTagName] && getNsPrefix(knownTagName) === null) {
         TAG_DEFINITIONS[knownTagName] = new HtmlTagDefinition({
           canSelfClose: false
         });
@@ -17682,6 +18543,366 @@ function getHtmlTagDefinition(tagName) {
   // We have to make both a case-sensitive and a case-insensitive lookup, because
   // HTML tag names are case insensitive, whereas some SVG tags are case sensitive.
   return TAG_DEFINITIONS[tagName] ?? TAG_DEFINITIONS[tagName.toLowerCase()] ?? DEFAULT_TAG_DEFINITION;
+}
+const TAG_TO_PLACEHOLDER_NAMES = {
+  'A': 'LINK',
+  'B': 'BOLD_TEXT',
+  'BR': 'LINE_BREAK',
+  'EM': 'EMPHASISED_TEXT',
+  'H1': 'HEADING_LEVEL1',
+  'H2': 'HEADING_LEVEL2',
+  'H3': 'HEADING_LEVEL3',
+  'H4': 'HEADING_LEVEL4',
+  'H5': 'HEADING_LEVEL5',
+  'H6': 'HEADING_LEVEL6',
+  'HR': 'HORIZONTAL_RULE',
+  'I': 'ITALIC_TEXT',
+  'LI': 'LIST_ITEM',
+  'LINK': 'MEDIA_LINK',
+  'OL': 'ORDERED_LIST',
+  'P': 'PARAGRAPH',
+  'Q': 'QUOTATION',
+  'S': 'STRIKETHROUGH_TEXT',
+  'SMALL': 'SMALL_TEXT',
+  'SUB': 'SUBSTRIPT',
+  'SUP': 'SUPERSCRIPT',
+  'TBODY': 'TABLE_BODY',
+  'TD': 'TABLE_CELL',
+  'TFOOT': 'TABLE_FOOTER',
+  'TH': 'TABLE_HEADER_CELL',
+  'THEAD': 'TABLE_HEADER',
+  'TR': 'TABLE_ROW',
+  'TT': 'MONOSPACED_TEXT',
+  'U': 'UNDERLINED_TEXT',
+  'UL': 'UNORDERED_LIST'
+};
+/**
+ * Creates unique names for placeholder with different content.
+ *
+ * Returns the same placeholder name when the content is identical.
+ */
+class PlaceholderRegistry {
+  constructor() {
+    // Count the occurrence of the base name top generate a unique name
+    this._placeHolderNameCounts = {};
+    // Maps signature to placeholder names
+    this._signatureToName = {};
+  }
+  getStartTagPlaceholderName(tag, attrs, isVoid) {
+    const signature = this._hashTag(tag, attrs, isVoid);
+    if (this._signatureToName[signature]) {
+      return this._signatureToName[signature];
+    }
+    const upperTag = tag.toUpperCase();
+    const baseName = TAG_TO_PLACEHOLDER_NAMES[upperTag] || `TAG_${upperTag}`;
+    const name = this._generateUniqueName(isVoid ? baseName : `START_${baseName}`);
+    this._signatureToName[signature] = name;
+    return name;
+  }
+  getCloseTagPlaceholderName(tag) {
+    const signature = this._hashClosingTag(tag);
+    if (this._signatureToName[signature]) {
+      return this._signatureToName[signature];
+    }
+    const upperTag = tag.toUpperCase();
+    const baseName = TAG_TO_PLACEHOLDER_NAMES[upperTag] || `TAG_${upperTag}`;
+    const name = this._generateUniqueName(`CLOSE_${baseName}`);
+    this._signatureToName[signature] = name;
+    return name;
+  }
+  getPlaceholderName(name, content) {
+    const upperName = name.toUpperCase();
+    const signature = `PH: ${upperName}=${content}`;
+    if (this._signatureToName[signature]) {
+      return this._signatureToName[signature];
+    }
+    const uniqueName = this._generateUniqueName(upperName);
+    this._signatureToName[signature] = uniqueName;
+    return uniqueName;
+  }
+  getUniquePlaceholder(name) {
+    return this._generateUniqueName(name.toUpperCase());
+  }
+  getStartBlockPlaceholderName(name, parameters) {
+    const signature = this._hashBlock(name, parameters);
+    if (this._signatureToName[signature]) {
+      return this._signatureToName[signature];
+    }
+    const placeholder = this._generateUniqueName(`START_BLOCK_${this._toSnakeCase(name)}`);
+    this._signatureToName[signature] = placeholder;
+    return placeholder;
+  }
+  getCloseBlockPlaceholderName(name) {
+    const signature = this._hashClosingBlock(name);
+    if (this._signatureToName[signature]) {
+      return this._signatureToName[signature];
+    }
+    const placeholder = this._generateUniqueName(`CLOSE_BLOCK_${this._toSnakeCase(name)}`);
+    this._signatureToName[signature] = placeholder;
+    return placeholder;
+  }
+  // Generate a hash for a tag - does not take attribute order into account
+  _hashTag(tag, attrs, isVoid) {
+    const start = `<${tag}`;
+    const strAttrs = Object.keys(attrs).sort().map(name => ` ${name}=${attrs[name]}`).join('');
+    const end = isVoid ? '/>' : `></${tag}>`;
+    return start + strAttrs + end;
+  }
+  _hashClosingTag(tag) {
+    return this._hashTag(`/${tag}`, {}, false);
+  }
+  _hashBlock(name, parameters) {
+    const params = parameters.length === 0 ? '' : ` (${parameters.sort().join('; ')})`;
+    return `@${name}${params} {}`;
+  }
+  _hashClosingBlock(name) {
+    return this._hashBlock(`close_${name}`, []);
+  }
+  _toSnakeCase(name) {
+    return name.toUpperCase().replace(/[^A-Z0-9]/g, '_');
+  }
+  _generateUniqueName(base) {
+    const seen = this._placeHolderNameCounts.hasOwnProperty(base);
+    if (!seen) {
+      this._placeHolderNameCounts[base] = 1;
+      return base;
+    }
+    const id = this._placeHolderNameCounts[base];
+    this._placeHolderNameCounts[base] = id + 1;
+    return `${base}_${id}`;
+  }
+}
+const _expParser = new Parser$1(new Lexer());
+/**
+ * Returns a function converting html nodes to an i18n Message given an interpolationConfig
+ */
+function createI18nMessageFactory(interpolationConfig, containerBlocks) {
+  const visitor = new _I18nVisitor(_expParser, interpolationConfig, containerBlocks);
+  return (nodes, meaning, description, customId, visitNodeFn) => visitor.toI18nMessage(nodes, meaning, description, customId, visitNodeFn);
+}
+function noopVisitNodeFn(_html, i18n) {
+  return i18n;
+}
+class _I18nVisitor {
+  constructor(_expressionParser, _interpolationConfig, _containerBlocks) {
+    this._expressionParser = _expressionParser;
+    this._interpolationConfig = _interpolationConfig;
+    this._containerBlocks = _containerBlocks;
+  }
+  toI18nMessage(nodes, meaning = '', description = '', customId = '', visitNodeFn) {
+    const context = {
+      isIcu: nodes.length == 1 && nodes[0] instanceof Expansion,
+      icuDepth: 0,
+      placeholderRegistry: new PlaceholderRegistry(),
+      placeholderToContent: {},
+      placeholderToMessage: {},
+      visitNodeFn: visitNodeFn || noopVisitNodeFn
+    };
+    const i18nodes = visitAll(this, nodes, context);
+    return new Message(i18nodes, context.placeholderToContent, context.placeholderToMessage, meaning, description, customId);
+  }
+  visitElement(el, context) {
+    const children = visitAll(this, el.children, context);
+    const attrs = {};
+    el.attrs.forEach(attr => {
+      // Do not visit the attributes, translatable ones are top-level ASTs
+      attrs[attr.name] = attr.value;
+    });
+    const isVoid = getHtmlTagDefinition(el.name).isVoid;
+    const startPhName = context.placeholderRegistry.getStartTagPlaceholderName(el.name, attrs, isVoid);
+    context.placeholderToContent[startPhName] = {
+      text: el.startSourceSpan.toString(),
+      sourceSpan: el.startSourceSpan
+    };
+    let closePhName = '';
+    if (!isVoid) {
+      closePhName = context.placeholderRegistry.getCloseTagPlaceholderName(el.name);
+      context.placeholderToContent[closePhName] = {
+        text: `</${el.name}>`,
+        sourceSpan: el.endSourceSpan ?? el.sourceSpan
+      };
+    }
+    const node = new TagPlaceholder(el.name, attrs, startPhName, closePhName, children, isVoid, el.sourceSpan, el.startSourceSpan, el.endSourceSpan);
+    return context.visitNodeFn(el, node);
+  }
+  visitAttribute(attribute, context) {
+    const node = attribute.valueTokens === undefined || attribute.valueTokens.length === 1 ? new Text$2(attribute.value, attribute.valueSpan || attribute.sourceSpan) : this._visitTextWithInterpolation(attribute.valueTokens, attribute.valueSpan || attribute.sourceSpan, context, attribute.i18n);
+    return context.visitNodeFn(attribute, node);
+  }
+  visitText(text, context) {
+    const node = text.tokens.length === 1 ? new Text$2(text.value, text.sourceSpan) : this._visitTextWithInterpolation(text.tokens, text.sourceSpan, context, text.i18n);
+    return context.visitNodeFn(text, node);
+  }
+  visitComment(comment, context) {
+    return null;
+  }
+  visitExpansion(icu, context) {
+    context.icuDepth++;
+    const i18nIcuCases = {};
+    const i18nIcu = new Icu(icu.switchValue, icu.type, i18nIcuCases, icu.sourceSpan);
+    icu.cases.forEach(caze => {
+      i18nIcuCases[caze.value] = new Container(caze.expression.map(node => node.visit(this, context)), caze.expSourceSpan);
+    });
+    context.icuDepth--;
+    if (context.isIcu || context.icuDepth > 0) {
+      // Returns an ICU node when:
+      // - the message (vs a part of the message) is an ICU message, or
+      // - the ICU message is nested.
+      const expPh = context.placeholderRegistry.getUniquePlaceholder(`VAR_${icu.type}`);
+      i18nIcu.expressionPlaceholder = expPh;
+      context.placeholderToContent[expPh] = {
+        text: icu.switchValue,
+        sourceSpan: icu.switchValueSourceSpan
+      };
+      return context.visitNodeFn(icu, i18nIcu);
+    }
+    // Else returns a placeholder
+    // ICU placeholders should not be replaced with their original content but with the their
+    // translations.
+    // TODO(vicb): add a html.Node -> i18n.Message cache to avoid having to re-create the msg
+    const phName = context.placeholderRegistry.getPlaceholderName('ICU', icu.sourceSpan.toString());
+    context.placeholderToMessage[phName] = this.toI18nMessage([icu], '', '', '', undefined);
+    const node = new IcuPlaceholder(i18nIcu, phName, icu.sourceSpan);
+    return context.visitNodeFn(icu, node);
+  }
+  visitExpansionCase(_icuCase, _context) {
+    throw new Error('Unreachable code');
+  }
+  visitBlock(block, context) {
+    const children = visitAll(this, block.children, context);
+    if (this._containerBlocks.has(block.name)) {
+      return new Container(children, block.sourceSpan);
+    }
+    const parameters = block.parameters.map(param => param.expression);
+    const startPhName = context.placeholderRegistry.getStartBlockPlaceholderName(block.name, parameters);
+    const closePhName = context.placeholderRegistry.getCloseBlockPlaceholderName(block.name);
+    context.placeholderToContent[startPhName] = {
+      text: block.startSourceSpan.toString(),
+      sourceSpan: block.startSourceSpan
+    };
+    context.placeholderToContent[closePhName] = {
+      text: block.endSourceSpan ? block.endSourceSpan.toString() : '}',
+      sourceSpan: block.endSourceSpan ?? block.sourceSpan
+    };
+    const node = new BlockPlaceholder(block.name, parameters, startPhName, closePhName, children, block.sourceSpan, block.startSourceSpan, block.endSourceSpan);
+    return context.visitNodeFn(block, node);
+  }
+  visitBlockParameter(_parameter, _context) {
+    throw new Error('Unreachable code');
+  }
+  /**
+   * Convert, text and interpolated tokens up into text and placeholder pieces.
+   *
+   * @param tokens The text and interpolated tokens.
+   * @param sourceSpan The span of the whole of the `text` string.
+   * @param context The current context of the visitor, used to compute and store placeholders.
+   * @param previousI18n Any i18n metadata associated with this `text` from a previous pass.
+   */
+  _visitTextWithInterpolation(tokens, sourceSpan, context, previousI18n) {
+    // Return a sequence of `Text` and `Placeholder` nodes grouped in a `Container`.
+    const nodes = [];
+    // We will only create a container if there are actually interpolations,
+    // so this flag tracks that.
+    let hasInterpolation = false;
+    for (const token of tokens) {
+      switch (token.type) {
+        case 8 /* TokenType.INTERPOLATION */:
+        case 17 /* TokenType.ATTR_VALUE_INTERPOLATION */:
+          hasInterpolation = true;
+          const expression = token.parts[1];
+          const baseName = extractPlaceholderName(expression) || 'INTERPOLATION';
+          const phName = context.placeholderRegistry.getPlaceholderName(baseName, expression);
+          context.placeholderToContent[phName] = {
+            text: token.parts.join(''),
+            sourceSpan: token.sourceSpan
+          };
+          nodes.push(new Placeholder(expression, phName, token.sourceSpan));
+          break;
+        default:
+          if (token.parts[0].length > 0) {
+            // This token is text or an encoded entity.
+            // If it is following on from a previous text node then merge it into that node
+            // Otherwise, if it is following an interpolation, then add a new node.
+            const previous = nodes[nodes.length - 1];
+            if (previous instanceof Text$2) {
+              previous.value += token.parts[0];
+              previous.sourceSpan = new ParseSourceSpan(previous.sourceSpan.start, token.sourceSpan.end, previous.sourceSpan.fullStart, previous.sourceSpan.details);
+            } else {
+              nodes.push(new Text$2(token.parts[0], token.sourceSpan));
+            }
+          }
+          break;
+      }
+    }
+    if (hasInterpolation) {
+      // Whitespace removal may have invalidated the interpolation source-spans.
+      reusePreviousSourceSpans(nodes, previousI18n);
+      return new Container(nodes, sourceSpan);
+    } else {
+      return nodes[0];
+    }
+  }
+}
+/**
+ * Re-use the source-spans from `previousI18n` metadata for the `nodes`.
+ *
+ * Whitespace removal can invalidate the source-spans of interpolation nodes, so we
+ * reuse the source-span stored from a previous pass before the whitespace was removed.
+ *
+ * @param nodes The `Text` and `Placeholder` nodes to be processed.
+ * @param previousI18n Any i18n metadata for these `nodes` stored from a previous pass.
+ */
+function reusePreviousSourceSpans(nodes, previousI18n) {
+  if (previousI18n instanceof Message) {
+    // The `previousI18n` is an i18n `Message`, so we are processing an `Attribute` with i18n
+    // metadata. The `Message` should consist only of a single `Container` that contains the
+    // parts (`Text` and `Placeholder`) to process.
+    assertSingleContainerMessage(previousI18n);
+    previousI18n = previousI18n.nodes[0];
+  }
+  if (previousI18n instanceof Container) {
+    // The `previousI18n` is a `Container`, which means that this is a second i18n extraction pass
+    // after whitespace has been removed from the AST nodes.
+    assertEquivalentNodes(previousI18n.children, nodes);
+    // Reuse the source-spans from the first pass.
+    for (let i = 0; i < nodes.length; i++) {
+      nodes[i].sourceSpan = previousI18n.children[i].sourceSpan;
+    }
+  }
+}
+/**
+ * Asserts that the `message` contains exactly one `Container` node.
+ */
+function assertSingleContainerMessage(message) {
+  const nodes = message.nodes;
+  if (nodes.length !== 1 || !(nodes[0] instanceof Container)) {
+    throw new Error('Unexpected previous i18n message - expected it to consist of only a single `Container` node.');
+  }
+}
+/**
+ * Asserts that the `previousNodes` and `node` collections have the same number of elements and
+ * corresponding elements have the same node type.
+ */
+function assertEquivalentNodes(previousNodes, nodes) {
+  if (previousNodes.length !== nodes.length) {
+    throw new Error('The number of i18n message children changed between first and second pass.');
+  }
+  if (previousNodes.some((node, i) => nodes[i].constructor !== node.constructor)) {
+    throw new Error('The types of the i18n message children changed between first and second pass.');
+  }
+}
+const _CUSTOM_PH_EXP = /\/\/[\s\S]*i18n[\s\S]*\([\s\S]*ph[\s\S]*=[\s\S]*("|')([\s\S]*?)\1[\s\S]*\)/g;
+function extractPlaceholderName(input) {
+  return input.split(_CUSTOM_PH_EXP)[2];
+}
+
+/**
+ * An i18n error.
+ */
+class I18nError extends ParseError {
+  constructor(span, msg) {
+    super(span, msg);
+  }
 }
 
 // Mapping between all HTML entity names and their unicode representation.
@@ -19886,8 +21107,8 @@ class _Tokenizer {
     };
     this._cursor = options.escapedString ? new EscapedCharacterCursor(_file, range) : new PlainCharacterCursor(_file, range);
     this._preserveLineEndings = options.preserveLineEndings || false;
-    this._escapedString = options.escapedString || false;
     this._i18nNormalizeLineEndingsInICUs = options.i18nNormalizeLineEndingsInICUs || false;
+    this._tokenizeBlocks = options.tokenizeBlocks ?? true;
     try {
       this._cursor.init();
     } catch (e) {
@@ -19922,6 +21143,10 @@ class _Tokenizer {
           } else {
             this._consumeTagOpen(start);
           }
+        } else if (this._tokenizeBlocks && this._attemptCharCode($AT)) {
+          this._consumeBlockStart(start);
+        } else if (this._tokenizeBlocks && !this._inInterpolation && !this._isInExpansionCase() && !this._isInExpansionForm() && this._attemptCharCode($RBRACE)) {
+          this._consumeBlockEnd(start);
         } else if (!(this._tokenizeIcu && this._tokenizeExpansionForm())) {
           // In (possibly interpolated) text the end of the text is given by `isTextEnd()`, while
           // the premature end of an interpolation is given by the start of a new HTML element.
@@ -19931,8 +21156,89 @@ class _Tokenizer {
         this.handleError(e);
       }
     }
-    this._beginToken(24 /* TokenType.EOF */);
+    this._beginToken(29 /* TokenType.EOF */);
     this._endToken([]);
+  }
+  _getBlockName() {
+    // This allows us to capture up something like `@else if`, but not `@ if`.
+    let spacesInNameAllowed = false;
+    const nameCursor = this._cursor.clone();
+    this._attemptCharCodeUntilFn(code => {
+      if (isWhitespace(code)) {
+        return !spacesInNameAllowed;
+      }
+      if (isBlockNameChar(code)) {
+        spacesInNameAllowed = true;
+        return false;
+      }
+      return true;
+    });
+    return this._cursor.getChars(nameCursor).trim();
+  }
+  _consumeBlockStart(start) {
+    this._beginToken(24 /* TokenType.BLOCK_OPEN_START */, start);
+    const startToken = this._endToken([this._getBlockName()]);
+    if (this._cursor.peek() === $LPAREN) {
+      // Advance past the opening paren.
+      this._cursor.advance();
+      // Capture the parameters.
+      this._consumeBlockParameters();
+      // Allow spaces before the closing paren.
+      this._attemptCharCodeUntilFn(isNotWhitespace);
+      if (this._attemptCharCode($RPAREN)) {
+        // Allow spaces after the paren.
+        this._attemptCharCodeUntilFn(isNotWhitespace);
+      } else {
+        startToken.type = 28 /* TokenType.INCOMPLETE_BLOCK_OPEN */;
+        return;
+      }
+    }
+    if (this._attemptCharCode($LBRACE)) {
+      this._beginToken(25 /* TokenType.BLOCK_OPEN_END */);
+      this._endToken([]);
+    } else {
+      startToken.type = 28 /* TokenType.INCOMPLETE_BLOCK_OPEN */;
+    }
+  }
+
+  _consumeBlockEnd(start) {
+    this._beginToken(26 /* TokenType.BLOCK_CLOSE */, start);
+    this._endToken([]);
+  }
+  _consumeBlockParameters() {
+    // Trim the whitespace until the first parameter.
+    this._attemptCharCodeUntilFn(isBlockParameterChar);
+    while (this._cursor.peek() !== $RPAREN && this._cursor.peek() !== $EOF) {
+      this._beginToken(27 /* TokenType.BLOCK_PARAMETER */);
+      const start = this._cursor.clone();
+      let inQuote = null;
+      let openParens = 0;
+      // Consume the parameter until the next semicolon or brace.
+      // Note that we skip over semicolons/braces inside of strings.
+      while (this._cursor.peek() !== $SEMICOLON && this._cursor.peek() !== $EOF || inQuote !== null) {
+        const char = this._cursor.peek();
+        // Skip to the next character if it was escaped.
+        if (char === $BACKSLASH) {
+          this._cursor.advance();
+        } else if (char === inQuote) {
+          inQuote = null;
+        } else if (inQuote === null && isQuote(char)) {
+          inQuote = char;
+        } else if (char === $LPAREN && inQuote === null) {
+          openParens++;
+        } else if (char === $RPAREN && inQuote === null) {
+          if (openParens === 0) {
+            break;
+          } else if (openParens > 0) {
+            openParens--;
+          }
+        }
+        this._cursor.advance();
+      }
+      this._endToken([this._cursor.getChars(start)]);
+      // Skip to the next parameter.
+      this._attemptCharCodeUntilFn(isBlockParameterChar);
+    }
   }
   /**
    * @returns whether an ICU token has been created
@@ -20254,7 +21560,6 @@ class _Tokenizer {
     this._endToken(prefixAndName);
   }
   _consumeAttributeValue() {
-    let value;
     if (this._cursor.peek() === $SQ || this._cursor.peek() === $DQ) {
       const quoteChar = this._cursor.peek();
       this._consumeQuote(quoteChar);
@@ -20449,6 +21754,9 @@ class _Tokenizer {
         return true;
       }
     }
+    if (this._tokenizeBlocks && !this._inInterpolation && !this._isInExpansion() && (this._cursor.peek() === $AT || this._cursor.peek() === $RBRACE)) {
+      return true;
+    }
     return false;
   }
   /**
@@ -20472,6 +21780,9 @@ class _Tokenizer {
     const start = this._cursor.clone();
     this._attemptUntilChar(char);
     return this._cursor.getChars(start);
+  }
+  _isInExpansion() {
+    return this._isInExpansionCase() || this._isInExpansionForm();
   }
   _isInExpansionCase() {
     return this._expansionCaseStack.length > 0 && this._expansionCaseStack[this._expansionCaseStack.length - 1] === 21 /* TokenType.EXPANSION_CASE_EXP_START */;
@@ -20517,6 +21828,12 @@ function compareCharCodeCaseInsensitive(code1, code2) {
 }
 function toUpperCaseCharCode(code) {
   return code >= $a && code <= $z ? code - $a + $A : code;
+}
+function isBlockNameChar(code) {
+  return isAsciiLetter(code) || isDigit(code) || code === $_;
+}
+function isBlockParameterChar(code) {
+  return code !== $SEMICOLON && isNotWhitespace(code);
 }
 function mergeTextTokens(srcTokens) {
   const dstTokens = [];
@@ -20791,13 +22108,13 @@ class _TreeBuilder {
     this.tokens = tokens;
     this.getTagDefinition = getTagDefinition;
     this._index = -1;
-    this._elementStack = [];
+    this._containerStack = [];
     this.rootNodes = [];
     this.errors = [];
     this._advance();
   }
   build() {
-    while (this._peek.type !== 24 /* TokenType.EOF */) {
+    while (this._peek.type !== 29 /* TokenType.EOF */) {
       if (this._peek.type === 0 /* TokenType.TAG_OPEN_START */ || this._peek.type === 4 /* TokenType.INCOMPLETE_TAG_OPEN */) {
         this._consumeStartTag(this._advance());
       } else if (this._peek.type === 3 /* TokenType.TAG_CLOSE */) {
@@ -20813,9 +22130,24 @@ class _TreeBuilder {
         this._consumeText(this._advance());
       } else if (this._peek.type === 19 /* TokenType.EXPANSION_FORM_START */) {
         this._consumeExpansion(this._advance());
+      } else if (this._peek.type === 24 /* TokenType.BLOCK_OPEN_START */) {
+        this._closeVoidElement();
+        this._consumeBlockOpen(this._advance());
+      } else if (this._peek.type === 26 /* TokenType.BLOCK_CLOSE */) {
+        this._closeVoidElement();
+        this._consumeBlockClose(this._advance());
+      } else if (this._peek.type === 28 /* TokenType.INCOMPLETE_BLOCK_OPEN */) {
+        this._closeVoidElement();
+        this._consumeIncompleteBlock(this._advance());
       } else {
         // Skip all other tokens...
         this._advance();
+      }
+    }
+    for (const leftoverContainer of this._containerStack) {
+      // Unlike HTML elements, blocks aren't closed implicitly by the end of the file.
+      if (leftoverContainer instanceof Block) {
+        this.errors.push(TreeError.create(leftoverContainer.name, leftoverContainer.sourceSpan, `Unclosed block "${leftoverContainer.name}"`));
       }
     }
   }
@@ -20841,9 +22173,10 @@ class _TreeBuilder {
 
   _consumeComment(token) {
     const text = this._advanceIf(7 /* TokenType.RAW_TEXT */);
-    this._advanceIf(11 /* TokenType.COMMENT_END */);
+    const endToken = this._advanceIf(11 /* TokenType.COMMENT_END */);
     const value = text != null ? text.parts[0].trim() : null;
-    this._addToParent(new Comment(value, token.sourceSpan));
+    const sourceSpan = endToken == null ? token.sourceSpan : new ParseSourceSpan(token.sourceSpan.start, endToken.sourceSpan.end, token.sourceSpan.fullStart);
+    this._addToParent(new Comment(value, sourceSpan));
   }
   _consumeExpansion(token) {
     const switchValue = this._advance();
@@ -20877,7 +22210,7 @@ class _TreeBuilder {
     if (!exp) return null;
     const end = this._advance();
     exp.push({
-      type: 24 /* TokenType.EOF */,
+      type: 29 /* TokenType.EOF */,
       parts: [],
       sourceSpan: end.sourceSpan
     });
@@ -20916,7 +22249,7 @@ class _TreeBuilder {
           return null;
         }
       }
-      if (this._peek.type === 24 /* TokenType.EOF */) {
+      if (this._peek.type === 29 /* TokenType.EOF */) {
         this.errors.push(TreeError.create(null, start.sourceSpan, `Invalid ICU message. Missing '}'.`));
         return null;
       }
@@ -20928,7 +22261,7 @@ class _TreeBuilder {
     const startSpan = token.sourceSpan;
     let text = token.parts[0];
     if (text.length > 0 && text[0] === '\n') {
-      const parent = this._getParentElement();
+      const parent = this._getContainer();
       if (parent != null && parent.children.length === 0 && this.getTagDefinition(parent.name).ignoreFirstLf) {
         text = text.substring(1);
         tokens[0] = {
@@ -20959,9 +22292,9 @@ class _TreeBuilder {
     }
   }
   _closeVoidElement() {
-    const el = this._getParentElement();
-    if (el && this.getTagDefinition(el.name).isVoid) {
-      this._elementStack.pop();
+    const el = this._getContainer();
+    if (el instanceof Element && this.getTagDefinition(el.name).isVoid) {
+      this._containerStack.pop();
     }
   }
   _consumeStartTag(startTagToken) {
@@ -20970,7 +22303,7 @@ class _TreeBuilder {
     while (this._peek.type === 14 /* TokenType.ATTR_NAME */) {
       attrs.push(this._consumeAttr(this._advance()));
     }
-    const fullName = this._getElementFullName(prefix, name, this._getParentElement());
+    const fullName = this._getElementFullName(prefix, name, this._getClosestParentElement());
     let selfClosing = false;
     // Note: There could have been a tokenizer error
     // so that we don't get a token for the end tag...
@@ -20990,31 +22323,31 @@ class _TreeBuilder {
     // Create a separate `startSpan` because `span` will be modified when there is an `end` span.
     const startSpan = new ParseSourceSpan(startTagToken.sourceSpan.start, end, startTagToken.sourceSpan.fullStart);
     const el = new Element(fullName, attrs, [], span, startSpan, undefined);
-    this._pushElement(el);
+    const parentEl = this._getContainer();
+    this._pushContainer(el, parentEl instanceof Element && this.getTagDefinition(parentEl.name).isClosedByChild(el.name));
     if (selfClosing) {
       // Elements that are self-closed have their `endSourceSpan` set to the full span, as the
       // element start tag also represents the end tag.
-      this._popElement(fullName, span);
+      this._popContainer(fullName, Element, span);
     } else if (startTagToken.type === 4 /* TokenType.INCOMPLETE_TAG_OPEN */) {
       // We already know the opening tag is not complete, so it is unlikely it has a corresponding
       // close tag. Let's optimistically parse it as a full element and emit an error.
-      this._popElement(fullName, null);
+      this._popContainer(fullName, Element, null);
       this.errors.push(TreeError.create(fullName, span, `Opening tag "${fullName}" not terminated.`));
     }
   }
-  _pushElement(el) {
-    const parentEl = this._getParentElement();
-    if (parentEl && this.getTagDefinition(parentEl.name).isClosedByChild(el.name)) {
-      this._elementStack.pop();
+  _pushContainer(node, isClosedByChild) {
+    if (isClosedByChild) {
+      this._containerStack.pop();
     }
-    this._addToParent(el);
-    this._elementStack.push(el);
+    this._addToParent(node);
+    this._containerStack.push(node);
   }
   _consumeEndTag(endTagToken) {
-    const fullName = this._getElementFullName(endTagToken.parts[0], endTagToken.parts[1], this._getParentElement());
+    const fullName = this._getElementFullName(endTagToken.parts[0], endTagToken.parts[1], this._getClosestParentElement());
     if (this.getTagDefinition(fullName).isVoid) {
       this.errors.push(TreeError.create(fullName, endTagToken.sourceSpan, `Void elements do not have end tags "${endTagToken.parts[1]}"`));
-    } else if (!this._popElement(fullName, endTagToken.sourceSpan)) {
+    } else if (!this._popContainer(fullName, Element, endTagToken.sourceSpan)) {
       const errMsg = `Unexpected closing tag "${fullName}". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags`;
       this.errors.push(TreeError.create(fullName, endTagToken.sourceSpan, errMsg));
     }
@@ -21025,20 +22358,21 @@ class _TreeBuilder {
    * not have a closing tag (for example, this happens when an incomplete
    * opening tag is recovered).
    */
-  _popElement(fullName, endSourceSpan) {
+  _popContainer(expectedName, expectedType, endSourceSpan) {
     let unexpectedCloseTagDetected = false;
-    for (let stackIndex = this._elementStack.length - 1; stackIndex >= 0; stackIndex--) {
-      const el = this._elementStack[stackIndex];
-      if (el.name === fullName) {
+    for (let stackIndex = this._containerStack.length - 1; stackIndex >= 0; stackIndex--) {
+      const node = this._containerStack[stackIndex];
+      if ((node.name === expectedName || expectedName === null) && node instanceof expectedType) {
         // Record the parse span with the element that is being closed. Any elements that are
         // removed from the element stack at this point are closed implicitly, so they won't get
         // an end source span (as there is no explicit closing element).
-        el.endSourceSpan = endSourceSpan;
-        el.sourceSpan.end = endSourceSpan !== null ? endSourceSpan.end : el.sourceSpan.end;
-        this._elementStack.splice(stackIndex, this._elementStack.length - stackIndex);
+        node.endSourceSpan = endSourceSpan;
+        node.sourceSpan.end = endSourceSpan !== null ? endSourceSpan.end : node.sourceSpan.end;
+        this._containerStack.splice(stackIndex, this._containerStack.length - stackIndex);
         return !unexpectedCloseTagDetected;
       }
-      if (!this.getTagDefinition(el.name).closedByParent) {
+      // Blocks and most elements are not self closing.
+      if (node instanceof Block || node instanceof Element && !this.getTagDefinition(node.name).closedByParent) {
         // Note that we encountered an unexpected close tag but continue processing the element
         // stack so we can assign an `endSourceSpan` if there is a corresponding start tag for this
         // end tag in the stack.
@@ -21092,15 +22426,60 @@ class _TreeBuilder {
     const valueSpan = valueStartSpan && valueEnd && new ParseSourceSpan(valueStartSpan.start, valueEnd, valueStartSpan.fullStart);
     return new Attribute(fullName, value, new ParseSourceSpan(attrName.sourceSpan.start, attrEnd, attrName.sourceSpan.fullStart), attrName.sourceSpan, valueSpan, valueTokens.length > 0 ? valueTokens : undefined, undefined);
   }
-  _getParentElement() {
-    return this._elementStack.length > 0 ? this._elementStack[this._elementStack.length - 1] : null;
+  _consumeBlockOpen(token) {
+    const parameters = [];
+    while (this._peek.type === 27 /* TokenType.BLOCK_PARAMETER */) {
+      const paramToken = this._advance();
+      parameters.push(new BlockParameter(paramToken.parts[0], paramToken.sourceSpan));
+    }
+    if (this._peek.type === 25 /* TokenType.BLOCK_OPEN_END */) {
+      this._advance();
+    }
+    const end = this._peek.sourceSpan.fullStart;
+    const span = new ParseSourceSpan(token.sourceSpan.start, end, token.sourceSpan.fullStart);
+    // Create a separate `startSpan` because `span` will be modified when there is an `end` span.
+    const startSpan = new ParseSourceSpan(token.sourceSpan.start, end, token.sourceSpan.fullStart);
+    const block = new Block(token.parts[0], parameters, [], span, token.sourceSpan, startSpan);
+    this._pushContainer(block, false);
+  }
+  _consumeBlockClose(token) {
+    if (!this._popContainer(null, Block, token.sourceSpan)) {
+      this.errors.push(TreeError.create(null, token.sourceSpan, `Unexpected closing block. The block may have been closed earlier. ` + `If you meant to write the } character, you should use the "&#125;" ` + `HTML entity instead.`));
+    }
+  }
+  _consumeIncompleteBlock(token) {
+    const parameters = [];
+    while (this._peek.type === 27 /* TokenType.BLOCK_PARAMETER */) {
+      const paramToken = this._advance();
+      parameters.push(new BlockParameter(paramToken.parts[0], paramToken.sourceSpan));
+    }
+    const end = this._peek.sourceSpan.fullStart;
+    const span = new ParseSourceSpan(token.sourceSpan.start, end, token.sourceSpan.fullStart);
+    // Create a separate `startSpan` because `span` will be modified when there is an `end` span.
+    const startSpan = new ParseSourceSpan(token.sourceSpan.start, end, token.sourceSpan.fullStart);
+    const block = new Block(token.parts[0], parameters, [], span, token.sourceSpan, startSpan);
+    this._pushContainer(block, false);
+    // Incomplete blocks don't have children so we close them immediately and report an error.
+    this._popContainer(null, Block, null);
+    this.errors.push(TreeError.create(token.parts[0], span, `Incomplete block "${token.parts[0]}". If you meant to write the @ character, ` + `you should use the "&#64;" HTML entity instead.`));
+  }
+  _getContainer() {
+    return this._containerStack.length > 0 ? this._containerStack[this._containerStack.length - 1] : null;
+  }
+  _getClosestParentElement() {
+    for (let i = this._containerStack.length - 1; i > -1; i--) {
+      if (this._containerStack[i] instanceof Element) {
+        return this._containerStack[i];
+      }
+    }
+    return null;
   }
   _addToParent(node) {
-    const parent = this._getParentElement();
-    if (parent != null) {
-      parent.children.push(node);
-    } else {
+    const parent = this._getContainer();
+    if (parent === null) {
       this.rootNodes.push(node);
+    } else {
+      parent.children.push(node);
     }
   }
   _getElementFullName(prefix, localName, parentElement) {
@@ -21137,126 +22516,6 @@ function decodeEntity(match, entity) {
   }
   return match;
 }
-class HtmlParser extends Parser {
-  constructor() {
-    super(getHtmlTagDefinition);
-  }
-  parse(source, url, options) {
-    return super.parse(source, url, options);
-  }
-}
-const PRESERVE_WS_ATTR_NAME = 'ngPreserveWhitespaces';
-const SKIP_WS_TRIM_TAGS = new Set(['pre', 'template', 'textarea', 'script', 'style']);
-// Equivalent to \s with \u00a0 (non-breaking space) excluded.
-// Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-const WS_CHARS = ' \f\n\r\t\v\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
-const NO_WS_REGEXP = new RegExp(`[^${WS_CHARS}]`);
-const WS_REPLACE_REGEXP = new RegExp(`[${WS_CHARS}]{2,}`, 'g');
-function hasPreserveWhitespacesAttr(attrs) {
-  return attrs.some(attr => attr.name === PRESERVE_WS_ATTR_NAME);
-}
-/**
- * &ngsp; is a placeholder for non-removable space
- * &ngsp; is converted to the 0xE500 PUA (Private Use Areas) unicode character
- * and later on replaced by a space.
- */
-function replaceNgsp(value) {
-  // lexer is replacing the &ngsp; pseudo-entity with NGSP_UNICODE
-  return value.replace(new RegExp(NGSP_UNICODE, 'g'), ' ');
-}
-/**
- * This visitor can walk HTML parse tree and remove / trim text nodes using the following rules:
- * - consider spaces, tabs and new lines as whitespace characters;
- * - drop text nodes consisting of whitespace characters only;
- * - for all other text nodes replace consecutive whitespace characters with one space;
- * - convert &ngsp; pseudo-entity to a single space;
- *
- * Removal and trimming of whitespaces have positive performance impact (less code to generate
- * while compiling templates, faster view creation). At the same time it can be "destructive"
- * in some cases (whitespaces can influence layout). Because of the potential of breaking layout
- * this visitor is not activated by default in Angular 5 and people need to explicitly opt-in for
- * whitespace removal. The default option for whitespace removal will be revisited in Angular 6
- * and might be changed to "on" by default.
- */
-class WhitespaceVisitor {
-  visitElement(element, context) {
-    if (SKIP_WS_TRIM_TAGS.has(element.name) || hasPreserveWhitespacesAttr(element.attrs)) {
-      // don't descent into elements where we need to preserve whitespaces
-      // but still visit all attributes to eliminate one used as a market to preserve WS
-      return new Element(element.name, visitAll(this, element.attrs), element.children, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
-    }
-    return new Element(element.name, element.attrs, visitAllWithSiblings(this, element.children), element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
-  }
-  visitAttribute(attribute, context) {
-    return attribute.name !== PRESERVE_WS_ATTR_NAME ? attribute : null;
-  }
-  visitText(text, context) {
-    const isNotBlank = text.value.match(NO_WS_REGEXP);
-    const hasExpansionSibling = context && (context.prev instanceof Expansion || context.next instanceof Expansion);
-    if (isNotBlank || hasExpansionSibling) {
-      // Process the whitespace in the tokens of this Text node
-      const tokens = text.tokens.map(token => token.type === 5 /* TokenType.TEXT */ ? createWhitespaceProcessedTextToken(token) : token);
-      // Process the whitespace of the value of this Text node
-      const value = processWhitespace(text.value);
-      return new Text(value, text.sourceSpan, tokens, text.i18n);
-    }
-    return null;
-  }
-  visitComment(comment, context) {
-    return comment;
-  }
-  visitExpansion(expansion, context) {
-    return expansion;
-  }
-  visitExpansionCase(expansionCase, context) {
-    return expansionCase;
-  }
-}
-function createWhitespaceProcessedTextToken({
-  type,
-  parts,
-  sourceSpan
-}) {
-  return {
-    type,
-    parts: [processWhitespace(parts[0])],
-    sourceSpan
-  };
-}
-function processWhitespace(text) {
-  return replaceNgsp(text).replace(WS_REPLACE_REGEXP, ' ');
-}
-function removeWhitespaces(htmlAstWithErrors) {
-  return new ParseTreeResult(visitAll(new WhitespaceVisitor(), htmlAstWithErrors.rootNodes), htmlAstWithErrors.errors);
-}
-function visitAllWithSiblings(visitor, nodes) {
-  const result = [];
-  nodes.forEach((ast, i) => {
-    const context = {
-      prev: nodes[i - 1],
-      next: nodes[i + 1]
-    };
-    const astResult = ast.visit(visitor, context);
-    if (astResult) {
-      result.push(astResult);
-    }
-  });
-  return result;
-}
-function mapEntry(key, value) {
-  return {
-    key,
-    value,
-    quoted: false
-  };
-}
-function mapLiteral(obj, quoted = false) {
-  return literalMap(Object.keys(obj).map(key => ({
-    key,
-    quoted,
-    value: obj[key]
-  })));
-}
 
 /**
  * Set of tagName|propertyName corresponding to Trusted Types sinks. Properties applying to all
@@ -21286,1417 +22545,6 @@ function isTrustedTypesSink(tagName, propName) {
   propName = propName.toLowerCase();
   return TRUSTED_TYPES_SINKS.has(tagName + '|' + propName) || TRUSTED_TYPES_SINKS.has('*|' + propName);
 }
-const PROPERTY_PARTS_SEPARATOR = '.';
-const ATTRIBUTE_PREFIX = 'attr';
-const CLASS_PREFIX = 'class';
-const STYLE_PREFIX = 'style';
-const TEMPLATE_ATTR_PREFIX$1 = '*';
-const ANIMATE_PROP_PREFIX = 'animate-';
-/**
- * Parses bindings in templates and in the directive host area.
- */
-class BindingParser {
-  constructor(_exprParser, _interpolationConfig, _schemaRegistry, errors) {
-    this._exprParser = _exprParser;
-    this._interpolationConfig = _interpolationConfig;
-    this._schemaRegistry = _schemaRegistry;
-    this.errors = errors;
-  }
-  get interpolationConfig() {
-    return this._interpolationConfig;
-  }
-  createBoundHostProperties(properties, sourceSpan) {
-    const boundProps = [];
-    for (const propName of Object.keys(properties)) {
-      const expression = properties[propName];
-      if (typeof expression === 'string') {
-        this.parsePropertyBinding(propName, expression, true, sourceSpan, sourceSpan.start.offset, undefined, [],
-        // Use the `sourceSpan` for  `keySpan`. This isn't really accurate, but neither is the
-        // sourceSpan, as it represents the sourceSpan of the host itself rather than the
-        // source of the host binding (which doesn't exist in the template). Regardless,
-        // neither of these values are used in Ivy but are only here to satisfy the function
-        // signature. This should likely be refactored in the future so that `sourceSpan`
-        // isn't being used inaccurately.
-        boundProps, sourceSpan);
-      } else {
-        this._reportError(`Value of the host property binding "${propName}" needs to be a string representing an expression but got "${expression}" (${typeof expression})`, sourceSpan);
-      }
-    }
-    return boundProps;
-  }
-  createDirectiveHostEventAsts(hostListeners, sourceSpan) {
-    const targetEvents = [];
-    for (const propName of Object.keys(hostListeners)) {
-      const expression = hostListeners[propName];
-      if (typeof expression === 'string') {
-        // Use the `sourceSpan` for  `keySpan` and `handlerSpan`. This isn't really accurate, but
-        // neither is the `sourceSpan`, as it represents the `sourceSpan` of the host itself
-        // rather than the source of the host binding (which doesn't exist in the template).
-        // Regardless, neither of these values are used in Ivy but are only here to satisfy the
-        // function signature. This should likely be refactored in the future so that `sourceSpan`
-        // isn't being used inaccurately.
-        this.parseEvent(propName, expression, /* isAssignmentEvent */false, sourceSpan, sourceSpan, [], targetEvents, sourceSpan);
-      } else {
-        this._reportError(`Value of the host listener "${propName}" needs to be a string representing an expression but got "${expression}" (${typeof expression})`, sourceSpan);
-      }
-    }
-    return targetEvents;
-  }
-  parseInterpolation(value, sourceSpan, interpolatedTokens) {
-    const sourceInfo = sourceSpan.start.toString();
-    const absoluteOffset = sourceSpan.fullStart.offset;
-    try {
-      const ast = this._exprParser.parseInterpolation(value, sourceInfo, absoluteOffset, interpolatedTokens, this._interpolationConfig);
-      if (ast) this._reportExpressionParserErrors(ast.errors, sourceSpan);
-      return ast;
-    } catch (e) {
-      this._reportError(`${e}`, sourceSpan);
-      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
-    }
-  }
-  /**
-   * Similar to `parseInterpolation`, but treats the provided string as a single expression
-   * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
-   * This is used for parsing the switch expression in ICUs.
-   */
-  parseInterpolationExpression(expression, sourceSpan) {
-    const sourceInfo = sourceSpan.start.toString();
-    const absoluteOffset = sourceSpan.start.offset;
-    try {
-      const ast = this._exprParser.parseInterpolationExpression(expression, sourceInfo, absoluteOffset);
-      if (ast) this._reportExpressionParserErrors(ast.errors, sourceSpan);
-      return ast;
-    } catch (e) {
-      this._reportError(`${e}`, sourceSpan);
-      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
-    }
-  }
-  /**
-   * Parses the bindings in a microsyntax expression, and converts them to
-   * `ParsedProperty` or `ParsedVariable`.
-   *
-   * @param tplKey template binding name
-   * @param tplValue template binding value
-   * @param sourceSpan span of template binding relative to entire the template
-   * @param absoluteValueOffset start of the tplValue relative to the entire template
-   * @param targetMatchableAttrs potential attributes to match in the template
-   * @param targetProps target property bindings in the template
-   * @param targetVars target variables in the template
-   */
-  parseInlineTemplateBinding(tplKey, tplValue, sourceSpan, absoluteValueOffset, targetMatchableAttrs, targetProps, targetVars, isIvyAst) {
-    const absoluteKeyOffset = sourceSpan.start.offset + TEMPLATE_ATTR_PREFIX$1.length;
-    const bindings = this._parseTemplateBindings(tplKey, tplValue, sourceSpan, absoluteKeyOffset, absoluteValueOffset);
-    for (const binding of bindings) {
-      // sourceSpan is for the entire HTML attribute. bindingSpan is for a particular
-      // binding within the microsyntax expression so it's more narrow than sourceSpan.
-      const bindingSpan = moveParseSourceSpan(sourceSpan, binding.sourceSpan);
-      const key = binding.key.source;
-      const keySpan = moveParseSourceSpan(sourceSpan, binding.key.span);
-      if (binding instanceof VariableBinding) {
-        const value = binding.value ? binding.value.source : '$implicit';
-        const valueSpan = binding.value ? moveParseSourceSpan(sourceSpan, binding.value.span) : undefined;
-        targetVars.push(new ParsedVariable(key, value, bindingSpan, keySpan, valueSpan));
-      } else if (binding.value) {
-        const srcSpan = isIvyAst ? bindingSpan : sourceSpan;
-        const valueSpan = moveParseSourceSpan(sourceSpan, binding.value.ast.sourceSpan);
-        this._parsePropertyAst(key, binding.value, srcSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps);
-      } else {
-        targetMatchableAttrs.push([key, '' /* value */]);
-        // Since this is a literal attribute with no RHS, source span should be
-        // just the key span.
-        this.parseLiteralAttr(key, null /* value */, keySpan, absoluteValueOffset, undefined /* valueSpan */, targetMatchableAttrs, targetProps, keySpan);
-      }
-    }
-  }
-  /**
-   * Parses the bindings in a microsyntax expression, e.g.
-   * ```
-   *    <tag *tplKey="let value1 = prop; let value2 = localVar">
-   * ```
-   *
-   * @param tplKey template binding name
-   * @param tplValue template binding value
-   * @param sourceSpan span of template binding relative to entire the template
-   * @param absoluteKeyOffset start of the `tplKey`
-   * @param absoluteValueOffset start of the `tplValue`
-   */
-  _parseTemplateBindings(tplKey, tplValue, sourceSpan, absoluteKeyOffset, absoluteValueOffset) {
-    const sourceInfo = sourceSpan.start.toString();
-    try {
-      const bindingsResult = this._exprParser.parseTemplateBindings(tplKey, tplValue, sourceInfo, absoluteKeyOffset, absoluteValueOffset);
-      this._reportExpressionParserErrors(bindingsResult.errors, sourceSpan);
-      bindingsResult.warnings.forEach(warning => {
-        this._reportError(warning, sourceSpan, ParseErrorLevel.WARNING);
-      });
-      return bindingsResult.templateBindings;
-    } catch (e) {
-      this._reportError(`${e}`, sourceSpan);
-      return [];
-    }
-  }
-  parseLiteralAttr(name, value, sourceSpan, absoluteOffset, valueSpan, targetMatchableAttrs, targetProps, keySpan) {
-    if (isAnimationLabel(name)) {
-      name = name.substring(1);
-      if (keySpan !== undefined) {
-        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + 1, keySpan.end.offset));
-      }
-      if (value) {
-        this._reportError(`Assigning animation triggers via @prop="exp" attributes with an expression is invalid.` + ` Use property bindings (e.g. [@prop]="exp") or use an attribute without a value (e.g. @prop) instead.`, sourceSpan, ParseErrorLevel.ERROR);
-      }
-      this._parseAnimation(name, value, sourceSpan, absoluteOffset, keySpan, valueSpan, targetMatchableAttrs, targetProps);
-    } else {
-      targetProps.push(new ParsedProperty(name, this._exprParser.wrapLiteralPrimitive(value, '', absoluteOffset), ParsedPropertyType.LITERAL_ATTR, sourceSpan, keySpan, valueSpan));
-    }
-  }
-  parsePropertyBinding(name, expression, isHost, sourceSpan, absoluteOffset, valueSpan, targetMatchableAttrs, targetProps, keySpan) {
-    if (name.length === 0) {
-      this._reportError(`Property name is missing in binding`, sourceSpan);
-    }
-    let isAnimationProp = false;
-    if (name.startsWith(ANIMATE_PROP_PREFIX)) {
-      isAnimationProp = true;
-      name = name.substring(ANIMATE_PROP_PREFIX.length);
-      if (keySpan !== undefined) {
-        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + ANIMATE_PROP_PREFIX.length, keySpan.end.offset));
-      }
-    } else if (isAnimationLabel(name)) {
-      isAnimationProp = true;
-      name = name.substring(1);
-      if (keySpan !== undefined) {
-        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + 1, keySpan.end.offset));
-      }
-    }
-    if (isAnimationProp) {
-      this._parseAnimation(name, expression, sourceSpan, absoluteOffset, keySpan, valueSpan, targetMatchableAttrs, targetProps);
-    } else {
-      this._parsePropertyAst(name, this._parseBinding(expression, isHost, valueSpan || sourceSpan, absoluteOffset), sourceSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps);
-    }
-  }
-  parsePropertyInterpolation(name, value, sourceSpan, valueSpan, targetMatchableAttrs, targetProps, keySpan, interpolatedTokens) {
-    const expr = this.parseInterpolation(value, valueSpan || sourceSpan, interpolatedTokens);
-    if (expr) {
-      this._parsePropertyAst(name, expr, sourceSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps);
-      return true;
-    }
-    return false;
-  }
-  _parsePropertyAst(name, ast, sourceSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps) {
-    targetMatchableAttrs.push([name, ast.source]);
-    targetProps.push(new ParsedProperty(name, ast, ParsedPropertyType.DEFAULT, sourceSpan, keySpan, valueSpan));
-  }
-  _parseAnimation(name, expression, sourceSpan, absoluteOffset, keySpan, valueSpan, targetMatchableAttrs, targetProps) {
-    if (name.length === 0) {
-      this._reportError('Animation trigger is missing', sourceSpan);
-    }
-    // This will occur when a @trigger is not paired with an expression.
-    // For animations it is valid to not have an expression since */void
-    // states will be applied by angular when the element is attached/detached
-    const ast = this._parseBinding(expression || 'undefined', false, valueSpan || sourceSpan, absoluteOffset);
-    targetMatchableAttrs.push([name, ast.source]);
-    targetProps.push(new ParsedProperty(name, ast, ParsedPropertyType.ANIMATION, sourceSpan, keySpan, valueSpan));
-  }
-  _parseBinding(value, isHostBinding, sourceSpan, absoluteOffset) {
-    const sourceInfo = (sourceSpan && sourceSpan.start || '(unknown)').toString();
-    try {
-      const ast = isHostBinding ? this._exprParser.parseSimpleBinding(value, sourceInfo, absoluteOffset, this._interpolationConfig) : this._exprParser.parseBinding(value, sourceInfo, absoluteOffset, this._interpolationConfig);
-      if (ast) this._reportExpressionParserErrors(ast.errors, sourceSpan);
-      return ast;
-    } catch (e) {
-      this._reportError(`${e}`, sourceSpan);
-      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
-    }
-  }
-  createBoundElementProperty(elementSelector, boundProp, skipValidation = false, mapPropertyName = true) {
-    if (boundProp.isAnimation) {
-      return new BoundElementProperty(boundProp.name, 4 /* BindingType.Animation */, SecurityContext.NONE, boundProp.expression, null, boundProp.sourceSpan, boundProp.keySpan, boundProp.valueSpan);
-    }
-    let unit = null;
-    let bindingType = undefined;
-    let boundPropertyName = null;
-    const parts = boundProp.name.split(PROPERTY_PARTS_SEPARATOR);
-    let securityContexts = undefined;
-    // Check for special cases (prefix style, attr, class)
-    if (parts.length > 1) {
-      if (parts[0] == ATTRIBUTE_PREFIX) {
-        boundPropertyName = parts.slice(1).join(PROPERTY_PARTS_SEPARATOR);
-        if (!skipValidation) {
-          this._validatePropertyOrAttributeName(boundPropertyName, boundProp.sourceSpan, true);
-        }
-        securityContexts = calcPossibleSecurityContexts(this._schemaRegistry, elementSelector, boundPropertyName, true);
-        const nsSeparatorIdx = boundPropertyName.indexOf(':');
-        if (nsSeparatorIdx > -1) {
-          const ns = boundPropertyName.substring(0, nsSeparatorIdx);
-          const name = boundPropertyName.substring(nsSeparatorIdx + 1);
-          boundPropertyName = mergeNsAndName(ns, name);
-        }
-        bindingType = 1 /* BindingType.Attribute */;
-      } else if (parts[0] == CLASS_PREFIX) {
-        boundPropertyName = parts[1];
-        bindingType = 2 /* BindingType.Class */;
-        securityContexts = [SecurityContext.NONE];
-      } else if (parts[0] == STYLE_PREFIX) {
-        unit = parts.length > 2 ? parts[2] : null;
-        boundPropertyName = parts[1];
-        bindingType = 3 /* BindingType.Style */;
-        securityContexts = [SecurityContext.STYLE];
-      }
-    }
-    // If not a special case, use the full property name
-    if (boundPropertyName === null) {
-      const mappedPropName = this._schemaRegistry.getMappedPropName(boundProp.name);
-      boundPropertyName = mapPropertyName ? mappedPropName : boundProp.name;
-      securityContexts = calcPossibleSecurityContexts(this._schemaRegistry, elementSelector, mappedPropName, false);
-      bindingType = 0 /* BindingType.Property */;
-      if (!skipValidation) {
-        this._validatePropertyOrAttributeName(mappedPropName, boundProp.sourceSpan, false);
-      }
-    }
-    return new BoundElementProperty(boundPropertyName, bindingType, securityContexts[0], boundProp.expression, unit, boundProp.sourceSpan, boundProp.keySpan, boundProp.valueSpan);
-  }
-  // TODO: keySpan should be required but was made optional to avoid changing VE parser.
-  parseEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetMatchableAttrs, targetEvents, keySpan) {
-    if (name.length === 0) {
-      this._reportError(`Event name is missing in binding`, sourceSpan);
-    }
-    if (isAnimationLabel(name)) {
-      name = name.slice(1);
-      if (keySpan !== undefined) {
-        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + 1, keySpan.end.offset));
-      }
-      this._parseAnimationEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetEvents, keySpan);
-    } else {
-      this._parseRegularEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetMatchableAttrs, targetEvents, keySpan);
-    }
-  }
-  calcPossibleSecurityContexts(selector, propName, isAttribute) {
-    const prop = this._schemaRegistry.getMappedPropName(propName);
-    return calcPossibleSecurityContexts(this._schemaRegistry, selector, prop, isAttribute);
-  }
-  _parseAnimationEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetEvents, keySpan) {
-    const matches = splitAtPeriod(name, [name, '']);
-    const eventName = matches[0];
-    const phase = matches[1].toLowerCase();
-    const ast = this._parseAction(expression, isAssignmentEvent, handlerSpan);
-    targetEvents.push(new ParsedEvent(eventName, phase, 1 /* ParsedEventType.Animation */, ast, sourceSpan, handlerSpan, keySpan));
-    if (eventName.length === 0) {
-      this._reportError(`Animation event name is missing in binding`, sourceSpan);
-    }
-    if (phase) {
-      if (phase !== 'start' && phase !== 'done') {
-        this._reportError(`The provided animation output phase value "${phase}" for "@${eventName}" is not supported (use start or done)`, sourceSpan);
-      }
-    } else {
-      this._reportError(`The animation trigger output event (@${eventName}) is missing its phase value name (start or done are currently supported)`, sourceSpan);
-    }
-  }
-  _parseRegularEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetMatchableAttrs, targetEvents, keySpan) {
-    // long format: 'target: eventName'
-    const [target, eventName] = splitAtColon(name, [null, name]);
-    const ast = this._parseAction(expression, isAssignmentEvent, handlerSpan);
-    targetMatchableAttrs.push([name, ast.source]);
-    targetEvents.push(new ParsedEvent(eventName, target, 0 /* ParsedEventType.Regular */, ast, sourceSpan, handlerSpan, keySpan));
-    // Don't detect directives for event names for now,
-    // so don't add the event name to the matchableAttrs
-  }
-
-  _parseAction(value, isAssignmentEvent, sourceSpan) {
-    const sourceInfo = (sourceSpan && sourceSpan.start || '(unknown').toString();
-    const absoluteOffset = sourceSpan && sourceSpan.start ? sourceSpan.start.offset : 0;
-    try {
-      const ast = this._exprParser.parseAction(value, isAssignmentEvent, sourceInfo, absoluteOffset, this._interpolationConfig);
-      if (ast) {
-        this._reportExpressionParserErrors(ast.errors, sourceSpan);
-      }
-      if (!ast || ast.ast instanceof EmptyExpr) {
-        this._reportError(`Empty expressions are not allowed`, sourceSpan);
-        return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
-      }
-      return ast;
-    } catch (e) {
-      this._reportError(`${e}`, sourceSpan);
-      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
-    }
-  }
-  _reportError(message, sourceSpan, level = ParseErrorLevel.ERROR) {
-    this.errors.push(new ParseError(sourceSpan, message, level));
-  }
-  _reportExpressionParserErrors(errors, sourceSpan) {
-    for (const error of errors) {
-      this._reportError(error.message, sourceSpan);
-    }
-  }
-  /**
-   * @param propName the name of the property / attribute
-   * @param sourceSpan
-   * @param isAttr true when binding to an attribute
-   */
-  _validatePropertyOrAttributeName(propName, sourceSpan, isAttr) {
-    const report = isAttr ? this._schemaRegistry.validateAttribute(propName) : this._schemaRegistry.validateProperty(propName);
-    if (report.error) {
-      this._reportError(report.msg, sourceSpan, ParseErrorLevel.ERROR);
-    }
-  }
-}
-class PipeCollector extends RecursiveAstVisitor {
-  constructor() {
-    super(...arguments);
-    this.pipes = new Map();
-  }
-  visitPipe(ast, context) {
-    this.pipes.set(ast.name, ast);
-    ast.exp.visit(this);
-    this.visitAll(ast.args, context);
-    return null;
-  }
-}
-function isAnimationLabel(name) {
-  return name[0] == '@';
-}
-function calcPossibleSecurityContexts(registry, selector, propName, isAttribute) {
-  const ctxs = [];
-  CssSelector.parse(selector).forEach(selector => {
-    const elementNames = selector.element ? [selector.element] : registry.allKnownElementNames();
-    const notElementNames = new Set(selector.notSelectors.filter(selector => selector.isElementSelector()).map(selector => selector.element));
-    const possibleElementNames = elementNames.filter(elementName => !notElementNames.has(elementName));
-    ctxs.push(...possibleElementNames.map(elementName => registry.securityContext(elementName, propName, isAttribute)));
-  });
-  return ctxs.length === 0 ? [SecurityContext.NONE] : Array.from(new Set(ctxs)).sort();
-}
-/**
- * Compute a new ParseSourceSpan based off an original `sourceSpan` by using
- * absolute offsets from the specified `absoluteSpan`.
- *
- * @param sourceSpan original source span
- * @param absoluteSpan absolute source span to move to
- */
-function moveParseSourceSpan(sourceSpan, absoluteSpan) {
-  // The difference of two absolute offsets provide the relative offset
-  const startDiff = absoluteSpan.start - sourceSpan.start.offset;
-  const endDiff = absoluteSpan.end - sourceSpan.end.offset;
-  return new ParseSourceSpan(sourceSpan.start.moveBy(startDiff), sourceSpan.end.moveBy(endDiff), sourceSpan.fullStart.moveBy(startDiff), sourceSpan.details);
-}
-
-// Some of the code comes from WebComponents.JS
-// https://github.com/webcomponents/webcomponentsjs/blob/master/src/HTMLImports/path.js
-function isStyleUrlResolvable(url) {
-  if (url == null || url.length === 0 || url[0] == '/') return false;
-  const schemeMatch = url.match(URL_WITH_SCHEMA_REGEXP);
-  return schemeMatch === null || schemeMatch[1] == 'package' || schemeMatch[1] == 'asset';
-}
-const URL_WITH_SCHEMA_REGEXP = /^([^:/?#]+):/;
-const NG_CONTENT_SELECT_ATTR$1 = 'select';
-const LINK_ELEMENT = 'link';
-const LINK_STYLE_REL_ATTR = 'rel';
-const LINK_STYLE_HREF_ATTR = 'href';
-const LINK_STYLE_REL_VALUE = 'stylesheet';
-const STYLE_ELEMENT = 'style';
-const SCRIPT_ELEMENT = 'script';
-const NG_NON_BINDABLE_ATTR = 'ngNonBindable';
-const NG_PROJECT_AS = 'ngProjectAs';
-function preparseElement(ast) {
-  let selectAttr = null;
-  let hrefAttr = null;
-  let relAttr = null;
-  let nonBindable = false;
-  let projectAs = '';
-  ast.attrs.forEach(attr => {
-    const lcAttrName = attr.name.toLowerCase();
-    if (lcAttrName == NG_CONTENT_SELECT_ATTR$1) {
-      selectAttr = attr.value;
-    } else if (lcAttrName == LINK_STYLE_HREF_ATTR) {
-      hrefAttr = attr.value;
-    } else if (lcAttrName == LINK_STYLE_REL_ATTR) {
-      relAttr = attr.value;
-    } else if (attr.name == NG_NON_BINDABLE_ATTR) {
-      nonBindable = true;
-    } else if (attr.name == NG_PROJECT_AS) {
-      if (attr.value.length > 0) {
-        projectAs = attr.value;
-      }
-    }
-  });
-  selectAttr = normalizeNgContentSelect(selectAttr);
-  const nodeName = ast.name.toLowerCase();
-  let type = PreparsedElementType.OTHER;
-  if (isNgContent(nodeName)) {
-    type = PreparsedElementType.NG_CONTENT;
-  } else if (nodeName == STYLE_ELEMENT) {
-    type = PreparsedElementType.STYLE;
-  } else if (nodeName == SCRIPT_ELEMENT) {
-    type = PreparsedElementType.SCRIPT;
-  } else if (nodeName == LINK_ELEMENT && relAttr == LINK_STYLE_REL_VALUE) {
-    type = PreparsedElementType.STYLESHEET;
-  }
-  return new PreparsedElement(type, selectAttr, hrefAttr, nonBindable, projectAs);
-}
-var PreparsedElementType;
-(function (PreparsedElementType) {
-  PreparsedElementType[PreparsedElementType["NG_CONTENT"] = 0] = "NG_CONTENT";
-  PreparsedElementType[PreparsedElementType["STYLE"] = 1] = "STYLE";
-  PreparsedElementType[PreparsedElementType["STYLESHEET"] = 2] = "STYLESHEET";
-  PreparsedElementType[PreparsedElementType["SCRIPT"] = 3] = "SCRIPT";
-  PreparsedElementType[PreparsedElementType["OTHER"] = 4] = "OTHER";
-})(PreparsedElementType || (PreparsedElementType = {}));
-class PreparsedElement {
-  constructor(type, selectAttr, hrefAttr, nonBindable, projectAs) {
-    this.type = type;
-    this.selectAttr = selectAttr;
-    this.hrefAttr = hrefAttr;
-    this.nonBindable = nonBindable;
-    this.projectAs = projectAs;
-  }
-}
-function normalizeNgContentSelect(selectAttr) {
-  if (selectAttr === null || selectAttr.length === 0) {
-    return '*';
-  }
-  return selectAttr;
-}
-const BIND_NAME_REGEXP = /^(?:(bind-)|(let-)|(ref-|#)|(on-)|(bindon-)|(@))(.*)$/;
-// Group 1 = "bind-"
-const KW_BIND_IDX = 1;
-// Group 2 = "let-"
-const KW_LET_IDX = 2;
-// Group 3 = "ref-/#"
-const KW_REF_IDX = 3;
-// Group 4 = "on-"
-const KW_ON_IDX = 4;
-// Group 5 = "bindon-"
-const KW_BINDON_IDX = 5;
-// Group 6 = "@"
-const KW_AT_IDX = 6;
-// Group 7 = the identifier after "bind-", "let-", "ref-/#", "on-", "bindon-" or "@"
-const IDENT_KW_IDX = 7;
-const BINDING_DELIMS = {
-  BANANA_BOX: {
-    start: '[(',
-    end: ')]'
-  },
-  PROPERTY: {
-    start: '[',
-    end: ']'
-  },
-  EVENT: {
-    start: '(',
-    end: ')'
-  }
-};
-const TEMPLATE_ATTR_PREFIX = '*';
-function htmlAstToRender3Ast(htmlNodes, bindingParser, options) {
-  const transformer = new HtmlAstToIvyAst(bindingParser, options);
-  const ivyNodes = visitAll(transformer, htmlNodes);
-  // Errors might originate in either the binding parser or the html to ivy transformer
-  const allErrors = bindingParser.errors.concat(transformer.errors);
-  const result = {
-    nodes: ivyNodes,
-    errors: allErrors,
-    styleUrls: transformer.styleUrls,
-    styles: transformer.styles,
-    ngContentSelectors: transformer.ngContentSelectors
-  };
-  if (options.collectCommentNodes) {
-    result.commentNodes = transformer.commentNodes;
-  }
-  return result;
-}
-class HtmlAstToIvyAst {
-  constructor(bindingParser, options) {
-    this.bindingParser = bindingParser;
-    this.options = options;
-    this.errors = [];
-    this.styles = [];
-    this.styleUrls = [];
-    this.ngContentSelectors = [];
-    // This array will be populated if `Render3ParseOptions['collectCommentNodes']` is true
-    this.commentNodes = [];
-    this.inI18nBlock = false;
-  }
-  // HTML visitor
-  visitElement(element) {
-    const isI18nRootElement = isI18nRootNode(element.i18n);
-    if (isI18nRootElement) {
-      if (this.inI18nBlock) {
-        this.reportError('Cannot mark an element as translatable inside of a translatable section. Please remove the nested i18n marker.', element.sourceSpan);
-      }
-      this.inI18nBlock = true;
-    }
-    const preparsedElement = preparseElement(element);
-    if (preparsedElement.type === PreparsedElementType.SCRIPT) {
-      return null;
-    } else if (preparsedElement.type === PreparsedElementType.STYLE) {
-      const contents = textContents(element);
-      if (contents !== null) {
-        this.styles.push(contents);
-      }
-      return null;
-    } else if (preparsedElement.type === PreparsedElementType.STYLESHEET && isStyleUrlResolvable(preparsedElement.hrefAttr)) {
-      this.styleUrls.push(preparsedElement.hrefAttr);
-      return null;
-    }
-    // Whether the element is a `<ng-template>`
-    const isTemplateElement = isNgTemplate(element.name);
-    const parsedProperties = [];
-    const boundEvents = [];
-    const variables = [];
-    const references = [];
-    const attributes = [];
-    const i18nAttrsMeta = {};
-    const templateParsedProperties = [];
-    const templateVariables = [];
-    // Whether the element has any *-attribute
-    let elementHasInlineTemplate = false;
-    for (const attribute of element.attrs) {
-      let hasBinding = false;
-      const normalizedName = normalizeAttributeName(attribute.name);
-      // `*attr` defines template bindings
-      let isTemplateBinding = false;
-      if (attribute.i18n) {
-        i18nAttrsMeta[attribute.name] = attribute.i18n;
-      }
-      if (normalizedName.startsWith(TEMPLATE_ATTR_PREFIX)) {
-        // *-attributes
-        if (elementHasInlineTemplate) {
-          this.reportError(`Can't have multiple template bindings on one element. Use only one attribute prefixed with *`, attribute.sourceSpan);
-        }
-        isTemplateBinding = true;
-        elementHasInlineTemplate = true;
-        const templateValue = attribute.value;
-        const templateKey = normalizedName.substring(TEMPLATE_ATTR_PREFIX.length);
-        const parsedVariables = [];
-        const absoluteValueOffset = attribute.valueSpan ? attribute.valueSpan.start.offset :
-        // If there is no value span the attribute does not have a value, like `attr` in
-        //`<div attr></div>`. In this case, point to one character beyond the last character of
-        // the attribute name.
-        attribute.sourceSpan.start.offset + attribute.name.length;
-        this.bindingParser.parseInlineTemplateBinding(templateKey, templateValue, attribute.sourceSpan, absoluteValueOffset, [], templateParsedProperties, parsedVariables, true /* isIvyAst */);
-        templateVariables.push(...parsedVariables.map(v => new Variable(v.name, v.value, v.sourceSpan, v.keySpan, v.valueSpan)));
-      } else {
-        // Check for variables, events, property bindings, interpolation
-        hasBinding = this.parseAttribute(isTemplateElement, attribute, [], parsedProperties, boundEvents, variables, references);
-      }
-      if (!hasBinding && !isTemplateBinding) {
-        // don't include the bindings as attributes as well in the AST
-        attributes.push(this.visitAttribute(attribute));
-      }
-    }
-    const children = visitAll(preparsedElement.nonBindable ? NON_BINDABLE_VISITOR : this, element.children);
-    let parsedElement;
-    if (preparsedElement.type === PreparsedElementType.NG_CONTENT) {
-      // `<ng-content>`
-      if (element.children && !element.children.every(node => isEmptyTextNode(node) || isCommentNode(node))) {
-        this.reportError(`<ng-content> element cannot have content.`, element.sourceSpan);
-      }
-      const selector = preparsedElement.selectAttr;
-      const attrs = element.attrs.map(attr => this.visitAttribute(attr));
-      parsedElement = new Content(selector, attrs, element.sourceSpan, element.i18n);
-      this.ngContentSelectors.push(selector);
-    } else if (isTemplateElement) {
-      // `<ng-template>`
-      const attrs = this.extractAttributes(element.name, parsedProperties, i18nAttrsMeta);
-      parsedElement = new Template(element.name, attributes, attrs.bound, boundEvents, [/* no template attributes */], children, references, variables, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
-    } else {
-      const attrs = this.extractAttributes(element.name, parsedProperties, i18nAttrsMeta);
-      parsedElement = new Element$1(element.name, attributes, attrs.bound, boundEvents, children, references, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
-    }
-    if (elementHasInlineTemplate) {
-      // If this node is an inline-template (e.g. has *ngFor) then we need to create a template
-      // node that contains this node.
-      // Moreover, if the node is an element, then we need to hoist its attributes to the template
-      // node for matching against content projection selectors.
-      const attrs = this.extractAttributes('ng-template', templateParsedProperties, i18nAttrsMeta);
-      const templateAttrs = [];
-      attrs.literal.forEach(attr => templateAttrs.push(attr));
-      attrs.bound.forEach(attr => templateAttrs.push(attr));
-      const hoistedAttrs = parsedElement instanceof Element$1 ? {
-        attributes: parsedElement.attributes,
-        inputs: parsedElement.inputs,
-        outputs: parsedElement.outputs
-      } : {
-        attributes: [],
-        inputs: [],
-        outputs: []
-      };
-      // For <ng-template>s with structural directives on them, avoid passing i18n information to
-      // the wrapping template to prevent unnecessary i18n instructions from being generated. The
-      // necessary i18n meta information will be extracted from child elements.
-      const i18n = isTemplateElement && isI18nRootElement ? undefined : element.i18n;
-      const name = parsedElement instanceof Template ? null : parsedElement.name;
-      parsedElement = new Template(name, hoistedAttrs.attributes, hoistedAttrs.inputs, hoistedAttrs.outputs, templateAttrs, [parsedElement], [/* no references */], templateVariables, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, i18n);
-    }
-    if (isI18nRootElement) {
-      this.inI18nBlock = false;
-    }
-    return parsedElement;
-  }
-  visitAttribute(attribute) {
-    return new TextAttribute(attribute.name, attribute.value, attribute.sourceSpan, attribute.keySpan, attribute.valueSpan, attribute.i18n);
-  }
-  visitText(text) {
-    return this._visitTextWithInterpolation(text.value, text.sourceSpan, text.tokens, text.i18n);
-  }
-  visitExpansion(expansion) {
-    if (!expansion.i18n) {
-      // do not generate Icu in case it was created
-      // outside of i18n block in a template
-      return null;
-    }
-    if (!isI18nRootNode(expansion.i18n)) {
-      throw new Error(`Invalid type "${expansion.i18n.constructor}" for "i18n" property of ${expansion.sourceSpan.toString()}. Expected a "Message"`);
-    }
-    const message = expansion.i18n;
-    const vars = {};
-    const placeholders = {};
-    // extract VARs from ICUs - we process them separately while
-    // assembling resulting message via goog.getMsg function, since
-    // we need to pass them to top-level goog.getMsg call
-    Object.keys(message.placeholders).forEach(key => {
-      const value = message.placeholders[key];
-      if (key.startsWith(I18N_ICU_VAR_PREFIX)) {
-        // Currently when the `plural` or `select` keywords in an ICU contain trailing spaces (e.g.
-        // `{count, select , ...}`), these spaces are also included into the key names in ICU vars
-        // (e.g. "VAR_SELECT "). These trailing spaces are not desirable, since they will later be
-        // converted into `_` symbols while normalizing placeholder names, which might lead to
-        // mismatches at runtime (i.e. placeholder will not be replaced with the correct value).
-        const formattedKey = key.trim();
-        const ast = this.bindingParser.parseInterpolationExpression(value.text, value.sourceSpan);
-        vars[formattedKey] = new BoundText(ast, value.sourceSpan);
-      } else {
-        placeholders[key] = this._visitTextWithInterpolation(value.text, value.sourceSpan, null);
-      }
-    });
-    return new Icu$1(vars, placeholders, expansion.sourceSpan, message);
-  }
-  visitExpansionCase(expansionCase) {
-    return null;
-  }
-  visitComment(comment) {
-    if (this.options.collectCommentNodes) {
-      this.commentNodes.push(new Comment$1(comment.value || '', comment.sourceSpan));
-    }
-    return null;
-  }
-  // convert view engine `ParsedProperty` to a format suitable for IVY
-  extractAttributes(elementName, properties, i18nPropsMeta) {
-    const bound = [];
-    const literal = [];
-    properties.forEach(prop => {
-      const i18n = i18nPropsMeta[prop.name];
-      if (prop.isLiteral) {
-        literal.push(new TextAttribute(prop.name, prop.expression.source || '', prop.sourceSpan, prop.keySpan, prop.valueSpan, i18n));
-      } else {
-        // Note that validation is skipped and property mapping is disabled
-        // due to the fact that we need to make sure a given prop is not an
-        // input of a directive and directive matching happens at runtime.
-        const bep = this.bindingParser.createBoundElementProperty(elementName, prop, /* skipValidation */true, /* mapPropertyName */false);
-        bound.push(BoundAttribute.fromBoundElementProperty(bep, i18n));
-      }
-    });
-    return {
-      bound,
-      literal
-    };
-  }
-  parseAttribute(isTemplateElement, attribute, matchableAttributes, parsedProperties, boundEvents, variables, references) {
-    const name = normalizeAttributeName(attribute.name);
-    const value = attribute.value;
-    const srcSpan = attribute.sourceSpan;
-    const absoluteOffset = attribute.valueSpan ? attribute.valueSpan.start.offset : srcSpan.start.offset;
-    function createKeySpan(srcSpan, prefix, identifier) {
-      // We need to adjust the start location for the keySpan to account for the removed 'data-'
-      // prefix from `normalizeAttributeName`.
-      const normalizationAdjustment = attribute.name.length - name.length;
-      const keySpanStart = srcSpan.start.moveBy(prefix.length + normalizationAdjustment);
-      const keySpanEnd = keySpanStart.moveBy(identifier.length);
-      return new ParseSourceSpan(keySpanStart, keySpanEnd, keySpanStart, identifier);
-    }
-    const bindParts = name.match(BIND_NAME_REGEXP);
-    if (bindParts) {
-      if (bindParts[KW_BIND_IDX] != null) {
-        const identifier = bindParts[IDENT_KW_IDX];
-        const keySpan = createKeySpan(srcSpan, bindParts[KW_BIND_IDX], identifier);
-        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
-      } else if (bindParts[KW_LET_IDX]) {
-        if (isTemplateElement) {
-          const identifier = bindParts[IDENT_KW_IDX];
-          const keySpan = createKeySpan(srcSpan, bindParts[KW_LET_IDX], identifier);
-          this.parseVariable(identifier, value, srcSpan, keySpan, attribute.valueSpan, variables);
-        } else {
-          this.reportError(`"let-" is only supported on ng-template elements.`, srcSpan);
-        }
-      } else if (bindParts[KW_REF_IDX]) {
-        const identifier = bindParts[IDENT_KW_IDX];
-        const keySpan = createKeySpan(srcSpan, bindParts[KW_REF_IDX], identifier);
-        this.parseReference(identifier, value, srcSpan, keySpan, attribute.valueSpan, references);
-      } else if (bindParts[KW_ON_IDX]) {
-        const events = [];
-        const identifier = bindParts[IDENT_KW_IDX];
-        const keySpan = createKeySpan(srcSpan, bindParts[KW_ON_IDX], identifier);
-        this.bindingParser.parseEvent(identifier, value, /* isAssignmentEvent */false, srcSpan, attribute.valueSpan || srcSpan, matchableAttributes, events, keySpan);
-        addEvents(events, boundEvents);
-      } else if (bindParts[KW_BINDON_IDX]) {
-        const identifier = bindParts[IDENT_KW_IDX];
-        const keySpan = createKeySpan(srcSpan, bindParts[KW_BINDON_IDX], identifier);
-        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
-        this.parseAssignmentEvent(identifier, value, srcSpan, attribute.valueSpan, matchableAttributes, boundEvents, keySpan);
-      } else if (bindParts[KW_AT_IDX]) {
-        const keySpan = createKeySpan(srcSpan, '', name);
-        this.bindingParser.parseLiteralAttr(name, value, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
-      }
-      return true;
-    }
-    // We didn't see a kw-prefixed property binding, but we have not yet checked
-    // for the []/()/[()] syntax.
-    let delims = null;
-    if (name.startsWith(BINDING_DELIMS.BANANA_BOX.start)) {
-      delims = BINDING_DELIMS.BANANA_BOX;
-    } else if (name.startsWith(BINDING_DELIMS.PROPERTY.start)) {
-      delims = BINDING_DELIMS.PROPERTY;
-    } else if (name.startsWith(BINDING_DELIMS.EVENT.start)) {
-      delims = BINDING_DELIMS.EVENT;
-    }
-    if (delims !== null &&
-    // NOTE: older versions of the parser would match a start/end delimited
-    // binding iff the property name was terminated by the ending delimiter
-    // and the identifier in the binding was non-empty.
-    // TODO(ayazhafiz): update this to handle malformed bindings.
-    name.endsWith(delims.end) && name.length > delims.start.length + delims.end.length) {
-      const identifier = name.substring(delims.start.length, name.length - delims.end.length);
-      const keySpan = createKeySpan(srcSpan, delims.start, identifier);
-      if (delims.start === BINDING_DELIMS.BANANA_BOX.start) {
-        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
-        this.parseAssignmentEvent(identifier, value, srcSpan, attribute.valueSpan, matchableAttributes, boundEvents, keySpan);
-      } else if (delims.start === BINDING_DELIMS.PROPERTY.start) {
-        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
-      } else {
-        const events = [];
-        this.bindingParser.parseEvent(identifier, value, /* isAssignmentEvent */false, srcSpan, attribute.valueSpan || srcSpan, matchableAttributes, events, keySpan);
-        addEvents(events, boundEvents);
-      }
-      return true;
-    }
-    // No explicit binding found.
-    const keySpan = createKeySpan(srcSpan, '' /* prefix */, name);
-    const hasBinding = this.bindingParser.parsePropertyInterpolation(name, value, srcSpan, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan, attribute.valueTokens ?? null);
-    return hasBinding;
-  }
-  _visitTextWithInterpolation(value, sourceSpan, interpolatedTokens, i18n) {
-    const valueNoNgsp = replaceNgsp(value);
-    const expr = this.bindingParser.parseInterpolation(valueNoNgsp, sourceSpan, interpolatedTokens);
-    return expr ? new BoundText(expr, sourceSpan, i18n) : new Text$3(valueNoNgsp, sourceSpan);
-  }
-  parseVariable(identifier, value, sourceSpan, keySpan, valueSpan, variables) {
-    if (identifier.indexOf('-') > -1) {
-      this.reportError(`"-" is not allowed in variable names`, sourceSpan);
-    } else if (identifier.length === 0) {
-      this.reportError(`Variable does not have a name`, sourceSpan);
-    }
-    variables.push(new Variable(identifier, value, sourceSpan, keySpan, valueSpan));
-  }
-  parseReference(identifier, value, sourceSpan, keySpan, valueSpan, references) {
-    if (identifier.indexOf('-') > -1) {
-      this.reportError(`"-" is not allowed in reference names`, sourceSpan);
-    } else if (identifier.length === 0) {
-      this.reportError(`Reference does not have a name`, sourceSpan);
-    } else if (references.some(reference => reference.name === identifier)) {
-      this.reportError(`Reference "#${identifier}" is defined more than once`, sourceSpan);
-    }
-    references.push(new Reference(identifier, value, sourceSpan, keySpan, valueSpan));
-  }
-  parseAssignmentEvent(name, expression, sourceSpan, valueSpan, targetMatchableAttrs, boundEvents, keySpan) {
-    const events = [];
-    this.bindingParser.parseEvent(`${name}Change`, `${expression} =$event`, /* isAssignmentEvent */true, sourceSpan, valueSpan || sourceSpan, targetMatchableAttrs, events, keySpan);
-    addEvents(events, boundEvents);
-  }
-  reportError(message, sourceSpan, level = ParseErrorLevel.ERROR) {
-    this.errors.push(new ParseError(sourceSpan, message, level));
-  }
-}
-class NonBindableVisitor {
-  visitElement(ast) {
-    const preparsedElement = preparseElement(ast);
-    if (preparsedElement.type === PreparsedElementType.SCRIPT || preparsedElement.type === PreparsedElementType.STYLE || preparsedElement.type === PreparsedElementType.STYLESHEET) {
-      // Skipping <script> for security reasons
-      // Skipping <style> and stylesheets as we already processed them
-      // in the StyleCompiler
-      return null;
-    }
-    const children = visitAll(this, ast.children, null);
-    return new Element$1(ast.name, visitAll(this, ast.attrs), /* inputs */[], /* outputs */[], children, /* references */[], ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan);
-  }
-  visitComment(comment) {
-    return null;
-  }
-  visitAttribute(attribute) {
-    return new TextAttribute(attribute.name, attribute.value, attribute.sourceSpan, attribute.keySpan, attribute.valueSpan, attribute.i18n);
-  }
-  visitText(text) {
-    return new Text$3(text.value, text.sourceSpan);
-  }
-  visitExpansion(expansion) {
-    return null;
-  }
-  visitExpansionCase(expansionCase) {
-    return null;
-  }
-}
-const NON_BINDABLE_VISITOR = new NonBindableVisitor();
-function normalizeAttributeName(attrName) {
-  return /^data-/i.test(attrName) ? attrName.substring(5) : attrName;
-}
-function addEvents(events, boundEvents) {
-  boundEvents.push(...events.map(e => BoundEvent.fromParsedEvent(e)));
-}
-function isEmptyTextNode(node) {
-  return node instanceof Text && node.value.trim().length == 0;
-}
-function isCommentNode(node) {
-  return node instanceof Comment;
-}
-function textContents(node) {
-  if (node.children.length !== 1 || !(node.children[0] instanceof Text)) {
-    return null;
-  } else {
-    return node.children[0].value;
-  }
-}
-var TagType;
-(function (TagType) {
-  TagType[TagType["ELEMENT"] = 0] = "ELEMENT";
-  TagType[TagType["TEMPLATE"] = 1] = "TEMPLATE";
-})(TagType || (TagType = {}));
-/**
- * Generates an object that is used as a shared state between parent and all child contexts.
- */
-function setupRegistry() {
-  return {
-    getUniqueId: getSeqNumberGenerator(),
-    icus: new Map()
-  };
-}
-/**
- * I18nContext is a helper class which keeps track of all i18n-related aspects
- * (accumulates placeholders, bindings, etc) between i18nStart and i18nEnd instructions.
- *
- * When we enter a nested template, the top-level context is being passed down
- * to the nested component, which uses this context to generate a child instance
- * of I18nContext class (to handle nested template) and at the end, reconciles it back
- * with the parent context.
- *
- * @param index Instruction index of i18nStart, which initiates this context
- * @param ref Reference to a translation const that represents the content if thus context
- * @param level Nesting level defined for child contexts
- * @param templateIndex Instruction index of a template which this context belongs to
- * @param meta Meta information (id, meaning, description, etc) associated with this context
- */
-class I18nContext {
-  constructor(index, ref, level = 0, templateIndex = null, meta, registry) {
-    this.index = index;
-    this.ref = ref;
-    this.level = level;
-    this.templateIndex = templateIndex;
-    this.meta = meta;
-    this.registry = registry;
-    this.bindings = new Set();
-    this.placeholders = new Map();
-    this.isEmitted = false;
-    this._unresolvedCtxCount = 0;
-    this._registry = registry || setupRegistry();
-    this.id = this._registry.getUniqueId();
-  }
-  appendTag(type, node, index, closed) {
-    if (node.isVoid && closed) {
-      return; // ignore "close" for void tags
-    }
-
-    const ph = node.isVoid || !closed ? node.startName : node.closeName;
-    const content = {
-      type,
-      index,
-      ctx: this.id,
-      isVoid: node.isVoid,
-      closed
-    };
-    updatePlaceholderMap(this.placeholders, ph, content);
-  }
-  get icus() {
-    return this._registry.icus;
-  }
-  get isRoot() {
-    return this.level === 0;
-  }
-  get isResolved() {
-    return this._unresolvedCtxCount === 0;
-  }
-  getSerializedPlaceholders() {
-    const result = new Map();
-    this.placeholders.forEach((values, key) => result.set(key, values.map(serializePlaceholderValue)));
-    return result;
-  }
-  // public API to accumulate i18n-related content
-  appendBinding(binding) {
-    this.bindings.add(binding);
-  }
-  appendIcu(name, ref) {
-    updatePlaceholderMap(this._registry.icus, name, ref);
-  }
-  appendBoundText(node) {
-    const phs = assembleBoundTextPlaceholders(node, this.bindings.size, this.id);
-    phs.forEach((values, key) => updatePlaceholderMap(this.placeholders, key, ...values));
-  }
-  appendTemplate(node, index) {
-    // add open and close tags at the same time,
-    // since we process nested templates separately
-    this.appendTag(TagType.TEMPLATE, node, index, false);
-    this.appendTag(TagType.TEMPLATE, node, index, true);
-    this._unresolvedCtxCount++;
-  }
-  appendElement(node, index, closed) {
-    this.appendTag(TagType.ELEMENT, node, index, closed);
-  }
-  appendProjection(node, index) {
-    // Add open and close tags at the same time, since `<ng-content>` has no content,
-    // so when we come across `<ng-content>` we can register both open and close tags.
-    // Note: runtime i18n logic doesn't distinguish `<ng-content>` tag placeholders and
-    // regular element tag placeholders, so we generate element placeholders for both types.
-    this.appendTag(TagType.ELEMENT, node, index, false);
-    this.appendTag(TagType.ELEMENT, node, index, true);
-  }
-  /**
-   * Generates an instance of a child context based on the root one,
-   * when we enter a nested template within I18n section.
-   *
-   * @param index Instruction index of corresponding i18nStart, which initiates this context
-   * @param templateIndex Instruction index of a template which this context belongs to
-   * @param meta Meta information (id, meaning, description, etc) associated with this context
-   *
-   * @returns I18nContext instance
-   */
-  forkChildContext(index, templateIndex, meta) {
-    return new I18nContext(index, this.ref, this.level + 1, templateIndex, meta, this._registry);
-  }
-  /**
-   * Reconciles child context into parent one once the end of the i18n block is reached (i18nEnd).
-   *
-   * @param context Child I18nContext instance to be reconciled with parent context.
-   */
-  reconcileChildContext(context) {
-    // set the right context id for open and close
-    // template tags, so we can use it as sub-block ids
-    ['start', 'close'].forEach(op => {
-      const key = context.meta[`${op}Name`];
-      const phs = this.placeholders.get(key) || [];
-      const tag = phs.find(findTemplateFn(this.id, context.templateIndex));
-      if (tag) {
-        tag.ctx = context.id;
-      }
-    });
-    // reconcile placeholders
-    const childPhs = context.placeholders;
-    childPhs.forEach((values, key) => {
-      const phs = this.placeholders.get(key);
-      if (!phs) {
-        this.placeholders.set(key, values);
-        return;
-      }
-      // try to find matching template...
-      const tmplIdx = phs.findIndex(findTemplateFn(context.id, context.templateIndex));
-      if (tmplIdx >= 0) {
-        // ... if found - replace it with nested template content
-        const isCloseTag = key.startsWith('CLOSE');
-        const isTemplateTag = key.endsWith('NG-TEMPLATE');
-        if (isTemplateTag) {
-          // current template's content is placed before or after
-          // parent template tag, depending on the open/close attribute
-          phs.splice(tmplIdx + (isCloseTag ? 0 : 1), 0, ...values);
-        } else {
-          const idx = isCloseTag ? values.length - 1 : 0;
-          values[idx].tmpl = phs[tmplIdx];
-          phs.splice(tmplIdx, 1, ...values);
-        }
-      } else {
-        // ... otherwise just append content to placeholder value
-        phs.push(...values);
-      }
-      this.placeholders.set(key, phs);
-    });
-    this._unresolvedCtxCount--;
-  }
-}
-//
-// Helper methods
-//
-function wrap(symbol, index, contextId, closed) {
-  const state = closed ? '/' : '';
-  return wrapI18nPlaceholder(`${state}${symbol}${index}`, contextId);
-}
-function wrapTag(symbol, {
-  index,
-  ctx,
-  isVoid
-}, closed) {
-  return isVoid ? wrap(symbol, index, ctx) + wrap(symbol, index, ctx, true) : wrap(symbol, index, ctx, closed);
-}
-function findTemplateFn(ctx, templateIndex) {
-  return token => typeof token === 'object' && token.type === TagType.TEMPLATE && token.index === templateIndex && token.ctx === ctx;
-}
-function serializePlaceholderValue(value) {
-  const element = (data, closed) => wrapTag('#', data, closed);
-  const template = (data, closed) => wrapTag('*', data, closed);
-  switch (value.type) {
-    case TagType.ELEMENT:
-      // close element tag
-      if (value.closed) {
-        return element(value, true) + (value.tmpl ? template(value.tmpl, true) : '');
-      }
-      // open element tag that also initiates a template
-      if (value.tmpl) {
-        return template(value.tmpl) + element(value) + (value.isVoid ? template(value.tmpl, true) : '');
-      }
-      return element(value);
-    case TagType.TEMPLATE:
-      return template(value, value.closed);
-    default:
-      return value;
-  }
-}
-class IcuSerializerVisitor {
-  visitText(text) {
-    return text.value;
-  }
-  visitContainer(container) {
-    return container.children.map(child => child.visit(this)).join('');
-  }
-  visitIcu(icu) {
-    const strCases = Object.keys(icu.cases).map(k => `${k} {${icu.cases[k].visit(this)}}`);
-    const result = `{${icu.expressionPlaceholder}, ${icu.type}, ${strCases.join(' ')}}`;
-    return result;
-  }
-  visitTagPlaceholder(ph) {
-    return ph.isVoid ? this.formatPh(ph.startName) : `${this.formatPh(ph.startName)}${ph.children.map(child => child.visit(this)).join('')}${this.formatPh(ph.closeName)}`;
-  }
-  visitPlaceholder(ph) {
-    return this.formatPh(ph.name);
-  }
-  visitIcuPlaceholder(ph, context) {
-    return this.formatPh(ph.name);
-  }
-  formatPh(value) {
-    return `{${formatI18nPlaceholderName(value, /* useCamelCase */false)}}`;
-  }
-}
-const serializer = new IcuSerializerVisitor();
-function serializeIcuNode(icu) {
-  return icu.visit(serializer);
-}
-const TAG_TO_PLACEHOLDER_NAMES = {
-  'A': 'LINK',
-  'B': 'BOLD_TEXT',
-  'BR': 'LINE_BREAK',
-  'EM': 'EMPHASISED_TEXT',
-  'H1': 'HEADING_LEVEL1',
-  'H2': 'HEADING_LEVEL2',
-  'H3': 'HEADING_LEVEL3',
-  'H4': 'HEADING_LEVEL4',
-  'H5': 'HEADING_LEVEL5',
-  'H6': 'HEADING_LEVEL6',
-  'HR': 'HORIZONTAL_RULE',
-  'I': 'ITALIC_TEXT',
-  'LI': 'LIST_ITEM',
-  'LINK': 'MEDIA_LINK',
-  'OL': 'ORDERED_LIST',
-  'P': 'PARAGRAPH',
-  'Q': 'QUOTATION',
-  'S': 'STRIKETHROUGH_TEXT',
-  'SMALL': 'SMALL_TEXT',
-  'SUB': 'SUBSTRIPT',
-  'SUP': 'SUPERSCRIPT',
-  'TBODY': 'TABLE_BODY',
-  'TD': 'TABLE_CELL',
-  'TFOOT': 'TABLE_FOOTER',
-  'TH': 'TABLE_HEADER_CELL',
-  'THEAD': 'TABLE_HEADER',
-  'TR': 'TABLE_ROW',
-  'TT': 'MONOSPACED_TEXT',
-  'U': 'UNDERLINED_TEXT',
-  'UL': 'UNORDERED_LIST'
-};
-/**
- * Creates unique names for placeholder with different content.
- *
- * Returns the same placeholder name when the content is identical.
- */
-class PlaceholderRegistry {
-  constructor() {
-    // Count the occurrence of the base name top generate a unique name
-    this._placeHolderNameCounts = {};
-    // Maps signature to placeholder names
-    this._signatureToName = {};
-  }
-  getStartTagPlaceholderName(tag, attrs, isVoid) {
-    const signature = this._hashTag(tag, attrs, isVoid);
-    if (this._signatureToName[signature]) {
-      return this._signatureToName[signature];
-    }
-    const upperTag = tag.toUpperCase();
-    const baseName = TAG_TO_PLACEHOLDER_NAMES[upperTag] || `TAG_${upperTag}`;
-    const name = this._generateUniqueName(isVoid ? baseName : `START_${baseName}`);
-    this._signatureToName[signature] = name;
-    return name;
-  }
-  getCloseTagPlaceholderName(tag) {
-    const signature = this._hashClosingTag(tag);
-    if (this._signatureToName[signature]) {
-      return this._signatureToName[signature];
-    }
-    const upperTag = tag.toUpperCase();
-    const baseName = TAG_TO_PLACEHOLDER_NAMES[upperTag] || `TAG_${upperTag}`;
-    const name = this._generateUniqueName(`CLOSE_${baseName}`);
-    this._signatureToName[signature] = name;
-    return name;
-  }
-  getPlaceholderName(name, content) {
-    const upperName = name.toUpperCase();
-    const signature = `PH: ${upperName}=${content}`;
-    if (this._signatureToName[signature]) {
-      return this._signatureToName[signature];
-    }
-    const uniqueName = this._generateUniqueName(upperName);
-    this._signatureToName[signature] = uniqueName;
-    return uniqueName;
-  }
-  getUniquePlaceholder(name) {
-    return this._generateUniqueName(name.toUpperCase());
-  }
-  // Generate a hash for a tag - does not take attribute order into account
-  _hashTag(tag, attrs, isVoid) {
-    const start = `<${tag}`;
-    const strAttrs = Object.keys(attrs).sort().map(name => ` ${name}=${attrs[name]}`).join('');
-    const end = isVoid ? '/>' : `></${tag}>`;
-    return start + strAttrs + end;
-  }
-  _hashClosingTag(tag) {
-    return this._hashTag(`/${tag}`, {}, false);
-  }
-  _generateUniqueName(base) {
-    const seen = this._placeHolderNameCounts.hasOwnProperty(base);
-    if (!seen) {
-      this._placeHolderNameCounts[base] = 1;
-      return base;
-    }
-    const id = this._placeHolderNameCounts[base];
-    this._placeHolderNameCounts[base] = id + 1;
-    return `${base}_${id}`;
-  }
-}
-const _expParser = new Parser$1(new Lexer());
-/**
- * Returns a function converting html nodes to an i18n Message given an interpolationConfig
- */
-function createI18nMessageFactory(interpolationConfig) {
-  const visitor = new _I18nVisitor(_expParser, interpolationConfig);
-  return (nodes, meaning, description, customId, visitNodeFn) => visitor.toI18nMessage(nodes, meaning, description, customId, visitNodeFn);
-}
-function noopVisitNodeFn(_html, i18n) {
-  return i18n;
-}
-class _I18nVisitor {
-  constructor(_expressionParser, _interpolationConfig) {
-    this._expressionParser = _expressionParser;
-    this._interpolationConfig = _interpolationConfig;
-  }
-  toI18nMessage(nodes, meaning = '', description = '', customId = '', visitNodeFn) {
-    const context = {
-      isIcu: nodes.length == 1 && nodes[0] instanceof Expansion,
-      icuDepth: 0,
-      placeholderRegistry: new PlaceholderRegistry(),
-      placeholderToContent: {},
-      placeholderToMessage: {},
-      visitNodeFn: visitNodeFn || noopVisitNodeFn
-    };
-    const i18nodes = visitAll(this, nodes, context);
-    return new Message(i18nodes, context.placeholderToContent, context.placeholderToMessage, meaning, description, customId);
-  }
-  visitElement(el, context) {
-    const children = visitAll(this, el.children, context);
-    const attrs = {};
-    el.attrs.forEach(attr => {
-      // Do not visit the attributes, translatable ones are top-level ASTs
-      attrs[attr.name] = attr.value;
-    });
-    const isVoid = getHtmlTagDefinition(el.name).isVoid;
-    const startPhName = context.placeholderRegistry.getStartTagPlaceholderName(el.name, attrs, isVoid);
-    context.placeholderToContent[startPhName] = {
-      text: el.startSourceSpan.toString(),
-      sourceSpan: el.startSourceSpan
-    };
-    let closePhName = '';
-    if (!isVoid) {
-      closePhName = context.placeholderRegistry.getCloseTagPlaceholderName(el.name);
-      context.placeholderToContent[closePhName] = {
-        text: `</${el.name}>`,
-        sourceSpan: el.endSourceSpan ?? el.sourceSpan
-      };
-    }
-    const node = new TagPlaceholder(el.name, attrs, startPhName, closePhName, children, isVoid, el.sourceSpan, el.startSourceSpan, el.endSourceSpan);
-    return context.visitNodeFn(el, node);
-  }
-  visitAttribute(attribute, context) {
-    const node = attribute.valueTokens === undefined || attribute.valueTokens.length === 1 ? new Text$2(attribute.value, attribute.valueSpan || attribute.sourceSpan) : this._visitTextWithInterpolation(attribute.valueTokens, attribute.valueSpan || attribute.sourceSpan, context, attribute.i18n);
-    return context.visitNodeFn(attribute, node);
-  }
-  visitText(text, context) {
-    const node = text.tokens.length === 1 ? new Text$2(text.value, text.sourceSpan) : this._visitTextWithInterpolation(text.tokens, text.sourceSpan, context, text.i18n);
-    return context.visitNodeFn(text, node);
-  }
-  visitComment(comment, context) {
-    return null;
-  }
-  visitExpansion(icu, context) {
-    context.icuDepth++;
-    const i18nIcuCases = {};
-    const i18nIcu = new Icu(icu.switchValue, icu.type, i18nIcuCases, icu.sourceSpan);
-    icu.cases.forEach(caze => {
-      i18nIcuCases[caze.value] = new Container(caze.expression.map(node => node.visit(this, context)), caze.expSourceSpan);
-    });
-    context.icuDepth--;
-    if (context.isIcu || context.icuDepth > 0) {
-      // Returns an ICU node when:
-      // - the message (vs a part of the message) is an ICU message, or
-      // - the ICU message is nested.
-      const expPh = context.placeholderRegistry.getUniquePlaceholder(`VAR_${icu.type}`);
-      i18nIcu.expressionPlaceholder = expPh;
-      context.placeholderToContent[expPh] = {
-        text: icu.switchValue,
-        sourceSpan: icu.switchValueSourceSpan
-      };
-      return context.visitNodeFn(icu, i18nIcu);
-    }
-    // Else returns a placeholder
-    // ICU placeholders should not be replaced with their original content but with the their
-    // translations.
-    // TODO(vicb): add a html.Node -> i18n.Message cache to avoid having to re-create the msg
-    const phName = context.placeholderRegistry.getPlaceholderName('ICU', icu.sourceSpan.toString());
-    context.placeholderToMessage[phName] = this.toI18nMessage([icu], '', '', '', undefined);
-    const node = new IcuPlaceholder(i18nIcu, phName, icu.sourceSpan);
-    return context.visitNodeFn(icu, node);
-  }
-  visitExpansionCase(_icuCase, _context) {
-    throw new Error('Unreachable code');
-  }
-  /**
-   * Convert, text and interpolated tokens up into text and placeholder pieces.
-   *
-   * @param tokens The text and interpolated tokens.
-   * @param sourceSpan The span of the whole of the `text` string.
-   * @param context The current context of the visitor, used to compute and store placeholders.
-   * @param previousI18n Any i18n metadata associated with this `text` from a previous pass.
-   */
-  _visitTextWithInterpolation(tokens, sourceSpan, context, previousI18n) {
-    // Return a sequence of `Text` and `Placeholder` nodes grouped in a `Container`.
-    const nodes = [];
-    // We will only create a container if there are actually interpolations,
-    // so this flag tracks that.
-    let hasInterpolation = false;
-    for (const token of tokens) {
-      switch (token.type) {
-        case 8 /* TokenType.INTERPOLATION */:
-        case 17 /* TokenType.ATTR_VALUE_INTERPOLATION */:
-          hasInterpolation = true;
-          const expression = token.parts[1];
-          const baseName = extractPlaceholderName(expression) || 'INTERPOLATION';
-          const phName = context.placeholderRegistry.getPlaceholderName(baseName, expression);
-          context.placeholderToContent[phName] = {
-            text: token.parts.join(''),
-            sourceSpan: token.sourceSpan
-          };
-          nodes.push(new Placeholder(expression, phName, token.sourceSpan));
-          break;
-        default:
-          if (token.parts[0].length > 0) {
-            // This token is text or an encoded entity.
-            // If it is following on from a previous text node then merge it into that node
-            // Otherwise, if it is following an interpolation, then add a new node.
-            const previous = nodes[nodes.length - 1];
-            if (previous instanceof Text$2) {
-              previous.value += token.parts[0];
-              previous.sourceSpan = new ParseSourceSpan(previous.sourceSpan.start, token.sourceSpan.end, previous.sourceSpan.fullStart, previous.sourceSpan.details);
-            } else {
-              nodes.push(new Text$2(token.parts[0], token.sourceSpan));
-            }
-          }
-          break;
-      }
-    }
-    if (hasInterpolation) {
-      // Whitespace removal may have invalidated the interpolation source-spans.
-      reusePreviousSourceSpans(nodes, previousI18n);
-      return new Container(nodes, sourceSpan);
-    } else {
-      return nodes[0];
-    }
-  }
-}
-/**
- * Re-use the source-spans from `previousI18n` metadata for the `nodes`.
- *
- * Whitespace removal can invalidate the source-spans of interpolation nodes, so we
- * reuse the source-span stored from a previous pass before the whitespace was removed.
- *
- * @param nodes The `Text` and `Placeholder` nodes to be processed.
- * @param previousI18n Any i18n metadata for these `nodes` stored from a previous pass.
- */
-function reusePreviousSourceSpans(nodes, previousI18n) {
-  if (previousI18n instanceof Message) {
-    // The `previousI18n` is an i18n `Message`, so we are processing an `Attribute` with i18n
-    // metadata. The `Message` should consist only of a single `Container` that contains the
-    // parts (`Text` and `Placeholder`) to process.
-    assertSingleContainerMessage(previousI18n);
-    previousI18n = previousI18n.nodes[0];
-  }
-  if (previousI18n instanceof Container) {
-    // The `previousI18n` is a `Container`, which means that this is a second i18n extraction pass
-    // after whitespace has been removed from the AST nodes.
-    assertEquivalentNodes(previousI18n.children, nodes);
-    // Reuse the source-spans from the first pass.
-    for (let i = 0; i < nodes.length; i++) {
-      nodes[i].sourceSpan = previousI18n.children[i].sourceSpan;
-    }
-  }
-}
-/**
- * Asserts that the `message` contains exactly one `Container` node.
- */
-function assertSingleContainerMessage(message) {
-  const nodes = message.nodes;
-  if (nodes.length !== 1 || !(nodes[0] instanceof Container)) {
-    throw new Error('Unexpected previous i18n message - expected it to consist of only a single `Container` node.');
-  }
-}
-/**
- * Asserts that the `previousNodes` and `node` collections have the same number of elements and
- * corresponding elements have the same node type.
- */
-function assertEquivalentNodes(previousNodes, nodes) {
-  if (previousNodes.length !== nodes.length) {
-    throw new Error('The number of i18n message children changed between first and second pass.');
-  }
-  if (previousNodes.some((node, i) => nodes[i].constructor !== node.constructor)) {
-    throw new Error('The types of the i18n message children changed between first and second pass.');
-  }
-}
-const _CUSTOM_PH_EXP = /\/\/[\s\S]*i18n[\s\S]*\([\s\S]*ph[\s\S]*=[\s\S]*("|')([\s\S]*?)\1[\s\S]*\)/g;
-function extractPlaceholderName(input) {
-  return input.split(_CUSTOM_PH_EXP)[2];
-}
-
-/**
- * An i18n error.
- */
-class I18nError extends ParseError {
-  constructor(span, msg) {
-    super(span, msg);
-  }
-}
 const setI18nRefs = (htmlNode, i18nNode) => {
   if (htmlNode instanceof NodeWithI18n) {
     if (i18nNode instanceof IcuPlaceholder && htmlNode.i18n instanceof Message) {
@@ -22716,10 +22564,11 @@ const setI18nRefs = (htmlNode, i18nNode) => {
  * stored with other element's and attribute's information.
  */
 class I18nMetaVisitor {
-  constructor(interpolationConfig = DEFAULT_INTERPOLATION_CONFIG, keepI18nAttrs = false, enableI18nLegacyMessageIdFormat = false) {
+  constructor(interpolationConfig = DEFAULT_INTERPOLATION_CONFIG, keepI18nAttrs = false, enableI18nLegacyMessageIdFormat = false, containerBlocks = DEFAULT_CONTAINER_BLOCKS) {
     this.interpolationConfig = interpolationConfig;
     this.keepI18nAttrs = keepI18nAttrs;
     this.enableI18nLegacyMessageIdFormat = enableI18nLegacyMessageIdFormat;
+    this.containerBlocks = containerBlocks;
     // whether visited nodes contain i18n information
     this.hasI18nMeta = false;
     this._errors = [];
@@ -22730,7 +22579,7 @@ class I18nMetaVisitor {
       description,
       customId
     } = this._parseMetadata(meta);
-    const createI18nMessage = createI18nMessageFactory(this.interpolationConfig);
+    const createI18nMessage = createI18nMessageFactory(this.interpolationConfig, this.containerBlocks);
     const message = createI18nMessage(nodes, meaning, description, customId, visitNodeFn);
     this._setMessageId(message, meta);
     this._setLegacyIds(message, meta);
@@ -22825,6 +22674,13 @@ class I18nMetaVisitor {
   }
   visitExpansionCase(expansionCase) {
     return expansionCase;
+  }
+  visitBlock(block, context) {
+    visitAll(this, block.children, context);
+    return block;
+  }
+  visitBlockParameter(parameter, context) {
+    return parameter;
   }
   /**
    * Parse the general form `meta` passed into extract the explicit metadata needed to create a
@@ -23019,6 +22875,9 @@ class GetMsgSerializerVisitor {
   visitPlaceholder(ph) {
     return this.formatPh(ph.name);
   }
+  visitBlockPlaceholder(ph) {
+    return `${this.formatPh(ph.startName)}${ph.children.map(child => child.visit(this)).join('')}${this.formatPh(ph.closeName)}`;
+  }
   visitIcuPlaceholder(ph, context) {
     return this.formatPh(ph.name);
   }
@@ -23072,6 +22931,11 @@ class LocalizeSerializerVisitor {
   }
   visitPlaceholder(ph) {
     this.pieces.push(this.createPlaceholderPiece(ph.name, ph.sourceSpan));
+  }
+  visitBlockPlaceholder(ph) {
+    this.pieces.push(this.createPlaceholderPiece(ph.startName, ph.startSourceSpan ?? ph.sourceSpan));
+    ph.children.forEach(child => child.visit(this));
+    this.pieces.push(this.createPlaceholderPiece(ph.closeName, ph.endSourceSpan ?? ph.sourceSpan));
   }
   visitIcuPlaceholder(ph) {
     this.pieces.push(this.createPlaceholderPiece(ph.name, ph.sourceSpan, this.placeholderToMessage[ph.name]));
@@ -23140,12 +23004,7394 @@ function createEmptyMessagePart(location) {
   return new LiteralPiece('', new ParseSourceSpan(location, location));
 }
 
+/** Name of the global variable that is used to determine if we use Closure translations or not */
+const NG_I18N_CLOSURE_MODE$1 = 'ngI18nClosureMode';
+/**
+ * Prefix for non-`goog.getMsg` i18n-related vars.
+ * Note: the prefix uses lowercase characters intentionally due to a Closure behavior that
+ * considers variables like `I18N_0` as constants and throws an error when their value changes.
+ */
+const TRANSLATION_VAR_PREFIX = 'i18n_';
+/** Prefix of ICU expressions for post processing */
+const I18N_ICU_MAPPING_PREFIX = 'I18N_EXP_';
+/**
+ * The escape sequence used for message param values.
+ */
+const ESCAPE = '\uFFFD';
+/**
+ * Lifts i18n properties into the consts array.
+ * TODO: Can we use `ConstCollectedExpr`?
+ * TODO: The way the various attributes are linked together is very complex. Perhaps we could
+ * simplify the process, maybe by combining the context and message ops?
+ */
+function collectI18nConsts(job) {
+  const fileBasedI18nSuffix = job.relativeContextFilePath.replace(/[^A-Za-z0-9]/g, '_').toUpperCase() + '_';
+  // Step One: Build up various lookup maps we need to collect all the consts.
+  // Context Xref -> Extracted Attribute Ops
+  const extractedAttributesByI18nContext = new Map();
+  // Element/ElementStart Xref -> I18n Attributes config op
+  const i18nAttributesByElement = new Map();
+  // Element/ElementStart Xref -> All I18n Expression ops for attrs on that target
+  const i18nExpressionsByElement = new Map();
+  // I18n Message Xref -> I18n Message Op (TODO: use a central op map)
+  const messages = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      if (op.kind === OpKind.ExtractedAttribute && op.i18nContext !== null) {
+        const attributes = extractedAttributesByI18nContext.get(op.i18nContext) ?? [];
+        attributes.push(op);
+        extractedAttributesByI18nContext.set(op.i18nContext, attributes);
+      } else if (op.kind === OpKind.I18nAttributes) {
+        i18nAttributesByElement.set(op.target, op);
+      } else if (op.kind === OpKind.I18nExpression && op.usage === I18nExpressionFor.I18nAttribute) {
+        const expressions = i18nExpressionsByElement.get(op.target) ?? [];
+        expressions.push(op);
+        i18nExpressionsByElement.set(op.target, expressions);
+      } else if (op.kind === OpKind.I18nMessage) {
+        messages.set(op.xref, op);
+      }
+    }
+  }
+  // Step Two: Serialize the extracted i18n messages for root i18n blocks and i18n attributes into
+  // the const array.
+  //
+  // Also, each i18n message will have a variable expression that can refer to its
+  // value. Store these expressions in the appropriate place:
+  // 1. For normal i18n content, it also goes in the const array. We save the const index to use
+  // later.
+  // 2. For extracted attributes, it becomes the value of the extracted attribute instruction.
+  // 3. For i18n bindings, it will go in a separate const array instruction below; for now, we just
+  // save it.
+  const i18nValuesByContext = new Map();
+  const messageConstIndices = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.I18nMessage) {
+        if (op.messagePlaceholder === null) {
+          const {
+            mainVar,
+            statements
+          } = collectMessage(job, fileBasedI18nSuffix, messages, op);
+          if (op.i18nBlock !== null) {
+            // This is a regular i18n message with a corresponding i18n block. Collect it into the
+            // const array.
+            const i18nConst = job.addConst(mainVar, statements);
+            messageConstIndices.set(op.i18nBlock, i18nConst);
+          } else {
+            // This is an i18n attribute. Extract the initializers into the const pool.
+            job.constsInitializers.push(...statements);
+            // Save the i18n variable value for later.
+            i18nValuesByContext.set(op.i18nContext, mainVar);
+            // This i18n message may correspond to an individual extracted attribute. If so, The
+            // value of that attribute is updated to read the extracted i18n variable.
+            const attributesForMessage = extractedAttributesByI18nContext.get(op.i18nContext);
+            if (attributesForMessage !== undefined) {
+              for (const attr of attributesForMessage) {
+                attr.expression = mainVar.clone();
+              }
+            }
+          }
+        }
+        OpList.remove(op);
+      }
+    }
+  }
+  // Step Three: Serialize I18nAttributes configurations into the const array. Each I18nAttributes
+  // instruction has a config array, which contains k-v pairs describing each binding name, and the
+  // i18n variable that provides the value.
+  for (const unit of job.units) {
+    for (const elem of unit.create) {
+      if (isElementOrContainerOp(elem)) {
+        const i18nAttributes = i18nAttributesByElement.get(elem.xref);
+        if (i18nAttributes === undefined) {
+          // This element is not associated with an i18n attributes configuration instruction.
+          continue;
+        }
+        let i18nExpressions = i18nExpressionsByElement.get(elem.xref);
+        if (i18nExpressions === undefined) {
+          // Unused i18nAttributes should have already been removed.
+          // TODO: Should the removal of those dead instructions be merged with this phase?
+          throw new Error('AssertionError: Could not find any i18n expressions associated with an I18nAttributes instruction');
+        }
+        // Find expressions for all the unique property names, removing duplicates.
+        const seenPropertyNames = new Set();
+        i18nExpressions = i18nExpressions.filter(i18nExpr => {
+          const seen = seenPropertyNames.has(i18nExpr.name);
+          seenPropertyNames.add(i18nExpr.name);
+          return !seen;
+        });
+        const i18nAttributeConfig = i18nExpressions.flatMap(i18nExpr => {
+          const i18nExprValue = i18nValuesByContext.get(i18nExpr.context);
+          if (i18nExprValue === undefined) {
+            throw new Error('AssertionError: Could not find i18n expression\'s value');
+          }
+          return [literal(i18nExpr.name), i18nExprValue];
+        });
+        i18nAttributes.i18nAttributesConfig = job.addConst(new LiteralArrayExpr(i18nAttributeConfig));
+      }
+    }
+  }
+  // Step Four: Propagate the extracted const index into i18n ops that messages were extracted from.
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.I18nStart) {
+        const msgIndex = messageConstIndices.get(op.root);
+        if (msgIndex === undefined) {
+          throw new Error('AssertionError: Could not find corresponding i18n block index for an i18n message op; was an i18n message incorrectly assumed to correspond to an attribute?');
+        }
+        op.messageIndex = msgIndex;
+      }
+    }
+  }
+}
+/**
+ * Collects the given message into a set of statements that can be added to the const array.
+ * This will recursively collect any sub-messages referenced from the parent message as well.
+ */
+function collectMessage(job, fileBasedI18nSuffix, messages, messageOp) {
+  // Recursively collect any sub-messages, record each sub-message's main variable under its
+  // placeholder so that we can add them to the params for the parent message. It is possible
+  // that multiple sub-messages will share the same placeholder, so we need to track an array of
+  // variables for each placeholder.
+  const statements = [];
+  const subMessagePlaceholders = new Map();
+  for (const subMessageId of messageOp.subMessages) {
+    const subMessage = messages.get(subMessageId);
+    const {
+      mainVar: subMessageVar,
+      statements: subMessageStatements
+    } = collectMessage(job, fileBasedI18nSuffix, messages, subMessage);
+    statements.push(...subMessageStatements);
+    const subMessages = subMessagePlaceholders.get(subMessage.messagePlaceholder) ?? [];
+    subMessages.push(subMessageVar);
+    subMessagePlaceholders.set(subMessage.messagePlaceholder, subMessages);
+  }
+  addSubMessageParams(messageOp, subMessagePlaceholders);
+  // Sort the params for consistency with TemaplateDefinitionBuilder output.
+  messageOp.params = new Map([...messageOp.params.entries()].sort());
+  const mainVar = variable(job.pool.uniqueName(TRANSLATION_VAR_PREFIX));
+  // Closure Compiler requires const names to start with `MSG_` but disallows any other
+  // const to start with `MSG_`. We define a variable starting with `MSG_` just for the
+  // `goog.getMsg` call
+  const closureVar = i18nGenerateClosureVar(job.pool, messageOp.message.id, fileBasedI18nSuffix, job.i18nUseExternalIds);
+  let transformFn = undefined;
+  // If nescessary, add a post-processing step and resolve any placeholder params that are
+  // set in post-processing.
+  if (messageOp.needsPostprocessing || messageOp.postprocessingParams.size > 0) {
+    // Sort the post-processing params for consistency with TemaplateDefinitionBuilder output.
+    const postprocessingParams = Object.fromEntries([...messageOp.postprocessingParams.entries()].sort());
+    const formattedPostprocessingParams = formatI18nPlaceholderNamesInMap(postprocessingParams, /* useCamelCase */false);
+    const extraTransformFnParams = [];
+    if (messageOp.postprocessingParams.size > 0) {
+      extraTransformFnParams.push(mapLiteral(formattedPostprocessingParams, /* quoted */true));
+    }
+    transformFn = expr => importExpr(Identifiers.i18nPostprocess).callFn([expr, ...extraTransformFnParams]);
+  }
+  // Add the message's statements
+  statements.push(...getTranslationDeclStmts$1(messageOp.message, mainVar, closureVar, messageOp.params, transformFn));
+  return {
+    mainVar,
+    statements
+  };
+}
+/**
+ * Adds the given subMessage placeholders to the given message op.
+ *
+ * If a placeholder only corresponds to a single sub-message variable, we just set that variable
+ * as the param value. However, if the placeholder corresponds to multiple sub-message
+ * variables, we need to add a special placeholder value that is handled by the post-processing
+ * step. We then add the array of variables as a post-processing param.
+ */
+function addSubMessageParams(messageOp, subMessagePlaceholders) {
+  for (const [placeholder, subMessages] of subMessagePlaceholders) {
+    if (subMessages.length === 1) {
+      messageOp.params.set(placeholder, subMessages[0]);
+    } else {
+      messageOp.params.set(placeholder, literal(`${ESCAPE}${I18N_ICU_MAPPING_PREFIX}${placeholder}${ESCAPE}`));
+      messageOp.postprocessingParams.set(placeholder, literalArr(subMessages));
+    }
+  }
+}
+/**
+ * Generate statements that define a given translation message.
+ *
+ * ```
+ * var I18N_1;
+ * if (typeof ngI18nClosureMode !== undefined && ngI18nClosureMode) {
+ *     var MSG_EXTERNAL_XXX = goog.getMsg(
+ *          "Some message with {$interpolation}!",
+ *          { "interpolation": "\uFFFD0\uFFFD" }
+ *     );
+ *     I18N_1 = MSG_EXTERNAL_XXX;
+ * }
+ * else {
+ *     I18N_1 = $localize`Some message with ${'\uFFFD0\uFFFD'}!`;
+ * }
+ * ```
+ *
+ * @param message The original i18n AST message node
+ * @param variable The variable that will be assigned the translation, e.g. `I18N_1`.
+ * @param closureVar The variable for Closure `goog.getMsg` calls, e.g. `MSG_EXTERNAL_XXX`.
+ * @param params Object mapping placeholder names to their values (e.g.
+ * `{ "interpolation": "\uFFFD0\uFFFD" }`).
+ * @param transformFn Optional transformation function that will be applied to the translation
+ *     (e.g.
+ * post-processing).
+ * @returns An array of statements that defined a given translation.
+ */
+function getTranslationDeclStmts$1(message, variable, closureVar, params, transformFn) {
+  const paramsObject = Object.fromEntries(params);
+  const statements = [declareI18nVariable(variable), ifStmt(createClosureModeGuard$1(), createGoogleGetMsgStatements(variable, message, closureVar, paramsObject), createLocalizeStatements(variable, message, formatI18nPlaceholderNamesInMap(paramsObject, /* useCamelCase */false)))];
+  if (transformFn) {
+    statements.push(new ExpressionStatement(variable.set(transformFn(variable))));
+  }
+  return statements;
+}
+/**
+ * Create the expression that will be used to guard the closure mode block
+ * It is equivalent to:
+ *
+ * ```
+ * typeof ngI18nClosureMode !== undefined && ngI18nClosureMode
+ * ```
+ */
+function createClosureModeGuard$1() {
+  return typeofExpr(variable(NG_I18N_CLOSURE_MODE$1)).notIdentical(literal('undefined', STRING_TYPE)).and(variable(NG_I18N_CLOSURE_MODE$1));
+}
+/**
+ * Generates vars with Closure-specific names for i18n blocks (i.e. `MSG_XXX`).
+ */
+function i18nGenerateClosureVar(pool, messageId, fileBasedI18nSuffix, useExternalIds) {
+  let name;
+  const suffix = fileBasedI18nSuffix;
+  if (useExternalIds) {
+    const prefix = getTranslationConstPrefix(`EXTERNAL_`);
+    const uniqueSuffix = pool.uniqueName(suffix);
+    name = `${prefix}${sanitizeIdentifier(messageId)}$$${uniqueSuffix}`;
+  } else {
+    const prefix = getTranslationConstPrefix(suffix);
+    name = pool.uniqueName(prefix);
+  }
+  return variable(name);
+}
+
+/**
+ * Removes text nodes within i18n blocks since they are already hardcoded into the i18n message.
+ * Also, replaces interpolations on these text nodes with i18n expressions of the non-text portions,
+ * which will be applied later.
+ */
+function convertI18nText(job) {
+  for (const unit of job.units) {
+    // Remove all text nodes within i18n blocks, their content is already captured in the i18n
+    // message.
+    let currentI18n = null;
+    let currentIcu = null;
+    const textNodeI18nBlocks = new Map();
+    const textNodeIcus = new Map();
+    const icuPlaceholderByText = new Map();
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nStart:
+          if (op.context === null) {
+            throw Error('I18n op should have its context set.');
+          }
+          currentI18n = op;
+          break;
+        case OpKind.I18nEnd:
+          currentI18n = null;
+          break;
+        case OpKind.IcuStart:
+          if (op.context === null) {
+            throw Error('Icu op should have its context set.');
+          }
+          currentIcu = op;
+          break;
+        case OpKind.IcuEnd:
+          currentIcu = null;
+          break;
+        case OpKind.Text:
+          if (currentI18n !== null) {
+            textNodeI18nBlocks.set(op.xref, currentI18n);
+            textNodeIcus.set(op.xref, currentIcu);
+            if (op.icuPlaceholder !== null) {
+              // Create an op to represent the ICU placeholder. Initially set its static text to the
+              // value of the text op, though this may be overwritten later if this text op is a
+              // placeholder for an interpolation.
+              const icuPlaceholderOp = createIcuPlaceholderOp(job.allocateXrefId(), op.icuPlaceholder, [op.initialValue]);
+              OpList.replace(op, icuPlaceholderOp);
+              icuPlaceholderByText.set(op.xref, icuPlaceholderOp);
+            } else {
+              // Otherwise just remove the text op, since its value is already accounted for in the
+              // translated message.
+              OpList.remove(op);
+            }
+          }
+          break;
+      }
+    }
+    // Update any interpolations to the removed text, and instead represent them as a series of i18n
+    // expressions that we then apply.
+    for (const op of unit.update) {
+      switch (op.kind) {
+        case OpKind.InterpolateText:
+          if (!textNodeI18nBlocks.has(op.target)) {
+            continue;
+          }
+          const i18nOp = textNodeI18nBlocks.get(op.target);
+          const icuOp = textNodeIcus.get(op.target);
+          const icuPlaceholder = icuPlaceholderByText.get(op.target);
+          const contextId = icuOp ? icuOp.context : i18nOp.context;
+          const resolutionTime = icuOp ? I18nParamResolutionTime.Postproccessing : I18nParamResolutionTime.Creation;
+          const ops = [];
+          for (let i = 0; i < op.interpolation.expressions.length; i++) {
+            const expr = op.interpolation.expressions[i];
+            // For now, this i18nExpression depends on the slot context of the enclosing i18n block.
+            // Later, we will modify this, and advance to a different point.
+            ops.push(createI18nExpressionOp(contextId, i18nOp.xref, i18nOp.xref, i18nOp.handle, expr, icuPlaceholder?.xref ?? null, op.interpolation.i18nPlaceholders[i] ?? null, resolutionTime, I18nExpressionFor.I18nText, '', expr.sourceSpan ?? op.sourceSpan));
+          }
+          OpList.replaceWithMany(op, ops);
+          // If this interpolation is part of an ICU placeholder, add the strings and expressions to
+          // the placeholder.
+          if (icuPlaceholder !== undefined) {
+            icuPlaceholder.strings = op.interpolation.strings;
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Lifts local reference declarations on element-like structures within each view into an entry in
+ * the `consts` array for the whole component.
+ */
+function liftLocalRefs(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.ElementStart:
+        case OpKind.Template:
+          if (!Array.isArray(op.localRefs)) {
+            throw new Error(`AssertionError: expected localRefs to be an array still`);
+          }
+          op.numSlotsUsed += op.localRefs.length;
+          if (op.localRefs.length > 0) {
+            const localRefs = serializeLocalRefs(op.localRefs);
+            op.localRefs = job.addConst(localRefs);
+          } else {
+            op.localRefs = null;
+          }
+          break;
+      }
+    }
+  }
+}
+function serializeLocalRefs(refs) {
+  const constRefs = [];
+  for (const ref of refs) {
+    constRefs.push(literal(ref.name), literal(ref.target));
+  }
+  return literalArr(constRefs);
+}
+
+/**
+ * Change namespaces between HTML, SVG and MathML, depending on the next element.
+ */
+function emitNamespaceChanges(job) {
+  for (const unit of job.units) {
+    let activeNamespace = Namespace.HTML;
+    for (const op of unit.create) {
+      if (op.kind !== OpKind.ElementStart) {
+        continue;
+      }
+      if (op.namespace !== activeNamespace) {
+        OpList.insertBefore(createNamespaceOp(op.namespace), op);
+        activeNamespace = op.namespace;
+      }
+    }
+  }
+}
+
+/**
+ * Parses string representation of a style and converts it into object literal.
+ *
+ * @param value string representation of style as used in the `style` attribute in HTML.
+ *   Example: `color: red; height: auto`.
+ * @returns An array of style property name and value pairs, e.g. `['color', 'red', 'height',
+ * 'auto']`
+ */
+function parse(value) {
+  // we use a string array here instead of a string map
+  // because a string-map is not guaranteed to retain the
+  // order of the entries whereas a string array can be
+  // constructed in a [key, value, key, value] format.
+  const styles = [];
+  let i = 0;
+  let parenDepth = 0;
+  let quote = 0 /* Char.QuoteNone */;
+  let valueStart = 0;
+  let propStart = 0;
+  let currentProp = null;
+  while (i < value.length) {
+    const token = value.charCodeAt(i++);
+    switch (token) {
+      case 40 /* Char.OpenParen */:
+        parenDepth++;
+        break;
+      case 41 /* Char.CloseParen */:
+        parenDepth--;
+        break;
+      case 39 /* Char.QuoteSingle */:
+        // valueStart needs to be there since prop values don't
+        // have quotes in CSS
+        if (quote === 0 /* Char.QuoteNone */) {
+          quote = 39 /* Char.QuoteSingle */;
+        } else if (quote === 39 /* Char.QuoteSingle */ && value.charCodeAt(i - 1) !== 92 /* Char.BackSlash */) {
+          quote = 0 /* Char.QuoteNone */;
+        }
+
+        break;
+      case 34 /* Char.QuoteDouble */:
+        // same logic as above
+        if (quote === 0 /* Char.QuoteNone */) {
+          quote = 34 /* Char.QuoteDouble */;
+        } else if (quote === 34 /* Char.QuoteDouble */ && value.charCodeAt(i - 1) !== 92 /* Char.BackSlash */) {
+          quote = 0 /* Char.QuoteNone */;
+        }
+
+        break;
+      case 58 /* Char.Colon */:
+        if (!currentProp && parenDepth === 0 && quote === 0 /* Char.QuoteNone */) {
+          currentProp = hyphenate(value.substring(propStart, i - 1).trim());
+          valueStart = i;
+        }
+        break;
+      case 59 /* Char.Semicolon */:
+        if (currentProp && valueStart > 0 && parenDepth === 0 && quote === 0 /* Char.QuoteNone */) {
+          const styleVal = value.substring(valueStart, i - 1).trim();
+          styles.push(currentProp, styleVal);
+          propStart = i;
+          valueStart = 0;
+          currentProp = null;
+        }
+        break;
+    }
+  }
+  if (currentProp && valueStart) {
+    const styleVal = value.slice(valueStart).trim();
+    styles.push(currentProp, styleVal);
+  }
+  return styles;
+}
+function hyphenate(value) {
+  return value.replace(/[a-z][A-Z]/g, v => {
+    return v.charAt(0) + '-' + v.charAt(1);
+  }).toLowerCase();
+}
+
+/**
+ * Generate names for functions and variables across all views.
+ *
+ * This includes propagating those names into any `ir.ReadVariableExpr`s of those variables, so that
+ * the reads can be emitted correctly.
+ */
+function nameFunctionsAndVariables(job) {
+  addNamesToView(job.root, job.componentName, {
+    index: 0
+  }, job.compatibility === CompatibilityMode.TemplateDefinitionBuilder);
+}
+function addNamesToView(unit, baseName, state, compatibility) {
+  if (unit.fnName === null) {
+    unit.fnName = sanitizeIdentifier(`${baseName}_${unit.job.fnSuffix}`);
+  }
+  // Keep track of the names we assign to variables in the view. We'll need to propagate these
+  // into reads of those variables afterwards.
+  const varNames = new Map();
+  for (const op of unit.ops()) {
+    switch (op.kind) {
+      case OpKind.Property:
+      case OpKind.HostProperty:
+        if (op.isAnimationTrigger) {
+          op.name = '@' + op.name;
+        }
+        break;
+      case OpKind.Listener:
+        if (op.handlerFnName !== null) {
+          break;
+        }
+        if (!op.hostListener && op.targetSlot.slot === null) {
+          throw new Error(`Expected a slot to be assigned`);
+        }
+        let animation = '';
+        if (op.isAnimationListener) {
+          op.name = `@${op.name}.${op.animationPhase}`;
+          animation = 'animation';
+        }
+        if (op.hostListener) {
+          op.handlerFnName = `${baseName}_${animation}${op.name}_HostBindingHandler`;
+        } else {
+          op.handlerFnName = `${unit.fnName}_${op.tag.replace('-', '_')}_${animation}${op.name}_${op.targetSlot.slot}_listener`;
+        }
+        op.handlerFnName = sanitizeIdentifier(op.handlerFnName);
+        break;
+      case OpKind.Variable:
+        varNames.set(op.xref, getVariableName(op.variable, state));
+        break;
+      case OpKind.RepeaterCreate:
+        if (!(unit instanceof ViewCompilationUnit)) {
+          throw new Error(`AssertionError: must be compiling a component`);
+        }
+        if (op.handle.slot === null) {
+          throw new Error(`Expected slot to be assigned`);
+        }
+        if (op.emptyView !== null) {
+          const emptyView = unit.job.views.get(op.emptyView);
+          // Repeater empty view function is at slot +2 (metadata is in the first slot).
+          addNamesToView(emptyView, `${baseName}_${`${op.functionNameSuffix}Empty`}_${op.handle.slot + 2}`, state, compatibility);
+        }
+        // Repeater primary view function is at slot +1 (metadata is in the first slot).
+        addNamesToView(unit.job.views.get(op.xref), `${baseName}_${op.functionNameSuffix}_${op.handle.slot + 1}`, state, compatibility);
+        break;
+      case OpKind.Template:
+        if (!(unit instanceof ViewCompilationUnit)) {
+          throw new Error(`AssertionError: must be compiling a component`);
+        }
+        const childView = unit.job.views.get(op.xref);
+        if (op.handle.slot === null) {
+          throw new Error(`Expected slot to be assigned`);
+        }
+        const suffix = op.functionNameSuffix.length === 0 ? '' : `_${op.functionNameSuffix}`;
+        addNamesToView(childView, `${baseName}${suffix}_${op.handle.slot}`, state, compatibility);
+        break;
+      case OpKind.StyleProp:
+        op.name = normalizeStylePropName(op.name);
+        if (compatibility) {
+          op.name = stripImportant(op.name);
+        }
+        break;
+      case OpKind.ClassProp:
+        if (compatibility) {
+          op.name = stripImportant(op.name);
+        }
+        break;
+    }
+  }
+  // Having named all variables declared in the view, now we can push those names into the
+  // `ir.ReadVariableExpr` expressions which represent reads of those variables.
+  for (const op of unit.ops()) {
+    visitExpressionsInOp(op, expr => {
+      if (!(expr instanceof ReadVariableExpr) || expr.name !== null) {
+        return;
+      }
+      if (!varNames.has(expr.xref)) {
+        throw new Error(`Variable ${expr.xref} not yet named`);
+      }
+      expr.name = varNames.get(expr.xref);
+    });
+  }
+}
+function getVariableName(variable, state) {
+  if (variable.name === null) {
+    switch (variable.kind) {
+      case SemanticVariableKind.Context:
+        variable.name = `ctx_r${state.index++}`;
+        break;
+      case SemanticVariableKind.Identifier:
+        // TODO: Prefix increment and `_r` for compatiblity only.
+        variable.name = `${variable.identifier}_r${++state.index}`;
+        break;
+      default:
+        // TODO: Prefix increment for compatibility only.
+        variable.name = `_r${++state.index}`;
+        break;
+    }
+  }
+  return variable.name;
+}
+/**
+ * Normalizes a style prop name by hyphenating it (unless its a CSS variable).
+ */
+function normalizeStylePropName(name) {
+  return name.startsWith('--') ? name : hyphenate(name);
+}
+/**
+ * Strips `!important` out of the given style or class name.
+ */
+function stripImportant(name) {
+  const importantIndex = name.indexOf('!important');
+  if (importantIndex > -1) {
+    return name.substring(0, importantIndex);
+  }
+  return name;
+}
+
+/**
+ * Merges logically sequential `NextContextExpr` operations.
+ *
+ * `NextContextExpr` can be referenced repeatedly, "popping" the runtime's context stack each time.
+ * When two such expressions appear back-to-back, it's possible to merge them together into a single
+ * `NextContextExpr` that steps multiple contexts. This merging is possible if all conditions are
+ * met:
+ *
+ *   * The result of the `NextContextExpr` that's folded into the subsequent one is not stored (that
+ *     is, the call is purely side-effectful).
+ *   * No operations in between them uses the implicit context.
+ */
+function mergeNextContextExpressions(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.Listener) {
+        mergeNextContextsInOps(op.handlerOps);
+      }
+    }
+    mergeNextContextsInOps(unit.update);
+  }
+}
+function mergeNextContextsInOps(ops) {
+  for (const op of ops) {
+    // Look for a candidate operation to maybe merge.
+    if (op.kind !== OpKind.Statement || !(op.statement instanceof ExpressionStatement) || !(op.statement.expr instanceof NextContextExpr)) {
+      continue;
+    }
+    const mergeSteps = op.statement.expr.steps;
+    // Try to merge this `ir.NextContextExpr`.
+    let tryToMerge = true;
+    for (let candidate = op.next; candidate.kind !== OpKind.ListEnd && tryToMerge; candidate = candidate.next) {
+      visitExpressionsInOp(candidate, (expr, flags) => {
+        if (!isIrExpression(expr)) {
+          return expr;
+        }
+        if (!tryToMerge) {
+          // Either we've already merged, or failed to merge.
+          return;
+        }
+        if (flags & VisitorContextFlag.InChildOperation) {
+          // We cannot merge into child operations.
+          return;
+        }
+        switch (expr.kind) {
+          case ExpressionKind.NextContext:
+            // Merge the previous `ir.NextContextExpr` into this one.
+            expr.steps += mergeSteps;
+            OpList.remove(op);
+            tryToMerge = false;
+            break;
+          case ExpressionKind.GetCurrentView:
+          case ExpressionKind.Reference:
+            // Can't merge past a dependency on the context.
+            tryToMerge = false;
+            break;
+        }
+        return;
+      });
+    }
+  }
+}
+const CONTAINER_TAG = 'ng-container';
+/**
+ * Replace an `Element` or `ElementStart` whose tag is `ng-container` with a specific op.
+ */
+function generateNgContainerOps(job) {
+  for (const unit of job.units) {
+    const updatedElementXrefs = new Set();
+    for (const op of unit.create) {
+      if (op.kind === OpKind.ElementStart && op.tag === CONTAINER_TAG) {
+        // Transmute the `ElementStart` instruction to `ContainerStart`.
+        op.kind = OpKind.ContainerStart;
+        updatedElementXrefs.add(op.xref);
+      }
+      if (op.kind === OpKind.ElementEnd && updatedElementXrefs.has(op.xref)) {
+        // This `ElementEnd` is associated with an `ElementStart` we already transmuted.
+        op.kind = OpKind.ContainerEnd;
+      }
+    }
+  }
+}
+
+/**
+ * Looks up an element in the given map by xref ID.
+ */
+function lookupElement(elements, xref) {
+  const el = elements.get(xref);
+  if (el === undefined) {
+    throw new Error('All attributes should have an element-like target.');
+  }
+  return el;
+}
+/**
+ * When a container is marked with `ngNonBindable`, the non-bindable characteristic also applies to
+ * all descendants of that container. Therefore, we must emit `disableBindings` and `enableBindings`
+ * instructions for every such container.
+ */
+function disableBindings$1(job) {
+  const elements = new Map();
+  for (const view of job.units) {
+    for (const op of view.create) {
+      if (!isElementOrContainerOp(op)) {
+        continue;
+      }
+      elements.set(op.xref, op);
+    }
+  }
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if ((op.kind === OpKind.ElementStart || op.kind === OpKind.ContainerStart) && op.nonBindable) {
+        OpList.insertAfter(createDisableBindingsOp(op.xref), op);
+      }
+      if ((op.kind === OpKind.ElementEnd || op.kind === OpKind.ContainerEnd) && lookupElement(elements, op.xref).nonBindable) {
+        OpList.insertBefore(createEnableBindingsOp(op.xref), op);
+      }
+    }
+  }
+}
+
+/**
+ * Nullish coalescing expressions such as `a ?? b` have different semantics in Angular templates as
+ * compared to JavaScript. In particular, they default to `null` instead of `undefined`. Therefore,
+ * we replace them with ternary expressions, assigning temporaries as needed to avoid re-evaluating
+ * the same sub-expression multiple times.
+ */
+function generateNullishCoalesceExpressions(job) {
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      transformExpressionsInOp(op, expr => {
+        if (!(expr instanceof BinaryOperatorExpr) || expr.operator !== BinaryOperator.NullishCoalesce) {
+          return expr;
+        }
+        const assignment = new AssignTemporaryExpr(expr.lhs.clone(), job.allocateXrefId());
+        const read = new ReadTemporaryExpr(assignment.xref);
+        // TODO: When not in compatibility mode for TemplateDefinitionBuilder, we can just emit
+        // `t != null` instead of including an undefined check as well.
+        return new ConditionalExpr(new BinaryOperatorExpr(BinaryOperator.And, new BinaryOperatorExpr(BinaryOperator.NotIdentical, assignment, NULL_EXPR), new BinaryOperatorExpr(BinaryOperator.NotIdentical, read, new LiteralExpr(undefined))), read.clone(), expr.rhs);
+      }, VisitorContextFlag.None);
+    }
+  }
+}
+function kindTest(kind) {
+  return op => op.kind === kind;
+}
+function kindWithInterpolationTest(kind, interpolation) {
+  return op => {
+    return op.kind === kind && interpolation === op.expression instanceof Interpolation;
+  };
+}
+/**
+ * Defines the groups based on `OpKind` that ops will be divided into, for the various create
+ * op kinds. Ops will be collected into groups, then optionally transformed, before recombining
+ * the groups in the order defined here.
+ */
+const CREATE_ORDERING = [{
+  test: op => op.kind === OpKind.Listener && op.hostListener && op.isAnimationListener
+}, {
+  test: op => op.kind === OpKind.Listener && !(op.hostListener && op.isAnimationListener)
+}];
+/**
+ * Defines the groups based on `OpKind` that ops will be divided into, for the various update
+ * op kinds.
+ */
+const UPDATE_ORDERING = [{
+  test: kindWithInterpolationTest(OpKind.HostProperty, true)
+}, {
+  test: kindWithInterpolationTest(OpKind.HostProperty, false)
+}, {
+  test: kindTest(OpKind.StyleMap),
+  transform: keepLast
+}, {
+  test: kindTest(OpKind.ClassMap),
+  transform: keepLast
+}, {
+  test: kindTest(OpKind.StyleProp)
+}, {
+  test: kindTest(OpKind.ClassProp)
+}, {
+  test: kindWithInterpolationTest(OpKind.Property, true)
+}, {
+  test: kindWithInterpolationTest(OpKind.Attribute, true)
+}, {
+  test: kindWithInterpolationTest(OpKind.Property, false)
+}, {
+  test: kindWithInterpolationTest(OpKind.Attribute, false)
+}];
+/**
+ * The set of all op kinds we handle in the reordering phase.
+ */
+const handledOpKinds = new Set([OpKind.Listener, OpKind.StyleMap, OpKind.ClassMap, OpKind.StyleProp, OpKind.ClassProp, OpKind.Property, OpKind.HostProperty, OpKind.Attribute]);
+/**
+ * Many type of operations have ordering constraints that must be respected. For example, a
+ * `ClassMap` instruction must be ordered after a `StyleMap` instruction, in order to have
+ * predictable semantics that match TemplateDefinitionBuilder and don't break applications.
+ */
+function orderOps(job) {
+  for (const unit of job.units) {
+    // First, we pull out ops that need to be ordered. Then, when we encounter an op that shouldn't
+    // be reordered, put the ones we've pulled so far back in the correct order. Finally, if we
+    // still have ops pulled at the end, put them back in the correct order.
+    // Create mode:
+    orderWithin(unit.create, CREATE_ORDERING);
+    // Update mode:
+    orderWithin(unit.update, UPDATE_ORDERING);
+  }
+}
+/**
+ * Order all the ops within the specified group.
+ */
+function orderWithin(opList, ordering) {
+  let opsToOrder = [];
+  // Only reorder ops that target the same xref; do not mix ops that target different xrefs.
+  let firstTargetInGroup = null;
+  for (const op of opList) {
+    const currentTarget = hasDependsOnSlotContextTrait(op) ? op.target : null;
+    if (!handledOpKinds.has(op.kind) || currentTarget !== firstTargetInGroup && firstTargetInGroup !== null && currentTarget !== null) {
+      OpList.insertBefore(reorder(opsToOrder, ordering), op);
+      opsToOrder = [];
+      firstTargetInGroup = null;
+    }
+    if (handledOpKinds.has(op.kind)) {
+      opsToOrder.push(op);
+      OpList.remove(op);
+      firstTargetInGroup = currentTarget ?? firstTargetInGroup;
+    }
+  }
+  opList.push(reorder(opsToOrder, ordering));
+}
+/**
+ * Reorders the given list of ops according to the ordering defined by `ORDERING`.
+ */
+function reorder(ops, ordering) {
+  // Break the ops list into groups based on OpKind.
+  const groups = Array.from(ordering, () => new Array());
+  for (const op of ops) {
+    const groupIndex = ordering.findIndex(o => o.test(op));
+    groups[groupIndex].push(op);
+  }
+  // Reassemble the groups into a single list, in the correct order.
+  return groups.flatMap((group, i) => {
+    const transform = ordering[i].transform;
+    return transform ? transform(group) : group;
+  });
+}
+/**
+ * Keeps only the last op in a list of ops.
+ */
+function keepLast(ops) {
+  return ops.slice(ops.length - 1);
+}
+
+/**
+ * Parses extracted style and class attributes into separate ExtractedAttributeOps per style or
+ * class property.
+ */
+function parseExtractedStyles(job) {
+  const elements = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (isElementOrContainerOp(op)) {
+        elements.set(op.xref, op);
+      }
+    }
+  }
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind === OpKind.ExtractedAttribute && op.bindingKind === BindingKind.Attribute && isStringLiteral(op.expression)) {
+        const target = elements.get(op.target);
+        if (target !== undefined && target.kind === OpKind.Template && target.templateKind === TemplateKind.Structural) {
+          // TemplateDefinitionBuilder will not apply class and style bindings to structural
+          // directives; instead, it will leave them as attributes.
+          // (It's not clear what that would mean, anyway -- classes and styles on a structural
+          // element should probably be a parse error.)
+          // TODO: We may be able to remove this once Template Pipeline is the default.
+          continue;
+        }
+        if (op.name === 'style') {
+          const parsedStyles = parse(op.expression.value);
+          for (let i = 0; i < parsedStyles.length - 1; i += 2) {
+            OpList.insertBefore(createExtractedAttributeOp(op.target, BindingKind.StyleProperty, parsedStyles[i], literal(parsedStyles[i + 1]), null, null, SecurityContext.STYLE), op);
+          }
+          OpList.remove(op);
+        } else if (op.name === 'class') {
+          const parsedClasses = op.expression.value.trim().split(/\s+/g);
+          for (const parsedClass of parsedClasses) {
+            OpList.insertBefore(createExtractedAttributeOp(op.target, BindingKind.ClassName, parsedClass, null, null, null, SecurityContext.NONE), op);
+          }
+          OpList.remove(op);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Attributes of `ng-content` named 'select' are specifically removed, because they control which
+ * content matches as a property of the `projection`, and are not a plain attribute.
+ */
+function removeContentSelectors(job) {
+  for (const unit of job.units) {
+    const elements = createOpXrefMap(unit);
+    for (const op of unit.ops()) {
+      switch (op.kind) {
+        case OpKind.Binding:
+          const target = lookupInXrefMap(elements, op.target);
+          if (isSelectAttribute(op.name) && target.kind === OpKind.Projection) {
+            OpList.remove(op);
+          }
+          break;
+        case OpKind.Projection:
+          // op.attributes is an array of [attr1-name, attr1-value, attr2-name, attr2-value, ...],
+          // find the "select" attribute and remove its name and corresponding value.
+          for (let i = op.attributes.length - 2; i >= 0; i -= 2) {
+            if (isSelectAttribute(op.attributes[i])) {
+              op.attributes.splice(i, 2);
+            }
+          }
+          break;
+      }
+    }
+  }
+}
+function isSelectAttribute(name) {
+  return name.toLowerCase() === 'select';
+}
+/**
+ * Looks up an element in the given map by xref ID.
+ */
+function lookupInXrefMap(map, xref) {
+  const el = map.get(xref);
+  if (el === undefined) {
+    throw new Error('All attributes should have an slottable target.');
+  }
+  return el;
+}
+
+/**
+ * This phase generates pipe creation instructions. We do this based on the pipe bindings found in
+ * the update block, in the order we see them.
+ *
+ * When not in compatibility mode, we can simply group all these creation instructions together, to
+ * maximize chaining opportunities.
+ */
+function createPipes(job) {
+  for (const unit of job.units) {
+    processPipeBindingsInView(unit);
+  }
+}
+function processPipeBindingsInView(unit) {
+  for (const updateOp of unit.update) {
+    visitExpressionsInOp(updateOp, (expr, flags) => {
+      if (!isIrExpression(expr)) {
+        return;
+      }
+      if (expr.kind !== ExpressionKind.PipeBinding) {
+        return;
+      }
+      if (flags & VisitorContextFlag.InChildOperation) {
+        throw new Error(`AssertionError: pipe bindings should not appear in child expressions`);
+      }
+      if (unit.job.compatibility) {
+        // TODO: We can delete this cast and check once compatibility mode is removed.
+        const slotHandle = updateOp.target;
+        if (slotHandle == undefined) {
+          throw new Error(`AssertionError: expected slot handle to be assigned for pipe creation`);
+        }
+        addPipeToCreationBlock(unit, updateOp.target, expr);
+      } else {
+        // When not in compatibility mode, we just add the pipe to the end of the create block. This
+        // is not only simpler and faster, but allows more chaining opportunities for other
+        // instructions.
+        unit.create.push(createPipeOp(expr.target, expr.targetSlot, expr.name));
+      }
+    });
+  }
+}
+function addPipeToCreationBlock(unit, afterTargetXref, binding) {
+  // Find the appropriate point to insert the Pipe creation operation.
+  // We're looking for `afterTargetXref` (and also want to insert after any other pipe operations
+  // which might be beyond it).
+  for (let op = unit.create.head.next; op.kind !== OpKind.ListEnd; op = op.next) {
+    if (!hasConsumesSlotTrait(op)) {
+      continue;
+    }
+    if (op.xref !== afterTargetXref) {
+      continue;
+    }
+    // We've found a tentative insertion point; however, we also want to skip past any _other_ pipe
+    // operations present.
+    while (op.next.kind === OpKind.Pipe) {
+      op = op.next;
+    }
+    const pipe = createPipeOp(binding.target, binding.targetSlot, binding.name);
+    OpList.insertBefore(pipe, op.next);
+    // This completes adding the pipe to the creation block.
+    return;
+  }
+  // At this point, we've failed to add the pipe to the creation block.
+  throw new Error(`AssertionError: unable to find insertion point for pipe ${binding.name}`);
+}
+
+/**
+ * Pipes that accept more than 4 arguments are variadic, and are handled with a different runtime
+ * instruction.
+ */
+function createVariadicPipes(job) {
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      transformExpressionsInOp(op, expr => {
+        if (!(expr instanceof PipeBindingExpr)) {
+          return expr;
+        }
+        // Pipes are variadic if they have more than 4 arguments.
+        if (expr.args.length <= 4) {
+          return expr;
+        }
+        return new PipeBindingVariadicExpr(expr.target, expr.targetSlot, expr.name, literalArr(expr.args), expr.args.length);
+      }, VisitorContextFlag.None);
+    }
+  }
+}
+
+/**
+ * Propagate i18n blocks down through child templates that act as placeholders in the root i18n
+ * message. Specifically, perform an in-order traversal of all the views, and add i18nStart/i18nEnd
+ * op pairs into descending views. Also, assign an increasing sub-template index to each
+ * descending view.
+ */
+function propagateI18nBlocks(job) {
+  propagateI18nBlocksToTemplates(job.root, 0);
+}
+/**
+ * Propagates i18n ops in the given view through to any child views recursively.
+ */
+function propagateI18nBlocksToTemplates(unit, subTemplateIndex) {
+  let i18nBlock = null;
+  for (const op of unit.create) {
+    switch (op.kind) {
+      case OpKind.I18nStart:
+        op.subTemplateIndex = subTemplateIndex === 0 ? null : subTemplateIndex;
+        i18nBlock = op;
+        break;
+      case OpKind.I18nEnd:
+        // When we exit a root-level i18n block, reset the sub-template index counter.
+        if (i18nBlock.subTemplateIndex === null) {
+          subTemplateIndex = 0;
+        }
+        i18nBlock = null;
+        break;
+      case OpKind.Template:
+        subTemplateIndex = propagateI18nBlocksForView(unit.job.views.get(op.xref), i18nBlock, op.i18nPlaceholder, subTemplateIndex);
+        break;
+      case OpKind.RepeaterCreate:
+        // Propagate i18n blocks to the @for template.
+        const forView = unit.job.views.get(op.xref);
+        subTemplateIndex = propagateI18nBlocksForView(unit.job.views.get(op.xref), i18nBlock, op.i18nPlaceholder, subTemplateIndex);
+        // Then if there's an @empty template, propagate the i18n blocks for it as well.
+        if (op.emptyView !== null) {
+          subTemplateIndex = propagateI18nBlocksForView(unit.job.views.get(op.emptyView), i18nBlock, op.emptyI18nPlaceholder, subTemplateIndex);
+        }
+        break;
+    }
+  }
+  return subTemplateIndex;
+}
+/**
+ * Propagate i18n blocks for a view.
+ */
+function propagateI18nBlocksForView(view, i18nBlock, i18nPlaceholder, subTemplateIndex) {
+  // We found an <ng-template> inside an i18n block; increment the sub-template counter and
+  // wrap the template's view in a child i18n block.
+  if (i18nPlaceholder !== undefined) {
+    if (i18nBlock === null) {
+      throw Error('Expected template with i18n placeholder to be in an i18n block.');
+    }
+    subTemplateIndex++;
+    wrapTemplateWithI18n(view, i18nBlock);
+  }
+  // Continue traversing inside the template's view.
+  return propagateI18nBlocksToTemplates(view, subTemplateIndex);
+}
+/**
+ * Wraps a template view with i18n start and end ops.
+ */
+function wrapTemplateWithI18n(unit, parentI18n) {
+  // Only add i18n ops if they have not already been propagated to this template.
+  if (unit.create.head.next?.kind !== OpKind.I18nStart) {
+    const id = unit.job.allocateXrefId();
+    OpList.insertAfter(createI18nStartOp(id, parentI18n.message, parentI18n.root), unit.create.head);
+    OpList.insertBefore(createI18nEndOp(id), unit.create.tail);
+  }
+}
+function extractPureFunctions(job) {
+  for (const view of job.units) {
+    for (const op of view.ops()) {
+      visitExpressionsInOp(op, expr => {
+        if (!(expr instanceof PureFunctionExpr) || expr.body === null) {
+          return;
+        }
+        const constantDef = new PureFunctionConstant(expr.args.length);
+        expr.fn = job.pool.getSharedConstant(constantDef, expr.body);
+        expr.body = null;
+      });
+    }
+  }
+}
+class PureFunctionConstant extends GenericKeyFn {
+  constructor(numArgs) {
+    super();
+    this.numArgs = numArgs;
+  }
+  keyOf(expr) {
+    if (expr instanceof PureFunctionParameterExpr) {
+      return `param(${expr.index})`;
+    } else {
+      return super.keyOf(expr);
+    }
+  }
+  // TODO: Use the new pool method `getSharedFunctionReference`
+  toSharedConstantDeclaration(declName, keyExpr) {
+    const fnParams = [];
+    for (let idx = 0; idx < this.numArgs; idx++) {
+      fnParams.push(new FnParam('a' + idx));
+    }
+    // We will never visit `ir.PureFunctionParameterExpr`s that don't belong to us, because this
+    // transform runs inside another visitor which will visit nested pure functions before this one.
+    const returnExpr = transformExpressionsInExpression(keyExpr, expr => {
+      if (!(expr instanceof PureFunctionParameterExpr)) {
+        return expr;
+      }
+      return variable('a' + expr.index);
+    }, VisitorContextFlag.None);
+    return new DeclareVarStmt(declName, new ArrowFunctionExpr(fnParams, returnExpr), undefined, StmtModifier.Final);
+  }
+}
+function generatePureLiteralStructures(job) {
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      transformExpressionsInOp(op, (expr, flags) => {
+        if (flags & VisitorContextFlag.InChildOperation) {
+          return expr;
+        }
+        if (expr instanceof LiteralArrayExpr) {
+          return transformLiteralArray(expr);
+        } else if (expr instanceof LiteralMapExpr) {
+          return transformLiteralMap(expr);
+        }
+        return expr;
+      }, VisitorContextFlag.None);
+    }
+  }
+}
+function transformLiteralArray(expr) {
+  const derivedEntries = [];
+  const nonConstantArgs = [];
+  for (const entry of expr.entries) {
+    if (entry.isConstant()) {
+      derivedEntries.push(entry);
+    } else {
+      const idx = nonConstantArgs.length;
+      nonConstantArgs.push(entry);
+      derivedEntries.push(new PureFunctionParameterExpr(idx));
+    }
+  }
+  return new PureFunctionExpr(literalArr(derivedEntries), nonConstantArgs);
+}
+function transformLiteralMap(expr) {
+  let derivedEntries = [];
+  const nonConstantArgs = [];
+  for (const entry of expr.entries) {
+    if (entry.value.isConstant()) {
+      derivedEntries.push(entry);
+    } else {
+      const idx = nonConstantArgs.length;
+      nonConstantArgs.push(entry.value);
+      derivedEntries.push(new LiteralMapEntry(entry.key, new PureFunctionParameterExpr(idx), entry.quoted));
+    }
+  }
+  return new PureFunctionExpr(literalMap(derivedEntries), nonConstantArgs);
+}
+
+// This file contains helpers for generating calls to Ivy instructions. In particular, each
+// instruction type is represented as a function, which may select a specific instruction variant
+// depending on the exact arguments.
+function element(slot, tag, constIndex, localRefIndex, sourceSpan) {
+  return elementOrContainerBase(Identifiers.element, slot, tag, constIndex, localRefIndex, sourceSpan);
+}
+function elementStart(slot, tag, constIndex, localRefIndex, sourceSpan) {
+  return elementOrContainerBase(Identifiers.elementStart, slot, tag, constIndex, localRefIndex, sourceSpan);
+}
+function elementOrContainerBase(instruction, slot, tag, constIndex, localRefIndex, sourceSpan) {
+  const args = [literal(slot)];
+  if (tag !== null) {
+    args.push(literal(tag));
+  }
+  if (localRefIndex !== null) {
+    args.push(literal(constIndex),
+    // might be null, but that's okay.
+    literal(localRefIndex));
+  } else if (constIndex !== null) {
+    args.push(literal(constIndex));
+  }
+  return call(instruction, args, sourceSpan);
+}
+function elementEnd(sourceSpan) {
+  return call(Identifiers.elementEnd, [], sourceSpan);
+}
+function elementContainerStart(slot, constIndex, localRefIndex, sourceSpan) {
+  return elementOrContainerBase(Identifiers.elementContainerStart, slot, /* tag */null, constIndex, localRefIndex, sourceSpan);
+}
+function elementContainer(slot, constIndex, localRefIndex, sourceSpan) {
+  return elementOrContainerBase(Identifiers.elementContainer, slot, /* tag */null, constIndex, localRefIndex, sourceSpan);
+}
+function elementContainerEnd() {
+  return call(Identifiers.elementContainerEnd, [], null);
+}
+function template(slot, templateFnRef, decls, vars, tag, constIndex, localRefs, sourceSpan) {
+  const args = [literal(slot), templateFnRef, literal(decls), literal(vars), literal(tag), literal(constIndex)];
+  if (localRefs !== null) {
+    args.push(literal(localRefs));
+    args.push(importExpr(Identifiers.templateRefExtractor));
+  }
+  while (args[args.length - 1].isEquivalent(NULL_EXPR)) {
+    args.pop();
+  }
+  return call(Identifiers.templateCreate, args, sourceSpan);
+}
+function disableBindings() {
+  return call(Identifiers.disableBindings, [], null);
+}
+function enableBindings() {
+  return call(Identifiers.enableBindings, [], null);
+}
+function listener(name, handlerFn, eventTargetResolver, syntheticHost, sourceSpan) {
+  const args = [literal(name), handlerFn];
+  if (eventTargetResolver !== null) {
+    args.push(literal(false)); // `useCapture` flag, defaults to `false`
+    args.push(importExpr(eventTargetResolver));
+  }
+  return call(syntheticHost ? Identifiers.syntheticHostListener : Identifiers.listener, args, sourceSpan);
+}
+function pipe(slot, name) {
+  return call(Identifiers.pipe, [literal(slot), literal(name)], null);
+}
+function namespaceHTML() {
+  return call(Identifiers.namespaceHTML, [], null);
+}
+function namespaceSVG() {
+  return call(Identifiers.namespaceSVG, [], null);
+}
+function namespaceMath() {
+  return call(Identifiers.namespaceMathML, [], null);
+}
+function advance(delta, sourceSpan) {
+  return call(Identifiers.advance, [literal(delta)], sourceSpan);
+}
+function reference(slot) {
+  return importExpr(Identifiers.reference).callFn([literal(slot)]);
+}
+function nextContext(steps) {
+  return importExpr(Identifiers.nextContext).callFn(steps === 1 ? [] : [literal(steps)]);
+}
+function getCurrentView() {
+  return importExpr(Identifiers.getCurrentView).callFn([]);
+}
+function restoreView(savedView) {
+  return importExpr(Identifiers.restoreView).callFn([savedView]);
+}
+function resetView(returnValue) {
+  return importExpr(Identifiers.resetView).callFn([returnValue]);
+}
+function text(slot, initialValue, sourceSpan) {
+  const args = [literal(slot, null)];
+  if (initialValue !== '') {
+    args.push(literal(initialValue));
+  }
+  return call(Identifiers.text, args, sourceSpan);
+}
+function defer(selfSlot, primarySlot, dependencyResolverFn, loadingSlot, placeholderSlot, errorSlot, loadingConfig, placeholderConfig, enableTimerScheduling, sourceSpan) {
+  const args = [literal(selfSlot), literal(primarySlot), dependencyResolverFn ?? literal(null), literal(loadingSlot), literal(placeholderSlot), literal(errorSlot), loadingConfig ?? literal(null), placeholderConfig ?? literal(null), enableTimerScheduling ? importExpr(Identifiers.deferEnableTimerScheduling) : literal(null)];
+  let expr;
+  while ((expr = args[args.length - 1]) !== null && expr instanceof LiteralExpr && expr.value === null) {
+    args.pop();
+  }
+  return call(Identifiers.defer, args, sourceSpan);
+}
+const deferTriggerToR3TriggerInstructionsMap = new Map([[DeferTriggerKind.Idle, [Identifiers.deferOnIdle, Identifiers.deferPrefetchOnIdle]], [DeferTriggerKind.Immediate, [Identifiers.deferOnImmediate, Identifiers.deferPrefetchOnImmediate]], [DeferTriggerKind.Timer, [Identifiers.deferOnTimer, Identifiers.deferPrefetchOnTimer]], [DeferTriggerKind.Hover, [Identifiers.deferOnHover, Identifiers.deferPrefetchOnHover]], [DeferTriggerKind.Interaction, [Identifiers.deferOnInteraction, Identifiers.deferPrefetchOnInteraction]], [DeferTriggerKind.Viewport, [Identifiers.deferOnViewport, Identifiers.deferPrefetchOnViewport]]]);
+function deferOn(trigger, args, prefetch, sourceSpan) {
+  const instructions = deferTriggerToR3TriggerInstructionsMap.get(trigger);
+  if (instructions === undefined) {
+    throw new Error(`Unable to determine instruction for trigger ${trigger}`);
+  }
+  const instructionToCall = prefetch ? instructions[1] : instructions[0];
+  return call(instructionToCall, args.map(a => literal(a)), sourceSpan);
+}
+function projectionDef(def) {
+  return call(Identifiers.projectionDef, def ? [def] : [], null);
+}
+function projection(slot, projectionSlotIndex, attributes, sourceSpan) {
+  const args = [literal(slot)];
+  if (projectionSlotIndex !== 0 || attributes.length > 0) {
+    args.push(literal(projectionSlotIndex));
+    if (attributes.length > 0) {
+      args.push(literalArr(attributes.map(attr => literal(attr))));
+    }
+  }
+  return call(Identifiers.projection, args, sourceSpan);
+}
+function i18nStart(slot, constIndex, subTemplateIndex) {
+  const args = [literal(slot), literal(constIndex)];
+  if (subTemplateIndex !== null) {
+    args.push(literal(subTemplateIndex));
+  }
+  return call(Identifiers.i18nStart, args, null);
+}
+function repeaterCreate(slot, viewFnName, decls, vars, tag, constIndex, trackByFn, trackByUsesComponentInstance, emptyViewFnName, emptyDecls, emptyVars, sourceSpan) {
+  const args = [literal(slot), variable(viewFnName), literal(decls), literal(vars), literal(tag), literal(constIndex), trackByFn];
+  if (trackByUsesComponentInstance || emptyViewFnName !== null) {
+    args.push(literal(trackByUsesComponentInstance));
+    if (emptyViewFnName !== null) {
+      args.push(variable(emptyViewFnName), literal(emptyDecls), literal(emptyVars));
+    }
+  }
+  return call(Identifiers.repeaterCreate, args, sourceSpan);
+}
+function repeater(collection, sourceSpan) {
+  return call(Identifiers.repeater, [collection], sourceSpan);
+}
+function deferWhen(prefetch, expr, sourceSpan) {
+  return call(prefetch ? Identifiers.deferPrefetchWhen : Identifiers.deferWhen, [expr], sourceSpan);
+}
+function i18n(slot, constIndex, subTemplateIndex) {
+  const args = [literal(slot), literal(constIndex)];
+  if (subTemplateIndex) {
+    args.push(literal(subTemplateIndex));
+  }
+  return call(Identifiers.i18n, args, null);
+}
+function i18nEnd() {
+  return call(Identifiers.i18nEnd, [], null);
+}
+function i18nAttributes(slot, i18nAttributesConfig) {
+  const args = [literal(slot), literal(i18nAttributesConfig)];
+  return call(Identifiers.i18nAttributes, args, null);
+}
+function property(name, expression, sanitizer, sourceSpan) {
+  const args = [literal(name), expression];
+  if (sanitizer !== null) {
+    args.push(sanitizer);
+  }
+  return call(Identifiers.property, args, sourceSpan);
+}
+function attribute(name, expression, sanitizer) {
+  const args = [literal(name), expression];
+  if (sanitizer !== null) {
+    args.push(sanitizer);
+  }
+  return call(Identifiers.attribute, args, null);
+}
+function styleProp(name, expression, unit, sourceSpan) {
+  const args = [literal(name), expression];
+  if (unit !== null) {
+    args.push(literal(unit));
+  }
+  return call(Identifiers.styleProp, args, sourceSpan);
+}
+function classProp(name, expression, sourceSpan) {
+  return call(Identifiers.classProp, [literal(name), expression], sourceSpan);
+}
+function styleMap(expression, sourceSpan) {
+  return call(Identifiers.styleMap, [expression], sourceSpan);
+}
+function classMap(expression, sourceSpan) {
+  return call(Identifiers.classMap, [expression], sourceSpan);
+}
+const PIPE_BINDINGS = [Identifiers.pipeBind1, Identifiers.pipeBind2, Identifiers.pipeBind3, Identifiers.pipeBind4];
+function pipeBind(slot, varOffset, args) {
+  if (args.length < 1 || args.length > PIPE_BINDINGS.length) {
+    throw new Error(`pipeBind() argument count out of bounds`);
+  }
+  const instruction = PIPE_BINDINGS[args.length - 1];
+  return importExpr(instruction).callFn([literal(slot), literal(varOffset), ...args]);
+}
+function pipeBindV(slot, varOffset, args) {
+  return importExpr(Identifiers.pipeBindV).callFn([literal(slot), literal(varOffset), args]);
+}
+function textInterpolate(strings, expressions, sourceSpan) {
+  if (strings.length < 1 || expressions.length !== strings.length - 1) {
+    throw new Error(`AssertionError: expected specific shape of args for strings/expressions in interpolation`);
+  }
+  const interpolationArgs = [];
+  if (expressions.length === 1 && strings[0] === '' && strings[1] === '') {
+    interpolationArgs.push(expressions[0]);
+  } else {
+    let idx;
+    for (idx = 0; idx < expressions.length; idx++) {
+      interpolationArgs.push(literal(strings[idx]), expressions[idx]);
+    }
+    // idx points at the last string.
+    interpolationArgs.push(literal(strings[idx]));
+  }
+  return callVariadicInstruction(TEXT_INTERPOLATE_CONFIG, [], interpolationArgs, [], sourceSpan);
+}
+function i18nExp(expr, sourceSpan) {
+  return call(Identifiers.i18nExp, [expr], sourceSpan);
+}
+function i18nApply(slot, sourceSpan) {
+  return call(Identifiers.i18nApply, [literal(slot)], sourceSpan);
+}
+function propertyInterpolate(name, strings, expressions, sanitizer, sourceSpan) {
+  const interpolationArgs = collateInterpolationArgs(strings, expressions);
+  const extraArgs = [];
+  if (sanitizer !== null) {
+    extraArgs.push(sanitizer);
+  }
+  return callVariadicInstruction(PROPERTY_INTERPOLATE_CONFIG, [literal(name)], interpolationArgs, extraArgs, sourceSpan);
+}
+function attributeInterpolate(name, strings, expressions, sanitizer, sourceSpan) {
+  const interpolationArgs = collateInterpolationArgs(strings, expressions);
+  const extraArgs = [];
+  if (sanitizer !== null) {
+    extraArgs.push(sanitizer);
+  }
+  return callVariadicInstruction(ATTRIBUTE_INTERPOLATE_CONFIG, [literal(name)], interpolationArgs, extraArgs, sourceSpan);
+}
+function stylePropInterpolate(name, strings, expressions, unit, sourceSpan) {
+  const interpolationArgs = collateInterpolationArgs(strings, expressions);
+  const extraArgs = [];
+  if (unit !== null) {
+    extraArgs.push(literal(unit));
+  }
+  return callVariadicInstruction(STYLE_PROP_INTERPOLATE_CONFIG, [literal(name)], interpolationArgs, extraArgs, sourceSpan);
+}
+function styleMapInterpolate(strings, expressions, sourceSpan) {
+  const interpolationArgs = collateInterpolationArgs(strings, expressions);
+  return callVariadicInstruction(STYLE_MAP_INTERPOLATE_CONFIG, [], interpolationArgs, [], sourceSpan);
+}
+function classMapInterpolate(strings, expressions, sourceSpan) {
+  const interpolationArgs = collateInterpolationArgs(strings, expressions);
+  return callVariadicInstruction(CLASS_MAP_INTERPOLATE_CONFIG, [], interpolationArgs, [], sourceSpan);
+}
+function hostProperty(name, expression, sanitizer, sourceSpan) {
+  const args = [literal(name), expression];
+  if (sanitizer !== null) {
+    args.push(sanitizer);
+  }
+  return call(Identifiers.hostProperty, args, sourceSpan);
+}
+function syntheticHostProperty(name, expression, sourceSpan) {
+  return call(Identifiers.syntheticHostProperty, [literal(name), expression], sourceSpan);
+}
+function pureFunction(varOffset, fn, args) {
+  return callVariadicInstructionExpr(PURE_FUNCTION_CONFIG, [literal(varOffset), fn], args, [], null);
+}
+/**
+ * Collates the string an expression arguments for an interpolation instruction.
+ */
+function collateInterpolationArgs(strings, expressions) {
+  if (strings.length < 1 || expressions.length !== strings.length - 1) {
+    throw new Error(`AssertionError: expected specific shape of args for strings/expressions in interpolation`);
+  }
+  const interpolationArgs = [];
+  if (expressions.length === 1 && strings[0] === '' && strings[1] === '') {
+    interpolationArgs.push(expressions[0]);
+  } else {
+    let idx;
+    for (idx = 0; idx < expressions.length; idx++) {
+      interpolationArgs.push(literal(strings[idx]), expressions[idx]);
+    }
+    // idx points at the last string.
+    interpolationArgs.push(literal(strings[idx]));
+  }
+  return interpolationArgs;
+}
+function call(instruction, args, sourceSpan) {
+  const expr = importExpr(instruction).callFn(args, sourceSpan);
+  return createStatementOp(new ExpressionStatement(expr, sourceSpan));
+}
+function conditional(slot, condition, contextValue, sourceSpan) {
+  const args = [literal(slot), condition];
+  if (contextValue !== null) {
+    args.push(contextValue);
+  }
+  return call(Identifiers.conditional, args, sourceSpan);
+}
+/**
+ * `InterpolationConfig` for the `textInterpolate` instruction.
+ */
+const TEXT_INTERPOLATE_CONFIG = {
+  constant: [Identifiers.textInterpolate, Identifiers.textInterpolate1, Identifiers.textInterpolate2, Identifiers.textInterpolate3, Identifiers.textInterpolate4, Identifiers.textInterpolate5, Identifiers.textInterpolate6, Identifiers.textInterpolate7, Identifiers.textInterpolate8],
+  variable: Identifiers.textInterpolateV,
+  mapping: n => {
+    if (n % 2 === 0) {
+      throw new Error(`Expected odd number of arguments`);
+    }
+    return (n - 1) / 2;
+  }
+};
+/**
+ * `InterpolationConfig` for the `propertyInterpolate` instruction.
+ */
+const PROPERTY_INTERPOLATE_CONFIG = {
+  constant: [Identifiers.propertyInterpolate, Identifiers.propertyInterpolate1, Identifiers.propertyInterpolate2, Identifiers.propertyInterpolate3, Identifiers.propertyInterpolate4, Identifiers.propertyInterpolate5, Identifiers.propertyInterpolate6, Identifiers.propertyInterpolate7, Identifiers.propertyInterpolate8],
+  variable: Identifiers.propertyInterpolateV,
+  mapping: n => {
+    if (n % 2 === 0) {
+      throw new Error(`Expected odd number of arguments`);
+    }
+    return (n - 1) / 2;
+  }
+};
+/**
+ * `InterpolationConfig` for the `stylePropInterpolate` instruction.
+ */
+const STYLE_PROP_INTERPOLATE_CONFIG = {
+  constant: [Identifiers.styleProp, Identifiers.stylePropInterpolate1, Identifiers.stylePropInterpolate2, Identifiers.stylePropInterpolate3, Identifiers.stylePropInterpolate4, Identifiers.stylePropInterpolate5, Identifiers.stylePropInterpolate6, Identifiers.stylePropInterpolate7, Identifiers.stylePropInterpolate8],
+  variable: Identifiers.stylePropInterpolateV,
+  mapping: n => {
+    if (n % 2 === 0) {
+      throw new Error(`Expected odd number of arguments`);
+    }
+    return (n - 1) / 2;
+  }
+};
+/**
+ * `InterpolationConfig` for the `attributeInterpolate` instruction.
+ */
+const ATTRIBUTE_INTERPOLATE_CONFIG = {
+  constant: [Identifiers.attribute, Identifiers.attributeInterpolate1, Identifiers.attributeInterpolate2, Identifiers.attributeInterpolate3, Identifiers.attributeInterpolate4, Identifiers.attributeInterpolate5, Identifiers.attributeInterpolate6, Identifiers.attributeInterpolate7, Identifiers.attributeInterpolate8],
+  variable: Identifiers.attributeInterpolateV,
+  mapping: n => {
+    if (n % 2 === 0) {
+      throw new Error(`Expected odd number of arguments`);
+    }
+    return (n - 1) / 2;
+  }
+};
+/**
+ * `InterpolationConfig` for the `styleMapInterpolate` instruction.
+ */
+const STYLE_MAP_INTERPOLATE_CONFIG = {
+  constant: [Identifiers.styleMap, Identifiers.styleMapInterpolate1, Identifiers.styleMapInterpolate2, Identifiers.styleMapInterpolate3, Identifiers.styleMapInterpolate4, Identifiers.styleMapInterpolate5, Identifiers.styleMapInterpolate6, Identifiers.styleMapInterpolate7, Identifiers.styleMapInterpolate8],
+  variable: Identifiers.styleMapInterpolateV,
+  mapping: n => {
+    if (n % 2 === 0) {
+      throw new Error(`Expected odd number of arguments`);
+    }
+    return (n - 1) / 2;
+  }
+};
+/**
+ * `InterpolationConfig` for the `classMapInterpolate` instruction.
+ */
+const CLASS_MAP_INTERPOLATE_CONFIG = {
+  constant: [Identifiers.classMap, Identifiers.classMapInterpolate1, Identifiers.classMapInterpolate2, Identifiers.classMapInterpolate3, Identifiers.classMapInterpolate4, Identifiers.classMapInterpolate5, Identifiers.classMapInterpolate6, Identifiers.classMapInterpolate7, Identifiers.classMapInterpolate8],
+  variable: Identifiers.classMapInterpolateV,
+  mapping: n => {
+    if (n % 2 === 0) {
+      throw new Error(`Expected odd number of arguments`);
+    }
+    return (n - 1) / 2;
+  }
+};
+const PURE_FUNCTION_CONFIG = {
+  constant: [Identifiers.pureFunction0, Identifiers.pureFunction1, Identifiers.pureFunction2, Identifiers.pureFunction3, Identifiers.pureFunction4, Identifiers.pureFunction5, Identifiers.pureFunction6, Identifiers.pureFunction7, Identifiers.pureFunction8],
+  variable: Identifiers.pureFunctionV,
+  mapping: n => n
+};
+function callVariadicInstructionExpr(config, baseArgs, interpolationArgs, extraArgs, sourceSpan) {
+  const n = config.mapping(interpolationArgs.length);
+  if (n < config.constant.length) {
+    // Constant calling pattern.
+    return importExpr(config.constant[n]).callFn([...baseArgs, ...interpolationArgs, ...extraArgs], sourceSpan);
+  } else if (config.variable !== null) {
+    // Variable calling pattern.
+    return importExpr(config.variable).callFn([...baseArgs, literalArr(interpolationArgs), ...extraArgs], sourceSpan);
+  } else {
+    throw new Error(`AssertionError: unable to call variadic function`);
+  }
+}
+function callVariadicInstruction(config, baseArgs, interpolationArgs, extraArgs, sourceSpan) {
+  return createStatementOp(callVariadicInstructionExpr(config, baseArgs, interpolationArgs, extraArgs, sourceSpan).toStmt());
+}
+
+/**
+ * Map of target resolvers for event listeners.
+ */
+const GLOBAL_TARGET_RESOLVERS$1 = new Map([['window', Identifiers.resolveWindow], ['document', Identifiers.resolveDocument], ['body', Identifiers.resolveBody]]);
+/**
+ * Compiles semantic operations across all views and generates output `o.Statement`s with actual
+ * runtime calls in their place.
+ *
+ * Reification replaces semantic operations with selected Ivy instructions and other generated code
+ * structures. After reification, the create/update operation lists of all views should only contain
+ * `ir.StatementOp`s (which wrap generated `o.Statement`s).
+ */
+function reify(job) {
+  for (const unit of job.units) {
+    reifyCreateOperations(unit, unit.create);
+    reifyUpdateOperations(unit, unit.update);
+  }
+}
+function reifyCreateOperations(unit, ops) {
+  for (const op of ops) {
+    transformExpressionsInOp(op, reifyIrExpression, VisitorContextFlag.None);
+    switch (op.kind) {
+      case OpKind.Text:
+        OpList.replace(op, text(op.handle.slot, op.initialValue, op.sourceSpan));
+        break;
+      case OpKind.ElementStart:
+        OpList.replace(op, elementStart(op.handle.slot, op.tag, op.attributes, op.localRefs, op.startSourceSpan));
+        break;
+      case OpKind.Element:
+        OpList.replace(op, element(op.handle.slot, op.tag, op.attributes, op.localRefs, op.wholeSourceSpan));
+        break;
+      case OpKind.ElementEnd:
+        OpList.replace(op, elementEnd(op.sourceSpan));
+        break;
+      case OpKind.ContainerStart:
+        OpList.replace(op, elementContainerStart(op.handle.slot, op.attributes, op.localRefs, op.startSourceSpan));
+        break;
+      case OpKind.Container:
+        OpList.replace(op, elementContainer(op.handle.slot, op.attributes, op.localRefs, op.wholeSourceSpan));
+        break;
+      case OpKind.ContainerEnd:
+        OpList.replace(op, elementContainerEnd());
+        break;
+      case OpKind.I18nStart:
+        OpList.replace(op, i18nStart(op.handle.slot, op.messageIndex, op.subTemplateIndex));
+        break;
+      case OpKind.I18nEnd:
+        OpList.replace(op, i18nEnd());
+        break;
+      case OpKind.I18n:
+        OpList.replace(op, i18n(op.handle.slot, op.messageIndex, op.subTemplateIndex));
+        break;
+      case OpKind.I18nAttributes:
+        if (op.i18nAttributesConfig === null) {
+          throw new Error(`AssertionError: i18nAttributesConfig was not set`);
+        }
+        OpList.replace(op, i18nAttributes(op.handle.slot, op.i18nAttributesConfig));
+        break;
+      case OpKind.Template:
+        if (!(unit instanceof ViewCompilationUnit)) {
+          throw new Error(`AssertionError: must be compiling a component`);
+        }
+        if (Array.isArray(op.localRefs)) {
+          throw new Error(`AssertionError: local refs array should have been extracted into a constant`);
+        }
+        const childView = unit.job.views.get(op.xref);
+        OpList.replace(op, template(op.handle.slot, variable(childView.fnName), childView.decls, childView.vars, op.tag, op.attributes, op.localRefs, op.startSourceSpan));
+        break;
+      case OpKind.DisableBindings:
+        OpList.replace(op, disableBindings());
+        break;
+      case OpKind.EnableBindings:
+        OpList.replace(op, enableBindings());
+        break;
+      case OpKind.Pipe:
+        OpList.replace(op, pipe(op.handle.slot, op.name));
+        break;
+      case OpKind.Listener:
+        const listenerFn = reifyListenerHandler(unit, op.handlerFnName, op.handlerOps, op.consumesDollarEvent);
+        const eventTargetResolver = op.eventTarget ? GLOBAL_TARGET_RESOLVERS$1.get(op.eventTarget) : null;
+        if (eventTargetResolver === undefined) {
+          throw new Error(`Unexpected global target '${op.eventTarget}' defined for '${op.name}' event. Supported list of global targets: window,document,body.`);
+        }
+        OpList.replace(op, listener(op.name, listenerFn, eventTargetResolver, op.hostListener && op.isAnimationListener, op.sourceSpan));
+        break;
+      case OpKind.Variable:
+        if (op.variable.name === null) {
+          throw new Error(`AssertionError: unnamed variable ${op.xref}`);
+        }
+        OpList.replace(op, createStatementOp(new DeclareVarStmt(op.variable.name, op.initializer, undefined, StmtModifier.Final)));
+        break;
+      case OpKind.Namespace:
+        switch (op.active) {
+          case Namespace.HTML:
+            OpList.replace(op, namespaceHTML());
+            break;
+          case Namespace.SVG:
+            OpList.replace(op, namespaceSVG());
+            break;
+          case Namespace.Math:
+            OpList.replace(op, namespaceMath());
+            break;
+        }
+        break;
+      case OpKind.Defer:
+        const timerScheduling = !!op.loadingMinimumTime || !!op.loadingAfterTime || !!op.placeholderMinimumTime;
+        OpList.replace(op, defer(op.handle.slot, op.mainSlot.slot, op.resolverFn, op.loadingSlot?.slot ?? null, op.placeholderSlot?.slot ?? null, op.errorSlot?.slot ?? null, op.loadingConfig, op.placeholderConfig, timerScheduling, op.sourceSpan));
+        break;
+      case OpKind.DeferOn:
+        let args = [];
+        switch (op.trigger.kind) {
+          case DeferTriggerKind.Idle:
+          case DeferTriggerKind.Immediate:
+            break;
+          case DeferTriggerKind.Timer:
+            args = [op.trigger.delay];
+            break;
+          case DeferTriggerKind.Interaction:
+          case DeferTriggerKind.Hover:
+          case DeferTriggerKind.Viewport:
+            if (op.trigger.targetSlot?.slot == null || op.trigger.targetSlotViewSteps === null) {
+              throw new Error(`Slot or view steps not set in trigger reification for trigger kind ${op.trigger.kind}`);
+            }
+            args = [op.trigger.targetSlot.slot];
+            if (op.trigger.targetSlotViewSteps !== 0) {
+              args.push(op.trigger.targetSlotViewSteps);
+            }
+            break;
+          default:
+            throw new Error(`AssertionError: Unsupported reification of defer trigger kind ${op.trigger.kind}`);
+        }
+        OpList.replace(op, deferOn(op.trigger.kind, args, op.prefetch, op.sourceSpan));
+        break;
+      case OpKind.ProjectionDef:
+        OpList.replace(op, projectionDef(op.def));
+        break;
+      case OpKind.Projection:
+        if (op.handle.slot === null) {
+          throw new Error('No slot was assigned for project instruction');
+        }
+        OpList.replace(op, projection(op.handle.slot, op.projectionSlotIndex, op.attributes, op.sourceSpan));
+        break;
+      case OpKind.RepeaterCreate:
+        if (op.handle.slot === null) {
+          throw new Error('No slot was assigned for repeater instruction');
+        }
+        if (!(unit instanceof ViewCompilationUnit)) {
+          throw new Error(`AssertionError: must be compiling a component`);
+        }
+        const repeaterView = unit.job.views.get(op.xref);
+        if (repeaterView.fnName === null) {
+          throw new Error(`AssertionError: expected repeater primary view to have been named`);
+        }
+        let emptyViewFnName = null;
+        let emptyDecls = null;
+        let emptyVars = null;
+        if (op.emptyView !== null) {
+          const emptyView = unit.job.views.get(op.emptyView);
+          if (emptyView === undefined) {
+            throw new Error('AssertionError: repeater had empty view xref, but empty view was not found');
+          }
+          if (emptyView.fnName === null || emptyView.decls === null || emptyView.vars === null) {
+            throw new Error(`AssertionError: expected repeater empty view to have been named and counted`);
+          }
+          emptyViewFnName = emptyView.fnName;
+          emptyDecls = emptyView.decls;
+          emptyVars = emptyView.vars;
+        }
+        OpList.replace(op, repeaterCreate(op.handle.slot, repeaterView.fnName, op.decls, op.vars, op.tag, op.attributes, op.trackByFn, op.usesComponentInstance, emptyViewFnName, emptyDecls, emptyVars, op.wholeSourceSpan));
+        break;
+      case OpKind.Statement:
+        // Pass statement operations directly through.
+        break;
+      default:
+        throw new Error(`AssertionError: Unsupported reification of create op ${OpKind[op.kind]}`);
+    }
+  }
+}
+function reifyUpdateOperations(_unit, ops) {
+  for (const op of ops) {
+    transformExpressionsInOp(op, reifyIrExpression, VisitorContextFlag.None);
+    switch (op.kind) {
+      case OpKind.Advance:
+        OpList.replace(op, advance(op.delta, op.sourceSpan));
+        break;
+      case OpKind.Property:
+        if (op.expression instanceof Interpolation) {
+          OpList.replace(op, propertyInterpolate(op.name, op.expression.strings, op.expression.expressions, op.sanitizer, op.sourceSpan));
+        } else {
+          OpList.replace(op, property(op.name, op.expression, op.sanitizer, op.sourceSpan));
+        }
+        break;
+      case OpKind.StyleProp:
+        if (op.expression instanceof Interpolation) {
+          OpList.replace(op, stylePropInterpolate(op.name, op.expression.strings, op.expression.expressions, op.unit, op.sourceSpan));
+        } else {
+          OpList.replace(op, styleProp(op.name, op.expression, op.unit, op.sourceSpan));
+        }
+        break;
+      case OpKind.ClassProp:
+        OpList.replace(op, classProp(op.name, op.expression, op.sourceSpan));
+        break;
+      case OpKind.StyleMap:
+        if (op.expression instanceof Interpolation) {
+          OpList.replace(op, styleMapInterpolate(op.expression.strings, op.expression.expressions, op.sourceSpan));
+        } else {
+          OpList.replace(op, styleMap(op.expression, op.sourceSpan));
+        }
+        break;
+      case OpKind.ClassMap:
+        if (op.expression instanceof Interpolation) {
+          OpList.replace(op, classMapInterpolate(op.expression.strings, op.expression.expressions, op.sourceSpan));
+        } else {
+          OpList.replace(op, classMap(op.expression, op.sourceSpan));
+        }
+        break;
+      case OpKind.I18nExpression:
+        OpList.replace(op, i18nExp(op.expression, op.sourceSpan));
+        break;
+      case OpKind.I18nApply:
+        OpList.replace(op, i18nApply(op.handle.slot, op.sourceSpan));
+        break;
+      case OpKind.InterpolateText:
+        OpList.replace(op, textInterpolate(op.interpolation.strings, op.interpolation.expressions, op.sourceSpan));
+        break;
+      case OpKind.Attribute:
+        if (op.expression instanceof Interpolation) {
+          OpList.replace(op, attributeInterpolate(op.name, op.expression.strings, op.expression.expressions, op.sanitizer, op.sourceSpan));
+        } else {
+          OpList.replace(op, attribute(op.name, op.expression, op.sanitizer));
+        }
+        break;
+      case OpKind.HostProperty:
+        if (op.expression instanceof Interpolation) {
+          throw new Error('not yet handled');
+        } else {
+          if (op.isAnimationTrigger) {
+            OpList.replace(op, syntheticHostProperty(op.name, op.expression, op.sourceSpan));
+          } else {
+            OpList.replace(op, hostProperty(op.name, op.expression, op.sanitizer, op.sourceSpan));
+          }
+        }
+        break;
+      case OpKind.Variable:
+        if (op.variable.name === null) {
+          throw new Error(`AssertionError: unnamed variable ${op.xref}`);
+        }
+        OpList.replace(op, createStatementOp(new DeclareVarStmt(op.variable.name, op.initializer, undefined, StmtModifier.Final)));
+        break;
+      case OpKind.Conditional:
+        if (op.processed === null) {
+          throw new Error(`Conditional test was not set.`);
+        }
+        if (op.targetSlot.slot === null) {
+          throw new Error(`Conditional slot was not set.`);
+        }
+        OpList.replace(op, conditional(op.targetSlot.slot, op.processed, op.contextValue, op.sourceSpan));
+        break;
+      case OpKind.Repeater:
+        OpList.replace(op, repeater(op.collection, op.sourceSpan));
+        break;
+      case OpKind.DeferWhen:
+        OpList.replace(op, deferWhen(op.prefetch, op.expr, op.sourceSpan));
+        break;
+      case OpKind.Statement:
+        // Pass statement operations directly through.
+        break;
+      default:
+        throw new Error(`AssertionError: Unsupported reification of update op ${OpKind[op.kind]}`);
+    }
+  }
+}
+function reifyIrExpression(expr) {
+  if (!isIrExpression(expr)) {
+    return expr;
+  }
+  switch (expr.kind) {
+    case ExpressionKind.NextContext:
+      return nextContext(expr.steps);
+    case ExpressionKind.Reference:
+      return reference(expr.targetSlot.slot + 1 + expr.offset);
+    case ExpressionKind.LexicalRead:
+      throw new Error(`AssertionError: unresolved LexicalRead of ${expr.name}`);
+    case ExpressionKind.RestoreView:
+      if (typeof expr.view === 'number') {
+        throw new Error(`AssertionError: unresolved RestoreView`);
+      }
+      return restoreView(expr.view);
+    case ExpressionKind.ResetView:
+      return resetView(expr.expr);
+    case ExpressionKind.GetCurrentView:
+      return getCurrentView();
+    case ExpressionKind.ReadVariable:
+      if (expr.name === null) {
+        throw new Error(`Read of unnamed variable ${expr.xref}`);
+      }
+      return variable(expr.name);
+    case ExpressionKind.ReadTemporaryExpr:
+      if (expr.name === null) {
+        throw new Error(`Read of unnamed temporary ${expr.xref}`);
+      }
+      return variable(expr.name);
+    case ExpressionKind.AssignTemporaryExpr:
+      if (expr.name === null) {
+        throw new Error(`Assign of unnamed temporary ${expr.xref}`);
+      }
+      return variable(expr.name).set(expr.expr);
+    case ExpressionKind.PureFunctionExpr:
+      if (expr.fn === null) {
+        throw new Error(`AssertionError: expected PureFunctions to have been extracted`);
+      }
+      return pureFunction(expr.varOffset, expr.fn, expr.args);
+    case ExpressionKind.PureFunctionParameterExpr:
+      throw new Error(`AssertionError: expected PureFunctionParameterExpr to have been extracted`);
+    case ExpressionKind.PipeBinding:
+      return pipeBind(expr.targetSlot.slot, expr.varOffset, expr.args);
+    case ExpressionKind.PipeBindingVariadic:
+      return pipeBindV(expr.targetSlot.slot, expr.varOffset, expr.args);
+    case ExpressionKind.SlotLiteralExpr:
+      return literal(expr.slot.slot);
+    default:
+      throw new Error(`AssertionError: Unsupported reification of ir.Expression kind: ${ExpressionKind[expr.kind]}`);
+  }
+}
+/**
+ * Listeners get turned into a function expression, which may or may not have the `$event`
+ * parameter defined.
+ */
+function reifyListenerHandler(unit, name, handlerOps, consumesDollarEvent) {
+  // First, reify all instruction calls within `handlerOps`.
+  reifyUpdateOperations(unit, handlerOps);
+  // Next, extract all the `o.Statement`s from the reified operations. We can expect that at this
+  // point, all operations have been converted to statements.
+  const handlerStmts = [];
+  for (const op of handlerOps) {
+    if (op.kind !== OpKind.Statement) {
+      throw new Error(`AssertionError: expected reified statements, but found op ${OpKind[op.kind]}`);
+    }
+    handlerStmts.push(op.statement);
+  }
+  // If `$event` is referenced, we need to generate it as a parameter.
+  const params = [];
+  if (consumesDollarEvent) {
+    // We need the `$event` parameter.
+    params.push(new FnParam('$event'));
+  }
+  return fn(params, handlerStmts, undefined, undefined, name);
+}
+
+/**
+ * Bidningd with no content can be safely deleted.
+ */
+function removeEmptyBindings(job) {
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      switch (op.kind) {
+        case OpKind.Attribute:
+        case OpKind.Binding:
+        case OpKind.ClassProp:
+        case OpKind.ClassMap:
+        case OpKind.Property:
+        case OpKind.StyleProp:
+        case OpKind.StyleMap:
+          if (op.expression instanceof EmptyExpr) {
+            OpList.remove(op);
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Remove the i18n context ops after they are no longer needed, and null out references to them to
+ * be safe.
+ */
+function removeI18nContexts(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nContext:
+          OpList.remove(op);
+          break;
+        case OpKind.I18nStart:
+          op.context = null;
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * i18nAttributes ops will be generated for each i18n attribute. However, not all i18n attribues
+ * will contain dynamic content, and so some of these i18nAttributes ops may be unnecessary.
+ */
+function removeUnusedI18nAttributesOps(job) {
+  for (const unit of job.units) {
+    const ownersWithI18nExpressions = new Set();
+    for (const op of unit.update) {
+      switch (op.kind) {
+        case OpKind.I18nExpression:
+          ownersWithI18nExpressions.add(op.i18nOwner);
+      }
+    }
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nAttributes:
+          if (ownersWithI18nExpressions.has(op.xref)) {
+            continue;
+          }
+          OpList.remove(op);
+      }
+    }
+  }
+}
+
+/**
+ * Inside the body of a repeater, certain context variables (such as `$first`) are ambiently
+ * available. This phase finds those variable usages, and replaces them with the appropriate
+ * expression.
+ */
+function generateRepeaterDerivedVars(job) {
+  const repeaters = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      if (op.kind === OpKind.RepeaterCreate) {
+        repeaters.set(op.xref, op);
+      }
+    }
+  }
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      transformExpressionsInOp(op, expr => {
+        if (!(expr instanceof DerivedRepeaterVarExpr)) {
+          return expr;
+        }
+        const repeaterOp = repeaters.get(expr.xref);
+        switch (expr.identity) {
+          case DerivedRepeaterVarIdentity.First:
+            return new BinaryOperatorExpr(BinaryOperator.Identical, new LexicalReadExpr(repeaterOp.varNames.$index), literal(0));
+          case DerivedRepeaterVarIdentity.Last:
+            return new BinaryOperatorExpr(BinaryOperator.Identical, new LexicalReadExpr(repeaterOp.varNames.$index), new BinaryOperatorExpr(BinaryOperator.Minus, new LexicalReadExpr(repeaterOp.varNames.$count), literal(1)));
+          case DerivedRepeaterVarIdentity.Even:
+            return new BinaryOperatorExpr(BinaryOperator.Identical, new BinaryOperatorExpr(BinaryOperator.Modulo, new LexicalReadExpr(repeaterOp.varNames.$index), literal(2)), literal(0));
+          case DerivedRepeaterVarIdentity.Odd:
+            return new BinaryOperatorExpr(BinaryOperator.NotIdentical, new BinaryOperatorExpr(BinaryOperator.Modulo, new LexicalReadExpr(repeaterOp.varNames.$index), literal(2)), literal(0));
+        }
+      }, VisitorContextFlag.None);
+    }
+  }
+}
+
+/**
+ * Resolves `ir.ContextExpr` expressions (which represent embedded view or component contexts) to
+ * either the `ctx` parameter to component functions (for the current view context) or to variables
+ * that store those contexts (for contexts accessed via the `nextContext()` instruction).
+ */
+function resolveContexts(job) {
+  for (const unit of job.units) {
+    processLexicalScope$1(unit, unit.create);
+    processLexicalScope$1(unit, unit.update);
+  }
+}
+function processLexicalScope$1(view, ops) {
+  // Track the expressions used to access all available contexts within the current view, by the
+  // view `ir.XrefId`.
+  const scope = new Map();
+  // The current view's context is accessible via the `ctx` parameter.
+  scope.set(view.xref, variable('ctx'));
+  for (const op of ops) {
+    switch (op.kind) {
+      case OpKind.Variable:
+        switch (op.variable.kind) {
+          case SemanticVariableKind.Context:
+            scope.set(op.variable.view, new ReadVariableExpr(op.xref));
+            break;
+        }
+        break;
+      case OpKind.Listener:
+        processLexicalScope$1(view, op.handlerOps);
+        break;
+    }
+  }
+  if (view === view.job.root) {
+    // Prefer `ctx` of the root view to any variables which happen to contain the root context.
+    scope.set(view.xref, variable('ctx'));
+  }
+  for (const op of ops) {
+    transformExpressionsInOp(op, expr => {
+      if (expr instanceof ContextExpr) {
+        if (!scope.has(expr.view)) {
+          throw new Error(`No context found for reference to view ${expr.view} from view ${view.xref}`);
+        }
+        return scope.get(expr.view);
+      } else {
+        return expr;
+      }
+    }, VisitorContextFlag.None);
+  }
+}
+
+/**
+ * Any variable inside a listener with the name `$event` will be transformed into a output lexical
+ * read immediately, and does not participate in any of the normal logic for handling variables.
+ */
+function resolveDollarEvent(job) {
+  for (const unit of job.units) {
+    transformDollarEvent(unit, unit.create);
+    transformDollarEvent(unit, unit.update);
+  }
+}
+function transformDollarEvent(unit, ops) {
+  for (const op of ops) {
+    if (op.kind === OpKind.Listener) {
+      transformExpressionsInOp(op, expr => {
+        if (expr instanceof LexicalReadExpr && expr.name === '$event') {
+          op.consumesDollarEvent = true;
+          return new ReadVarExpr(expr.name);
+        }
+        return expr;
+      }, VisitorContextFlag.InChildOperation);
+    }
+  }
+}
+
+/**
+ * Resolve the element placeholders in i18n messages.
+ */
+function resolveI18nElementPlaceholders(job) {
+  // Record all of the element and i18n context ops for use later.
+  const i18nContexts = new Map();
+  const elements = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nContext:
+          i18nContexts.set(op.xref, op);
+          break;
+        case OpKind.ElementStart:
+          elements.set(op.xref, op);
+          break;
+      }
+    }
+  }
+  resolvePlaceholdersForView(job, job.root, i18nContexts, elements);
+}
+/**
+ * Recursively resolves element and template tag placeholders in the given view.
+ */
+function resolvePlaceholdersForView(job, unit, i18nContexts, elements, pendingStructuralDirective) {
+  // Track the current i18n op and corresponding i18n context op as we step through the creation
+  // IR.
+  let currentOps = null;
+  let pendingStructuralDirectiveCloses = new Map();
+  for (const op of unit.create) {
+    switch (op.kind) {
+      case OpKind.I18nStart:
+        if (!op.context) {
+          throw Error('Could not find i18n context for i18n op');
+        }
+        currentOps = {
+          i18nBlock: op,
+          i18nContext: i18nContexts.get(op.context)
+        };
+        break;
+      case OpKind.I18nEnd:
+        currentOps = null;
+        break;
+      case OpKind.ElementStart:
+        // For elements with i18n placeholders, record its slot value in the params map under the
+        // corresponding tag start placeholder.
+        if (op.i18nPlaceholder !== undefined) {
+          if (currentOps === null) {
+            throw Error('i18n tag placeholder should only occur inside an i18n block');
+          }
+          recordElementStart(op, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+          // If there is a separate close tag placeholder for this element, save the pending
+          // structural directive so we can pass it to the closing tag as well.
+          if (pendingStructuralDirective && op.i18nPlaceholder.closeName) {
+            pendingStructuralDirectiveCloses.set(op.xref, pendingStructuralDirective);
+          }
+          // Clear out the pending structural directive now that its been accounted for.
+          pendingStructuralDirective = undefined;
+        }
+        break;
+      case OpKind.ElementEnd:
+        // For elements with i18n placeholders, record its slot value in the params map under the
+        // corresponding tag close placeholder.
+        const startOp = elements.get(op.xref);
+        if (startOp && startOp.i18nPlaceholder !== undefined) {
+          if (currentOps === null) {
+            throw Error('AssertionError: i18n tag placeholder should only occur inside an i18n block');
+          }
+          recordElementClose(startOp, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirectiveCloses.get(op.xref));
+          // Clear out the pending structural directive close that was accounted for.
+          pendingStructuralDirectiveCloses.delete(op.xref);
+        }
+        break;
+      case OpKind.Projection:
+        // For content projections with i18n placeholders, record its slot value in the params map
+        // under the corresponding tag start and close placeholders.
+        if (op.i18nPlaceholder !== undefined) {
+          if (currentOps === null) {
+            throw Error('i18n tag placeholder should only occur inside an i18n block');
+          }
+          recordElementStart(op, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+          recordElementClose(op, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+          // Clear out the pending structural directive now that its been accounted for.
+          pendingStructuralDirective = undefined;
+        }
+        break;
+      case OpKind.Template:
+        const view = job.views.get(op.xref);
+        if (op.i18nPlaceholder === undefined) {
+          // If there is no i18n placeholder, just recurse into the view in case it contains i18n
+          // blocks.
+          resolvePlaceholdersForView(job, view, i18nContexts, elements);
+        } else {
+          if (currentOps === null) {
+            throw Error('i18n tag placeholder should only occur inside an i18n block');
+          }
+          if (op.templateKind === TemplateKind.Structural) {
+            // If this is a structural directive template, don't record anything yet. Instead pass
+            // the current template as a pending structural directive to be recorded when we find
+            // the element, content, or template it belongs to. This allows us to create combined
+            // values that represent, e.g. the start of a template and element at the same time.
+            resolvePlaceholdersForView(job, view, i18nContexts, elements, op);
+          } else {
+            // If this is some other kind of template, we can record its start, recurse into its
+            // view, and then record its end.
+            recordTemplateStart(job, view, op.handle.slot, op.i18nPlaceholder, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+            resolvePlaceholdersForView(job, view, i18nContexts, elements);
+            recordTemplateClose(job, view, op.handle.slot, op.i18nPlaceholder, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+            pendingStructuralDirective = undefined;
+          }
+        }
+        break;
+      case OpKind.RepeaterCreate:
+        if (pendingStructuralDirective !== undefined) {
+          throw Error('AssertionError: Unexpected structural directive associated with @for block');
+        }
+        // RepeaterCreate has 3 slots: the first is for the op itself, the second is for the @for
+        // template and the (optional) third is for the @empty template.
+        const forSlot = op.handle.slot + 1;
+        const forView = job.views.get(op.xref);
+        // First record all of the placeholders for the @for template.
+        if (op.i18nPlaceholder === undefined) {
+          // If there is no i18n placeholder, just recurse into the view in case it contains i18n
+          // blocks.
+          resolvePlaceholdersForView(job, forView, i18nContexts, elements);
+        } else {
+          if (currentOps === null) {
+            throw Error('i18n tag placeholder should only occur inside an i18n block');
+          }
+          recordTemplateStart(job, forView, forSlot, op.i18nPlaceholder, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+          resolvePlaceholdersForView(job, forView, i18nContexts, elements);
+          recordTemplateClose(job, forView, forSlot, op.i18nPlaceholder, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+          pendingStructuralDirective = undefined;
+        }
+        // Then if there's an @empty template, add its placeholders as well.
+        if (op.emptyView !== null) {
+          // RepeaterCreate has 3 slots: the first is for the op itself, the second is for the @for
+          // template and the (optional) third is for the @empty template.
+          const emptySlot = op.handle.slot + 2;
+          const emptyView = job.views.get(op.emptyView);
+          if (op.emptyI18nPlaceholder === undefined) {
+            // If there is no i18n placeholder, just recurse into the view in case it contains i18n
+            // blocks.
+            resolvePlaceholdersForView(job, emptyView, i18nContexts, elements);
+          } else {
+            if (currentOps === null) {
+              throw Error('i18n tag placeholder should only occur inside an i18n block');
+            }
+            recordTemplateStart(job, emptyView, emptySlot, op.emptyI18nPlaceholder, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+            resolvePlaceholdersForView(job, emptyView, i18nContexts, elements);
+            recordTemplateClose(job, emptyView, emptySlot, op.emptyI18nPlaceholder, currentOps.i18nContext, currentOps.i18nBlock, pendingStructuralDirective);
+            pendingStructuralDirective = undefined;
+          }
+        }
+        break;
+    }
+  }
+}
+/**
+ * Records an i18n param value for the start of an element.
+ */
+function recordElementStart(op, i18nContext, i18nBlock, structuralDirective) {
+  const {
+    startName,
+    closeName
+  } = op.i18nPlaceholder;
+  let flags = I18nParamValueFlags.ElementTag | I18nParamValueFlags.OpenTag;
+  let value = op.handle.slot;
+  // If the element is associated with a structural directive, start it as well.
+  if (structuralDirective !== undefined) {
+    flags |= I18nParamValueFlags.TemplateTag;
+    value = {
+      element: value,
+      template: structuralDirective.handle.slot
+    };
+  }
+  // For self-closing tags, there is no close tag placeholder. Instead, the start tag
+  // placeholder accounts for the start and close of the element.
+  if (!closeName) {
+    flags |= I18nParamValueFlags.CloseTag;
+  }
+  addParam(i18nContext.params, startName, value, i18nBlock.subTemplateIndex, flags);
+}
+/**
+ * Records an i18n param value for the closing of an element.
+ */
+function recordElementClose(op, i18nContext, i18nBlock, structuralDirective) {
+  const {
+    closeName
+  } = op.i18nPlaceholder;
+  // Self-closing tags don't have a closing tag placeholder, instead the element closing is
+  // recorded via an additional flag on the element start value.
+  if (closeName) {
+    let flags = I18nParamValueFlags.ElementTag | I18nParamValueFlags.CloseTag;
+    let value = op.handle.slot;
+    // If the element is associated with a structural directive, close it as well.
+    if (structuralDirective !== undefined) {
+      flags |= I18nParamValueFlags.TemplateTag;
+      value = {
+        element: value,
+        template: structuralDirective.handle.slot
+      };
+    }
+    addParam(i18nContext.params, closeName, value, i18nBlock.subTemplateIndex, flags);
+  }
+}
+/**
+ * Records an i18n param value for the start of a template.
+ */
+function recordTemplateStart(job, view, slot, i18nPlaceholder, i18nContext, i18nBlock, structuralDirective) {
+  let {
+    startName,
+    closeName
+  } = i18nPlaceholder;
+  let flags = I18nParamValueFlags.TemplateTag | I18nParamValueFlags.OpenTag;
+  // For self-closing tags, there is no close tag placeholder. Instead, the start tag
+  // placeholder accounts for the start and close of the element.
+  if (!closeName) {
+    flags |= I18nParamValueFlags.CloseTag;
+  }
+  // If the template is associated with a structural directive, record the structural directive's
+  // start first. Since this template must be in the structural directive's view, we can just
+  // directly use the current i18n block's sub-template index.
+  if (structuralDirective !== undefined) {
+    addParam(i18nContext.params, startName, structuralDirective.handle.slot, i18nBlock.subTemplateIndex, flags);
+  }
+  // Record the start of the template. For the sub-template index, pass the index for the template's
+  // view, rather than the current i18n block's index.
+  addParam(i18nContext.params, startName, slot, getSubTemplateIndexForTemplateTag(job, i18nBlock, view), flags);
+}
+/**
+ * Records an i18n param value for the closing of a template.
+ */
+function recordTemplateClose(job, view, slot, i18nPlaceholder, i18nContext, i18nBlock, structuralDirective) {
+  const {
+    startName,
+    closeName
+  } = i18nPlaceholder;
+  const flags = I18nParamValueFlags.TemplateTag | I18nParamValueFlags.CloseTag;
+  // Self-closing tags don't have a closing tag placeholder, instead the template's closing is
+  // recorded via an additional flag on the template start value.
+  if (closeName) {
+    // Record the closing of the template. For the sub-template index, pass the index for the
+    // template's view, rather than the current i18n block's index.
+    addParam(i18nContext.params, closeName, slot, getSubTemplateIndexForTemplateTag(job, i18nBlock, view), flags);
+    // If the template is associated with a structural directive, record the structural directive's
+    // closing after. Since this template must be in the structural directive's view, we can just
+    // directly use the current i18n block's sub-template index.
+    if (structuralDirective !== undefined) {
+      addParam(i18nContext.params, closeName, structuralDirective.handle.slot, i18nBlock.subTemplateIndex, flags);
+    }
+  }
+}
+/**
+ * Get the subTemplateIndex for the given template op. For template ops, use the subTemplateIndex of
+ * the child i18n block inside the template.
+ */
+function getSubTemplateIndexForTemplateTag(job, i18nOp, view) {
+  for (const childOp of view.create) {
+    if (childOp.kind === OpKind.I18nStart) {
+      return childOp.subTemplateIndex;
+    }
+  }
+  return i18nOp.subTemplateIndex;
+}
+/**
+ * Add a param value to the given params map.
+ */
+function addParam(params, placeholder, value, subTemplateIndex, flags) {
+  const values = params.get(placeholder) ?? [];
+  values.push({
+    value,
+    subTemplateIndex,
+    flags
+  });
+  params.set(placeholder, values);
+}
+
+/**
+ * Resolve the i18n expression placeholders in i18n messages.
+ */
+function resolveI18nExpressionPlaceholders(job) {
+  // Record all of the i18n context ops, and the sub-template index for each i18n op.
+  const subTemplateIndicies = new Map();
+  const i18nContexts = new Map();
+  const icuPlaceholders = new Map();
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nStart:
+          subTemplateIndicies.set(op.xref, op.subTemplateIndex);
+          break;
+        case OpKind.I18nContext:
+          i18nContexts.set(op.xref, op);
+          break;
+        case OpKind.IcuPlaceholder:
+          icuPlaceholders.set(op.xref, op);
+          break;
+      }
+    }
+  }
+  // Keep track of the next available expression index for each i18n message.
+  const expressionIndices = new Map();
+  // Keep track of a reference index for each expression.
+  // We use different references for normal i18n expressio and attribute i18n expressions. This is
+  // because child i18n blocks in templates don't get their own context, since they're rolled into
+  // the translated message of the parent, but they may target a different slot.
+  const referenceIndex = op => op.usage === I18nExpressionFor.I18nText ? op.i18nOwner : op.context;
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      if (op.kind === OpKind.I18nExpression) {
+        const index = expressionIndices.get(referenceIndex(op)) || 0;
+        const subTemplateIndex = subTemplateIndicies.get(op.i18nOwner) ?? null;
+        const value = {
+          value: index,
+          subTemplateIndex: subTemplateIndex,
+          flags: I18nParamValueFlags.ExpressionIndex
+        };
+        updatePlaceholder(op, value, i18nContexts, icuPlaceholders);
+        expressionIndices.set(referenceIndex(op), index + 1);
+      }
+    }
+  }
+}
+function updatePlaceholder(op, value, i18nContexts, icuPlaceholders) {
+  if (op.i18nPlaceholder !== null) {
+    const i18nContext = i18nContexts.get(op.context);
+    const params = op.resolutionTime === I18nParamResolutionTime.Creation ? i18nContext.params : i18nContext.postprocessingParams;
+    const values = params.get(op.i18nPlaceholder) || [];
+    values.push(value);
+    params.set(op.i18nPlaceholder, values);
+  }
+  if (op.icuPlaceholder !== null) {
+    const icuPlaceholderOp = icuPlaceholders.get(op.icuPlaceholder);
+    icuPlaceholderOp?.expressionPlaceholders.push(value);
+  }
+}
+
+/**
+ * Resolves lexical references in views (`ir.LexicalReadExpr`) to either a target variable or to
+ * property reads on the top-level component context.
+ *
+ * Also matches `ir.RestoreViewExpr` expressions with the variables of their corresponding saved
+ * views.
+ */
+function resolveNames(job) {
+  for (const unit of job.units) {
+    processLexicalScope(unit, unit.create, null);
+    processLexicalScope(unit, unit.update, null);
+  }
+}
+function processLexicalScope(unit, ops, savedView) {
+  // Maps names defined in the lexical scope of this template to the `ir.XrefId`s of the variable
+  // declarations which represent those values.
+  //
+  // Since variables are generated in each view for the entire lexical scope (including any
+  // identifiers from parent templates) only local variables need be considered here.
+  const scope = new Map();
+  // First, step through the operations list and:
+  // 1) build up the `scope` mapping
+  // 2) recurse into any listener functions
+  for (const op of ops) {
+    switch (op.kind) {
+      case OpKind.Variable:
+        switch (op.variable.kind) {
+          case SemanticVariableKind.Identifier:
+          case SemanticVariableKind.Alias:
+            // This variable represents some kind of identifier which can be used in the template.
+            if (scope.has(op.variable.identifier)) {
+              continue;
+            }
+            scope.set(op.variable.identifier, op.xref);
+            break;
+          case SemanticVariableKind.SavedView:
+            // This variable represents a snapshot of the current view context, and can be used to
+            // restore that context within listener functions.
+            savedView = {
+              view: op.variable.view,
+              variable: op.xref
+            };
+            break;
+        }
+        break;
+      case OpKind.Listener:
+        // Listener functions have separate variable declarations, so process them as a separate
+        // lexical scope.
+        processLexicalScope(unit, op.handlerOps, savedView);
+        break;
+    }
+  }
+  // Next, use the `scope` mapping to match `ir.LexicalReadExpr` with defined names in the lexical
+  // scope. Also, look for `ir.RestoreViewExpr`s and match them with the snapshotted view context
+  // variable.
+  for (const op of ops) {
+    if (op.kind == OpKind.Listener) {
+      // Listeners were already processed above with their own scopes.
+      continue;
+    }
+    transformExpressionsInOp(op, (expr, flags) => {
+      if (expr instanceof LexicalReadExpr) {
+        // `expr` is a read of a name within the lexical scope of this view.
+        // Either that name is defined within the current view, or it represents a property from the
+        // main component context.
+        if (scope.has(expr.name)) {
+          // This was a defined variable in the current scope.
+          return new ReadVariableExpr(scope.get(expr.name));
+        } else {
+          // Reading from the component context.
+          return new ReadPropExpr(new ContextExpr(unit.job.root.xref), expr.name);
+        }
+      } else if (expr instanceof RestoreViewExpr && typeof expr.view === 'number') {
+        // `ir.RestoreViewExpr` happens in listener functions and restores a saved view from the
+        // parent creation list. We expect to find that we captured the `savedView` previously, and
+        // that it matches the expected view to be restored.
+        if (savedView === null || savedView.view !== expr.view) {
+          throw new Error(`AssertionError: no saved view ${expr.view} from view ${unit.xref}`);
+        }
+        expr.view = new ReadVariableExpr(savedView.variable);
+        return expr;
+      } else {
+        return expr;
+      }
+    }, VisitorContextFlag.None);
+  }
+  for (const op of ops) {
+    visitExpressionsInOp(op, expr => {
+      if (expr instanceof LexicalReadExpr) {
+        throw new Error(`AssertionError: no lexical reads should remain, but found read of ${expr.name}`);
+      }
+    });
+  }
+}
+
+/**
+ * Map of security contexts to their sanitizer function.
+ */
+const sanitizerFns = new Map([[SecurityContext.HTML, Identifiers.sanitizeHtml], [SecurityContext.RESOURCE_URL, Identifiers.sanitizeResourceUrl], [SecurityContext.SCRIPT, Identifiers.sanitizeScript], [SecurityContext.STYLE, Identifiers.sanitizeStyle], [SecurityContext.URL, Identifiers.sanitizeUrl]]);
+/**
+ * Map of security contexts to their trusted value function.
+ */
+const trustedValueFns = new Map([[SecurityContext.HTML, Identifiers.trustConstantHtml], [SecurityContext.RESOURCE_URL, Identifiers.trustConstantResourceUrl]]);
+/**
+ * Resolves sanitization functions for ops that need them.
+ */
+function resolveSanitizers(job) {
+  for (const unit of job.units) {
+    const elements = createOpXrefMap(unit);
+    // For normal element bindings we create trusted values for security sensitive constant
+    // attributes. However, for host bindings we skip this step (this matches what
+    // TemplateDefinitionBuilder does).
+    // TODO: Is the TDB behavior correct here?
+    if (job.kind !== CompilationJobKind.Host) {
+      for (const op of unit.create) {
+        if (op.kind === OpKind.ExtractedAttribute) {
+          const trustedValueFn = trustedValueFns.get(getOnlySecurityContext(op.securityContext)) ?? null;
+          op.trustedValueFn = trustedValueFn !== null ? importExpr(trustedValueFn) : null;
+        }
+      }
+    }
+    for (const op of unit.update) {
+      switch (op.kind) {
+        case OpKind.Property:
+        case OpKind.Attribute:
+        case OpKind.HostProperty:
+          let sanitizerFn = null;
+          if (Array.isArray(op.securityContext) && op.securityContext.length === 2 && op.securityContext.indexOf(SecurityContext.URL) > -1 && op.securityContext.indexOf(SecurityContext.RESOURCE_URL) > -1) {
+            // When the host element isn't known, some URL attributes (such as "src" and "href") may
+            // be part of multiple different security contexts. In this case we use special
+            // sanitization function and select the actual sanitizer at runtime based on a tag name
+            // that is provided while invoking sanitization function.
+            sanitizerFn = Identifiers.sanitizeUrlOrResourceUrl;
+          } else {
+            sanitizerFn = sanitizerFns.get(getOnlySecurityContext(op.securityContext)) ?? null;
+          }
+          op.sanitizer = sanitizerFn !== null ? importExpr(sanitizerFn) : null;
+          // If there was no sanitization function found based on the security context of an
+          // attribute/property, check whether this attribute/property is one of the
+          // security-sensitive <iframe> attributes (and that the current element is actually an
+          // <iframe>).
+          if (op.sanitizer === null) {
+            let isIframe = false;
+            if (job.kind === CompilationJobKind.Host || op.kind === OpKind.HostProperty) {
+              // Note: for host bindings defined on a directive, we do not try to find all
+              // possible places where it can be matched, so we can not determine whether
+              // the host element is an <iframe>. In this case, we just assume it is and append a
+              // validation function, which is invoked at runtime and would have access to the
+              // underlying DOM element to check if it's an <iframe> and if so - run extra checks.
+              isIframe = true;
+            } else {
+              // For a normal binding we can just check if the element its on is an iframe.
+              const ownerOp = elements.get(op.target);
+              if (ownerOp === undefined || !isElementOrContainerOp(ownerOp)) {
+                throw Error('Property should have an element-like owner');
+              }
+              isIframe = isIframeElement$1(ownerOp);
+            }
+            if (isIframe && isIframeSecuritySensitiveAttr(op.name)) {
+              op.sanitizer = importExpr(Identifiers.validateIframeAttribute);
+            }
+          }
+          break;
+      }
+    }
+  }
+}
+/**
+ * Checks whether the given op represents an iframe element.
+ */
+function isIframeElement$1(op) {
+  return op.kind === OpKind.ElementStart && op.tag?.toLowerCase() === 'iframe';
+}
+/**
+ * Asserts that there is only a single security context and returns it.
+ */
+function getOnlySecurityContext(securityContext) {
+  if (Array.isArray(securityContext)) {
+    if (securityContext.length > 1) {
+      // TODO: What should we do here? TDB just took the first one, but this feels like something we
+      // would want to know about and create a special case for like we did for Url/ResourceUrl. My
+      // guess is that, outside of the Url/ResourceUrl case, this never actually happens. If there
+      // do turn out to be other cases, throwing an error until we can address it feels safer.
+      throw Error(`AssertionError: Ambiguous security context`);
+    }
+    return securityContext[0] || SecurityContext.NONE;
+  }
+  return securityContext;
+}
+
+/**
+ * When inside of a listener, we may need access to one or more enclosing views. Therefore, each
+ * view should save the current view, and each listener must have the ability to restore the
+ * appropriate view. We eagerly generate all save view variables; they will be optimized away later.
+ */
+function saveAndRestoreView(job) {
+  for (const unit of job.units) {
+    unit.create.prepend([createVariableOp(unit.job.allocateXrefId(), {
+      kind: SemanticVariableKind.SavedView,
+      name: null,
+      view: unit.xref
+    }, new GetCurrentViewExpr(), VariableFlags.None)]);
+    for (const op of unit.create) {
+      if (op.kind !== OpKind.Listener) {
+        continue;
+      }
+      // Embedded views always need the save/restore view operation.
+      let needsRestoreView = unit !== job.root;
+      if (!needsRestoreView) {
+        for (const handlerOp of op.handlerOps) {
+          visitExpressionsInOp(handlerOp, expr => {
+            if (expr instanceof ReferenceExpr) {
+              // Listeners that reference() a local ref need the save/restore view operation.
+              needsRestoreView = true;
+            }
+          });
+        }
+      }
+      if (needsRestoreView) {
+        addSaveRestoreViewOperationToListener(unit, op);
+      }
+    }
+  }
+}
+function addSaveRestoreViewOperationToListener(unit, op) {
+  op.handlerOps.prepend([createVariableOp(unit.job.allocateXrefId(), {
+    kind: SemanticVariableKind.Context,
+    name: null,
+    view: unit.xref
+  }, new RestoreViewExpr(unit.xref), VariableFlags.None)]);
+  // The "restore view" operation in listeners requires a call to `resetView` to reset the
+  // context prior to returning from the listener operation. Find any `return` statements in
+  // the listener body and wrap them in a call to reset the view.
+  for (const handlerOp of op.handlerOps) {
+    if (handlerOp.kind === OpKind.Statement && handlerOp.statement instanceof ReturnStatement) {
+      handlerOp.statement.value = new ResetViewExpr(handlerOp.statement.value);
+    }
+  }
+}
+
+/**
+ * Assign data slots for all operations which implement `ConsumesSlotOpTrait`, and propagate the
+ * assigned data slots of those operations to any expressions which reference them via
+ * `UsesSlotIndexTrait`.
+ *
+ * This phase is also responsible for counting the number of slots used for each view (its `decls`)
+ * and propagating that number into the `Template` operations which declare embedded views.
+ */
+function allocateSlots(job) {
+  // Map of all declarations in all views within the component which require an assigned slot index.
+  // This map needs to be global (across all views within the component) since it's possible to
+  // reference a slot from one view from an expression within another (e.g. local references work
+  // this way).
+  const slotMap = new Map();
+  // Process all views in the component and assign slot indexes.
+  for (const unit of job.units) {
+    // Slot indices start at 0 for each view (and are not unique between views).
+    let slotCount = 0;
+    for (const op of unit.create) {
+      // Only consider declarations which consume data slots.
+      if (!hasConsumesSlotTrait(op)) {
+        continue;
+      }
+      // Assign slots to this declaration starting at the current `slotCount`.
+      op.handle.slot = slotCount;
+      // And track its assigned slot in the `slotMap`.
+      slotMap.set(op.xref, op.handle.slot);
+      // Each declaration may use more than 1 slot, so increment `slotCount` to reserve the number
+      // of slots required.
+      slotCount += op.numSlotsUsed;
+    }
+    // Record the total number of slots used on the view itself. This will later be propagated into
+    // `ir.TemplateOp`s which declare those views (except for the root view).
+    unit.decls = slotCount;
+  }
+  // After slot assignment, `slotMap` now contains slot assignments for every declaration in the
+  // whole template, across all views. Next, look for expressions which implement
+  // `UsesSlotIndexExprTrait` and propagate the assigned slot indexes into them.
+  // Additionally, this second scan allows us to find `ir.TemplateOp`s which declare views and
+  // propagate the number of slots used for each view into the operation which declares it.
+  for (const unit of job.units) {
+    for (const op of unit.ops()) {
+      if (op.kind === OpKind.Template || op.kind === OpKind.RepeaterCreate) {
+        // Record the number of slots used by the view this `ir.TemplateOp` declares in the
+        // operation itself, so it can be emitted later.
+        const childView = job.views.get(op.xref);
+        op.decls = childView.decls;
+        // TODO: currently we handle the decls for the RepeaterCreate empty template in the reify
+        // phase. We should handle that here instead.
+      }
+    }
+  }
+}
+
+/**
+ * Transforms special-case bindings with 'style' or 'class' in their names. Must run before the
+ * main binding specialization pass.
+ */
+function specializeStyleBindings(job) {
+  for (const unit of job.units) {
+    for (const op of unit.update) {
+      if (op.kind !== OpKind.Binding) {
+        continue;
+      }
+      switch (op.bindingKind) {
+        case BindingKind.ClassName:
+          if (op.expression instanceof Interpolation) {
+            throw new Error(`Unexpected interpolation in ClassName binding`);
+          }
+          OpList.replace(op, createClassPropOp(op.target, op.name, op.expression, op.sourceSpan));
+          break;
+        case BindingKind.StyleProperty:
+          OpList.replace(op, createStylePropOp(op.target, op.name, op.expression, op.unit, op.sourceSpan));
+          break;
+        case BindingKind.Property:
+        case BindingKind.Template:
+          if (op.name === 'style') {
+            OpList.replace(op, createStyleMapOp(op.target, op.expression, op.sourceSpan));
+          } else if (op.name === 'class') {
+            OpList.replace(op, createClassMapOp(op.target, op.expression, op.sourceSpan));
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ * Find all assignments and usages of temporary variables, which are linked to each other with cross
+ * references. Generate names for each cross-reference, and add a `DeclareVarStmt` to initialize
+ * them at the beginning of the update block.
+ *
+ * TODO: Sometimes, it will be possible to reuse names across different subexpressions. For example,
+ * in the double keyed read `a?.[f()]?.[f()]`, the two function calls have non-overlapping scopes.
+ * Implement an algorithm for reuse.
+ */
+function generateTemporaryVariables(job) {
+  for (const unit of job.units) {
+    unit.create.prepend(generateTemporaries(unit.create));
+    unit.update.prepend(generateTemporaries(unit.update));
+  }
+}
+function generateTemporaries(ops) {
+  let opCount = 0;
+  let generatedStatements = [];
+  // For each op, search for any variables that are assigned or read. For each variable, generate a
+  // name and produce a `DeclareVarStmt` to the beginning of the block.
+  for (const op of ops) {
+    // Identify the final time each temp var is read.
+    const finalReads = new Map();
+    visitExpressionsInOp(op, (expr, flag) => {
+      if (flag & VisitorContextFlag.InChildOperation) {
+        return;
+      }
+      if (expr instanceof ReadTemporaryExpr) {
+        finalReads.set(expr.xref, expr);
+      }
+    });
+    // Name the temp vars, accounting for the fact that a name can be reused after it has been
+    // read for the final time.
+    let count = 0;
+    const assigned = new Set();
+    const released = new Set();
+    const defs = new Map();
+    visitExpressionsInOp(op, (expr, flag) => {
+      if (flag & VisitorContextFlag.InChildOperation) {
+        return;
+      }
+      if (expr instanceof AssignTemporaryExpr) {
+        if (!assigned.has(expr.xref)) {
+          assigned.add(expr.xref);
+          // TODO: Exactly replicate the naming scheme used by `TemplateDefinitionBuilder`.
+          // It seems to rely on an expression index instead of an op index.
+          defs.set(expr.xref, `tmp_${opCount}_${count++}`);
+        }
+        assignName(defs, expr);
+      } else if (expr instanceof ReadTemporaryExpr) {
+        if (finalReads.get(expr.xref) === expr) {
+          released.add(expr.xref);
+          count--;
+        }
+        assignName(defs, expr);
+      }
+    });
+    // Add declarations for the temp vars.
+    generatedStatements.push(...Array.from(new Set(defs.values())).map(name => createStatementOp(new DeclareVarStmt(name))));
+    opCount++;
+    if (op.kind === OpKind.Listener) {
+      op.handlerOps.prepend(generateTemporaries(op.handlerOps));
+    }
+  }
+  return generatedStatements;
+}
+/**
+ * Assigns a name to the temporary variable in the given temporary variable expression.
+ */
+function assignName(names, expr) {
+  const name = names.get(expr.xref);
+  if (name === undefined) {
+    throw new Error(`Found xref with unassigned name: ${expr.xref}`);
+  }
+  expr.name = name;
+}
+
+/**
+ * Generate track functions that need to be extracted to the constant pool. This entails wrapping
+ * them in an arrow (or traditional) function, replacing context reads with `this.`, and storing
+ * them in the constant pool.
+ *
+ * Note that, if a track function was previously optimized, it will not need to be extracted, and
+ * this phase is a no-op.
+ */
+function generateTrackFns(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind !== OpKind.RepeaterCreate) {
+        continue;
+      }
+      if (op.trackByFn !== null) {
+        // The final track function was already set, probably because it was optimized.
+        continue;
+      }
+      // Find all component context reads.
+      let usesComponentContext = false;
+      op.track = transformExpressionsInExpression(op.track, expr => {
+        if (expr instanceof TrackContextExpr) {
+          usesComponentContext = true;
+          return variable('this');
+        }
+        return expr;
+      }, VisitorContextFlag.None);
+      let fn;
+      const fnParams = [new FnParam('$index'), new FnParam('$item')];
+      if (usesComponentContext) {
+        fn = new FunctionExpr(fnParams, [new ReturnStatement(op.track)]);
+      } else {
+        fn = arrowFn(fnParams, op.track);
+      }
+      op.trackByFn = job.pool.getSharedFunctionReference(fn, '_forTrack');
+    }
+  }
+}
+
+/**
+ * `track` functions in `for` repeaters can sometimes be "optimized," i.e. transformed into inline
+ * expressions, in lieu of an external function call. For example, tracking by `$index` can be be
+ * optimized into an inline `trackByIndex` reference. This phase checks track expressions for
+ * optimizable cases.
+ */
+function optimizeTrackFns(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind !== OpKind.RepeaterCreate) {
+        continue;
+      }
+      if (op.track instanceof ReadVarExpr && op.track.name === '$index') {
+        // Top-level access of `$index` uses the built in `repeaterTrackByIndex`.
+        op.trackByFn = importExpr(Identifiers.repeaterTrackByIndex);
+      } else if (op.track instanceof ReadVarExpr && op.track.name === '$item') {
+        // Top-level access of the item uses the built in `repeaterTrackByIdentity`.
+        op.trackByFn = importExpr(Identifiers.repeaterTrackByIdentity);
+      } else if (isTrackByFunctionCall(job.root.xref, op.track)) {
+        // Top-level method calls in the form of `fn($index, item)` can be passed in directly.
+        if (op.track.receiver.receiver.view === unit.xref) {
+          // TODO: this may be wrong
+          op.trackByFn = op.track.receiver;
+        } else {
+          // This is a plain method call, but not in the component's root view.
+          // We need to get the component instance, and then call the method on it.
+          op.trackByFn = importExpr(Identifiers.componentInstance).callFn([]).prop(op.track.receiver.name);
+          // Because the context is not avaiable (without a special function), we don't want to
+          // try to resolve it later. Let's get rid of it by overwriting the original track
+          // expression (which won't be used anyway).
+          op.track = op.trackByFn;
+        }
+      } else {
+        // The track function could not be optimized.
+        // Replace context reads with a special IR expression, since context reads in a track
+        // function are emitted specially.
+        op.track = transformExpressionsInExpression(op.track, expr => {
+          if (expr instanceof ContextExpr) {
+            op.usesComponentInstance = true;
+            return new TrackContextExpr(expr.view);
+          }
+          return expr;
+        }, VisitorContextFlag.None);
+      }
+    }
+  }
+}
+function isTrackByFunctionCall(rootView, expr) {
+  if (!(expr instanceof InvokeFunctionExpr) || expr.args.length !== 2) {
+    return false;
+  }
+  if (!(expr.receiver instanceof ReadPropExpr && expr.receiver.receiver instanceof ContextExpr) || expr.receiver.receiver.view !== rootView) {
+    return false;
+  }
+  const [arg0, arg1] = expr.args;
+  if (!(arg0 instanceof ReadVarExpr) || arg0.name !== '$index') {
+    return false;
+  }
+  if (!(arg1 instanceof ReadVarExpr) || arg1.name !== '$item') {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Inside the `track` expression on a `for` repeater, the `$index` and `$item` variables are
+ * ambiently available. In this phase, we find those variable usages, and replace them with the
+ * appropriate output read.
+ */
+function generateTrackVariables(job) {
+  for (const unit of job.units) {
+    for (const op of unit.create) {
+      if (op.kind !== OpKind.RepeaterCreate) {
+        continue;
+      }
+      op.track = transformExpressionsInExpression(op.track, expr => {
+        if (expr instanceof LexicalReadExpr) {
+          if (expr.name === op.varNames.$index) {
+            return variable('$index');
+          } else if (expr.name === op.varNames.$implicit) {
+            return variable('$item');
+          }
+          // TODO: handle prohibited context variables (emit as globals?)
+        }
+
+        return expr;
+      }, VisitorContextFlag.None);
+    }
+  }
+}
+
+/**
+ * Counts the number of variable slots used within each view, and stores that on the view itself, as
+ * well as propagates it to the `ir.TemplateOp` for embedded views.
+ */
+function countVariables(job) {
+  // First, count the vars used in each view, and update the view-level counter.
+  for (const unit of job.units) {
+    let varCount = 0;
+    // Count variables on top-level ops first. Don't explore nested expressions just yet.
+    for (const op of unit.ops()) {
+      if (hasConsumesVarsTrait(op)) {
+        varCount += varsUsedByOp(op);
+      }
+    }
+    // Count variables on expressions inside ops. We do this later because some of these expressions
+    // might be conditional (e.g. `pipeBinding` inside of a ternary), and we don't want to interfere
+    // with indices for top-level binding slots (e.g. `property`).
+    for (const op of unit.ops()) {
+      visitExpressionsInOp(op, expr => {
+        if (!isIrExpression(expr)) {
+          return;
+        }
+        // TemplateDefinitionBuilder assigns variable offsets for everything but pure functions
+        // first, and then assigns offsets to pure functions lazily. We emulate that behavior by
+        // assigning offsets in two passes instead of one, only in compatibility mode.
+        if (job.compatibility === CompatibilityMode.TemplateDefinitionBuilder && expr instanceof PureFunctionExpr) {
+          return;
+        }
+        // Some expressions require knowledge of the number of variable slots consumed.
+        if (hasUsesVarOffsetTrait(expr)) {
+          expr.varOffset = varCount;
+        }
+        if (hasConsumesVarsTrait(expr)) {
+          varCount += varsUsedByIrExpression(expr);
+        }
+      });
+    }
+    // Compatiblity mode pass for pure function offsets (as explained above).
+    if (job.compatibility === CompatibilityMode.TemplateDefinitionBuilder) {
+      for (const op of unit.ops()) {
+        visitExpressionsInOp(op, expr => {
+          if (!isIrExpression(expr) || !(expr instanceof PureFunctionExpr)) {
+            return;
+          }
+          // Some expressions require knowledge of the number of variable slots consumed.
+          if (hasUsesVarOffsetTrait(expr)) {
+            expr.varOffset = varCount;
+          }
+          if (hasConsumesVarsTrait(expr)) {
+            varCount += varsUsedByIrExpression(expr);
+          }
+        });
+      }
+    }
+    unit.vars = varCount;
+  }
+  if (job instanceof ComponentCompilationJob) {
+    // Add var counts for each view to the `ir.TemplateOp` which declares that view (if the view is
+    // an embedded view).
+    for (const unit of job.units) {
+      for (const op of unit.create) {
+        if (op.kind !== OpKind.Template && op.kind !== OpKind.RepeaterCreate) {
+          continue;
+        }
+        const childView = job.views.get(op.xref);
+        op.vars = childView.vars;
+        // TODO: currently we handle the vars for the RepeaterCreate empty template in the reify
+        // phase. We should handle that here instead.
+      }
+    }
+  }
+}
+/**
+ * Different operations that implement `ir.UsesVarsTrait` use different numbers of variables, so
+ * count the variables used by any particular `op`.
+ */
+function varsUsedByOp(op) {
+  let slots;
+  switch (op.kind) {
+    case OpKind.Property:
+    case OpKind.HostProperty:
+    case OpKind.Attribute:
+      // All of these bindings use 1 variable slot, plus 1 slot for every interpolated expression,
+      // if any.
+      slots = 1;
+      if (op.expression instanceof Interpolation && !isSingletonInterpolation(op.expression)) {
+        slots += op.expression.expressions.length;
+      }
+      return slots;
+    case OpKind.StyleProp:
+    case OpKind.ClassProp:
+    case OpKind.StyleMap:
+    case OpKind.ClassMap:
+      // Style & class bindings use 2 variable slots, plus 1 slot for every interpolated expression,
+      // if any.
+      slots = 2;
+      if (op.expression instanceof Interpolation) {
+        slots += op.expression.expressions.length;
+      }
+      return slots;
+    case OpKind.InterpolateText:
+      // `ir.InterpolateTextOp`s use a variable slot for each dynamic expression.
+      return op.interpolation.expressions.length;
+    case OpKind.I18nExpression:
+    case OpKind.Conditional:
+    case OpKind.DeferWhen:
+      return 1;
+    case OpKind.RepeaterCreate:
+      // Repeaters may require an extra variable binding slot, if they have an empty view, for the
+      // empty block tracking.
+      // TODO: It's a bit odd to have a create mode instruction consume variable slots. Maybe we can
+      // find a way to use the Repeater update op instead.
+      return op.emptyView ? 1 : 0;
+    default:
+      throw new Error(`Unhandled op: ${OpKind[op.kind]}`);
+  }
+}
+function varsUsedByIrExpression(expr) {
+  switch (expr.kind) {
+    case ExpressionKind.PureFunctionExpr:
+      return 1 + expr.args.length;
+    case ExpressionKind.PipeBinding:
+      return 1 + expr.args.length;
+    case ExpressionKind.PipeBindingVariadic:
+      return 1 + expr.numArgs;
+    default:
+      throw new Error(`AssertionError: unhandled ConsumesVarsTrait expression ${expr.constructor.name}`);
+  }
+}
+function isSingletonInterpolation(expr) {
+  if (expr.expressions.length !== 1 || expr.strings.length !== 2) {
+    return false;
+  }
+  if (expr.strings[0] !== '' || expr.strings[1] !== '') {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * Optimize variables declared and used in the IR.
+ *
+ * Variables are eagerly generated by pipeline stages for all possible values that could be
+ * referenced. This stage processes the list of declared variables and all variable usages,
+ * and optimizes where possible. It performs 3 main optimizations:
+ *
+ *   * It transforms variable declarations to side effectful expressions when the
+ *     variable is not used, but its initializer has global effects which other
+ *     operations rely upon.
+ *   * It removes variable declarations if those variables are not referenced and
+ *     either they do not have global effects, or nothing relies on them.
+ *   * It inlines variable declarations when those variables are only used once
+ *     and the inlining is semantically safe.
+ *
+ * To guarantee correctness, analysis of "fences" in the instruction lists is used to determine
+ * which optimizations are safe to perform.
+ */
+function optimizeVariables(job) {
+  for (const unit of job.units) {
+    inlineAlwaysInlineVariables(unit.create);
+    inlineAlwaysInlineVariables(unit.update);
+    for (const op of unit.create) {
+      if (op.kind === OpKind.Listener) {
+        inlineAlwaysInlineVariables(op.handlerOps);
+      }
+    }
+    optimizeVariablesInOpList(unit.create, job.compatibility);
+    optimizeVariablesInOpList(unit.update, job.compatibility);
+    for (const op of unit.create) {
+      if (op.kind === OpKind.Listener) {
+        optimizeVariablesInOpList(op.handlerOps, job.compatibility);
+      }
+    }
+  }
+}
+/**
+ * A [fence](https://en.wikipedia.org/wiki/Memory_barrier) flag for an expression which indicates
+ * how that expression can be optimized in relation to other expressions or instructions.
+ *
+ * `Fence`s are a bitfield, so multiple flags may be set on a single expression.
+ */
+var Fence;
+(function (Fence) {
+  /**
+   * Empty flag (no fence exists).
+   */
+  Fence[Fence["None"] = 0] = "None";
+  /**
+   * A context read fence, meaning that the expression in question reads from the "current view"
+   * context of the runtime.
+   */
+  Fence[Fence["ViewContextRead"] = 1] = "ViewContextRead";
+  /**
+   * A context write fence, meaning that the expression in question writes to the "current view"
+   * context of the runtime.
+   *
+   * Note that all `ContextWrite` fences are implicitly `ContextRead` fences as operations which
+   * change the view context do so based on the current one.
+   */
+  Fence[Fence["ViewContextWrite"] = 2] = "ViewContextWrite";
+  /**
+   * Indicates that a call is required for its side-effects, even if nothing reads its result.
+   *
+   * This is also true of `ViewContextWrite` operations **if** they are followed by a
+   * `ViewContextRead`.
+   */
+  Fence[Fence["SideEffectful"] = 4] = "SideEffectful";
+})(Fence || (Fence = {}));
+function inlineAlwaysInlineVariables(ops) {
+  const vars = new Map();
+  for (const op of ops) {
+    if (op.kind === OpKind.Variable && op.flags & VariableFlags.AlwaysInline) {
+      visitExpressionsInOp(op, expr => {
+        if (isIrExpression(expr) && fencesForIrExpression(expr) !== Fence.None) {
+          throw new Error(`AssertionError: A context-sensitive variable was marked AlwaysInline`);
+        }
+      });
+      vars.set(op.xref, op);
+    }
+    transformExpressionsInOp(op, expr => {
+      if (expr instanceof ReadVariableExpr && vars.has(expr.xref)) {
+        const varOp = vars.get(expr.xref);
+        // Inline by cloning, because we might inline into multiple places.
+        return varOp.initializer.clone();
+      }
+      return expr;
+    }, VisitorContextFlag.None);
+  }
+  for (const op of vars.values()) {
+    OpList.remove(op);
+  }
+}
+/**
+ * Process a list of operations and optimize variables within that list.
+ */
+function optimizeVariablesInOpList(ops, compatibility) {
+  const varDecls = new Map();
+  const varUsages = new Map();
+  // Track variables that are used outside of the immediate operation list. For example, within
+  // `ListenerOp` handler operations of listeners in the current operation list.
+  const varRemoteUsages = new Set();
+  const opMap = new Map();
+  // First, extract information about variables declared or used within the whole list.
+  for (const op of ops) {
+    if (op.kind === OpKind.Variable) {
+      if (varDecls.has(op.xref) || varUsages.has(op.xref)) {
+        throw new Error(`Should not see two declarations of the same variable: ${op.xref}`);
+      }
+      varDecls.set(op.xref, op);
+      varUsages.set(op.xref, 0);
+    }
+    opMap.set(op, collectOpInfo(op));
+    countVariableUsages(op, varUsages, varRemoteUsages);
+  }
+  // The next step is to remove any variable declarations for variables that aren't used. The
+  // variable initializer expressions may be side-effectful, so they may need to be retained as
+  // expression statements.
+  // Track whether we've seen an operation which reads from the view context yet. This is used to
+  // determine whether a write to the view context in a variable initializer can be observed.
+  let contextIsUsed = false;
+  // Note that iteration through the list happens in reverse, which guarantees that we'll process
+  // all reads of a variable prior to processing its declaration.
+  for (const op of ops.reversed()) {
+    const opInfo = opMap.get(op);
+    if (op.kind === OpKind.Variable && varUsages.get(op.xref) === 0) {
+      // This variable is unused and can be removed. We might need to keep the initializer around,
+      // though, if something depends on it running.
+      if (contextIsUsed && opInfo.fences & Fence.ViewContextWrite || opInfo.fences & Fence.SideEffectful) {
+        // This variable initializer has a side effect which must be retained. Either:
+        //  * it writes to the view context, and we know there is a future operation which depends
+        //    on that write, or
+        //  * it's an operation which is inherently side-effectful.
+        // We can't remove the initializer, but we can remove the variable declaration itself and
+        // replace it with a side-effectful statement.
+        const stmtOp = createStatementOp(op.initializer.toStmt());
+        opMap.set(stmtOp, opInfo);
+        OpList.replace(op, stmtOp);
+      } else {
+        // It's safe to delete this entire variable declaration as nothing depends on it, even
+        // side-effectfully. Note that doing this might make other variables unused. Since we're
+        // iterating in reverse order, we should always be processing usages before declarations
+        // and therefore by the time we get to a declaration, all removable usages will have been
+        // removed.
+        uncountVariableUsages(op, varUsages);
+        OpList.remove(op);
+      }
+      opMap.delete(op);
+      varDecls.delete(op.xref);
+      varUsages.delete(op.xref);
+      continue;
+    }
+    // Does this operation depend on the view context?
+    if (opInfo.fences & Fence.ViewContextRead) {
+      contextIsUsed = true;
+    }
+  }
+  // Next, inline any remaining variables with exactly one usage.
+  const toInline = [];
+  for (const [id, count] of varUsages) {
+    const decl = varDecls.get(id);
+    const varInfo = opMap.get(decl);
+    // We can inline variables that:
+    //  - are used exactly once, and
+    //  - are not used remotely
+    // OR
+    //  - are marked for always inlining
+    const isAlwaysInline = !!(decl.flags & VariableFlags.AlwaysInline);
+    if (count !== 1 || isAlwaysInline) {
+      // We can't inline this variable as it's used more than once.
+      continue;
+    }
+    if (varRemoteUsages.has(id)) {
+      // This variable is used once, but across an operation boundary, so it can't be inlined.
+      continue;
+    }
+    toInline.push(id);
+  }
+  let candidate;
+  while (candidate = toInline.pop()) {
+    // We will attempt to inline this variable. If inlining fails (due to fences for example),
+    // no future operation will make inlining legal.
+    const decl = varDecls.get(candidate);
+    const varInfo = opMap.get(decl);
+    const isAlwaysInline = !!(decl.flags & VariableFlags.AlwaysInline);
+    if (isAlwaysInline) {
+      throw new Error(`AssertionError: Found an 'AlwaysInline' variable after the always inlining pass.`);
+    }
+    // Scan operations following the variable declaration and look for the point where that variable
+    // is used. There should only be one usage given the precondition above.
+    for (let targetOp = decl.next; targetOp.kind !== OpKind.ListEnd; targetOp = targetOp.next) {
+      const opInfo = opMap.get(targetOp);
+      // Is the variable used in this operation?
+      if (opInfo.variablesUsed.has(candidate)) {
+        if (compatibility === CompatibilityMode.TemplateDefinitionBuilder && !allowConservativeInlining(decl, targetOp)) {
+          // We're in conservative mode, and this variable is not eligible for inlining into the
+          // target operation in this mode.
+          break;
+        }
+        // Yes, try to inline it. Inlining may not be successful if fences in this operation before
+        // the variable's usage cannot be safely crossed.
+        if (tryInlineVariableInitializer(candidate, decl.initializer, targetOp, varInfo.fences)) {
+          // Inlining was successful! Update the tracking structures to reflect the inlined
+          // variable.
+          opInfo.variablesUsed.delete(candidate);
+          // Add all variables used in the variable's initializer to its new usage site.
+          for (const id of varInfo.variablesUsed) {
+            opInfo.variablesUsed.add(id);
+          }
+          // Merge fences in the variable's initializer into its new usage site.
+          opInfo.fences |= varInfo.fences;
+          // Delete tracking info related to the declaration.
+          varDecls.delete(candidate);
+          varUsages.delete(candidate);
+          opMap.delete(decl);
+          // And finally, delete the original declaration from the operation list.
+          OpList.remove(decl);
+        }
+        // Whether inlining succeeded or failed, we're done processing this variable.
+        break;
+      }
+      // If the variable is not used in this operation, then we'd need to inline across it. Check if
+      // that's safe to do.
+      if (!safeToInlinePastFences(opInfo.fences, varInfo.fences)) {
+        // We can't safely inline this variable beyond this operation, so don't proceed with
+        // inlining this variable.
+        break;
+      }
+    }
+  }
+}
+/**
+ * Given an `ir.Expression`, returns the `Fence` flags for that expression type.
+ */
+function fencesForIrExpression(expr) {
+  switch (expr.kind) {
+    case ExpressionKind.NextContext:
+      return Fence.ViewContextRead | Fence.ViewContextWrite;
+    case ExpressionKind.RestoreView:
+      return Fence.ViewContextRead | Fence.ViewContextWrite | Fence.SideEffectful;
+    case ExpressionKind.Reference:
+      return Fence.ViewContextRead;
+    default:
+      return Fence.None;
+  }
+}
+/**
+ * Build the `OpInfo` structure for the given `op`. This performs two operations:
+ *
+ *  * It tracks which variables are used in the operation's expressions.
+ *  * It rolls up fence flags for expressions within the operation.
+ */
+function collectOpInfo(op) {
+  let fences = Fence.None;
+  const variablesUsed = new Set();
+  visitExpressionsInOp(op, expr => {
+    if (!isIrExpression(expr)) {
+      return;
+    }
+    switch (expr.kind) {
+      case ExpressionKind.ReadVariable:
+        variablesUsed.add(expr.xref);
+        break;
+      default:
+        fences |= fencesForIrExpression(expr);
+    }
+  });
+  return {
+    fences,
+    variablesUsed
+  };
+}
+/**
+ * Count the number of usages of each variable, being careful to track whether those usages are
+ * local or remote.
+ */
+function countVariableUsages(op, varUsages, varRemoteUsage) {
+  visitExpressionsInOp(op, (expr, flags) => {
+    if (!isIrExpression(expr)) {
+      return;
+    }
+    if (expr.kind !== ExpressionKind.ReadVariable) {
+      return;
+    }
+    const count = varUsages.get(expr.xref);
+    if (count === undefined) {
+      // This variable is declared outside the current scope of optimization.
+      return;
+    }
+    varUsages.set(expr.xref, count + 1);
+    if (flags & VisitorContextFlag.InChildOperation) {
+      varRemoteUsage.add(expr.xref);
+    }
+  });
+}
+/**
+ * Remove usages of a variable in `op` from the `varUsages` tracking.
+ */
+function uncountVariableUsages(op, varUsages) {
+  visitExpressionsInOp(op, expr => {
+    if (!isIrExpression(expr)) {
+      return;
+    }
+    if (expr.kind !== ExpressionKind.ReadVariable) {
+      return;
+    }
+    const count = varUsages.get(expr.xref);
+    if (count === undefined) {
+      // This variable is declared outside the current scope of optimization.
+      return;
+    } else if (count === 0) {
+      throw new Error(`Inaccurate variable count: ${expr.xref} - found another read but count is already 0`);
+    }
+    varUsages.set(expr.xref, count - 1);
+  });
+}
+/**
+ * Checks whether it's safe to inline a variable across a particular operation.
+ *
+ * @param fences the fences of the operation which the inlining will cross
+ * @param declFences the fences of the variable being inlined.
+ */
+function safeToInlinePastFences(fences, declFences) {
+  if (fences & Fence.ViewContextWrite) {
+    // It's not safe to inline context reads across context writes.
+    if (declFences & Fence.ViewContextRead) {
+      return false;
+    }
+  } else if (fences & Fence.ViewContextRead) {
+    // It's not safe to inline context writes across context reads.
+    if (declFences & Fence.ViewContextWrite) {
+      return false;
+    }
+  }
+  return true;
+}
+/**
+ * Attempt to inline the initializer of a variable into a target operation's expressions.
+ *
+ * This may or may not be safe to do. For example, the variable could be read following the
+ * execution of an expression with fences that don't permit the variable to be inlined across them.
+ */
+function tryInlineVariableInitializer(id, initializer, target, declFences) {
+  // We use `ir.transformExpressionsInOp` to walk the expressions and inline the variable if
+  // possible. Since this operation is callback-based, once inlining succeeds or fails we can't
+  // "stop" the expression processing, and have to keep track of whether inlining has succeeded or
+  // is no longer allowed.
+  let inlined = false;
+  let inliningAllowed = true;
+  transformExpressionsInOp(target, (expr, flags) => {
+    if (!isIrExpression(expr)) {
+      return expr;
+    }
+    if (inlined || !inliningAllowed) {
+      // Either the inlining has already succeeded, or we've passed a fence that disallows inlining
+      // at this point, so don't try.
+      return expr;
+    } else if (flags & VisitorContextFlag.InChildOperation && declFences & Fence.ViewContextRead) {
+      // We cannot inline variables that are sensitive to the current context across operation
+      // boundaries.
+      return expr;
+    }
+    switch (expr.kind) {
+      case ExpressionKind.ReadVariable:
+        if (expr.xref === id) {
+          // This is the usage site of the variable. Since nothing has disallowed inlining, it's
+          // safe to inline the initializer here.
+          inlined = true;
+          return initializer;
+        }
+        break;
+      default:
+        // For other types of `ir.Expression`s, whether inlining is allowed depends on their fences.
+        const exprFences = fencesForIrExpression(expr);
+        inliningAllowed = inliningAllowed && safeToInlinePastFences(exprFences, declFences);
+        break;
+    }
+    return expr;
+  }, VisitorContextFlag.None);
+  return inlined;
+}
+/**
+ * Determines whether inlining of `decl` should be allowed in "conservative" mode.
+ *
+ * In conservative mode, inlining behavior is limited to those operations which the
+ * `TemplateDefinitionBuilder` supported, with the goal of producing equivalent output.
+ */
+function allowConservativeInlining(decl, target) {
+  // TODO(alxhub): understand exactly how TemplateDefinitionBuilder approaches inlining, and record
+  // that behavior here.
+  switch (decl.variable.kind) {
+    case SemanticVariableKind.Identifier:
+      if (decl.initializer instanceof ReadVarExpr && decl.initializer.name === 'ctx') {
+        // Although TemplateDefinitionBuilder is cautious about inlining, we still want to do so
+        // when the variable is the context, to imitate its behavior with aliases in control flow
+        // blocks. This quirky behavior will become dead code once compatibility mode is no longer
+        // supported.
+        return true;
+      }
+      return false;
+    case SemanticVariableKind.Context:
+      // Context can only be inlined into other variables.
+      return target.kind === OpKind.Variable;
+    default:
+      return true;
+  }
+}
+
+/**
+ * Wraps ICUs that do not already belong to an i18n block in a new i18n block.
+ */
+function wrapI18nIcus(job) {
+  for (const unit of job.units) {
+    let currentI18nOp = null;
+    let addedI18nId = null;
+    for (const op of unit.create) {
+      switch (op.kind) {
+        case OpKind.I18nStart:
+          currentI18nOp = op;
+          break;
+        case OpKind.I18nEnd:
+          currentI18nOp = null;
+          break;
+        case OpKind.IcuStart:
+          if (currentI18nOp === null) {
+            addedI18nId = job.allocateXrefId();
+            OpList.insertBefore(createI18nStartOp(addedI18nId, op.message), op);
+          }
+          break;
+        case OpKind.IcuEnd:
+          if (addedI18nId !== null) {
+            OpList.insertAfter(createI18nEndOp(addedI18nId), op);
+            addedI18nId = null;
+          }
+          break;
+      }
+    }
+  }
+}
+
+/**
+ *
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+const phases = [{
+  kind: CompilationJobKind.Tmpl,
+  fn: removeContentSelectors
+}, {
+  kind: CompilationJobKind.Host,
+  fn: parseHostStyleProperties
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: emitNamespaceChanges
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: propagateI18nBlocks
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: wrapI18nIcus
+}, {
+  kind: CompilationJobKind.Both,
+  fn: deduplicateTextBindings
+}, {
+  kind: CompilationJobKind.Both,
+  fn: specializeStyleBindings
+}, {
+  kind: CompilationJobKind.Both,
+  fn: specializeBindings
+}, {
+  kind: CompilationJobKind.Both,
+  fn: extractAttributes
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: createI18nContexts
+}, {
+  kind: CompilationJobKind.Both,
+  fn: parseExtractedStyles
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: removeEmptyBindings
+}, {
+  kind: CompilationJobKind.Both,
+  fn: collapseSingletonInterpolations
+}, {
+  kind: CompilationJobKind.Both,
+  fn: orderOps
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateConditionalExpressions
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: createPipes
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: configureDeferInstructions
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: convertI18nText
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: convertI18nBindings
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: removeUnusedI18nAttributesOps
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: assignI18nSlotDependencies
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: applyI18nExpressions
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: createVariadicPipes
+}, {
+  kind: CompilationJobKind.Both,
+  fn: generatePureLiteralStructures
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateProjectionDefs
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateVariables
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: saveAndRestoreView
+}, {
+  kind: CompilationJobKind.Both,
+  fn: deleteAnyCasts
+}, {
+  kind: CompilationJobKind.Both,
+  fn: resolveDollarEvent
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateRepeaterDerivedVars
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateTrackVariables
+}, {
+  kind: CompilationJobKind.Both,
+  fn: resolveNames
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: resolveDeferTargetNames
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: optimizeTrackFns
+}, {
+  kind: CompilationJobKind.Both,
+  fn: resolveContexts
+}, {
+  kind: CompilationJobKind.Both,
+  fn: resolveSanitizers
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: liftLocalRefs
+}, {
+  kind: CompilationJobKind.Both,
+  fn: generateNullishCoalesceExpressions
+}, {
+  kind: CompilationJobKind.Both,
+  fn: expandSafeReads
+}, {
+  kind: CompilationJobKind.Both,
+  fn: generateTemporaryVariables
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: allocateSlots
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: createDeferDepsFns
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: resolveI18nElementPlaceholders
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: resolveI18nExpressionPlaceholders
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: extractI18nMessages
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateTrackFns
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: collectI18nConsts
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: collectConstExpressions
+}, {
+  kind: CompilationJobKind.Both,
+  fn: collectElementConsts
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: removeI18nContexts
+}, {
+  kind: CompilationJobKind.Both,
+  fn: countVariables
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateAdvance
+}, {
+  kind: CompilationJobKind.Both,
+  fn: optimizeVariables
+}, {
+  kind: CompilationJobKind.Both,
+  fn: nameFunctionsAndVariables
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: mergeNextContextExpressions
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: generateNgContainerOps
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: collapseEmptyInstructions
+}, {
+  kind: CompilationJobKind.Tmpl,
+  fn: disableBindings$1
+}, {
+  kind: CompilationJobKind.Both,
+  fn: extractPureFunctions
+}, {
+  kind: CompilationJobKind.Both,
+  fn: reify
+}, {
+  kind: CompilationJobKind.Both,
+  fn: chain
+}];
+/**
+ * Run all transformation phases in the correct order against a compilation job. After this
+ * processing, the compilation should be in a state where it can be emitted.
+ */
+function transform(job, kind) {
+  for (const phase of phases) {
+    if (phase.kind === kind || phase.kind === CompilationJobKind.Both) {
+      // The type of `Phase` above ensures it is impossible to call a phase that doesn't support the
+      // job kind.
+      phase.fn(job);
+    }
+  }
+}
+/**
+ * Compile all views in the given `ComponentCompilation` into the final template function, which may
+ * reference constants defined in a `ConstantPool`.
+ */
+function emitTemplateFn(tpl, pool) {
+  const rootFn = emitView(tpl.root);
+  emitChildViews(tpl.root, pool);
+  return rootFn;
+}
+function emitChildViews(parent, pool) {
+  for (const unit of parent.job.units) {
+    if (unit.parent !== parent.xref) {
+      continue;
+    }
+    // Child views are emitted depth-first.
+    emitChildViews(unit, pool);
+    const viewFn = emitView(unit);
+    pool.statements.push(viewFn.toDeclStmt(viewFn.name));
+  }
+}
+/**
+ * Emit a template function for an individual `ViewCompilation` (which may be either the root view
+ * or an embedded view).
+ */
+function emitView(view) {
+  if (view.fnName === null) {
+    throw new Error(`AssertionError: view ${view.xref} is unnamed`);
+  }
+  const createStatements = [];
+  for (const op of view.create) {
+    if (op.kind !== OpKind.Statement) {
+      throw new Error(`AssertionError: expected all create ops to have been compiled, but got ${OpKind[op.kind]}`);
+    }
+    createStatements.push(op.statement);
+  }
+  const updateStatements = [];
+  for (const op of view.update) {
+    if (op.kind !== OpKind.Statement) {
+      throw new Error(`AssertionError: expected all update ops to have been compiled, but got ${OpKind[op.kind]}`);
+    }
+    updateStatements.push(op.statement);
+  }
+  const createCond = maybeGenerateRfBlock(1, createStatements);
+  const updateCond = maybeGenerateRfBlock(2, updateStatements);
+  return fn([new FnParam('rf'), new FnParam('ctx')], [...createCond, ...updateCond], /* type */undefined, /* sourceSpan */undefined, view.fnName);
+}
+function maybeGenerateRfBlock(flag, statements) {
+  if (statements.length === 0) {
+    return [];
+  }
+  return [ifStmt(new BinaryOperatorExpr(BinaryOperator.BitwiseAnd, variable('rf'), literal(flag)), statements)];
+}
+function emitHostBindingFunction(job) {
+  if (job.root.fnName === null) {
+    throw new Error(`AssertionError: host binding function is unnamed`);
+  }
+  const createStatements = [];
+  for (const op of job.root.create) {
+    if (op.kind !== OpKind.Statement) {
+      throw new Error(`AssertionError: expected all create ops to have been compiled, but got ${OpKind[op.kind]}`);
+    }
+    createStatements.push(op.statement);
+  }
+  const updateStatements = [];
+  for (const op of job.root.update) {
+    if (op.kind !== OpKind.Statement) {
+      throw new Error(`AssertionError: expected all update ops to have been compiled, but got ${OpKind[op.kind]}`);
+    }
+    updateStatements.push(op.statement);
+  }
+  if (createStatements.length === 0 && updateStatements.length === 0) {
+    return null;
+  }
+  const createCond = maybeGenerateRfBlock(1, createStatements);
+  const updateCond = maybeGenerateRfBlock(2, updateStatements);
+  return fn([new FnParam('rf'), new FnParam('ctx')], [...createCond, ...updateCond], /* type */undefined, /* sourceSpan */undefined, job.root.fnName);
+}
+const compatibilityMode = CompatibilityMode.TemplateDefinitionBuilder;
+// Schema containing DOM elements and their properties.
+const domSchema = new DomElementSchemaRegistry();
+// Tag name of the `ng-template` element.
+const NG_TEMPLATE_TAG_NAME$1 = 'ng-template';
+/**
+ * Process a template AST and convert it into a `ComponentCompilation` in the intermediate
+ * representation.
+ * TODO: Refactor more of the ingestion code into phases.
+ */
+function ingestComponent(componentName, template, constantPool, relativeContextFilePath, i18nUseExternalIds, deferBlocksMeta) {
+  const job = new ComponentCompilationJob(componentName, constantPool, compatibilityMode, relativeContextFilePath, i18nUseExternalIds, deferBlocksMeta);
+  ingestNodes(job.root, template);
+  return job;
+}
+/**
+ * Process a host binding AST and convert it into a `HostBindingCompilationJob` in the intermediate
+ * representation.
+ */
+function ingestHostBinding(input, bindingParser, constantPool) {
+  const job = new HostBindingCompilationJob(input.componentName, constantPool, compatibilityMode);
+  for (const property of input.properties ?? []) {
+    let bindingKind = BindingKind.Property;
+    // TODO: this should really be handled in the parser.
+    if (property.name.startsWith('attr.')) {
+      property.name = property.name.substring('attr.'.length);
+      bindingKind = BindingKind.Attribute;
+    }
+    if (property.isAnimation) {
+      bindingKind = BindingKind.Animation;
+    }
+    const securityContexts = bindingParser.calcPossibleSecurityContexts(input.componentSelector, property.name, bindingKind === BindingKind.Attribute).filter(context => context !== SecurityContext.NONE);
+    ingestHostProperty(job, property, bindingKind, securityContexts);
+  }
+  for (const [name, expr] of Object.entries(input.attributes) ?? []) {
+    const securityContexts = bindingParser.calcPossibleSecurityContexts(input.componentSelector, name, true).filter(context => context !== SecurityContext.NONE);
+    ingestHostAttribute(job, name, expr, securityContexts);
+  }
+  for (const event of input.events ?? []) {
+    ingestHostEvent(job, event);
+  }
+  return job;
+}
+// TODO: We should refactor the parser to use the same types and structures for host bindings as
+// with ordinary components. This would allow us to share a lot more ingestion code.
+function ingestHostProperty(job, property, bindingKind, securityContexts) {
+  let expression;
+  const ast = property.expression.ast;
+  if (ast instanceof Interpolation$1) {
+    expression = new Interpolation(ast.strings, ast.expressions.map(expr => convertAst(expr, job, property.sourceSpan)), []);
+  } else {
+    expression = convertAst(ast, job, property.sourceSpan);
+  }
+  job.root.update.push(createBindingOp(job.root.xref, bindingKind, property.name, expression, null, securityContexts, false, false, null, /* TODO: How do Host bindings handle i18n attrs? */null, property.sourceSpan));
+}
+function ingestHostAttribute(job, name, value, securityContexts) {
+  const attrBinding = createBindingOp(job.root.xref, BindingKind.Attribute, name, value, null, securityContexts,
+  /* Host attributes should always be extracted to const hostAttrs, even if they are not
+   *strictly* text literals */
+  true, false, null, /* TODO */null, /** TODO: May be null? */value.sourceSpan);
+  job.root.update.push(attrBinding);
+}
+function ingestHostEvent(job, event) {
+  const [phase, target] = event.type === 0 /* e.ParsedEventType.Regular */ ? [null, event.targetOrPhase] : [event.targetOrPhase, null];
+  const eventBinding = createListenerOp(job.root.xref, new SlotHandle(), event.name, null, makeListenerHandlerOps(job.root, event.handler, event.handlerSpan), phase, target, true, event.sourceSpan);
+  job.root.create.push(eventBinding);
+}
+/**
+ * Ingest the nodes of a template AST into the given `ViewCompilation`.
+ */
+function ingestNodes(unit, template) {
+  for (const node of template) {
+    if (node instanceof Element$1) {
+      ingestElement(unit, node);
+    } else if (node instanceof Template) {
+      ingestTemplate(unit, node);
+    } else if (node instanceof Content) {
+      ingestContent(unit, node);
+    } else if (node instanceof Text$3) {
+      ingestText(unit, node, null);
+    } else if (node instanceof BoundText) {
+      ingestBoundText(unit, node, null);
+    } else if (node instanceof IfBlock) {
+      ingestIfBlock(unit, node);
+    } else if (node instanceof SwitchBlock) {
+      ingestSwitchBlock(unit, node);
+    } else if (node instanceof DeferredBlock) {
+      ingestDeferBlock(unit, node);
+    } else if (node instanceof Icu$1) {
+      ingestIcu(unit, node);
+    } else if (node instanceof ForLoopBlock) {
+      ingestForBlock(unit, node);
+    } else {
+      throw new Error(`Unsupported template node: ${node.constructor.name}`);
+    }
+  }
+}
+/**
+ * Ingest an element AST from the template into the given `ViewCompilation`.
+ */
+function ingestElement(unit, element) {
+  if (element.i18n !== undefined && !(element.i18n instanceof Message || element.i18n instanceof TagPlaceholder)) {
+    throw Error(`Unhandled i18n metadata type for element: ${element.i18n.constructor.name}`);
+  }
+  const id = unit.job.allocateXrefId();
+  const [namespaceKey, elementName] = splitNsName(element.name);
+  const startOp = createElementStartOp(elementName, id, namespaceForKey(namespaceKey), element.i18n instanceof TagPlaceholder ? element.i18n : undefined, element.startSourceSpan, element.sourceSpan);
+  unit.create.push(startOp);
+  ingestElementBindings(unit, startOp, element);
+  ingestReferences(startOp, element);
+  // Start i18n, if needed, goes after the element create and bindings, but before the nodes
+  let i18nBlockId = null;
+  if (element.i18n instanceof Message) {
+    i18nBlockId = unit.job.allocateXrefId();
+    unit.create.push(createI18nStartOp(i18nBlockId, element.i18n));
+  }
+  ingestNodes(unit, element.children);
+  // The source span for the end op is typically the element closing tag. However, if no closing tag
+  // exists, such as in `<input>`, we use the start source span instead. Usually the start and end
+  // instructions will be collapsed into one `element` instruction, negating the purpose of this
+  // fallback, but in cases when it is not collapsed (such as an input with a binding), we still
+  // want to map the end instruction to the main element.
+  const endOp = createElementEndOp(id, element.endSourceSpan ?? element.startSourceSpan);
+  unit.create.push(endOp);
+  // If there is an i18n message associated with this element, insert i18n start and end ops.
+  if (i18nBlockId !== null) {
+    OpList.insertBefore(createI18nEndOp(i18nBlockId), endOp);
+  }
+}
+/**
+ * Ingest an `ng-template` node from the AST into the given `ViewCompilation`.
+ */
+function ingestTemplate(unit, tmpl) {
+  if (tmpl.i18n !== undefined && !(tmpl.i18n instanceof Message || tmpl.i18n instanceof TagPlaceholder)) {
+    throw Error(`Unhandled i18n metadata type for template: ${tmpl.i18n.constructor.name}`);
+  }
+  const childView = unit.job.allocateView(unit.xref);
+  let tagNameWithoutNamespace = tmpl.tagName;
+  let namespacePrefix = '';
+  if (tmpl.tagName) {
+    [namespacePrefix, tagNameWithoutNamespace] = splitNsName(tmpl.tagName);
+  }
+  const i18nPlaceholder = tmpl.i18n instanceof TagPlaceholder ? tmpl.i18n : undefined;
+  const namespace = namespaceForKey(namespacePrefix);
+  const functionNameSuffix = tagNameWithoutNamespace === null ? '' : prefixWithNamespace(tagNameWithoutNamespace, namespace);
+  const templateKind = isPlainTemplate(tmpl) ? TemplateKind.NgTemplate : TemplateKind.Structural;
+  const templateOp = createTemplateOp(childView.xref, templateKind, tagNameWithoutNamespace, functionNameSuffix, namespace, i18nPlaceholder, tmpl.startSourceSpan, tmpl.sourceSpan);
+  unit.create.push(templateOp);
+  ingestTemplateBindings(unit, templateOp, tmpl, templateKind);
+  ingestReferences(templateOp, tmpl);
+  ingestNodes(childView, tmpl.children);
+  for (const {
+    name,
+    value
+  } of tmpl.variables) {
+    childView.contextVariables.set(name, value !== '' ? value : '$implicit');
+  }
+  // If this is a plain template and there is an i18n message associated with it, insert i18n start
+  // and end ops. For structural directive templates, the i18n ops will be added when ingesting the
+  // element/template the directive is placed on.
+  if (templateKind === TemplateKind.NgTemplate && tmpl.i18n instanceof Message) {
+    const id = unit.job.allocateXrefId();
+    OpList.insertAfter(createI18nStartOp(id, tmpl.i18n), childView.create.head);
+    OpList.insertBefore(createI18nEndOp(id), childView.create.tail);
+  }
+}
+/**
+ * Ingest a content node from the AST into the given `ViewCompilation`.
+ */
+function ingestContent(unit, content) {
+  if (content.i18n !== undefined && !(content.i18n instanceof TagPlaceholder)) {
+    throw Error(`Unhandled i18n metadata type for element: ${content.i18n.constructor.name}`);
+  }
+  const attrs = content.attributes.flatMap(a => [a.name, a.value]);
+  const op = createProjectionOp(unit.job.allocateXrefId(), content.selector, content.i18n, attrs, content.sourceSpan);
+  for (const attr of content.attributes) {
+    const securityContext = domSchema.securityContext(content.name, attr.name, true);
+    unit.update.push(createBindingOp(op.xref, BindingKind.Attribute, attr.name, literal(attr.value), null, securityContext, true, false, null, asMessage(attr.i18n), attr.sourceSpan));
+  }
+  unit.create.push(op);
+}
+/**
+ * Ingest a literal text node from the AST into the given `ViewCompilation`.
+ */
+function ingestText(unit, text, icuPlaceholder) {
+  unit.create.push(createTextOp(unit.job.allocateXrefId(), text.value, icuPlaceholder, text.sourceSpan));
+}
+/**
+ * Ingest an interpolated text node from the AST into the given `ViewCompilation`.
+ */
+function ingestBoundText(unit, text, icuPlaceholder) {
+  let value = text.value;
+  if (value instanceof ASTWithSource) {
+    value = value.ast;
+  }
+  if (!(value instanceof Interpolation$1)) {
+    throw new Error(`AssertionError: expected Interpolation for BoundText node, got ${value.constructor.name}`);
+  }
+  if (text.i18n !== undefined && !(text.i18n instanceof Container)) {
+    throw Error(`Unhandled i18n metadata type for text interpolation: ${text.i18n?.constructor.name}`);
+  }
+  const i18nPlaceholders = text.i18n instanceof Container ? text.i18n.children.filter(node => node instanceof Placeholder).map(placeholder => placeholder.name) : [];
+  if (i18nPlaceholders.length > 0 && i18nPlaceholders.length !== value.expressions.length) {
+    throw Error(`Unexpected number of i18n placeholders (${value.expressions.length}) for BoundText with ${value.expressions.length} expressions`);
+  }
+  const textXref = unit.job.allocateXrefId();
+  unit.create.push(createTextOp(textXref, '', icuPlaceholder, text.sourceSpan));
+  // TemplateDefinitionBuilder does not generate source maps for sub-expressions inside an
+  // interpolation. We copy that behavior in compatibility mode.
+  // TODO: is it actually correct to generate these extra maps in modern mode?
+  const baseSourceSpan = unit.job.compatibility ? null : text.sourceSpan;
+  unit.update.push(createInterpolateTextOp(textXref, new Interpolation(value.strings, value.expressions.map(expr => convertAst(expr, unit.job, baseSourceSpan)), i18nPlaceholders), text.sourceSpan));
+}
+/**
+ * Ingest an `@if` block into the given `ViewCompilation`.
+ */
+function ingestIfBlock(unit, ifBlock) {
+  let firstXref = null;
+  let firstSlotHandle = null;
+  let conditions = [];
+  for (let i = 0; i < ifBlock.branches.length; i++) {
+    const ifCase = ifBlock.branches[i];
+    const cView = unit.job.allocateView(unit.xref);
+    let tagName = null;
+    // Only the first branch can be used for projection, because the conditional
+    // uses the container of the first branch as the insertion point for all branches.
+    if (i === 0) {
+      tagName = ingestControlFlowInsertionPoint(unit, cView.xref, ifCase);
+    }
+    if (ifCase.expressionAlias !== null) {
+      cView.contextVariables.set(ifCase.expressionAlias.name, CTX_REF);
+    }
+    let ifCaseI18nMeta = undefined;
+    if (ifCase.i18n !== undefined) {
+      if (!(ifCase.i18n instanceof BlockPlaceholder)) {
+        throw Error(`Unhandled i18n metadata type for if block: ${ifCase.i18n?.constructor.name}`);
+      }
+      ifCaseI18nMeta = ifCase.i18n;
+    }
+    const templateOp = createTemplateOp(cView.xref, TemplateKind.Block, tagName, 'Conditional', Namespace.HTML, ifCaseI18nMeta, ifCase.startSourceSpan, ifCase.sourceSpan);
+    unit.create.push(templateOp);
+    if (firstXref === null) {
+      firstXref = cView.xref;
+      firstSlotHandle = templateOp.handle;
+    }
+    const caseExpr = ifCase.expression ? convertAst(ifCase.expression, unit.job, null) : null;
+    const conditionalCaseExpr = new ConditionalCaseExpr(caseExpr, templateOp.xref, templateOp.handle, ifCase.expressionAlias);
+    conditions.push(conditionalCaseExpr);
+    ingestNodes(cView, ifCase.children);
+  }
+  const conditional = createConditionalOp(firstXref, firstSlotHandle, null, conditions, ifBlock.sourceSpan);
+  unit.update.push(conditional);
+}
+/**
+ * Ingest an `@switch` block into the given `ViewCompilation`.
+ */
+function ingestSwitchBlock(unit, switchBlock) {
+  let firstXref = null;
+  let firstSlotHandle = null;
+  let conditions = [];
+  for (const switchCase of switchBlock.cases) {
+    const cView = unit.job.allocateView(unit.xref);
+    let switchCaseI18nMeta = undefined;
+    if (switchCase.i18n !== undefined) {
+      if (!(switchCase.i18n instanceof BlockPlaceholder)) {
+        throw Error(`Unhandled i18n metadata type for switch block: ${switchCase.i18n?.constructor.name}`);
+      }
+      switchCaseI18nMeta = switchCase.i18n;
+    }
+    const templateOp = createTemplateOp(cView.xref, TemplateKind.Block, null, 'Case', Namespace.HTML, switchCaseI18nMeta, switchCase.startSourceSpan, switchCase.sourceSpan);
+    unit.create.push(templateOp);
+    if (firstXref === null) {
+      firstXref = cView.xref;
+      firstSlotHandle = templateOp.handle;
+    }
+    const caseExpr = switchCase.expression ? convertAst(switchCase.expression, unit.job, switchBlock.startSourceSpan) : null;
+    const conditionalCaseExpr = new ConditionalCaseExpr(caseExpr, templateOp.xref, templateOp.handle);
+    conditions.push(conditionalCaseExpr);
+    ingestNodes(cView, switchCase.children);
+  }
+  const conditional = createConditionalOp(firstXref, firstSlotHandle, convertAst(switchBlock.expression, unit.job, null), conditions, switchBlock.sourceSpan);
+  unit.update.push(conditional);
+}
+function ingestDeferView(unit, suffix, i18nMeta, children, sourceSpan) {
+  if (i18nMeta !== undefined && !(i18nMeta instanceof BlockPlaceholder)) {
+    throw Error('Unhandled i18n metadata type for defer block');
+  }
+  if (children === undefined) {
+    return null;
+  }
+  const secondaryView = unit.job.allocateView(unit.xref);
+  ingestNodes(secondaryView, children);
+  const templateOp = createTemplateOp(secondaryView.xref, TemplateKind.Block, null, `Defer${suffix}`, Namespace.HTML, i18nMeta, sourceSpan, sourceSpan);
+  unit.create.push(templateOp);
+  return templateOp;
+}
+function ingestDeferBlock(unit, deferBlock) {
+  const blockMeta = unit.job.deferBlocksMeta.get(deferBlock);
+  if (blockMeta === undefined) {
+    throw new Error(`AssertionError: unable to find metadata for deferred block`);
+  }
+  // Generate the defer main view and all secondary views.
+  const main = ingestDeferView(unit, '', deferBlock.i18n, deferBlock.children, deferBlock.sourceSpan);
+  const loading = ingestDeferView(unit, 'Loading', deferBlock.loading?.i18n, deferBlock.loading?.children, deferBlock.loading?.sourceSpan);
+  const placeholder = ingestDeferView(unit, 'Placeholder', deferBlock.placeholder?.i18n, deferBlock.placeholder?.children, deferBlock.placeholder?.sourceSpan);
+  const error = ingestDeferView(unit, 'Error', deferBlock.error?.i18n, deferBlock.error?.children, deferBlock.error?.sourceSpan);
+  // Create the main defer op, and ops for all secondary views.
+  const deferXref = unit.job.allocateXrefId();
+  const deferOp = createDeferOp(deferXref, main.xref, main.handle, blockMeta, deferBlock.sourceSpan);
+  deferOp.placeholderView = placeholder?.xref ?? null;
+  deferOp.placeholderSlot = placeholder?.handle ?? null;
+  deferOp.loadingSlot = loading?.handle ?? null;
+  deferOp.errorSlot = error?.handle ?? null;
+  deferOp.placeholderMinimumTime = deferBlock.placeholder?.minimumTime ?? null;
+  deferOp.loadingMinimumTime = deferBlock.loading?.minimumTime ?? null;
+  deferOp.loadingAfterTime = deferBlock.loading?.afterTime ?? null;
+  unit.create.push(deferOp);
+  // Configure all defer `on` conditions.
+  // TODO: refactor prefetch triggers to use a separate op type, with a shared superclass. This will
+  // make it easier to refactor prefetch behavior in the future.
+  let prefetch = false;
+  let deferOnOps = [];
+  let deferWhenOps = [];
+  for (const triggers of [deferBlock.triggers, deferBlock.prefetchTriggers]) {
+    if (triggers.idle !== undefined) {
+      const deferOnOp = createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Idle
+      }, prefetch, triggers.idle.sourceSpan);
+      deferOnOps.push(deferOnOp);
+    }
+    if (triggers.immediate !== undefined) {
+      const deferOnOp = createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Immediate
+      }, prefetch, triggers.immediate.sourceSpan);
+      deferOnOps.push(deferOnOp);
+    }
+    if (triggers.timer !== undefined) {
+      const deferOnOp = createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Timer,
+        delay: triggers.timer.delay
+      }, prefetch, triggers.timer.sourceSpan);
+      deferOnOps.push(deferOnOp);
+    }
+    if (triggers.hover !== undefined) {
+      const deferOnOp = createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Hover,
+        targetName: triggers.hover.reference,
+        targetXref: null,
+        targetSlot: null,
+        targetView: null,
+        targetSlotViewSteps: null
+      }, prefetch, triggers.hover.sourceSpan);
+      deferOnOps.push(deferOnOp);
+    }
+    if (triggers.interaction !== undefined) {
+      const deferOnOp = createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Interaction,
+        targetName: triggers.interaction.reference,
+        targetXref: null,
+        targetSlot: null,
+        targetView: null,
+        targetSlotViewSteps: null
+      }, prefetch, triggers.interaction.sourceSpan);
+      deferOnOps.push(deferOnOp);
+    }
+    if (triggers.viewport !== undefined) {
+      const deferOnOp = createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Viewport,
+        targetName: triggers.viewport.reference,
+        targetXref: null,
+        targetSlot: null,
+        targetView: null,
+        targetSlotViewSteps: null
+      }, prefetch, triggers.viewport.sourceSpan);
+      deferOnOps.push(deferOnOp);
+    }
+    if (triggers.when !== undefined) {
+      if (triggers.when.value instanceof Interpolation$1) {
+        // TemplateDefinitionBuilder supports this case, but it's very strange to me. What would it
+        // even mean?
+        throw new Error(`Unexpected interpolation in defer block when trigger`);
+      }
+      const deferOnOp = createDeferWhenOp(deferXref, convertAst(triggers.when.value, unit.job, triggers.when.sourceSpan), prefetch, triggers.when.sourceSpan);
+      deferWhenOps.push(deferOnOp);
+    }
+    // If no (non-prefetching) defer triggers were provided, default to `idle`.
+    if (deferOnOps.length === 0 && deferWhenOps.length === 0) {
+      deferOnOps.push(createDeferOnOp(deferXref, {
+        kind: DeferTriggerKind.Idle
+      }, false, null));
+    }
+    prefetch = true;
+  }
+  unit.create.push(deferOnOps);
+  unit.update.push(deferWhenOps);
+}
+function ingestIcu(unit, icu) {
+  if (icu.i18n instanceof Message && isSingleI18nIcu(icu.i18n)) {
+    const xref = unit.job.allocateXrefId();
+    const icuNode = icu.i18n.nodes[0];
+    unit.create.push(createIcuStartOp(xref, icu.i18n, icuFromI18nMessage(icu.i18n).name, null));
+    for (const [placeholder, text] of Object.entries({
+      ...icu.vars,
+      ...icu.placeholders
+    })) {
+      if (text instanceof BoundText) {
+        ingestBoundText(unit, text, placeholder);
+      } else {
+        ingestText(unit, text, placeholder);
+      }
+    }
+    unit.create.push(createIcuEndOp(xref));
+  } else {
+    throw Error(`Unhandled i18n metadata type for ICU: ${icu.i18n?.constructor.name}`);
+  }
+}
+/**
+ * Ingest an `@for` block into the given `ViewCompilation`.
+ */
+function ingestForBlock(unit, forBlock) {
+  const repeaterView = unit.job.allocateView(unit.xref);
+  const createRepeaterAlias = (ident, repeaterVar) => {
+    repeaterView.aliases.add({
+      kind: SemanticVariableKind.Alias,
+      name: null,
+      identifier: ident,
+      expression: new DerivedRepeaterVarExpr(repeaterView.xref, repeaterVar)
+    });
+  };
+  // Set all the context variables and aliases available in the repeater.
+  repeaterView.contextVariables.set(forBlock.item.name, forBlock.item.value);
+  repeaterView.contextVariables.set(forBlock.contextVariables.$index.name, forBlock.contextVariables.$index.value);
+  repeaterView.contextVariables.set(forBlock.contextVariables.$count.name, forBlock.contextVariables.$count.value);
+  createRepeaterAlias(forBlock.contextVariables.$first.name, DerivedRepeaterVarIdentity.First);
+  createRepeaterAlias(forBlock.contextVariables.$last.name, DerivedRepeaterVarIdentity.Last);
+  createRepeaterAlias(forBlock.contextVariables.$even.name, DerivedRepeaterVarIdentity.Even);
+  createRepeaterAlias(forBlock.contextVariables.$odd.name, DerivedRepeaterVarIdentity.Odd);
+  const sourceSpan = convertSourceSpan(forBlock.trackBy.span, forBlock.sourceSpan);
+  const track = convertAst(forBlock.trackBy, unit.job, sourceSpan);
+  ingestNodes(repeaterView, forBlock.children);
+  let emptyView = null;
+  if (forBlock.empty !== null) {
+    emptyView = unit.job.allocateView(unit.xref);
+    ingestNodes(emptyView, forBlock.empty.children);
+  }
+  const varNames = {
+    $index: forBlock.contextVariables.$index.name,
+    $count: forBlock.contextVariables.$count.name,
+    $first: forBlock.contextVariables.$first.name,
+    $last: forBlock.contextVariables.$last.name,
+    $even: forBlock.contextVariables.$even.name,
+    $odd: forBlock.contextVariables.$odd.name,
+    $implicit: forBlock.item.name
+  };
+  if (forBlock.i18n !== undefined && !(forBlock.i18n instanceof BlockPlaceholder)) {
+    throw Error('AssertionError: Unhandled i18n metadata type or @for');
+  }
+  if (forBlock.empty?.i18n !== undefined && !(forBlock.empty.i18n instanceof BlockPlaceholder)) {
+    throw Error('AssertionError: Unhandled i18n metadata type or @empty');
+  }
+  const i18nPlaceholder = forBlock.i18n;
+  const emptyI18nPlaceholder = forBlock.empty?.i18n;
+  const tagName = ingestControlFlowInsertionPoint(unit, repeaterView.xref, forBlock);
+  const repeaterCreate = createRepeaterCreateOp(repeaterView.xref, emptyView?.xref ?? null, tagName, track, varNames, i18nPlaceholder, emptyI18nPlaceholder, forBlock.startSourceSpan, forBlock.sourceSpan);
+  unit.create.push(repeaterCreate);
+  const expression = convertAst(forBlock.expression, unit.job, convertSourceSpan(forBlock.expression.span, forBlock.sourceSpan));
+  const repeater = createRepeaterOp(repeaterCreate.xref, repeaterCreate.handle, expression, forBlock.sourceSpan);
+  unit.update.push(repeater);
+}
+/**
+ * Convert a template AST expression into an output AST expression.
+ */
+function convertAst(ast, job, baseSourceSpan) {
+  if (ast instanceof ASTWithSource) {
+    return convertAst(ast.ast, job, baseSourceSpan);
+  } else if (ast instanceof PropertyRead) {
+    if (ast.receiver instanceof ImplicitReceiver && !(ast.receiver instanceof ThisReceiver)) {
+      return new LexicalReadExpr(ast.name);
+    } else {
+      return new ReadPropExpr(convertAst(ast.receiver, job, baseSourceSpan), ast.name, null, convertSourceSpan(ast.span, baseSourceSpan));
+    }
+  } else if (ast instanceof PropertyWrite) {
+    if (ast.receiver instanceof ImplicitReceiver) {
+      return new WritePropExpr(
+      // TODO: Is it correct to always use the root context in place of the implicit receiver?
+      new ContextExpr(job.root.xref), ast.name, convertAst(ast.value, job, baseSourceSpan), null, convertSourceSpan(ast.span, baseSourceSpan));
+    }
+    return new WritePropExpr(convertAst(ast.receiver, job, baseSourceSpan), ast.name, convertAst(ast.value, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof KeyedWrite) {
+    return new WriteKeyExpr(convertAst(ast.receiver, job, baseSourceSpan), convertAst(ast.key, job, baseSourceSpan), convertAst(ast.value, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof Call) {
+    if (ast.receiver instanceof ImplicitReceiver) {
+      throw new Error(`Unexpected ImplicitReceiver`);
+    } else {
+      return new InvokeFunctionExpr(convertAst(ast.receiver, job, baseSourceSpan), ast.args.map(arg => convertAst(arg, job, baseSourceSpan)), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+    }
+  } else if (ast instanceof LiteralPrimitive) {
+    return literal(ast.value, undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof Unary) {
+    switch (ast.operator) {
+      case '+':
+        return new UnaryOperatorExpr(UnaryOperator.Plus, convertAst(ast.expr, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+      case '-':
+        return new UnaryOperatorExpr(UnaryOperator.Minus, convertAst(ast.expr, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+      default:
+        throw new Error(`AssertionError: unknown unary operator ${ast.operator}`);
+    }
+  } else if (ast instanceof Binary) {
+    const operator = BINARY_OPERATORS.get(ast.operation);
+    if (operator === undefined) {
+      throw new Error(`AssertionError: unknown binary operator ${ast.operation}`);
+    }
+    return new BinaryOperatorExpr(operator, convertAst(ast.left, job, baseSourceSpan), convertAst(ast.right, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof ThisReceiver) {
+    // TODO: should context expressions have source maps?
+    return new ContextExpr(job.root.xref);
+  } else if (ast instanceof KeyedRead) {
+    return new ReadKeyExpr(convertAst(ast.receiver, job, baseSourceSpan), convertAst(ast.key, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof Chain) {
+    throw new Error(`AssertionError: Chain in unknown context`);
+  } else if (ast instanceof LiteralMap) {
+    const entries = ast.keys.map((key, idx) => {
+      const value = ast.values[idx];
+      // TODO: should literals have source maps, or do we just map the whole surrounding
+      // expression?
+      return new LiteralMapEntry(key.key, convertAst(value, job, baseSourceSpan), key.quoted);
+    });
+    return new LiteralMapExpr(entries, undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof LiteralArray) {
+    // TODO: should literals have source maps, or do we just map the whole surrounding expression?
+    return new LiteralArrayExpr(ast.expressions.map(expr => convertAst(expr, job, baseSourceSpan)));
+  } else if (ast instanceof Conditional) {
+    return new ConditionalExpr(convertAst(ast.condition, job, baseSourceSpan), convertAst(ast.trueExp, job, baseSourceSpan), convertAst(ast.falseExp, job, baseSourceSpan), undefined, convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof NonNullAssert) {
+    // A non-null assertion shouldn't impact generated instructions, so we can just drop it.
+    return convertAst(ast.expression, job, baseSourceSpan);
+  } else if (ast instanceof BindingPipe) {
+    // TODO: pipes should probably have source maps; figure out details.
+    return new PipeBindingExpr(job.allocateXrefId(), new SlotHandle(), ast.name, [convertAst(ast.exp, job, baseSourceSpan), ...ast.args.map(arg => convertAst(arg, job, baseSourceSpan))]);
+  } else if (ast instanceof SafeKeyedRead) {
+    return new SafeKeyedReadExpr(convertAst(ast.receiver, job, baseSourceSpan), convertAst(ast.key, job, baseSourceSpan), convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof SafePropertyRead) {
+    // TODO: source span
+    return new SafePropertyReadExpr(convertAst(ast.receiver, job, baseSourceSpan), ast.name);
+  } else if (ast instanceof SafeCall) {
+    // TODO: source span
+    return new SafeInvokeFunctionExpr(convertAst(ast.receiver, job, baseSourceSpan), ast.args.map(a => convertAst(a, job, baseSourceSpan)));
+  } else if (ast instanceof EmptyExpr$1) {
+    return new EmptyExpr(convertSourceSpan(ast.span, baseSourceSpan));
+  } else if (ast instanceof PrefixNot) {
+    return not(convertAst(ast.expression, job, baseSourceSpan), convertSourceSpan(ast.span, baseSourceSpan));
+  } else {
+    throw new Error(`Unhandled expression type "${ast.constructor.name}" in file "${baseSourceSpan?.start.file.url}"`);
+  }
+}
+function convertAstWithInterpolation(job, value, i18nMeta, sourceSpan) {
+  let expression;
+  if (value instanceof Interpolation$1) {
+    expression = new Interpolation(value.strings, value.expressions.map(e => convertAst(e, job, sourceSpan ?? null)), Object.keys(asMessage(i18nMeta)?.placeholders ?? {}));
+  } else if (value instanceof AST) {
+    expression = convertAst(value, job, sourceSpan ?? null);
+  } else {
+    expression = literal(value);
+  }
+  return expression;
+}
+// TODO: Can we populate Template binding kinds in ingest?
+const BINDING_KINDS = new Map([[0 /* e.BindingType.Property */, BindingKind.Property], [1 /* e.BindingType.Attribute */, BindingKind.Attribute], [2 /* e.BindingType.Class */, BindingKind.ClassName], [3 /* e.BindingType.Style */, BindingKind.StyleProperty], [4 /* e.BindingType.Animation */, BindingKind.Animation]]);
+/**
+ * Checks whether the given template is a plain ng-template (as opposed to another kind of template
+ * such as a structural directive template or control flow template). This is checked based on the
+ * tagName. We can expect that only plain ng-templates will come through with a tagName of
+ * 'ng-template'.
+ *
+ * Here are some of the cases we expect:
+ *
+ * | Angular HTML                       | Template tagName   |
+ * | ---------------------------------- | ------------------ |
+ * | `<ng-template>`                    | 'ng-template'      |
+ * | `<div *ngIf="true">`               | 'div'              |
+ * | `<svg><ng-template>`               | 'svg:ng-template'  |
+ * | `@if (true) {`                     | 'Conditional'      |
+ * | `<ng-template *ngIf>` (plain)      | 'ng-template'      |
+ * | `<ng-template *ngIf>` (structural) | null               |
+ */
+function isPlainTemplate(tmpl) {
+  return splitNsName(tmpl.tagName ?? '')[1] === NG_TEMPLATE_TAG_NAME$1;
+}
+/**
+ * Ensures that the i18nMeta, if provided, is an i18n.Message.
+ */
+function asMessage(i18nMeta) {
+  if (i18nMeta == null) {
+    return null;
+  }
+  if (!(i18nMeta instanceof Message)) {
+    throw Error(`Expected i18n meta to be a Message, but got: ${i18nMeta.constructor.name}`);
+  }
+  return i18nMeta;
+}
+/**
+ * Process all of the bindings on an element in the template AST and convert them to their IR
+ * representation.
+ */
+function ingestElementBindings(unit, op, element) {
+  let bindings = new Array();
+  for (const attr of element.attributes) {
+    // Attribute literal bindings, such as `attr.foo="bar"`.
+    const securityContext = domSchema.securityContext(element.name, attr.name, true);
+    bindings.push(createBindingOp(op.xref, BindingKind.Attribute, attr.name, convertAstWithInterpolation(unit.job, attr.value, attr.i18n), null, securityContext, true, false, null, asMessage(attr.i18n), attr.sourceSpan));
+  }
+  for (const input of element.inputs) {
+    // All dynamic bindings (both attribute and property bindings).
+    bindings.push(createBindingOp(op.xref, BINDING_KINDS.get(input.type), input.name, convertAstWithInterpolation(unit.job, astOf(input.value), input.i18n), input.unit, input.securityContext, false, false, null, asMessage(input.i18n) ?? null, input.sourceSpan));
+  }
+  unit.create.push(bindings.filter(b => b?.kind === OpKind.ExtractedAttribute));
+  unit.update.push(bindings.filter(b => b?.kind === OpKind.Binding));
+  for (const output of element.outputs) {
+    if (output.type === 1 /* e.ParsedEventType.Animation */ && output.phase === null) {
+      throw Error('Animation listener should have a phase');
+    }
+    unit.create.push(createListenerOp(op.xref, op.handle, output.name, op.tag, makeListenerHandlerOps(unit, output.handler, output.handlerSpan), output.phase, output.target, false, output.sourceSpan));
+  }
+  // If any of the bindings on this element have an i18n message, then an i18n attrs configuration
+  // op is also required.
+  if (bindings.some(b => b?.i18nMessage) !== null) {
+    unit.create.push(createI18nAttributesOp(unit.job.allocateXrefId(), new SlotHandle(), op.xref));
+  }
+}
+/**
+ * Process all of the bindings on a template in the template AST and convert them to their IR
+ * representation.
+ */
+function ingestTemplateBindings(unit, op, template, templateKind) {
+  let bindings = new Array();
+  for (const attr of template.templateAttrs) {
+    if (attr instanceof TextAttribute) {
+      const securityContext = domSchema.securityContext(NG_TEMPLATE_TAG_NAME$1, attr.name, true);
+      bindings.push(createTemplateBinding(unit, op.xref, 1 /* e.BindingType.Attribute */, attr.name, attr.value, null, securityContext, true, templateKind, asMessage(attr.i18n), attr.sourceSpan));
+    } else {
+      bindings.push(createTemplateBinding(unit, op.xref, attr.type, attr.name, astOf(attr.value), attr.unit, attr.securityContext, true, templateKind, asMessage(attr.i18n), attr.sourceSpan));
+    }
+  }
+  for (const attr of template.attributes) {
+    // Attribute literal bindings, such as `attr.foo="bar"`.
+    const securityContext = domSchema.securityContext(NG_TEMPLATE_TAG_NAME$1, attr.name, true);
+    bindings.push(createTemplateBinding(unit, op.xref, 1 /* e.BindingType.Attribute */, attr.name, attr.value, null, securityContext, false, templateKind, asMessage(attr.i18n), attr.sourceSpan));
+  }
+  for (const input of template.inputs) {
+    // Dynamic bindings (both attribute and property bindings).
+    bindings.push(createTemplateBinding(unit, op.xref, input.type, input.name, astOf(input.value), input.unit, input.securityContext, false, templateKind, asMessage(input.i18n), input.sourceSpan));
+  }
+  unit.create.push(bindings.filter(b => b?.kind === OpKind.ExtractedAttribute));
+  unit.update.push(bindings.filter(b => b?.kind === OpKind.Binding));
+  for (const output of template.outputs) {
+    if (output.type === 1 /* e.ParsedEventType.Animation */ && output.phase === null) {
+      throw Error('Animation listener should have a phase');
+    }
+    if (templateKind === TemplateKind.NgTemplate) {
+      unit.create.push(createListenerOp(op.xref, op.handle, output.name, op.tag, makeListenerHandlerOps(unit, output.handler, output.handlerSpan), output.phase, output.target, false, output.sourceSpan));
+    }
+    if (templateKind === TemplateKind.Structural && output.type !== 1 /* e.ParsedEventType.Animation */) {
+      // Animation bindings are excluded from the structural template's const array.
+      const securityContext = domSchema.securityContext(NG_TEMPLATE_TAG_NAME$1, output.name, false);
+      unit.create.push(createExtractedAttributeOp(op.xref, BindingKind.Property, output.name, null, null, null, securityContext));
+    }
+  }
+  // TODO: Perhaps we could do this in a phase? (It likely wouldn't change the slot indices.)
+  if (bindings.some(b => b?.i18nMessage) !== null) {
+    unit.create.push(createI18nAttributesOp(unit.job.allocateXrefId(), new SlotHandle(), op.xref));
+  }
+}
+/**
+ * Helper to ingest an individual binding on a template, either an explicit `ng-template`, or an
+ * implicit template created via structural directive.
+ *
+ * Bindings on templates are *extremely* tricky. I have tried to isolate all of the confusing edge
+ * cases into this function, and to comment it well to document the behavior.
+ *
+ * Some of this behavior is intuitively incorrect, and we should consider changing it in the future.
+ *
+ * @param view The compilation unit for the view containing the template.
+ * @param xref The xref of the template op.
+ * @param type The binding type, according to the parser. This is fairly reasonable, e.g. both
+ *     dynamic and static attributes have e.BindingType.Attribute.
+ * @param name The binding's name.
+ * @param value The bindings's value, which will either be an input AST expression, or a string
+ *     literal. Note that the input AST expression may or may not be const -- it will only be a
+ *     string literal if the parser considered it a text binding.
+ * @param unit If the binding has a unit (e.g. `px` for style bindings), then this is the unit.
+ * @param securityContext The security context of the binding.
+ * @param isStructuralTemplateAttribute Whether this binding actually applies to the structural
+ *     ng-template. For example, an `ngFor` would actually apply to the structural template. (Most
+ *     bindings on structural elements target the inner element, not the template.)
+ * @param templateKind Whether this is an explicit `ng-template` or an implicit template created by
+ *     a structural directive. This should never be a block template.
+ * @param i18nMessage The i18n metadata for the binding, if any.
+ * @param sourceSpan The source span of the binding.
+ * @returns An IR binding op, or null if the binding should be skipped.
+ */
+function createTemplateBinding(view, xref, type, name, value, unit, securityContext, isStructuralTemplateAttribute, templateKind, i18nMessage, sourceSpan) {
+  const isTextBinding = typeof value === 'string';
+  // If this is a structural template, then several kinds of bindings should not result in an
+  // update instruction.
+  if (templateKind === TemplateKind.Structural) {
+    if (!isStructuralTemplateAttribute && (type === 0 /* e.BindingType.Property */ || type === 2 /* e.BindingType.Class */ || type === 3 /* e.BindingType.Style */)) {
+      // Because this binding doesn't really target the ng-template, it must be a binding on an
+      // inner node of a structural template. We can't skip it entirely, because we still need it on
+      // the ng-template's consts (e.g. for the purposes of directive matching). However, we should
+      // not generate an update instruction for it.
+      return createExtractedAttributeOp(xref, BindingKind.Property, name, null, null, i18nMessage, securityContext);
+    }
+    if (!isTextBinding && (type === 1 /* e.BindingType.Attribute */ || type === 4 /* e.BindingType.Animation */)) {
+      // Again, this binding doesn't really target the ng-template; it actually targets the element
+      // inside the structural template. In the case of non-text attribute or animation bindings,
+      // the binding doesn't even show up on the ng-template const array, so we just skip it
+      // entirely.
+      return null;
+    }
+  }
+  let bindingType = BINDING_KINDS.get(type);
+  if (templateKind === TemplateKind.NgTemplate) {
+    // We know we are dealing with bindings directly on an explicit ng-template.
+    // Static attribute bindings should be collected into the const array as k/v pairs. Property
+    // bindings should result in a `property` instruction, and `AttributeMarker.Bindings` const
+    // entries.
+    //
+    // The difficulty is with dynamic attribute, style, and class bindings. These don't really make
+    // sense on an `ng-template` and should probably be parser errors. However,
+    // TemplateDefinitionBuilder generates `property` instructions for them, and so we do that as
+    // well.
+    //
+    // Note that we do have a slight behavior difference with TemplateDefinitionBuilder: although
+    // TDB emits `property` instructions for dynamic attributes, styles, and classes, only styles
+    // and classes also get const collected into the `AttributeMarker.Bindings` field. Dynamic
+    // attribute bindings are missing from the consts entirely. We choose to emit them into the
+    // consts field anyway, to avoid creating special cases for something so arcane and nonsensical.
+    if (type === 2 /* e.BindingType.Class */ || type === 3 /* e.BindingType.Style */ || type === 1 /* e.BindingType.Attribute */ && !isTextBinding) {
+      // TODO: These cases should be parse errors.
+      bindingType = BindingKind.Property;
+    }
+  }
+  return createBindingOp(xref, bindingType, name, convertAstWithInterpolation(view.job, value, i18nMessage), unit, securityContext, isTextBinding, isStructuralTemplateAttribute, templateKind, i18nMessage, sourceSpan);
+}
+function makeListenerHandlerOps(unit, handler, handlerSpan) {
+  handler = astOf(handler);
+  const handlerOps = new Array();
+  let handlerExprs = handler instanceof Chain ? handler.expressions : [handler];
+  if (handlerExprs.length === 0) {
+    throw new Error('Expected listener to have non-empty expression list.');
+  }
+  const expressions = handlerExprs.map(expr => convertAst(expr, unit.job, handlerSpan));
+  const returnExpr = expressions.pop();
+  handlerOps.push(...expressions.map(e => createStatementOp(new ExpressionStatement(e, e.sourceSpan))));
+  handlerOps.push(createStatementOp(new ReturnStatement(returnExpr, returnExpr.sourceSpan)));
+  return handlerOps;
+}
+function astOf(ast) {
+  return ast instanceof ASTWithSource ? ast.ast : ast;
+}
+/**
+ * Process all of the local references on an element-like structure in the template AST and
+ * convert them to their IR representation.
+ */
+function ingestReferences(op, element) {
+  assertIsArray(op.localRefs);
+  for (const {
+    name,
+    value
+  } of element.references) {
+    op.localRefs.push({
+      name,
+      target: value
+    });
+  }
+}
+/**
+ * Assert that the given value is an array.
+ */
+function assertIsArray(value) {
+  if (!Array.isArray(value)) {
+    throw new Error(`AssertionError: expected an array`);
+  }
+}
+/**
+ * Creates an absolute `ParseSourceSpan` from the relative `ParseSpan`.
+ *
+ * `ParseSpan` objects are relative to the start of the expression.
+ * This method converts these to full `ParseSourceSpan` objects that
+ * show where the span is within the overall source file.
+ *
+ * @param span the relative span to convert.
+ * @param baseSourceSpan a span corresponding to the base of the expression tree.
+ * @returns a `ParseSourceSpan` for the given span or null if no `baseSourceSpan` was provided.
+ */
+function convertSourceSpan(span, baseSourceSpan) {
+  if (baseSourceSpan === null) {
+    return null;
+  }
+  const start = baseSourceSpan.start.moveBy(span.start);
+  const end = baseSourceSpan.start.moveBy(span.end);
+  const fullStart = baseSourceSpan.fullStart.moveBy(span.start);
+  return new ParseSourceSpan(start, end, fullStart);
+}
+/**
+ * With the directive-based control flow users were able to conditionally project content using
+ * the `*` syntax. E.g. `<div *ngIf="expr" projectMe></div>` will be projected into
+ * `<ng-content select="[projectMe]"/>`, because the attributes and tag name from the `div` are
+ * copied to the template via the template creation instruction. With `@if` and `@for` that is
+ * not the case, because the conditional is placed *around* elements, rather than *on* them.
+ * The result is that content projection won't work in the same way if a user converts from
+ * `*ngIf` to `@if`.
+ *
+ * This function aims to cover the most common case by doing the same copying when a control flow
+ * node has *one and only one* root element or template node.
+ *
+ * This approach comes with some caveats:
+ * 1. As soon as any other node is added to the root, the copying behavior won't work anymore.
+ *    A diagnostic will be added to flag cases like this and to explain how to work around it.
+ * 2. If `preserveWhitespaces` is enabled, it's very likely that indentation will break this
+ *    workaround, because it'll include an additional text node as the first child. We can work
+ *    around it here, but in a discussion it was decided not to, because the user explicitly opted
+ *    into preserving the whitespace and we would have to drop it from the generated code.
+ *    The diagnostic mentioned point #1 will flag such cases to users.
+ *
+ * @returns Tag name to be used for the control flow template.
+ */
+function ingestControlFlowInsertionPoint(unit, xref, node) {
+  let root = null;
+  for (const child of node.children) {
+    // Skip over comment nodes.
+    if (child instanceof Comment$1) {
+      continue;
+    }
+    // We can only infer the tag name/attributes if there's a single root node.
+    if (root !== null) {
+      return null;
+    }
+    // Root nodes can only elements or templates with a tag name (e.g. `<div *foo></div>`).
+    if (child instanceof Element$1 || child instanceof Template && child.tagName !== null) {
+      root = child;
+    }
+  }
+  // If we've found a single root node, its tag name and *static* attributes can be copied
+  // to the surrounding template to be used for content projection. Note that it's important
+  // that we don't copy any bound attributes since they don't participate in content projection
+  // and they can be used in directive matching (in the case of `Template.templateAttrs`).
+  if (root !== null) {
+    for (const attr of root.attributes) {
+      const securityContext = domSchema.securityContext(NG_TEMPLATE_TAG_NAME$1, attr.name, true);
+      unit.update.push(createBindingOp(xref, BindingKind.Attribute, attr.name, literal(attr.value), null, securityContext, true, false, null, asMessage(attr.i18n), attr.sourceSpan));
+    }
+    const tagName = root instanceof Element$1 ? root.name : root.tagName;
+    // Don't pass along `ng-template` tag name since it enables directive matching.
+    return tagName === NG_TEMPLATE_TAG_NAME$1 ? null : tagName;
+  }
+  return null;
+}
+const USE_TEMPLATE_PIPELINE = false;
+const IMPORTANT_FLAG = '!important';
+/**
+ * Minimum amount of binding slots required in the runtime for style/class bindings.
+ *
+ * Styling in Angular uses up two slots in the runtime LView/TData data structures to
+ * record binding data, property information and metadata.
+ *
+ * When a binding is registered it will place the following information in the `LView`:
+ *
+ * slot 1) binding value
+ * slot 2) cached value (all other values collected before it in string form)
+ *
+ * When a binding is registered it will place the following information in the `TData`:
+ *
+ * slot 1) prop name
+ * slot 2) binding index that points to the previous style/class binding (and some extra config
+ * values)
+ *
+ * Let's imagine we have a binding that looks like so:
+ *
+ * ```
+ * <div [style.width]="x" [style.height]="y">
+ * ```
+ *
+ * Our `LView` and `TData` data-structures look like so:
+ *
+ * ```typescript
+ * LView = [
+ *   // ...
+ *   x, // value of x
+ *   "width: x",
+ *
+ *   y, // value of y
+ *   "width: x; height: y",
+ *   // ...
+ * ];
+ *
+ * TData = [
+ *   // ...
+ *   "width", // binding slot 20
+ *   0,
+ *
+ *   "height",
+ *   20,
+ *   // ...
+ * ];
+ * ```
+ *
+ * */
+const MIN_STYLING_BINDING_SLOTS_REQUIRED = 2;
+/**
+ * Produces creation/update instructions for all styling bindings (class and style)
+ *
+ * It also produces the creation instruction to register all initial styling values
+ * (which are all the static class="..." and style="..." attribute values that exist
+ * on an element within a template).
+ *
+ * The builder class below handles producing instructions for the following cases:
+ *
+ * - Static style/class attributes (style="..." and class="...")
+ * - Dynamic style/class map bindings ([style]="map" and [class]="map|string")
+ * - Dynamic style/class property bindings ([style.prop]="exp" and [class.name]="exp")
+ *
+ * Due to the complex relationship of all of these cases, the instructions generated
+ * for these attributes/properties/bindings must be done so in the correct order. The
+ * order which these must be generated is as follows:
+ *
+ * if (createMode) {
+ *   styling(...)
+ * }
+ * if (updateMode) {
+ *   styleMap(...)
+ *   classMap(...)
+ *   styleProp(...)
+ *   classProp(...)
+ * }
+ *
+ * The creation/update methods within the builder class produce these instructions.
+ */
+class StylingBuilder {
+  constructor(_directiveExpr) {
+    this._directiveExpr = _directiveExpr;
+    /** Whether or not there are any static styling values present */
+    this._hasInitialValues = false;
+    /**
+     *  Whether or not there are any styling bindings present
+     *  (i.e. `[style]`, `[class]`, `[style.prop]` or `[class.name]`)
+     */
+    this.hasBindings = false;
+    this.hasBindingsWithPipes = false;
+    /** the input for [class] (if it exists) */
+    this._classMapInput = null;
+    /** the input for [style] (if it exists) */
+    this._styleMapInput = null;
+    /** an array of each [style.prop] input */
+    this._singleStyleInputs = null;
+    /** an array of each [class.name] input */
+    this._singleClassInputs = null;
+    this._lastStylingInput = null;
+    this._firstStylingInput = null;
+    // maps are used instead of hash maps because a Map will
+    // retain the ordering of the keys
+    /**
+     * Represents the location of each style binding in the template
+     * (e.g. `<div [style.width]="w" [style.height]="h">` implies
+     * that `width=0` and `height=1`)
+     */
+    this._stylesIndex = new Map();
+    /**
+     * Represents the location of each class binding in the template
+     * (e.g. `<div [class.big]="b" [class.hidden]="h">` implies
+     * that `big=0` and `hidden=1`)
+     */
+    this._classesIndex = new Map();
+    this._initialStyleValues = [];
+    this._initialClassValues = [];
+  }
+  /**
+   * Registers a given input to the styling builder to be later used when producing AOT code.
+   *
+   * The code below will only accept the input if it is somehow tied to styling (whether it be
+   * style/class bindings or static style/class attributes).
+   */
+  registerBoundInput(input) {
+    // [attr.style] or [attr.class] are skipped in the code below,
+    // they should not be treated as styling-based bindings since
+    // they are intended to be written directly to the attr and
+    // will therefore skip all style/class resolution that is present
+    // with style="", [style]="" and [style.prop]="", class="",
+    // [class.prop]="". [class]="" assignments
+    let binding = null;
+    let name = input.name;
+    switch (input.type) {
+      case 0 /* BindingType.Property */:
+        binding = this.registerInputBasedOnName(name, input.value, input.sourceSpan);
+        break;
+      case 3 /* BindingType.Style */:
+        binding = this.registerStyleInput(name, false, input.value, input.sourceSpan, input.unit);
+        break;
+      case 2 /* BindingType.Class */:
+        binding = this.registerClassInput(name, false, input.value, input.sourceSpan);
+        break;
+    }
+    return binding ? true : false;
+  }
+  registerInputBasedOnName(name, expression, sourceSpan) {
+    let binding = null;
+    const prefix = name.substring(0, 6);
+    const isStyle = name === 'style' || prefix === 'style.' || prefix === 'style!';
+    const isClass = !isStyle && (name === 'class' || prefix === 'class.' || prefix === 'class!');
+    if (isStyle || isClass) {
+      const isMapBased = name.charAt(5) !== '.'; // style.prop or class.prop makes this a no
+      const property = name.slice(isMapBased ? 5 : 6); // the dot explains why there's a +1
+      if (isStyle) {
+        binding = this.registerStyleInput(property, isMapBased, expression, sourceSpan);
+      } else {
+        binding = this.registerClassInput(property, isMapBased, expression, sourceSpan);
+      }
+    }
+    return binding;
+  }
+  registerStyleInput(name, isMapBased, value, sourceSpan, suffix) {
+    if (isEmptyExpression(value)) {
+      return null;
+    }
+    // CSS custom properties are case-sensitive so we shouldn't normalize them.
+    // See: https://www.w3.org/TR/css-variables-1/#defining-variables
+    if (!isCssCustomProperty(name)) {
+      name = hyphenate(name);
+    }
+    const {
+      property,
+      hasOverrideFlag,
+      suffix: bindingSuffix
+    } = parseProperty(name);
+    suffix = typeof suffix === 'string' && suffix.length !== 0 ? suffix : bindingSuffix;
+    const entry = {
+      name: property,
+      suffix: suffix,
+      value,
+      sourceSpan,
+      hasOverrideFlag
+    };
+    if (isMapBased) {
+      this._styleMapInput = entry;
+    } else {
+      (this._singleStyleInputs = this._singleStyleInputs || []).push(entry);
+      registerIntoMap(this._stylesIndex, property);
+    }
+    this._lastStylingInput = entry;
+    this._firstStylingInput = this._firstStylingInput || entry;
+    this._checkForPipes(value);
+    this.hasBindings = true;
+    return entry;
+  }
+  registerClassInput(name, isMapBased, value, sourceSpan) {
+    if (isEmptyExpression(value)) {
+      return null;
+    }
+    const {
+      property,
+      hasOverrideFlag
+    } = parseProperty(name);
+    const entry = {
+      name: property,
+      value,
+      sourceSpan,
+      hasOverrideFlag,
+      suffix: null
+    };
+    if (isMapBased) {
+      this._classMapInput = entry;
+    } else {
+      (this._singleClassInputs = this._singleClassInputs || []).push(entry);
+      registerIntoMap(this._classesIndex, property);
+    }
+    this._lastStylingInput = entry;
+    this._firstStylingInput = this._firstStylingInput || entry;
+    this._checkForPipes(value);
+    this.hasBindings = true;
+    return entry;
+  }
+  _checkForPipes(value) {
+    if (value instanceof ASTWithSource && value.ast instanceof BindingPipe) {
+      this.hasBindingsWithPipes = true;
+    }
+  }
+  /**
+   * Registers the element's static style string value to the builder.
+   *
+   * @param value the style string (e.g. `width:100px; height:200px;`)
+   */
+  registerStyleAttr(value) {
+    this._initialStyleValues = parse(value);
+    this._hasInitialValues = true;
+  }
+  /**
+   * Registers the element's static class string value to the builder.
+   *
+   * @param value the className string (e.g. `disabled gold zoom`)
+   */
+  registerClassAttr(value) {
+    this._initialClassValues = value.trim().split(/\s+/g);
+    this._hasInitialValues = true;
+  }
+  /**
+   * Appends all styling-related expressions to the provided attrs array.
+   *
+   * @param attrs an existing array where each of the styling expressions
+   * will be inserted into.
+   */
+  populateInitialStylingAttrs(attrs) {
+    // [CLASS_MARKER, 'foo', 'bar', 'baz' ...]
+    if (this._initialClassValues.length) {
+      attrs.push(literal(1 /* AttributeMarker.Classes */));
+      for (let i = 0; i < this._initialClassValues.length; i++) {
+        attrs.push(literal(this._initialClassValues[i]));
+      }
+    }
+    // [STYLE_MARKER, 'width', '200px', 'height', '100px', ...]
+    if (this._initialStyleValues.length) {
+      attrs.push(literal(2 /* AttributeMarker.Styles */));
+      for (let i = 0; i < this._initialStyleValues.length; i += 2) {
+        attrs.push(literal(this._initialStyleValues[i]), literal(this._initialStyleValues[i + 1]));
+      }
+    }
+  }
+  /**
+   * Builds an instruction with all the expressions and parameters for `elementHostAttrs`.
+   *
+   * The instruction generation code below is used for producing the AOT statement code which is
+   * responsible for registering initial styles (within a directive hostBindings' creation block),
+   * as well as any of the provided attribute values, to the directive host element.
+   */
+  assignHostAttrs(attrs, definitionMap) {
+    if (this._directiveExpr && (attrs.length || this._hasInitialValues)) {
+      this.populateInitialStylingAttrs(attrs);
+      definitionMap.set('hostAttrs', literalArr(attrs));
+    }
+  }
+  /**
+   * Builds an instruction with all the expressions and parameters for `classMap`.
+   *
+   * The instruction data will contain all expressions for `classMap` to function
+   * which includes the `[class]` expression params.
+   */
+  buildClassMapInstruction(valueConverter) {
+    if (this._classMapInput) {
+      return this._buildMapBasedInstruction(valueConverter, true, this._classMapInput);
+    }
+    return null;
+  }
+  /**
+   * Builds an instruction with all the expressions and parameters for `styleMap`.
+   *
+   * The instruction data will contain all expressions for `styleMap` to function
+   * which includes the `[style]` expression params.
+   */
+  buildStyleMapInstruction(valueConverter) {
+    if (this._styleMapInput) {
+      return this._buildMapBasedInstruction(valueConverter, false, this._styleMapInput);
+    }
+    return null;
+  }
+  _buildMapBasedInstruction(valueConverter, isClassBased, stylingInput) {
+    // each styling binding value is stored in the LView
+    // map-based bindings allocate two slots: one for the
+    // previous binding value and another for the previous
+    // className or style attribute value.
+    let totalBindingSlotsRequired = MIN_STYLING_BINDING_SLOTS_REQUIRED;
+    // these values must be outside of the update block so that they can
+    // be evaluated (the AST visit call) during creation time so that any
+    // pipes can be picked up in time before the template is built
+    const mapValue = stylingInput.value.visit(valueConverter);
+    let reference;
+    if (mapValue instanceof Interpolation$1) {
+      totalBindingSlotsRequired += mapValue.expressions.length;
+      reference = isClassBased ? getClassMapInterpolationExpression(mapValue) : getStyleMapInterpolationExpression(mapValue);
+    } else {
+      reference = isClassBased ? Identifiers.classMap : Identifiers.styleMap;
+    }
+    return {
+      reference,
+      calls: [{
+        supportsInterpolation: true,
+        sourceSpan: stylingInput.sourceSpan,
+        allocateBindingSlots: totalBindingSlotsRequired,
+        params: convertFn => {
+          const convertResult = convertFn(mapValue);
+          const params = Array.isArray(convertResult) ? convertResult : [convertResult];
+          return params;
+        }
+      }]
+    };
+  }
+  _buildSingleInputs(reference, inputs, valueConverter, getInterpolationExpressionFn, isClassBased) {
+    const instructions = [];
+    inputs.forEach(input => {
+      const previousInstruction = instructions[instructions.length - 1];
+      const value = input.value.visit(valueConverter);
+      let referenceForCall = reference;
+      // each styling binding value is stored in the LView
+      // but there are two values stored for each binding:
+      //   1) the value itself
+      //   2) an intermediate value (concatenation of style up to this point).
+      //      We need to store the intermediate value so that we don't allocate
+      //      the strings on each CD.
+      let totalBindingSlotsRequired = MIN_STYLING_BINDING_SLOTS_REQUIRED;
+      if (value instanceof Interpolation$1) {
+        totalBindingSlotsRequired += value.expressions.length;
+        if (getInterpolationExpressionFn) {
+          referenceForCall = getInterpolationExpressionFn(value);
+        }
+      }
+      const call = {
+        sourceSpan: input.sourceSpan,
+        allocateBindingSlots: totalBindingSlotsRequired,
+        supportsInterpolation: !!getInterpolationExpressionFn,
+        params: convertFn => {
+          // params => stylingProp(propName, value, suffix)
+          const params = [];
+          params.push(literal(input.name));
+          const convertResult = convertFn(value);
+          if (Array.isArray(convertResult)) {
+            params.push(...convertResult);
+          } else {
+            params.push(convertResult);
+          }
+          // [style.prop] bindings may use suffix values (e.g. px, em, etc...), therefore,
+          // if that is detected then we need to pass that in as an optional param.
+          if (!isClassBased && input.suffix !== null) {
+            params.push(literal(input.suffix));
+          }
+          return params;
+        }
+      };
+      // If we ended up generating a call to the same instruction as the previous styling property
+      // we can chain the calls together safely to save some bytes, otherwise we have to generate
+      // a separate instruction call. This is primarily a concern with interpolation instructions
+      // where we may start off with one `reference`, but end up using another based on the
+      // number of interpolations.
+      if (previousInstruction && previousInstruction.reference === referenceForCall) {
+        previousInstruction.calls.push(call);
+      } else {
+        instructions.push({
+          reference: referenceForCall,
+          calls: [call]
+        });
+      }
+    });
+    return instructions;
+  }
+  _buildClassInputs(valueConverter) {
+    if (this._singleClassInputs) {
+      return this._buildSingleInputs(Identifiers.classProp, this._singleClassInputs, valueConverter, null, true);
+    }
+    return [];
+  }
+  _buildStyleInputs(valueConverter) {
+    if (this._singleStyleInputs) {
+      return this._buildSingleInputs(Identifiers.styleProp, this._singleStyleInputs, valueConverter, getStylePropInterpolationExpression, false);
+    }
+    return [];
+  }
+  /**
+   * Constructs all instructions which contain the expressions that will be placed
+   * into the update block of a template function or a directive hostBindings function.
+   */
+  buildUpdateLevelInstructions(valueConverter) {
+    const instructions = [];
+    if (this.hasBindings) {
+      const styleMapInstruction = this.buildStyleMapInstruction(valueConverter);
+      if (styleMapInstruction) {
+        instructions.push(styleMapInstruction);
+      }
+      const classMapInstruction = this.buildClassMapInstruction(valueConverter);
+      if (classMapInstruction) {
+        instructions.push(classMapInstruction);
+      }
+      instructions.push(...this._buildStyleInputs(valueConverter));
+      instructions.push(...this._buildClassInputs(valueConverter));
+    }
+    return instructions;
+  }
+}
+function registerIntoMap(map, key) {
+  if (!map.has(key)) {
+    map.set(key, map.size);
+  }
+}
+function parseProperty(name) {
+  let hasOverrideFlag = false;
+  const overrideIndex = name.indexOf(IMPORTANT_FLAG);
+  if (overrideIndex !== -1) {
+    name = overrideIndex > 0 ? name.substring(0, overrideIndex) : '';
+    hasOverrideFlag = true;
+  }
+  let suffix = null;
+  let property = name;
+  const unitIndex = name.lastIndexOf('.');
+  if (unitIndex > 0) {
+    suffix = name.slice(unitIndex + 1);
+    property = name.substring(0, unitIndex);
+  }
+  return {
+    property,
+    suffix,
+    hasOverrideFlag
+  };
+}
+/**
+ * Gets the instruction to generate for an interpolated class map.
+ * @param interpolation An Interpolation AST
+ */
+function getClassMapInterpolationExpression(interpolation) {
+  switch (getInterpolationArgsLength(interpolation)) {
+    case 1:
+      return Identifiers.classMap;
+    case 3:
+      return Identifiers.classMapInterpolate1;
+    case 5:
+      return Identifiers.classMapInterpolate2;
+    case 7:
+      return Identifiers.classMapInterpolate3;
+    case 9:
+      return Identifiers.classMapInterpolate4;
+    case 11:
+      return Identifiers.classMapInterpolate5;
+    case 13:
+      return Identifiers.classMapInterpolate6;
+    case 15:
+      return Identifiers.classMapInterpolate7;
+    case 17:
+      return Identifiers.classMapInterpolate8;
+    default:
+      return Identifiers.classMapInterpolateV;
+  }
+}
+/**
+ * Gets the instruction to generate for an interpolated style map.
+ * @param interpolation An Interpolation AST
+ */
+function getStyleMapInterpolationExpression(interpolation) {
+  switch (getInterpolationArgsLength(interpolation)) {
+    case 1:
+      return Identifiers.styleMap;
+    case 3:
+      return Identifiers.styleMapInterpolate1;
+    case 5:
+      return Identifiers.styleMapInterpolate2;
+    case 7:
+      return Identifiers.styleMapInterpolate3;
+    case 9:
+      return Identifiers.styleMapInterpolate4;
+    case 11:
+      return Identifiers.styleMapInterpolate5;
+    case 13:
+      return Identifiers.styleMapInterpolate6;
+    case 15:
+      return Identifiers.styleMapInterpolate7;
+    case 17:
+      return Identifiers.styleMapInterpolate8;
+    default:
+      return Identifiers.styleMapInterpolateV;
+  }
+}
+/**
+ * Gets the instruction to generate for an interpolated style prop.
+ * @param interpolation An Interpolation AST
+ */
+function getStylePropInterpolationExpression(interpolation) {
+  switch (getInterpolationArgsLength(interpolation)) {
+    case 1:
+      return Identifiers.styleProp;
+    case 3:
+      return Identifiers.stylePropInterpolate1;
+    case 5:
+      return Identifiers.stylePropInterpolate2;
+    case 7:
+      return Identifiers.stylePropInterpolate3;
+    case 9:
+      return Identifiers.stylePropInterpolate4;
+    case 11:
+      return Identifiers.stylePropInterpolate5;
+    case 13:
+      return Identifiers.stylePropInterpolate6;
+    case 15:
+      return Identifiers.stylePropInterpolate7;
+    case 17:
+      return Identifiers.stylePropInterpolate8;
+    default:
+      return Identifiers.stylePropInterpolateV;
+  }
+}
+/**
+ * Checks whether property name is a custom CSS property.
+ * See: https://www.w3.org/TR/css-variables-1
+ */
+function isCssCustomProperty(name) {
+  return name.startsWith('--');
+}
+function isEmptyExpression(ast) {
+  if (ast instanceof ASTWithSource) {
+    ast = ast.ast;
+  }
+  return ast instanceof EmptyExpr$1;
+}
+class HtmlParser extends Parser {
+  constructor() {
+    super(getHtmlTagDefinition);
+  }
+  parse(source, url, options) {
+    return super.parse(source, url, options);
+  }
+}
+const PRESERVE_WS_ATTR_NAME = 'ngPreserveWhitespaces';
+const SKIP_WS_TRIM_TAGS = new Set(['pre', 'template', 'textarea', 'script', 'style']);
+// Equivalent to \s with \u00a0 (non-breaking space) excluded.
+// Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+const WS_CHARS = ' \f\n\r\t\v\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
+const NO_WS_REGEXP = new RegExp(`[^${WS_CHARS}]`);
+const WS_REPLACE_REGEXP = new RegExp(`[${WS_CHARS}]{2,}`, 'g');
+function hasPreserveWhitespacesAttr(attrs) {
+  return attrs.some(attr => attr.name === PRESERVE_WS_ATTR_NAME);
+}
+/**
+ * &ngsp; is a placeholder for non-removable space
+ * &ngsp; is converted to the 0xE500 PUA (Private Use Areas) unicode character
+ * and later on replaced by a space.
+ */
+function replaceNgsp(value) {
+  // lexer is replacing the &ngsp; pseudo-entity with NGSP_UNICODE
+  return value.replace(new RegExp(NGSP_UNICODE, 'g'), ' ');
+}
+/**
+ * This visitor can walk HTML parse tree and remove / trim text nodes using the following rules:
+ * - consider spaces, tabs and new lines as whitespace characters;
+ * - drop text nodes consisting of whitespace characters only;
+ * - for all other text nodes replace consecutive whitespace characters with one space;
+ * - convert &ngsp; pseudo-entity to a single space;
+ *
+ * Removal and trimming of whitespaces have positive performance impact (less code to generate
+ * while compiling templates, faster view creation). At the same time it can be "destructive"
+ * in some cases (whitespaces can influence layout). Because of the potential of breaking layout
+ * this visitor is not activated by default in Angular 5 and people need to explicitly opt-in for
+ * whitespace removal. The default option for whitespace removal will be revisited in Angular 6
+ * and might be changed to "on" by default.
+ */
+class WhitespaceVisitor {
+  visitElement(element, context) {
+    if (SKIP_WS_TRIM_TAGS.has(element.name) || hasPreserveWhitespacesAttr(element.attrs)) {
+      // don't descent into elements where we need to preserve whitespaces
+      // but still visit all attributes to eliminate one used as a market to preserve WS
+      return new Element(element.name, visitAll(this, element.attrs), element.children, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
+    }
+    return new Element(element.name, element.attrs, visitAllWithSiblings(this, element.children), element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
+  }
+  visitAttribute(attribute, context) {
+    return attribute.name !== PRESERVE_WS_ATTR_NAME ? attribute : null;
+  }
+  visitText(text, context) {
+    const isNotBlank = text.value.match(NO_WS_REGEXP);
+    const hasExpansionSibling = context && (context.prev instanceof Expansion || context.next instanceof Expansion);
+    if (isNotBlank || hasExpansionSibling) {
+      // Process the whitespace in the tokens of this Text node
+      const tokens = text.tokens.map(token => token.type === 5 /* TokenType.TEXT */ ? createWhitespaceProcessedTextToken(token) : token);
+      // Process the whitespace of the value of this Text node
+      const value = processWhitespace(text.value);
+      return new Text(value, text.sourceSpan, tokens, text.i18n);
+    }
+    return null;
+  }
+  visitComment(comment, context) {
+    return comment;
+  }
+  visitExpansion(expansion, context) {
+    return expansion;
+  }
+  visitExpansionCase(expansionCase, context) {
+    return expansionCase;
+  }
+  visitBlock(block, context) {
+    return new Block(block.name, block.parameters, visitAllWithSiblings(this, block.children), block.sourceSpan, block.nameSpan, block.startSourceSpan, block.endSourceSpan);
+  }
+  visitBlockParameter(parameter, context) {
+    return parameter;
+  }
+}
+function createWhitespaceProcessedTextToken({
+  type,
+  parts,
+  sourceSpan
+}) {
+  return {
+    type,
+    parts: [processWhitespace(parts[0])],
+    sourceSpan
+  };
+}
+function processWhitespace(text) {
+  return replaceNgsp(text).replace(WS_REPLACE_REGEXP, ' ');
+}
+function removeWhitespaces(htmlAstWithErrors) {
+  return new ParseTreeResult(visitAll(new WhitespaceVisitor(), htmlAstWithErrors.rootNodes), htmlAstWithErrors.errors);
+}
+function visitAllWithSiblings(visitor, nodes) {
+  const result = [];
+  nodes.forEach((ast, i) => {
+    const context = {
+      prev: nodes[i - 1],
+      next: nodes[i + 1]
+    };
+    const astResult = ast.visit(visitor, context);
+    if (astResult) {
+      result.push(astResult);
+    }
+  });
+  return result;
+}
+const PROPERTY_PARTS_SEPARATOR = '.';
+const ATTRIBUTE_PREFIX = 'attr';
+const CLASS_PREFIX = 'class';
+const STYLE_PREFIX = 'style';
+const TEMPLATE_ATTR_PREFIX$1 = '*';
+const ANIMATE_PROP_PREFIX = 'animate-';
+/**
+ * Parses bindings in templates and in the directive host area.
+ */
+class BindingParser {
+  constructor(_exprParser, _interpolationConfig, _schemaRegistry, errors) {
+    this._exprParser = _exprParser;
+    this._interpolationConfig = _interpolationConfig;
+    this._schemaRegistry = _schemaRegistry;
+    this.errors = errors;
+  }
+  get interpolationConfig() {
+    return this._interpolationConfig;
+  }
+  createBoundHostProperties(properties, sourceSpan) {
+    const boundProps = [];
+    for (const propName of Object.keys(properties)) {
+      const expression = properties[propName];
+      if (typeof expression === 'string') {
+        this.parsePropertyBinding(propName, expression, true, sourceSpan, sourceSpan.start.offset, undefined, [],
+        // Use the `sourceSpan` for  `keySpan`. This isn't really accurate, but neither is the
+        // sourceSpan, as it represents the sourceSpan of the host itself rather than the
+        // source of the host binding (which doesn't exist in the template). Regardless,
+        // neither of these values are used in Ivy but are only here to satisfy the function
+        // signature. This should likely be refactored in the future so that `sourceSpan`
+        // isn't being used inaccurately.
+        boundProps, sourceSpan);
+      } else {
+        this._reportError(`Value of the host property binding "${propName}" needs to be a string representing an expression but got "${expression}" (${typeof expression})`, sourceSpan);
+      }
+    }
+    return boundProps;
+  }
+  createDirectiveHostEventAsts(hostListeners, sourceSpan) {
+    const targetEvents = [];
+    for (const propName of Object.keys(hostListeners)) {
+      const expression = hostListeners[propName];
+      if (typeof expression === 'string') {
+        // Use the `sourceSpan` for  `keySpan` and `handlerSpan`. This isn't really accurate, but
+        // neither is the `sourceSpan`, as it represents the `sourceSpan` of the host itself
+        // rather than the source of the host binding (which doesn't exist in the template).
+        // Regardless, neither of these values are used in Ivy but are only here to satisfy the
+        // function signature. This should likely be refactored in the future so that `sourceSpan`
+        // isn't being used inaccurately.
+        this.parseEvent(propName, expression, /* isAssignmentEvent */false, sourceSpan, sourceSpan, [], targetEvents, sourceSpan);
+      } else {
+        this._reportError(`Value of the host listener "${propName}" needs to be a string representing an expression but got "${expression}" (${typeof expression})`, sourceSpan);
+      }
+    }
+    return targetEvents;
+  }
+  parseInterpolation(value, sourceSpan, interpolatedTokens) {
+    const sourceInfo = sourceSpan.start.toString();
+    const absoluteOffset = sourceSpan.fullStart.offset;
+    try {
+      const ast = this._exprParser.parseInterpolation(value, sourceInfo, absoluteOffset, interpolatedTokens, this._interpolationConfig);
+      if (ast) this._reportExpressionParserErrors(ast.errors, sourceSpan);
+      return ast;
+    } catch (e) {
+      this._reportError(`${e}`, sourceSpan);
+      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
+    }
+  }
+  /**
+   * Similar to `parseInterpolation`, but treats the provided string as a single expression
+   * element that would normally appear within the interpolation prefix and suffix (`{{` and `}}`).
+   * This is used for parsing the switch expression in ICUs.
+   */
+  parseInterpolationExpression(expression, sourceSpan) {
+    const sourceInfo = sourceSpan.start.toString();
+    const absoluteOffset = sourceSpan.start.offset;
+    try {
+      const ast = this._exprParser.parseInterpolationExpression(expression, sourceInfo, absoluteOffset);
+      if (ast) this._reportExpressionParserErrors(ast.errors, sourceSpan);
+      return ast;
+    } catch (e) {
+      this._reportError(`${e}`, sourceSpan);
+      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
+    }
+  }
+  /**
+   * Parses the bindings in a microsyntax expression, and converts them to
+   * `ParsedProperty` or `ParsedVariable`.
+   *
+   * @param tplKey template binding name
+   * @param tplValue template binding value
+   * @param sourceSpan span of template binding relative to entire the template
+   * @param absoluteValueOffset start of the tplValue relative to the entire template
+   * @param targetMatchableAttrs potential attributes to match in the template
+   * @param targetProps target property bindings in the template
+   * @param targetVars target variables in the template
+   */
+  parseInlineTemplateBinding(tplKey, tplValue, sourceSpan, absoluteValueOffset, targetMatchableAttrs, targetProps, targetVars, isIvyAst) {
+    const absoluteKeyOffset = sourceSpan.start.offset + TEMPLATE_ATTR_PREFIX$1.length;
+    const bindings = this._parseTemplateBindings(tplKey, tplValue, sourceSpan, absoluteKeyOffset, absoluteValueOffset);
+    for (const binding of bindings) {
+      // sourceSpan is for the entire HTML attribute. bindingSpan is for a particular
+      // binding within the microsyntax expression so it's more narrow than sourceSpan.
+      const bindingSpan = moveParseSourceSpan(sourceSpan, binding.sourceSpan);
+      const key = binding.key.source;
+      const keySpan = moveParseSourceSpan(sourceSpan, binding.key.span);
+      if (binding instanceof VariableBinding) {
+        const value = binding.value ? binding.value.source : '$implicit';
+        const valueSpan = binding.value ? moveParseSourceSpan(sourceSpan, binding.value.span) : undefined;
+        targetVars.push(new ParsedVariable(key, value, bindingSpan, keySpan, valueSpan));
+      } else if (binding.value) {
+        const srcSpan = isIvyAst ? bindingSpan : sourceSpan;
+        const valueSpan = moveParseSourceSpan(sourceSpan, binding.value.ast.sourceSpan);
+        this._parsePropertyAst(key, binding.value, srcSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps);
+      } else {
+        targetMatchableAttrs.push([key, '' /* value */]);
+        // Since this is a literal attribute with no RHS, source span should be
+        // just the key span.
+        this.parseLiteralAttr(key, null /* value */, keySpan, absoluteValueOffset, undefined /* valueSpan */, targetMatchableAttrs, targetProps, keySpan);
+      }
+    }
+  }
+  /**
+   * Parses the bindings in a microsyntax expression, e.g.
+   * ```
+   *    <tag *tplKey="let value1 = prop; let value2 = localVar">
+   * ```
+   *
+   * @param tplKey template binding name
+   * @param tplValue template binding value
+   * @param sourceSpan span of template binding relative to entire the template
+   * @param absoluteKeyOffset start of the `tplKey`
+   * @param absoluteValueOffset start of the `tplValue`
+   */
+  _parseTemplateBindings(tplKey, tplValue, sourceSpan, absoluteKeyOffset, absoluteValueOffset) {
+    const sourceInfo = sourceSpan.start.toString();
+    try {
+      const bindingsResult = this._exprParser.parseTemplateBindings(tplKey, tplValue, sourceInfo, absoluteKeyOffset, absoluteValueOffset);
+      this._reportExpressionParserErrors(bindingsResult.errors, sourceSpan);
+      bindingsResult.warnings.forEach(warning => {
+        this._reportError(warning, sourceSpan, ParseErrorLevel.WARNING);
+      });
+      return bindingsResult.templateBindings;
+    } catch (e) {
+      this._reportError(`${e}`, sourceSpan);
+      return [];
+    }
+  }
+  parseLiteralAttr(name, value, sourceSpan, absoluteOffset, valueSpan, targetMatchableAttrs, targetProps, keySpan) {
+    if (isAnimationLabel(name)) {
+      name = name.substring(1);
+      if (keySpan !== undefined) {
+        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + 1, keySpan.end.offset));
+      }
+      if (value) {
+        this._reportError(`Assigning animation triggers via @prop="exp" attributes with an expression is invalid.` + ` Use property bindings (e.g. [@prop]="exp") or use an attribute without a value (e.g. @prop) instead.`, sourceSpan, ParseErrorLevel.ERROR);
+      }
+      this._parseAnimation(name, value, sourceSpan, absoluteOffset, keySpan, valueSpan, targetMatchableAttrs, targetProps);
+    } else {
+      targetProps.push(new ParsedProperty(name, this._exprParser.wrapLiteralPrimitive(value, '', absoluteOffset), ParsedPropertyType.LITERAL_ATTR, sourceSpan, keySpan, valueSpan));
+    }
+  }
+  parsePropertyBinding(name, expression, isHost, sourceSpan, absoluteOffset, valueSpan, targetMatchableAttrs, targetProps, keySpan) {
+    if (name.length === 0) {
+      this._reportError(`Property name is missing in binding`, sourceSpan);
+    }
+    let isAnimationProp = false;
+    if (name.startsWith(ANIMATE_PROP_PREFIX)) {
+      isAnimationProp = true;
+      name = name.substring(ANIMATE_PROP_PREFIX.length);
+      if (keySpan !== undefined) {
+        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + ANIMATE_PROP_PREFIX.length, keySpan.end.offset));
+      }
+    } else if (isAnimationLabel(name)) {
+      isAnimationProp = true;
+      name = name.substring(1);
+      if (keySpan !== undefined) {
+        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + 1, keySpan.end.offset));
+      }
+    }
+    if (isAnimationProp) {
+      this._parseAnimation(name, expression, sourceSpan, absoluteOffset, keySpan, valueSpan, targetMatchableAttrs, targetProps);
+    } else {
+      this._parsePropertyAst(name, this.parseBinding(expression, isHost, valueSpan || sourceSpan, absoluteOffset), sourceSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps);
+    }
+  }
+  parsePropertyInterpolation(name, value, sourceSpan, valueSpan, targetMatchableAttrs, targetProps, keySpan, interpolatedTokens) {
+    const expr = this.parseInterpolation(value, valueSpan || sourceSpan, interpolatedTokens);
+    if (expr) {
+      this._parsePropertyAst(name, expr, sourceSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps);
+      return true;
+    }
+    return false;
+  }
+  _parsePropertyAst(name, ast, sourceSpan, keySpan, valueSpan, targetMatchableAttrs, targetProps) {
+    targetMatchableAttrs.push([name, ast.source]);
+    targetProps.push(new ParsedProperty(name, ast, ParsedPropertyType.DEFAULT, sourceSpan, keySpan, valueSpan));
+  }
+  _parseAnimation(name, expression, sourceSpan, absoluteOffset, keySpan, valueSpan, targetMatchableAttrs, targetProps) {
+    if (name.length === 0) {
+      this._reportError('Animation trigger is missing', sourceSpan);
+    }
+    // This will occur when a @trigger is not paired with an expression.
+    // For animations it is valid to not have an expression since */void
+    // states will be applied by angular when the element is attached/detached
+    const ast = this.parseBinding(expression || 'undefined', false, valueSpan || sourceSpan, absoluteOffset);
+    targetMatchableAttrs.push([name, ast.source]);
+    targetProps.push(new ParsedProperty(name, ast, ParsedPropertyType.ANIMATION, sourceSpan, keySpan, valueSpan));
+  }
+  parseBinding(value, isHostBinding, sourceSpan, absoluteOffset) {
+    const sourceInfo = (sourceSpan && sourceSpan.start || '(unknown)').toString();
+    try {
+      const ast = isHostBinding ? this._exprParser.parseSimpleBinding(value, sourceInfo, absoluteOffset, this._interpolationConfig) : this._exprParser.parseBinding(value, sourceInfo, absoluteOffset, this._interpolationConfig);
+      if (ast) this._reportExpressionParserErrors(ast.errors, sourceSpan);
+      return ast;
+    } catch (e) {
+      this._reportError(`${e}`, sourceSpan);
+      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
+    }
+  }
+  createBoundElementProperty(elementSelector, boundProp, skipValidation = false, mapPropertyName = true) {
+    if (boundProp.isAnimation) {
+      return new BoundElementProperty(boundProp.name, 4 /* BindingType.Animation */, SecurityContext.NONE, boundProp.expression, null, boundProp.sourceSpan, boundProp.keySpan, boundProp.valueSpan);
+    }
+    let unit = null;
+    let bindingType = undefined;
+    let boundPropertyName = null;
+    const parts = boundProp.name.split(PROPERTY_PARTS_SEPARATOR);
+    let securityContexts = undefined;
+    // Check for special cases (prefix style, attr, class)
+    if (parts.length > 1) {
+      if (parts[0] == ATTRIBUTE_PREFIX) {
+        boundPropertyName = parts.slice(1).join(PROPERTY_PARTS_SEPARATOR);
+        if (!skipValidation) {
+          this._validatePropertyOrAttributeName(boundPropertyName, boundProp.sourceSpan, true);
+        }
+        securityContexts = calcPossibleSecurityContexts(this._schemaRegistry, elementSelector, boundPropertyName, true);
+        const nsSeparatorIdx = boundPropertyName.indexOf(':');
+        if (nsSeparatorIdx > -1) {
+          const ns = boundPropertyName.substring(0, nsSeparatorIdx);
+          const name = boundPropertyName.substring(nsSeparatorIdx + 1);
+          boundPropertyName = mergeNsAndName(ns, name);
+        }
+        bindingType = 1 /* BindingType.Attribute */;
+      } else if (parts[0] == CLASS_PREFIX) {
+        boundPropertyName = parts[1];
+        bindingType = 2 /* BindingType.Class */;
+        securityContexts = [SecurityContext.NONE];
+      } else if (parts[0] == STYLE_PREFIX) {
+        unit = parts.length > 2 ? parts[2] : null;
+        boundPropertyName = parts[1];
+        bindingType = 3 /* BindingType.Style */;
+        securityContexts = [SecurityContext.STYLE];
+      }
+    }
+    // If not a special case, use the full property name
+    if (boundPropertyName === null) {
+      const mappedPropName = this._schemaRegistry.getMappedPropName(boundProp.name);
+      boundPropertyName = mapPropertyName ? mappedPropName : boundProp.name;
+      securityContexts = calcPossibleSecurityContexts(this._schemaRegistry, elementSelector, mappedPropName, false);
+      bindingType = 0 /* BindingType.Property */;
+      if (!skipValidation) {
+        this._validatePropertyOrAttributeName(mappedPropName, boundProp.sourceSpan, false);
+      }
+    }
+    return new BoundElementProperty(boundPropertyName, bindingType, securityContexts[0], boundProp.expression, unit, boundProp.sourceSpan, boundProp.keySpan, boundProp.valueSpan);
+  }
+  // TODO: keySpan should be required but was made optional to avoid changing VE parser.
+  parseEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetMatchableAttrs, targetEvents, keySpan) {
+    if (name.length === 0) {
+      this._reportError(`Event name is missing in binding`, sourceSpan);
+    }
+    if (isAnimationLabel(name)) {
+      name = name.slice(1);
+      if (keySpan !== undefined) {
+        keySpan = moveParseSourceSpan(keySpan, new AbsoluteSourceSpan(keySpan.start.offset + 1, keySpan.end.offset));
+      }
+      this._parseAnimationEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetEvents, keySpan);
+    } else {
+      this._parseRegularEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetMatchableAttrs, targetEvents, keySpan);
+    }
+  }
+  calcPossibleSecurityContexts(selector, propName, isAttribute) {
+    const prop = this._schemaRegistry.getMappedPropName(propName);
+    return calcPossibleSecurityContexts(this._schemaRegistry, selector, prop, isAttribute);
+  }
+  _parseAnimationEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetEvents, keySpan) {
+    const matches = splitAtPeriod(name, [name, '']);
+    const eventName = matches[0];
+    const phase = matches[1].toLowerCase();
+    const ast = this._parseAction(expression, isAssignmentEvent, handlerSpan);
+    targetEvents.push(new ParsedEvent(eventName, phase, 1 /* ParsedEventType.Animation */, ast, sourceSpan, handlerSpan, keySpan));
+    if (eventName.length === 0) {
+      this._reportError(`Animation event name is missing in binding`, sourceSpan);
+    }
+    if (phase) {
+      if (phase !== 'start' && phase !== 'done') {
+        this._reportError(`The provided animation output phase value "${phase}" for "@${eventName}" is not supported (use start or done)`, sourceSpan);
+      }
+    } else {
+      this._reportError(`The animation trigger output event (@${eventName}) is missing its phase value name (start or done are currently supported)`, sourceSpan);
+    }
+  }
+  _parseRegularEvent(name, expression, isAssignmentEvent, sourceSpan, handlerSpan, targetMatchableAttrs, targetEvents, keySpan) {
+    // long format: 'target: eventName'
+    const [target, eventName] = splitAtColon(name, [null, name]);
+    const ast = this._parseAction(expression, isAssignmentEvent, handlerSpan);
+    targetMatchableAttrs.push([name, ast.source]);
+    targetEvents.push(new ParsedEvent(eventName, target, 0 /* ParsedEventType.Regular */, ast, sourceSpan, handlerSpan, keySpan));
+    // Don't detect directives for event names for now,
+    // so don't add the event name to the matchableAttrs
+  }
+
+  _parseAction(value, isAssignmentEvent, sourceSpan) {
+    const sourceInfo = (sourceSpan && sourceSpan.start || '(unknown').toString();
+    const absoluteOffset = sourceSpan && sourceSpan.start ? sourceSpan.start.offset : 0;
+    try {
+      const ast = this._exprParser.parseAction(value, isAssignmentEvent, sourceInfo, absoluteOffset, this._interpolationConfig);
+      if (ast) {
+        this._reportExpressionParserErrors(ast.errors, sourceSpan);
+      }
+      if (!ast || ast.ast instanceof EmptyExpr$1) {
+        this._reportError(`Empty expressions are not allowed`, sourceSpan);
+        return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
+      }
+      return ast;
+    } catch (e) {
+      this._reportError(`${e}`, sourceSpan);
+      return this._exprParser.wrapLiteralPrimitive('ERROR', sourceInfo, absoluteOffset);
+    }
+  }
+  _reportError(message, sourceSpan, level = ParseErrorLevel.ERROR) {
+    this.errors.push(new ParseError(sourceSpan, message, level));
+  }
+  _reportExpressionParserErrors(errors, sourceSpan) {
+    for (const error of errors) {
+      this._reportError(error.message, sourceSpan);
+    }
+  }
+  /**
+   * @param propName the name of the property / attribute
+   * @param sourceSpan
+   * @param isAttr true when binding to an attribute
+   */
+  _validatePropertyOrAttributeName(propName, sourceSpan, isAttr) {
+    const report = isAttr ? this._schemaRegistry.validateAttribute(propName) : this._schemaRegistry.validateProperty(propName);
+    if (report.error) {
+      this._reportError(report.msg, sourceSpan, ParseErrorLevel.ERROR);
+    }
+  }
+}
+class PipeCollector extends RecursiveAstVisitor {
+  constructor() {
+    super(...arguments);
+    this.pipes = new Map();
+  }
+  visitPipe(ast, context) {
+    this.pipes.set(ast.name, ast);
+    ast.exp.visit(this);
+    this.visitAll(ast.args, context);
+    return null;
+  }
+}
+function isAnimationLabel(name) {
+  return name[0] == '@';
+}
+function calcPossibleSecurityContexts(registry, selector, propName, isAttribute) {
+  const ctxs = [];
+  CssSelector.parse(selector).forEach(selector => {
+    const elementNames = selector.element ? [selector.element] : registry.allKnownElementNames();
+    const notElementNames = new Set(selector.notSelectors.filter(selector => selector.isElementSelector()).map(selector => selector.element));
+    const possibleElementNames = elementNames.filter(elementName => !notElementNames.has(elementName));
+    ctxs.push(...possibleElementNames.map(elementName => registry.securityContext(elementName, propName, isAttribute)));
+  });
+  return ctxs.length === 0 ? [SecurityContext.NONE] : Array.from(new Set(ctxs)).sort();
+}
+/**
+ * Compute a new ParseSourceSpan based off an original `sourceSpan` by using
+ * absolute offsets from the specified `absoluteSpan`.
+ *
+ * @param sourceSpan original source span
+ * @param absoluteSpan absolute source span to move to
+ */
+function moveParseSourceSpan(sourceSpan, absoluteSpan) {
+  // The difference of two absolute offsets provide the relative offset
+  const startDiff = absoluteSpan.start - sourceSpan.start.offset;
+  const endDiff = absoluteSpan.end - sourceSpan.end.offset;
+  return new ParseSourceSpan(sourceSpan.start.moveBy(startDiff), sourceSpan.end.moveBy(endDiff), sourceSpan.fullStart.moveBy(startDiff), sourceSpan.details);
+}
+
+// Some of the code comes from WebComponents.JS
+// https://github.com/webcomponents/webcomponentsjs/blob/master/src/HTMLImports/path.js
+function isStyleUrlResolvable(url) {
+  if (url == null || url.length === 0 || url[0] == '/') return false;
+  const schemeMatch = url.match(URL_WITH_SCHEMA_REGEXP);
+  return schemeMatch === null || schemeMatch[1] == 'package' || schemeMatch[1] == 'asset';
+}
+const URL_WITH_SCHEMA_REGEXP = /^([^:/?#]+):/;
+const NG_CONTENT_SELECT_ATTR$1 = 'select';
+const LINK_ELEMENT = 'link';
+const LINK_STYLE_REL_ATTR = 'rel';
+const LINK_STYLE_HREF_ATTR = 'href';
+const LINK_STYLE_REL_VALUE = 'stylesheet';
+const STYLE_ELEMENT = 'style';
+const SCRIPT_ELEMENT = 'script';
+const NG_NON_BINDABLE_ATTR = 'ngNonBindable';
+const NG_PROJECT_AS = 'ngProjectAs';
+function preparseElement(ast) {
+  let selectAttr = null;
+  let hrefAttr = null;
+  let relAttr = null;
+  let nonBindable = false;
+  let projectAs = '';
+  ast.attrs.forEach(attr => {
+    const lcAttrName = attr.name.toLowerCase();
+    if (lcAttrName == NG_CONTENT_SELECT_ATTR$1) {
+      selectAttr = attr.value;
+    } else if (lcAttrName == LINK_STYLE_HREF_ATTR) {
+      hrefAttr = attr.value;
+    } else if (lcAttrName == LINK_STYLE_REL_ATTR) {
+      relAttr = attr.value;
+    } else if (attr.name == NG_NON_BINDABLE_ATTR) {
+      nonBindable = true;
+    } else if (attr.name == NG_PROJECT_AS) {
+      if (attr.value.length > 0) {
+        projectAs = attr.value;
+      }
+    }
+  });
+  selectAttr = normalizeNgContentSelect(selectAttr);
+  const nodeName = ast.name.toLowerCase();
+  let type = PreparsedElementType.OTHER;
+  if (isNgContent(nodeName)) {
+    type = PreparsedElementType.NG_CONTENT;
+  } else if (nodeName == STYLE_ELEMENT) {
+    type = PreparsedElementType.STYLE;
+  } else if (nodeName == SCRIPT_ELEMENT) {
+    type = PreparsedElementType.SCRIPT;
+  } else if (nodeName == LINK_ELEMENT && relAttr == LINK_STYLE_REL_VALUE) {
+    type = PreparsedElementType.STYLESHEET;
+  }
+  return new PreparsedElement(type, selectAttr, hrefAttr, nonBindable, projectAs);
+}
+var PreparsedElementType;
+(function (PreparsedElementType) {
+  PreparsedElementType[PreparsedElementType["NG_CONTENT"] = 0] = "NG_CONTENT";
+  PreparsedElementType[PreparsedElementType["STYLE"] = 1] = "STYLE";
+  PreparsedElementType[PreparsedElementType["STYLESHEET"] = 2] = "STYLESHEET";
+  PreparsedElementType[PreparsedElementType["SCRIPT"] = 3] = "SCRIPT";
+  PreparsedElementType[PreparsedElementType["OTHER"] = 4] = "OTHER";
+})(PreparsedElementType || (PreparsedElementType = {}));
+class PreparsedElement {
+  constructor(type, selectAttr, hrefAttr, nonBindable, projectAs) {
+    this.type = type;
+    this.selectAttr = selectAttr;
+    this.hrefAttr = hrefAttr;
+    this.nonBindable = nonBindable;
+    this.projectAs = projectAs;
+  }
+}
+function normalizeNgContentSelect(selectAttr) {
+  if (selectAttr === null || selectAttr.length === 0) {
+    return '*';
+  }
+  return selectAttr;
+}
+
+/** Pattern for the expression in a for loop block. */
+const FOR_LOOP_EXPRESSION_PATTERN = /^\s*([0-9A-Za-z_$]*)\s+of\s+([\S\s]*)/;
+/** Pattern for the tracking expression in a for loop block. */
+const FOR_LOOP_TRACK_PATTERN = /^track\s+([\S\s]*)/;
+/** Pattern for the `as` expression in a conditional block. */
+const CONDITIONAL_ALIAS_PATTERN = /^as\s+(.*)/;
+/** Pattern used to identify an `else if` block. */
+const ELSE_IF_PATTERN = /^else[^\S\r\n]+if/;
+/** Pattern used to identify a `let` parameter. */
+const FOR_LOOP_LET_PATTERN = /^let\s+([\S\s]*)/;
+/** Names of variables that are allowed to be used in the `let` expression of a `for` loop. */
+const ALLOWED_FOR_LOOP_LET_VARIABLES = new Set(['$index', '$first', '$last', '$even', '$odd', '$count']);
+/**
+ * Predicate function that determines if a block with
+ * a specific name cam be connected to a `for` block.
+ */
+function isConnectedForLoopBlock(name) {
+  return name === 'empty';
+}
+/**
+ * Predicate function that determines if a block with
+ * a specific name cam be connected to an `if` block.
+ */
+function isConnectedIfLoopBlock(name) {
+  return name === 'else' || ELSE_IF_PATTERN.test(name);
+}
+/** Creates an `if` loop block from an HTML AST node. */
+function createIfBlock(ast, connectedBlocks, visitor, bindingParser) {
+  const errors = validateIfConnectedBlocks(connectedBlocks);
+  const branches = [];
+  const mainBlockParams = parseConditionalBlockParameters(ast, errors, bindingParser);
+  if (mainBlockParams !== null) {
+    branches.push(new IfBlockBranch(mainBlockParams.expression, visitAll(visitor, ast.children, ast.children), mainBlockParams.expressionAlias, ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan, ast.nameSpan, ast.i18n));
+  }
+  for (const block of connectedBlocks) {
+    if (ELSE_IF_PATTERN.test(block.name)) {
+      const params = parseConditionalBlockParameters(block, errors, bindingParser);
+      if (params !== null) {
+        const children = visitAll(visitor, block.children, block.children);
+        branches.push(new IfBlockBranch(params.expression, children, params.expressionAlias, block.sourceSpan, block.startSourceSpan, block.endSourceSpan, block.nameSpan, block.i18n));
+      }
+    } else if (block.name === 'else') {
+      const children = visitAll(visitor, block.children, block.children);
+      branches.push(new IfBlockBranch(null, children, null, block.sourceSpan, block.startSourceSpan, block.endSourceSpan, block.nameSpan, block.i18n));
+    }
+  }
+  // The outer IfBlock should have a span that encapsulates all branches.
+  const ifBlockStartSourceSpan = branches.length > 0 ? branches[0].startSourceSpan : ast.startSourceSpan;
+  const ifBlockEndSourceSpan = branches.length > 0 ? branches[branches.length - 1].endSourceSpan : ast.endSourceSpan;
+  let wholeSourceSpan = ast.sourceSpan;
+  const lastBranch = branches[branches.length - 1];
+  if (lastBranch !== undefined) {
+    wholeSourceSpan = new ParseSourceSpan(ifBlockStartSourceSpan.start, lastBranch.sourceSpan.end);
+  }
+  return {
+    node: new IfBlock(branches, wholeSourceSpan, ast.startSourceSpan, ifBlockEndSourceSpan, ast.nameSpan),
+    errors
+  };
+}
+/** Creates a `for` loop block from an HTML AST node. */
+function createForLoop(ast, connectedBlocks, visitor, bindingParser) {
+  const errors = [];
+  const params = parseForLoopParameters(ast, errors, bindingParser);
+  let node = null;
+  let empty = null;
+  for (const block of connectedBlocks) {
+    if (block.name === 'empty') {
+      if (empty !== null) {
+        errors.push(new ParseError(block.sourceSpan, '@for loop can only have one @empty block'));
+      } else if (block.parameters.length > 0) {
+        errors.push(new ParseError(block.sourceSpan, '@empty block cannot have parameters'));
+      } else {
+        empty = new ForLoopBlockEmpty(visitAll(visitor, block.children, block.children), block.sourceSpan, block.startSourceSpan, block.endSourceSpan, block.nameSpan, block.i18n);
+      }
+    } else {
+      errors.push(new ParseError(block.sourceSpan, `Unrecognized @for loop block "${block.name}"`));
+    }
+  }
+  if (params !== null) {
+    if (params.trackBy === null) {
+      // TODO: We should not fail here, and instead try to produce some AST for the language
+      // service.
+      errors.push(new ParseError(ast.sourceSpan, '@for loop must have a "track" expression'));
+    } else {
+      // The `for` block has a main span that includes the `empty` branch. For only the span of the
+      // main `for` body, use `mainSourceSpan`.
+      const endSpan = empty?.endSourceSpan ?? ast.endSourceSpan;
+      const sourceSpan = new ParseSourceSpan(ast.sourceSpan.start, endSpan?.end ?? ast.sourceSpan.end);
+      node = new ForLoopBlock(params.itemName, params.expression, params.trackBy.expression, params.trackBy.keywordSpan, params.context, visitAll(visitor, ast.children, ast.children), empty, sourceSpan, ast.sourceSpan, ast.startSourceSpan, endSpan, ast.nameSpan, ast.i18n);
+    }
+  }
+  return {
+    node,
+    errors
+  };
+}
+/** Creates a switch block from an HTML AST node. */
+function createSwitchBlock(ast, visitor, bindingParser) {
+  const errors = validateSwitchBlock(ast);
+  const primaryExpression = ast.parameters.length > 0 ? parseBlockParameterToBinding(ast.parameters[0], bindingParser) : bindingParser.parseBinding('', false, ast.sourceSpan, 0);
+  const cases = [];
+  const unknownBlocks = [];
+  let defaultCase = null;
+  // Here we assume that all the blocks are valid given that we validated them above.
+  for (const node of ast.children) {
+    if (!(node instanceof Block)) {
+      continue;
+    }
+    if ((node.name !== 'case' || node.parameters.length === 0) && node.name !== 'default') {
+      unknownBlocks.push(new UnknownBlock(node.name, node.sourceSpan, node.nameSpan));
+      continue;
+    }
+    const expression = node.name === 'case' ? parseBlockParameterToBinding(node.parameters[0], bindingParser) : null;
+    const ast = new SwitchBlockCase(expression, visitAll(visitor, node.children, node.children), node.sourceSpan, node.startSourceSpan, node.endSourceSpan, node.nameSpan, node.i18n);
+    if (expression === null) {
+      defaultCase = ast;
+    } else {
+      cases.push(ast);
+    }
+  }
+  // Ensure that the default case is last in the array.
+  if (defaultCase !== null) {
+    cases.push(defaultCase);
+  }
+  return {
+    node: new SwitchBlock(primaryExpression, cases, unknownBlocks, ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan, ast.nameSpan),
+    errors
+  };
+}
+/** Parses the parameters of a `for` loop block. */
+function parseForLoopParameters(block, errors, bindingParser) {
+  if (block.parameters.length === 0) {
+    errors.push(new ParseError(block.sourceSpan, '@for loop does not have an expression'));
+    return null;
+  }
+  const [expressionParam, ...secondaryParams] = block.parameters;
+  const match = stripOptionalParentheses(expressionParam, errors)?.match(FOR_LOOP_EXPRESSION_PATTERN);
+  if (!match || match[2].trim().length === 0) {
+    errors.push(new ParseError(expressionParam.sourceSpan, 'Cannot parse expression. @for loop expression must match the pattern "<identifier> of <expression>"'));
+    return null;
+  }
+  const [, itemName, rawExpression] = match;
+  const result = {
+    itemName: new Variable(itemName, '$implicit', expressionParam.sourceSpan, expressionParam.sourceSpan),
+    trackBy: null,
+    expression: parseBlockParameterToBinding(expressionParam, bindingParser, rawExpression),
+    context: {}
+  };
+  for (const param of secondaryParams) {
+    const letMatch = param.expression.match(FOR_LOOP_LET_PATTERN);
+    if (letMatch !== null) {
+      parseLetParameter(param.sourceSpan, letMatch[1], param.sourceSpan, result.context, errors);
+      continue;
+    }
+    const trackMatch = param.expression.match(FOR_LOOP_TRACK_PATTERN);
+    if (trackMatch !== null) {
+      if (result.trackBy !== null) {
+        errors.push(new ParseError(param.sourceSpan, '@for loop can only have one "track" expression'));
+      } else {
+        const expression = parseBlockParameterToBinding(param, bindingParser, trackMatch[1]);
+        const keywordSpan = new ParseSourceSpan(param.sourceSpan.start, param.sourceSpan.start.moveBy('track'.length));
+        result.trackBy = {
+          expression,
+          keywordSpan
+        };
+      }
+      continue;
+    }
+    errors.push(new ParseError(param.sourceSpan, `Unrecognized @for loop paramater "${param.expression}"`));
+  }
+  // Fill out any variables that haven't been defined explicitly.
+  for (const variableName of ALLOWED_FOR_LOOP_LET_VARIABLES) {
+    if (!result.context.hasOwnProperty(variableName)) {
+      // Give ambiently-available context variables empty spans at the end of the start of the `for`
+      // block, since they are not explicitly defined.
+      const emptySpanAfterForBlockStart = new ParseSourceSpan(block.startSourceSpan.end, block.startSourceSpan.end);
+      result.context[variableName] = new Variable(variableName, variableName, emptySpanAfterForBlockStart, emptySpanAfterForBlockStart);
+    }
+  }
+  return result;
+}
+/** Parses the `let` parameter of a `for` loop block. */
+function parseLetParameter(sourceSpan, expression, span, context, errors) {
+  const parts = expression.split(',');
+  for (const part of parts) {
+    const expressionParts = part.split('=');
+    const name = expressionParts.length === 2 ? expressionParts[0].trim() : '';
+    const variableName = expressionParts.length === 2 ? expressionParts[1].trim() : '';
+    if (name.length === 0 || variableName.length === 0) {
+      errors.push(new ParseError(sourceSpan, `Invalid @for loop "let" parameter. Parameter should match the pattern "<name> = <variable name>"`));
+    } else if (!ALLOWED_FOR_LOOP_LET_VARIABLES.has(variableName)) {
+      errors.push(new ParseError(sourceSpan, `Unknown "let" parameter variable "${variableName}". The allowed variables are: ${Array.from(ALLOWED_FOR_LOOP_LET_VARIABLES).join(', ')}`));
+    } else if (context.hasOwnProperty(variableName)) {
+      errors.push(new ParseError(sourceSpan, `Duplicate "let" parameter variable "${variableName}"`));
+    } else {
+      context[variableName] = new Variable(name, variableName, span, span);
+    }
+  }
+}
+/**
+ * Checks that the shape of the blocks connected to an
+ * `@if` block is correct. Returns an array of errors.
+ */
+function validateIfConnectedBlocks(connectedBlocks) {
+  const errors = [];
+  let hasElse = false;
+  for (let i = 0; i < connectedBlocks.length; i++) {
+    const block = connectedBlocks[i];
+    if (block.name === 'else') {
+      if (hasElse) {
+        errors.push(new ParseError(block.sourceSpan, 'Conditional can only have one @else block'));
+      } else if (connectedBlocks.length > 1 && i < connectedBlocks.length - 1) {
+        errors.push(new ParseError(block.sourceSpan, '@else block must be last inside the conditional'));
+      } else if (block.parameters.length > 0) {
+        errors.push(new ParseError(block.sourceSpan, '@else block cannot have parameters'));
+      }
+      hasElse = true;
+    } else if (!ELSE_IF_PATTERN.test(block.name)) {
+      errors.push(new ParseError(block.sourceSpan, `Unrecognized conditional block @${block.name}`));
+    }
+  }
+  return errors;
+}
+/** Checks that the shape of a `switch` block is valid. Returns an array of errors. */
+function validateSwitchBlock(ast) {
+  const errors = [];
+  let hasDefault = false;
+  if (ast.parameters.length !== 1) {
+    errors.push(new ParseError(ast.sourceSpan, '@switch block must have exactly one parameter'));
+    return errors;
+  }
+  for (const node of ast.children) {
+    // Skip over comments and empty text nodes inside the switch block.
+    // Empty text nodes can be used for formatting while comments don't affect the runtime.
+    if (node instanceof Comment || node instanceof Text && node.value.trim().length === 0) {
+      continue;
+    }
+    if (!(node instanceof Block) || node.name !== 'case' && node.name !== 'default') {
+      errors.push(new ParseError(node.sourceSpan, '@switch block can only contain @case and @default blocks'));
+      continue;
+    }
+    if (node.name === 'default') {
+      if (hasDefault) {
+        errors.push(new ParseError(node.sourceSpan, '@switch block can only have one @default block'));
+      } else if (node.parameters.length > 0) {
+        errors.push(new ParseError(node.sourceSpan, '@default block cannot have parameters'));
+      }
+      hasDefault = true;
+    } else if (node.name === 'case' && node.parameters.length !== 1) {
+      errors.push(new ParseError(node.sourceSpan, '@case block must have exactly one parameter'));
+    }
+  }
+  return errors;
+}
+/**
+ * Parses a block parameter into a binding AST.
+ * @param ast Block parameter that should be parsed.
+ * @param bindingParser Parser that the expression should be parsed with.
+ * @param part Specific part of the expression that should be parsed.
+ */
+function parseBlockParameterToBinding(ast, bindingParser, part) {
+  let start;
+  let end;
+  if (typeof part === 'string') {
+    // Note: `lastIndexOf` here should be enough to know the start index of the expression,
+    // because we know that it'll be at the end of the param. Ideally we could use the `d`
+    // flag when matching via regex and get the index from `match.indices`, but it's unclear
+    // if we can use it yet since it's a relatively new feature. See:
+    // https://github.com/tc39/proposal-regexp-match-indices
+    start = Math.max(0, ast.expression.lastIndexOf(part));
+    end = start + part.length;
+  } else {
+    start = 0;
+    end = ast.expression.length;
+  }
+  return bindingParser.parseBinding(ast.expression.slice(start, end), false, ast.sourceSpan, ast.sourceSpan.start.offset + start);
+}
+/** Parses the parameter of a conditional block (`if` or `else if`). */
+function parseConditionalBlockParameters(block, errors, bindingParser) {
+  if (block.parameters.length === 0) {
+    errors.push(new ParseError(block.sourceSpan, 'Conditional block does not have an expression'));
+    return null;
+  }
+  const expression = parseBlockParameterToBinding(block.parameters[0], bindingParser);
+  let expressionAlias = null;
+  // Start from 1 since we processed the first parameter already.
+  for (let i = 1; i < block.parameters.length; i++) {
+    const param = block.parameters[i];
+    const aliasMatch = param.expression.match(CONDITIONAL_ALIAS_PATTERN);
+    // For now conditionals can only have an `as` parameter.
+    // We may want to rework this later if we add more.
+    if (aliasMatch === null) {
+      errors.push(new ParseError(param.sourceSpan, `Unrecognized conditional paramater "${param.expression}"`));
+    } else if (block.name !== 'if') {
+      errors.push(new ParseError(param.sourceSpan, '"as" expression is only allowed on the primary @if block'));
+    } else if (expressionAlias !== null) {
+      errors.push(new ParseError(param.sourceSpan, 'Conditional can only have one "as" expression'));
+    } else {
+      const name = aliasMatch[1].trim();
+      expressionAlias = new Variable(name, name, param.sourceSpan, param.sourceSpan);
+    }
+  }
+  return {
+    expression,
+    expressionAlias
+  };
+}
+/** Strips optional parentheses around from a control from expression parameter. */
+function stripOptionalParentheses(param, errors) {
+  const expression = param.expression;
+  const spaceRegex = /^\s$/;
+  let openParens = 0;
+  let start = 0;
+  let end = expression.length - 1;
+  for (let i = 0; i < expression.length; i++) {
+    const char = expression[i];
+    if (char === '(') {
+      start = i + 1;
+      openParens++;
+    } else if (spaceRegex.test(char)) {
+      continue;
+    } else {
+      break;
+    }
+  }
+  if (openParens === 0) {
+    return expression;
+  }
+  for (let i = expression.length - 1; i > -1; i--) {
+    const char = expression[i];
+    if (char === ')') {
+      end = i;
+      openParens--;
+      if (openParens === 0) {
+        break;
+      }
+    } else if (spaceRegex.test(char)) {
+      continue;
+    } else {
+      break;
+    }
+  }
+  if (openParens !== 0) {
+    errors.push(new ParseError(param.sourceSpan, 'Unclosed parentheses in expression'));
+    return null;
+  }
+  return expression.slice(start, end);
+}
+
+/** Pattern for a timing value in a trigger. */
+const TIME_PATTERN = /^\d+\.?\d*(ms|s)?$/;
+/** Pattern for a separator between keywords in a trigger expression. */
+const SEPARATOR_PATTERN = /^\s$/;
+/** Pairs of characters that form syntax that is comma-delimited. */
+const COMMA_DELIMITED_SYNTAX = new Map([[$LBRACE, $RBRACE], [$LBRACKET, $RBRACKET], [$LPAREN, $RPAREN] // Function calls
+]);
+/** Possible types of `on` triggers. */
+var OnTriggerType;
+(function (OnTriggerType) {
+  OnTriggerType["IDLE"] = "idle";
+  OnTriggerType["TIMER"] = "timer";
+  OnTriggerType["INTERACTION"] = "interaction";
+  OnTriggerType["IMMEDIATE"] = "immediate";
+  OnTriggerType["HOVER"] = "hover";
+  OnTriggerType["VIEWPORT"] = "viewport";
+})(OnTriggerType || (OnTriggerType = {}));
+/** Parses a `when` deferred trigger. */
+function parseWhenTrigger({
+  expression,
+  sourceSpan
+}, bindingParser, triggers, errors) {
+  const whenIndex = expression.indexOf('when');
+  const whenSourceSpan = new ParseSourceSpan(sourceSpan.start.moveBy(whenIndex), sourceSpan.start.moveBy(whenIndex + 'when'.length));
+  const prefetchSpan = getPrefetchSpan(expression, sourceSpan);
+  // This is here just to be safe, we shouldn't enter this function
+  // in the first place if a block doesn't have the "when" keyword.
+  if (whenIndex === -1) {
+    errors.push(new ParseError(sourceSpan, `Could not find "when" keyword in expression`));
+  } else {
+    const start = getTriggerParametersStart(expression, whenIndex + 1);
+    const parsed = bindingParser.parseBinding(expression.slice(start), false, sourceSpan, sourceSpan.start.offset + start);
+    trackTrigger('when', triggers, errors, new BoundDeferredTrigger(parsed, sourceSpan, prefetchSpan, whenSourceSpan));
+  }
+}
+/** Parses an `on` trigger */
+function parseOnTrigger({
+  expression,
+  sourceSpan
+}, triggers, errors, placeholder) {
+  const onIndex = expression.indexOf('on');
+  const onSourceSpan = new ParseSourceSpan(sourceSpan.start.moveBy(onIndex), sourceSpan.start.moveBy(onIndex + 'on'.length));
+  const prefetchSpan = getPrefetchSpan(expression, sourceSpan);
+  // This is here just to be safe, we shouldn't enter this function
+  // in the first place if a block doesn't have the "on" keyword.
+  if (onIndex === -1) {
+    errors.push(new ParseError(sourceSpan, `Could not find "on" keyword in expression`));
+  } else {
+    const start = getTriggerParametersStart(expression, onIndex + 1);
+    const parser = new OnTriggerParser(expression, start, sourceSpan, triggers, errors, placeholder, prefetchSpan, onSourceSpan);
+    parser.parse();
+  }
+}
+function getPrefetchSpan(expression, sourceSpan) {
+  if (!expression.startsWith('prefetch')) {
+    return null;
+  }
+  return new ParseSourceSpan(sourceSpan.start, sourceSpan.start.moveBy('prefetch'.length));
+}
+class OnTriggerParser {
+  constructor(expression, start, span, triggers, errors, placeholder, prefetchSpan, onSourceSpan) {
+    this.expression = expression;
+    this.start = start;
+    this.span = span;
+    this.triggers = triggers;
+    this.errors = errors;
+    this.placeholder = placeholder;
+    this.prefetchSpan = prefetchSpan;
+    this.onSourceSpan = onSourceSpan;
+    this.index = 0;
+    this.tokens = new Lexer().tokenize(expression.slice(start));
+  }
+  parse() {
+    while (this.tokens.length > 0 && this.index < this.tokens.length) {
+      const token = this.token();
+      if (!token.isIdentifier()) {
+        this.unexpectedToken(token);
+        break;
+      }
+      // An identifier immediately followed by a comma or the end of
+      // the expression cannot have parameters so we can exit early.
+      if (this.isFollowedByOrLast($COMMA)) {
+        this.consumeTrigger(token, []);
+        this.advance();
+      } else if (this.isFollowedByOrLast($LPAREN)) {
+        this.advance(); // Advance to the opening paren.
+        const prevErrors = this.errors.length;
+        const parameters = this.consumeParameters();
+        if (this.errors.length !== prevErrors) {
+          break;
+        }
+        this.consumeTrigger(token, parameters);
+        this.advance(); // Advance past the closing paren.
+      } else if (this.index < this.tokens.length - 1) {
+        this.unexpectedToken(this.tokens[this.index + 1]);
+      }
+      this.advance();
+    }
+  }
+  advance() {
+    this.index++;
+  }
+  isFollowedByOrLast(char) {
+    if (this.index === this.tokens.length - 1) {
+      return true;
+    }
+    return this.tokens[this.index + 1].isCharacter(char);
+  }
+  token() {
+    return this.tokens[Math.min(this.index, this.tokens.length - 1)];
+  }
+  consumeTrigger(identifier, parameters) {
+    const triggerNameStartSpan = this.span.start.moveBy(this.start + identifier.index - this.tokens[0].index);
+    const nameSpan = new ParseSourceSpan(triggerNameStartSpan, triggerNameStartSpan.moveBy(identifier.strValue.length));
+    const endSpan = triggerNameStartSpan.moveBy(this.token().end - identifier.index);
+    // Put the prefetch and on spans with the first trigger
+    // This should maybe be refactored to have something like an outer OnGroup AST
+    // Since triggers can be grouped with commas "on hover(x), interaction(y)"
+    const isFirstTrigger = identifier.index === 0;
+    const onSourceSpan = isFirstTrigger ? this.onSourceSpan : null;
+    const prefetchSourceSpan = isFirstTrigger ? this.prefetchSpan : null;
+    const sourceSpan = new ParseSourceSpan(isFirstTrigger ? this.span.start : triggerNameStartSpan, endSpan);
+    try {
+      switch (identifier.toString()) {
+        case OnTriggerType.IDLE:
+          this.trackTrigger('idle', createIdleTrigger(parameters, nameSpan, sourceSpan, prefetchSourceSpan, onSourceSpan));
+          break;
+        case OnTriggerType.TIMER:
+          this.trackTrigger('timer', createTimerTrigger(parameters, nameSpan, sourceSpan, this.prefetchSpan, this.onSourceSpan));
+          break;
+        case OnTriggerType.INTERACTION:
+          this.trackTrigger('interaction', createInteractionTrigger(parameters, nameSpan, sourceSpan, this.prefetchSpan, this.onSourceSpan, this.placeholder));
+          break;
+        case OnTriggerType.IMMEDIATE:
+          this.trackTrigger('immediate', createImmediateTrigger(parameters, nameSpan, sourceSpan, this.prefetchSpan, this.onSourceSpan));
+          break;
+        case OnTriggerType.HOVER:
+          this.trackTrigger('hover', createHoverTrigger(parameters, nameSpan, sourceSpan, this.prefetchSpan, this.onSourceSpan, this.placeholder));
+          break;
+        case OnTriggerType.VIEWPORT:
+          this.trackTrigger('viewport', createViewportTrigger(parameters, nameSpan, sourceSpan, this.prefetchSpan, this.onSourceSpan, this.placeholder));
+          break;
+        default:
+          throw new Error(`Unrecognized trigger type "${identifier}"`);
+      }
+    } catch (e) {
+      this.error(identifier, e.message);
+    }
+  }
+  consumeParameters() {
+    const parameters = [];
+    if (!this.token().isCharacter($LPAREN)) {
+      this.unexpectedToken(this.token());
+      return parameters;
+    }
+    this.advance();
+    const commaDelimStack = [];
+    let current = '';
+    while (this.index < this.tokens.length) {
+      const token = this.token();
+      // Stop parsing if we've hit the end character and we're outside of a comma-delimited syntax.
+      // Note that we don't need to account for strings here since the lexer already parsed them
+      // into string tokens.
+      if (token.isCharacter($RPAREN) && commaDelimStack.length === 0) {
+        if (current.length) {
+          parameters.push(current);
+        }
+        break;
+      }
+      // In the `on` microsyntax "top-level" commas (e.g. ones outside of an parameters) separate
+      // the different triggers (e.g. `on idle,timer(500)`). This is problematic, because the
+      // function-like syntax also implies that multiple parameters can be passed into the
+      // individual trigger (e.g. `on foo(a, b)`). To avoid tripping up the parser with commas that
+      // are part of other sorts of syntax (object literals, arrays), we treat anything inside
+      // a comma-delimited syntax block as plain text.
+      if (token.type === TokenType.Character && COMMA_DELIMITED_SYNTAX.has(token.numValue)) {
+        commaDelimStack.push(COMMA_DELIMITED_SYNTAX.get(token.numValue));
+      }
+      if (commaDelimStack.length > 0 && token.isCharacter(commaDelimStack[commaDelimStack.length - 1])) {
+        commaDelimStack.pop();
+      }
+      // If we hit a comma outside of a comma-delimited syntax, it means
+      // that we're at the top level and we're starting a new parameter.
+      if (commaDelimStack.length === 0 && token.isCharacter($COMMA) && current.length > 0) {
+        parameters.push(current);
+        current = '';
+        this.advance();
+        continue;
+      }
+      // Otherwise treat the token as a plain text character in the current parameter.
+      current += this.tokenText();
+      this.advance();
+    }
+    if (!this.token().isCharacter($RPAREN) || commaDelimStack.length > 0) {
+      this.error(this.token(), 'Unexpected end of expression');
+    }
+    if (this.index < this.tokens.length - 1 && !this.tokens[this.index + 1].isCharacter($COMMA)) {
+      this.unexpectedToken(this.tokens[this.index + 1]);
+    }
+    return parameters;
+  }
+  tokenText() {
+    // Tokens have a toString already which we could use, but for string tokens it omits the quotes.
+    // Eventually we could expose this information on the token directly.
+    return this.expression.slice(this.start + this.token().index, this.start + this.token().end);
+  }
+  trackTrigger(name, trigger) {
+    trackTrigger(name, this.triggers, this.errors, trigger);
+  }
+  error(token, message) {
+    const newStart = this.span.start.moveBy(this.start + token.index);
+    const newEnd = newStart.moveBy(token.end - token.index);
+    this.errors.push(new ParseError(new ParseSourceSpan(newStart, newEnd), message));
+  }
+  unexpectedToken(token) {
+    this.error(token, `Unexpected token "${token}"`);
+  }
+}
+/** Adds a trigger to a map of triggers. */
+function trackTrigger(name, allTriggers, errors, trigger) {
+  if (allTriggers[name]) {
+    errors.push(new ParseError(trigger.sourceSpan, `Duplicate "${name}" trigger is not allowed`));
+  } else {
+    allTriggers[name] = trigger;
+  }
+}
+function createIdleTrigger(parameters, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+  if (parameters.length > 0) {
+    throw new Error(`"${OnTriggerType.IDLE}" trigger cannot have parameters`);
+  }
+  return new IdleDeferredTrigger(nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+}
+function createTimerTrigger(parameters, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+  if (parameters.length !== 1) {
+    throw new Error(`"${OnTriggerType.TIMER}" trigger must have exactly one parameter`);
+  }
+  const delay = parseDeferredTime(parameters[0]);
+  if (delay === null) {
+    throw new Error(`Could not parse time value of trigger "${OnTriggerType.TIMER}"`);
+  }
+  return new TimerDeferredTrigger(delay, nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+}
+function createImmediateTrigger(parameters, nameSpan, sourceSpan, prefetchSpan, onSourceSpan) {
+  if (parameters.length > 0) {
+    throw new Error(`"${OnTriggerType.IMMEDIATE}" trigger cannot have parameters`);
+  }
+  return new ImmediateDeferredTrigger(nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+}
+function createHoverTrigger(parameters, nameSpan, sourceSpan, prefetchSpan, onSourceSpan, placeholder) {
+  validateReferenceBasedTrigger(OnTriggerType.HOVER, parameters, placeholder);
+  return new HoverDeferredTrigger(parameters[0] ?? null, nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+}
+function createInteractionTrigger(parameters, nameSpan, sourceSpan, prefetchSpan, onSourceSpan, placeholder) {
+  validateReferenceBasedTrigger(OnTriggerType.INTERACTION, parameters, placeholder);
+  return new InteractionDeferredTrigger(parameters[0] ?? null, nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+}
+function createViewportTrigger(parameters, nameSpan, sourceSpan, prefetchSpan, onSourceSpan, placeholder) {
+  validateReferenceBasedTrigger(OnTriggerType.VIEWPORT, parameters, placeholder);
+  return new ViewportDeferredTrigger(parameters[0] ?? null, nameSpan, sourceSpan, prefetchSpan, onSourceSpan);
+}
+function validateReferenceBasedTrigger(type, parameters, placeholder) {
+  if (parameters.length > 1) {
+    throw new Error(`"${type}" trigger can only have zero or one parameters`);
+  }
+  if (parameters.length === 0) {
+    if (placeholder === null) {
+      throw new Error(`"${type}" trigger with no parameters can only be placed on an @defer that has a @placeholder block`);
+    }
+    if (placeholder.children.length !== 1 || !(placeholder.children[0] instanceof Element$1)) {
+      throw new Error(`"${type}" trigger with no parameters can only be placed on an @defer that has a ` + `@placeholder block with exactly one root element node`);
+    }
+  }
+}
+/** Gets the index within an expression at which the trigger parameters start. */
+function getTriggerParametersStart(value, startPosition = 0) {
+  let hasFoundSeparator = false;
+  for (let i = startPosition; i < value.length; i++) {
+    if (SEPARATOR_PATTERN.test(value[i])) {
+      hasFoundSeparator = true;
+    } else if (hasFoundSeparator) {
+      return i;
+    }
+  }
+  return -1;
+}
+/**
+ * Parses a time expression from a deferred trigger to
+ * milliseconds. Returns null if it cannot be parsed.
+ */
+function parseDeferredTime(value) {
+  const match = value.match(TIME_PATTERN);
+  if (!match) {
+    return null;
+  }
+  const [time, units] = match;
+  return parseFloat(time) * (units === 's' ? 1000 : 1);
+}
+
+/** Pattern to identify a `prefetch when` trigger. */
+const PREFETCH_WHEN_PATTERN = /^prefetch\s+when\s/;
+/** Pattern to identify a `prefetch on` trigger. */
+const PREFETCH_ON_PATTERN = /^prefetch\s+on\s/;
+/** Pattern to identify a `minimum` parameter in a block. */
+const MINIMUM_PARAMETER_PATTERN = /^minimum\s/;
+/** Pattern to identify a `after` parameter in a block. */
+const AFTER_PARAMETER_PATTERN = /^after\s/;
+/** Pattern to identify a `when` parameter in a block. */
+const WHEN_PARAMETER_PATTERN = /^when\s/;
+/** Pattern to identify a `on` parameter in a block. */
+const ON_PARAMETER_PATTERN = /^on\s/;
+/**
+ * Predicate function that determines if a block with
+ * a specific name cam be connected to a `defer` block.
+ */
+function isConnectedDeferLoopBlock(name) {
+  return name === 'placeholder' || name === 'loading' || name === 'error';
+}
+/** Creates a deferred block from an HTML AST node. */
+function createDeferredBlock(ast, connectedBlocks, visitor, bindingParser) {
+  const errors = [];
+  const {
+    placeholder,
+    loading,
+    error
+  } = parseConnectedBlocks(connectedBlocks, errors, visitor);
+  const {
+    triggers,
+    prefetchTriggers
+  } = parsePrimaryTriggers(ast.parameters, bindingParser, errors, placeholder);
+  // The `defer` block has a main span encompassing all of the connected branches as well.
+  let lastEndSourceSpan = ast.endSourceSpan;
+  let endOfLastSourceSpan = ast.sourceSpan.end;
+  if (connectedBlocks.length > 0) {
+    const lastConnectedBlock = connectedBlocks[connectedBlocks.length - 1];
+    lastEndSourceSpan = lastConnectedBlock.endSourceSpan;
+    endOfLastSourceSpan = lastConnectedBlock.sourceSpan.end;
+  }
+  const sourceSpanWithConnectedBlocks = new ParseSourceSpan(ast.sourceSpan.start, endOfLastSourceSpan);
+  const node = new DeferredBlock(visitAll(visitor, ast.children, ast.children), triggers, prefetchTriggers, placeholder, loading, error, ast.nameSpan, sourceSpanWithConnectedBlocks, ast.sourceSpan, ast.startSourceSpan, lastEndSourceSpan, ast.i18n);
+  return {
+    node,
+    errors
+  };
+}
+function parseConnectedBlocks(connectedBlocks, errors, visitor) {
+  let placeholder = null;
+  let loading = null;
+  let error = null;
+  for (const block of connectedBlocks) {
+    try {
+      if (!isConnectedDeferLoopBlock(block.name)) {
+        errors.push(new ParseError(block.startSourceSpan, `Unrecognized block "@${block.name}"`));
+        break;
+      }
+      switch (block.name) {
+        case 'placeholder':
+          if (placeholder !== null) {
+            errors.push(new ParseError(block.startSourceSpan, `@defer block can only have one @placeholder block`));
+          } else {
+            placeholder = parsePlaceholderBlock(block, visitor);
+          }
+          break;
+        case 'loading':
+          if (loading !== null) {
+            errors.push(new ParseError(block.startSourceSpan, `@defer block can only have one @loading block`));
+          } else {
+            loading = parseLoadingBlock(block, visitor);
+          }
+          break;
+        case 'error':
+          if (error !== null) {
+            errors.push(new ParseError(block.startSourceSpan, `@defer block can only have one @error block`));
+          } else {
+            error = parseErrorBlock(block, visitor);
+          }
+          break;
+      }
+    } catch (e) {
+      errors.push(new ParseError(block.startSourceSpan, e.message));
+    }
+  }
+  return {
+    placeholder,
+    loading,
+    error
+  };
+}
+function parsePlaceholderBlock(ast, visitor) {
+  let minimumTime = null;
+  for (const param of ast.parameters) {
+    if (MINIMUM_PARAMETER_PATTERN.test(param.expression)) {
+      if (minimumTime != null) {
+        throw new Error(`@placeholder block can only have one "minimum" parameter`);
+      }
+      const parsedTime = parseDeferredTime(param.expression.slice(getTriggerParametersStart(param.expression)));
+      if (parsedTime === null) {
+        throw new Error(`Could not parse time value of parameter "minimum"`);
+      }
+      minimumTime = parsedTime;
+    } else {
+      throw new Error(`Unrecognized parameter in @placeholder block: "${param.expression}"`);
+    }
+  }
+  return new DeferredBlockPlaceholder(visitAll(visitor, ast.children, ast.children), minimumTime, ast.nameSpan, ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan, ast.i18n);
+}
+function parseLoadingBlock(ast, visitor) {
+  let afterTime = null;
+  let minimumTime = null;
+  for (const param of ast.parameters) {
+    if (AFTER_PARAMETER_PATTERN.test(param.expression)) {
+      if (afterTime != null) {
+        throw new Error(`@loading block can only have one "after" parameter`);
+      }
+      const parsedTime = parseDeferredTime(param.expression.slice(getTriggerParametersStart(param.expression)));
+      if (parsedTime === null) {
+        throw new Error(`Could not parse time value of parameter "after"`);
+      }
+      afterTime = parsedTime;
+    } else if (MINIMUM_PARAMETER_PATTERN.test(param.expression)) {
+      if (minimumTime != null) {
+        throw new Error(`@loading block can only have one "minimum" parameter`);
+      }
+      const parsedTime = parseDeferredTime(param.expression.slice(getTriggerParametersStart(param.expression)));
+      if (parsedTime === null) {
+        throw new Error(`Could not parse time value of parameter "minimum"`);
+      }
+      minimumTime = parsedTime;
+    } else {
+      throw new Error(`Unrecognized parameter in @loading block: "${param.expression}"`);
+    }
+  }
+  return new DeferredBlockLoading(visitAll(visitor, ast.children, ast.children), afterTime, minimumTime, ast.nameSpan, ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan, ast.i18n);
+}
+function parseErrorBlock(ast, visitor) {
+  if (ast.parameters.length > 0) {
+    throw new Error(`@error block cannot have parameters`);
+  }
+  return new DeferredBlockError(visitAll(visitor, ast.children, ast.children), ast.nameSpan, ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan, ast.i18n);
+}
+function parsePrimaryTriggers(params, bindingParser, errors, placeholder) {
+  const triggers = {};
+  const prefetchTriggers = {};
+  for (const param of params) {
+    // The lexer ignores the leading spaces so we can assume
+    // that the expression starts with a keyword.
+    if (WHEN_PARAMETER_PATTERN.test(param.expression)) {
+      parseWhenTrigger(param, bindingParser, triggers, errors);
+    } else if (ON_PARAMETER_PATTERN.test(param.expression)) {
+      parseOnTrigger(param, triggers, errors, placeholder);
+    } else if (PREFETCH_WHEN_PATTERN.test(param.expression)) {
+      parseWhenTrigger(param, bindingParser, prefetchTriggers, errors);
+    } else if (PREFETCH_ON_PATTERN.test(param.expression)) {
+      parseOnTrigger(param, prefetchTriggers, errors, placeholder);
+    } else {
+      errors.push(new ParseError(param.sourceSpan, 'Unrecognized trigger'));
+    }
+  }
+  return {
+    triggers,
+    prefetchTriggers
+  };
+}
+const BIND_NAME_REGEXP = /^(?:(bind-)|(let-)|(ref-|#)|(on-)|(bindon-)|(@))(.*)$/;
+// Group 1 = "bind-"
+const KW_BIND_IDX = 1;
+// Group 2 = "let-"
+const KW_LET_IDX = 2;
+// Group 3 = "ref-/#"
+const KW_REF_IDX = 3;
+// Group 4 = "on-"
+const KW_ON_IDX = 4;
+// Group 5 = "bindon-"
+const KW_BINDON_IDX = 5;
+// Group 6 = "@"
+const KW_AT_IDX = 6;
+// Group 7 = the identifier after "bind-", "let-", "ref-/#", "on-", "bindon-" or "@"
+const IDENT_KW_IDX = 7;
+const BINDING_DELIMS = {
+  BANANA_BOX: {
+    start: '[(',
+    end: ')]'
+  },
+  PROPERTY: {
+    start: '[',
+    end: ']'
+  },
+  EVENT: {
+    start: '(',
+    end: ')'
+  }
+};
+const TEMPLATE_ATTR_PREFIX = '*';
+function htmlAstToRender3Ast(htmlNodes, bindingParser, options) {
+  const transformer = new HtmlAstToIvyAst(bindingParser, options);
+  const ivyNodes = visitAll(transformer, htmlNodes, htmlNodes);
+  // Errors might originate in either the binding parser or the html to ivy transformer
+  const allErrors = bindingParser.errors.concat(transformer.errors);
+  const result = {
+    nodes: ivyNodes,
+    errors: allErrors,
+    styleUrls: transformer.styleUrls,
+    styles: transformer.styles,
+    ngContentSelectors: transformer.ngContentSelectors
+  };
+  if (options.collectCommentNodes) {
+    result.commentNodes = transformer.commentNodes;
+  }
+  return result;
+}
+class HtmlAstToIvyAst {
+  constructor(bindingParser, options) {
+    this.bindingParser = bindingParser;
+    this.options = options;
+    this.errors = [];
+    this.styles = [];
+    this.styleUrls = [];
+    this.ngContentSelectors = [];
+    // This array will be populated if `Render3ParseOptions['collectCommentNodes']` is true
+    this.commentNodes = [];
+    this.inI18nBlock = false;
+    /**
+     * Keeps track of the nodes that have been processed already when previous nodes were visited.
+     * These are typically blocks connected to other blocks or text nodes between connected blocks.
+     */
+    this.processedNodes = new Set();
+  }
+  // HTML visitor
+  visitElement(element) {
+    const isI18nRootElement = isI18nRootNode(element.i18n);
+    if (isI18nRootElement) {
+      if (this.inI18nBlock) {
+        this.reportError('Cannot mark an element as translatable inside of a translatable section. Please remove the nested i18n marker.', element.sourceSpan);
+      }
+      this.inI18nBlock = true;
+    }
+    const preparsedElement = preparseElement(element);
+    if (preparsedElement.type === PreparsedElementType.SCRIPT) {
+      return null;
+    } else if (preparsedElement.type === PreparsedElementType.STYLE) {
+      const contents = textContents(element);
+      if (contents !== null) {
+        this.styles.push(contents);
+      }
+      return null;
+    } else if (preparsedElement.type === PreparsedElementType.STYLESHEET && isStyleUrlResolvable(preparsedElement.hrefAttr)) {
+      this.styleUrls.push(preparsedElement.hrefAttr);
+      return null;
+    }
+    // Whether the element is a `<ng-template>`
+    const isTemplateElement = isNgTemplate(element.name);
+    const parsedProperties = [];
+    const boundEvents = [];
+    const variables = [];
+    const references = [];
+    const attributes = [];
+    const i18nAttrsMeta = {};
+    const templateParsedProperties = [];
+    const templateVariables = [];
+    // Whether the element has any *-attribute
+    let elementHasInlineTemplate = false;
+    for (const attribute of element.attrs) {
+      let hasBinding = false;
+      const normalizedName = normalizeAttributeName(attribute.name);
+      // `*attr` defines template bindings
+      let isTemplateBinding = false;
+      if (attribute.i18n) {
+        i18nAttrsMeta[attribute.name] = attribute.i18n;
+      }
+      if (normalizedName.startsWith(TEMPLATE_ATTR_PREFIX)) {
+        // *-attributes
+        if (elementHasInlineTemplate) {
+          this.reportError(`Can't have multiple template bindings on one element. Use only one attribute prefixed with *`, attribute.sourceSpan);
+        }
+        isTemplateBinding = true;
+        elementHasInlineTemplate = true;
+        const templateValue = attribute.value;
+        const templateKey = normalizedName.substring(TEMPLATE_ATTR_PREFIX.length);
+        const parsedVariables = [];
+        const absoluteValueOffset = attribute.valueSpan ? attribute.valueSpan.start.offset :
+        // If there is no value span the attribute does not have a value, like `attr` in
+        //`<div attr></div>`. In this case, point to one character beyond the last character of
+        // the attribute name.
+        attribute.sourceSpan.start.offset + attribute.name.length;
+        this.bindingParser.parseInlineTemplateBinding(templateKey, templateValue, attribute.sourceSpan, absoluteValueOffset, [], templateParsedProperties, parsedVariables, true /* isIvyAst */);
+        templateVariables.push(...parsedVariables.map(v => new Variable(v.name, v.value, v.sourceSpan, v.keySpan, v.valueSpan)));
+      } else {
+        // Check for variables, events, property bindings, interpolation
+        hasBinding = this.parseAttribute(isTemplateElement, attribute, [], parsedProperties, boundEvents, variables, references);
+      }
+      if (!hasBinding && !isTemplateBinding) {
+        // don't include the bindings as attributes as well in the AST
+        attributes.push(this.visitAttribute(attribute));
+      }
+    }
+    let children;
+    if (preparsedElement.nonBindable) {
+      // The `NonBindableVisitor` may need to return an array of nodes for blocks so we need
+      // to flatten the array here. Avoid doing this for the `HtmlAstToIvyAst` since `flat` creates
+      // a new array.
+      children = visitAll(NON_BINDABLE_VISITOR, element.children).flat(Infinity);
+    } else {
+      children = visitAll(this, element.children, element.children);
+    }
+    let parsedElement;
+    if (preparsedElement.type === PreparsedElementType.NG_CONTENT) {
+      // `<ng-content>`
+      if (element.children && !element.children.every(node => isEmptyTextNode(node) || isCommentNode(node))) {
+        this.reportError(`<ng-content> element cannot have content.`, element.sourceSpan);
+      }
+      const selector = preparsedElement.selectAttr;
+      const attrs = element.attrs.map(attr => this.visitAttribute(attr));
+      parsedElement = new Content(selector, attrs, element.sourceSpan, element.i18n);
+      this.ngContentSelectors.push(selector);
+    } else if (isTemplateElement) {
+      // `<ng-template>`
+      const attrs = this.extractAttributes(element.name, parsedProperties, i18nAttrsMeta);
+      parsedElement = new Template(element.name, attributes, attrs.bound, boundEvents, [/* no template attributes */], children, references, variables, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
+    } else {
+      const attrs = this.extractAttributes(element.name, parsedProperties, i18nAttrsMeta);
+      parsedElement = new Element$1(element.name, attributes, attrs.bound, boundEvents, children, references, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, element.i18n);
+    }
+    if (elementHasInlineTemplate) {
+      // If this node is an inline-template (e.g. has *ngFor) then we need to create a template
+      // node that contains this node.
+      // Moreover, if the node is an element, then we need to hoist its attributes to the template
+      // node for matching against content projection selectors.
+      const attrs = this.extractAttributes('ng-template', templateParsedProperties, i18nAttrsMeta);
+      const templateAttrs = [];
+      attrs.literal.forEach(attr => templateAttrs.push(attr));
+      attrs.bound.forEach(attr => templateAttrs.push(attr));
+      const hoistedAttrs = parsedElement instanceof Element$1 ? {
+        attributes: parsedElement.attributes,
+        inputs: parsedElement.inputs,
+        outputs: parsedElement.outputs
+      } : {
+        attributes: [],
+        inputs: [],
+        outputs: []
+      };
+      // For <ng-template>s with structural directives on them, avoid passing i18n information to
+      // the wrapping template to prevent unnecessary i18n instructions from being generated. The
+      // necessary i18n meta information will be extracted from child elements.
+      const i18n = isTemplateElement && isI18nRootElement ? undefined : element.i18n;
+      const name = parsedElement instanceof Template ? null : parsedElement.name;
+      parsedElement = new Template(name, hoistedAttrs.attributes, hoistedAttrs.inputs, hoistedAttrs.outputs, templateAttrs, [parsedElement], [/* no references */], templateVariables, element.sourceSpan, element.startSourceSpan, element.endSourceSpan, i18n);
+    }
+    if (isI18nRootElement) {
+      this.inI18nBlock = false;
+    }
+    return parsedElement;
+  }
+  visitAttribute(attribute) {
+    return new TextAttribute(attribute.name, attribute.value, attribute.sourceSpan, attribute.keySpan, attribute.valueSpan, attribute.i18n);
+  }
+  visitText(text) {
+    return this.processedNodes.has(text) ? null : this._visitTextWithInterpolation(text.value, text.sourceSpan, text.tokens, text.i18n);
+  }
+  visitExpansion(expansion) {
+    if (!expansion.i18n) {
+      // do not generate Icu in case it was created
+      // outside of i18n block in a template
+      return null;
+    }
+    if (!isI18nRootNode(expansion.i18n)) {
+      throw new Error(`Invalid type "${expansion.i18n.constructor}" for "i18n" property of ${expansion.sourceSpan.toString()}. Expected a "Message"`);
+    }
+    const message = expansion.i18n;
+    const vars = {};
+    const placeholders = {};
+    // extract VARs from ICUs - we process them separately while
+    // assembling resulting message via goog.getMsg function, since
+    // we need to pass them to top-level goog.getMsg call
+    Object.keys(message.placeholders).forEach(key => {
+      const value = message.placeholders[key];
+      if (key.startsWith(I18N_ICU_VAR_PREFIX)) {
+        // Currently when the `plural` or `select` keywords in an ICU contain trailing spaces (e.g.
+        // `{count, select , ...}`), these spaces are also included into the key names in ICU vars
+        // (e.g. "VAR_SELECT "). These trailing spaces are not desirable, since they will later be
+        // converted into `_` symbols while normalizing placeholder names, which might lead to
+        // mismatches at runtime (i.e. placeholder will not be replaced with the correct value).
+        const formattedKey = key.trim();
+        const ast = this.bindingParser.parseInterpolationExpression(value.text, value.sourceSpan);
+        vars[formattedKey] = new BoundText(ast, value.sourceSpan);
+      } else {
+        placeholders[key] = this._visitTextWithInterpolation(value.text, value.sourceSpan, null);
+      }
+    });
+    return new Icu$1(vars, placeholders, expansion.sourceSpan, message);
+  }
+  visitExpansionCase(expansionCase) {
+    return null;
+  }
+  visitComment(comment) {
+    if (this.options.collectCommentNodes) {
+      this.commentNodes.push(new Comment$1(comment.value || '', comment.sourceSpan));
+    }
+    return null;
+  }
+  visitBlockParameter() {
+    return null;
+  }
+  visitBlock(block, context) {
+    const index = Array.isArray(context) ? context.indexOf(block) : -1;
+    if (index === -1) {
+      throw new Error('Visitor invoked incorrectly. Expecting visitBlock to be invoked siblings array as its context');
+    }
+    // Connected blocks may have been processed as a part of the previous block.
+    if (this.processedNodes.has(block)) {
+      return null;
+    }
+    let result = null;
+    switch (block.name) {
+      case 'defer':
+        result = createDeferredBlock(block, this.findConnectedBlocks(index, context, isConnectedDeferLoopBlock), this, this.bindingParser);
+        break;
+      case 'switch':
+        result = createSwitchBlock(block, this, this.bindingParser);
+        break;
+      case 'for':
+        result = createForLoop(block, this.findConnectedBlocks(index, context, isConnectedForLoopBlock), this, this.bindingParser);
+        break;
+      case 'if':
+        result = createIfBlock(block, this.findConnectedBlocks(index, context, isConnectedIfLoopBlock), this, this.bindingParser);
+        break;
+      default:
+        let errorMessage;
+        if (isConnectedDeferLoopBlock(block.name)) {
+          errorMessage = `@${block.name} block can only be used after an @defer block.`;
+          this.processedNodes.add(block);
+        } else if (isConnectedForLoopBlock(block.name)) {
+          errorMessage = `@${block.name} block can only be used after an @for block.`;
+          this.processedNodes.add(block);
+        } else if (isConnectedIfLoopBlock(block.name)) {
+          errorMessage = `@${block.name} block can only be used after an @if or @else if block.`;
+          this.processedNodes.add(block);
+        } else {
+          errorMessage = `Unrecognized block @${block.name}.`;
+        }
+        result = {
+          node: new UnknownBlock(block.name, block.sourceSpan, block.nameSpan),
+          errors: [new ParseError(block.sourceSpan, errorMessage)]
+        };
+        break;
+    }
+    this.errors.push(...result.errors);
+    return result.node;
+  }
+  findConnectedBlocks(primaryBlockIndex, siblings, predicate) {
+    const relatedBlocks = [];
+    for (let i = primaryBlockIndex + 1; i < siblings.length; i++) {
+      const node = siblings[i];
+      // Ignore empty text nodes between blocks.
+      if (node instanceof Text && node.value.trim().length === 0) {
+        // Add the text node to the processed nodes since we don't want
+        // it to be generated between the connected nodes.
+        this.processedNodes.add(node);
+        continue;
+      }
+      // Stop searching as soon as we hit a non-block node or a block that is unrelated.
+      if (!(node instanceof Block) || !predicate(node.name)) {
+        break;
+      }
+      relatedBlocks.push(node);
+      this.processedNodes.add(node);
+    }
+    return relatedBlocks;
+  }
+  // convert view engine `ParsedProperty` to a format suitable for IVY
+  extractAttributes(elementName, properties, i18nPropsMeta) {
+    const bound = [];
+    const literal = [];
+    properties.forEach(prop => {
+      const i18n = i18nPropsMeta[prop.name];
+      if (prop.isLiteral) {
+        literal.push(new TextAttribute(prop.name, prop.expression.source || '', prop.sourceSpan, prop.keySpan, prop.valueSpan, i18n));
+      } else {
+        // Note that validation is skipped and property mapping is disabled
+        // due to the fact that we need to make sure a given prop is not an
+        // input of a directive and directive matching happens at runtime.
+        const bep = this.bindingParser.createBoundElementProperty(elementName, prop, /* skipValidation */true, /* mapPropertyName */false);
+        bound.push(BoundAttribute.fromBoundElementProperty(bep, i18n));
+      }
+    });
+    return {
+      bound,
+      literal
+    };
+  }
+  parseAttribute(isTemplateElement, attribute, matchableAttributes, parsedProperties, boundEvents, variables, references) {
+    const name = normalizeAttributeName(attribute.name);
+    const value = attribute.value;
+    const srcSpan = attribute.sourceSpan;
+    const absoluteOffset = attribute.valueSpan ? attribute.valueSpan.start.offset : srcSpan.start.offset;
+    function createKeySpan(srcSpan, prefix, identifier) {
+      // We need to adjust the start location for the keySpan to account for the removed 'data-'
+      // prefix from `normalizeAttributeName`.
+      const normalizationAdjustment = attribute.name.length - name.length;
+      const keySpanStart = srcSpan.start.moveBy(prefix.length + normalizationAdjustment);
+      const keySpanEnd = keySpanStart.moveBy(identifier.length);
+      return new ParseSourceSpan(keySpanStart, keySpanEnd, keySpanStart, identifier);
+    }
+    const bindParts = name.match(BIND_NAME_REGEXP);
+    if (bindParts) {
+      if (bindParts[KW_BIND_IDX] != null) {
+        const identifier = bindParts[IDENT_KW_IDX];
+        const keySpan = createKeySpan(srcSpan, bindParts[KW_BIND_IDX], identifier);
+        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
+      } else if (bindParts[KW_LET_IDX]) {
+        if (isTemplateElement) {
+          const identifier = bindParts[IDENT_KW_IDX];
+          const keySpan = createKeySpan(srcSpan, bindParts[KW_LET_IDX], identifier);
+          this.parseVariable(identifier, value, srcSpan, keySpan, attribute.valueSpan, variables);
+        } else {
+          this.reportError(`"let-" is only supported on ng-template elements.`, srcSpan);
+        }
+      } else if (bindParts[KW_REF_IDX]) {
+        const identifier = bindParts[IDENT_KW_IDX];
+        const keySpan = createKeySpan(srcSpan, bindParts[KW_REF_IDX], identifier);
+        this.parseReference(identifier, value, srcSpan, keySpan, attribute.valueSpan, references);
+      } else if (bindParts[KW_ON_IDX]) {
+        const events = [];
+        const identifier = bindParts[IDENT_KW_IDX];
+        const keySpan = createKeySpan(srcSpan, bindParts[KW_ON_IDX], identifier);
+        this.bindingParser.parseEvent(identifier, value, /* isAssignmentEvent */false, srcSpan, attribute.valueSpan || srcSpan, matchableAttributes, events, keySpan);
+        addEvents(events, boundEvents);
+      } else if (bindParts[KW_BINDON_IDX]) {
+        const identifier = bindParts[IDENT_KW_IDX];
+        const keySpan = createKeySpan(srcSpan, bindParts[KW_BINDON_IDX], identifier);
+        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
+        this.parseAssignmentEvent(identifier, value, srcSpan, attribute.valueSpan, matchableAttributes, boundEvents, keySpan);
+      } else if (bindParts[KW_AT_IDX]) {
+        const keySpan = createKeySpan(srcSpan, '', name);
+        this.bindingParser.parseLiteralAttr(name, value, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
+      }
+      return true;
+    }
+    // We didn't see a kw-prefixed property binding, but we have not yet checked
+    // for the []/()/[()] syntax.
+    let delims = null;
+    if (name.startsWith(BINDING_DELIMS.BANANA_BOX.start)) {
+      delims = BINDING_DELIMS.BANANA_BOX;
+    } else if (name.startsWith(BINDING_DELIMS.PROPERTY.start)) {
+      delims = BINDING_DELIMS.PROPERTY;
+    } else if (name.startsWith(BINDING_DELIMS.EVENT.start)) {
+      delims = BINDING_DELIMS.EVENT;
+    }
+    if (delims !== null &&
+    // NOTE: older versions of the parser would match a start/end delimited
+    // binding iff the property name was terminated by the ending delimiter
+    // and the identifier in the binding was non-empty.
+    // TODO(ayazhafiz): update this to handle malformed bindings.
+    name.endsWith(delims.end) && name.length > delims.start.length + delims.end.length) {
+      const identifier = name.substring(delims.start.length, name.length - delims.end.length);
+      const keySpan = createKeySpan(srcSpan, delims.start, identifier);
+      if (delims.start === BINDING_DELIMS.BANANA_BOX.start) {
+        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
+        this.parseAssignmentEvent(identifier, value, srcSpan, attribute.valueSpan, matchableAttributes, boundEvents, keySpan);
+      } else if (delims.start === BINDING_DELIMS.PROPERTY.start) {
+        this.bindingParser.parsePropertyBinding(identifier, value, false, srcSpan, absoluteOffset, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan);
+      } else {
+        const events = [];
+        this.bindingParser.parseEvent(identifier, value, /* isAssignmentEvent */false, srcSpan, attribute.valueSpan || srcSpan, matchableAttributes, events, keySpan);
+        addEvents(events, boundEvents);
+      }
+      return true;
+    }
+    // No explicit binding found.
+    const keySpan = createKeySpan(srcSpan, '' /* prefix */, name);
+    const hasBinding = this.bindingParser.parsePropertyInterpolation(name, value, srcSpan, attribute.valueSpan, matchableAttributes, parsedProperties, keySpan, attribute.valueTokens ?? null);
+    return hasBinding;
+  }
+  _visitTextWithInterpolation(value, sourceSpan, interpolatedTokens, i18n) {
+    const valueNoNgsp = replaceNgsp(value);
+    const expr = this.bindingParser.parseInterpolation(valueNoNgsp, sourceSpan, interpolatedTokens);
+    return expr ? new BoundText(expr, sourceSpan, i18n) : new Text$3(valueNoNgsp, sourceSpan);
+  }
+  parseVariable(identifier, value, sourceSpan, keySpan, valueSpan, variables) {
+    if (identifier.indexOf('-') > -1) {
+      this.reportError(`"-" is not allowed in variable names`, sourceSpan);
+    } else if (identifier.length === 0) {
+      this.reportError(`Variable does not have a name`, sourceSpan);
+    }
+    variables.push(new Variable(identifier, value, sourceSpan, keySpan, valueSpan));
+  }
+  parseReference(identifier, value, sourceSpan, keySpan, valueSpan, references) {
+    if (identifier.indexOf('-') > -1) {
+      this.reportError(`"-" is not allowed in reference names`, sourceSpan);
+    } else if (identifier.length === 0) {
+      this.reportError(`Reference does not have a name`, sourceSpan);
+    } else if (references.some(reference => reference.name === identifier)) {
+      this.reportError(`Reference "#${identifier}" is defined more than once`, sourceSpan);
+    }
+    references.push(new Reference(identifier, value, sourceSpan, keySpan, valueSpan));
+  }
+  parseAssignmentEvent(name, expression, sourceSpan, valueSpan, targetMatchableAttrs, boundEvents, keySpan) {
+    const events = [];
+    this.bindingParser.parseEvent(`${name}Change`, `${expression} =$event`, /* isAssignmentEvent */true, sourceSpan, valueSpan || sourceSpan, targetMatchableAttrs, events, keySpan);
+    addEvents(events, boundEvents);
+  }
+  reportError(message, sourceSpan, level = ParseErrorLevel.ERROR) {
+    this.errors.push(new ParseError(sourceSpan, message, level));
+  }
+}
+class NonBindableVisitor {
+  visitElement(ast) {
+    const preparsedElement = preparseElement(ast);
+    if (preparsedElement.type === PreparsedElementType.SCRIPT || preparsedElement.type === PreparsedElementType.STYLE || preparsedElement.type === PreparsedElementType.STYLESHEET) {
+      // Skipping <script> for security reasons
+      // Skipping <style> and stylesheets as we already processed them
+      // in the StyleCompiler
+      return null;
+    }
+    const children = visitAll(this, ast.children, null);
+    return new Element$1(ast.name, visitAll(this, ast.attrs), /* inputs */[], /* outputs */[], children, /* references */[], ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan);
+  }
+  visitComment(comment) {
+    return null;
+  }
+  visitAttribute(attribute) {
+    return new TextAttribute(attribute.name, attribute.value, attribute.sourceSpan, attribute.keySpan, attribute.valueSpan, attribute.i18n);
+  }
+  visitText(text) {
+    return new Text$3(text.value, text.sourceSpan);
+  }
+  visitExpansion(expansion) {
+    return null;
+  }
+  visitExpansionCase(expansionCase) {
+    return null;
+  }
+  visitBlock(block, context) {
+    const nodes = [
+    // In an ngNonBindable context we treat the opening/closing tags of block as plain text.
+    // This is the as if the `tokenizeBlocks` option was disabled.
+    new Text$3(block.startSourceSpan.toString(), block.startSourceSpan), ...visitAll(this, block.children)];
+    if (block.endSourceSpan !== null) {
+      nodes.push(new Text$3(block.endSourceSpan.toString(), block.endSourceSpan));
+    }
+    return nodes;
+  }
+  visitBlockParameter(parameter, context) {
+    return null;
+  }
+}
+const NON_BINDABLE_VISITOR = new NonBindableVisitor();
+function normalizeAttributeName(attrName) {
+  return /^data-/i.test(attrName) ? attrName.substring(5) : attrName;
+}
+function addEvents(events, boundEvents) {
+  boundEvents.push(...events.map(e => BoundEvent.fromParsedEvent(e)));
+}
+function isEmptyTextNode(node) {
+  return node instanceof Text && node.value.trim().length == 0;
+}
+function isCommentNode(node) {
+  return node instanceof Comment;
+}
+function textContents(node) {
+  if (node.children.length !== 1 || !(node.children[0] instanceof Text)) {
+    return null;
+  } else {
+    return node.children[0].value;
+  }
+}
+var TagType;
+(function (TagType) {
+  TagType[TagType["ELEMENT"] = 0] = "ELEMENT";
+  TagType[TagType["TEMPLATE"] = 1] = "TEMPLATE";
+})(TagType || (TagType = {}));
+/**
+ * Generates an object that is used as a shared state between parent and all child contexts.
+ */
+function setupRegistry() {
+  return {
+    getUniqueId: getSeqNumberGenerator(),
+    icus: new Map()
+  };
+}
+/**
+ * I18nContext is a helper class which keeps track of all i18n-related aspects
+ * (accumulates placeholders, bindings, etc) between i18nStart and i18nEnd instructions.
+ *
+ * When we enter a nested template, the top-level context is being passed down
+ * to the nested component, which uses this context to generate a child instance
+ * of I18nContext class (to handle nested template) and at the end, reconciles it back
+ * with the parent context.
+ *
+ * @param index Instruction index of i18nStart, which initiates this context
+ * @param ref Reference to a translation const that represents the content if thus context
+ * @param level Nesting level defined for child contexts
+ * @param templateIndex Instruction index of a template which this context belongs to
+ * @param meta Meta information (id, meaning, description, etc) associated with this context
+ */
+class I18nContext {
+  constructor(index, ref, level = 0, templateIndex = null, meta, registry) {
+    this.index = index;
+    this.ref = ref;
+    this.level = level;
+    this.templateIndex = templateIndex;
+    this.meta = meta;
+    this.registry = registry;
+    this.bindings = new Set();
+    this.placeholders = new Map();
+    this.isEmitted = false;
+    this._unresolvedCtxCount = 0;
+    this._registry = registry || setupRegistry();
+    this.id = this._registry.getUniqueId();
+  }
+  appendTag(type, node, index, closed) {
+    if (node.isVoid && closed) {
+      return; // ignore "close" for void tags
+    }
+
+    const ph = node.isVoid || !closed ? node.startName : node.closeName;
+    const content = {
+      type,
+      index,
+      ctx: this.id,
+      isVoid: node.isVoid,
+      closed
+    };
+    updatePlaceholderMap(this.placeholders, ph, content);
+  }
+  appendBlockPart(node, index, closed) {
+    const ph = closed ? node.closeName : node.startName;
+    const content = {
+      type: TagType.TEMPLATE,
+      index,
+      ctx: this.id,
+      closed
+    };
+    updatePlaceholderMap(this.placeholders, ph, content);
+  }
+  get icus() {
+    return this._registry.icus;
+  }
+  get isRoot() {
+    return this.level === 0;
+  }
+  get isResolved() {
+    return this._unresolvedCtxCount === 0;
+  }
+  getSerializedPlaceholders() {
+    const result = new Map();
+    this.placeholders.forEach((values, key) => result.set(key, values.map(serializePlaceholderValue)));
+    return result;
+  }
+  // public API to accumulate i18n-related content
+  appendBinding(binding) {
+    this.bindings.add(binding);
+  }
+  appendIcu(name, ref) {
+    updatePlaceholderMap(this._registry.icus, name, ref);
+  }
+  appendBoundText(node) {
+    const phs = assembleBoundTextPlaceholders(node, this.bindings.size, this.id);
+    phs.forEach((values, key) => updatePlaceholderMap(this.placeholders, key, ...values));
+  }
+  appendTemplate(node, index) {
+    // add open and close tags at the same time,
+    // since we process nested templates separately
+    this.appendTag(TagType.TEMPLATE, node, index, false);
+    this.appendTag(TagType.TEMPLATE, node, index, true);
+    this._unresolvedCtxCount++;
+  }
+  appendBlock(node, index) {
+    // add open and close tags at the same time,
+    // since we process nested templates separately
+    this.appendBlockPart(node, index, false);
+    this.appendBlockPart(node, index, true);
+    this._unresolvedCtxCount++;
+  }
+  appendElement(node, index, closed) {
+    this.appendTag(TagType.ELEMENT, node, index, closed);
+  }
+  appendProjection(node, index) {
+    // Add open and close tags at the same time, since `<ng-content>` has no content,
+    // so when we come across `<ng-content>` we can register both open and close tags.
+    // Note: runtime i18n logic doesn't distinguish `<ng-content>` tag placeholders and
+    // regular element tag placeholders, so we generate element placeholders for both types.
+    this.appendTag(TagType.ELEMENT, node, index, false);
+    this.appendTag(TagType.ELEMENT, node, index, true);
+  }
+  /**
+   * Generates an instance of a child context based on the root one,
+   * when we enter a nested template within I18n section.
+   *
+   * @param index Instruction index of corresponding i18nStart, which initiates this context
+   * @param templateIndex Instruction index of a template which this context belongs to
+   * @param meta Meta information (id, meaning, description, etc) associated with this context
+   *
+   * @returns I18nContext instance
+   */
+  forkChildContext(index, templateIndex, meta) {
+    return new I18nContext(index, this.ref, this.level + 1, templateIndex, meta, this._registry);
+  }
+  /**
+   * Reconciles child context into parent one once the end of the i18n block is reached (i18nEnd).
+   *
+   * @param context Child I18nContext instance to be reconciled with parent context.
+   */
+  reconcileChildContext(context) {
+    // set the right context id for open and close
+    // template tags, so we can use it as sub-block ids
+    ['start', 'close'].forEach(op => {
+      const key = context.meta[`${op}Name`];
+      const phs = this.placeholders.get(key) || [];
+      const tag = phs.find(findTemplateFn(this.id, context.templateIndex));
+      if (tag) {
+        tag.ctx = context.id;
+      }
+    });
+    // reconcile placeholders
+    const childPhs = context.placeholders;
+    childPhs.forEach((values, key) => {
+      const phs = this.placeholders.get(key);
+      if (!phs) {
+        this.placeholders.set(key, values);
+        return;
+      }
+      // try to find matching template...
+      const tmplIdx = phs.findIndex(findTemplateFn(context.id, context.templateIndex));
+      if (tmplIdx >= 0) {
+        // ... if found - replace it with nested template content
+        const isCloseTag = key.startsWith('CLOSE');
+        const isTemplateTag = key.endsWith('NG-TEMPLATE');
+        if (isTemplateTag) {
+          // current template's content is placed before or after
+          // parent template tag, depending on the open/close attribute
+          phs.splice(tmplIdx + (isCloseTag ? 0 : 1), 0, ...values);
+        } else {
+          const idx = isCloseTag ? values.length - 1 : 0;
+          values[idx].tmpl = phs[tmplIdx];
+          phs.splice(tmplIdx, 1, ...values);
+        }
+      } else {
+        // ... otherwise just append content to placeholder value
+        phs.push(...values);
+      }
+      this.placeholders.set(key, phs);
+    });
+    this._unresolvedCtxCount--;
+  }
+}
+//
+// Helper methods
+//
+function wrap(symbol, index, contextId, closed) {
+  const state = closed ? '/' : '';
+  return wrapI18nPlaceholder(`${state}${symbol}${index}`, contextId);
+}
+function wrapTag(symbol, {
+  index,
+  ctx,
+  isVoid
+}, closed) {
+  return isVoid ? wrap(symbol, index, ctx) + wrap(symbol, index, ctx, true) : wrap(symbol, index, ctx, closed);
+}
+function findTemplateFn(ctx, templateIndex) {
+  return token => typeof token === 'object' && token.type === TagType.TEMPLATE && token.index === templateIndex && token.ctx === ctx;
+}
+function serializePlaceholderValue(value) {
+  const element = (data, closed) => wrapTag('#', data, closed);
+  const template = (data, closed) => wrapTag('*', data, closed);
+  switch (value.type) {
+    case TagType.ELEMENT:
+      // close element tag
+      if (value.closed) {
+        return element(value, true) + (value.tmpl ? template(value.tmpl, true) : '');
+      }
+      // open element tag that also initiates a template
+      if (value.tmpl) {
+        return template(value.tmpl) + element(value) + (value.isVoid ? template(value.tmpl, true) : '');
+      }
+      return element(value);
+    case TagType.TEMPLATE:
+      return template(value, value.closed);
+    default:
+      return value;
+  }
+}
+
 // Selector attribute name of `<ng-content>`
 const NG_CONTENT_SELECT_ATTR = 'select';
 // Attribute name of `ngProjectAs`.
 const NG_PROJECT_AS_ATTR_NAME = 'ngProjectAs';
 // Global symbols available only inside event bindings.
 const EVENT_BINDING_SCOPE_GLOBALS = new Set(['$event']);
+// Tag name of the `ng-template` element.
+const NG_TEMPLATE_TAG_NAME = 'ng-template';
 // List of supported global targets for event listeners
 const GLOBAL_TARGET_RESOLVERS = new Map([['window', Identifiers.resolveWindow], ['document', Identifiers.resolveDocument], ['body', Identifiers.resolveBody]]);
 const LEADING_TRIVIA_CHARS = [' ', '\n', '\r', '\t'];
@@ -23212,8 +30458,22 @@ function createComponentDefConsts() {
     i18nVarRefsCache: new Map()
   };
 }
+class TemplateData {
+  constructor(name, index, scope, visitor) {
+    this.name = name;
+    this.index = index;
+    this.scope = scope;
+    this.visitor = visitor;
+  }
+  getConstCount() {
+    return this.visitor.getConstCount();
+  }
+  getVarCount() {
+    return this.visitor.getVarCount();
+  }
+}
 class TemplateDefinitionBuilder {
-  constructor(constantPool, parentBindingScope, level = 0, contextName, i18nContext, templateIndex, templateName, _namespace, relativeContextFilePath, i18nUseExternalIds, _constants = createComponentDefConsts()) {
+  constructor(constantPool, parentBindingScope, level = 0, contextName, i18nContext, templateIndex, templateName, _namespace, relativeContextFilePath, i18nUseExternalIds, deferBlocks, elementLocations, _constants = createComponentDefConsts()) {
     this.constantPool = constantPool;
     this.level = level;
     this.contextName = contextName;
@@ -23222,6 +30482,8 @@ class TemplateDefinitionBuilder {
     this.templateName = templateName;
     this._namespace = _namespace;
     this.i18nUseExternalIds = i18nUseExternalIds;
+    this.deferBlocks = deferBlocks;
+    this.elementLocations = elementLocations;
     this._constants = _constants;
     this._dataIndex = 0;
     this._bindingContext = 0;
@@ -23242,6 +30504,11 @@ class TemplateDefinitionBuilder {
     this._currentIndex = 0;
     /** Temporary variable declarations generated from visiting pipes, literals, etc. */
     this._tempVariables = [];
+    /**
+     * Temporary variable used to store state between control flow instructions.
+     * Should be accessed via the `allocateControlFlowTempVariable` method.
+     */
+    this._controlFlowTempVariable = null;
     /**
      * List of callbacks to build nested templates. Nested templates must not be visited until
      * after the parent template has finished visiting all of its nodes. This ensures that all
@@ -23271,6 +30538,14 @@ class TemplateDefinitionBuilder {
     this.visitTextAttribute = invalid;
     this.visitBoundAttribute = invalid;
     this.visitBoundEvent = invalid;
+    this.visitDeferredTrigger = invalid;
+    this.visitDeferredBlockError = invalid;
+    this.visitDeferredBlockLoading = invalid;
+    this.visitDeferredBlockPlaceholder = invalid;
+    this.visitIfBlockBranch = invalid;
+    this.visitSwitchBlockCase = invalid;
+    this.visitForLoopBlockEmpty = invalid;
+    this.visitUnknownBlock = invalid;
     this._bindingScope = parentBindingScope.nestedScope(level);
     // Turn the relative context file path into an identifier by replacing non-alphanumeric
     // characters with underscores.
@@ -23280,13 +30555,19 @@ class TemplateDefinitionBuilder {
       this.creationInstruction(null, Identifiers.pipe, [literal(slot), literal(name)]);
     });
   }
-  buildTemplateFunction(nodes, variables, ngContentSelectorsOffset = 0, i18n) {
+  buildTemplateFunction(nodes, variables, ngContentSelectorsOffset = 0, i18n, variableAliases) {
     this._ngContentSelectorsOffset = ngContentSelectorsOffset;
     if (this._namespace !== Identifiers.namespaceHTML) {
       this.creationInstruction(null, this._namespace);
     }
     // Create variable bindings
-    variables.forEach(v => this.registerContextVariables(v));
+    variables.forEach(v => {
+      const alias = variableAliases?.[v.name];
+      this.registerContextVariables(v.name, v.value);
+      if (alias) {
+        this.registerContextVariables(alias, v.value);
+      }
+    });
     // Initiate i18n context in case:
     // - this template has parent i18n context
     // - or the template has i18n meta associated with it,
@@ -23373,11 +30654,17 @@ class TemplateDefinitionBuilder {
     this._constants.prepareStatements.push(...statements);
     return _ref;
   }
-  registerContextVariables(variable$1) {
+  registerContextVariables(name, value) {
     const scopedName = this._bindingScope.freshReferenceName();
     const retrievalLevel = this.level;
-    const lhs = variable(variable$1.name + scopedName);
-    this._bindingScope.set(retrievalLevel, variable$1.name, lhs, 1 /* DeclarationPriority.CONTEXT */, (scope, relativeLevel) => {
+    const isDirect = value === DIRECT_CONTEXT_REFERENCE;
+    const lhs = variable(name + scopedName);
+    this._bindingScope.set(retrievalLevel, name, scope => {
+      // If we're at the top level and we're referring to the context variable directly, we
+      // can do so through the implicit receiver, instead of renaming it. Note that this does
+      // not apply to listeners, because they need to restore the context.
+      return isDirect && scope.bindingLevel === retrievalLevel && !scope.isListenerScope() ? variable(CONTEXT_NAME) : lhs;
+    }, 1 /* DeclarationPriority.CONTEXT */, (scope, relativeLevel) => {
       let rhs;
       if (scope.bindingLevel === retrievalLevel) {
         if (scope.isListenerScope() && scope.hasRestoreViewVariable()) {
@@ -23387,6 +30674,10 @@ class TemplateDefinitionBuilder {
           // For more information see: https://github.com/angular/angular/pull/40360.
           rhs = variable(RESTORED_VIEW_CONTEXT_NAME);
           scope.notifyRestoredViewContextUse();
+        } else if (isDirect) {
+          // If we have a direct read of the context at the top level we don't need to
+          // declare any variables and we can refer to it directly.
+          return [];
         } else {
           // e.g. ctx
           rhs = variable(CONTEXT_NAME);
@@ -23396,8 +30687,10 @@ class TemplateDefinitionBuilder {
         // e.g. ctx_r0   OR  x(2);
         rhs = sharedCtxVar ? sharedCtxVar : generateNextContextExpr(relativeLevel);
       }
-      // e.g. const $item$ = x(2).$implicit;
-      return [lhs.set(rhs.prop(variable$1.value || IMPLICIT_REFERENCE)).toConstDecl()];
+      return [
+      // e.g. const $items$ = x(2) for direct context references and
+      // const $item$ = x(2).$implicit for indirect ones.
+      lhs.set(isDirect ? rhs : rhs.prop(value || IMPLICIT_REFERENCE)).toConstDecl()];
     });
   }
   i18nAppendBindings(expressions) {
@@ -23414,7 +30707,7 @@ class TemplateDefinitionBuilder {
       } else {
         const value = prop.value.visit(this._valueConverter);
         this.allocateBindingSlots(value);
-        if (value instanceof Interpolation) {
+        if (value instanceof Interpolation$1) {
           const {
             strings,
             expressions
@@ -23433,7 +30726,7 @@ class TemplateDefinitionBuilder {
   }
   // Generates top level vars for i18n blocks (i.e. `i18n_N`).
   i18nGenerateMainBlockVar() {
-    return variable(this.constantPool.uniqueName(TRANSLATION_VAR_PREFIX));
+    return variable(this.constantPool.uniqueName(TRANSLATION_VAR_PREFIX$1));
   }
   // Generates vars with Closure-specific names for i18n blocks (i.e. `MSG_XXX`).
   i18nGenerateClosureVar(messageId) {
@@ -23471,7 +30764,7 @@ class TemplateDefinitionBuilder {
           } else {
             // ... otherwise we need to activate post-processing
             // to replace ICU placeholders with proper values
-            const placeholder = wrapI18nPlaceholder(`${I18N_ICU_MAPPING_PREFIX}${key}`);
+            const placeholder = wrapI18nPlaceholder(`${I18N_ICU_MAPPING_PREFIX$1}${key}`);
             params[key] = literal(placeholder);
             icuMapping[key] = literalArr(refs);
           }
@@ -23547,7 +30840,7 @@ class TemplateDefinitionBuilder {
       const message = attr.i18n;
       const converted = attr.value.visit(this._valueConverter);
       this.allocateBindingSlots(converted);
-      if (converted instanceof Interpolation) {
+      if (converted instanceof Interpolation$1) {
         const placeholders = assembleBoundTextPlaceholders(message);
         const params = placeholdersToParams(placeholders);
         i18nAttrArgs.push(literal(attr.name), this.i18nTranslate(message, params));
@@ -23607,6 +30900,10 @@ class TemplateDefinitionBuilder {
   visitElement(element) {
     const elementIndex = this.allocateDataSlot();
     const stylingBuilder = new StylingBuilder(null);
+    this.elementLocations.set(element, {
+      index: elementIndex,
+      level: this.level
+    });
     let isNonBindableMode = false;
     const isI18nRootElement = isI18nRootNode(element.i18n) && !isSingleI18nIcu(element.i18n);
     const outputAttrs = [];
@@ -23759,7 +31056,7 @@ class TemplateDefinitionBuilder {
           }
           this.allocateBindingSlots(value);
           if (inputType === 0 /* BindingType.Property */) {
-            if (value instanceof Interpolation) {
+            if (value instanceof Interpolation$1) {
               // prop="{{value}}" and friends
               this.interpolatedUpdateInstruction(getPropertyInterpolationExpression(value), elementIndex, attrName, input, value, params);
             } else {
@@ -23771,11 +31068,11 @@ class TemplateDefinitionBuilder {
               });
             }
           } else if (inputType === 1 /* BindingType.Attribute */) {
-            if (value instanceof Interpolation && getInterpolationArgsLength(value) > 1) {
+            if (value instanceof Interpolation$1 && getInterpolationArgsLength(value) > 1) {
               // attr.name="text{{value}}" and friends
               this.interpolatedUpdateInstruction(getAttributeInterpolationExpression(value), elementIndex, attrName, input, value, params);
             } else {
-              const boundValue = value instanceof Interpolation ? value.expressions[0] : value;
+              const boundValue = value instanceof Interpolation$1 ? value.expressions[0] : value;
               // [attr.name]="value" or attr.name="{{value}}"
               // Collect the attribute bindings so that they can be chained at the end.
               attributeBindings.push({
@@ -23815,46 +31112,56 @@ class TemplateDefinitionBuilder {
       this.creationInstruction(span, isNgContainer$1 ? Identifiers.elementContainerEnd : Identifiers.elementEnd);
     }
   }
-  visitTemplate(template) {
-    const NG_TEMPLATE_TAG_NAME = 'ng-template';
-    const templateIndex = this.allocateDataSlot();
-    if (this.i18n) {
-      this.i18n.appendTemplate(template.i18n, templateIndex);
+  prepareEmbeddedTemplateFn(children, contextNameSuffix, variables = [], i18nMeta, variableAliases) {
+    const index = this.allocateDataSlot();
+    if (this.i18n && i18nMeta) {
+      if (i18nMeta instanceof BlockPlaceholder) {
+        this.i18n.appendBlock(i18nMeta, index);
+      } else {
+        this.i18n.appendTemplate(i18nMeta, index);
+      }
     }
-    const tagNameWithoutNamespace = template.tagName ? splitNsName(template.tagName)[1] : template.tagName;
-    const contextName = `${this.contextName}${template.tagName ? '_' + sanitizeIdentifier(template.tagName) : ''}_${templateIndex}`;
-    const templateName = `${contextName}_Template`;
-    const parameters = [literal(templateIndex), variable(templateName),
-    // We don't care about the tag's namespace here, because we infer
-    // it based on the parent nodes inside the template instruction.
-    literal(tagNameWithoutNamespace)];
-    // prepare attributes parameter (including attributes used for directive matching)
-    const attrsExprs = this.getAttributeExpressions(NG_TEMPLATE_TAG_NAME, template.attributes, template.inputs, template.outputs, undefined /* styles */, template.templateAttrs);
-    parameters.push(this.addAttrsToConsts(attrsExprs));
-    // local refs (ex.: <ng-template #foo>)
-    if (template.references && template.references.length) {
-      const refs = this.prepareRefsArray(template.references);
-      parameters.push(this.addToConsts(refs));
-      parameters.push(importExpr(Identifiers.templateRefExtractor));
-    }
+    const contextName = `${this.contextName}${contextNameSuffix}_${index}`;
+    const name = `${contextName}_Template`;
     // Create the template function
-    const templateVisitor = new TemplateDefinitionBuilder(this.constantPool, this._bindingScope, this.level + 1, contextName, this.i18n, templateIndex, templateName, this._namespace, this.fileBasedI18nSuffix, this.i18nUseExternalIds, this._constants);
+    const visitor = new TemplateDefinitionBuilder(this.constantPool, this._bindingScope, this.level + 1, contextName, this.i18n, index, name, this._namespace, this.fileBasedI18nSuffix, this.i18nUseExternalIds, this.deferBlocks, this.elementLocations, this._constants);
     // Nested templates must not be visited until after their parent templates have completed
     // processing, so they are queued here until after the initial pass. Otherwise, we wouldn't
     // be able to support bindings in nested templates to local refs that occur after the
     // template definition. e.g. <div *ngIf="showing">{{ foo }}</div>  <div #foo></div>
     this._nestedTemplateFns.push(() => {
-      const templateFunctionExpr = templateVisitor.buildTemplateFunction(template.children, template.variables, this._ngContentReservedSlots.length + this._ngContentSelectorsOffset, template.i18n);
-      this.constantPool.statements.push(templateFunctionExpr.toDeclStmt(templateName));
-      if (templateVisitor._ngContentReservedSlots.length) {
-        this._ngContentReservedSlots.push(...templateVisitor._ngContentReservedSlots);
+      const templateFunctionExpr = visitor.buildTemplateFunction(children, variables, this._ngContentReservedSlots.length + this._ngContentSelectorsOffset, i18nMeta, variableAliases);
+      this.constantPool.statements.push(templateFunctionExpr.toDeclStmt(name));
+      if (visitor._ngContentReservedSlots.length) {
+        this._ngContentReservedSlots.push(...visitor._ngContentReservedSlots);
       }
     });
+    return new TemplateData(name, index, visitor._bindingScope, visitor);
+  }
+  createEmbeddedTemplateFn(tagName, children, contextNameSuffix, sourceSpan, variables = [], attrsExprs, references, i18n) {
+    const data = this.prepareEmbeddedTemplateFn(children, contextNameSuffix, variables, i18n);
+    const parameters = [literal(data.index), variable(data.name), literal(tagName), this.addAttrsToConsts(attrsExprs || null)];
+    // local refs (ex.: <ng-template #foo>)
+    if (references && references.length > 0) {
+      const refs = this.prepareRefsArray(references);
+      parameters.push(this.addToConsts(refs));
+      parameters.push(importExpr(Identifiers.templateRefExtractor));
+    }
     // e.g. template(1, MyComp_Template_1)
-    this.creationInstruction(template.sourceSpan, Identifiers.templateCreate, () => {
-      parameters.splice(2, 0, literal(templateVisitor.getConstCount()), literal(templateVisitor.getVarCount()));
+    this.creationInstruction(sourceSpan, Identifiers.templateCreate, () => {
+      parameters.splice(2, 0, literal(data.getConstCount()), literal(data.getVarCount()));
       return trimTrailingNulls(parameters);
     });
+    return data.index;
+  }
+  visitTemplate(template) {
+    // We don't care about the tag's namespace here, because we infer
+    // it based on the parent nodes inside the template instruction.
+    const tagNameWithoutNamespace = template.tagName ? splitNsName(template.tagName)[1] : template.tagName;
+    const contextNameSuffix = template.tagName ? '_' + sanitizeIdentifier(template.tagName) : '';
+    // prepare attributes parameter (including attributes used for directive matching)
+    const attrsExprs = this.getAttributeExpressions(NG_TEMPLATE_TAG_NAME, template.attributes, template.inputs, template.outputs, undefined /* styles */, template.templateAttrs);
+    const templateIndex = this.createEmbeddedTemplateFn(tagNameWithoutNamespace, template.children, contextNameSuffix, template.sourceSpan, template.variables, attrsExprs, template.references, template.i18n);
     // handle property bindings e.g. ɵɵproperty('ngForOf', ctx.items), et al;
     this.templatePropertyBindings(templateIndex, template.templateAttrs);
     // Only add normal input/output binding instructions on explicit <ng-template> elements.
@@ -23881,7 +31188,7 @@ class TemplateDefinitionBuilder {
     if (this.i18n) {
       const value = text.value.visit(this._valueConverter);
       this.allocateBindingSlots(value);
-      if (value instanceof Interpolation) {
+      if (value instanceof Interpolation$1) {
         this.i18n.appendBoundText(text.i18n);
         this.i18nAppendBindings(value.expressions);
       }
@@ -23891,7 +31198,7 @@ class TemplateDefinitionBuilder {
     this.creationInstruction(text.sourceSpan, Identifiers.text, [literal(nodeIndex)]);
     const value = text.value.visit(this._valueConverter);
     this.allocateBindingSlots(value);
-    if (value instanceof Interpolation) {
+    if (value instanceof Interpolation$1) {
       this.updateInstructionWithAdvance(nodeIndex, text.sourceSpan, getTextInterpolationExpression(value), () => this.getUpdateInstructionArguments(value));
     } else {
       error('Text nodes should be interpolated and never bound directly.');
@@ -23925,10 +31232,12 @@ class TemplateDefinitionBuilder {
     // inside ICUs)
     // - all ICU vars (such as `VAR_SELECT` or `VAR_PLURAL`) are replaced with correct values
     const transformFn = raw => {
-      const params = {
+      // Sort the map entries in the compiled output. This makes it easy to acheive identical output
+      // in the template pipeline compiler.
+      const params = Object.fromEntries(Object.entries({
         ...vars,
         ...placeholders
-      };
+      }).sort());
       const formatted = formatI18nPlaceholderNamesInMap(params, /* useCamelCase */false);
       return invokeInstruction(null, Identifiers.i18nPostprocess, [raw, mapLiteral(formatted, true)]);
     };
@@ -23949,8 +31258,451 @@ class TemplateDefinitionBuilder {
     }
     return null;
   }
+  visitIfBlock(block) {
+    // Allocate one slot for the result of the expression.
+    this.allocateBindingSlots(null);
+    // We have to process the block in two steps: once here and again in the update instruction
+    // callback in order to generate the correct expressions when pipes or pure functions are
+    // used inside the branch expressions.
+    const branchData = block.branches.map((branch, branchIndex) => {
+      const {
+        expression,
+        expressionAlias,
+        children,
+        sourceSpan
+      } = branch;
+      // If the branch has an alias, it'll be assigned directly to the container's context.
+      // We define a variable referring directly to the context so that any nested usages can be
+      // rewritten to refer to it.
+      const variables = expressionAlias !== null ? [new Variable(expressionAlias.name, DIRECT_CONTEXT_REFERENCE, expressionAlias.sourceSpan, expressionAlias.keySpan)] : undefined;
+      let tagName = null;
+      let attrsExprs;
+      // Only the first branch can be used for projection, because the conditional
+      // uses the container of the first branch as the insertion point for all branches.
+      if (branchIndex === 0) {
+        const inferredData = this.inferProjectionDataFromInsertionPoint(branch);
+        tagName = inferredData.tagName;
+        attrsExprs = inferredData.attrsExprs;
+      }
+      // Note: the template needs to be created *before* we process the expression,
+      // otherwise pipes injecting some symbols won't work (see #52102).
+      const templateIndex = this.createEmbeddedTemplateFn(tagName, children, '_Conditional', sourceSpan, variables, attrsExprs, undefined, branch.i18n);
+      const processedExpression = expression === null ? null : expression.visit(this._valueConverter);
+      return {
+        index: templateIndex,
+        expression: processedExpression,
+        alias: expressionAlias
+      };
+    });
+    // Use the index of the first block as the index for the entire container.
+    const containerIndex = branchData[0].index;
+    const paramsCallback = () => {
+      let contextVariable = null;
+      const generateBranch = branchIndex => {
+        // If we've gone beyond the last branch, return the special -1 value which means that no
+        // view will be rendered. Note that we don't need to reset the context here, because -1
+        // won't render a view so the passed-in context won't be captured.
+        if (branchIndex > branchData.length - 1) {
+          return literal(-1);
+        }
+        const {
+          index,
+          expression,
+          alias
+        } = branchData[branchIndex];
+        // If the branch has no expression, it means that it's the final `else`.
+        // Return its index and stop the recursion. Assumes that there's only one
+        // `else` condition and that it's the last branch.
+        if (expression === null) {
+          return literal(index);
+        }
+        let comparisonTarget;
+        if (alias) {
+          // If the branch is aliased, we need to assign the expression value to the temporary
+          // variable and then pass it into `conditional`. E.g. for the expression:
+          // `@if (foo(); as alias) {...}` we have to generate:
+          // ```
+          // let temp;
+          // conditional(0, (temp = ctx.foo()) ? 0 : -1, temp);
+          // ```
+          contextVariable = this.allocateControlFlowTempVariable();
+          comparisonTarget = contextVariable.set(this.convertPropertyBinding(expression));
+        } else {
+          comparisonTarget = this.convertPropertyBinding(expression);
+        }
+        return comparisonTarget.conditional(literal(index), generateBranch(branchIndex + 1));
+      };
+      const params = [literal(containerIndex), generateBranch(0)];
+      if (contextVariable !== null) {
+        params.push(contextVariable);
+      }
+      return params;
+    };
+    this.updateInstructionWithAdvance(containerIndex, block.branches[0].sourceSpan, Identifiers.conditional, paramsCallback);
+  }
+  visitSwitchBlock(block) {
+    // We have to process the block in two steps: once here and again in the update instruction
+    // callback in order to generate the correct expressions when pipes or pure functions are used.
+    const caseData = block.cases.map(currentCase => {
+      const index = this.createEmbeddedTemplateFn(null, currentCase.children, '_Case', currentCase.sourceSpan, undefined, undefined, undefined, currentCase.i18n);
+      const expression = currentCase.expression === null ? null : currentCase.expression.visit(this._valueConverter);
+      return {
+        index,
+        expression
+      };
+    });
+    // Use the index of the first block as the index for the entire container.
+    const containerIndex = caseData[0].index;
+    // Note: the expression needs to be processed *after* the template,
+    // otherwise pipes injecting some symbols won't work (see #52102).
+    const blockExpression = block.expression.visit(this._valueConverter);
+    this.allocateBindingSlots(null); // Allocate a slot for the primary block expression.
+    this.updateInstructionWithAdvance(containerIndex, block.sourceSpan, Identifiers.conditional, () => {
+      const generateCases = caseIndex => {
+        // If we've gone beyond the last branch, return the special -1
+        // value which means that no view will be rendered.
+        if (caseIndex > caseData.length - 1) {
+          return literal(-1);
+        }
+        const {
+          index,
+          expression
+        } = caseData[caseIndex];
+        // If the case has no expression, it means that it's the `default` case.
+        // Return its index and stop the recursion. Assumes that there's only one
+        // `default` condition and that it's defined last.
+        if (expression === null) {
+          return literal(index);
+        }
+        // If this is the very first comparison, we need to assign the value of the primary
+        // expression as a part of the comparison so the remaining cases can reuse it. In practice
+        // this looks as follows:
+        // ```
+        // let temp;
+        // conditional(1, (temp = ctx.foo) === 1 ? 1 : temp === 2 ? 2 : temp === 3 ? 3 : 4);
+        // ```
+        const comparisonTarget = caseIndex === 0 ? this.allocateControlFlowTempVariable().set(this.convertPropertyBinding(blockExpression)) : this.allocateControlFlowTempVariable();
+        return comparisonTarget.identical(this.convertPropertyBinding(expression)).conditional(literal(index), generateCases(caseIndex + 1));
+      };
+      return [literal(containerIndex), generateCases(0)];
+    });
+  }
+  visitDeferredBlock(deferred) {
+    const {
+      loading,
+      placeholder,
+      error,
+      triggers,
+      prefetchTriggers
+    } = deferred;
+    const metadata = this.deferBlocks.get(deferred);
+    if (!metadata) {
+      throw new Error('Could not resolve `defer` block metadata. Block may need to be analyzed.');
+    }
+    const primaryTemplateIndex = this.createEmbeddedTemplateFn(null, deferred.children, '_Defer', deferred.sourceSpan, undefined, undefined, undefined, deferred.i18n);
+    const loadingIndex = loading ? this.createEmbeddedTemplateFn(null, loading.children, '_DeferLoading', loading.sourceSpan, undefined, undefined, undefined, loading.i18n) : null;
+    const loadingConsts = loading ? trimTrailingNulls([literal(loading.minimumTime), literal(loading.afterTime)]) : null;
+    const placeholderIndex = placeholder ? this.createEmbeddedTemplateFn(null, placeholder.children, '_DeferPlaceholder', placeholder.sourceSpan, undefined, undefined, undefined, placeholder.i18n) : null;
+    const placeholderConsts = placeholder && placeholder.minimumTime !== null ?
+    // TODO(crisbeto): potentially pass the time directly instead of storing it in the `consts`
+    // since the placeholder block can only have one parameter?
+    literalArr([literal(placeholder.minimumTime)]) : null;
+    const errorIndex = error ? this.createEmbeddedTemplateFn(null, error.children, '_DeferError', error.sourceSpan, undefined, undefined, undefined, error.i18n) : null;
+    // Note: we generate this last so the index matches the instruction order.
+    const deferredIndex = this.allocateDataSlot();
+    const depsFnName = `${this.contextName}_Defer_${deferredIndex}_DepsFn`;
+    // e.g. `defer(1, 0, MyComp_Defer_1_DepsFn, ...)`
+    this.creationInstruction(deferred.sourceSpan, Identifiers.defer, trimTrailingNulls([literal(deferredIndex), literal(primaryTemplateIndex), this.createDeferredDepsFunction(depsFnName, metadata), literal(loadingIndex), literal(placeholderIndex), literal(errorIndex), loadingConsts?.length ? this.addToConsts(literalArr(loadingConsts)) : TYPED_NULL_EXPR, placeholderConsts ? this.addToConsts(placeholderConsts) : TYPED_NULL_EXPR, loadingConsts?.length || placeholderConsts ? importExpr(Identifiers.deferEnableTimerScheduling) : TYPED_NULL_EXPR]));
+    // Allocate an extra data slot right after a defer block slot to store
+    // instance-specific state of that defer block at runtime.
+    this.allocateDataSlot();
+    // Note: the triggers need to be processed *after* the various templates,
+    // otherwise pipes injecting some symbols won't work (see #52102).
+    this.createDeferTriggerInstructions(deferredIndex, triggers, metadata, false);
+    this.createDeferTriggerInstructions(deferredIndex, prefetchTriggers, metadata, true);
+  }
+  createDeferredDepsFunction(name, metadata) {
+    if (metadata.deps.length === 0) {
+      return TYPED_NULL_EXPR;
+    }
+    // This defer block has deps for which we need to generate dynamic imports.
+    const dependencyExp = [];
+    for (const deferredDep of metadata.deps) {
+      if (deferredDep.isDeferrable) {
+        // Callback function, e.g. `m () => m.MyCmp;`.
+        const innerFn = arrowFn([new FnParam('m', DYNAMIC_TYPE)], variable('m').prop(deferredDep.symbolName));
+        // Dynamic import, e.g. `import('./a').then(...)`.
+        const importExpr = new DynamicImportExpr(deferredDep.importPath).prop('then').callFn([innerFn]);
+        dependencyExp.push(importExpr);
+      } else {
+        // Non-deferrable symbol, just use a reference to the type.
+        dependencyExp.push(deferredDep.type);
+      }
+    }
+    const depsFnExpr = arrowFn([], literalArr(dependencyExp));
+    this.constantPool.statements.push(depsFnExpr.toDeclStmt(name, StmtModifier.Final));
+    return variable(name);
+  }
+  createDeferTriggerInstructions(deferredIndex, triggers, metadata, prefetch) {
+    const {
+      when,
+      idle,
+      immediate,
+      timer,
+      hover,
+      interaction,
+      viewport
+    } = triggers;
+    // `deferWhen(ctx.someValue)`
+    if (when) {
+      const value = when.value.visit(this._valueConverter);
+      this.allocateBindingSlots(value);
+      this.updateInstructionWithAdvance(deferredIndex, when.sourceSpan, prefetch ? Identifiers.deferPrefetchWhen : Identifiers.deferWhen, () => this.convertPropertyBinding(value));
+    }
+    // Note that we generate an implicit `on idle` if the `deferred` block has no triggers.
+    // `deferOnIdle()`
+    if (idle || !prefetch && Object.keys(triggers).length === 0) {
+      this.creationInstruction(idle?.sourceSpan || null, prefetch ? Identifiers.deferPrefetchOnIdle : Identifiers.deferOnIdle);
+    }
+    // `deferOnImmediate()`
+    if (immediate) {
+      this.creationInstruction(immediate.sourceSpan, prefetch ? Identifiers.deferPrefetchOnImmediate : Identifiers.deferOnImmediate);
+    }
+    // `deferOnTimer(1337)`
+    if (timer) {
+      this.creationInstruction(timer.sourceSpan, prefetch ? Identifiers.deferPrefetchOnTimer : Identifiers.deferOnTimer, [literal(timer.delay)]);
+    }
+    // `deferOnHover(index, walkUpTimes)`
+    if (hover) {
+      this.domNodeBasedTrigger('hover', hover, metadata, prefetch ? Identifiers.deferPrefetchOnHover : Identifiers.deferOnHover);
+    }
+    // `deferOnInteraction(index, walkUpTimes)`
+    if (interaction) {
+      this.domNodeBasedTrigger('interaction', interaction, metadata, prefetch ? Identifiers.deferPrefetchOnInteraction : Identifiers.deferOnInteraction);
+    }
+    // `deferOnViewport(index, walkUpTimes)`
+    if (viewport) {
+      this.domNodeBasedTrigger('viewport', viewport, metadata, prefetch ? Identifiers.deferPrefetchOnViewport : Identifiers.deferOnViewport);
+    }
+  }
+  domNodeBasedTrigger(name, trigger, metadata, instructionRef) {
+    const triggerEl = metadata.triggerElements.get(trigger);
+    // Don't generate anything if a trigger cannot be resolved.
+    // We'll have template diagnostics to surface these to users.
+    if (!triggerEl) {
+      return;
+    }
+    this.creationInstruction(trigger.sourceSpan, instructionRef, () => {
+      const location = this.elementLocations.get(triggerEl);
+      if (!location) {
+        throw new Error(`Could not determine location of reference passed into ` + `'${name}' trigger. Template may not have been fully analyzed.`);
+      }
+      // A negative depth means that the trigger is inside the placeholder.
+      // Cap it at -1 since we only care whether or not it's negative.
+      const depth = Math.max(this.level - location.level, -1);
+      const params = [literal(location.index)];
+      // The most common case should be a trigger within the view so we can omit a depth of
+      // zero. For triggers in parent views and in the placeholder we need to pass it in.
+      if (depth !== 0) {
+        params.push(literal(depth));
+      }
+      return params;
+    });
+  }
+  /**
+   * Infers the data used for content projection (tag name and attributes) from the content of a
+   * node.
+   * @param node Node for which to infer the projection data.
+   */
+  inferProjectionDataFromInsertionPoint(node) {
+    let root = null;
+    let tagName = null;
+    let attrsExprs;
+    for (const child of node.children) {
+      // Skip over comment nodes.
+      if (child instanceof Comment$1) {
+        continue;
+      }
+      // We can only infer the tag name/attributes if there's a single root node.
+      if (root !== null) {
+        root = null;
+        break;
+      }
+      // Root nodes can only elements or templates with a tag name (e.g. `<div *foo></div>`).
+      if (child instanceof Element$1 || child instanceof Template && child.tagName !== null) {
+        root = child;
+      }
+    }
+    // If we've found a single root node, its tag name and *static* attributes can be copied
+    // to the surrounding template to be used for content projection. Note that it's important
+    // that we don't copy any bound attributes since they don't participate in content projection
+    // and they can be used in directive matching (in the case of `Template.templateAttrs`).
+    if (root !== null) {
+      const name = root instanceof Element$1 ? root.name : root.tagName;
+      // Don't pass along `ng-template` tag name since it enables directive matching.
+      tagName = name === NG_TEMPLATE_TAG_NAME ? null : name;
+      attrsExprs = this.getAttributeExpressions(NG_TEMPLATE_TAG_NAME, root.attributes, root.inputs, []);
+    }
+    return {
+      tagName,
+      attrsExprs
+    };
+  }
   allocateDataSlot() {
     return this._dataIndex++;
+  }
+  visitForLoopBlock(block) {
+    // Allocate one slot for the repeater metadata. The slots for the primary and empty block
+    // are implicitly inferred by the runtime to index + 1 and index + 2.
+    const blockIndex = this.allocateDataSlot();
+    const {
+      tagName,
+      attrsExprs
+    } = this.inferProjectionDataFromInsertionPoint(block);
+    const primaryData = this.prepareEmbeddedTemplateFn(block.children, '_For', [block.item, block.contextVariables.$index, block.contextVariables.$count], block.i18n, {
+      // We need to provide level-specific versions of `$index` and `$count`, because
+      // they're used when deriving the remaining variables (`$odd`, `$even` etc.) while at the
+      // same time being available implicitly. Without these aliases, we wouldn't be able to
+      // access the `$index` of a parent loop from inside of a nested loop.
+      [block.contextVariables.$index.name]: this.getLevelSpecificVariableName('$index', this.level + 1),
+      [block.contextVariables.$count.name]: this.getLevelSpecificVariableName('$count', this.level + 1)
+    });
+    const {
+      expression: trackByExpression,
+      usesComponentInstance: trackByUsesComponentInstance
+    } = this.createTrackByFunction(block);
+    let emptyData = null;
+    if (block.empty !== null) {
+      emptyData = this.prepareEmbeddedTemplateFn(block.empty.children, '_ForEmpty', undefined, block.empty.i18n);
+      // Allocate an extra slot for the empty block tracking.
+      this.allocateBindingSlots(null);
+    }
+    this.registerComputedLoopVariables(block, primaryData.scope);
+    // `repeaterCreate(0, ...)`
+    this.creationInstruction(block.sourceSpan, Identifiers.repeaterCreate, () => {
+      const params = [literal(blockIndex), variable(primaryData.name), literal(primaryData.getConstCount()), literal(primaryData.getVarCount()), literal(tagName), this.addAttrsToConsts(attrsExprs || null), trackByExpression];
+      if (emptyData !== null) {
+        params.push(literal(trackByUsesComponentInstance), variable(emptyData.name), literal(emptyData.getConstCount()), literal(emptyData.getVarCount()));
+      } else if (trackByUsesComponentInstance) {
+        // If the tracking function doesn't use the component instance, we can omit the flag.
+        params.push(literal(trackByUsesComponentInstance));
+      }
+      return params;
+    });
+    // Note: the expression needs to be processed *after* the template,
+    // otherwise pipes injecting some symbols won't work (see #52102).
+    // Note: we don't allocate binding slots for this expression,
+    // because its value isn't stored in the LView.
+    const value = block.expression.visit(this._valueConverter);
+    // `advance(x); repeater(iterable)`
+    this.updateInstructionWithAdvance(blockIndex, block.sourceSpan, Identifiers.repeater, () => [this.convertPropertyBinding(value)]);
+  }
+  registerComputedLoopVariables(block, bindingScope) {
+    const level = bindingScope.bindingLevel;
+    bindingScope.set(level, block.contextVariables.$odd.name, (scope, retrievalLevel) => {
+      return this.getLevelSpecificForLoopVariable(block, scope, retrievalLevel, '$index').modulo(literal(2)).notIdentical(literal(0));
+    });
+    bindingScope.set(level, block.contextVariables.$even.name, (scope, retrievalLevel) => {
+      return this.getLevelSpecificForLoopVariable(block, scope, retrievalLevel, '$index').modulo(literal(2)).identical(literal(0));
+    });
+    bindingScope.set(level, block.contextVariables.$first.name, (scope, retrievalLevel) => {
+      return this.getLevelSpecificForLoopVariable(block, scope, retrievalLevel, '$index').identical(literal(0));
+    });
+    bindingScope.set(level, block.contextVariables.$last.name, (scope, retrievalLevel) => {
+      const index = this.getLevelSpecificForLoopVariable(block, scope, retrievalLevel, '$index');
+      const count = this.getLevelSpecificForLoopVariable(block, scope, retrievalLevel, '$count');
+      return index.identical(count.minus(literal(1)));
+    });
+  }
+  getLevelSpecificVariableName(name, level) {
+    // We use the `ɵ` here to ensure that there are no name conflicts with user-defined variables.
+    return `ɵ${name}_${level}`;
+  }
+  /**
+   * Gets the name of a for loop variable at a specific binding level. This allows us to look
+   * up implicitly shadowed variables like `$index` and `$count` at a specific level.
+   */
+  getLevelSpecificForLoopVariable(block, scope, retrievalLevel, name) {
+    const scopeName = scope.bindingLevel === retrievalLevel ? block.contextVariables[name].name : this.getLevelSpecificVariableName(name, retrievalLevel);
+    return scope.get(scopeName);
+  }
+  optimizeTrackByFunction(block) {
+    const indexLocalName = block.contextVariables.$index.name;
+    const itemName = block.item.name;
+    const ast = block.trackBy.ast;
+    // Top-level access of `$index` uses the built in `repeaterTrackByIndex`.
+    if (ast instanceof PropertyRead && ast.receiver instanceof ImplicitReceiver && ast.name === indexLocalName) {
+      return {
+        expression: importExpr(Identifiers.repeaterTrackByIndex),
+        usesComponentInstance: false
+      };
+    }
+    // Top-level access of the item uses the built in `repeaterTrackByIdentity`.
+    if (ast instanceof PropertyRead && ast.receiver instanceof ImplicitReceiver && ast.name === itemName) {
+      return {
+        expression: importExpr(Identifiers.repeaterTrackByIdentity),
+        usesComponentInstance: false
+      };
+    }
+    // Top-level calls in the form of `fn($index, item)` can be passed in directly.
+    if (ast instanceof Call && ast.receiver instanceof PropertyRead && ast.receiver.receiver instanceof ImplicitReceiver && ast.args.length === 2) {
+      const firstIsIndex = ast.args[0] instanceof PropertyRead && ast.args[0].receiver instanceof ImplicitReceiver && ast.args[0].name === indexLocalName;
+      const secondIsItem = ast.args[1] instanceof PropertyRead && ast.args[1].receiver instanceof ImplicitReceiver && ast.args[1].name === itemName;
+      if (firstIsIndex && secondIsItem) {
+        // If we're in the top-level component, we can access directly through `ctx`,
+        // otherwise we have to get a hold of the component through `componentInstance()`.
+        const receiver = this.level === 0 ? variable(CONTEXT_NAME) : new ExternalExpr(Identifiers.componentInstance).callFn([]);
+        return {
+          expression: receiver.prop(ast.receiver.name),
+          usesComponentInstance: false
+        };
+      }
+    }
+    return null;
+  }
+  createTrackByFunction(block) {
+    const optimizedFn = this.optimizeTrackByFunction(block);
+    // If the tracking function can be optimized, we don't need any further processing.
+    if (optimizedFn !== null) {
+      return optimizedFn;
+    }
+    const contextVars = block.contextVariables;
+    const scope = new TrackByBindingScope(this._bindingScope, {
+      // Alias `$index` and the item name to `$index` and `$item` respectively.
+      // This allows us to reuse pure functions that may have different item names,
+      // but are otherwise identical.
+      [contextVars.$index.name]: '$index',
+      [block.item.name]: '$item',
+      // Accessing these variables in a tracking function will result in a template diagnostic.
+      // We define them as globals so that their accesses are preserved verbatim instead of being
+      // rewritten to the actual accesses.
+      [contextVars.$count.name]: contextVars.$count.name,
+      [contextVars.$first.name]: contextVars.$first.name,
+      [contextVars.$last.name]: contextVars.$last.name,
+      [contextVars.$even.name]: contextVars.$even.name,
+      [contextVars.$odd.name]: contextVars.$odd.name
+    });
+    const params = [new FnParam('$index'), new FnParam('$item')];
+    const stmts = convertPureComponentScopeFunction(block.trackBy.ast, scope, variable(CONTEXT_NAME), 'track');
+    const usesComponentInstance = scope.getComponentAccessCount() > 0;
+    let fn$1;
+    if (!usesComponentInstance && stmts.length === 1 && stmts[0] instanceof ExpressionStatement) {
+      fn$1 = arrowFn(params, stmts[0].expr);
+    } else {
+      // The last statement is returned implicitly.
+      if (stmts.length > 0) {
+        const lastStatement = stmts[stmts.length - 1];
+        if (lastStatement instanceof ExpressionStatement) {
+          stmts[stmts.length - 1] = new ReturnStatement(lastStatement.expr);
+        }
+      }
+      // This has to be a function expression, because `.bind` doesn't work on arrow functions.
+      fn$1 = fn(params, stmts);
+    }
+    return {
+      expression: this.constantPool.getSharedFunctionReference(fn$1, '_forTrack'),
+      usesComponentInstance
+    };
   }
   getConstCount() {
     return this._dataIndex;
@@ -23978,7 +31730,7 @@ class TemplateDefinitionBuilder {
         continue;
       }
       this.allocateBindingSlots(value);
-      if (value instanceof Interpolation) {
+      if (value instanceof Interpolation$1) {
         // Params typically contain attribute namespace and value sanitizer, which is applicable
         // for regular HTML elements, but not applicable for <ng-template> (since props act as
         // inputs to directives), so keep params array empty.
@@ -24013,7 +31765,7 @@ class TemplateDefinitionBuilder {
     if (instruction) {
       for (const call of instruction.calls) {
         allocateBindingSlots += call.allocateBindingSlots;
-        this.updateInstructionWithAdvance(elementIndex, call.sourceSpan, instruction.reference, () => call.params(value => call.supportsInterpolation && value instanceof Interpolation ? this.getUpdateInstructionArguments(value) : this.convertPropertyBinding(value)));
+        this.updateInstructionWithAdvance(elementIndex, call.sourceSpan, instruction.reference, () => call.params(value => call.supportsInterpolation && value instanceof Interpolation$1 ? this.getUpdateInstructionArguments(value) : this.convertPropertyBinding(value)));
       }
     }
     return allocateBindingSlots;
@@ -24044,7 +31796,7 @@ class TemplateDefinitionBuilder {
     return originalSlots;
   }
   allocateBindingSlots(value) {
-    this._bindingSlots += value instanceof Interpolation ? value.expressions.length : 1;
+    this._bindingSlots += value instanceof Interpolation$1 ? value.expressions.length : 1;
   }
   /**
    * Gets an expression that refers to the implicit receiver. The implicit
@@ -24075,6 +31827,21 @@ class TemplateDefinitionBuilder {
     } = convertUpdateArguments(this, this.getImplicitReceiverExpr(), value, this.bindingContext());
     this._tempVariables.push(...stmts);
     return args;
+  }
+  /**
+   * Creates and returns a variable that can be used to
+   * store the state between control flow instructions.
+   */
+  allocateControlFlowTempVariable() {
+    // Note: the assumption here is that we'll only need one temporary variable for all control
+    // flow instructions. It's expected that any instructions will overwrite it before passing it
+    // into the parameters.
+    if (this._controlFlowTempVariable === null) {
+      const name = `${this.contextName}_contFlowTmp`;
+      this._tempVariables.push(new DeclareVarStmt(name));
+      this._controlFlowTempVariable = variable(name);
+    }
+    return this._controlFlowTempVariable;
   }
   /**
    * Prepares all attribute expression values for the `TAttributes` array.
@@ -24201,7 +31968,7 @@ class TemplateDefinitionBuilder {
     return literal(consts.push(expression) - 1);
   }
   addAttrsToConsts(attrs) {
-    return attrs.length > 0 ? this.addToConsts(literalArr(attrs)) : TYPED_NULL_EXPR;
+    return attrs !== null && attrs.length > 0 ? this.addToConsts(literalArr(attrs)) : TYPED_NULL_EXPR;
   }
   prepareRefsArray(references) {
     if (!references || references.length === 0) {
@@ -24395,7 +32162,7 @@ class BindingScope {
         if (value.declareLocalCallback && !value.declare) {
           value.declare = true;
         }
-        return value.lhs;
+        return typeof value.lhs === 'function' ? value.lhs(this, value.retrievalLevel) : value.lhs;
       }
       current = current.parent;
     }
@@ -24404,6 +32171,10 @@ class BindingScope {
     // - If level > 0, we are in an embedded view. We need to retrieve the name of the
     // local var we used to store the component context, e.g. const $comp$ = x();
     return this.bindingLevel === 0 ? null : this.getComponentProperty(name);
+  }
+  /** Checks whether a variable exists locally on the current scope. */
+  hasLocal(name) {
+    return this.map.has(name);
   }
   /**
    * Create a local variable for later reference.
@@ -24497,7 +32268,8 @@ class BindingScope {
     const componentValue = this.map.get(SHARED_CONTEXT_KEY + 0);
     componentValue.declare = true;
     this.maybeRestoreView();
-    return componentValue.lhs.prop(name);
+    const lhs = typeof componentValue.lhs === 'function' ? componentValue.lhs(this, componentValue.retrievalLevel) : componentValue.lhs;
+    return name === DIRECT_CONTEXT_REFERENCE ? lhs : lhs.prop(name);
   }
   maybeRestoreView() {
     // View restoration is required for listener instructions inside embedded views, because
@@ -24551,23 +32323,34 @@ class BindingScope {
     this.usesRestoredViewContext = true;
   }
 }
-/**
- * Creates a `CssSelector` given a tag name and a map of attributes
- */
-function createCssSelector(elementName, attributes) {
-  const cssSelector = new CssSelector();
-  const elementNameNoNs = splitNsName(elementName)[1];
-  cssSelector.setElement(elementNameNoNs);
-  Object.getOwnPropertyNames(attributes).forEach(name => {
-    const nameNoNs = splitNsName(name)[1];
-    const value = attributes[name];
-    cssSelector.addAttribute(nameNoNs, value);
-    if (name.toLowerCase() === 'class') {
-      const classes = value.trim().split(/\s+/);
-      classes.forEach(className => cssSelector.addClassName(className));
+/** Binding scope of a `track` function inside a `for` loop block. */
+class TrackByBindingScope extends BindingScope {
+  constructor(parentScope, globalOverrides) {
+    super(parentScope.bindingLevel + 1, parentScope);
+    this.globalOverrides = globalOverrides;
+    this.componentAccessCount = 0;
+  }
+  get(name) {
+    // Intercept any overridden globals.
+    if (this.globalOverrides.hasOwnProperty(name)) {
+      return variable(this.globalOverrides[name]);
     }
-  });
-  return cssSelector;
+    let current = this.parent;
+    // Prevent accesses of template variables outside the `for` loop.
+    while (current) {
+      if (current.hasLocal(name)) {
+        return null;
+      }
+      current = current.parent;
+    }
+    // When the component scope is accessed, we redirect it through `this`.
+    this.componentAccessCount++;
+    return variable('this').prop(name);
+  }
+  /** Gets the number of times the host component has been accessed through the scope. */
+  getComponentAccessCount() {
+    return this.componentAccessCount;
+  }
 }
 /**
  * Creates an array of expressions out of an `ngProjectAs` attributes
@@ -24679,7 +32462,8 @@ function parseTemplate(template, templateUrl, options = {}) {
   const parseResult = htmlParser.parse(template, templateUrl, {
     leadingTriviaChars: LEADING_TRIVIA_CHARS,
     ...options,
-    tokenizeExpansionForms: true
+    tokenizeExpansionForms: true,
+    tokenizeBlocks: options.enableBlockSyntax ?? true
   });
   if (!options.alwaysAttemptHtmlToR3AstConversion && parseResult.errors && parseResult.errors.length > 0) {
     const parsedTemplate = {
@@ -24851,6 +32635,9 @@ const NG_I18N_CLOSURE_MODE = 'ngI18nClosureMode';
  * @returns An array of statements that defined a given translation.
  */
 function getTranslationDeclStmts(message, variable, closureVar, params = {}, transformFn) {
+  // Sort the map entries in the compiled output. This makes it easy to acheive identical output in
+  // the template pipeline compiler.
+  params = Object.fromEntries(Object.entries(params).sort());
   const statements = [declareI18nVariable(variable), ifStmt(createClosureModeGuard(), createGoogleGetMsgStatements(variable, message, closureVar, params), createLocalizeStatements(variable, message, formatI18nPlaceholderNamesInMap(params, /* useCamelCase */false)))];
   if (transformFn) {
     statements.push(new ExpressionStatement(variable.set(transformFn(variable))));
@@ -24930,6 +32717,11 @@ function addFeatures(definitionMap, meta) {
       break;
     }
   }
+  // Note: host directives feature needs to be inserted before the
+  // inheritance feature to ensure the correct execution order.
+  if (meta.hostDirectives?.length) {
+    features.push(importExpr(Identifiers.HostDirectivesFeature).callFn([createHostDirectivesFeatureArg(meta.hostDirectives)]));
+  }
   if (meta.usesInheritance) {
     features.push(importExpr(Identifiers.InheritDefinitionFeature));
   }
@@ -24942,9 +32734,6 @@ function addFeatures(definitionMap, meta) {
   // TODO: better way of differentiating component vs directive metadata.
   if (meta.hasOwnProperty('template') && meta.isStandalone) {
     features.push(importExpr(Identifiers.StandaloneFeature));
-  }
-  if (meta.hostDirectives?.length) {
-    features.push(importExpr(Identifiers.HostDirectivesFeature).callFn([createHostDirectivesFeatureArg(meta.hostDirectives)]));
   }
   if (features.length) {
     definitionMap.set('features', literalArr(features));
@@ -24983,13 +32772,12 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
   // e.g. `template: function MyComponent_Template(_ctx, _cm) {...}`
   const templateTypeName = meta.name;
   const templateName = templateTypeName ? `${templateTypeName}_Template` : null;
-  const changeDetection = meta.changeDetection;
   // Template compilation is currently conditional as we're in the process of rewriting it.
   if (!USE_TEMPLATE_PIPELINE) {
     // This is the main path currently used in compilation, which compiles the template with the
     // legacy `TemplateDefinitionBuilder`.
     const template = meta.template;
-    const templateBuilder = new TemplateDefinitionBuilder(constantPool, BindingScope.createRootScope(), 0, templateTypeName, null, null, templateName, Identifiers.namespaceHTML, meta.relativeContextFilePath, meta.i18nUseExternalIds);
+    const templateBuilder = new TemplateDefinitionBuilder(constantPool, BindingScope.createRootScope(), 0, templateTypeName, null, null, templateName, Identifiers.namespaceHTML, meta.relativeContextFilePath, meta.i18nUseExternalIds, meta.deferBlocks, new Map());
     const templateFunctionExpression = templateBuilder.buildTemplateFunction(template.nodes, []);
     // We need to provide this so that dynamically generated components know what
     // projected content blocks to pass through to the component when it is
@@ -25008,7 +32796,7 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
     // - either as an array:
     //   `consts: [['one', 'two'], ['three', 'four']]`
     // - or as a factory function in case additional statements are present (to support i18n):
-    //   `consts: function() { var i18n_0; if (ngI18nClosureMode) {...} else {...} return [i18n_0];
+    //   `consts: () => { var i18n_0; if (ngI18nClosureMode) {...} else {...} return [i18n_0];
     //   }`
     const {
       constExpressions,
@@ -25018,7 +32806,7 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
       let constsExpr = literalArr(constExpressions);
       // Prepare statements are present - turn `consts` into a function.
       if (prepareStatements.length > 0) {
-        constsExpr = fn([], [...prepareStatements, new ReturnStatement(constsExpr)]);
+        constsExpr = arrowFn([], [...prepareStatements, new ReturnStatement(constsExpr)]);
       }
       definitionMap.set('consts', constsExpr);
     }
@@ -25026,20 +32814,33 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
   } else {
     // This path compiles the template using the prototype template pipeline. First the template is
     // ingested into IR:
-    const tpl = ingest(meta.name, meta.template.nodes, constantPool);
+    const tpl = ingestComponent(meta.name, meta.template.nodes, constantPool, meta.relativeContextFilePath, meta.i18nUseExternalIds, meta.deferBlocks);
     // Then the IR is transformed to prepare it for cod egeneration.
-    transformTemplate(tpl);
+    transform(tpl, CompilationJobKind.Tmpl);
     // Finally we emit the template function:
     const templateFn = emitTemplateFn(tpl, constantPool);
+    if (tpl.contentSelectors !== null) {
+      definitionMap.set('ngContentSelectors', tpl.contentSelectors);
+    }
     definitionMap.set('decls', literal(tpl.root.decls));
     definitionMap.set('vars', literal(tpl.root.vars));
     if (tpl.consts.length > 0) {
-      definitionMap.set('consts', literalArr(tpl.consts));
+      if (tpl.constsInitializers.length > 0) {
+        definitionMap.set('consts', arrowFn([], [...tpl.constsInitializers, new ReturnStatement(literalArr(tpl.consts))]));
+      } else {
+        definitionMap.set('consts', literalArr(tpl.consts));
+      }
     }
     definitionMap.set('template', templateFn);
   }
-  if (meta.declarations.length > 0) {
+  if (meta.declarationListEmitMode !== 3 /* DeclarationListEmitMode.RuntimeResolved */ && meta.declarations.length > 0) {
     definitionMap.set('dependencies', compileDeclarationList(literalArr(meta.declarations.map(decl => decl.type)), meta.declarationListEmitMode));
+  } else if (meta.declarationListEmitMode === 3 /* DeclarationListEmitMode.RuntimeResolved */) {
+    const args = [meta.type.value];
+    if (meta.rawImports) {
+      args.push(meta.rawImports);
+    }
+    definitionMap.set('dependencies', importExpr(Identifiers.getComponentDepsFactory).callFn(args));
   }
   if (meta.encapsulation === null) {
     meta.encapsulation = ViewEncapsulation.Emulated;
@@ -25072,9 +32873,16 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
       quoted: false
     }]));
   }
-  // Only set the change detection flag if it's defined and it's not the default.
-  if (changeDetection != null && changeDetection !== ChangeDetectionStrategy.Default) {
-    definitionMap.set('changeDetection', literal(changeDetection));
+  // Setting change detection flag
+  if (meta.changeDetection !== null) {
+    if (typeof meta.changeDetection === 'number' && meta.changeDetection !== ChangeDetectionStrategy.Default) {
+      // changeDetection is resolved during analysis. Only set it if not the default.
+      definitionMap.set('changeDetection', literal(meta.changeDetection));
+    } else if (typeof meta.changeDetection === 'object') {
+      // changeDetection is not resolved during analysis (e.g., we are in local compilation mode).
+      // So place it as is.
+      definitionMap.set('changeDetection', meta.changeDetection);
+    }
   }
   const expression = importExpr(Identifiers.defineComponent).callFn([definitionMap.toLiteralMap()], undefined, true);
   const type = createComponentType(meta);
@@ -25112,11 +32920,13 @@ function compileDeclarationList(list, mode) {
       return list;
     case 1 /* DeclarationListEmitMode.Closure */:
       // directives: function () { return [MyDir]; }
-      return fn([], [new ReturnStatement(list)]);
+      return arrowFn([], list);
     case 2 /* DeclarationListEmitMode.ClosureResolved */:
       // directives: function () { return [MyDir].map(ng.resolveForwardRef); }
       const resolvedList = list.prop('map').callFn([importExpr(Identifiers.resolveForwardRef)]);
-      return fn([], [new ReturnStatement(resolvedList)]);
+      return arrowFn([], resolvedList);
+    case 3 /* DeclarationListEmitMode.RuntimeResolved */:
+      throw new Error(`Unsupported with an array of pre-resolved dependencies`);
   }
 }
 function prepareQueryParams(query, constantPool) {
@@ -25241,6 +33051,37 @@ function createViewQueriesFunction(viewQueries, constantPool, name) {
 }
 // Return a host binding function or null if one is not necessary.
 function createHostBindingsFunction(hostBindingsMetadata, typeSourceSpan, bindingParser, constantPool, selector, name, definitionMap) {
+  const bindings = bindingParser.createBoundHostProperties(hostBindingsMetadata.properties, typeSourceSpan);
+  // Calculate host event bindings
+  const eventBindings = bindingParser.createDirectiveHostEventAsts(hostBindingsMetadata.listeners, typeSourceSpan);
+  if (USE_TEMPLATE_PIPELINE) {
+    // The parser for host bindings treats class and style attributes specially -- they are
+    // extracted into these separate fields. This is not the case for templates, so the compiler can
+    // actually already handle these special attributes internally. Therefore, we just drop them
+    // into the attributes map.
+    if (hostBindingsMetadata.specialAttributes.styleAttr) {
+      hostBindingsMetadata.attributes['style'] = literal(hostBindingsMetadata.specialAttributes.styleAttr);
+    }
+    if (hostBindingsMetadata.specialAttributes.classAttr) {
+      hostBindingsMetadata.attributes['class'] = literal(hostBindingsMetadata.specialAttributes.classAttr);
+    }
+    const hostJob = ingestHostBinding({
+      componentName: name,
+      componentSelector: selector,
+      properties: bindings,
+      events: eventBindings,
+      attributes: hostBindingsMetadata.attributes
+    }, bindingParser, constantPool);
+    transform(hostJob, CompilationJobKind.Host);
+    definitionMap.set('hostAttrs', hostJob.root.attributes);
+    const varCount = hostJob.root.vars;
+    if (varCount !== null && varCount > 0) {
+      definitionMap.set('hostVars', literal(varCount));
+    }
+    return emitHostBindingFunction(hostJob);
+  }
+  let bindingId = 0;
+  const getNextBindingId = () => `${bindingId++}`;
   const bindingContext = variable(CONTEXT_NAME);
   const styleBuilder = new StylingBuilder(bindingContext);
   const {
@@ -25257,13 +33098,10 @@ function createHostBindingsFunction(hostBindingsMetadata, typeSourceSpan, bindin
   const updateInstructions = [];
   const updateVariables = [];
   const hostBindingSourceSpan = typeSourceSpan;
-  // Calculate host event bindings
-  const eventBindings = bindingParser.createDirectiveHostEventAsts(hostBindingsMetadata.listeners, hostBindingSourceSpan);
   if (eventBindings && eventBindings.length) {
     createInstructions.push(...createHostListeners(eventBindings, name));
   }
   // Calculate the host property bindings
-  const bindings = bindingParser.createBoundHostProperties(hostBindingsMetadata.properties, hostBindingSourceSpan);
   const allOtherBindings = [];
   // We need to calculate the total amount of binding slots required by
   // all the instructions together before any value conversions happen.
@@ -25300,7 +33138,7 @@ function createHostBindingsFunction(hostBindingsMetadata, typeSourceSpan, bindin
   for (const binding of allOtherBindings) {
     // resolve literal arrays and literal objects
     const value = binding.expression.visit(getValueConverter());
-    const bindingExpr = bindingFn(bindingContext, value);
+    const bindingExpr = bindingFn(bindingContext, value, getNextBindingId);
     const {
       bindingName,
       instruction,
@@ -25390,9 +33228,14 @@ function createHostBindingsFunction(hostBindingsMetadata, typeSourceSpan, bindin
         // we subtract a value of `1` here because the binding slot was already allocated
         // at the top of this method when all the input bindings were counted.
         totalHostVarsCount += Math.max(call.allocateBindingSlots - MIN_STYLING_BINDING_SLOTS_REQUIRED, 0);
+        const {
+          params,
+          stmts
+        } = convertStylingCall(call, bindingContext, bindingFn, getNextBindingId);
+        updateVariables.push(...stmts);
         updateInstructions.push({
           reference: instruction.reference,
-          paramsOrFn: convertStylingCall(call, bindingContext, bindingFn),
+          paramsOrFn: params,
           span: null
         });
       }
@@ -25414,11 +33257,22 @@ function createHostBindingsFunction(hostBindingsMetadata, typeSourceSpan, bindin
   }
   return null;
 }
-function bindingFn(implicit, value) {
-  return convertPropertyBinding(null, implicit, value, 'b');
+function bindingFn(implicit, value, getNextBindingIdFn) {
+  return convertPropertyBinding(null, implicit, value, getNextBindingIdFn());
 }
-function convertStylingCall(call, bindingContext, bindingFn) {
-  return call.params(value => bindingFn(bindingContext, value).currValExpr);
+function convertStylingCall(call, bindingContext, bindingFn, getNextBindingIdFn) {
+  const stmts = [];
+  const params = call.params(value => {
+    const result = bindingFn(bindingContext, value, getNextBindingIdFn);
+    if (Array.isArray(result.stmts) && result.stmts.length > 0) {
+      stmts.push(...result.stmts);
+    }
+    return result.currValExpr;
+  });
+  return {
+    params,
+    stmts
+  };
 }
 function getBindingNameAndInstruction(binding) {
   let bindingName = binding.name;
@@ -25635,6 +33489,766 @@ function createHostDirectivesMappingArray(mapping) {
 }
 
 /**
+ * Processes `Target`s with a given set of directives and performs a binding operation, which
+ * returns an object similar to TypeScript's `ts.TypeChecker` that contains knowledge about the
+ * target.
+ */
+class R3TargetBinder {
+  constructor(directiveMatcher) {
+    this.directiveMatcher = directiveMatcher;
+  }
+  /**
+   * Perform a binding operation on the given `Target` and return a `BoundTarget` which contains
+   * metadata about the types referenced in the template.
+   */
+  bind(target) {
+    if (!target.template) {
+      // TODO(alxhub): handle targets which contain things like HostBindings, etc.
+      throw new Error('Binding without a template not yet supported');
+    }
+    // First, parse the template into a `Scope` structure. This operation captures the syntactic
+    // scopes in the template and makes them available for later use.
+    const scope = Scope.apply(target.template);
+    // Use the `Scope` to extract the entities present at every level of the template.
+    const scopedNodeEntities = extractScopedNodeEntities(scope);
+    // Next, perform directive matching on the template using the `DirectiveBinder`. This returns:
+    //   - directives: Map of nodes (elements & ng-templates) to the directives on them.
+    //   - bindings: Map of inputs, outputs, and attributes to the directive/element that claims
+    //     them. TODO(alxhub): handle multiple directives claiming an input/output/etc.
+    //   - references: Map of #references to their targets.
+    const {
+      directives,
+      eagerDirectives,
+      bindings,
+      references
+    } = DirectiveBinder.apply(target.template, this.directiveMatcher);
+    // Finally, run the TemplateBinder to bind references, variables, and other entities within the
+    // template. This extracts all the metadata that doesn't depend on directive matching.
+    const {
+      expressions,
+      symbols,
+      nestingLevel,
+      usedPipes,
+      eagerPipes,
+      deferBlocks
+    } = TemplateBinder.applyWithScope(target.template, scope);
+    return new R3BoundTarget(target, directives, eagerDirectives, bindings, references, expressions, symbols, nestingLevel, scopedNodeEntities, usedPipes, eagerPipes, deferBlocks);
+  }
+}
+/**
+ * Represents a binding scope within a template.
+ *
+ * Any variables, references, or other named entities declared within the template will
+ * be captured and available by name in `namedEntities`. Additionally, child templates will
+ * be analyzed and have their child `Scope`s available in `childScopes`.
+ */
+class Scope {
+  constructor(parentScope, rootNode) {
+    this.parentScope = parentScope;
+    this.rootNode = rootNode;
+    /**
+     * Named members of the `Scope`, such as `Reference`s or `Variable`s.
+     */
+    this.namedEntities = new Map();
+    /**
+     * Child `Scope`s for immediately nested `ScopedNode`s.
+     */
+    this.childScopes = new Map();
+    this.isDeferred = parentScope !== null && parentScope.isDeferred ? true : rootNode instanceof DeferredBlock;
+  }
+  static newRootScope() {
+    return new Scope(null, null);
+  }
+  /**
+   * Process a template (either as a `Template` sub-template with variables, or a plain array of
+   * template `Node`s) and construct its `Scope`.
+   */
+  static apply(template) {
+    const scope = Scope.newRootScope();
+    scope.ingest(template);
+    return scope;
+  }
+  /**
+   * Internal method to process the scoped node and populate the `Scope`.
+   */
+  ingest(nodeOrNodes) {
+    if (nodeOrNodes instanceof Template) {
+      // Variables on an <ng-template> are defined in the inner scope.
+      nodeOrNodes.variables.forEach(node => this.visitVariable(node));
+      // Process the nodes of the template.
+      nodeOrNodes.children.forEach(node => node.visit(this));
+    } else if (nodeOrNodes instanceof IfBlockBranch) {
+      if (nodeOrNodes.expressionAlias !== null) {
+        this.visitVariable(nodeOrNodes.expressionAlias);
+      }
+      nodeOrNodes.children.forEach(node => node.visit(this));
+    } else if (nodeOrNodes instanceof ForLoopBlock) {
+      this.visitVariable(nodeOrNodes.item);
+      Object.values(nodeOrNodes.contextVariables).forEach(v => this.visitVariable(v));
+      nodeOrNodes.children.forEach(node => node.visit(this));
+    } else if (nodeOrNodes instanceof SwitchBlockCase || nodeOrNodes instanceof ForLoopBlockEmpty || nodeOrNodes instanceof DeferredBlock || nodeOrNodes instanceof DeferredBlockError || nodeOrNodes instanceof DeferredBlockPlaceholder || nodeOrNodes instanceof DeferredBlockLoading) {
+      nodeOrNodes.children.forEach(node => node.visit(this));
+    } else {
+      // No overarching `Template` instance, so process the nodes directly.
+      nodeOrNodes.forEach(node => node.visit(this));
+    }
+  }
+  visitElement(element) {
+    // `Element`s in the template may have `Reference`s which are captured in the scope.
+    element.references.forEach(node => this.visitReference(node));
+    // Recurse into the `Element`'s children.
+    element.children.forEach(node => node.visit(this));
+  }
+  visitTemplate(template) {
+    // References on a <ng-template> are defined in the outer scope, so capture them before
+    // processing the template's child scope.
+    template.references.forEach(node => this.visitReference(node));
+    // Next, create an inner scope and process the template within it.
+    this.ingestScopedNode(template);
+  }
+  visitVariable(variable) {
+    // Declare the variable if it's not already.
+    this.maybeDeclare(variable);
+  }
+  visitReference(reference) {
+    // Declare the variable if it's not already.
+    this.maybeDeclare(reference);
+  }
+  visitDeferredBlock(deferred) {
+    this.ingestScopedNode(deferred);
+    deferred.placeholder?.visit(this);
+    deferred.loading?.visit(this);
+    deferred.error?.visit(this);
+  }
+  visitDeferredBlockPlaceholder(block) {
+    this.ingestScopedNode(block);
+  }
+  visitDeferredBlockError(block) {
+    this.ingestScopedNode(block);
+  }
+  visitDeferredBlockLoading(block) {
+    this.ingestScopedNode(block);
+  }
+  visitSwitchBlock(block) {
+    block.cases.forEach(node => node.visit(this));
+  }
+  visitSwitchBlockCase(block) {
+    this.ingestScopedNode(block);
+  }
+  visitForLoopBlock(block) {
+    this.ingestScopedNode(block);
+    block.empty?.visit(this);
+  }
+  visitForLoopBlockEmpty(block) {
+    this.ingestScopedNode(block);
+  }
+  visitIfBlock(block) {
+    block.branches.forEach(node => node.visit(this));
+  }
+  visitIfBlockBranch(block) {
+    this.ingestScopedNode(block);
+  }
+  // Unused visitors.
+  visitContent(content) {}
+  visitBoundAttribute(attr) {}
+  visitBoundEvent(event) {}
+  visitBoundText(text) {}
+  visitText(text) {}
+  visitTextAttribute(attr) {}
+  visitIcu(icu) {}
+  visitDeferredTrigger(trigger) {}
+  visitUnknownBlock(block) {}
+  maybeDeclare(thing) {
+    // Declare something with a name, as long as that name isn't taken.
+    if (!this.namedEntities.has(thing.name)) {
+      this.namedEntities.set(thing.name, thing);
+    }
+  }
+  /**
+   * Look up a variable within this `Scope`.
+   *
+   * This can recurse into a parent `Scope` if it's available.
+   */
+  lookup(name) {
+    if (this.namedEntities.has(name)) {
+      // Found in the local scope.
+      return this.namedEntities.get(name);
+    } else if (this.parentScope !== null) {
+      // Not in the local scope, but there's a parent scope so check there.
+      return this.parentScope.lookup(name);
+    } else {
+      // At the top level and it wasn't found.
+      return null;
+    }
+  }
+  /**
+   * Get the child scope for a `ScopedNode`.
+   *
+   * This should always be defined.
+   */
+  getChildScope(node) {
+    const res = this.childScopes.get(node);
+    if (res === undefined) {
+      throw new Error(`Assertion error: child scope for ${node} not found`);
+    }
+    return res;
+  }
+  ingestScopedNode(node) {
+    const scope = new Scope(this, node);
+    scope.ingest(node);
+    this.childScopes.set(node, scope);
+  }
+}
+/**
+ * Processes a template and matches directives on nodes (elements and templates).
+ *
+ * Usually used via the static `apply()` method.
+ */
+class DirectiveBinder {
+  constructor(matcher, directives, eagerDirectives, bindings, references) {
+    this.matcher = matcher;
+    this.directives = directives;
+    this.eagerDirectives = eagerDirectives;
+    this.bindings = bindings;
+    this.references = references;
+    // Indicates whether we are visiting elements within a `defer` block
+    this.isInDeferBlock = false;
+  }
+  /**
+   * Process a template (list of `Node`s) and perform directive matching against each node.
+   *
+   * @param template the list of template `Node`s to match (recursively).
+   * @param selectorMatcher a `SelectorMatcher` containing the directives that are in scope for
+   * this template.
+   * @returns three maps which contain information about directives in the template: the
+   * `directives` map which lists directives matched on each node, the `bindings` map which
+   * indicates which directives claimed which bindings (inputs, outputs, etc), and the `references`
+   * map which resolves #references (`Reference`s) within the template to the named directive or
+   * template node.
+   */
+  static apply(template, selectorMatcher) {
+    const directives = new Map();
+    const bindings = new Map();
+    const references = new Map();
+    const eagerDirectives = [];
+    const matcher = new DirectiveBinder(selectorMatcher, directives, eagerDirectives, bindings, references);
+    matcher.ingest(template);
+    return {
+      directives,
+      eagerDirectives,
+      bindings,
+      references
+    };
+  }
+  ingest(template) {
+    template.forEach(node => node.visit(this));
+  }
+  visitElement(element) {
+    this.visitElementOrTemplate(element);
+  }
+  visitTemplate(template) {
+    this.visitElementOrTemplate(template);
+  }
+  visitElementOrTemplate(node) {
+    // First, determine the HTML shape of the node for the purpose of directive matching.
+    // Do this by building up a `CssSelector` for the node.
+    const cssSelector = createCssSelectorFromNode(node);
+    // Next, use the `SelectorMatcher` to get the list of directives on the node.
+    const directives = [];
+    this.matcher.match(cssSelector, (_selector, results) => directives.push(...results));
+    if (directives.length > 0) {
+      this.directives.set(node, directives);
+      if (!this.isInDeferBlock) {
+        this.eagerDirectives.push(...directives);
+      }
+    }
+    // Resolve any references that are created on this node.
+    node.references.forEach(ref => {
+      let dirTarget = null;
+      // If the reference expression is empty, then it matches the "primary" directive on the node
+      // (if there is one). Otherwise it matches the host node itself (either an element or
+      // <ng-template> node).
+      if (ref.value.trim() === '') {
+        // This could be a reference to a component if there is one.
+        dirTarget = directives.find(dir => dir.isComponent) || null;
+      } else {
+        // This should be a reference to a directive exported via exportAs.
+        dirTarget = directives.find(dir => dir.exportAs !== null && dir.exportAs.some(value => value === ref.value)) || null;
+        // Check if a matching directive was found.
+        if (dirTarget === null) {
+          // No matching directive was found - this reference points to an unknown target. Leave it
+          // unmapped.
+          return;
+        }
+      }
+      if (dirTarget !== null) {
+        // This reference points to a directive.
+        this.references.set(ref, {
+          directive: dirTarget,
+          node
+        });
+      } else {
+        // This reference points to the node itself.
+        this.references.set(ref, node);
+      }
+    });
+    const setAttributeBinding = (attribute, ioType) => {
+      const dir = directives.find(dir => dir[ioType].hasBindingPropertyName(attribute.name));
+      const binding = dir !== undefined ? dir : node;
+      this.bindings.set(attribute, binding);
+    };
+    // Node inputs (bound attributes) and text attributes can be bound to an
+    // input on a directive.
+    node.inputs.forEach(input => setAttributeBinding(input, 'inputs'));
+    node.attributes.forEach(attr => setAttributeBinding(attr, 'inputs'));
+    if (node instanceof Template) {
+      node.templateAttrs.forEach(attr => setAttributeBinding(attr, 'inputs'));
+    }
+    // Node outputs (bound events) can be bound to an output on a directive.
+    node.outputs.forEach(output => setAttributeBinding(output, 'outputs'));
+    // Recurse into the node's children.
+    node.children.forEach(child => child.visit(this));
+  }
+  visitDeferredBlock(deferred) {
+    const wasInDeferBlock = this.isInDeferBlock;
+    this.isInDeferBlock = true;
+    deferred.children.forEach(child => child.visit(this));
+    this.isInDeferBlock = wasInDeferBlock;
+    deferred.placeholder?.visit(this);
+    deferred.loading?.visit(this);
+    deferred.error?.visit(this);
+  }
+  visitDeferredBlockPlaceholder(block) {
+    block.children.forEach(child => child.visit(this));
+  }
+  visitDeferredBlockError(block) {
+    block.children.forEach(child => child.visit(this));
+  }
+  visitDeferredBlockLoading(block) {
+    block.children.forEach(child => child.visit(this));
+  }
+  visitSwitchBlock(block) {
+    block.cases.forEach(node => node.visit(this));
+  }
+  visitSwitchBlockCase(block) {
+    block.children.forEach(node => node.visit(this));
+  }
+  visitForLoopBlock(block) {
+    block.item.visit(this);
+    Object.values(block.contextVariables).forEach(v => v.visit(this));
+    block.children.forEach(node => node.visit(this));
+    block.empty?.visit(this);
+  }
+  visitForLoopBlockEmpty(block) {
+    block.children.forEach(node => node.visit(this));
+  }
+  visitIfBlock(block) {
+    block.branches.forEach(node => node.visit(this));
+  }
+  visitIfBlockBranch(block) {
+    block.expressionAlias?.visit(this);
+    block.children.forEach(node => node.visit(this));
+  }
+  // Unused visitors.
+  visitContent(content) {}
+  visitVariable(variable) {}
+  visitReference(reference) {}
+  visitTextAttribute(attribute) {}
+  visitBoundAttribute(attribute) {}
+  visitBoundEvent(attribute) {}
+  visitBoundAttributeOrEvent(node) {}
+  visitText(text) {}
+  visitBoundText(text) {}
+  visitIcu(icu) {}
+  visitDeferredTrigger(trigger) {}
+  visitUnknownBlock(block) {}
+}
+/**
+ * Processes a template and extract metadata about expressions and symbols within.
+ *
+ * This is a companion to the `DirectiveBinder` that doesn't require knowledge of directives matched
+ * within the template in order to operate.
+ *
+ * Expressions are visited by the superclass `RecursiveAstVisitor`, with custom logic provided
+ * by overridden methods from that visitor.
+ */
+class TemplateBinder extends RecursiveAstVisitor {
+  constructor(bindings, symbols, usedPipes, eagerPipes, deferBlocks, nestingLevel, scope, rootNode, level) {
+    super();
+    this.bindings = bindings;
+    this.symbols = symbols;
+    this.usedPipes = usedPipes;
+    this.eagerPipes = eagerPipes;
+    this.deferBlocks = deferBlocks;
+    this.nestingLevel = nestingLevel;
+    this.scope = scope;
+    this.rootNode = rootNode;
+    this.level = level;
+    // Save a bit of processing time by constructing this closure in advance.
+    this.visitNode = node => node.visit(this);
+  }
+  // This method is defined to reconcile the type of TemplateBinder since both
+  // RecursiveAstVisitor and Visitor define the visit() method in their
+  // interfaces.
+  visit(node, context) {
+    if (node instanceof AST) {
+      node.visit(this, context);
+    } else {
+      node.visit(this);
+    }
+  }
+  /**
+   * Process a template and extract metadata about expressions and symbols within.
+   *
+   * @param nodes the nodes of the template to process
+   * @param scope the `Scope` of the template being processed.
+   * @returns three maps which contain metadata about the template: `expressions` which interprets
+   * special `AST` nodes in expressions as pointing to references or variables declared within the
+   * template, `symbols` which maps those variables and references to the nested `Template` which
+   * declares them, if any, and `nestingLevel` which associates each `Template` with a integer
+   * nesting level (how many levels deep within the template structure the `Template` is), starting
+   * at 1.
+   */
+  static applyWithScope(nodes, scope) {
+    const expressions = new Map();
+    const symbols = new Map();
+    const nestingLevel = new Map();
+    const usedPipes = new Set();
+    const eagerPipes = new Set();
+    const template = nodes instanceof Template ? nodes : null;
+    const deferBlocks = new Set();
+    // The top-level template has nesting level 0.
+    const binder = new TemplateBinder(expressions, symbols, usedPipes, eagerPipes, deferBlocks, nestingLevel, scope, template, 0);
+    binder.ingest(nodes);
+    return {
+      expressions,
+      symbols,
+      nestingLevel,
+      usedPipes,
+      eagerPipes,
+      deferBlocks
+    };
+  }
+  ingest(nodeOrNodes) {
+    if (nodeOrNodes instanceof Template) {
+      // For <ng-template>s, process only variables and child nodes. Inputs, outputs, templateAttrs,
+      // and references were all processed in the scope of the containing template.
+      nodeOrNodes.variables.forEach(this.visitNode);
+      nodeOrNodes.children.forEach(this.visitNode);
+      // Set the nesting level.
+      this.nestingLevel.set(nodeOrNodes, this.level);
+    } else if (nodeOrNodes instanceof IfBlockBranch) {
+      if (nodeOrNodes.expressionAlias !== null) {
+        this.visitNode(nodeOrNodes.expressionAlias);
+      }
+      nodeOrNodes.children.forEach(this.visitNode);
+      this.nestingLevel.set(nodeOrNodes, this.level);
+    } else if (nodeOrNodes instanceof ForLoopBlock) {
+      this.visitNode(nodeOrNodes.item);
+      Object.values(nodeOrNodes.contextVariables).forEach(v => this.visitNode(v));
+      nodeOrNodes.trackBy.visit(this);
+      nodeOrNodes.children.forEach(this.visitNode);
+      this.nestingLevel.set(nodeOrNodes, this.level);
+    } else if (nodeOrNodes instanceof SwitchBlockCase || nodeOrNodes instanceof ForLoopBlockEmpty || nodeOrNodes instanceof DeferredBlock || nodeOrNodes instanceof DeferredBlockError || nodeOrNodes instanceof DeferredBlockPlaceholder || nodeOrNodes instanceof DeferredBlockLoading) {
+      nodeOrNodes.children.forEach(node => node.visit(this));
+      this.nestingLevel.set(nodeOrNodes, this.level);
+    } else {
+      // Visit each node from the top-level template.
+      nodeOrNodes.forEach(this.visitNode);
+    }
+  }
+  visitElement(element) {
+    // Visit the inputs, outputs, and children of the element.
+    element.inputs.forEach(this.visitNode);
+    element.outputs.forEach(this.visitNode);
+    element.children.forEach(this.visitNode);
+    element.references.forEach(this.visitNode);
+  }
+  visitTemplate(template) {
+    // First, visit inputs, outputs and template attributes of the template node.
+    template.inputs.forEach(this.visitNode);
+    template.outputs.forEach(this.visitNode);
+    template.templateAttrs.forEach(this.visitNode);
+    template.references.forEach(this.visitNode);
+    // Next, recurse into the template.
+    this.ingestScopedNode(template);
+  }
+  visitVariable(variable) {
+    // Register the `Variable` as a symbol in the current `Template`.
+    if (this.rootNode !== null) {
+      this.symbols.set(variable, this.rootNode);
+    }
+  }
+  visitReference(reference) {
+    // Register the `Reference` as a symbol in the current `Template`.
+    if (this.rootNode !== null) {
+      this.symbols.set(reference, this.rootNode);
+    }
+  }
+  // Unused template visitors
+  visitText(text) {}
+  visitContent(content) {}
+  visitTextAttribute(attribute) {}
+  visitUnknownBlock(block) {}
+  visitDeferredTrigger() {}
+  visitIcu(icu) {
+    Object.keys(icu.vars).forEach(key => icu.vars[key].visit(this));
+    Object.keys(icu.placeholders).forEach(key => icu.placeholders[key].visit(this));
+  }
+  // The remaining visitors are concerned with processing AST expressions within template bindings
+  visitBoundAttribute(attribute) {
+    attribute.value.visit(this);
+  }
+  visitBoundEvent(event) {
+    event.handler.visit(this);
+  }
+  visitDeferredBlock(deferred) {
+    this.deferBlocks.add(deferred);
+    this.ingestScopedNode(deferred);
+    deferred.triggers.when?.value.visit(this);
+    deferred.prefetchTriggers.when?.value.visit(this);
+    deferred.placeholder && this.visitNode(deferred.placeholder);
+    deferred.loading && this.visitNode(deferred.loading);
+    deferred.error && this.visitNode(deferred.error);
+  }
+  visitDeferredBlockPlaceholder(block) {
+    this.ingestScopedNode(block);
+  }
+  visitDeferredBlockError(block) {
+    this.ingestScopedNode(block);
+  }
+  visitDeferredBlockLoading(block) {
+    this.ingestScopedNode(block);
+  }
+  visitSwitchBlock(block) {
+    block.expression.visit(this);
+    block.cases.forEach(this.visitNode);
+  }
+  visitSwitchBlockCase(block) {
+    block.expression?.visit(this);
+    this.ingestScopedNode(block);
+  }
+  visitForLoopBlock(block) {
+    block.expression.visit(this);
+    this.ingestScopedNode(block);
+    block.empty?.visit(this);
+  }
+  visitForLoopBlockEmpty(block) {
+    this.ingestScopedNode(block);
+  }
+  visitIfBlock(block) {
+    block.branches.forEach(node => node.visit(this));
+  }
+  visitIfBlockBranch(block) {
+    block.expression?.visit(this);
+    this.ingestScopedNode(block);
+  }
+  visitBoundText(text) {
+    text.value.visit(this);
+  }
+  visitPipe(ast, context) {
+    this.usedPipes.add(ast.name);
+    if (!this.scope.isDeferred) {
+      this.eagerPipes.add(ast.name);
+    }
+    return super.visitPipe(ast, context);
+  }
+  // These five types of AST expressions can refer to expression roots, which could be variables
+  // or references in the current scope.
+  visitPropertyRead(ast, context) {
+    this.maybeMap(ast, ast.name);
+    return super.visitPropertyRead(ast, context);
+  }
+  visitSafePropertyRead(ast, context) {
+    this.maybeMap(ast, ast.name);
+    return super.visitSafePropertyRead(ast, context);
+  }
+  visitPropertyWrite(ast, context) {
+    this.maybeMap(ast, ast.name);
+    return super.visitPropertyWrite(ast, context);
+  }
+  ingestScopedNode(node) {
+    const childScope = this.scope.getChildScope(node);
+    const binder = new TemplateBinder(this.bindings, this.symbols, this.usedPipes, this.eagerPipes, this.deferBlocks, this.nestingLevel, childScope, node, this.level + 1);
+    binder.ingest(node);
+  }
+  maybeMap(ast, name) {
+    // If the receiver of the expression isn't the `ImplicitReceiver`, this isn't the root of an
+    // `AST` expression that maps to a `Variable` or `Reference`.
+    if (!(ast.receiver instanceof ImplicitReceiver)) {
+      return;
+    }
+    // Check whether the name exists in the current scope. If so, map it. Otherwise, the name is
+    // probably a property on the top-level component context.
+    let target = this.scope.lookup(name);
+    if (target !== null) {
+      this.bindings.set(ast, target);
+    }
+  }
+}
+/**
+ * Metadata container for a `Target` that allows queries for specific bits of metadata.
+ *
+ * See `BoundTarget` for documentation on the individual methods.
+ */
+class R3BoundTarget {
+  constructor(target, directives, eagerDirectives, bindings, references, exprTargets, symbols, nestingLevel, scopedNodeEntities, usedPipes, eagerPipes, deferredBlocks) {
+    this.target = target;
+    this.directives = directives;
+    this.eagerDirectives = eagerDirectives;
+    this.bindings = bindings;
+    this.references = references;
+    this.exprTargets = exprTargets;
+    this.symbols = symbols;
+    this.nestingLevel = nestingLevel;
+    this.scopedNodeEntities = scopedNodeEntities;
+    this.usedPipes = usedPipes;
+    this.eagerPipes = eagerPipes;
+    this.deferredBlocks = deferredBlocks;
+  }
+  getEntitiesInScope(node) {
+    return this.scopedNodeEntities.get(node) ?? new Set();
+  }
+  getDirectivesOfNode(node) {
+    return this.directives.get(node) || null;
+  }
+  getReferenceTarget(ref) {
+    return this.references.get(ref) || null;
+  }
+  getConsumerOfBinding(binding) {
+    return this.bindings.get(binding) || null;
+  }
+  getExpressionTarget(expr) {
+    return this.exprTargets.get(expr) || null;
+  }
+  getDefinitionNodeOfSymbol(symbol) {
+    return this.symbols.get(symbol) || null;
+  }
+  getNestingLevel(node) {
+    return this.nestingLevel.get(node) || 0;
+  }
+  getUsedDirectives() {
+    const set = new Set();
+    this.directives.forEach(dirs => dirs.forEach(dir => set.add(dir)));
+    return Array.from(set.values());
+  }
+  getEagerlyUsedDirectives() {
+    const set = new Set(this.eagerDirectives);
+    return Array.from(set.values());
+  }
+  getUsedPipes() {
+    return Array.from(this.usedPipes);
+  }
+  getEagerlyUsedPipes() {
+    return Array.from(this.eagerPipes);
+  }
+  getDeferBlocks() {
+    return Array.from(this.deferredBlocks);
+  }
+  getDeferredTriggerTarget(block, trigger) {
+    // Only triggers that refer to DOM nodes can be resolved.
+    if (!(trigger instanceof InteractionDeferredTrigger) && !(trigger instanceof ViewportDeferredTrigger) && !(trigger instanceof HoverDeferredTrigger)) {
+      return null;
+    }
+    const name = trigger.reference;
+    if (name === null) {
+      let trigger = null;
+      if (block.placeholder !== null) {
+        for (const child of block.placeholder.children) {
+          // Skip over comment nodes. Currently by default the template parser doesn't capture
+          // comments, but we have a safeguard here just in case since it can be enabled.
+          if (child instanceof Comment$1) {
+            continue;
+          }
+          // We can only infer the trigger if there's one root element node. Any other
+          // nodes at the root make it so that we can't infer the trigger anymore.
+          if (trigger !== null) {
+            return null;
+          }
+          if (child instanceof Element$1) {
+            trigger = child;
+          }
+        }
+      }
+      return trigger;
+    }
+    const outsideRef = this.findEntityInScope(block, name);
+    // First try to resolve the target in the scope of the main deferred block. Note that we
+    // skip triggers defined inside the main block itself, because they might not exist yet.
+    if (outsideRef instanceof Reference && this.getDefinitionNodeOfSymbol(outsideRef) !== block) {
+      const target = this.getReferenceTarget(outsideRef);
+      if (target !== null) {
+        return this.referenceTargetToElement(target);
+      }
+    }
+    // If the trigger couldn't be found in the main block, check the
+    // placeholder block which is shown before the main block has loaded.
+    if (block.placeholder !== null) {
+      const refInPlaceholder = this.findEntityInScope(block.placeholder, name);
+      const targetInPlaceholder = refInPlaceholder instanceof Reference ? this.getReferenceTarget(refInPlaceholder) : null;
+      if (targetInPlaceholder !== null) {
+        return this.referenceTargetToElement(targetInPlaceholder);
+      }
+    }
+    return null;
+  }
+  /**
+   * Finds an entity with a specific name in a scope.
+   * @param rootNode Root node of the scope.
+   * @param name Name of the entity.
+   */
+  findEntityInScope(rootNode, name) {
+    const entities = this.getEntitiesInScope(rootNode);
+    for (const entitity of entities) {
+      if (entitity.name === name) {
+        return entitity;
+      }
+    }
+    return null;
+  }
+  /** Coerces a `ReferenceTarget` to an `Element`, if possible. */
+  referenceTargetToElement(target) {
+    if (target instanceof Element$1) {
+      return target;
+    }
+    if (target instanceof Template) {
+      return null;
+    }
+    return this.referenceTargetToElement(target.node);
+  }
+}
+function extractScopedNodeEntities(rootScope) {
+  const entityMap = new Map();
+  function extractScopeEntities(scope) {
+    if (entityMap.has(scope.rootNode)) {
+      return entityMap.get(scope.rootNode);
+    }
+    const currentEntities = scope.namedEntities;
+    let entities;
+    if (scope.parentScope !== null) {
+      entities = new Map([...extractScopeEntities(scope.parentScope), ...currentEntities]);
+    } else {
+      entities = new Map(currentEntities);
+    }
+    entityMap.set(scope.rootNode, entities);
+    return entities;
+  }
+  const scopesToProcess = [rootScope];
+  while (scopesToProcess.length > 0) {
+    const scope = scopesToProcess.pop();
+    for (const childScope of scope.childScopes.values()) {
+      scopesToProcess.push(childScope);
+    }
+    extractScopeEntities(scope);
+  }
+  const templateEntities = new Map();
+  for (const [template, entities] of entityMap) {
+    templateEntities.set(template, new Set(entities.values()));
+  }
+  return templateEntities;
+}
+
+/**
  * An interface for retrieving documents by URL that the compiler uses to
  * load templates.
  *
@@ -25718,6 +34332,7 @@ class CompilerFacadeImpl {
   }
   compileNgModule(angularCoreEnv, sourceMapUrl, facade) {
     const meta = {
+      kind: R3NgModuleMetadataKind.Global,
       type: wrapReference(facade.type),
       bootstrap: facade.bootstrap.map(wrapReference),
       declarations: facade.declarations.map(wrapReference),
@@ -25756,7 +34371,8 @@ class CompilerFacadeImpl {
     // Parse the template and check for errors.
     const {
       template,
-      interpolation
+      interpolation,
+      deferBlocks
     } = parseJitTemplate(facade.template, facade.name, sourceMapUrl, facade.preserveWhitespaces, facade.interpolation);
     // Compile the component metadata, including template, into an expression.
     const meta = {
@@ -25766,10 +34382,14 @@ class CompilerFacadeImpl {
       template,
       declarations: facade.declarations.map(convertDeclarationFacadeToMetadata),
       declarationListEmitMode: 0 /* DeclarationListEmitMode.Direct */,
+      deferBlocks,
+      // TODO: leaving empty in JIT mode for now,
+      // to be implemented as one of the next steps.
+      deferrableDeclToImportDecl: new Map(),
       styles: [...facade.styles, ...template.styles],
       encapsulation: facade.encapsulation,
       interpolation,
-      changeDetection: facade.changeDetection,
+      changeDetection: facade.changeDetection ?? null,
       animations: facade.animations != null ? new WrappedNodeExpr(facade.animations) : null,
       viewProviders: facade.viewProviders != null ? new WrappedNodeExpr(facade.viewProviders) : null,
       relativeContextFilePath: '',
@@ -25966,7 +34586,8 @@ function convertOpaqueValuesToExpressions(obj) {
 function convertDeclareComponentFacadeToMetadata(decl, typeSourceSpan, sourceMapUrl) {
   const {
     template,
-    interpolation
+    interpolation,
+    deferBlocks
   } = parseJitTemplate(decl.template, decl.type.name, sourceMapUrl, decl.preserveWhitespaces ?? false, decl.interpolation);
   const declarations = [];
   if (decl.dependencies) {
@@ -25995,6 +34616,10 @@ function convertDeclareComponentFacadeToMetadata(decl, typeSourceSpan, sourceMap
     declarations,
     viewProviders: decl.viewProviders !== undefined ? new WrappedNodeExpr(decl.viewProviders) : null,
     animations: decl.animations !== undefined ? new WrappedNodeExpr(decl.animations) : null,
+    deferBlocks,
+    // TODO: leaving empty in JIT mode for now,
+    // to be implemented as one of the next steps.
+    deferrableDeclToImportDecl: new Map(),
     changeDetection: decl.changeDetection ?? ChangeDetectionStrategy.Default,
     encapsulation: decl.encapsulation ?? ViewEncapsulation.Emulated,
     interpolation,
@@ -26050,9 +34675,14 @@ function parseJitTemplate(template, typeName, sourceMapUrl, preserveWhitespaces,
     const errors = parsed.errors.map(err => err.toString()).join(', ');
     throw new Error(`Errors during JIT compilation of template for ${typeName}: ${errors}`);
   }
+  const binder = new R3TargetBinder(new SelectorMatcher());
+  const boundTarget = binder.bind({
+    template: parsed.nodes
+  });
   return {
     template: parsed,
-    interpolation: interpolationConfig
+    interpolation: interpolationConfig,
+    deferBlocks: createR3DeferredMetadata(boundTarget)
   };
 }
 /**
@@ -26112,6 +34742,27 @@ function createR3DependencyMetadata(token, isAttributeDep, host, optional, self,
     self,
     skipSelf
   };
+}
+function createR3DeferredMetadata(boundTarget) {
+  const deferredBlocks = boundTarget.getDeferBlocks();
+  const meta = new Map();
+  for (const block of deferredBlocks) {
+    const triggerElements = new Map();
+    resolveDeferTriggers(block, block.triggers, boundTarget, triggerElements);
+    resolveDeferTriggers(block, block.prefetchTriggers, boundTarget, triggerElements);
+    // TODO: leaving `deps` empty in JIT mode for now, to be implemented as one of the next steps.
+    meta.set(block, {
+      deps: [],
+      triggerElements
+    });
+  }
+  return meta;
+}
+function resolveDeferTriggers(block, triggers, boundTarget, triggerElements) {
+  Object.keys(triggers).forEach(key => {
+    const trigger = triggers[key];
+    triggerElements.set(trigger, boundTarget.getDeferredTriggerTarget(block, trigger));
+  });
 }
 function extractHostBindings(propMetadata, sourceSpan, host) {
   // First parse the declarations from the metadata.
@@ -26234,18 +34885,14 @@ function publishFacade(global) {
  * @description
  * Entry point for all public APIs of the compiler package.
  */
-const VERSION = new Version('16.1.3');
+const VERSION = new Version('17.0.8');
 class CompilerConfig {
   constructor({
     defaultEncapsulation = ViewEncapsulation.Emulated,
-    useJit = true,
-    missingTranslation = null,
     preserveWhitespaces,
     strictInjectionParameters
   } = {}) {
     this.defaultEncapsulation = defaultEncapsulation;
-    this.useJit = !!useJit;
-    this.missingTranslation = missingTranslation;
     this.preserveWhitespaces = preserveWhitespacesDefault(noUndefined(preserveWhitespaces));
     this.strictInjectionParameters = strictInjectionParameters === true;
   }
@@ -26452,6 +35099,10 @@ class _Visitor {
   visitAttribute(attribute, context) {
     throw new Error('unreachable code');
   }
+  visitBlock(block, context) {
+    visitAll(this, block.children, context);
+  }
+  visitBlockParameter(parameter, context) {}
   _init(mode, interpolationConfig) {
     this._mode = mode;
     this._inI18nBlock = false;
@@ -26462,7 +35113,7 @@ class _Visitor {
     this._errors = [];
     this._messages = [];
     this._inImplicitNode = false;
-    this._createI18nMessage = createI18nMessageFactory(interpolationConfig);
+    this._createI18nMessage = createI18nMessageFactory(interpolationConfig, DEFAULT_CONTAINER_BLOCKS);
   }
   // looks for translatable attributes
   _visitAttributesOf(el) {
@@ -26665,8 +35316,12 @@ class XmlParser extends Parser {
   constructor() {
     super(getXmlTagDefinition);
   }
-  parse(source, url, options) {
-    return super.parse(source, url, options);
+  parse(source, url, options = {}) {
+    // Blocks aren't supported in an XML context.
+    return super.parse(source, url, {
+      ...options,
+      tokenizeBlocks: false
+    });
   }
 }
 const _VERSION$1 = '1.2';
@@ -26813,6 +35468,20 @@ class _WriteVisitor$1 {
       'equiv-text': `{{${ph.value}}}`
     })];
   }
+  visitBlockPlaceholder(ph, context) {
+    const ctype = `x-${ph.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+    const startTagPh = new Tag(_PLACEHOLDER_TAG$2, {
+      id: ph.startName,
+      ctype,
+      'equiv-text': `@${ph.name}`
+    });
+    const closeTagPh = new Tag(_PLACEHOLDER_TAG$2, {
+      id: ph.closeName,
+      ctype,
+      'equiv-text': `}`
+    });
+    return [startTagPh, ...this.serialize(ph.children), closeTagPh];
+  }
   visitIcuPlaceholder(ph, context) {
     const equivText = `{${ph.value.expression}, ${ph.value.type}, ${Object.keys(ph.value.cases).map(value => value + ' {...}').join(' ')}}`;
     return [new Tag(_PLACEHOLDER_TAG$2, {
@@ -26893,6 +35562,8 @@ class XliffParser {
   visitComment(comment, context) {}
   visitExpansion(expansion, context) {}
   visitExpansionCase(expansionCase, context) {}
+  visitBlock(block, context) {}
+  visitBlockParameter(parameter, context) {}
   _addError(node, message) {
     this._errors.push(new I18nError(node.sourceSpan, message));
   }
@@ -26943,6 +35614,8 @@ class XmlToI18n$2 {
   }
   visitComment(comment, context) {}
   visitAttribute(attribute, context) {}
+  visitBlock(block, context) {}
+  visitBlockParameter(parameter, context) {}
   _addError(node, message) {
     this._errors.push(new I18nError(node.sourceSpan, message));
   }
@@ -27102,6 +35775,23 @@ class _WriteVisitor {
       disp: `{{${ph.value}}}`
     })];
   }
+  visitBlockPlaceholder(ph, context) {
+    const tagPc = new Tag(_PLACEHOLDER_SPANNING_TAG, {
+      id: (this._nextPlaceholderId++).toString(),
+      equivStart: ph.startName,
+      equivEnd: ph.closeName,
+      type: 'other',
+      dispStart: `@${ph.name}`,
+      dispEnd: `}`
+    });
+    const nodes = [].concat(...ph.children.map(node => node.visit(this)));
+    if (nodes.length) {
+      nodes.forEach(node => tagPc.children.push(node));
+    } else {
+      tagPc.children.push(new Text$1(''));
+    }
+    return [tagPc];
+  }
   visitIcuPlaceholder(ph, context) {
     const cases = Object.keys(ph.value.cases).map(value => value + ' {...}').join(' ');
     const idStr = (this._nextPlaceholderId++).toString();
@@ -27188,6 +35878,8 @@ class Xliff2Parser {
   visitComment(comment, context) {}
   visitExpansion(expansion, context) {}
   visitExpansionCase(expansionCase, context) {}
+  visitBlock(block, context) {}
+  visitBlockParameter(parameter, context) {}
   _addError(node, message) {
     this._errors.push(new I18nError(node.sourceSpan, message));
   }
@@ -27253,6 +35945,8 @@ class XmlToI18n$1 {
   }
   visitComment(comment, context) {}
   visitAttribute(attribute, context) {}
+  visitBlock(block, context) {}
+  visitBlockParameter(parameter, context) {}
   _addError(node, message) {
     this._errors.push(new I18nError(node.sourceSpan, message));
   }
@@ -27397,6 +36091,8 @@ class XtbParser {
   visitComment(comment, context) {}
   visitExpansion(expansion, context) {}
   visitExpansionCase(expansionCase, context) {}
+  visitBlock(block, context) {}
+  visitBlockParameter(block, context) {}
   _addError(node, message) {
     this._errors.push(new I18nError(node.sourceSpan, message));
   }
@@ -27444,6 +36140,8 @@ class XmlToI18n {
   }
   visitComment(comment, context) {}
   visitAttribute(attribute, context) {}
+  visitBlock(block, context) {}
+  visitBlockParameter(block, context) {}
   _addError(node, message) {
     this._errors.push(new I18nError(node.sourceSpan, message));
   }
@@ -27551,6 +36249,11 @@ class I18nToHtmlVisitor {
   visitIcuPlaceholder(ph, context) {
     // An ICU placeholder references the source message to be serialized
     return this._convertToText(this._srcMsg.placeholderToMessage[ph.name]);
+  }
+  visitBlockPlaceholder(ph, context) {
+    const params = ph.parameters.length === 0 ? '' : ` (${ph.parameters.join('; ')})`;
+    const children = ph.children.map(c => c.visit(this)).join('');
+    return `@${ph.name}${params} {${children}}`;
   }
   /**
    * Convert a source message to a translated text string:
@@ -27705,6 +36408,12 @@ class MapPlaceholderNames extends CloneVisitor {
     const children = ph.children.map(n => n.visit(this, mapper));
     return new TagPlaceholder(ph.tag, ph.attrs, startName, closeName, children, ph.isVoid, ph.sourceSpan, ph.startSourceSpan, ph.endSourceSpan);
   }
+  visitBlockPlaceholder(ph, mapper) {
+    const startName = mapper.toPublicName(ph.startName);
+    const closeName = ph.closeName ? mapper.toPublicName(ph.closeName) : ph.closeName;
+    const children = ph.children.map(n => n.visit(this, mapper));
+    return new BlockPlaceholder(ph.name, ph.parameters, startName, closeName, children, ph.sourceSpan, ph.startSourceSpan, ph.endSourceSpan);
+  }
   visitPlaceholder(ph, mapper) {
     return new Placeholder(ph.value, mapper.toPublicName(ph.name), ph.sourceSpan);
   }
@@ -27720,512 +36429,78 @@ var FactoryTarget;
   FactoryTarget[FactoryTarget["Pipe"] = 3] = "Pipe";
   FactoryTarget[FactoryTarget["NgModule"] = 4] = "NgModule";
 })(FactoryTarget || (FactoryTarget = {}));
-
-/**
- * Processes `Target`s with a given set of directives and performs a binding operation, which
- * returns an object similar to TypeScript's `ts.TypeChecker` that contains knowledge about the
- * target.
- */
-class R3TargetBinder {
-  constructor(directiveMatcher) {
-    this.directiveMatcher = directiveMatcher;
-  }
-  /**
-   * Perform a binding operation on the given `Target` and return a `BoundTarget` which contains
-   * metadata about the types referenced in the template.
-   */
-  bind(target) {
-    if (!target.template) {
-      // TODO(alxhub): handle targets which contain things like HostBindings, etc.
-      throw new Error('Binding without a template not yet supported');
-    }
-    // First, parse the template into a `Scope` structure. This operation captures the syntactic
-    // scopes in the template and makes them available for later use.
-    const scope = Scope.apply(target.template);
-    // Use the `Scope` to extract the entities present at every level of the template.
-    const templateEntities = extractTemplateEntities(scope);
-    // Next, perform directive matching on the template using the `DirectiveBinder`. This returns:
-    //   - directives: Map of nodes (elements & ng-templates) to the directives on them.
-    //   - bindings: Map of inputs, outputs, and attributes to the directive/element that claims
-    //     them. TODO(alxhub): handle multiple directives claiming an input/output/etc.
-    //   - references: Map of #references to their targets.
-    const {
-      directives,
-      bindings,
-      references
-    } = DirectiveBinder.apply(target.template, this.directiveMatcher);
-    // Finally, run the TemplateBinder to bind references, variables, and other entities within the
-    // template. This extracts all the metadata that doesn't depend on directive matching.
-    const {
-      expressions,
-      symbols,
-      nestingLevel,
-      usedPipes
-    } = TemplateBinder.applyWithScope(target.template, scope);
-    return new R3BoundTarget(target, directives, bindings, references, expressions, symbols, nestingLevel, templateEntities, usedPipes);
-  }
-}
-/**
- * Represents a binding scope within a template.
- *
- * Any variables, references, or other named entities declared within the template will
- * be captured and available by name in `namedEntities`. Additionally, child templates will
- * be analyzed and have their child `Scope`s available in `childScopes`.
- */
-class Scope {
-  constructor(parentScope, template) {
-    this.parentScope = parentScope;
-    this.template = template;
-    /**
-     * Named members of the `Scope`, such as `Reference`s or `Variable`s.
-     */
-    this.namedEntities = new Map();
-    /**
-     * Child `Scope`s for immediately nested `Template`s.
-     */
-    this.childScopes = new Map();
-  }
-  static newRootScope() {
-    return new Scope(null, null);
-  }
-  /**
-   * Process a template (either as a `Template` sub-template with variables, or a plain array of
-   * template `Node`s) and construct its `Scope`.
-   */
-  static apply(template) {
-    const scope = Scope.newRootScope();
-    scope.ingest(template);
-    return scope;
-  }
-  /**
-   * Internal method to process the template and populate the `Scope`.
-   */
-  ingest(template) {
-    if (template instanceof Template) {
-      // Variables on an <ng-template> are defined in the inner scope.
-      template.variables.forEach(node => this.visitVariable(node));
-      // Process the nodes of the template.
-      template.children.forEach(node => node.visit(this));
-    } else {
-      // No overarching `Template` instance, so process the nodes directly.
-      template.forEach(node => node.visit(this));
-    }
-  }
-  visitElement(element) {
-    // `Element`s in the template may have `Reference`s which are captured in the scope.
-    element.references.forEach(node => this.visitReference(node));
-    // Recurse into the `Element`'s children.
-    element.children.forEach(node => node.visit(this));
-  }
-  visitTemplate(template) {
-    // References on a <ng-template> are defined in the outer scope, so capture them before
-    // processing the template's child scope.
-    template.references.forEach(node => this.visitReference(node));
-    // Next, create an inner scope and process the template within it.
-    const scope = new Scope(this, template);
-    scope.ingest(template);
-    this.childScopes.set(template, scope);
-  }
-  visitVariable(variable) {
-    // Declare the variable if it's not already.
-    this.maybeDeclare(variable);
-  }
-  visitReference(reference) {
-    // Declare the variable if it's not already.
-    this.maybeDeclare(reference);
-  }
-  // Unused visitors.
-  visitContent(content) {}
-  visitBoundAttribute(attr) {}
-  visitBoundEvent(event) {}
-  visitBoundText(text) {}
-  visitText(text) {}
-  visitTextAttribute(attr) {}
-  visitIcu(icu) {}
-  maybeDeclare(thing) {
-    // Declare something with a name, as long as that name isn't taken.
-    if (!this.namedEntities.has(thing.name)) {
-      this.namedEntities.set(thing.name, thing);
-    }
-  }
-  /**
-   * Look up a variable within this `Scope`.
-   *
-   * This can recurse into a parent `Scope` if it's available.
-   */
-  lookup(name) {
-    if (this.namedEntities.has(name)) {
-      // Found in the local scope.
-      return this.namedEntities.get(name);
-    } else if (this.parentScope !== null) {
-      // Not in the local scope, but there's a parent scope so check there.
-      return this.parentScope.lookup(name);
-    } else {
-      // At the top level and it wasn't found.
-      return null;
-    }
-  }
-  /**
-   * Get the child scope for a `Template`.
-   *
-   * This should always be defined.
-   */
-  getChildScope(template) {
-    const res = this.childScopes.get(template);
-    if (res === undefined) {
-      throw new Error(`Assertion error: child scope for ${template} not found`);
-    }
-    return res;
-  }
-}
-/**
- * Processes a template and matches directives on nodes (elements and templates).
- *
- * Usually used via the static `apply()` method.
- */
-class DirectiveBinder {
-  constructor(matcher, directives, bindings, references) {
-    this.matcher = matcher;
-    this.directives = directives;
-    this.bindings = bindings;
-    this.references = references;
-  }
-  /**
-   * Process a template (list of `Node`s) and perform directive matching against each node.
-   *
-   * @param template the list of template `Node`s to match (recursively).
-   * @param selectorMatcher a `SelectorMatcher` containing the directives that are in scope for
-   * this template.
-   * @returns three maps which contain information about directives in the template: the
-   * `directives` map which lists directives matched on each node, the `bindings` map which
-   * indicates which directives claimed which bindings (inputs, outputs, etc), and the `references`
-   * map which resolves #references (`Reference`s) within the template to the named directive or
-   * template node.
-   */
-  static apply(template, selectorMatcher) {
-    const directives = new Map();
-    const bindings = new Map();
-    const references = new Map();
-    const matcher = new DirectiveBinder(selectorMatcher, directives, bindings, references);
-    matcher.ingest(template);
-    return {
-      directives,
-      bindings,
-      references
-    };
-  }
-  ingest(template) {
-    template.forEach(node => node.visit(this));
-  }
-  visitElement(element) {
-    this.visitElementOrTemplate(element.name, element);
-  }
-  visitTemplate(template) {
-    this.visitElementOrTemplate('ng-template', template);
-  }
-  visitElementOrTemplate(elementName, node) {
-    // First, determine the HTML shape of the node for the purpose of directive matching.
-    // Do this by building up a `CssSelector` for the node.
-    const cssSelector = createCssSelector(elementName, getAttrsForDirectiveMatching(node));
-    // Next, use the `SelectorMatcher` to get the list of directives on the node.
-    const directives = [];
-    this.matcher.match(cssSelector, (_selector, results) => directives.push(...results));
-    if (directives.length > 0) {
-      this.directives.set(node, directives);
-    }
-    // Resolve any references that are created on this node.
-    node.references.forEach(ref => {
-      let dirTarget = null;
-      // If the reference expression is empty, then it matches the "primary" directive on the node
-      // (if there is one). Otherwise it matches the host node itself (either an element or
-      // <ng-template> node).
-      if (ref.value.trim() === '') {
-        // This could be a reference to a component if there is one.
-        dirTarget = directives.find(dir => dir.isComponent) || null;
-      } else {
-        // This should be a reference to a directive exported via exportAs.
-        dirTarget = directives.find(dir => dir.exportAs !== null && dir.exportAs.some(value => value === ref.value)) || null;
-        // Check if a matching directive was found.
-        if (dirTarget === null) {
-          // No matching directive was found - this reference points to an unknown target. Leave it
-          // unmapped.
-          return;
-        }
-      }
-      if (dirTarget !== null) {
-        // This reference points to a directive.
-        this.references.set(ref, {
-          directive: dirTarget,
-          node
-        });
-      } else {
-        // This reference points to the node itself.
-        this.references.set(ref, node);
-      }
-    });
-    const setAttributeBinding = (attribute, ioType) => {
-      const dir = directives.find(dir => dir[ioType].hasBindingPropertyName(attribute.name));
-      const binding = dir !== undefined ? dir : node;
-      this.bindings.set(attribute, binding);
-    };
-    // Node inputs (bound attributes) and text attributes can be bound to an
-    // input on a directive.
-    node.inputs.forEach(input => setAttributeBinding(input, 'inputs'));
-    node.attributes.forEach(attr => setAttributeBinding(attr, 'inputs'));
-    if (node instanceof Template) {
-      node.templateAttrs.forEach(attr => setAttributeBinding(attr, 'inputs'));
-    }
-    // Node outputs (bound events) can be bound to an output on a directive.
-    node.outputs.forEach(output => setAttributeBinding(output, 'outputs'));
-    // Recurse into the node's children.
-    node.children.forEach(child => child.visit(this));
-  }
-  // Unused visitors.
-  visitContent(content) {}
-  visitVariable(variable) {}
-  visitReference(reference) {}
-  visitTextAttribute(attribute) {}
-  visitBoundAttribute(attribute) {}
-  visitBoundEvent(attribute) {}
-  visitBoundAttributeOrEvent(node) {}
-  visitText(text) {}
-  visitBoundText(text) {}
-  visitIcu(icu) {}
-}
-/**
- * Processes a template and extract metadata about expressions and symbols within.
- *
- * This is a companion to the `DirectiveBinder` that doesn't require knowledge of directives matched
- * within the template in order to operate.
- *
- * Expressions are visited by the superclass `RecursiveAstVisitor`, with custom logic provided
- * by overridden methods from that visitor.
- */
-class TemplateBinder extends RecursiveAstVisitor {
-  constructor(bindings, symbols, usedPipes, nestingLevel, scope, template, level) {
-    super();
-    this.bindings = bindings;
-    this.symbols = symbols;
-    this.usedPipes = usedPipes;
-    this.nestingLevel = nestingLevel;
-    this.scope = scope;
-    this.template = template;
-    this.level = level;
-    // Save a bit of processing time by constructing this closure in advance.
-    this.visitNode = node => node.visit(this);
-  }
-  // This method is defined to reconcile the type of TemplateBinder since both
-  // RecursiveAstVisitor and Visitor define the visit() method in their
-  // interfaces.
-  visit(node, context) {
-    if (node instanceof AST) {
-      node.visit(this, context);
-    } else {
-      node.visit(this);
-    }
-  }
-  /**
-   * Process a template and extract metadata about expressions and symbols within.
-   *
-   * @param template the nodes of the template to process
-   * @param scope the `Scope` of the template being processed.
-   * @returns three maps which contain metadata about the template: `expressions` which interprets
-   * special `AST` nodes in expressions as pointing to references or variables declared within the
-   * template, `symbols` which maps those variables and references to the nested `Template` which
-   * declares them, if any, and `nestingLevel` which associates each `Template` with a integer
-   * nesting level (how many levels deep within the template structure the `Template` is), starting
-   * at 1.
-   */
-  static applyWithScope(template, scope) {
-    const expressions = new Map();
-    const symbols = new Map();
-    const nestingLevel = new Map();
-    const usedPipes = new Set();
-    // The top-level template has nesting level 0.
-    const binder = new TemplateBinder(expressions, symbols, usedPipes, nestingLevel, scope, template instanceof Template ? template : null, 0);
-    binder.ingest(template);
-    return {
-      expressions,
-      symbols,
-      nestingLevel,
-      usedPipes
-    };
-  }
-  ingest(template) {
-    if (template instanceof Template) {
-      // For <ng-template>s, process only variables and child nodes. Inputs, outputs, templateAttrs,
-      // and references were all processed in the scope of the containing template.
-      template.variables.forEach(this.visitNode);
-      template.children.forEach(this.visitNode);
-      // Set the nesting level.
-      this.nestingLevel.set(template, this.level);
-    } else {
-      // Visit each node from the top-level template.
-      template.forEach(this.visitNode);
-    }
-  }
-  visitElement(element) {
-    // Visit the inputs, outputs, and children of the element.
-    element.inputs.forEach(this.visitNode);
-    element.outputs.forEach(this.visitNode);
-    element.children.forEach(this.visitNode);
-  }
-  visitTemplate(template) {
-    // First, visit inputs, outputs and template attributes of the template node.
-    template.inputs.forEach(this.visitNode);
-    template.outputs.forEach(this.visitNode);
-    template.templateAttrs.forEach(this.visitNode);
-    // References are also evaluated in the outer context.
-    template.references.forEach(this.visitNode);
-    // Next, recurse into the template using its scope, and bumping the nesting level up by one.
-    const childScope = this.scope.getChildScope(template);
-    const binder = new TemplateBinder(this.bindings, this.symbols, this.usedPipes, this.nestingLevel, childScope, template, this.level + 1);
-    binder.ingest(template);
-  }
-  visitVariable(variable) {
-    // Register the `Variable` as a symbol in the current `Template`.
-    if (this.template !== null) {
-      this.symbols.set(variable, this.template);
-    }
-  }
-  visitReference(reference) {
-    // Register the `Reference` as a symbol in the current `Template`.
-    if (this.template !== null) {
-      this.symbols.set(reference, this.template);
-    }
-  }
-  // Unused template visitors
-  visitText(text) {}
-  visitContent(content) {}
-  visitTextAttribute(attribute) {}
-  visitIcu(icu) {
-    Object.keys(icu.vars).forEach(key => icu.vars[key].visit(this));
-    Object.keys(icu.placeholders).forEach(key => icu.placeholders[key].visit(this));
-  }
-  // The remaining visitors are concerned with processing AST expressions within template bindings
-  visitBoundAttribute(attribute) {
-    attribute.value.visit(this);
-  }
-  visitBoundEvent(event) {
-    event.handler.visit(this);
-  }
-  visitBoundText(text) {
-    text.value.visit(this);
-  }
-  visitPipe(ast, context) {
-    this.usedPipes.add(ast.name);
-    return super.visitPipe(ast, context);
-  }
-  // These five types of AST expressions can refer to expression roots, which could be variables
-  // or references in the current scope.
-  visitPropertyRead(ast, context) {
-    this.maybeMap(context, ast, ast.name);
-    return super.visitPropertyRead(ast, context);
-  }
-  visitSafePropertyRead(ast, context) {
-    this.maybeMap(context, ast, ast.name);
-    return super.visitSafePropertyRead(ast, context);
-  }
-  visitPropertyWrite(ast, context) {
-    this.maybeMap(context, ast, ast.name);
-    return super.visitPropertyWrite(ast, context);
-  }
-  maybeMap(scope, ast, name) {
-    // If the receiver of the expression isn't the `ImplicitReceiver`, this isn't the root of an
-    // `AST` expression that maps to a `Variable` or `Reference`.
-    if (!(ast.receiver instanceof ImplicitReceiver)) {
-      return;
-    }
-    // Check whether the name exists in the current scope. If so, map it. Otherwise, the name is
-    // probably a property on the top-level component context.
-    let target = this.scope.lookup(name);
-    if (target !== null) {
-      this.bindings.set(ast, target);
-    }
-  }
-}
-/**
- * Metadata container for a `Target` that allows queries for specific bits of metadata.
- *
- * See `BoundTarget` for documentation on the individual methods.
- */
-class R3BoundTarget {
-  constructor(target, directives, bindings, references, exprTargets, symbols, nestingLevel, templateEntities, usedPipes) {
-    this.target = target;
-    this.directives = directives;
-    this.bindings = bindings;
-    this.references = references;
-    this.exprTargets = exprTargets;
-    this.symbols = symbols;
-    this.nestingLevel = nestingLevel;
-    this.templateEntities = templateEntities;
-    this.usedPipes = usedPipes;
-  }
-  getEntitiesInTemplateScope(template) {
-    return this.templateEntities.get(template) ?? new Set();
-  }
-  getDirectivesOfNode(node) {
-    return this.directives.get(node) || null;
-  }
-  getReferenceTarget(ref) {
-    return this.references.get(ref) || null;
-  }
-  getConsumerOfBinding(binding) {
-    return this.bindings.get(binding) || null;
-  }
-  getExpressionTarget(expr) {
-    return this.exprTargets.get(expr) || null;
-  }
-  getTemplateOfSymbol(symbol) {
-    return this.symbols.get(symbol) || null;
-  }
-  getNestingLevel(template) {
-    return this.nestingLevel.get(template) || 0;
-  }
-  getUsedDirectives() {
-    const set = new Set();
-    this.directives.forEach(dirs => dirs.forEach(dir => set.add(dir)));
-    return Array.from(set.values());
-  }
-  getUsedPipes() {
-    return Array.from(this.usedPipes);
-  }
-}
-function extractTemplateEntities(rootScope) {
-  const entityMap = new Map();
-  function extractScopeEntities(scope) {
-    if (entityMap.has(scope.template)) {
-      return entityMap.get(scope.template);
-    }
-    const currentEntities = scope.namedEntities;
-    let templateEntities;
-    if (scope.parentScope !== null) {
-      templateEntities = new Map([...extractScopeEntities(scope.parentScope), ...currentEntities]);
-    } else {
-      templateEntities = new Map(currentEntities);
-    }
-    entityMap.set(scope.template, templateEntities);
-    return templateEntities;
-  }
-  const scopesToProcess = [rootScope];
-  while (scopesToProcess.length > 0) {
-    const scope = scopesToProcess.pop();
-    for (const childScope of scope.childScopes.values()) {
-      scopesToProcess.push(childScope);
-    }
-    extractScopeEntities(scope);
-  }
-  const templateEntities = new Map();
-  for (const [template, entities] of entityMap) {
-    templateEntities.set(template, new Set(entities.values()));
-  }
-  return templateEntities;
-}
 function compileClassMetadata(metadata) {
   // Generate an ngDevMode guarded call to setClassMetadata with the class identifier and its
   // metadata.
   const fnCall = importExpr(Identifiers.setClassMetadata).callFn([metadata.type, metadata.decorators, metadata.ctorParameters ?? literal(null), metadata.propDecorators ?? literal(null)]);
-  const iife = fn([], [devOnlyGuardedExpression(fnCall).toStmt()]);
+  const iife = arrowFn([], [devOnlyGuardedExpression(fnCall).toStmt()]);
+  return iife.callFn([]);
+}
+/**
+ * Wraps the `setClassMetadata` function with extra logic that dynamically
+ * loads dependencies from `@defer` blocks.
+ *
+ * Generates a call like this:
+ * ```
+ * setClassMetadataAsync(type, () => [
+ *   import('./cmp-a').then(m => m.CmpA);
+ *   import('./cmp-b').then(m => m.CmpB);
+ * ], (CmpA, CmpB) => {
+ *   setClassMetadata(type, decorators, ctorParameters, propParameters);
+ * });
+ * ```
+ *
+ * Similar to the `setClassMetadata` call, it's wrapped into the `ngDevMode`
+ * check to tree-shake away this code in production mode.
+ */
+function compileComponentClassMetadata(metadata, deferrableTypes) {
+  if (deferrableTypes.size === 0) {
+    // If there are no deferrable symbols - just generate a regular `setClassMetadata` call.
+    return compileClassMetadata(metadata);
+  }
+  const dynamicImports = [];
+  const importedSymbols = [];
+  for (const [symbolName, importPath] of deferrableTypes) {
+    // e.g. `(m) => m.CmpA`
+    const innerFn = arrowFn([new FnParam('m', DYNAMIC_TYPE)], variable('m').prop(symbolName));
+    // e.g. `import('./cmp-a').then(...)`
+    const importExpr = new DynamicImportExpr(importPath).prop('then').callFn([innerFn]);
+    dynamicImports.push(importExpr);
+    importedSymbols.push(new FnParam(symbolName, DYNAMIC_TYPE));
+  }
+  // e.g. `() => [ ... ];`
+  const dependencyLoadingFn = arrowFn([], literalArr(dynamicImports));
+  // e.g. `setClassMetadata(...)`
+  const setClassMetadataCall = importExpr(Identifiers.setClassMetadata).callFn([metadata.type, metadata.decorators, metadata.ctorParameters ?? literal(null), metadata.propDecorators ?? literal(null)]);
+  // e.g. `(CmpA) => setClassMetadata(...)`
+  const setClassMetaWrapper = arrowFn(importedSymbols, [setClassMetadataCall.toStmt()]);
+  // Final `setClassMetadataAsync()` call with all arguments
+  const setClassMetaAsync = importExpr(Identifiers.setClassMetadataAsync).callFn([metadata.type, dependencyLoadingFn, setClassMetaWrapper]);
+  // Generate an ngDevMode guarded call to `setClassMetadataAsync` with
+  // the class identifier and its metadata, so that this call can be tree-shaken.
+  const iife = arrowFn([], [devOnlyGuardedExpression(setClassMetaAsync).toStmt()]);
+  return iife.callFn([]);
+}
+
+/**
+ * Generate an ngDevMode guarded call to setClassDebugInfo with the debug info about the class
+ * (e.g., the file name in which the class is defined)
+ */
+function compileClassDebugInfo(debugInfo) {
+  const debugInfoObject = {
+    className: debugInfo.className
+  };
+  // Include file path and line number only if the file relative path is calculated successfully.
+  if (debugInfo.filePath) {
+    debugInfoObject.filePath = debugInfo.filePath;
+    debugInfoObject.lineNumber = debugInfo.lineNumber;
+  }
+  // Include forbidOrphanRendering only if it's set to true (to reduce generated code)
+  if (debugInfo.forbidOrphanRendering) {
+    debugInfoObject.forbidOrphanRendering = literal(true);
+  }
+  const fnCall = importExpr(Identifiers.setClassDebugInfo).callFn([debugInfo.type, mapLiteral(debugInfoObject)]);
+  const iife = arrowFn([], [devOnlyGuardedExpression(fnCall).toStmt()]);
   return iife.callFn([]);
 }
 
@@ -28240,7 +36515,7 @@ const MINIMUM_PARTIAL_LINKER_VERSION$6 = '12.0.0';
 function compileDeclareClassMetadata(metadata) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$6));
-  definitionMap.set('version', literal('16.1.3'));
+  definitionMap.set('version', literal('17.0.8'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', metadata.type);
   definitionMap.set('decorators', metadata.decorators);
@@ -28327,7 +36602,7 @@ function compileDependency(dep) {
  *
  * Do not include any prerelease in these versions as they are ignored.
  */
-const MINIMUM_PARTIAL_LINKER_VERSION$5 = '14.0.0';
+const MINIMUM_PARTIAL_LINKER_VERSION$5 = '16.1.0';
 /**
  * Compile a directive declaration defined by the `R3DirectiveMetadata`.
  */
@@ -28347,8 +36622,13 @@ function compileDeclareDirectiveFromMetadata(meta) {
  */
 function createDirectiveDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
-  definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$5));
-  definitionMap.set('version', literal('16.1.3'));
+  const hasTransformFunctions = Object.values(meta.inputs).some(input => input.transformFunction !== null);
+  // Note: in order to allow consuming Angular libraries that have been compiled with 16.1+ in
+  // Angular 16.0, we only force a minimum version of 16.1 if input transform feature as introduced
+  // in 16.1 is actually used.
+  const minVersion = hasTransformFunctions ? MINIMUM_PARTIAL_LINKER_VERSION$5 : '14.0.0';
+  definitionMap.set('minVersion', literal(minVersion));
+  definitionMap.set('version', literal('17.0.8'));
   // e.g. `type: MyDirective`
   definitionMap.set('type', meta.type.value);
   if (meta.isStandalone) {
@@ -28482,15 +36762,25 @@ function compileDeclareComponentFromMetadata(meta, template, additionalTemplateI
  */
 function createComponentDefinitionMap(meta, template, templateInfo) {
   const definitionMap = createDirectiveDefinitionMap(meta);
+  const blockVisitor = new BlockPresenceVisitor();
+  visitAll$1(blockVisitor, template.nodes);
   definitionMap.set('template', getTemplateExpression(template, templateInfo));
   if (templateInfo.isInline) {
     definitionMap.set('isInline', literal(true));
+  }
+  // Set the minVersion to 17.0.0 if the component is using at least one block in its template.
+  // We don't do this for templates without blocks, in order to preserve backwards compatibility.
+  if (blockVisitor.hasBlocks) {
+    definitionMap.set('minVersion', literal('17.0.0'));
   }
   definitionMap.set('styles', toOptionalLiteralArray(meta.styles, literal));
   definitionMap.set('dependencies', compileUsedDependenciesMetadata(meta));
   definitionMap.set('viewProviders', meta.viewProviders);
   definitionMap.set('animations', meta.animations);
-  if (meta.changeDetection !== undefined) {
+  if (meta.changeDetection !== null) {
+    if (typeof meta.changeDetection === 'object') {
+      throw new Error('Impossible state! Change detection flag is not resolved!');
+    }
     definitionMap.set('changeDetection', importExpr(Identifiers.ChangeDetectionStrategy).prop(ChangeDetectionStrategy[meta.changeDetection]));
   }
   if (meta.encapsulation !== ViewEncapsulation.Emulated) {
@@ -28544,6 +36834,9 @@ function computeEndLocation(file, contents) {
 }
 function compileUsedDependenciesMetadata(meta) {
   const wrapType = meta.declarationListEmitMode !== 0 /* DeclarationListEmitMode.Direct */ ? generateForwardRef : expr => expr;
+  if (meta.declarationListEmitMode === 3 /* DeclarationListEmitMode.RuntimeResolved */) {
+    throw new Error(`Unsupported emit mode`);
+  }
   return toOptionalLiteralArray(meta.declarations, decl => {
     switch (decl.kind) {
       case R3TemplateDependencyKind.Directive:
@@ -28569,6 +36862,42 @@ function compileUsedDependenciesMetadata(meta) {
     }
   });
 }
+class BlockPresenceVisitor extends RecursiveVisitor$1 {
+  constructor() {
+    super(...arguments);
+    this.hasBlocks = false;
+  }
+  visitDeferredBlock() {
+    this.hasBlocks = true;
+  }
+  visitDeferredBlockPlaceholder() {
+    this.hasBlocks = true;
+  }
+  visitDeferredBlockLoading() {
+    this.hasBlocks = true;
+  }
+  visitDeferredBlockError() {
+    this.hasBlocks = true;
+  }
+  visitIfBlock() {
+    this.hasBlocks = true;
+  }
+  visitIfBlockBranch() {
+    this.hasBlocks = true;
+  }
+  visitForLoopBlock() {
+    this.hasBlocks = true;
+  }
+  visitForLoopBlockEmpty() {
+    this.hasBlocks = true;
+  }
+  visitSwitchBlock() {
+    this.hasBlocks = true;
+  }
+  visitSwitchBlockCase() {
+    this.hasBlocks = true;
+  }
+}
 
 /**
  * Every time we make a breaking change to the declaration interface or partial-linker behavior, we
@@ -28581,7 +36910,7 @@ const MINIMUM_PARTIAL_LINKER_VERSION$4 = '12.0.0';
 function compileDeclareFactoryFunction(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$4));
-  definitionMap.set('version', literal('16.1.3'));
+  definitionMap.set('version', literal('17.0.8'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.type.value);
   definitionMap.set('deps', compileDependencies(meta.deps));
@@ -28620,7 +36949,7 @@ function compileDeclareInjectableFromMetadata(meta) {
 function createInjectableDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$3));
-  definitionMap.set('version', literal('16.1.3'));
+  definitionMap.set('version', literal('17.0.8'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.type.value);
   // Only generate providedIn property if it has a non-null value
@@ -28675,7 +37004,7 @@ function compileDeclareInjectorFromMetadata(meta) {
 function createInjectorDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$2));
-  definitionMap.set('version', literal('16.1.3'));
+  definitionMap.set('version', literal('17.0.8'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.type.value);
   definitionMap.set('providers', meta.providers);
@@ -28708,8 +37037,11 @@ function compileDeclareNgModuleFromMetadata(meta) {
  */
 function createNgModuleDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
+  if (meta.kind === R3NgModuleMetadataKind.Local) {
+    throw new Error('Invalid path! Local compilation mode should not get into the partial compilation path');
+  }
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION$1));
-  definitionMap.set('version', literal('16.1.3'));
+  definitionMap.set('version', literal('17.0.8'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   definitionMap.set('type', meta.type.value);
   // We only generate the keys in the metadata if the arrays contain values.
@@ -28764,7 +37096,7 @@ function compileDeclarePipeFromMetadata(meta) {
 function createPipeDefinitionMap(meta) {
   const definitionMap = new DefinitionMap();
   definitionMap.set('minVersion', literal(MINIMUM_PARTIAL_LINKER_VERSION));
-  definitionMap.set('version', literal('16.1.3'));
+  definitionMap.set('version', literal('17.0.8'));
   definitionMap.set('ngImport', importExpr(Identifiers.core));
   // e.g. `type: MyPipe`
   definitionMap.set('type', meta.type.value);
@@ -28813,7 +37145,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_localize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/localize */ 2337);
 /**
- * @license Angular v16.1.3
+ * @license Angular v17.0.8
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -28822,7 +37154,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Attach $localize to the global context, as a side-effect of this module.
-_angular_localize__WEBPACK_IMPORTED_MODULE_0__["ɵ_global"].$localize = _angular_localize__WEBPACK_IMPORTED_MODULE_0__["ɵ$localize"];
+globalThis.$localize = _angular_localize__WEBPACK_IMPORTED_MODULE_0__["ɵ$localize"];
 
 /***/ }),
 
@@ -28838,7 +37170,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   loadTranslations: () => (/* binding */ loadTranslations),
 /* harmony export */   "ɵ$localize": () => (/* binding */ $localize$1),
 /* harmony export */   "ɵMissingTranslationError": () => (/* binding */ MissingTranslationError),
-/* harmony export */   "ɵ_global": () => (/* binding */ _global),
 /* harmony export */   "ɵcomputeMsgId": () => (/* binding */ computeMsgId),
 /* harmony export */   "ɵfindEndOfBlock": () => (/* binding */ findEndOfBlock),
 /* harmony export */   "ɵisMissingTranslationError": () => (/* binding */ isMissingTranslationError),
@@ -28851,7 +37182,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ɵtranslate": () => (/* binding */ translate$1)
 /* harmony export */ });
 /**
- * @license Angular v16.1.3
+ * @license Angular v17.0.8
  * (c) 2010-2022 Google LLC. https://angular.io/
  * License: MIT
  */
@@ -28906,178 +37237,6 @@ const ID_SEPARATOR = '@@';
  * https://stackoverflow.com/questions/8695118/whats-the-file-group-record-unit-separator-control-characters-and-its-usage
  */
 const LEGACY_ID_INDICATOR = '\u241F';
-
-/**
- * Represents a big integer using a buffer of its individual digits, with the least significant
- * digit stored at the beginning of the array (little endian).
- *
- * For performance reasons, each instance is mutable. The addition operation can be done in-place
- * to reduce memory pressure of allocation for the digits array.
- */
-class BigInteger {
-  static zero() {
-    return new BigInteger([0]);
-  }
-  static one() {
-    return new BigInteger([1]);
-  }
-  /**
-   * Creates a big integer using its individual digits in little endian storage.
-   */
-  constructor(digits) {
-    this.digits = digits;
-  }
-  /**
-   * Creates a clone of this instance.
-   */
-  clone() {
-    return new BigInteger(this.digits.slice());
-  }
-  /**
-   * Returns a new big integer with the sum of `this` and `other` as its value. This does not mutate
-   * `this` but instead returns a new instance, unlike `addToSelf`.
-   */
-  add(other) {
-    const result = this.clone();
-    result.addToSelf(other);
-    return result;
-  }
-  /**
-   * Adds `other` to the instance itself, thereby mutating its value.
-   */
-  addToSelf(other) {
-    const maxNrOfDigits = Math.max(this.digits.length, other.digits.length);
-    let carry = 0;
-    for (let i = 0; i < maxNrOfDigits; i++) {
-      let digitSum = carry;
-      if (i < this.digits.length) {
-        digitSum += this.digits[i];
-      }
-      if (i < other.digits.length) {
-        digitSum += other.digits[i];
-      }
-      if (digitSum >= 10) {
-        this.digits[i] = digitSum - 10;
-        carry = 1;
-      } else {
-        this.digits[i] = digitSum;
-        carry = 0;
-      }
-    }
-    // Apply a remaining carry if needed.
-    if (carry > 0) {
-      this.digits[maxNrOfDigits] = 1;
-    }
-  }
-  /**
-   * Builds the decimal string representation of the big integer. As this is stored in
-   * little endian, the digits are concatenated in reverse order.
-   */
-  toString() {
-    let res = '';
-    for (let i = this.digits.length - 1; i >= 0; i--) {
-      res += this.digits[i];
-    }
-    return res;
-  }
-}
-/**
- * Represents a big integer which is optimized for multiplication operations, as its power-of-twos
- * are memoized. See `multiplyBy()` for details on the multiplication algorithm.
- */
-class BigIntForMultiplication {
-  constructor(value) {
-    this.powerOfTwos = [value];
-  }
-  /**
-   * Returns the big integer itself.
-   */
-  getValue() {
-    return this.powerOfTwos[0];
-  }
-  /**
-   * Computes the value for `num * b`, where `num` is a JS number and `b` is a big integer. The
-   * value for `b` is represented by a storage model that is optimized for this computation.
-   *
-   * This operation is implemented in N(log2(num)) by continuous halving of the number, where the
-   * least-significant bit (LSB) is tested in each iteration. If the bit is set, the bit's index is
-   * used as exponent into the power-of-two multiplication of `b`.
-   *
-   * As an example, consider the multiplication num=42, b=1337. In binary 42 is 0b00101010 and the
-   * algorithm unrolls into the following iterations:
-   *
-   *  Iteration | num        | LSB  | b * 2^iter | Add? | product
-   * -----------|------------|------|------------|------|--------
-   *  0         | 0b00101010 | 0    | 1337       | No   | 0
-   *  1         | 0b00010101 | 1    | 2674       | Yes  | 2674
-   *  2         | 0b00001010 | 0    | 5348       | No   | 2674
-   *  3         | 0b00000101 | 1    | 10696      | Yes  | 13370
-   *  4         | 0b00000010 | 0    | 21392      | No   | 13370
-   *  5         | 0b00000001 | 1    | 42784      | Yes  | 56154
-   *  6         | 0b00000000 | 0    | 85568      | No   | 56154
-   *
-   * The computed product of 56154 is indeed the correct result.
-   *
-   * The `BigIntForMultiplication` representation for a big integer provides memoized access to the
-   * power-of-two values to reduce the workload in computing those values.
-   */
-  multiplyBy(num) {
-    const product = BigInteger.zero();
-    this.multiplyByAndAddTo(num, product);
-    return product;
-  }
-  /**
-   * See `multiplyBy()` for details. This function allows for the computed product to be added
-   * directly to the provided result big integer.
-   */
-  multiplyByAndAddTo(num, result) {
-    for (let exponent = 0; num !== 0; num = num >>> 1, exponent++) {
-      if (num & 1) {
-        const value = this.getMultipliedByPowerOfTwo(exponent);
-        result.addToSelf(value);
-      }
-    }
-  }
-  /**
-   * Computes and memoizes the big integer value for `this.number * 2^exponent`.
-   */
-  getMultipliedByPowerOfTwo(exponent) {
-    // Compute the powers up until the requested exponent, where each value is computed from its
-    // predecessor. This is simple as `this.number * 2^(exponent - 1)` only has to be doubled (i.e.
-    // added to itself) to reach `this.number * 2^exponent`.
-    for (let i = this.powerOfTwos.length; i <= exponent; i++) {
-      const previousPower = this.powerOfTwos[i - 1];
-      this.powerOfTwos[i] = previousPower.add(previousPower);
-    }
-    return this.powerOfTwos[exponent];
-  }
-}
-/**
- * Represents an exponentiation operation for the provided base, of which exponents are computed and
- * memoized. The results are represented by a `BigIntForMultiplication` which is tailored for
- * multiplication operations by memoizing the power-of-twos. This effectively results in a matrix
- * representation that is lazily computed upon request.
- */
-class BigIntExponentiation {
-  constructor(base) {
-    this.base = base;
-    this.exponents = [new BigIntForMultiplication(BigInteger.one())];
-  }
-  /**
-   * Compute the value for `this.base^exponent`, resulting in a big integer that is optimized for
-   * further multiplication operations.
-   */
-  toThePowerOf(exponent) {
-    // Compute the results up until the requested exponent, where every value is computed from its
-    // predecessor. This is because `this.base^(exponent - 1)` only has to be multiplied by `base`
-    // to reach `this.base^exponent`.
-    for (let i = this.exponents.length; i <= exponent; i++) {
-      const value = this.exponents[i - 1].multiplyBy(this.base);
-      this.exponents[i] = new BigIntForMultiplication(value);
-    }
-    return this.exponents[exponent];
-  }
-}
 
 /**
  * A lazily created TextEncoder instance for converting strings into UTF-8 bytes
@@ -29135,6 +37294,9 @@ class _SerializerVisitor {
   }
   visitIcuPlaceholder(ph, context) {
     return `<ph icu name="${ph.name}">${ph.value.visit(this)}</ph>`;
+  }
+  visitBlockPlaceholder(ph, context) {
+    return `<ph block name="${ph.startName}">${ph.children.map(child => child.visit(this)).join(', ')}</ph name="${ph.closeName}">`;
   }
 }
 const serializerVisitor = new _SerializerVisitor();
@@ -29246,17 +37408,17 @@ function fingerprint(str) {
     hi = hi ^ 0x130f9bef;
     lo = lo ^ -0x6b5f56d8;
   }
-  return [hi, lo];
+  return BigInt.asUintN(32, BigInt(hi)) << BigInt(32) | BigInt.asUintN(32, BigInt(lo));
 }
 function computeMsgId(msg, meaning = '') {
   let msgFingerprint = fingerprint(msg);
   if (meaning) {
-    const meaningFingerprint = fingerprint(meaning);
-    msgFingerprint = add64(rol64(msgFingerprint, 1), meaningFingerprint);
+    // Rotate the 64-bit message fingerprint one bit to the left and then add the meaning
+    // fingerprint.
+    msgFingerprint = BigInt.asUintN(64, msgFingerprint << BigInt(1)) | msgFingerprint >> BigInt(63) & BigInt(1);
+    msgFingerprint += fingerprint(meaning);
   }
-  const hi = msgFingerprint[0];
-  const lo = msgFingerprint[1];
-  return wordsToDecimalString(hi & 0x7fffffff, lo);
+  return BigInt.asUintN(63, msgFingerprint).toString();
 }
 function hash32(view, length, c) {
   let a = 0x9e3779b9,
@@ -29361,28 +37523,9 @@ function add32to64(a, b) {
   const high = (a >>> 16) + (b >>> 16) + (low >>> 16);
   return [high >>> 16, high << 16 | low & 0xffff];
 }
-function add64(a, b) {
-  const ah = a[0],
-    al = a[1];
-  const bh = b[0],
-    bl = b[1];
-  const result = add32to64(al, bl);
-  const carry = result[0];
-  const l = result[1];
-  const h = add32(add32(ah, bh), carry);
-  return [h, l];
-}
 // Rotate a 32b number left `count` position
 function rol32(a, count) {
   return a << count | a >>> 32 - count;
-}
-// Rotate a 64b number left `count` position
-function rol64(num, count) {
-  const hi = num[0],
-    lo = num[1];
-  const h = hi << count | lo >>> 32 - count;
-  const l = lo << count | hi >>> 32 - count;
-  return [h, l];
 }
 function bytesToWords32(bytes, endian) {
   const size = bytes.length + 3 >>> 2;
@@ -29407,31 +37550,6 @@ function wordAt(bytes, index, endian) {
     }
   }
   return word;
-}
-/**
- * Create a shared exponentiation pool for base-256 computations. This shared pool provides memoized
- * power-of-256 results with memoized power-of-two computations for efficient multiplication.
- *
- * For our purposes, this can be safely stored as a global without memory concerns. The reason is
- * that we encode two words, so only need the 0th (for the low word) and 4th (for the high word)
- * exponent.
- */
-const base256 = new BigIntExponentiation(256);
-/**
- * Represents two 32-bit words as a single decimal number. This requires a big integer storage
- * model as JS numbers are not accurate enough to represent the 64-bit number.
- *
- * Based on https://www.danvk.org/hex2dec.html
- */
-function wordsToDecimalString(hi, lo) {
-  // Encode the four bytes in lo in the lower digits of the decimal number.
-  // Note: the multiplication results in lo itself but represented by a big integer using its
-  // decimal digits.
-  const decimal = base256.toThePowerOf(0).multiplyBy(lo);
-  // Encode the four bytes in hi above the four lo bytes. lo is a maximum of (2^8)^4, which is why
-  // this multiplication factor is applied.
-  base256.toThePowerOf(4).multiplyByAndAddTo(hi, decimal);
-  return decimal.toString();
 }
 
 // This module specifier is intentionally a relative path to allow bundling the code directly
@@ -29815,13 +37933,6 @@ function translate(messageParts, substitutions) {
     return [messageParts, substitutions];
   }
 }
-
-// Always use __globalThis if available, which is the spec-defined global variable across all
-// environments, then fallback to __global first, because in Node tests both __global and
-// __window may be defined and _global should be __global in that case. Note: Typeof/Instanceof
-// checks are considered side-effects in Terser. We explicitly mark this as side-effect free:
-// https://github.com/terser/terser/issues/250.
-const _global = /* @__PURE__ */(() => typeof globalThis !== 'undefined' && globalThis || typeof global !== 'undefined' && global || typeof window !== 'undefined' && window || typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope && self)();
 
 /**
  * Tag a template literal string for localization.

@@ -27,6 +27,7 @@ AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_co
   styles: [(_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], AppComponent);
 
+
 /***/ }),
 
 /***/ 8629:
@@ -85,6 +86,7 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core_
   bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent]
 })], AppModule);
 
+
 /***/ }),
 
 /***/ 3727:
@@ -131,6 +133,7 @@ CounterButtonComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_
   styles: [(_counter_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], CounterButtonComponent);
 
+
 /***/ }),
 
 /***/ 8078:
@@ -171,6 +174,7 @@ CounterComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angula
   template: _counter_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
   styles: [(_counter_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], CounterComponent);
+
 
 /***/ }),
 
@@ -256,6 +260,7 @@ InventoriesButtonComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
   styles: [(_inventories_button_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], InventoriesButtonComponent);
 
+
 /***/ }),
 
 /***/ 8217:
@@ -304,6 +309,7 @@ InventoriesComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_an
   styles: [(_inventories_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1___default())]
 })], InventoriesComponent);
 
+
 /***/ }),
 
 /***/ 9925:
@@ -347,6 +353,7 @@ let InventoryConnector = class InventoryConnector {
   }];
 };
 InventoryConnector = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Injectable)()], InventoryConnector);
+
 
 /***/ }),
 
@@ -396,6 +403,7 @@ let ActionFactory = class ActionFactory {
   }];
 };
 ActionFactory = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)()], ActionFactory);
+
 
 /***/ }),
 
@@ -1442,7 +1450,7 @@ class Store {
     factory: Store.ɵfac
   });
 }
-(function () {
+(() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Store, [{
     type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable
   }], function () {
@@ -1499,7 +1507,7 @@ class NgxStateStoreModule {
     imports: [_angular_common__WEBPACK_IMPORTED_MODULE_10__.CommonModule]
   });
 }
-(function () {
+(() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NgxStateStoreModule, [{
     type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
     args: [{
