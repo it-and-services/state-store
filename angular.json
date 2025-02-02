@@ -77,18 +77,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "state-store:build"
+            "buildTarget": "state-store:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "state-store:build:production"
+              "buildTarget": "state-store:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "state-store:build"
+            "buildTarget": "state-store:build"
           }
         },
         "test": {

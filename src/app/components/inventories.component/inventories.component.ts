@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Store } from 'ngx-state-store';
 import { AppState } from '../../services/state-store/app-state';
@@ -9,6 +10,9 @@ import { LoadIndicator } from '../../services/state-store/action-factory';
 @Component({
   selector: 'app-inventories',
   templateUrl: './inventories.component.html',
+  imports: [
+    AsyncPipe
+  ],
   styleUrls: ['./inventories.component.scss']
 })
 export class InventoriesComponent implements OnInit {

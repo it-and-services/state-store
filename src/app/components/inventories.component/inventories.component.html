@@ -1,8 +1,12 @@
 <div class="inventories">
-  <div *ngIf="loading$ | async" class="load-indicator-background"></div>
-  <div *ngIf="loading$ | async" class="load-indicator">
-    <div>Loading ...</div>
-  </div>
+  @if (loading$ | async) {
+    <div class="load-indicator-background"></div>
+  }
+  @if (loading$ | async) {
+    <div class="load-indicator">
+      <div>Loading ...</div>
+    </div>
+  }
 
   <div class="inventories-table-container">
     <table class="table table-bordered">
@@ -15,12 +19,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let inventory of inventories; let i=index">
-        <th scope="row">{{i}}</th>
-        <td>{{inventory.id}}</td>
-        <td>{{inventory.version}}</td>
-        <td>{{inventory.name}}</td>
-      </tr>
+        @for (inventory of inventories; let i = $index; track i) {
+          <tr>
+            <th scope="row">{{ i }}</th>
+            <td>{{ inventory.id }}</td>
+            <td>{{ inventory.version }}</td>
+            <td>{{ inventory.name }}</td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>

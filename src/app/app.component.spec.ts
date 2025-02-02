@@ -29,15 +29,17 @@ describe('Component: AppComponent', () => {
       return of([]);
     });
     TestBed.configureTestingModule({
-      declarations: [AppComponent,
-        CounterButtonComponent,
-        CounterComponent,
-        InventoriesButtonComponent,
-        InventoriesComponent],
+      declarations: [
+        AppComponent
+      ],
       providers: [
         {provide: Store, useValue: storeMock},
         {provide: ActionFactory, useValue: actionFactory}],
-      imports: []
+      imports: [
+        CounterButtonComponent,
+        CounterComponent,
+        InventoriesButtonComponent,
+        InventoriesComponent]
     });
 
     fixture = TestBed.createComponent(AppComponent);
