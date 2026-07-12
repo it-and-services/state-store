@@ -5,7 +5,11 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "skipLibCheck": true,
+    "checkJs": false,
+    "strict": false,
+    "noImplicitAny": false
   },
   "files": [
     "src/test.ts"
@@ -13,5 +17,14 @@
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    },
+    "strictTemplates": false
+  }
 }

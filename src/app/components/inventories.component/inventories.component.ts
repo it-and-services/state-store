@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from 'ngx-state-store';
 import { AppState } from '../../services/state-store/app-state';
 import { Inventory } from '../../models/inventory';
@@ -13,6 +13,7 @@ import { LoadIndicator } from '../../services/state-store/action-factory';
   imports: [
     AsyncPipe
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./inventories.component.scss']
 })
 export class InventoriesComponent implements OnInit {

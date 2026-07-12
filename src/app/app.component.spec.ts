@@ -21,6 +21,9 @@ describe('Component: AppComponent', () => {
         }
       };
     });
+    storeMock.select.and.callFake(() => {
+      return of([]);
+    });
     actionFactory = jasmine.createSpyObj('ActionFactory', ['showLoadIndicator', 'hideLoadIndicator']);
     actionFactory.showLoadIndicator.and.callFake(() => {
       return of([]);

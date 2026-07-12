@@ -11,12 +11,9 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
+    "ignoreDeprecations":"6.0",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
     ],
     "paths": {
       "ngx-state-store": [
@@ -26,10 +23,15 @@
         "dist/ngx-state-store/*"
       ]
     },
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "skipLibCheck": true,
+    "checkJs": false,
+    "strict": false,
+    "noImplicitAny": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "typeCheckHostBindings": false
   }
 }

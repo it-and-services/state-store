@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +14,7 @@ import { InventoriesComponent } from './components/inventories.component/invento
 import { InventoryConnector } from './services/connectors/inventory.connector';
 import { ActionFactory } from './services/state-store/action-factory';
 import { AppInitialState } from './services/state-store/app-initial-state';
+import { provideZoneChangeDetection } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { AppInitialState } from './services/state-store/app-initial-state';
     CounterComponent,
     InventoriesButtonComponent,
     InventoriesComponent
-  ], providers: [ActionFactory, InventoryConnector, provideHttpClient(withInterceptorsFromDi())]
+  ], providers: [ActionFactory, InventoryConnector, provideHttpClient(withXhr(), withInterceptorsFromDi()), provideZoneChangeDetection()]
 })
 export class AppModule {
 }

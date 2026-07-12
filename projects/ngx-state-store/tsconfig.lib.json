@@ -5,19 +5,22 @@
     "declarationMap": true,
     "declaration": true,
     "inlineSources": true,
-    "types": [],
-    "lib": [
-      "dom",
-      "es2018"
-    ]
+    "types": []
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    },
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "strictTemplates": false
   },
   "exclude": [
     "src/test.ts",

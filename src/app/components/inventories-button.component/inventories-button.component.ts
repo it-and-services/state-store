@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from 'ngx-state-store';
 import { AppState } from '../../services/state-store/app-state';
 import { ActionFactory, LoadIndicator } from '../../services/state-store/action-factory';
@@ -14,6 +14,7 @@ export interface Changes {
 @Component({
   selector: 'app-inventories-button',
   templateUrl: './inventories-button.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./inventories-button.component.scss']
 })
 export class InventoriesButtonComponent implements OnInit {

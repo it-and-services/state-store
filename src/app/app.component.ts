@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CounterButtonComponent } from './components/counter-button.component/counter-button.component';
 import { CounterComponent } from './components/counter.component/counter.component';
 import { InventoriesButtonComponent } from './components/inventories-button.component/inventories-button.component';
@@ -8,6 +8,7 @@ import { InventoriesComponent } from './components/inventories.component/invento
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
   /*
   imports: [
